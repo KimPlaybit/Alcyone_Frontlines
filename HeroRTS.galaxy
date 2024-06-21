@@ -1,0 +1,1782 @@
+//==================================================================================================
+// 
+// Generated Map Script
+// 
+// Name:   Alcyone - Soldiers & Commanders
+// 
+//==================================================================================================
+include "TriggerLibs/NativeLib"
+include "ai00CAC601"
+include "ai1E9CC8C8"
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+void InitLibs () {
+    libNtve_InitLib();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Variables
+//--------------------------------------------------------------------------------------------------
+unitgroup gv_revivableUnits;
+int gv_rTSPlayer1;
+int gv_rTSPlayer2;
+playergroup gv_soldierPlayers1;
+playergroup gv_soldierPlayers2;
+int gv_dialogTeam1;
+int gv_firebatTeam1;
+int gv_medicTeam1;
+int gv_goliathTeam1;
+int gv_marineTeam1;
+int gv_spectreTeam1;
+int gv_zealotTeam1;
+int gv_darkTemplarTeam1;
+int gv_dragoonTemplarTeam1;
+int gv_adeptTemplarTeam1;
+int gv_corsairTemplarTeam1;
+int gv_zerglingTeam1;
+int gv_queenTeam1;
+int gv_defilerTeam1;
+int gv_hydraliskTeam1;
+int gv_mutaliskTeam1;
+int gv_dialogTeam2;
+int gv_firebatTeam2;
+int gv_medicTeam2;
+int gv_goliathTeam2;
+int gv_marineTeam2;
+int gv_spectreTeam2;
+int gv_zealotTeam2;
+int gv_darkTemplarTeam2;
+int gv_dragoonTemplarTeam2;
+int gv_adeptTemplarTeam2;
+int gv_corsairTemplarTeam2;
+int gv_zerglingTeam2;
+int gv_queenTeam2;
+int gv_defilerTeam2;
+int gv_hydraliskTeam2;
+int gv_mutaliskTeam2;
+
+void InitGlobals () {
+    gv_revivableUnits = UnitGroupEmpty();
+    gv_soldierPlayers1 = PlayerGroupEmpty();
+    gv_soldierPlayers2 = PlayerGroupEmpty();
+    gv_dialogTeam1 = c_invalidDialogId;
+    gv_firebatTeam1 = c_invalidDialogControlId;
+    gv_medicTeam1 = c_invalidDialogControlId;
+    gv_goliathTeam1 = c_invalidDialogControlId;
+    gv_marineTeam1 = c_invalidDialogControlId;
+    gv_spectreTeam1 = c_invalidDialogControlId;
+    gv_zealotTeam1 = c_invalidDialogControlId;
+    gv_darkTemplarTeam1 = c_invalidDialogControlId;
+    gv_dragoonTemplarTeam1 = c_invalidDialogControlId;
+    gv_adeptTemplarTeam1 = c_invalidDialogControlId;
+    gv_corsairTemplarTeam1 = c_invalidDialogControlId;
+    gv_zerglingTeam1 = c_invalidDialogControlId;
+    gv_queenTeam1 = c_invalidDialogControlId;
+    gv_defilerTeam1 = c_invalidDialogControlId;
+    gv_hydraliskTeam1 = c_invalidDialogControlId;
+    gv_mutaliskTeam1 = c_invalidDialogControlId;
+    gv_dialogTeam2 = c_invalidDialogId;
+    gv_firebatTeam2 = c_invalidDialogControlId;
+    gv_medicTeam2 = c_invalidDialogControlId;
+    gv_goliathTeam2 = c_invalidDialogControlId;
+    gv_marineTeam2 = c_invalidDialogControlId;
+    gv_spectreTeam2 = c_invalidDialogControlId;
+    gv_zealotTeam2 = c_invalidDialogControlId;
+    gv_darkTemplarTeam2 = c_invalidDialogControlId;
+    gv_dragoonTemplarTeam2 = c_invalidDialogControlId;
+    gv_adeptTemplarTeam2 = c_invalidDialogControlId;
+    gv_corsairTemplarTeam2 = c_invalidDialogControlId;
+    gv_zerglingTeam2 = c_invalidDialogControlId;
+    gv_queenTeam2 = c_invalidDialogControlId;
+    gv_defilerTeam2 = c_invalidDialogControlId;
+    gv_hydraliskTeam2 = c_invalidDialogControlId;
+    gv_mutaliskTeam2 = c_invalidDialogControlId;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Function Declarations
+//--------------------------------------------------------------------------------------------------
+void gf_StartAi ();
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Variables
+//--------------------------------------------------------------------------------------------------
+trigger gt_MeleeInitialization;
+trigger gt_SetupTeams1;
+trigger gt_SetupTeams2;
+trigger gt_WinTeam1;
+trigger gt_WinTeam2;
+trigger gt_ReviveHeroesTeam1;
+trigger gt_ReviveHeroesTeam2;
+trigger gt_SoldierSelectionTeam1;
+trigger gt_SoldierSelectionTeam2;
+trigger gt_AITeam1;
+trigger gt_AITeam2;
+trigger gt_FirebatSoldierPicked;
+trigger gt_MedicSoldierPicked;
+trigger gt_GoliathSoldierPicked;
+trigger gt_MarineSoldierPicked;
+trigger gt_SpectreSoldierPicked;
+trigger gt_ZealotSoldierPicked;
+trigger gt_DarkTemplarSoldierPicked;
+trigger gt_DragoonPicked;
+trigger gt_AdeptPicked;
+trigger gt_CorsairPicked;
+trigger gt_ZerglingPicked;
+trigger gt_QueenPicked;
+trigger gt_DefilerPicked;
+trigger gt_HydraliskPicked;
+trigger gt_MutaliskPicked;
+
+//--------------------------------------------------------------------------------------------------
+// Custom AI Functions
+//--------------------------------------------------------------------------------------------------
+string[17] cai_playerAI;
+
+//--------------------------------------------------------------------------------------------------
+void InitCustomAI () {
+    int init_i;
+
+    for (init_i = 0; init_i <= 16; init_i += 1) {
+        cai_playerAI[init_i] = null;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_start (string ai, int p) {
+    if (p < 0 || p >= 16) {
+        return;
+    }
+    cai_playerAI[p] = ai;
+
+    if (cai_playerAI[p] == "ai00CAC601") { ai00CAC601_start(p); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { ai1E9CC8C8_start(p); }
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_setDefGather (int p, point val) {
+    if (p < 0 || p >= 16) {
+        return;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { ai00CAC601_setDefGather(p, val); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { ai1E9CC8C8_setDefGather(p, val); }
+}
+
+//--------------------------------------------------------------------------------------------------
+string cai_getCustomData (int p) {
+    if (p < 0 || p >= 16) {
+        return null;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { return ai00CAC601_getCustomData(p); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { return ai1E9CC8C8_getCustomData(p); }
+    return null;
+}
+
+//--------------------------------------------------------------------------------------------------
+wave cai_getLastWave (int p) {
+    if (p < 0 || p >= 16) {
+        return null;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { return ai00CAC601_getLastWave(p); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { return ai1E9CC8C8_getLastWave(p); }
+    return null;
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_waves_run (int p, playergroup target) {
+    if (p < 0 || p >= 16) {
+        return;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { ai00CAC601_waves_run(p, target); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { ai1E9CC8C8_waves_run(p, target); }
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_waves_enable (int p, bool val) {
+    if (p < 0 || p >= 16) {
+        return;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { ai00CAC601_waves_enable(p, val); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { ai1E9CC8C8_waves_enable(p, val); }
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_waves_stop (string ai) {
+    if (ai == "ai00CAC601") { ai00CAC601_waves_stop(); }
+    if (ai == "ai1E9CC8C8") { ai1E9CC8C8_waves_stop(); }
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_wave_run (int w, int p, playergroup target, bool wait) {
+    if (p < 0 || p >= 16) {
+        return;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { ai00CAC601_wave_run(w, p, target, wait); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { ai1E9CC8C8_wave_run(w, p, target, wait); }
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_wave_enable (int w, int p, bool val) {
+    if (p < 0 || p >= 16) {
+        return;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { ai00CAC601_wave_enable(w, p, val); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { ai1E9CC8C8_wave_enable(w, p, val); }
+}
+
+//--------------------------------------------------------------------------------------------------
+bool cai_wave_isEnabled (int w, int p) {
+    if (p < 0 || p >= 16) {
+        return false;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { return ai00CAC601_wave_isEnabled(w, p); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { return ai1E9CC8C8_wave_isEnabled(w, p); }
+    return false;
+}
+
+//--------------------------------------------------------------------------------------------------
+unitgroup cai_wave_createdUnits (int w, int p) {
+    if (p < 0 || p >= 16) {
+        return null;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { return ai00CAC601_wave_createdUnits(w, p); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { return ai1E9CC8C8_wave_createdUnits(w, p); }
+    return null;
+}
+
+//--------------------------------------------------------------------------------------------------
+wave cai_wave_createdWave (int w, int p) {
+    if (p < 0 || p >= 16) {
+        return null;
+    }
+    if (cai_playerAI[p] == "ai00CAC601") { return ai00CAC601_wave_createdWave(w, p); }
+    if (cai_playerAI[p] == "ai1E9CC8C8") { return ai1E9CC8C8_wave_createdWave(w, p); }
+    return null;
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_startall () {
+    AICampaignStart(1);
+    AICampaignStart(2);
+}
+
+//--------------------------------------------------------------------------------------------------
+void cai_runall () {
+    playergroup target = PlayerGroupEmpty();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Functions
+//--------------------------------------------------------------------------------------------------
+void gf_StartAi () {
+    // Automatic Variable Declarations
+
+    // Automatic Variable Declarations
+
+    point targ;
+
+    if (DEBUG) {
+        DebugMeleeInit();
+    }
+
+	AIStart(player, false, DifficultyAPM(PlayerDifficulty(player)));
+        
+    if (PlayerDifficulty(player) >= c_skirVeryHard) {        
+        if (PlayerDifficulty(player) >= c_skirCheater) {
+            AIHarvestBonus(player, 2.0);
+            AISetDifficulty(player, c_diffNormalVision, false);
+            AISetDifficulty(player, c_diffLimitAPM, false);
+        }
+        AISetFlag(player, e_flagsRunScared, false); // TODO fix scared and re-add this
+    }
+    else {        
+        AISetDifficulty(player, c_diffAdvanceWave, false);
+        AISetDifficulty(player, c_diffFleeDamage, false);
+        AISetDifficulty(player, c_diffWaveAvoidDanger, false);
+        AISetFlag(player, e_flagsRunScared, false);
+    }
+    AISetDifficulty(player, c_diffAutoLoadBunkers, false);
+    AISetDifficulty(player, c_diffEarlyGameRepair, false);    
+    AISetDifficulty(player, c_diffEarlyDefenseScout, false);
+    AISetFlag(player, e_flagsLateScout, false);
+    AISetFlag(player, e_flagsClearObs, false);
+
+    AIDeclareTown(player, c_townOne, startPos);
+    AISetMainTown(player, c_townOne);
+    AIHarvest(player, c_townOne);
+    AISetNumScouts(player, 1);
+    AIScout(player);
+    AISetAllStates(player, 1);
+    
+    targ = AIWaveTargetGatherOPoint(player, c_townMain);
+    AIWaveSet(player, c_waveMain,       AIWaveCreate(AIWaveInfoCreate(), player, targ));
+    AIWaveSet(player, c_waveAttack,     AIWaveCreate(AIWaveInfoCreate(), player, targ));
+    AIWaveSet(player, c_waveDivert1,    AIWaveCreate(AIWaveInfoCreate(), player, targ));
+    AIWaveSet(player, c_waveDivert2,    AIWaveCreate(AIWaveInfoCreate(), player, targ));
+    AIWaveSet(player, c_waveClearObs,   AIWaveCreate(AIWaveInfoCreate(), player, targ));
+    AIWaveSet(player, c_waveHome,       AIWaveCreate(AIWaveInfoCreate(), player, targ));
+
+    targ = AIWaveTargetGatherDPoint(player, c_townMain);
+    AIWaveSet(player, c_waveDefend,     AIWaveCreate(AIWaveInfoCreate(), player, targ));
+
+    AITransportIgnore(player, "VikingAssault");
+    AITransportSetPanic(player, 0.6);
+    AITransportSetReturn(player, targ);
+   
+    AISpecifiedMakers();
+    AISetDefaultCombatFlags(player, true);
+    AIAddDetectionDangerUnits(player);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Melee Initialization
+//--------------------------------------------------------------------------------------------------
+bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_startpos1;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_startpos1 = PointFromId(1219627428);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
+    gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
+    gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
+    gv_rTSPlayer2 = PlayerGroupPlayer(GameAttributePlayersForTeam(2), 1);
+    MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), PointFromId(1219627428));
+    MeleeInitUnitsForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2), PointFromId(1466456382));
+    MeleeInitResourcesForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1));
+    MeleeInitResourcesForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2));
+    CameraPan(gv_rTSPlayer1, PointFromId(1219627428), 0.0, -1, 10.0, false);
+    CameraPan(gv_rTSPlayer2, PointFromId(1466456382), 0.0, -1, 10.0, false);
+    AIMeleeStart(gv_rTSPlayer1);
+    AIMeleeStart(gv_rTSPlayer2);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MeleeInitialization_Init () {
+    gt_MeleeInitialization = TriggerCreate("gt_MeleeInitialization_Func");
+    TriggerAddEventMapInit(gt_MeleeInitialization);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Setup Teams 1
+//--------------------------------------------------------------------------------------------------
+bool gt_SetupTeams1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_loopedPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoD1CD5FB6_g;
+
+    // Variable Initialization
+    lv_loopedPlayer = 1;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoD1CD5FB6_g = gv_soldierPlayers1;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(autoD1CD5FB6_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        libNtve_gf_SetAlliance(lv_loopedPlayer, gv_rTSPlayer1, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        CameraPan(lv_loopedPlayer, PointFromId(1219627428), 0.0, -1, 10.0, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SetupTeams1_Init () {
+    gt_SetupTeams1 = TriggerCreate("gt_SetupTeams1_Func");
+    TriggerAddEventMapInit(gt_SetupTeams1);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Setup Teams 2
+//--------------------------------------------------------------------------------------------------
+bool gt_SetupTeams2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_loopedPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto187FF8EF_g;
+
+    // Variable Initialization
+    lv_loopedPlayer = 2;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto187FF8EF_g = gv_soldierPlayers2;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(auto187FF8EF_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        libNtve_gf_SetAlliance(lv_loopedPlayer, gv_rTSPlayer2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        CameraPan(lv_loopedPlayer, PointFromId(1466456382), 0.0, -1, 10.0, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SetupTeams2_Init () {
+    gt_SetupTeams2 = TriggerCreate("gt_SetupTeams2_Func");
+    TriggerAddEventMapInit(gt_SetupTeams2);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WinTeam1
+//--------------------------------------------------------------------------------------------------
+bool gt_WinTeam1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_loopedPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto73FCF83D_g;
+    playergroup auto742220C0_g;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitCount(null, gv_rTSPlayer2, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GameOver(gv_rTSPlayer1, c_gameOverVictory, true, true);
+    GameOver(gv_rTSPlayer2, c_gameOverDefeat, true, true);
+    auto73FCF83D_g = gv_soldierPlayers1;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(auto73FCF83D_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        GameOver(lv_loopedPlayer, c_gameOverVictory, true, true);
+    }
+    auto742220C0_g = gv_soldierPlayers2;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(auto742220C0_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        GameOver(lv_loopedPlayer, c_gameOverDefeat, true, true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_WinTeam1_Init () {
+    gt_WinTeam1 = TriggerCreate("gt_WinTeam1_Func");
+    TriggerAddEventUnitDied(gt_WinTeam1, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WinTeam2
+//--------------------------------------------------------------------------------------------------
+bool gt_WinTeam2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_loopedPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoCC8E05C7_g;
+    playergroup autoAB447701_g;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitCount(null, gv_rTSPlayer1, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoCC8E05C7_g = gv_soldierPlayers2;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(autoCC8E05C7_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        GameOver(lv_loopedPlayer, c_gameOverVictory, true, true);
+    }
+    autoAB447701_g = gv_soldierPlayers1;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(autoAB447701_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        GameOver(lv_loopedPlayer, c_gameOverDefeat, true, true);
+    }
+    GameOver(gv_rTSPlayer1, c_gameOverDefeat, true, true);
+    GameOver(gv_rTSPlayer2, c_gameOverVictory, true, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_WinTeam2_Init () {
+    gt_WinTeam2 = TriggerCreate("gt_WinTeam2_Func");
+    TriggerAddEventUnitDied(gt_WinTeam2, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Revive Heroes Team 1
+//--------------------------------------------------------------------------------------------------
+bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_dyingUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_dyingUnit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, gv_rTSPlayer1), UnitGetOwner(EventUnit())) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/367A7D8C") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/7A34054A") + (PlayerName(libNtve_gf_KillingPlayer()) + StringExternal("Param/Value/3CB3AA14")))))));
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, true);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, true);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(PointFromId(1219627428), 0.0, 3.0), false);
+    UnitRevive(lv_dyingUnit);
+    Wait(30.0, c_timeReal);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, true);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, false);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropLifePercent, 100.0);
+    CameraPan(UnitGetOwner(lv_dyingUnit), PointFromId(1219627428), 0.0, -1, 10.0, false);
+    UnitClearSelection(UnitGetOwner(lv_dyingUnit));
+    UnitSelect(lv_dyingUnit, UnitGetOwner(lv_dyingUnit), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ReviveHeroesTeam1_Init () {
+    gt_ReviveHeroesTeam1 = TriggerCreate("gt_ReviveHeroesTeam1_Func");
+    TriggerAddEventUnitDied(gt_ReviveHeroesTeam1, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Revive Heroes Team 2
+//--------------------------------------------------------------------------------------------------
+bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_dyingUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_dyingUnit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, gv_rTSPlayer2), UnitGetOwner(EventUnit())) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/4A0114E0") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/01AFC6B8") + (PlayerName(libNtve_gf_KillingPlayer()) + StringExternal("Param/Value/D1AEC5D5")))))));
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, true);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, true);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(PointFromId(1466456382), 0.0, 3.0), false);
+    UnitRevive(lv_dyingUnit);
+    Wait(30.0, c_timeReal);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, true);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, false);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropLifePercent, 100.0);
+    CameraPan(UnitGetOwner(lv_dyingUnit), PointFromId(1466456382), 0.0, -1, 10.0, false);
+    UnitClearSelection(UnitGetOwner(lv_dyingUnit));
+    UnitSelect(lv_dyingUnit, UnitGetOwner(lv_dyingUnit), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ReviveHeroesTeam2_Init () {
+    gt_ReviveHeroesTeam2 = TriggerCreate("gt_ReviveHeroesTeam2_Func");
+    TriggerAddEventUnitDied(gt_ReviveHeroesTeam2, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Soldier Selection Team 1
+//--------------------------------------------------------------------------------------------------
+bool gt_SoldierSelectionTeam1_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string autoDD02952A_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogCreate(500, 460, c_anchorCenter, 0, 0, true);
+    gv_dialogTeam1 = DialogLastCreated();
+    libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, 125, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/DCBF1D1F"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    autoDD02952A_val = PlayerRace(gv_rTSPlayer1);
+    if (autoDD02952A_val == "Terr") {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 100, StringExternal("Param/Value/2832D4D2"), StringExternal("Param/Value/FA36F8BB"), "");
+        gv_firebatTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 160, StringExternal("Param/Value/FAD4B46B"), StringExternal("Param/Value/5E94CC58"), "");
+        gv_medicTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 220, StringExternal("Param/Value/C1E64AB2"), StringExternal("Param/Value/4FBC1C17"), "");
+        gv_goliathTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 280, StringExternal("Param/Value/E9B37FDE"), StringExternal("Param/Value/8011E042"), "");
+        gv_marineTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 340, StringExternal("Param/Value/DF279BCB"), StringExternal("Param/Value/A3BA9D49"), "");
+        gv_spectreTeam1 = DialogControlLastCreated();
+    }
+    else if (autoDD02952A_val == "Zerg") {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 100, StringExternal("Param/Value/515C9001"), StringExternal("Param/Value/CB3966D2"), "");
+        gv_zerglingTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 160, StringExternal("Param/Value/34DD28F1"), StringExternal("Param/Value/E086FBEA"), "");
+        gv_queenTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 220, StringExternal("Param/Value/AC95A013"), StringExternal("Param/Value/EA84D943"), "");
+        gv_hydraliskTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 280, StringExternal("Param/Value/AED5F34D"), StringExternal("Param/Value/E52A86B7"), "");
+        gv_mutaliskTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 340, StringExternal("Param/Value/65D0AAFF"), StringExternal("Param/Value/F8701C4B"), "");
+        gv_defilerTeam1 = DialogControlLastCreated();
+    }
+    else if (autoDD02952A_val == "Prot") {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 100, StringExternal("Param/Value/FAD22B4D"), StringExternal("Param/Value/F634FD24"), "");
+        gv_zealotTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 160, StringExternal("Param/Value/D6A290DC"), StringExternal("Param/Value/C5717EC1"), "");
+        gv_adeptTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 220, StringExternal("Param/Value/81F48B7C"), StringExternal("Param/Value/0E73A180"), "");
+        gv_dragoonTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 280, StringExternal("Param/Value/406B50AF"), StringExternal("Param/Value/DB0336A7"), "");
+        gv_darkTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, 300, 50, c_anchorTop, 0, 340, StringExternal("Param/Value/3BF5C70F"), StringExternal("Param/Value/4B3F7C52"), "");
+        gv_corsairTemplarTeam1 = DialogControlLastCreated();
+    }
+    else {
+    }
+    DialogSetVisible(gv_dialogTeam1, gv_soldierPlayers1, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SoldierSelectionTeam1_Init () {
+    gt_SoldierSelectionTeam1 = TriggerCreate("gt_SoldierSelectionTeam1_Func");
+    TriggerAddEventMapInit(gt_SoldierSelectionTeam1);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Soldier Selection Team 2
+//--------------------------------------------------------------------------------------------------
+bool gt_SoldierSelectionTeam2_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string autoC27F0FB3_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogCreate(500, 460, c_anchorCenter, 0, 0, true);
+    gv_dialogTeam2 = DialogLastCreated();
+    libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, 125, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/CC443DA1"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    autoC27F0FB3_val = PlayerRace(gv_rTSPlayer2);
+    if (autoC27F0FB3_val == "Terr") {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 100, StringExternal("Param/Value/B5F5DD3F"), StringExternal("Param/Value/6668CC9E"), "");
+        gv_firebatTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 160, StringExternal("Param/Value/6525F9ED"), StringExternal("Param/Value/BF118802"), "");
+        gv_medicTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 220, StringExternal("Param/Value/CCCA9E02"), StringExternal("Param/Value/A5AD7F05"), "");
+        gv_goliathTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 280, StringExternal("Param/Value/38DB2743"), StringExternal("Param/Value/CCBC60DA"), "");
+        gv_marineTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 340, StringExternal("Param/Value/B7C31DBE"), StringExternal("Param/Value/ADC7EF05"), "");
+        gv_spectreTeam2 = DialogControlLastCreated();
+    }
+    else if (autoC27F0FB3_val == "Zerg") {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 100, StringExternal("Param/Value/E9D7DA10"), StringExternal("Param/Value/1C1C74DC"), "");
+        gv_zerglingTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 160, StringExternal("Param/Value/18C12522"), StringExternal("Param/Value/F4F0BD9F"), "");
+        gv_queenTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 220, StringExternal("Param/Value/F932C49C"), StringExternal("Param/Value/16A71EB7"), "");
+        gv_hydraliskTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 280, StringExternal("Param/Value/03D952A7"), StringExternal("Param/Value/F5CF6C8B"), "");
+        gv_mutaliskTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 340, StringExternal("Param/Value/6E9DB0E0"), StringExternal("Param/Value/457F7D01"), "");
+        gv_defilerTeam2 = DialogControlLastCreated();
+    }
+    else if (autoC27F0FB3_val == "Prot") {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 100, StringExternal("Param/Value/4CA807F5"), StringExternal("Param/Value/F670265C"), "");
+        gv_zealotTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 160, StringExternal("Param/Value/68DA403B"), StringExternal("Param/Value/EA50F441"), "");
+        gv_adeptTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 220, StringExternal("Param/Value/6CB16752"), StringExternal("Param/Value/8E88B6E9"), "");
+        gv_dragoonTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 280, StringExternal("Param/Value/682E1CD1"), StringExternal("Param/Value/F3071ED4"), "");
+        gv_darkTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, 300, 50, c_anchorTop, 0, 340, StringExternal("Param/Value/A18ABD91"), StringExternal("Param/Value/C139289A"), "");
+        gv_corsairTemplarTeam2 = DialogControlLastCreated();
+    }
+    else {
+    }
+    DialogSetVisible(gv_dialogTeam2, gv_soldierPlayers2, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SoldierSelectionTeam2_Init () {
+    gt_SoldierSelectionTeam2 = TriggerCreate("gt_SoldierSelectionTeam2_Func");
+    TriggerAddEventMapInit(gt_SoldierSelectionTeam2);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AI Team 1
+//--------------------------------------------------------------------------------------------------
+bool gt_AITeam1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_random;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    playergroup autoDD8957ED_g;
+    string auto6EF46E76_val;
+    int autoE790A538_val;
+    int autoE26954E7_val;
+    int auto7C6962A2_val;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoDD8957ED_g = gv_soldierPlayers1;
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(autoDD8957ED_g, lv_player);
+        if (lv_player < 0) { break; }
+        if (((PlayerType(lv_player) == c_playerTypeComputer) == true)) {
+            PointSet(PlayerStartLocation(lv_player), PointFromId(1219627428));
+            AIMeleeStart(lv_player);
+            AIDeclareTown(lv_player, 0, PointFromId(1219627428));
+            AISetMainTown(lv_player, 0);
+            lv_random = RandomInt(0, 4);
+            auto6EF46E76_val = PlayerRace(gv_rTSPlayer1);
+            if (auto6EF46E76_val == "Terr") {
+                autoE790A538_val = lv_random;
+                if (autoE790A538_val == 0) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/AE570B04")));
+                }
+                else if (autoE790A538_val == 1) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/79684118")));
+                }
+                else if (autoE790A538_val == 2) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/910AEDAB")));
+                }
+                else if (autoE790A538_val == 3) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/E48B3049")));
+                }
+                else if (autoE790A538_val == 4) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/8AFFCFC9")));
+                }
+                else {
+                }
+            }
+            else if (auto6EF46E76_val == "Zerg") {
+                autoE26954E7_val = lv_random;
+                if (autoE26954E7_val == 0) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/D7A55AA8")));
+                }
+                else if (autoE26954E7_val == 1) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/344631D8")));
+                }
+                else if (autoE26954E7_val == 2) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/49671F1E")));
+                }
+                else if (autoE26954E7_val == 3) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/46CFD56C")));
+                }
+                else if (autoE26954E7_val == 4) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/3D64B675")));
+                }
+                else {
+                }
+            }
+            else if (auto6EF46E76_val == "Prot") {
+                auto7C6962A2_val = lv_random;
+                if (auto7C6962A2_val == 0) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/B6FB176D")));
+                }
+                else if (auto7C6962A2_val == 1) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/C06C8B8A")));
+                }
+                else if (auto7C6962A2_val == 2) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/07BEEC11")));
+                }
+                else if (auto7C6962A2_val == 3) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/F94C0859")));
+                }
+                else if (auto7C6962A2_val == 4) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_player, PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/4229B727")));
+                }
+                else {
+                }
+            }
+            else {
+            }
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AITeam1_Init () {
+    gt_AITeam1 = TriggerCreate("gt_AITeam1_Func");
+    TriggerAddEventTimeElapsed(gt_AITeam1, 5.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AI Team 2
+//--------------------------------------------------------------------------------------------------
+bool gt_AITeam2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_random;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    playergroup autoE04A62C7_g;
+    string auto04F92AE0_val;
+    int autoFFF76739_val;
+    int auto919D693F_val;
+    int auto60367AFA_val;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoE04A62C7_g = gv_soldierPlayers2;
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(autoE04A62C7_g, lv_player);
+        if (lv_player < 0) { break; }
+        if (((PlayerType(lv_player) == c_playerTypeComputer) == true)) {
+            PointSet(PlayerStartLocation(lv_player), PointFromId(1466456382));
+            AIMeleeStart(lv_player);
+            AIDeclareTown(lv_player, 0, PointFromId(1466456382));
+            AISetMainTown(lv_player, 0);
+            lv_random = RandomInt(0, 4);
+            auto04F92AE0_val = PlayerRace(gv_rTSPlayer1);
+            if (auto04F92AE0_val == "Terr") {
+                autoFFF76739_val = lv_random;
+                if (autoFFF76739_val == 0) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/9A686A48")));
+                }
+                else if (autoFFF76739_val == 1) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/7FA789C7")));
+                }
+                else if (autoFFF76739_val == 2) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/B55D244E")));
+                }
+                else if (autoFFF76739_val == 3) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/177E5AF4")));
+                }
+                else if (autoFFF76739_val == 4) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/40A0DB93")));
+                }
+                else {
+                }
+            }
+            else if (auto04F92AE0_val == "Zerg") {
+                auto919D693F_val = lv_random;
+                if (auto919D693F_val == 0) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/440D4C26")));
+                }
+                else if (auto919D693F_val == 1) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/1CF1DF27")));
+                }
+                else if (auto919D693F_val == 2) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/CA0E7AE9")));
+                }
+                else if (auto919D693F_val == 3) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/FDBD32D2")));
+                }
+                else if (auto919D693F_val == 4) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/04491BEC")));
+                }
+                else {
+                }
+            }
+            else if (auto04F92AE0_val == "Prot") {
+                auto60367AFA_val = lv_random;
+                if (auto60367AFA_val == 0) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/20566EA9")));
+                }
+                else if (auto60367AFA_val == 1) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/3776FC02")));
+                }
+                else if (auto60367AFA_val == 2) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/0DF9FB02")));
+                }
+                else if (auto60367AFA_val == 3) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/10247238")));
+                }
+                else if (auto60367AFA_val == 4) {
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_player, PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer2));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/B8829753")));
+                }
+                else {
+                }
+            }
+            else {
+            }
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AITeam2_Init () {
+    gt_AITeam2 = TriggerCreate("gt_AITeam2_Func");
+    TriggerAddEventTimeElapsed(gt_AITeam2, 5.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Firebat Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_FirebatSoldierPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_firebatTeam1 == EventDialogControl()) || (gv_firebatTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/D7389F58")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_FirebatSoldierPicked_Init () {
+    gt_FirebatSoldierPicked = TriggerCreate("gt_FirebatSoldierPicked_Func");
+    TriggerAddEventDialogControl(gt_FirebatSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Medic Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_MedicSoldierPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_medicTeam2 == EventDialogControl()) || (gv_medicTeam1 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/CA124EAB")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MedicSoldierPicked_Init () {
+    gt_MedicSoldierPicked = TriggerCreate("gt_MedicSoldierPicked_Func");
+    TriggerAddEventDialogControl(gt_MedicSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Goliath Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_GoliathSoldierPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_goliathTeam1 == EventDialogControl()) || (gv_goliathTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/DC8D9862")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_GoliathSoldierPicked_Init () {
+    gt_GoliathSoldierPicked = TriggerCreate("gt_GoliathSoldierPicked_Func");
+    TriggerAddEventDialogControl(gt_GoliathSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Marine Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_MarineSoldierPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_marineTeam1 == EventDialogControl()) || (gv_marineTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/A974F72B")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MarineSoldierPicked_Init () {
+    gt_MarineSoldierPicked = TriggerCreate("gt_MarineSoldierPicked_Func");
+    TriggerAddEventDialogControl(gt_MarineSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Spectre Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_SpectreSoldierPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_spectreTeam1 == EventDialogControl()) || (gv_spectreTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/843BC2F5")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SpectreSoldierPicked_Init () {
+    gt_SpectreSoldierPicked = TriggerCreate("gt_SpectreSoldierPicked_Func");
+    TriggerAddEventDialogControl(gt_SpectreSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Zealot Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_ZealotSoldierPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_zealotTeam2 == EventDialogControl()) || (gv_zealotTeam1 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/9A5904E9")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ZealotSoldierPicked_Init () {
+    gt_ZealotSoldierPicked = TriggerCreate("gt_ZealotSoldierPicked_Func");
+    TriggerAddEventDialogControl(gt_ZealotSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Dark Templar Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_DarkTemplarSoldierPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_darkTemplarTeam1 == EventDialogControl()) || (gv_darkTemplarTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/4845AF7F")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DarkTemplarSoldierPicked_Init () {
+    gt_DarkTemplarSoldierPicked = TriggerCreate("gt_DarkTemplarSoldierPicked_Func");
+    TriggerAddEventDialogControl(gt_DarkTemplarSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Dragoon Picked 
+//--------------------------------------------------------------------------------------------------
+bool gt_DragoonPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_dragoonTemplarTeam1 == EventDialogControl()) || (gv_dragoonTemplarTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/DD368978")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DragoonPicked_Init () {
+    gt_DragoonPicked = TriggerCreate("gt_DragoonPicked_Func");
+    TriggerAddEventDialogControl(gt_DragoonPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Adept Picked 
+//--------------------------------------------------------------------------------------------------
+bool gt_AdeptPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_adeptTemplarTeam1 == EventDialogControl()) || (gv_adeptTemplarTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/E91D5630")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AdeptPicked_Init () {
+    gt_AdeptPicked = TriggerCreate("gt_AdeptPicked_Func");
+    TriggerAddEventDialogControl(gt_AdeptPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Corsair Picked 
+//--------------------------------------------------------------------------------------------------
+bool gt_CorsairPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_corsairTemplarTeam1 == EventDialogControl()) || (gv_corsairTemplarTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/A6C1568C")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_CorsairPicked_Init () {
+    gt_CorsairPicked = TriggerCreate("gt_CorsairPicked_Func");
+    TriggerAddEventDialogControl(gt_CorsairPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Zergling Picked 
+//--------------------------------------------------------------------------------------------------
+bool gt_ZerglingPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_zerglingTeam1 == EventDialogControl()) || (gv_zerglingTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/D09D534D")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ZerglingPicked_Init () {
+    gt_ZerglingPicked = TriggerCreate("gt_ZerglingPicked_Func");
+    TriggerAddEventDialogControl(gt_ZerglingPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Queen Picked 
+//--------------------------------------------------------------------------------------------------
+bool gt_QueenPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_queenTeam2 == EventDialogControl()) || (gv_queenTeam1 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/EF8891A1")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_QueenPicked_Init () {
+    gt_QueenPicked = TriggerCreate("gt_QueenPicked_Func");
+    TriggerAddEventDialogControl(gt_QueenPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Defiler Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_DefilerPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_defilerTeam1 == EventDialogControl()) || (gv_defilerTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/E8B70A87")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DefilerPicked_Init () {
+    gt_DefilerPicked = TriggerCreate("gt_DefilerPicked_Func");
+    TriggerAddEventDialogControl(gt_DefilerPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hydralisk Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_HydraliskPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_hydraliskTeam1 == EventDialogControl()) || (gv_hydraliskTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/15CBE43E")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_HydraliskPicked_Init () {
+    gt_HydraliskPicked = TriggerCreate("gt_HydraliskPicked_Func");
+    TriggerAddEventDialogControl(gt_HydraliskPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Mutalisk Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_MutaliskPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_mutaliskTeam1 == EventDialogControl()) || (gv_mutaliskTeam2 == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/CC8B1036")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MutaliskPicked_Init () {
+    gt_MutaliskPicked = TriggerCreate("gt_MutaliskPicked_Func");
+    TriggerAddEventDialogControl(gt_MutaliskPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Initialization
+//--------------------------------------------------------------------------------------------------
+void InitTriggers () {
+    gt_MeleeInitialization_Init();
+    gt_SetupTeams1_Init();
+    gt_SetupTeams2_Init();
+    gt_WinTeam1_Init();
+    gt_WinTeam2_Init();
+    gt_ReviveHeroesTeam1_Init();
+    gt_ReviveHeroesTeam2_Init();
+    gt_SoldierSelectionTeam1_Init();
+    gt_SoldierSelectionTeam2_Init();
+    gt_AITeam1_Init();
+    gt_AITeam2_Init();
+    gt_FirebatSoldierPicked_Init();
+    gt_MedicSoldierPicked_Init();
+    gt_GoliathSoldierPicked_Init();
+    gt_MarineSoldierPicked_Init();
+    gt_SpectreSoldierPicked_Init();
+    gt_ZealotSoldierPicked_Init();
+    gt_DarkTemplarSoldierPicked_Init();
+    gt_DragoonPicked_Init();
+    gt_AdeptPicked_Init();
+    gt_CorsairPicked_Init();
+    gt_ZerglingPicked_Init();
+    gt_QueenPicked_Init();
+    gt_DefilerPicked_Init();
+    gt_HydraliskPicked_Init();
+    gt_MutaliskPicked_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Map Initialization
+//--------------------------------------------------------------------------------------------------
+void InitMap () {
+    InitLibs();
+    InitGlobals();
+    InitCustomAI();
+    InitTriggers();
+}
