@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTacticalOrder id="Shadowfury">
+        <Abil value="DarkTemplarShadowFury"/>
+        <TargetFind value="DarkTemplarShadowFuryHero"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="Stasis">
+        <Abil value="DarkTemplarVoidStasis"/>
+        <TargetFind value="GravitonBeamHostileSomeEnergy2"/>
+        <Validator value="UseImmunity"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="FirebatHeal2">
+        <Abil value="DutchPlaceTurret"/>
+        <TargetFind value="TacticalAutoTurret"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="DTCloak">
+        <Abil value="RogueGhostCloak"/>
+        <Validator value="EnemiesNearbyGT4"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="DTBlink">
+        <Abil value="ZeratulBlink"/>
+        <TargetFind value="Blink"/>
+        <Validator value="UseImmunity"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="Shield">
+        <Abil value="VoidShieldCapacitor"/>
+        <Validator value="CasterShieldLT10Percent"/>
+    </CTacticalOrder>
+    <CTacticalSet id="FirebatHero">
+        <Array value="FirebatHeroCharge"/>
+        <Array value="FirebatHeal"/>
+        <Array value="FirebatHeal2"/>
+        <Array value="FirebatHeroUlti"/>
+    </CTacticalSet>
+    <CTacticalOrder id="FirebatHeal">
+        <Abil value="SuperStimpackNova"/>
+        <Validator value="CasterLifeLT50Percent"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="Immunity">
+        <Abil value="Overcharge"/>
+        <Validator value="UseImmunity"/>
+    </CTacticalOrder>
+    <CTacticalSet id="ZealotHero">
+        <Array value="Whirlwind"/>
+        <Array value="Shield"/>
+        <Array value="Immunity"/>
+    </CTacticalSet>
+    <CTacticalOrder id="FirebatHeroCharge">
+        <Abil value="ArtanisLightningDash"/>
+        <TargetFind value="FirebatChargetarget"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="FirebatHeroUlti">
+        <Abil value="NovaWeaponPlasmaBlastNew"/>
+        <TargetFind value="GravitonBeamHostileSomeEnergy2"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="Whirlwind">
+        <Abil value="ZealotWhirlWindHero"/>
+        <Validator value="EnemiesNearbyWhirlwind"/>
+    </CTacticalOrder>
+    <CTacticalSet id="DarkTemplarHero">
+        <Array value="Shadowfury"/>
+        <Array value="DTCloak"/>
+        <Array value="Stasis"/>
+        <Array value="DTBlink"/>
+    </CTacticalSet>
+</Catalog>
