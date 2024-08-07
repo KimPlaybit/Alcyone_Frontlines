@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTargetFindEnumArea id="DarkTemplarShadowFury">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <MinCount value="4"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="DarkTemplarShadowFury"/>
+    </CTargetFindEnumArea>
+    <CTargetFindSet id="FirebatChargetarget">
+        <CasterValidator value="IdleAttackAirGroundValidator2"/>
+        <Type value="Successful"/>
+        <Array value="PsiStorm"/>
+    </CTargetFindSet>
+    <CTargetFindSet id="FirebatUltiTarget">
+        <TargetValidator value="IdleAttackAirGroundValidator2"/>
+        <Type value="Successful"/>
+        <Array value="PsiStorm"/>
+    </CTargetFindSet>
+    <CTargetFindSet id="FirebatUltiTarget2">
+        <Type value="Successful"/>
+        <Array value="DarkTemplarShadowFuryHero"/>
+        <Array value="DarkTemplarShadowFury"/>
+    </CTargetFindSet>
+    <CTargetFindEnumArea id="GravitonBeamHostileSomeEnergy2">
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Validator="IsHeroic"/>
+        <Abil value="NovaWeaponPlasmaBlastNew"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DarkTemplarShadowFuryHero">
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Validator="IsHeroic"/>
+        <Abil value="DarkTemplarShadowFury"/>
+    </CTargetFindEnumArea>
+    <CTargetFindOrder id="Zealotwhirlwind">
+        <Abil value="ZealotWhirlWindHero"/>
+    </CTargetFindOrder>
+</Catalog>

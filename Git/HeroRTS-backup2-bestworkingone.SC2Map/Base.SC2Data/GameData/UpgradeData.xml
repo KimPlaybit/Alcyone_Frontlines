@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUpgrade id="AbdominalFortitude2">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Alert value="ResearchComplete"/>
+        <ScoreResult value="BuildOrder"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+        <AffectedUnitArray value="BanelingHero"/>
+    </CUpgrade>
+    <CUpgrade id="CentrificalHooks">
+        <EffectArray/>
+        <EffectArray Operation="Set" Reference="Unit,Baneling,Speed" Value="4.129000"/>
+    </CUpgrade>
+    <CUpgrade id="CentrificalHooks2">
+        <Flags index="TechTreeCheat" value="1"/>
+        <InfoTooltipPriority value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-centrifugalhooks.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Zerg"/>
+        <ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+        <AffectedUnitArray value="BanelingHero"/>
+    </CUpgrade>
+    <CUpgrade id="AdvancedBallistics">
+        <Flags index="TechTreeCheat" value="1"/>
+        <InfoTooltipPriority value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-advanceballistics.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Terr"/>
+        <ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Operation="Set" Reference="Abil,LiberatorAGTarget,Range[0]" Value="11"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+        <AffectedUnitArray value="LiberatorAG"/>
+    </CUpgrade>
+    <CUpgrade id="ExtendedThermalLance">
+        <EffectArray index="0" Value="2"/>
+        <EffectArray index="1" Value="2"/>
+    </CUpgrade>
+    <CUpgrade id="AdaptiveTalons">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-adaptivetalons.dds"/>
+        <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.070000"/>
+        <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.833200"/>
+        <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="0.833200"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="SeismicSpines">
+        <Icon value="Assets\Textures\btn-upgrade-kerrigan-seismicspines.dds"/>
+        <EffectArray Operation="Set" Reference="Effect,LurkerE,AreaArray[0].Radius" Value="0.8"/>
+        <EffectArray Operation="Set" Reference="Weapon,LurkerMP,Range" Value="10"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="HyperflightRotors">
+        <Flags index="TechTreeCheat" value="1"/>
+        <InfoTooltipPriority value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-hyperflightrotors.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Terr"/>
+        <ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Operation="Set" Reference="Unit,Banshee,Speed" Value="5.250000"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Banshee"/>
+    </CUpgrade>
+    <CUpgrade id="HydraliskSpeedUpgrade">
+        <Flags index="TechTreeCheat" value="1"/>
+    </CUpgrade>
+    <CUpgrade id="HurricaneEngines">
+        <Flags index="TechTreeCheat" value="1"/>
+        <InfoTooltipPriority value="1"/>
+        <Icon value="Hurricane_Engines.tga"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Terr"/>
+        <ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Operation="Set" Reference="Unit,Cyclone,Speed" Value="4.000000"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Cyclone"/>
+    </CUpgrade>
+    <CUpgrade id="PermanentCloakSpectre2">
+        <Flags index="UpgradeCheat" value="0"/>
+        <EffectArray Operation="Set" Reference="Abil,SpectreHeroCloak,Cost[0].Vital[Energy]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Abil,SpectreHeroCloak,BehaviorArray[0]" Value="SpectreCloakingFree"/>
+        <EffectArray Operation="Set" Reference="Button,CloakOnSpectre,Tooltip" Value="Button/Tooltip/CloakOnSpectreFree"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="TectonicDestabilizers">
+        <InfoTooltipPriority value="1"/>
+        <Icon value="Tectonic_Destabilizers.tga"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Prot"/>
+        <ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Operation="Set" Reference="Effect,TempestDamage,AttributeBonus[Structure]" Value="40"/>
+        <EffectArray Operation="Set" Reference="Effect,TempestDamageGround,AttributeBonus[Structure]" Value="40"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="Tempest"/>
+    </CUpgrade>
+    <CUpgrade id="ResearchSmartServos">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-transformationservos.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Terr"/>
+        <ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Operation="Set" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.600000"/>
+        <EffectArray Operation="Set" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.600000"/>
+        <EffectArray Operation="Set" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.900000"/>
+        <EffectArray Operation="Set" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.900000"/>
+        <EffectArray Operation="Set" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.900000"/>
+        <EffectArray Operation="Set" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.900000"/>
+        <EffectArray Operation="Set" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="0.900000"/>
+        <EffectArray Operation="Set" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="0.900000"/>
+        <EffectArray Operation="Set" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="0.600000"/>
+        <EffectArray Operation="Set" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Mover].DurationArray[Duration]" Value="0.300000"/>
+        <EffectArray Operation="Set" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="0.600000"/>
+        <EffectArray Operation="Set" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="0.350000"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Hellion"/>
+        <AffectedUnitArray value="Hellion"/>
+        <AffectedUnitArray value="HellionTank"/>
+        <AffectedUnitArray value="VikingFighter"/>
+        <AffectedUnitArray value="VikingAssault"/>
+        <AffectedUnitArray value="ThorAP"/>
+        <AffectedUnitArray value="Thor"/>
+    </CUpgrade>
+    <CUpgrade id="VoidDarkTemplarDeepShadows">
+        <EffectArray index="0" removed="1"/>
+        <EffectArray index="1" removed="1"/>
+        <EffectArray index="2" removed="1"/>
+    </CUpgrade>
+    <CUpgrade id="overlordspeed">
+        <EffectArray Operation="Set" Reference="Unit,OverlordTransport,Speed" Value="1.879000"/>
+        <AffectedUnitArray value="OverlordTransport"/>
+    </CUpgrade>
+</Catalog>

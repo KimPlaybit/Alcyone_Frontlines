@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AIData>
+    <Definition Id="00CAC601">
+    </Definition>
+    <Definition Id="1E9CC8C8">
+        <Step Type="Wave" Id="1" Text="Defiler">
+            <CreateUnits/>
+            <Unit Type="DefilerHero">
+                <Count DiffLevel="1" Value="1"/>
+                <Count DiffLevel="2" Value="1"/>
+                <Count DiffLevel="3" Value="1"/>
+                <Count DiffLevel="4" Value="1"/>
+                <Count DiffLevel="5" Value="1"/>
+                <Count DiffLevel="6" Value="1"/>
+                <Count DiffLevel="7" Value="1"/>
+                <Count DiffLevel="8" Value="1"/>
+                <Count DiffLevel="9" Value="1"/>
+                <Count DiffLevel="10" Value="1"/>
+            </Unit>
+            <Point Type="Waypoint" Id="1466456382"/>
+        </Step>
+        <Step Type="Wave" Id="2" Text="Hydralisk">
+            <CreateUnits/>
+            <Unit Type="HydraliskHero">
+                <Count DiffLevel="1" Value="1"/>
+                <Count DiffLevel="2" Value="1"/>
+                <Count DiffLevel="3" Value="1"/>
+                <Count DiffLevel="4" Value="1"/>
+                <Count DiffLevel="5" Value="1"/>
+                <Count DiffLevel="6" Value="1"/>
+                <Count DiffLevel="7" Value="1"/>
+                <Count DiffLevel="8" Value="1"/>
+                <Count DiffLevel="9" Value="1"/>
+                <Count DiffLevel="10" Value="1"/>
+            </Unit>
+            <Point Type="Waypoint" Id="1466456382"/>
+        </Step>
+        <Step Type="Wave" Id="3" Text="Mutalisk">
+            <CreateUnits/>
+            <Unit Type="MutaliskHero">
+                <Count DiffLevel="1" Value="1"/>
+                <Count DiffLevel="2" Value="1"/>
+                <Count DiffLevel="3" Value="1"/>
+                <Count DiffLevel="4" Value="1"/>
+                <Count DiffLevel="5" Value="1"/>
+                <Count DiffLevel="6" Value="1"/>
+                <Count DiffLevel="7" Value="1"/>
+                <Count DiffLevel="8" Value="1"/>
+                <Count DiffLevel="9" Value="1"/>
+                <Count DiffLevel="10" Value="1"/>
+            </Unit>
+            <Point Type="Waypoint" Id="1466456382"/>
+        </Step>
+        <Step Type="Wave" Id="4" Text="QueenMP">
+            <CreateUnits/>
+            <Unit Type="BroodQueenHero">
+                <Count DiffLevel="1" Value="1"/>
+                <Count DiffLevel="2" Value="1"/>
+                <Count DiffLevel="3" Value="1"/>
+                <Count DiffLevel="4" Value="1"/>
+                <Count DiffLevel="5" Value="1"/>
+                <Count DiffLevel="6" Value="1"/>
+                <Count DiffLevel="7" Value="1"/>
+                <Count DiffLevel="8" Value="1"/>
+                <Count DiffLevel="9" Value="1"/>
+                <Count DiffLevel="10" Value="1"/>
+            </Unit>
+            <Point Type="Waypoint" Id="1466456382"/>
+        </Step>
+        <Step Type="Wave" Id="5" Text="Zergling">
+            <CreateUnits/>
+            <Unit Type="ZerglingHero">
+                <Count DiffLevel="1" Value="1"/>
+                <Count DiffLevel="2" Value="1"/>
+                <Count DiffLevel="3" Value="1"/>
+                <Count DiffLevel="4" Value="1"/>
+                <Count DiffLevel="5" Value="1"/>
+                <Count DiffLevel="6" Value="1"/>
+                <Count DiffLevel="7" Value="1"/>
+                <Count DiffLevel="8" Value="1"/>
+                <Count DiffLevel="9" Value="1"/>
+                <Count DiffLevel="10" Value="1"/>
+            </Unit>
+            <Point Type="TargetPoint" Id="1466456382"/>
+        </Step>
+    </Definition>
+    <Definition Id="6C673424">
+        <RepeatWaves Value="1"/>
+        <Step Type="Wave" Id="1">
+            <CreateUnits/>
+            <NoWait/>
+            <Unit Type="Zergling2">
+                <Count DiffLevel="1" Value="12"/>
+                <Count DiffLevel="2" Value="12"/>
+                <Count DiffLevel="3" Value="12"/>
+                <Count DiffLevel="4" Value="12"/>
+                <Count DiffLevel="5" Value="12"/>
+                <Count DiffLevel="6" Value="12"/>
+                <Count DiffLevel="7" Value="12"/>
+                <Count DiffLevel="8" Value="12"/>
+                <Count DiffLevel="9" Value="12"/>
+                <Count DiffLevel="10" Value="12"/>
+            </Unit>
+            <Time Type="Arrival">
+                <Duration DiffLevel="1" Value="20"/>
+                <Duration DiffLevel="2" Value="20"/>
+                <Duration DiffLevel="3" Value="20"/>
+                <Duration DiffLevel="4" Value="20"/>
+                <Duration DiffLevel="5" Value="20"/>
+                <Duration DiffLevel="6" Value="20"/>
+                <Duration DiffLevel="7" Value="20"/>
+                <Duration DiffLevel="8" Value="20"/>
+                <Duration DiffLevel="9" Value="20"/>
+                <Duration DiffLevel="10" Value="20"/>
+            </Time>
+            <Point Type="Waypoint" Id="221368982"/>
+            <Point Type="Waypoint" Id="2008666934"/>
+            <Point Type="Waypoint" Id="1673487216"/>
+            <Point Type="Waypoint" Id="1063931463"/>
+            <Point Type="Waypoint" Id="1320118314"/>
+            <Point Type="Waypoint" Id="1466456382"/>
+        </Step>
+    </Definition>
+</AIData>
