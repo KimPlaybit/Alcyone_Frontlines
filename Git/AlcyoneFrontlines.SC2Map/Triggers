@@ -18,7 +18,6 @@
         <Item Type="Trigger" Id="5FDBDA27"/>
         <Item Type="Trigger" Id="CDC8D76F"/>
         <Item Type="Trigger" Id="E287E265"/>
-        <Item Type="Trigger" Id="A2E0FC10"/>
         <Item Type="Trigger" Id="1A853C3E"/>
         <Item Type="Trigger" Id="062BE9CA"/>
         <Item Type="Trigger" Id="829615D6"/>
@@ -8428,56 +8427,6 @@
     <Element Type="Param" Id="B243A0BA">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="A1A428A9"/>
         <Variable Type="Variable" Id="993E8373"/>
-    </Element>
-    <Element Type="Trigger" Id="A2E0FC10">
-        <Identifier>HydraliskImpale7</Identifier>
-        <Event Type="FunctionCall" Id="E122A505"/>
-        <Action Type="FunctionCall" Id="0754C6A8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="E122A505">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="D00F9D6F"/>
-        <Parameter Type="Param" Id="A58D9F67"/>
-        <Parameter Type="Param" Id="BB30BB3A"/>
-        <Parameter Type="Param" Id="39C55E0D"/>
-        <Parameter Type="Param" Id="059A2444"/>
-    </Element>
-    <Element Type="Param" Id="A58D9F67">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="EE631277"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="C84C7A78"/>
-    </Element>
-    <Element Type="Param" Id="BB30BB3A">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="BB4C37B6"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="00000257"/>
-    </Element>
-    <Element Type="Param" Id="39C55E0D">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="ACC52290"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="03977D39"/>
-    </Element>
-    <Element Type="Param" Id="059A2444">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="3F2584C8"/>
-        <Value>DarkTemplarShadowFury</Value>
-        <ValueType Type="abilcmd"/>
-    </Element>
-    <Element Type="FunctionCall" Id="0754C6A8">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="0366EE04"/>
-        <Parameter Type="Param" Id="BE133F9A"/>
-        <Parameter Type="Param" Id="09E469F4"/>
-        <Parameter Type="Param" Id="66E38062"/>
-    </Element>
-    <Element Type="Param" Id="BE133F9A">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="0D120C33"/>
-        <FunctionCall Type="FunctionCall" Id="96B84467"/>
-    </Element>
-    <Element Type="FunctionCall" Id="96B84467">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000192"/>
-    </Element>
-    <Element Type="Param" Id="09E469F4">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="A4C19F41"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="875889C8"/>
-    </Element>
-    <Element Type="Param" Id="66E38062">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="78A54B52"/>
-        <ValueType Type="text"/>
     </Element>
     <Element Type="Trigger" Id="1A853C3E">
         <Variable Type="Variable" Id="75913CFB"/>
@@ -21967,12 +21916,12 @@
     </Element>
     <Element Type="Param" Id="2B3016C0">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000329"/>
-        <Value>1</Value>
+        <Value>0</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="Param" Id="918D1870">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000330"/>
-        <Value>1</Value>
+        <Value>4</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="FunctionCall" Id="DBF433D9">
@@ -24471,7 +24420,7 @@
     </Element>
     <Element Type="Param" Id="2905AC91">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000330"/>
-        <Value>0</Value>
+        <Value>4</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="FunctionCall" Id="9FD858F7">

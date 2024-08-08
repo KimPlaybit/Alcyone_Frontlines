@@ -255,7 +255,6 @@ trigger gt_HydraliskImpale;
 trigger gt_HydraliskImpale2;
 trigger gt_HydraliskImpale5;
 trigger gt_HydraliskImpale6;
-trigger gt_HydraliskImpale7;
 trigger gt_Grenade;
 trigger gt_Duckhunt;
 trigger gt_PlasmaPuddleDamage;
@@ -451,9 +450,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(2);
-    AICampaignStart(3);
-    AICampaignStart(4);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1836,7 +1832,7 @@ void gt_HydraliskImpale5_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: DarkTemplarAoE 2
+// Trigger: ZealotOvercharge
 //--------------------------------------------------------------------------------------------------
 bool gt_HydraliskImpale6_Func (bool testConds, bool runActions) {
     // Variable Declarations
@@ -1868,26 +1864,6 @@ bool gt_HydraliskImpale6_Func (bool testConds, bool runActions) {
 void gt_HydraliskImpale6_Init () {
     gt_HydraliskImpale6 = TriggerCreate("gt_HydraliskImpale6_Func");
     TriggerAddEventUnitDamaged(gt_HydraliskImpale6, null, c_unitDamageTypeAny, c_unitDamageEither, "OverchargeDamage");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DarkTemplarAoE 3
-//--------------------------------------------------------------------------------------------------
-bool gt_HydraliskImpale7_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/66E38062"));
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_HydraliskImpale7_Init () {
-    gt_HydraliskImpale7 = TriggerCreate("gt_HydraliskImpale7_Func");
-    TriggerAddEventUnitAbility(gt_HydraliskImpale7, null, AbilityCommand("DarkTemplarShadowFury", 0), c_unitAbilStageAll, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3264,7 +3240,7 @@ bool gt_AITeam1_Func (bool testConds, bool runActions) {
             else {
                 lv_playerToSpawnFor = lv_player;
             }
-            lv_random = RandomInt(1, 1);
+            lv_random = RandomInt(0, 4);
             lv_raceCheck = gf_IsTerran(gv_rTSPlayer1);;
             if ((lv_raceCheck == true)) {
                 autoE790A538_val = lv_random;
@@ -3421,7 +3397,7 @@ bool gt_AITeam2_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupNextPlayer(autoE04A62C7_g, lv_player);
         if (lv_player < 0) { break; }
         if (((PlayerType(lv_player) == c_playerTypeComputer) == true)) {
-            lv_random = RandomInt(0, 0);
+            lv_random = RandomInt(0, 4);
             if ((PlayerType(gv_rTSPlayer2) == c_playerTypeComputer)) {
                 lv_playerToSpawnFor = lv_player;
             }
@@ -4826,7 +4802,6 @@ void InitTriggers () {
     gt_HydraliskImpale2_Init();
     gt_HydraliskImpale5_Init();
     gt_HydraliskImpale6_Init();
-    gt_HydraliskImpale7_Init();
     gt_Grenade_Init();
     gt_Duckhunt_Init();
     gt_PlasmaPuddleDamage_Init();
