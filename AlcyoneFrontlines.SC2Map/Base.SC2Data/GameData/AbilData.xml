@@ -211,6 +211,7 @@
             <Cooldown Link="Abil/DefilerMPConsume" TimeUse="30"/>
         </Cost>
         <TargetFilters index="0" value="-;Self,Ally,Neutral,Structure,Heroic,Missile,Stasis,UnderConstruction,Dead,Invulnerable,HeroUnit"/>
+        <Range index="0" value="4"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DutchPlaceTurret">
         <Cost index="0">
@@ -938,6 +939,7 @@
         <Flags index="Transient" value="1"/>
         <Cost>
             <VitalFraction index="Life" value="0.2"/>
+            <Cooldown TimeUse="15"/>
         </Cost>
         <AINotifyEffect value="Stimpack3"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Stim" State="Restricted" Requirements="UseStimpackSM">

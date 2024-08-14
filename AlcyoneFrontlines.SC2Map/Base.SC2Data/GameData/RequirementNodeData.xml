@@ -20,7 +20,6 @@
         <Count Link="Stargate" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUpgrade id="CountUpgradeAdaptiveTalonsQueuedOrBetterTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="AdaptiveTalons" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeAdvancedBallisticsQueuedOrBetter">
@@ -29,7 +28,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBurrowCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Burrow" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHaveAlarakPsiOrbCompleteOnly">
@@ -58,16 +56,13 @@
         <Count Link="SJHyperionHangerCheck"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSeismicSpinesQueuedOrBetterTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="SeismicSpines" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTectonicDestabilizersCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TectonicDestabilizers" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTectonicDestabilizersQueuedOrBetterTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TectonicDestabilizers" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeVoidDarkTemplarDeepShadowsCompleteOnly2">
@@ -76,7 +71,6 @@
         <Count State="Total"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeVoidDarkTemplarDeepShadowsCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="VoidDarkTemplarDeepShadows" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeVoidDarkTemplarDeepShadowsQueuedOrBetter">
@@ -84,11 +78,9 @@
         <Count Link="VoidDarkTemplarDeepShadows" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeVoidRaySpeedUpgradeQueuedOrBetterTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="VoidRaySpeedUpgrade" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementNot id="NotCountUpgradeAdaptiveTalonsQueuedOrBetterTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeAdaptiveTalonsQueuedOrBetterTechTreeCheat"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeAdvancedBallisticsQueuedOrBetter">
@@ -104,18 +96,15 @@
         <OperandArray index="0" value="CountUpgradeResearchSmartServosQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeSeismicSpinesQueuedOrBetterTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeSeismicSpinesQueuedOrBetterTechTreeCheat"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeTectonicDestabilizersQueuedOrBetterTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeTectonicDestabilizersQueuedOrBetterTechTreeCheat"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeVoidDarkTemplarDeepShadowsQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeVoidDarkTemplarDeepShadowsQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeVoidRaySpeedUpgradeQueuedOrBetterTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeVoidRaySpeedUpgradeQueuedOrBetterTechTreeCheat"/>
     </CRequirementNot>
     <CRequirementCountUpgrade id="UpgradeBaneling2CompleteOnly">

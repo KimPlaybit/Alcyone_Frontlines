@@ -361,6 +361,7 @@
         <GlossaryWeakArray value="Baneling"/>
         <GlossaryWeakArray value="Colossus"/>
         <HotkeyCategory value="Unit/Category/TerranUnits"/>
+        <AIOverideTargetPriority value="3"/>
     </CUnit>
     <CUnit id="CollapsibleRockTowerDebrisRampLeftGreen">
         <BehaviorArray Link="RockCrushSearch"/>
@@ -712,6 +713,8 @@
         <RandomNameArray value="Thokk"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
+        <TacticalAI value="UltraliskHero"/>
     </CUnit>
     <CUnit id="Hydralisk">
         <AbilArray index="4" Link="MorphToLurker"/>
@@ -858,6 +861,7 @@
         <LifeMax value="300"/>
         <Sight value="15"/>
         <BehaviorArray index="0" Link="Detector12"/>
+        <AIOverideTargetPriority value="5"/>
         <!--GlossaryCategory value="Unit/Category/TerranUnits"/-->
     </CUnit>
     <CUnit id="Lair">
@@ -1065,6 +1069,7 @@
         <GlossaryCategory value="Unit/Category/ZergUnits"/>
         <GlossaryPriority value="261"/>
         <HotkeyCategory value="Unit/Category/ZergUnits"/>
+        <AIOverideTargetPriority value="3"/>
     </CUnit>
     <CUnit id="NydusNetwork">
         <CostResource index="Vespene" value="150"/>
@@ -2232,6 +2237,7 @@
         <ShieldsStart value="0"/>
         <ShieldsMax value="1"/>
         <ShieldRegenRate value="1"/>
+        <AIOverideTargetPriority value="3"/>
     </CUnit>
     <CUnit id="VoidRay">
         <WeaponArray index="0" Link="VoidRaySwarm"/>
@@ -4309,6 +4315,7 @@
         <RandomNameArray value="Khudirn"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="DragoonHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/DragoonHero"/>
@@ -4414,6 +4421,7 @@
         </Fidget>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="FirebatHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/FirebatHero"/>
@@ -4518,6 +4526,7 @@
         </Fidget>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="CorsairHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/CorsairHero"/>
@@ -4628,6 +4637,7 @@
         <EnergyRegenRate value="0.5"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnit id="AdeptHero">
         <DeathRevealRadius value="3"/>
@@ -4718,6 +4728,7 @@
         <MinimapRadius value="2"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnit>
     <CUnit id="Zealot2">
         <DeathRevealRadius value="3"/>
@@ -4906,6 +4917,7 @@
         </ReviveInfoBase>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="HydraliskHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/HydraliskHero"/>
@@ -5011,6 +5023,7 @@
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
         <EnergyRegenRate value="12"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="MutaliskHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/MutaliskHero"/>
@@ -5114,6 +5127,7 @@
         <HotkeyCategory value="Unit/Category/ZergStory"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnit id="Zergling">
         <CardLayouts index="0">
@@ -5306,6 +5320,7 @@
         <TauntDuration index="Dance" value="5"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="AvengerHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/AvengerHero"/>
@@ -5425,6 +5440,7 @@
         </ReviveInfoBase>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnit id="GoliathHero">
         <RandomNameArray value="Aaron Beckwith"/>
@@ -5533,6 +5549,7 @@
         </Fidget>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnit>
     <CUnit id="MarineHero">
         <DeathRevealRadius value="3"/>
@@ -5603,7 +5620,6 @@
         <SubgroupPriority value="15"/>
         <MinimapRadius value="2"/>
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
-        <TacticalAI value="Marine"/>
         <SelectAlias value="Marine"/>
         <GlossaryCategory value="Unit/Category/TerranUnits"/>
         <GlossaryPriority value="31"/>
@@ -5623,6 +5639,8 @@
         <KillXP value="50"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
+        <AIKiteRange value="5"/>
     </CUnit>
     <CUnit id="SpectreHero">
         <RandomNameArray value="Norton Sampson"/>
@@ -5700,7 +5718,6 @@
         <SubgroupPriority value="25"/>
         <MinimapRadius value="2"/>
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
-        <TacticalAI value="SpecterUnit"/>
         <TacticalAIThink value="AIThinkGhost"/>
         <GlossaryCategory value="Unit/Category/TerranUnits"/>
         <GlossaryPriority value="70"/>
@@ -5712,6 +5729,7 @@
         </Fidget>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnit>
     <CUnit id="MedicHero">
         <RandomNameArray value="Allison Merton"/>
@@ -5802,6 +5820,7 @@
         </Fidget>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnit>
     <CUnitHero id="BroodQueenHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/BroodQueenHero"/>
@@ -5888,5 +5907,6 @@
         <WeaponArray Link="ViperAir"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
+        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
 </Catalog>
