@@ -231,6 +231,8 @@ bool gf_IsNonKnownRace (int lp_player);
 bool gf_IsTerran (int lp_rTSPlayer);
 bool gf_IsZerg (int lp_rTSPlayer);
 bool gf_IsProtoss (int lp_rTSPlayer);
+point gf_ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitgroup lp_pointToAttack);
+point gf_AttackPointHostiles (point lp_startPos, point lp_currentPosition, int lp_veteranLevel);
 void gf_StartAi (point lp_startPos, int lp_player);
 void gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave);
 void gf_StartSoldierAI2 (point lp_startPos, int lp_player, unit lp_wave);
@@ -933,6 +935,56 @@ bool gf_IsProtoss (int lp_rTSPlayer) {
     }
 }
 
+point gf_ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitgroup lp_pointToAttack) {
+    // Automatic Variable Declarations
+    // Implementation
+    if (((lp_lastPoint == null))) {
+        return UnitGroupCenterOfGroup(lp_pointToAttack);
+    }
+
+    if (((libNtve_gf_UnitGroupIsDead(lp_pointToAttack) == true))) {
+        return lp_lastPoint;
+    }
+
+    if (((DistanceBetweenPoints(lp_unitPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < DistanceBetweenPoints(lp_unitPoint, lp_lastPoint)) && (DistanceBetweenPoints(lp_unitPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < 40.0))) {
+        return UnitGroupCenterOfGroup(lp_pointToAttack);
+    }
+    else {
+        return lp_lastPoint;
+    }
+}
+
+point gf_AttackPointHostiles (point lp_startPos, point lp_currentPosition, int lp_veteranLevel) {
+    // Variable Declarations
+    point lv_point;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((((libNtve_gf_UnitGroupIsDead(gv_zerglingExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_zerglingExpansionTeam2) == false)) && (lp_veteranLevel >= 1))) {
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_zerglingExpansionTeam1);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_zerglingExpansionTeam2);
+    }
+
+    if ((((libNtve_gf_UnitGroupIsDead(gv_zergling_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_zergling_2) == false)) && (lp_veteranLevel >= 2))) {
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_zergling_1);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_zergling_2);
+    }
+
+    if ((((libNtve_gf_UnitGroupIsDead(gv_terranExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_terranExpansionTeam2) == false)) && (lp_veteranLevel >= 3))) {
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_terranExpansionTeam1);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_terranExpansionTeam2);
+    }
+
+    if ((((libNtve_gf_UnitGroupIsDead(gv_zergExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_zergExpansionTeam2) == false)) && (lp_veteranLevel >= 4))) {
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_zergExpansionTeam1);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_zergExpansionTeam2);
+    }
+
+    return lv_point;
+}
+
 void gf_StartAi (point lp_startPos, int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -996,7 +1048,8 @@ void gf_StartAi (point lp_startPos, int lp_player) {
         targDPoint = AIWaveTargetGatherDPoint(lp_player, c_townMain);
         targOPoint = AIWaveTargetGatherOPoint(lp_player, c_townMain);
         targD = AIWaveTargetGatherD(lp_player, c_townMain);
-        targO = AIWaveTargetGatherMelee(lp_player);
+        targO = AIWaveTargetGatherMelee(lp_player);    
+    
         AIWaveSet(lp_player, c_waveMain,       AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
         AIWaveSet(lp_player, c_waveAttack,     AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
         AIWaveSet(lp_player, c_waveDivert1,    AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
@@ -1039,14 +1092,20 @@ void gf_StartAi (point lp_startPos, int lp_player) {
 
 void gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave) {
     // Variable Declarations
+    wavetarget lv_targO;
+    wavetarget lv_targD;
+    wave lv_wadcsa;
+    point lv_targOPoint;
+    point lv_targDPoint;
     int lv_diff;
-    wave lv_heroWave;
+    waveinfo lv_heroWave;
 
     // Automatic Variable Declarations
     // Variable Initialization
+    lv_heroWave = AIWaveInfoCreate();
 
     // Implementation
-    AIStart(lp_player, true, 999);
+    AIStart(lp_player, true, 200);
     //Adding Extra Checks
         AISetDifficulty(lp_player, c_diffEnableDangerMap, true);
         AISetDifficulty(lp_player, c_diffNormalTargetPrio, true);
@@ -1058,9 +1117,11 @@ void gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave) {
         AISetDifficulty(lp_player, c_diffAllowKiting, true);
         AISetDifficulty(lp_player, c_diffAdvancedRetreatLogic, true);
         AISetFlag(lp_player, e_flagsAllowRetreat, true);
+        AISetFlag(lp_player, e_flagsClearObs, false);
         AIEarlyDefenseEnable(lp_player, true, true);
-    AIEvalSetCustomIndex((10 * UnitXPGetCurrentLevel(lp_wave, null)));
+    AIAttackWaveUseUnit(lp_player, lp_wave);
     AIReqCountAsBuiltObject(lp_player, UnitGetType(lp_wave));
+    AIEvalSetCustomIndex((10 + (UnitXPGetCurrentLevel(lp_wave, null) * 3)));
     AIDeclareTown(lp_player, 0, lp_startPos);
     gv_playerToStart = lp_player;
     gv_unitGroup = libNtve_gf_ConvertUnitToUnitGroup(lp_wave);
@@ -3953,7 +4014,11 @@ void gt_AITeam2_Init () {
 //--------------------------------------------------------------------------------------------------
 bool gt_Controller_Func (bool testConds, bool runActions) {
     // Variable Declarations
+    int lv_recentSugges;
+    point lv_startPos;
+    point lv_hostilePoint;
     int lv_area;
+    int lv_veteranLevel;
     unitgroup lv_enemyToAttack;
     int lv_player;
     unit lv_unit;
@@ -3961,12 +4026,14 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
     wave lv_wave;
     int lv_state;
     order lv_lastOrder;
+    point lv_currentPosition;
     point lv_lastPosition;
     int lv_nextUpdate;
 
     // Automatic Variable Declarations
     // Variable Initialization
     lv_area = 10;
+    lv_veteranLevel = 1;
     lv_enemyToAttack = UnitGroupEmpty();
     lv_player = gv_playerToStart;
     lv_unit = UnitGroupUnit(gv_unitGroup, 1);
@@ -3979,28 +4046,52 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    AIAttackWaveUseUnit(lv_player, lv_unit);
-    AIAttackWaveSetTargetMelee(lv_player);
-    while ((libNtve_gf_UnitGroupIsDead(lv_unitGroup) == false)) {
+    lv_startPos = gf_GetStartLocation(lv_player);
+    AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    AIAttackWaveSend(lv_player, 0, false);
+    while ((TechTreeUnitCount(lv_player, UnitGetType(lv_unit), c_techCountQueuedOrBetter) != 0)) {
+        lv_currentPosition = UnitGroupCenterOfGroup(lv_unitGroup);
+        lv_veteranLevel = UnitXPGetCurrentLevel(lv_unit, null);
+        lv_hostilePoint = gf_AttackPointHostiles(lv_startPos, lv_currentPosition, lv_veteranLevel);
         if ((UnitGetPropertyFixed(lv_unit, c_unitPropLifePercent, c_unitPropCurrent) < 30.0)) {
             if ((lv_state != 1)) {
                 AIAttackWaveCancel(AIWaveGet(lv_player, 0));
-                libNtve_gf_AICast(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), gf_GetStartLocation(lv_player)));
+                UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/4A57B1D1")));
+                AIAttackWaveSetTargetPoint(lv_player, lv_startPos);
+                AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+                AIAttackWaveSend(lv_player, 0, false);
                 lv_state = 1;
             }
 
         }
         else {
-            if ((lv_state != 0)) {
-                AIAttackWaveCancel(AIWaveGet(lv_player, 0));
-                AIAttackWaveUseUnit(lv_player, lv_unit);
-                AIAttackWaveSend(lv_player, 0, false);
-                lv_state = 0;
-            }
+            if ((lv_hostilePoint != null)) {
+                if (((lv_lastPosition == null) || (DistanceBetweenPoints(lv_lastPosition, lv_hostilePoint) >= 5.0))) {
+                    lv_recentSugges = 200;
+                    AIAttackWaveCancel(AIWaveGet(lv_player, 0));
+                    AIAttackWaveSetTargetPoint(lv_player, lv_hostilePoint);
+                    AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+                    AIAttackWaveSend(lv_player, 0, false);
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + (StringExternal("Param/Value/E72E4A77") + StringExternal(libNtve_gf_ConvertPointToString(lv_hostilePoint)))));
+                    lv_lastPosition = lv_hostilePoint;
+                }
 
+            }
+            else {
+                if ((lv_state != 0)) {
+                    AIAttackWaveCancel(AIWaveGet(lv_player, 0));
+                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/7FEA5A0F")));
+                    AIAttackWaveSetTargetMelee(lv_player);
+                    AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+                    AIAttackWaveSend(lv_player, 0, false);
+                    lv_state = 0;
+                }
+
+            }
         }
         Wait(0.1, c_timeGame);
     }
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/8ECB9806")));
     return true;
 }
 
