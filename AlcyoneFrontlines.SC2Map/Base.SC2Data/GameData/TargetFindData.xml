@@ -39,7 +39,7 @@
         <Abil value="Leech"/>
     </CTargetFindEnumArea>
     <CTargetFindEnumArea id="DragoonTransit">
-        <SearchFilters value="-;Self,Player,Enemy,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <SearchFilters value="-;Self,Player,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
         <MinCount value="4"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <AreaArray Radius="500" Validator="IsStructure"/>
