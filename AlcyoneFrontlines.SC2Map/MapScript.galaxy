@@ -1071,11 +1071,14 @@ point gf_AttackPointHostiles (point lp_startPos, point lp_currentPosition, int l
         lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_zergling_2, lp_startPos);
     }
 
-    if ((((libNtve_gf_UnitGroupIsDead(gv_terranExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_terranExpansionTeam2) == false) || (libNtve_gf_UnitGroupIsDead(gv_topExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_topExpansionTeam2) == false)) && (lp_veteranLevel >= 3))) {
+    if ((((libNtve_gf_UnitGroupIsDead(gv_terranExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_terranExpansionTeam2) == false) || (libNtve_gf_UnitGroupIsDead(gv_topExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_topExpansionTeam2) == false) || (libNtve_gf_UnitGroupIsDead(gv_vikings_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_vikings_2) == false) || (libNtve_gf_UnitGroupIsDead(gv_vikings_3) == false)) && (lp_veteranLevel >= 3))) {
         lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_terranExpansionTeam1, lp_startPos);
         lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_terranExpansionTeam2, lp_startPos);
         lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_topExpansionTeam2, lp_startPos);
         lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_topExpansionTeam1, lp_startPos);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_vikings_1, lp_startPos);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_vikings_2, lp_startPos);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_vikings_3, lp_startPos);
     }
 
     if ((((libNtve_gf_UnitGroupIsDead(gv_zergExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_zergExpansionTeam2) == false)) && (lp_veteranLevel >= 4))) {
@@ -1083,9 +1086,17 @@ point gf_AttackPointHostiles (point lp_startPos, point lp_currentPosition, int l
         lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_zergExpansionTeam2, lp_startPos);
     }
 
-    if ((((libNtve_gf_UnitGroupIsDead(gv_hydralisk_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_hydralisk_2) == false)) && (lp_veteranLevel >= 4))) {
+    if ((((libNtve_gf_UnitGroupIsDead(gv_hydralisk_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_hydralisk_2) == false) || (libNtve_gf_UnitGroupIsDead(gv_marines_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_marines_2) == false) || (libNtve_gf_UnitGroupIsDead(gv_topExpansion) == false)) && (lp_veteranLevel >= 4))) {
         lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_hydralisk_1, lp_startPos);
         lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_hydralisk_2, lp_startPos);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_topExpansion, lp_startPos);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_marines_1, lp_startPos);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_marines_2, lp_startPos);
+    }
+
+    if ((((libNtve_gf_UnitGroupIsDead(gv_botExpansion) == false) || (libNtve_gf_UnitGroupIsDead(gv_midExpansion) == false)) && (lp_veteranLevel >= 5))) {
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_botExpansion, lp_startPos);
+        lv_point = gf_ClosestPoint(lv_point, lp_currentPosition, gv_midExpansion, lp_startPos);
     }
 
     return lv_point;
@@ -4163,6 +4174,9 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
         lv_hostilePoint = gf_AttackPointHostiles(lv_startPos, lv_currentPosition, lv_veteranLevel);
         if ((((gf_IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) < 5.0)) || ((gf_IsProtoss(lv_allyRTSPlayer) == false) && (UnitGetPropertyFixed(lv_unit, c_unitPropLifePercent, c_unitPropCurrent) < 30.0)))) {
             if ((lv_state != 1)) {
+                AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
+                AISetDifficulty(lv_player, c_diffWaveLeashing, true);
+                AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
                 AIAttackWaveCancel(AIWaveGet(lv_player, 0));
                 UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/4A57B1D1")));
                 AIAttackWaveSetTargetPoint(lv_player, lv_startPos);
@@ -4188,8 +4202,12 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
             if (((lv_defendSpawner != null))) {
                 if ((lv_state != 3)) {
                     AIAttackWaveCancel(AIWaveGet(lv_player, 0));
-                    AIAttackWaveSetTargetPoint(lv_player, UnitGetPosition(lv_defendSpawner));
                     AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+                    AIAttackWaveSetTargetRegion(lv_player, RegionCircle(UnitGetPosition(lv_unit), 3.0), 1);
+                    AISetDifficulty(lv_player, c_diffNormalTargetPrio, false);
+                    AISetDifficulty(lv_player, c_diffWaveLeashing, false);
+                    AISetDifficulty(lv_player, c_diffWaveAvoidDanger, false);
+                    libNtve_gf_AICast(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(lv_defendSpawner)));
                     AIAttackWaveSend(lv_player, 0, false);
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + (StringExternal("Param/Value/970F4C5F") + StringExternal(libNtve_gf_ConvertPointToString(UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_defendSpawner)))))));
                     lv_lastPosition = lv_hostilePoint;
@@ -4215,6 +4233,9 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                 if ((lv_hostilePoint != null)) {
                     if ((((lv_lastPosition == null) || (DistanceBetweenPoints(lv_lastPosition, lv_hostilePoint) >= 5.0))) && (lv_state != 2)) {
                         AIAttackWaveCancel(AIWaveGet(lv_player, 0));
+                        AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
+                        AISetDifficulty(lv_player, c_diffWaveLeashing, true);
+                        AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
                         AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroup(null, 15, RegionCircle(lv_hostilePoint, 5.0), UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
                         AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                         AIAttackWaveSend(lv_player, 0, false);
@@ -4246,6 +4267,9 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                         }
                         AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                         AIAttackWaveSend(lv_player, 0, false);
+                        AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
+                        AISetDifficulty(lv_player, c_diffWaveLeashing, true);
+                        AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
                         lv_state = 0;
                         lv_stuckCounter = 0;
                     }

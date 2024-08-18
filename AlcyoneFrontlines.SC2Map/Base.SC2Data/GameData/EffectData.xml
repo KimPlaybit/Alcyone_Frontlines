@@ -39,6 +39,9 @@
         <AreaArray Radius="4" Effect="BurrowChargeTargetSet"/>
         <SearchFlags index="SameCliff" value="1"/>
     </CEffectEnumArea>
+    <CEffectSet id="CCCreateSet">
+        <EffectArray value="HealHeroicUnitsAround"/>
+    </CEffectSet>
     <CEffectDamage id="DarkTemplarShadowFuryDamage">
         <Amount value="20"/>
     </CEffectDamage>
@@ -140,6 +143,33 @@
     <CEffectDamage id="GoliathAU">
         <AttributeBonus index="Armored" value="4"/>
     </CEffectDamage>
+    <CEffectSet id="HatcheryCreateSet">
+        <EffectArray value="HealHeroicUnitsAround"/>
+    </CEffectSet>
+    <CEffectEnumArea id="HealHeroicUnitsAround3">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Heroic;Player,Neutral,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="HealHeroicUnitsAround2"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HealHeroicUnitsAround2">
+        <ValidatorArray index="0" value="SourceNotHidden"/>
+        <ValidatorArray value="ReaperOutOfCombat"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="HealHeroicUnitsAround"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="HealHeroicUnitsAround">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="SourceUnit"/>
+        <InitialEffect value="HealHeroicUnitsAround3"/>
+        <FinalEffect value="HealHeroicUnitsAround"/>
+        <PeriodCount value="99"/>
+        <PeriodicValidator value="NotVortexd"/>
+        <PeriodicEffectArray value="HealHeroicUnitsAround3"/>
+        <PeriodicPeriodArray value="2"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="HotSBanelingExplodeLargeDirect">
         <Amount value="1"/>
     </CEffectDamage>
@@ -255,6 +285,9 @@
         <DrainVitalCostFactor value="0.1"/>
         <RechargeVitalRate value="30"/>
     </CEffectCreateHealer>
+    <CEffectSet id="NexusCreateSet">
+        <EffectArray value="HealHeroicUnitsAround"/>
+    </CEffectSet>
     <CEffectDamage id="NovaPlasmaPuddleDamage">
         <Amount value="10"/>
     </CEffectDamage>
