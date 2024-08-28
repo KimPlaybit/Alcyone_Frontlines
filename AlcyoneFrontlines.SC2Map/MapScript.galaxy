@@ -1235,7 +1235,6 @@ void gf_StartAi (point lp_startPos, int lp_player) {
         targOPoint = AIWaveTargetGatherOPoint(lp_player, c_townMain);
         targD = AIWaveTargetGatherD(lp_player, c_townMain);
         targO = AIWaveTargetGatherMelee(lp_player);    
-    
         AIWaveSet(lp_player, c_waveMain,       AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
         AIWaveSet(lp_player, c_waveAttack,     AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
         AIWaveSet(lp_player, c_waveDivert1,    AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
@@ -4349,7 +4348,10 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                     lv_stuckCounter = 0;
                 }
                 else {
-                    lv_stuckCounter = (lv_stuckCounter + 1);
+                    if (((gf_IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) >= 70.0))) {
+                        lv_stuckCounter = (lv_stuckCounter + 1);
+                    }
+
                 }
             }
         }
@@ -4371,6 +4373,7 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                     lv_state = 3;
                     if ((UnitGetType(lv_unit) == "DragoonHero")) {
                         UnitIssueOrder(lv_unit, OrderTargetingUnit(AbilityCommand("ArtanisWormholeTransit", 0), lv_defendSpawner), c_orderQueueReplace);
+                        UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("SJCloakedMineAttack", 0), UnitGetPosition(lv_defendSpawner)), c_orderQueueAddToEnd);
                     }
 
                 }
@@ -4388,17 +4391,31 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
             else {
                 if ((lv_hostilePoint != null)) {
                     if ((((lv_lastPosition == null) || (DistanceBetweenPoints(lv_lastPosition, lv_hostilePoint) >= 5.0))) && (lv_state != 2)) {
-                        AIAttackWaveCancel(AIWaveGet(lv_player, 0));
-                        AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
-                        AISetDifficulty(lv_player, c_diffWaveLeashing, true);
-                        AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
-                        AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroup(null, 15, RegionCircle(lv_hostilePoint, 5.0), UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-                        AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
-                        AIAttackWaveSend(lv_player, 0, false);
-                        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + (StringExternal("Param/Value/E72E4A77") + StringExternal(libNtve_gf_ConvertPointToString(lv_hostilePoint)))));
-                        lv_lastPosition = lv_hostilePoint;
-                        lv_stuckCounter = 0;
-                        lv_state = 2;
+                        if ((((gf_IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) > 30.0)) || ((gf_IsProtoss(lv_allyRTSPlayer) == false)))) {
+                            AIAttackWaveCancel(AIWaveGet(lv_player, 0));
+                            AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
+                            AISetDifficulty(lv_player, c_diffWaveLeashing, true);
+                            AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
+                            AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroup(null, 15, RegionCircle(lv_hostilePoint, 5.0), UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+                            AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+                            AIAttackWaveSend(lv_player, 0, false);
+                            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + (StringExternal("Param/Value/E72E4A77") + StringExternal(libNtve_gf_ConvertPointToString(lv_hostilePoint)))));
+                            lv_lastPosition = lv_hostilePoint;
+                            lv_stuckCounter = 0;
+                            lv_state = 2;
+                        }
+                        else {
+                            AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
+                            AISetDifficulty(lv_player, c_diffWaveLeashing, true);
+                            AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
+                            AIAttackWaveCancel(AIWaveGet(lv_player, 0));
+                            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/1670B020")));
+                            AIAttackWaveSetTargetPoint(lv_player, lv_startPos);
+                            AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+                            AIAttackWaveSend(lv_player, 0, false);
+                            UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(gf_FindHealspot(lv_unit))), c_orderQueueReplace);
+                            lv_state = 2;
+                        }
                     }
                     else {
                         if ((lv_stuckCounter >= lv_maxCounter)) {

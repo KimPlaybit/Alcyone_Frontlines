@@ -4421,7 +4421,7 @@
         </Fidget>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
+        <AIOverideTargetPriority value="99"/>
     </CUnitHero>
     <CUnitHero id="FirebatHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/FirebatHero"/>
@@ -4637,7 +4637,8 @@
         <EnergyRegenRate value="0.5"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
+        <AIOverideTargetPriority value="99"/>
+        <AIKiteRange value="5"/>
     </CUnitHero>
     <CUnit id="AdeptHero">
         <DeathRevealRadius value="3"/>
@@ -4728,7 +4729,8 @@
         <MinimapRadius value="2"/>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
+        <AIOverideTargetPriority value="99"/>
+        <AIKiteRange value="4"/>
     </CUnit>
     <CUnit id="Zealot2">
         <DeathRevealRadius value="3"/>
@@ -4917,7 +4919,7 @@
         </ReviveInfoBase>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
+        <AIOverideTargetPriority value="99"/>
     </CUnitHero>
     <CUnitHero id="HydraliskHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/HydraliskHero"/>
@@ -5440,7 +5442,8 @@
         </ReviveInfoBase>
         <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
+        <AIOverideTargetPriority value="99"/>
+        <AIKiteRange value="6"/>
     </CUnitHero>
     <CUnit id="GoliathHero">
         <RandomNameArray value="Aaron Beckwith"/>

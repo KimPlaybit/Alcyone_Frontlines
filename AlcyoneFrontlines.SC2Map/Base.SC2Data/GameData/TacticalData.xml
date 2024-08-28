@@ -173,12 +173,11 @@
     </CTacticalOrder>
     <CTacticalOrder id="DTCloak">
         <Abil value="RogueGhostCloak"/>
-        <Validator value="EnemiesNearbyGT4"/>
+        <Validator value="DTCloak"/>
     </CTacticalOrder>
     <CTacticalOrder id="DTBlink">
         <Abil value="ZeratulBlink"/>
-        <TargetFind value="Blink"/>
-        <Validator value="UseImmunity"/>
+        <TargetFind value="DarkTemplarBlink"/>
     </CTacticalOrder>
     <CTacticalOrder id="Shield">
         <Abil value="VoidShieldCapacitor"/>

@@ -6,6 +6,36 @@
     <CValidatorUnitCompareVeterancyLevel default="1" id="CValidatorUnitCompareVeterancyLevel22">
         <Value value="2"/>
     </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorCombine id="BlinkTarget">
+        <Type value="And"/>
+        <CombineArray value="IsHeroic"/>
+        <CombineArray value="DistanceGT3"/>
+        <CombineArray value="CasterShieldGT50Percent"/>
+        <CombineArray value="IsNotOdin"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareVital id="CasterShieldGT50Percent" parent="CasterLifePercent">
+        <Compare value="GT"/>
+        <Value value="0.5"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorCombine id="DTCloak">
+        <CombineArray value="EnemiesNearbyGT4"/>
+        <CombineArray value="EnemiesNearbyWithLowShield"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="DistanceGT3">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="3"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorCombine id="EnemiesNearbyWithLowShield">
+        <Type value="And"/>
+        <CombineArray value="EnemiesNearby"/>
+        <CombineArray value="CasterShieldLT40Percent"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsNotOdin">
+        <Value value="Odin"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="UnithasPlague">
         <Compare value="NE"/>
         <Behavior value="DefilerMPPlague"/>
@@ -45,6 +75,7 @@
     </CValidatorUnitCompareVital>
     <CValidatorUnitCompareOrderTargetRange id="DarkTemplarBlinkRangeCheck">
         <AbilLink value="DarkTemplarHeroBlink"/>
+        <Value value="3"/>
     </CValidatorUnitCompareOrderTargetRange>
     <CValidatorLocationEnumArea id="EnemiesNearbyGT42">
         <AreaArray Compare="GE" Count="4" Radius="10"/>

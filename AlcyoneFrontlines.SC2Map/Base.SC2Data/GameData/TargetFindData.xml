@@ -7,6 +7,13 @@
         <AreaArray/>
         <Abil value="DarkTemplarShadowFury"/>
     </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DarkTemplarBlink">
+        <CasterValidator value="CasterShieldGT50Percent"/>
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="8" Validator="BlinkTarget"/>
+        <Abil value="ZeratulBlink"/>
+    </CTargetFindEnumArea>
     <CTargetFindEnumArea id="DefilerConsume">
         <SearchFilters value="-;Self,Player,Ally,Neutral,Heroic,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
         <MinCount value="1"/>
