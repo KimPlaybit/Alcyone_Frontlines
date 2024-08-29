@@ -2288,11 +2288,23 @@
     <CUnit id="Nexus">
         <BehaviorArray index="1" removed="1"/>
         <BehaviorArray index="2" removed="1"/>
-        <AbilArray index="10" Link="StrategicRecall"/>
+        <AbilArray index="1" Link="ChronoBoostEnergyCost"/>
+        <AbilArray index="2" Link="NexusTrain"/>
+        <AbilArray index="3" Link="RallyNexus"/>
+        <AbilArray index="4" Link="stopProtossBuilding"/>
+        <AbilArray index="5" Link="NexusInvulnerability"/>
+        <AbilArray index="6" Link="NexusTrainMothership"/>
+        <AbilArray index="7" Link="NexusTrainMothershipCore"/>
+        <AbilArray index="8" Link="attackProtossBuilding"/>
+        <AbilArray index="9" Link="StrategicRecall"/>
+        <AbilArray index="10" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons index="7" Face="AttackBuildingPFort" AbilCmd="attackProtossBuilding,Execute" Column="4"/>
-            <LayoutButtons index="8" Face="Stop" AbilCmd="stopProtossBuilding,Stop" Column="3"/>
-            <LayoutButtons index="9" Face="StrategicRecall" AbilCmd="StrategicRecall,255" Row="2" Column="1"/>
+            <LayoutButtons index="4" AbilCmd="ChronoBoostEnergyCost,Execute"/>
+            <LayoutButtons index="5" Face="Mothership" AbilCmd="NexusTrainMothership,Train1" Row="0" Column="1"/>
+            <LayoutButtons index="6" Face="AttackBuildingPFort" AbilCmd="attackProtossBuilding,Execute" Column="4"/>
+            <LayoutButtons index="7" Face="Stop" AbilCmd="stopProtossBuilding,Stop" Column="3"/>
+            <LayoutButtons index="8" Face="StrategicRecall" AbilCmd="StrategicRecall,255" Row="2" Column="1"/>
+            <LayoutButtons index="9" removed="1"/>
             <LayoutButtons index="10" removed="1"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>

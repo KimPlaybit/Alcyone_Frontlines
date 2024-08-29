@@ -981,6 +981,7 @@ unit gf_FindHealspot (unit lp_unit) {
     unitgroup lv_healUnits;
     unit lv_healUnit;
     unit lv_loopUnit;
+    unit lv_pickedUnit;
 
     // Automatic Variable Declarations
     unitgroup autoA3B73AAB_g;
@@ -1008,13 +1009,22 @@ unit gf_FindHealspot (unit lp_unit) {
     }
     if ((libNtve_gf_UnitGroupIsDead(lv_healUnits) == false)) {
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(UnitGetOwner(lp_unit)) + StringExternal("Param/Value/C0D382DB")));
-        autoA3B73AAB_g = UnitLastCreatedGroup();
+        autoA3B73AAB_g = lv_healUnits;
         autoA3B73AAB_u = UnitGroupCount(autoA3B73AAB_g, c_unitCountAll);
         for (;; autoA3B73AAB_u -= 1) {
-            lv_healUnit = UnitGroupUnitFromEnd(autoA3B73AAB_g, autoA3B73AAB_u);
-            if (lv_healUnit == null) { break; }
+            lv_loopUnit = UnitGroupUnitFromEnd(autoA3B73AAB_g, autoA3B73AAB_u);
+            if (lv_loopUnit == null) { break; }
+            if (((lv_pickedUnit == null) || (UnitGetPropertyFixed(lv_loopUnit, c_unitPropEnergy, c_unitPropCurrent) > UnitGetPropertyFixed(lv_healUnit, c_unitPropEnergy, c_unitPropCurrent)))) {
+                lv_pickedUnit = lv_healUnit;
+            }
+
         }
-        return UnitGroupClosestToPoint(lv_healUnits, UnitGetPosition(lp_unit));
+        if ((lv_pickedUnit == null)) {
+            return UnitGroupClosestToPoint(lv_healUnits, UnitGetPosition(lp_unit));
+        }
+        else {
+            return lv_pickedUnit;
+        }
     }
 
     if ((libNtve_gf_PlayerIsEnemy(UnitGetOwner(lp_unit), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
@@ -1093,7 +1103,7 @@ unit gf_SpawnersBeingAttacked (unit lp_heroUnit, int lp_player) {
         if (lv_unit == null) { break; }
         if ((libNtve_gf_UnitGroupIsDead(libNtve_gf_ConvertUnitToUnitGroup(lv_unit)) == false)) {
             lv_spawner = gf_FindEnemyHero(lv_unit);
-            if ((((lv_spawner != null) && (DistanceBetweenPoints(UnitGetPosition(lp_heroUnit), UnitGetPosition(lv_spawner)) <= 40.0)) || ((lv_spawner != null) && (UnitAbilityGetCooldown(EventUnit(), "ArtanisWormholeTransit", "Abil/ArtanisWormholeTransit") <= 0.0) && (UnitGetType(lp_heroUnit) == "DragoonHero")) || ((lv_spawner != null) && (UnitGetType(lp_heroUnit) == "CorsairHero")))) {
+            if ((((lv_spawner != null) && (DistanceBetweenPoints(UnitGetPosition(lp_heroUnit), UnitGetPosition(lv_spawner)) <= 40.0)) || ((lv_spawner != null) && (UnitAbilityGetCooldown(lp_heroUnit, "ArtanisWormholeTransit", "Abil/ArtanisWormholeTransit") <= 0.0) && (UnitGetType(lp_heroUnit) == "DragoonHero")) || ((lv_spawner != null) && (UnitGetType(lp_heroUnit) == "CorsairHero")))) {
                 return lv_spawner;
             }
 
