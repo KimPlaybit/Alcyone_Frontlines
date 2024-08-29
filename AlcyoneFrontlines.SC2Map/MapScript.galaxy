@@ -1106,7 +1106,7 @@ unit gf_SpawnersBeingAttacked (unit lp_heroUnit, int lp_player) {
 point gf_ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitgroup lp_pointToAttack, point lp_startPoint) {
     // Automatic Variable Declarations
     // Implementation
-    if (((lp_lastPoint == null) && (DistanceBetweenPoints(lp_startPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < 100.0))) {
+    if (((lp_lastPoint == null) && (libNtve_gf_UnitGroupIsDead(lp_pointToAttack) == false) && (DistanceBetweenPoints(lp_startPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < 100.0))) {
         return UnitGroupCenterOfGroup(lp_pointToAttack);
     }
 
@@ -1114,7 +1114,7 @@ point gf_ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitgroup lp_poin
         return lp_lastPoint;
     }
 
-    if (((DistanceBetweenPoints(lp_unitPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < DistanceBetweenPoints(lp_unitPoint, lp_lastPoint)) && (DistanceBetweenPoints(lp_unitPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < 40.0))) {
+    if ((((lp_lastPoint == null) || (DistanceBetweenPoints(lp_unitPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < DistanceBetweenPoints(lp_unitPoint, lp_lastPoint))) && (DistanceBetweenPoints(lp_unitPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < 40.0))) {
         return UnitGroupCenterOfGroup(lp_pointToAttack);
     }
     else {

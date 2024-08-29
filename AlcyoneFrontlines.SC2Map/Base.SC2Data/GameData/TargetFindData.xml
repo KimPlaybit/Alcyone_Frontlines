@@ -11,7 +11,7 @@
         <CasterValidator value="CasterShieldGT50Percent"/>
         <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
-        <AreaArray Radius="8" Validator="BlinkTarget"/>
+        <AreaArray Radius="6" Validator="BlinkTarget"/>
         <Abil value="ZeratulBlink"/>
     </CTargetFindEnumArea>
     <CTargetFindEnumArea id="DefilerConsume">

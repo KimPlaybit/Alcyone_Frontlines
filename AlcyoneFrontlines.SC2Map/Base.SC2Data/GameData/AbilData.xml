@@ -1045,8 +1045,18 @@
     <CAbilEffectTarget id="TimeWarp">
         <Cost index="0">
             <Vital index="Energy" value="50"/>
-            <Cooldown TimeUse="0"/>
+            <Charge Link="ChronoBoostEnergyCost"/>
+            <Cooldown Link="ChronoBoostEnergyCost" TimeUse="0"/>
         </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ChronoBoostEnergyCost" parent="TimeWarp">
+        <Name value="Abil/Name/ChronoBoostEnergyCost"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <InterruptCost>
+            <Charge Link="Abil/ChronoBoostEnergyCost"/>
+            <Cooldown Link="Abil/ChronoBoostEnergyCost"/>
+        </InterruptCost>
+        <Marker Link="Abil/ChronoBoostEnergyCost"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TossGrenade">
         <Cost index="0">
