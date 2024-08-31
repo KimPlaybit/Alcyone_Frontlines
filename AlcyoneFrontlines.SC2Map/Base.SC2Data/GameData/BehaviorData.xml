@@ -238,6 +238,16 @@
             <VitalMaxArray index="Life" value="30"/>
         </Modification>
     </CBehaviorAttribute>
+    <CBehaviorBuff id="HealHeroicUnitsAround">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="ReaperOutOfCombat"/>
+        <DisableValidatorArray value="NotFullLife"/>
+        <Duration value="2"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="2"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TimeWarpProduction">
         <Cost>
             <Vital index="Energy" value="50"/>

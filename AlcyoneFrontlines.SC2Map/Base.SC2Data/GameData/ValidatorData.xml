@@ -6,6 +6,65 @@
     <CValidatorUnitCompareVeterancyLevel default="1" id="CValidatorUnitCompareVeterancyLevel22">
         <Value value="2"/>
     </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorCombine id="BlinkTarget">
+        <Type value="And"/>
+        <CombineArray value="IsHeroic"/>
+        <CombineArray value="DistanceGT3"/>
+        <CombineArray value="CasterShieldGT50Percent"/>
+        <CombineArray value="IsNotOdin"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareVital id="CasterShieldGT50Percent" parent="CasterLifePercent">
+        <Compare value="GT"/>
+        <Value value="0.5"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorCombine id="DTCloak">
+        <CombineArray value="EnemiesNearbyGT4"/>
+        <CombineArray value="EnemiesNearbyWithLowShield"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="DistanceGT3">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="3"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorCombine id="EnemiesNearbyWithLowShield">
+        <Type value="And"/>
+        <CombineArray value="EnemiesNearby"/>
+        <CombineArray value="CasterShieldLT40Percent"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsNotOdin">
+        <Value value="Odin"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="UnithasPlague">
+        <Compare value="NE"/>
+        <Behavior value="DefilerMPPlague"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="PlagueValidator">
+        <Type value="And"/>
+        <CombineArray value="NotInvulnerable"/>
+        <CombineArray value="NotGravitonBeamd"/>
+        <CombineArray value="NotDead"/>
+        <CombineArray value="TargetIsVisible"/>
+        <CombineArray value="NotFlyingTerranBuilding"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareVital id="CasterShieldLT40Percent" parent="CasterLifePercent">
+        <Compare value="LT"/>
+        <Value value="0.4"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareBehaviorCount id="CooldownOfAbility">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LE"/>
+        <Behavior value="SOAFenixCooldownDummy"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationCompareRange id="ArtanisLightningDashRangeCheck2">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Compare value="LT"/>
+        <Range value="13"/>
+        <Value Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
     <CValidatorLocationCompareRange id="BurrowChargeMaxDistance">
         <Range value="2"/>
     </CValidatorLocationCompareRange>
@@ -16,15 +75,56 @@
     </CValidatorUnitCompareVital>
     <CValidatorUnitCompareOrderTargetRange id="DarkTemplarBlinkRangeCheck">
         <AbilLink value="DarkTemplarHeroBlink"/>
+        <Value value="3"/>
     </CValidatorUnitCompareOrderTargetRange>
+    <CValidatorLocationEnumArea id="EnemiesNearbyGT42">
+        <AreaArray Compare="GE" Count="4" Radius="10"/>
+        <SearchFilters value="Air,Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="HeroicEnemiesNearby">
+        <AreaArray Compare="GE" Count="1" Radius="6"/>
+        <SearchFilters value="Heroic,Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="EnemiesNearbyWhirlwind">
         <AreaArray Compare="GT" Count="1" Radius="1"/>
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="EnemiesNearbyGT4">
-        <AreaArray Compare="GT" Count="4" Radius="1"/>
+        <AreaArray Compare="GT" Count="4" Radius="4"/>
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorCombine id="LifeGT75ProcentAndNearbyEnemies">
+        <Type value="And"/>
+        <CombineArray value="CasterLifeGT75Percent"/>
+        <CombineArray value="EnemiesNearbyGT4"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="LifeGT75ProcentAndNearbyEnemies2">
+        <Type value="And"/>
+        <CombineArray value="CasterLifeGT75Percent"/>
+        <CombineArray value="HeroicEnemiesNearby"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SpectreStun">
+        <CombineArray value="EnemyTarget"/>
+        <CombineArray value="ArtanisLightningDashRangeCheck2"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="MissilePods">
+        <CombineArray value="TargetIsEnemy"/>
+        <CombineArray value="TargetIsAir"/>
+        <CombineArray value="IdleAttackAirGroundValidator2"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TacticalStimpackHero">
+        <CombineArray value="TacticalStimpack"/>
+        <CombineArray value="HeroicEnemiesNearby"/>
+        <CombineArray value="EnemiesNearbyWhirlwind"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="UnitdoesnothaveDarkSwarm">
+        <Compare value="NE"/>
+        <Behavior value="DefilerMPDarkSwarm"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="UseShield">
+        <CombineArray value="UseShieldDuetoHerioc"/>
+        <CombineArray value="UseShieldDueTooManyEnemies"/>
+    </CValidatorCombine>
     <CValidatorCombine id="UseImmunity">
         <CombineArray value="CasterShieldLT10Percent"/>
         <CombineArray value="EnemiesNearbyGT4"/>
@@ -61,6 +161,35 @@
     <CValidatorUnitCompareDamageTakenTime id="ReaperOutOfCombat">
         <Value value="15"/>
     </CValidatorUnitCompareDamageTakenTime>
+    <CValidatorCombine id="UseShield2">
+        <CombineArray value="UseShieldDuetoHerioc2"/>
+        <CombineArray value="UseShieldDueTooManyEnemies2"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="UseShieldDueTooManyEnemies2">
+        <Type value="And"/>
+        <CombineArray value="EnemiesNearby"/>
+        <CombineArray value="CasterShieldLT40Percent"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="UseShieldDueTooManyEnemies22">
+        <Type value="And"/>
+        <CombineArray value="EnemiesNearbyGT4"/>
+        <CombineArray value="TargetIsAir"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="UseShieldDuetoHerioc">
+        <Type value="And"/>
+        <CombineArray value="HeroicEnemiesNearby"/>
+        <CombineArray value="CasterLifeLT40Percent"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="UseShieldDueTooManyEnemies">
+        <Type value="And"/>
+        <CombineArray value="EnemiesNearbyGT4"/>
+        <CombineArray value="CasterLifeLT40Percent"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="UseShieldDuetoHerioc2">
+        <Type value="And"/>
+        <CombineArray value="HeroicEnemiesNearby"/>
+        <CombineArray value="CasterShieldLT40Percent"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="ZergVeterancyGT2">
         <WhichUnit Value="Source"/>
         <Compare value="LT"/>
