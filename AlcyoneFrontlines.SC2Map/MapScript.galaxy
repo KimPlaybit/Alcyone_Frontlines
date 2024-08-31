@@ -237,6 +237,7 @@ bool gf_IsNonKnownRace (int lp_player);
 bool gf_IsTerran (int lp_rTSPlayer);
 bool gf_IsZerg (int lp_rTSPlayer);
 bool gf_IsProtoss (int lp_rTSPlayer);
+void gf_Corsair (int lp_player, unit lp_unit);
 unit gf_FindHealspot (unit lp_unit);
 unit gf_FindEnemyHero (unit lp_unit);
 unitgroup gf_GetSpawners (int lp_player);
@@ -245,7 +246,7 @@ point gf_ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitgroup lp_poin
 point gf_AttackPointHostiles (point lp_startPos, point lp_currentPosition, int lp_veteranLevel, int lp_offsetVeterancy);
 void gf_StartAi (point lp_startPos, int lp_player);
 void gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave);
-void gf_StartSoldierAI2 (point lp_startPos, int lp_player, unit lp_wave);
+void gf_HeroSpells (int lp_player, unit lp_unit);
 
 //--------------------------------------------------------------------------------------------------
 // Trigger Variables
@@ -479,6 +480,165 @@ void cai_startall () {
 //--------------------------------------------------------------------------------------------------
 void cai_runall () {
     playergroup target = PlayerGroupEmpty();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: ForceField
+//--------------------------------------------------------------------------------------------------
+
+static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    point myPos = UnitGetPosition(aiUnit);
+    aifilter filterAI;
+    unitgroup groundEnemies;
+    unitgroup meleeEnemyGroup;
+    unitgroup rangeEnemyGroup;
+    unitfilter filterUnit;
+    unitgroup friendlyGroup;
+    int friendlyCount = 0;
+    unit friendlyUnit;
+    int friendlyVit = 0;
+    bool friendlyHasMelee = false;
+    int enemyCount = 0;
+    unit enemyUnit;
+    point enemyPos;
+    fixed enemyDist;
+    int bestPrio = 0;
+    point bestEnemyPos = null;
+    point bestFriendPos = null;
+    unit bestTargetUnit = null;
+    bool extraEnergy = false;
+    point forceFieldTarget = null;
+
+    // Do not proceed if the order is invalid for some reason
+    ord = AICreateOrder(player, c_AB_ForceField, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+
+    // Filter out air units
+    filterAI = AIFilter(player);
+    AISetFilterPlane(filterAI, c_planeGround);
+    AISetFilterCanAttackAlly(filterAI, c_groundAlliesNearby, false);
+    groundEnemies = AIGetFilterGroup(filterAI, scanGroup);
+
+    // Is there a threat in the area
+    enemyCount = UnitGroupCount(groundEnemies, c_unitCountAll);
+    if (enemyCount <= 0) {
+        return false;
+    }
+    
+    // Get a list of only melee enemies
+    filterAI = AIFilter(player);
+    AISetFilterMelee(filterAI, c_onlyMelee);
+    meleeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
+
+    // Setup a friendly filter
+    filterUnit = UnitFilter(0,0,0,0);
+    UnitFilterSetState(filterUnit, c_targetFilterUncommandable,             c_unitFilterExcluded);
+    UnitFilterSetState(filterUnit, c_targetFilterWorker,                    c_unitFilterExcluded);
+    UnitFilterSetState(filterUnit, c_targetFilterUnderConstruction,         c_unitFilterExcluded);
+    UnitFilterSetState(filterUnit, c_targetFilterStructure,                 c_unitFilterExcluded);
+
+    // *** Scan the area for the following, set priority unit when found *** (highest first)
+    // Priority 4: Melee enemy close to me
+    // Priority 3: A friendly unit close to death, who has a melee enemy close by
+    // Priority 2: A friendly ranged unit who has a melee enemy close by
+    // Priority 1: Large clump of enemies (if we have extra energy)
+    //
+
+    // First check only melee enemies
+    enemyCount = UnitGroupCount(meleeEnemyGroup, c_unitCountAll);
+    while (enemyCount > 0) {
+        enemyUnit = UnitGroupUnit(meleeEnemyGroup, enemyCount);
+        enemyCount = enemyCount - 1;
+
+        enemyPos = UnitGetPosition(enemyUnit);
+        enemyDist = DistanceBetweenPoints(myPos, enemyPos);
+        if (enemyDist <= c_forceFieldMeleeRange) {
+            bestTargetUnit = enemyUnit;
+            bestEnemyPos = enemyPos;
+            bestFriendPos = myPos;
+            bestPrio = 4;
+            break;
+        }
+        
+        friendlyGroup = UnitGroupAlliance(player, c_unitAllianceAlly, RegionCircle(enemyPos, c_forceFieldMeleeRange), filterUnit, c_noMaxCount);
+        friendlyHasMelee = AIUnitGroupHasMelee(friendlyGroup);
+        friendlyCount = UnitGroupCount(friendlyGroup, c_unitCountAll);
+        while (friendlyCount > 0) {
+            friendlyUnit = UnitGroupUnit(friendlyGroup, friendlyCount);
+            friendlyCount = friendlyCount - 1;
+
+            friendlyVit = UnitGetPropertyInt(friendlyUnit, c_unitPropVitalityPercent, c_unitPropCurrent);
+            if (friendlyVit < 20) {
+                bestTargetUnit = enemyUnit;
+                bestEnemyPos = enemyPos;
+                bestFriendPos = UnitGetPosition(friendlyUnit);
+                bestPrio = 3;
+                break;                
+            }
+            else if (!friendlyHasMelee) {
+                bestTargetUnit = enemyUnit;
+                bestEnemyPos = enemyPos;
+                bestFriendPos = UnitGetPosition(friendlyUnit);
+                bestPrio = 2;
+            }
+        }
+    }
+
+    if (bestPrio == 0) {
+        // no dangerous melee units found, split large ranged groups if we have extra energy 
+        if (UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent) <= 125) {
+            if (UnitGetPropertyInt(aiUnit, c_unitPropVitalityPercent, c_unitPropCurrent) > 40) {
+                // not about to die and won't have 75 energy left
+                return false;
+            }
+        }
+
+        // filter only ranged units
+        filterAI = AIFilter(player);
+        AISetFilterMelee(filterAI, c_onlyRanged);
+        rangeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
+
+        // see if there is a large group nearby to split
+        forceFieldTarget = AIBestTargetPoint(
+            rangeEnemyGroup,
+            6, // min hits
+            1, // damage base
+            6.0, // min score
+            c_forceFieldRadius,
+            UnitGetPosition(aiUnit),
+            c_forceFieldRange, 
+            c_unitAttributeNone
+        );
+        if (forceFieldTarget == null) {
+            return false;
+        }
+    }
+    else {
+        // get a point a bit in front of the enemy to shove him away
+        enemyDist = DistanceBetweenPoints(bestFriendPos, bestEnemyPos);
+        if (enemyDist < 2.0) {
+            forceFieldTarget = PointAlongLine(bestFriendPos, bestEnemyPos, enemyDist/2.0);
+        } else {
+            forceFieldTarget = PointAlongLine(bestFriendPos, bestEnemyPos, enemyDist - 1.0);
+        }
+    }
+
+    OrderSetTargetPoint(ord, forceFieldTarget);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script Initialization
+//--------------------------------------------------------------------------------------------------
+void InitCustomScript () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -976,6 +1136,18 @@ bool gf_IsProtoss (int lp_rTSPlayer) {
     }
 }
 
+void gf_Corsair (int lp_player, unit lp_unit) {
+    // Variable Declarations
+    unitgroup lv_unitsAround;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unitsAround = UnitGroup(null, lp_player, RegionCircle(UnitGetPosition(lp_unit), 8.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+
+    // Implementation
+    CorsairForceField(lp_player, lp_unit,lv_unitsAround);
+}
+
 unit gf_FindHealspot (unit lp_unit) {
     // Variable Declarations
     unitgroup lv_healUnits;
@@ -1320,73 +1492,13 @@ void gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave) {
     TriggerExecute(gt_Controller, false, false);
 }
 
-void gf_StartSoldierAI2 (point lp_startPos, int lp_player, unit lp_wave) {
-    // Variable Declarations
-    int lv_diff;
-    wave lv_heroWave;
-
+void gf_HeroSpells (int lp_player, unit lp_unit) {
     // Automatic Variable Declarations
-    // Variable Initialization
-
     // Implementation
-        int diff = AIPlayerDifficulty(lp_player);
-        point targDPoint;
-        point targOPoint;
-        wavetarget targD;
-        wavetarget targO;
-        int attackersLimit;
-    	AIStart(lp_player, false, DifficultyAPM(diff));
-        if (diff == c_skirChInsane) {
-            // insane starts at 1.2 and ramps to 2.0
-            AIHarvestBonus(lp_player, 1.2);
-        }
-        DataTableSetWaveInfo(false, "currentAI", AIWaveInfoCreate());
-        
-        AISetDifficulty(lp_player, c_diffRepairDamage, true);
-        AISetDifficulty(lp_player, c_diffEnableDangerMap, true);
-        AISetDifficulty(lp_player, c_diffNormalTargetPrio, true);
-        AISetDifficulty(lp_player, c_diffAdvancedRetreatLogic, true);
-        AISetDifficulty(lp_player, c_diffWaveLeashing, true);
-        AISetDifficulty(lp_player, c_diffAvoidMindControlled, true);
-        AISetDifficulty(lp_player, c_diffNormalVision,     (diff < c_skirChVision));       // normal vision, unless cheating
-        AISetDifficulty(lp_player, c_diffLimitAPM,         (diff < c_skirHard_VH));        // limit all apm on lower difficulties
-        AISetDifficulty(lp_player, c_diffLimitAPMCombat,   (diff < c_skirVeryHard));       // limit combat apm below elite
-        AISetDifficulty(lp_player, c_diffSpotChangelings,   (diff >= c_skirVeryHard));
-        AISetDifficulty(lp_player, c_diffWaveAvoidDanger,   (diff >= c_skirHard));
-        AISetDifficulty(lp_player, c_diffFleeDamage,        (diff >= c_skirHard));
-        AISetDifficulty(lp_player, c_diffEarlyDefenseScout, (diff >= c_skirHard));
-        AISetDifficulty(lp_player, c_diffUseExtraScouts,    (diff >= c_skirHard));
-        AISetDifficulty(lp_player, c_diffPressForward,      true);
-        AISetDifficulty(lp_player, c_diffTargetSpawners,    true);
-        AISetDifficulty(lp_player, c_diffAllowKiting,       true);
-        AISetDifficulty(lp_player, c_diffDelayAdvTargetting, true);       // deliberately target interceptors/locusts on medium and below
-        AISetFlag(lp_player, e_flagsAllowRetreat, true);
-        AISetFlag(lp_player, e_flagsRunScared, false);
-        AISetFlag(lp_player, e_flagsLateScout, false);
-        AISetFlag(lp_player, e_flagsClearObs, false);
-        AIDeclareTown(lp_player, c_townOne, lp_startPos);
-        AISetMainTown(lp_player, c_townOne);
-        AISetAllStates(lp_player, 1);
-        
-        targDPoint = AIWaveTargetGatherDPoint(lp_player, c_townMain);
-        targOPoint = AIWaveTargetGatherOPoint(lp_player, c_townMain);
-        targD = AIWaveTargetGatherD(lp_player, c_townMain);
-        targO = AIWaveTargetGatherMelee(lp_player);
-        AIWaveSetType(AIWaveGet(lp_player, c_waveAttack),   c_waveStateIdle, targO);
-        attackersLimit = 1 << diff;
-        AISetMaxBestAttackersLimit(lp_player, attackersLimit);
-        AITransportIgnore(lp_player, "VikingAssault");
-        AISetDefenseRadii(lp_player, 15.0, 10.0, 12.0);
-        AISetNumScouts(lp_player, 1);
-        AIEarlyDefenseEnable(lp_player, true, true);
-        AIScout(lp_player);
-        AISetUserInt(lp_player, c_numGroundStartLocs, AIGetGroundStartLocs(lp_startPos));
-        AISetUserInt(lp_player, c_numAirStartLocs, AIGetAirStartLocs(lp_startPos));
-        AISetUserInt(lp_player, c_delayNextAttack, 0);
-        AISpecifiedHealers(lp_player);
-        AISetDefaultCombatFlags(lp_player, true);
-    AISetBullyAttackWavePercent(libNtve_gf_DifficultyValueInt(0, 0, 0, 0), lp_player);
-    AISetUnitSuicide(lp_wave, true);
+    if ((UnitGetType(lp_unit) == "CorsairHero")) {
+        gf_Corsair(lp_player, lp_unit);
+    }
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4334,6 +4446,7 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
     }
 
     while (true) {
+        gf_HeroSpells(lv_player,lv_unit);
         lv_currentPosition = UnitGroupCenterOfGroup(lv_unitGroup);
         lv_veteranLevel = UnitXPGetCurrentLevel(lv_unit, null);
         lv_hostilePoint = gf_AttackPointHostiles(lv_startPos, lv_currentPosition, lv_veteranLevel, lv_offsetVeterancy);
@@ -4342,9 +4455,9 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                 AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
                 AISetDifficulty(lv_player, c_diffWaveLeashing, true);
                 AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
-                AIAttackWaveCancel(AIWaveGet(lv_player, 0));
                 UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/4A57B1D1")));
                 AIAttackWaveSetTargetPoint(lv_player, lv_startPos);
+                AIAttackWaveCancel(AIWaveGet(lv_player, 0));
                 AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                 AIAttackWaveSend(lv_player, 0, false);
                 UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(gf_FindHealspot(lv_unit))), c_orderQueueReplace);
@@ -4358,7 +4471,7 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                     lv_stuckCounter = 0;
                 }
                 else {
-                    if (((gf_IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) >= 70.0))) {
+                    if ((((gf_IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) >= 70.0)) || ((gf_IsProtoss(lv_allyRTSPlayer) == false)))) {
                         lv_stuckCounter = (lv_stuckCounter + 1);
                     }
 
@@ -4440,19 +4553,19 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                 }
                 else {
                     if ((lv_state != 0)) {
+                        AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
+                        AISetDifficulty(lv_player, c_diffWaveLeashing, true);
+                        AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
                         AIAttackWaveCancel(AIWaveGet(lv_player, 0));
                         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/7FEA5A0F")));
                         if (((UnitGetType(lv_unit) == "ZerglingHero") || (UnitGetType(lv_unit) == "AvengerHero") || (UnitGetType(lv_unit) == "SpectreHero"))) {
                             AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroupAlliance(gf_GetEnemyRTSPlayer(lv_player), c_unitAllianceAllyExcludeSelf, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
                         }
                         else {
-                            AIAttackWaveSetTargetMelee(lv_player);
+                            AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroupAlliance(gf_GetEnemyRTSPlayer(lv_player), c_unitAllianceAlly, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
                         }
                         AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                         AIAttackWaveSend(lv_player, 0, false);
-                        AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
-                        AISetDifficulty(lv_player, c_diffWaveLeashing, true);
-                        AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
                         lv_state = 0;
                         lv_stuckCounter = 0;
                     }
@@ -5331,5 +5444,6 @@ void InitMap () {
     InitLibs();
     InitGlobals();
     InitCustomAI();
+    InitCustomScript();
     InitTriggers();
 }

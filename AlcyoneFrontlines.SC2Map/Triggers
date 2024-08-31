@@ -33056,6 +33056,7 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000104"/>
     </Element>
     <Element Type="Category" Id="23AAD2FE">
+        <Item Type="Category" Id="E3907521"/>
         <Item Type="Trigger" Id="B89BA7E4"/>
         <Item Type="Trigger" Id="5AE5B6AA"/>
         <Item Type="Variable" Id="CB934113"/>
@@ -33068,13 +33069,262 @@
         <Item Type="FunctionDef" Id="48FF2321"/>
         <Item Type="FunctionDef" Id="867F5350"/>
         <Item Type="FunctionDef" Id="0BB79866"/>
-        <Item Type="FunctionDef" Id="B5394B0D"/>
         <Item Type="Trigger" Id="0FC0AD9D"/>
         <Item Type="Trigger" Id="579C866B"/>
         <Item Type="Trigger" Id="59DCA5C4"/>
         <Item Type="Variable" Id="821A70B9"/>
         <Item Type="Variable" Id="AA1014A9"/>
         <Item Type="Trigger" Id="936D0641"/>
+        <Item Type="FunctionDef" Id="1E9C7D09"/>
+    </Element>
+    <Element Type="Category" Id="E3907521">
+        <Item Type="CustomScript" Id="8500E571"/>
+        <Item Type="FunctionDef" Id="E3875921"/>
+    </Element>
+    <Element Type="CustomScript" Id="8500E571">
+        <ScriptCode>
+            
+            static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
+                order ord;
+                point myPos = UnitGetPosition(aiUnit);
+                aifilter filterAI;
+                unitgroup groundEnemies;
+                unitgroup meleeEnemyGroup;
+                unitgroup rangeEnemyGroup;
+                unitfilter filterUnit;
+                unitgroup friendlyGroup;
+                int friendlyCount = 0;
+                unit friendlyUnit;
+                int friendlyVit = 0;
+                bool friendlyHasMelee = false;
+                int enemyCount = 0;
+                unit enemyUnit;
+                point enemyPos;
+                fixed enemyDist;
+                int bestPrio = 0;
+                point bestEnemyPos = null;
+                point bestFriendPos = null;
+                unit bestTargetUnit = null;
+                bool extraEnergy = false;
+                point forceFieldTarget = null;
+            
+                // Do not proceed if the order is invalid for some reason
+                ord = AICreateOrder(player, c_AB_ForceField, 0);
+                if (!UnitOrderIsValid(aiUnit, ord)) {
+                    return false;
+                }
+            
+                // Filter out air units
+                filterAI = AIFilter(player);
+                AISetFilterPlane(filterAI, c_planeGround);
+                AISetFilterCanAttackAlly(filterAI, c_groundAlliesNearby, false);
+                groundEnemies = AIGetFilterGroup(filterAI, scanGroup);
+            
+                // Is there a threat in the area
+                enemyCount = UnitGroupCount(groundEnemies, c_unitCountAll);
+                if (enemyCount &lt;= 0) {
+                    return false;
+                }
+                
+                // Get a list of only melee enemies
+                filterAI = AIFilter(player);
+                AISetFilterMelee(filterAI, c_onlyMelee);
+                meleeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
+            
+                // Setup a friendly filter
+                filterUnit = UnitFilter(0,0,0,0);
+                UnitFilterSetState(filterUnit, c_targetFilterUncommandable,             c_unitFilterExcluded);
+                UnitFilterSetState(filterUnit, c_targetFilterWorker,                    c_unitFilterExcluded);
+                UnitFilterSetState(filterUnit, c_targetFilterUnderConstruction,         c_unitFilterExcluded);
+                UnitFilterSetState(filterUnit, c_targetFilterStructure,                 c_unitFilterExcluded);
+            
+                // *** Scan the area for the following, set priority unit when found *** (highest first)
+                // Priority 4: Melee enemy close to me
+                // Priority 3: A friendly unit close to death, who has a melee enemy close by
+                // Priority 2: A friendly ranged unit who has a melee enemy close by
+                // Priority 1: Large clump of enemies (if we have extra energy)
+                //
+            
+                // First check only melee enemies
+                enemyCount = UnitGroupCount(meleeEnemyGroup, c_unitCountAll);
+                while (enemyCount &gt; 0) {
+                    enemyUnit = UnitGroupUnit(meleeEnemyGroup, enemyCount);
+                    enemyCount = enemyCount - 1;
+            
+                    enemyPos = UnitGetPosition(enemyUnit);
+                    enemyDist = DistanceBetweenPoints(myPos, enemyPos);
+                    if (enemyDist &lt;= c_forceFieldMeleeRange) {
+                        bestTargetUnit = enemyUnit;
+                        bestEnemyPos = enemyPos;
+                        bestFriendPos = myPos;
+                        bestPrio = 4;
+                        break;
+                    }
+                    
+                    friendlyGroup = UnitGroupAlliance(player, c_unitAllianceAlly, RegionCircle(enemyPos, c_forceFieldMeleeRange), filterUnit, c_noMaxCount);
+                    friendlyHasMelee = AIUnitGroupHasMelee(friendlyGroup);
+                    friendlyCount = UnitGroupCount(friendlyGroup, c_unitCountAll);
+                    while (friendlyCount &gt; 0) {
+                        friendlyUnit = UnitGroupUnit(friendlyGroup, friendlyCount);
+                        friendlyCount = friendlyCount - 1;
+            
+                        friendlyVit = UnitGetPropertyInt(friendlyUnit, c_unitPropVitalityPercent, c_unitPropCurrent);
+                        if (friendlyVit &lt; 20) {
+                            bestTargetUnit = enemyUnit;
+                            bestEnemyPos = enemyPos;
+                            bestFriendPos = UnitGetPosition(friendlyUnit);
+                            bestPrio = 3;
+                            break;                
+                        }
+                        else if (!friendlyHasMelee) {
+                            bestTargetUnit = enemyUnit;
+                            bestEnemyPos = enemyPos;
+                            bestFriendPos = UnitGetPosition(friendlyUnit);
+                            bestPrio = 2;
+                        }
+                    }
+                }
+            
+                if (bestPrio == 0) {
+                    // no dangerous melee units found, split large ranged groups if we have extra energy 
+                    if (UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent) &lt;= 125) {
+                        if (UnitGetPropertyInt(aiUnit, c_unitPropVitalityPercent, c_unitPropCurrent) &gt; 40) {
+                            // not about to die and won&apos;t have 75 energy left
+                            return false;
+                        }
+                    }
+            
+                    // filter only ranged units
+                    filterAI = AIFilter(player);
+                    AISetFilterMelee(filterAI, c_onlyRanged);
+                    rangeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
+            
+                    // see if there is a large group nearby to split
+                    forceFieldTarget = AIBestTargetPoint(
+                        rangeEnemyGroup,
+                        6, // min hits
+                        1, // damage base
+                        6.0, // min score
+                        c_forceFieldRadius,
+                        UnitGetPosition(aiUnit),
+                        c_forceFieldRange, 
+                        c_unitAttributeNone
+                    );
+                    if (forceFieldTarget == null) {
+                        return false;
+                    }
+                }
+                else {
+                    // get a point a bit in front of the enemy to shove him away
+                    enemyDist = DistanceBetweenPoints(bestFriendPos, bestEnemyPos);
+                    if (enemyDist &lt; 2.0) {
+                        forceFieldTarget = PointAlongLine(bestFriendPos, bestEnemyPos, enemyDist/2.0);
+                    } else {
+                        forceFieldTarget = PointAlongLine(bestFriendPos, bestEnemyPos, enemyDist - 1.0);
+                    }
+                }
+            
+                OrderSetTargetPoint(ord, forceFieldTarget);
+                if (!UnitOrderIsValid(aiUnit, ord)) {
+                    return false;
+                }
+            
+                AICast(aiUnit, ord, c_noMarker, c_castHold);
+                return true;
+            }
+        </ScriptCode>
+    </Element>
+    <Element Type="FunctionDef" Id="E3875921">
+        <FlagCall/>
+        <Parameter Type="ParamDef" Id="5F59A01E"/>
+        <Parameter Type="ParamDef" Id="2FCD54B1"/>
+        <Variable Type="Variable" Id="34A45577"/>
+        <FunctionCall Type="FunctionCall" Id="9C941ACD"/>
+    </Element>
+    <Element Type="ParamDef" Id="5F59A01E">
+        <ParameterType>
+            <Type Value="int"/>
+        </ParameterType>
+        <Default Type="Param" Id="154175F2"/>
+    </Element>
+    <Element Type="Param" Id="154175F2">
+        <Value>0</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="ParamDef" Id="2FCD54B1">
+        <ParameterType>
+            <Type Value="unit"/>
+        </ParameterType>
+        <Default Type="Param" Id="CD90003F"/>
+    </Element>
+    <Element Type="Param" Id="CD90003F">
+        <Preset Type="PresetValue" Library="Ntve" Id="D6EA4D09"/>
+    </Element>
+    <Element Type="Variable" Id="34A45577">
+        <VariableType>
+            <Type Value="unitgroup"/>
+        </VariableType>
+        <Value Type="Param" Id="3D2B2D9B"/>
+    </Element>
+    <Element Type="Param" Id="3D2B2D9B">
+        <FunctionCall Type="FunctionCall" Id="E808A71B"/>
+    </Element>
+    <Element Type="FunctionCall" Id="E808A71B">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000359"/>
+        <Parameter Type="Param" Id="8EC0FA43"/>
+        <Parameter Type="Param" Id="6520F4D2"/>
+        <Parameter Type="Param" Id="DC40803D"/>
+        <Parameter Type="Param" Id="FA385AF3"/>
+        <Parameter Type="Param" Id="82F6BD5C"/>
+    </Element>
+    <Element Type="Param" Id="8EC0FA43">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000691"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000231"/>
+    </Element>
+    <Element Type="Param" Id="6520F4D2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000692"/>
+        <Parameter Type="ParamDef" Id="5F59A01E"/>
+    </Element>
+    <Element Type="Param" Id="DC40803D">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000693"/>
+        <FunctionCall Type="FunctionCall" Id="5F461589"/>
+    </Element>
+    <Element Type="FunctionCall" Id="5F461589">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000030"/>
+        <Parameter Type="Param" Id="6DA463A6"/>
+        <Parameter Type="Param" Id="A05BE262"/>
+    </Element>
+    <Element Type="Param" Id="6DA463A6">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000049"/>
+        <FunctionCall Type="FunctionCall" Id="D387835B"/>
+    </Element>
+    <Element Type="FunctionCall" Id="D387835B">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000083"/>
+        <Parameter Type="Param" Id="3E65E87B"/>
+    </Element>
+    <Element Type="Param" Id="3E65E87B">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000144"/>
+        <Parameter Type="ParamDef" Id="2FCD54B1"/>
+    </Element>
+    <Element Type="Param" Id="A05BE262">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000050"/>
+        <Value>8.0</Value>
+        <ValueType Type="fixed"/>
+    </Element>
+    <Element Type="Param" Id="FA385AF3">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000695"/>
+        <Value>-;Missile,Dead,Hidden</Value>
+        <ValueType Type="unitfilter"/>
+    </Element>
+    <Element Type="Param" Id="82F6BD5C">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000694"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="1468BD55"/>
+    </Element>
+    <Element Type="FunctionCall" Id="9C941ACD">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+        <ScriptCode>
+            CorsairForceField(lp_player, lp_unit,lv_unitsAround);
+        </ScriptCode>
     </Element>
     <Element Type="Trigger" Id="B89BA7E4">
         <Event Type="FunctionCall" Id="96251B2C"/>
@@ -37058,178 +37308,6 @@
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000182"/>
         <ValueType Type="trigger"/>
         <ValueElement Type="Trigger" Id="936D0641"/>
-    </Element>
-    <Element Type="FunctionDef" Id="B5394B0D">
-        <FlagCall/>
-        <Parameter Type="ParamDef" Id="7AF13D06"/>
-        <Parameter Type="ParamDef" Id="B30C480F"/>
-        <Parameter Type="ParamDef" Id="DA3F692A"/>
-        <Variable Type="Variable" Id="656DFD77"/>
-        <Variable Type="Variable" Id="0DC93D3B"/>
-        <FunctionCall Type="FunctionCall" Id="738F5E5B"/>
-        <FunctionCall Type="FunctionCall" Id="3671D5D6"/>
-        <FunctionCall Type="FunctionCall" Id="B1EEB303"/>
-    </Element>
-    <Element Type="ParamDef" Id="7AF13D06">
-        <ParameterType>
-            <Type Value="point"/>
-        </ParameterType>
-        <Default Type="Param" Id="C3DE0A0A"/>
-    </Element>
-    <Element Type="Param" Id="C3DE0A0A">
-        <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
-    </Element>
-    <Element Type="ParamDef" Id="B30C480F">
-        <ParameterType>
-            <Type Value="int"/>
-        </ParameterType>
-        <Default Type="Param" Id="6FA5ADC3"/>
-    </Element>
-    <Element Type="Param" Id="6FA5ADC3">
-        <Value>0</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="ParamDef" Id="DA3F692A">
-        <ParameterType>
-            <Type Value="unit"/>
-        </ParameterType>
-        <Default Type="Param" Id="4B50E257"/>
-    </Element>
-    <Element Type="Param" Id="4B50E257">
-        <Preset Type="PresetValue" Library="Ntve" Id="D6EA4D09"/>
-    </Element>
-    <Element Type="Variable" Id="656DFD77">
-        <VariableType>
-            <Type Value="int"/>
-        </VariableType>
-        <Value Type="Param" Id="4F0FC88A"/>
-    </Element>
-    <Element Type="Param" Id="4F0FC88A">
-        <Value>0</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Variable" Id="0DC93D3B">
-        <VariableType>
-            <Type Value="wave"/>
-        </VariableType>
-        <Value Type="Param" Id="A8624BA6"/>
-    </Element>
-    <Element Type="Param" Id="A8624BA6">
-        <Preset Type="PresetValue" Library="Ntve" Id="DD3649E2"/>
-    </Element>
-    <Element Type="FunctionCall" Id="738F5E5B">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
-        <ScriptCode>
-                int diff = AIPlayerDifficulty(lp_player);
-                point targDPoint;
-                point targOPoint;
-                wavetarget targD;
-                wavetarget targO;
-                int attackersLimit;
-            	AIStart(lp_player, false, DifficultyAPM(diff));
-                if (diff == c_skirChInsane) {
-                    // insane starts at 1.2 and ramps to 2.0
-                    AIHarvestBonus(lp_player, 1.2);
-                }
-                DataTableSetWaveInfo(false, &quot;currentAI&quot;, AIWaveInfoCreate());
-                
-                AISetDifficulty(lp_player, c_diffRepairDamage, true);
-                AISetDifficulty(lp_player, c_diffEnableDangerMap, true);
-                AISetDifficulty(lp_player, c_diffNormalTargetPrio, true);
-                AISetDifficulty(lp_player, c_diffAdvancedRetreatLogic, true);
-                AISetDifficulty(lp_player, c_diffWaveLeashing, true);
-                AISetDifficulty(lp_player, c_diffAvoidMindControlled, true);
-                AISetDifficulty(lp_player, c_diffNormalVision,     (diff &lt; c_skirChVision));       // normal vision, unless cheating
-                AISetDifficulty(lp_player, c_diffLimitAPM,         (diff &lt; c_skirHard_VH));        // limit all apm on lower difficulties
-                AISetDifficulty(lp_player, c_diffLimitAPMCombat,   (diff &lt; c_skirVeryHard));       // limit combat apm below elite
-                AISetDifficulty(lp_player, c_diffSpotChangelings,   (diff &gt;= c_skirVeryHard));
-                AISetDifficulty(lp_player, c_diffWaveAvoidDanger,   (diff &gt;= c_skirHard));
-                AISetDifficulty(lp_player, c_diffFleeDamage,        (diff &gt;= c_skirHard));
-                AISetDifficulty(lp_player, c_diffEarlyDefenseScout, (diff &gt;= c_skirHard));
-                AISetDifficulty(lp_player, c_diffUseExtraScouts,    (diff &gt;= c_skirHard));
-                AISetDifficulty(lp_player, c_diffPressForward,      true);
-                AISetDifficulty(lp_player, c_diffTargetSpawners,    true);
-                AISetDifficulty(lp_player, c_diffAllowKiting,       true);
-                AISetDifficulty(lp_player, c_diffDelayAdvTargetting, true);       // deliberately target interceptors/locusts on medium and below
-                AISetFlag(lp_player, e_flagsAllowRetreat, true);
-                AISetFlag(lp_player, e_flagsRunScared, false);
-                AISetFlag(lp_player, e_flagsLateScout, false);
-                AISetFlag(lp_player, e_flagsClearObs, false);
-                AIDeclareTown(lp_player, c_townOne, lp_startPos);
-                AISetMainTown(lp_player, c_townOne);
-                AISetAllStates(lp_player, 1);
-                
-                targDPoint = AIWaveTargetGatherDPoint(lp_player, c_townMain);
-                targOPoint = AIWaveTargetGatherOPoint(lp_player, c_townMain);
-                targD = AIWaveTargetGatherD(lp_player, c_townMain);
-                targO = AIWaveTargetGatherMelee(lp_player);
-                AIWaveSetType(AIWaveGet(lp_player, c_waveAttack),   c_waveStateIdle, targO);
-                attackersLimit = 1 &lt;&lt; diff;
-                AISetMaxBestAttackersLimit(lp_player, attackersLimit);
-                AITransportIgnore(lp_player, &quot;VikingAssault&quot;);
-                AISetDefenseRadii(lp_player, 15.0, 10.0, 12.0);
-                AISetNumScouts(lp_player, 1);
-                AIEarlyDefenseEnable(lp_player, true, true);
-                AIScout(lp_player);
-                AISetUserInt(lp_player, c_numGroundStartLocs, AIGetGroundStartLocs(lp_startPos));
-                AISetUserInt(lp_player, c_numAirStartLocs, AIGetAirStartLocs(lp_startPos));
-                AISetUserInt(lp_player, c_delayNextAttack, 0);
-                AISpecifiedHealers(lp_player);
-                AISetDefaultCombatFlags(lp_player, true);
-        </ScriptCode>
-    </Element>
-    <Element Type="FunctionCall" Id="3671D5D6">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="A55BF7C8"/>
-        <Parameter Type="Param" Id="1573334C"/>
-        <Parameter Type="Param" Id="C7D6ADE8"/>
-    </Element>
-    <Element Type="Param" Id="1573334C">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="DBDA60E1"/>
-        <FunctionCall Type="FunctionCall" Id="F72EAC78"/>
-    </Element>
-    <Element Type="FunctionCall" Id="F72EAC78">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="7703744B"/>
-        <Parameter Type="Param" Id="7FAFD412"/>
-        <Parameter Type="Param" Id="B5F13913"/>
-        <Parameter Type="Param" Id="AFA621D1"/>
-        <Parameter Type="Param" Id="D7070578"/>
-    </Element>
-    <Element Type="Param" Id="7FAFD412">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="450AA777"/>
-        <Value>0</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="B5F13913">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="EAFE0D4F"/>
-        <Value>0</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="AFA621D1">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="34D9F076"/>
-        <Value>0</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="D7070578">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="14E02B62"/>
-        <Value>0</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="C7D6ADE8">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1A933B66"/>
-        <Parameter Type="ParamDef" Id="B30C480F"/>
-    </Element>
-    <Element Type="FunctionCall" Id="B1EEB303">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="6ADF6634"/>
-        <Parameter Type="Param" Id="CF1B678C"/>
-        <Parameter Type="Param" Id="9AC62A23"/>
-    </Element>
-    <Element Type="Param" Id="CF1B678C">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="765D2001"/>
-        <Parameter Type="ParamDef" Id="DA3F692A"/>
-    </Element>
-    <Element Type="Param" Id="9AC62A23">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="0D2D6814"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="00000063"/>
     </Element>
     <Element Type="Trigger" Id="0FC0AD9D">
         <Event Type="FunctionCall" Id="B56C7C46"/>
@@ -42961,11 +43039,19 @@
     </Element>
     <Element Type="FunctionCall" Id="7E6EF651">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="71596144"/>
+        <FunctionCall Type="FunctionCall" Id="93EF55E1"/>
         <FunctionCall Type="FunctionCall" Id="FCBCE052"/>
         <FunctionCall Type="FunctionCall" Id="D2AD25C7"/>
         <FunctionCall Type="FunctionCall" Id="B2B975C1"/>
         <FunctionCall Type="FunctionCall" Id="0E53A271"/>
         <FunctionCall Type="FunctionCall" Id="2958F2E2"/>
+    </Element>
+    <Element Type="FunctionCall" Id="93EF55E1">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="A1B37466"/>
+        <ScriptCode>
+            gf_HeroSpells(lv_player,lv_unit);
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="FCBCE052">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
@@ -43956,16 +44042,25 @@
     <Element Type="FunctionCall" Id="04AE2962">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000005"/>
+        <FunctionCall Type="FunctionCall" Id="3AAE34DC"/>
         <FunctionCall Type="FunctionCall" Id="3C000CCA"/>
         <FunctionCall Type="FunctionCall" Id="4E7F72AC"/>
         <FunctionCall Type="FunctionCall" Id="7026451F"/>
         <FunctionCall Type="FunctionCall" Id="430AD956"/>
         <FunctionCall Type="FunctionCall" Id="A3FA1A46"/>
         <FunctionCall Type="FunctionCall" Id="F6B9D43A"/>
-        <FunctionCall Type="FunctionCall" Id="3AAE34DC"/>
         <FunctionCall Type="FunctionCall" Id="7A0AA12E"/>
         <FunctionCall Type="FunctionCall" Id="7534085C"/>
         <FunctionCall Type="FunctionCall" Id="8DD7885A"/>
+    </Element>
+    <Element Type="FunctionCall" Id="3AAE34DC">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <ScriptCode>
+            AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
+            AISetDifficulty(lv_player, c_diffWaveLeashing, true);
+            AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="3C000CCA">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
@@ -44294,13 +44389,58 @@
         <Preset Type="PresetValue" Library="Ntve" Id="1468BD55"/>
     </Element>
     <Element Type="FunctionCall" Id="70D00E74">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="27FDA8F2"/>
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="A1970AD2"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000005"/>
-        <Parameter Type="Param" Id="58CCDC89"/>
+        <Parameter Type="Param" Id="5B46FAF4"/>
+        <Parameter Type="Param" Id="8A380D70"/>
     </Element>
-    <Element Type="Param" Id="58CCDC89">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="D38C619E"/>
+    <Element Type="Param" Id="5B46FAF4">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="B490DDEC"/>
         <Variable Type="Variable" Id="D95A7186"/>
+    </Element>
+    <Element Type="Param" Id="8A380D70">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="039257A0"/>
+        <FunctionCall Type="FunctionCall" Id="79B91D25"/>
+    </Element>
+    <Element Type="FunctionCall" Id="79B91D25">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00D4EFCE"/>
+        <Parameter Type="Param" Id="711E2833"/>
+        <Parameter Type="Param" Id="D1218DA6"/>
+        <Parameter Type="Param" Id="5E402913"/>
+        <Parameter Type="Param" Id="01693646"/>
+        <Parameter Type="Param" Id="C146B1C8"/>
+    </Element>
+    <Element Type="Param" Id="711E2833">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="D0FFABCF"/>
+        <FunctionCall Type="FunctionCall" Id="D964ADDD"/>
+    </Element>
+    <Element Type="FunctionCall" Id="D964ADDD">
+        <FunctionDef Type="FunctionDef" Id="E16568E7"/>
+        <Parameter Type="Param" Id="8C880776"/>
+    </Element>
+    <Element Type="Param" Id="8C880776">
+        <ParameterDef Type="ParamDef" Id="B06655B6"/>
+        <Variable Type="Variable" Id="D95A7186"/>
+    </Element>
+    <Element Type="Param" Id="D1218DA6">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="7715A65E"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="44D045A5"/>
+    </Element>
+    <Element Type="Param" Id="5E402913">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="A7D81754"/>
+        <FunctionCall Type="FunctionCall" Id="6372106C"/>
+    </Element>
+    <Element Type="FunctionCall" Id="6372106C">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000356"/>
+    </Element>
+    <Element Type="Param" Id="01693646">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="7B8E998C"/>
+        <Value>-;Enemy,Missile,Dead,Hidden</Value>
+        <ValueType Type="unitfilter"/>
+    </Element>
+    <Element Type="Param" Id="C146B1C8">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="90CA0E04"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="1468BD55"/>
     </Element>
     <Element Type="FunctionCall" Id="A3FA1A46">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="D16912F9"/>
@@ -44343,15 +44483,6 @@
     <Element Type="Param" Id="C6744A63">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="CA9FBBA2"/>
         <Preset Type="PresetValue" Library="Ntve" Id="00000068"/>
-    </Element>
-    <Element Type="FunctionCall" Id="3AAE34DC">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
-        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <ScriptCode>
-            AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
-            AISetDifficulty(lv_player, c_diffWaveLeashing, true);
-            AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
-        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="7A0AA12E">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -45200,9 +45331,9 @@
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
         <FunctionCall Type="FunctionCall" Id="FD4FAA41"/>
         <FunctionCall Type="FunctionCall" Id="0CDDB8A3"/>
-        <FunctionCall Type="FunctionCall" Id="6617F665"/>
         <FunctionCall Type="FunctionCall" Id="57FDFA1C"/>
         <FunctionCall Type="FunctionCall" Id="E6A1A6FA"/>
+        <FunctionCall Type="FunctionCall" Id="6617F665"/>
         <FunctionCall Type="FunctionCall" Id="AA2598EF"/>
         <FunctionCall Type="FunctionCall" Id="1348528A"/>
         <FunctionCall Type="FunctionCall" Id="DDA7B028"/>
@@ -45231,12 +45362,18 @@
     <Element Type="FunctionCall" Id="45F4114A">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000005"/>
-        <FunctionCall Type="FunctionCall" Id="CD1BEB9D"/>
+        <FunctionCall Type="FunctionCall" Id="7D5F6E4C"/>
         <FunctionCall Type="FunctionCall" Id="CDB6AA4D"/>
     </Element>
-    <Element Type="FunctionCall" Id="CD1BEB9D">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000132"/>
+    <Element Type="FunctionCall" Id="7D5F6E4C">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000133"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+        <FunctionCall Type="FunctionCall" Id="60B3A7D2"/>
+        <FunctionCall Type="FunctionCall" Id="79FDD5CE"/>
+    </Element>
+    <Element Type="FunctionCall" Id="60B3A7D2">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000132"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000001"/>
         <FunctionCall Type="FunctionCall" Id="BCA3F651"/>
         <FunctionCall Type="FunctionCall" Id="F6CF2D91"/>
     </Element>
@@ -45305,6 +45442,39 @@
         <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
         <Value>70.0</Value>
         <ValueType Type="fixed"/>
+    </Element>
+    <Element Type="FunctionCall" Id="79FDD5CE">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000132"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000001"/>
+        <FunctionCall Type="FunctionCall" Id="046B5584"/>
+    </Element>
+    <Element Type="FunctionCall" Id="046B5584">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000002"/>
+        <Parameter Type="Param" Id="D569B4DC"/>
+        <Parameter Type="Param" Id="2B2753E6"/>
+        <Parameter Type="Param" Id="1ED9D551"/>
+    </Element>
+    <Element Type="Param" Id="D569B4DC">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+        <FunctionCall Type="FunctionCall" Id="504B6572"/>
+    </Element>
+    <Element Type="FunctionCall" Id="504B6572">
+        <FunctionDef Type="FunctionDef" Id="67629C88"/>
+        <Parameter Type="Param" Id="A9485F86"/>
+    </Element>
+    <Element Type="Param" Id="A9485F86">
+        <ParameterDef Type="ParamDef" Id="7CF7D2DF"/>
+        <Variable Type="Variable" Id="A7ECF1ED"/>
+    </Element>
+    <Element Type="Param" Id="2B2753E6">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+    </Element>
+    <Element Type="Param" Id="1ED9D551">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+        <Value>false</Value>
+        <ValueType Type="bool"/>
     </Element>
     <Element Type="FunctionCall" Id="CDB6AA4D">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
@@ -45402,29 +45572,6 @@
         <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
         <Variable Type="Variable" Id="2298CB98"/>
     </Element>
-    <Element Type="FunctionCall" Id="6617F665">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="232935FA"/>
-        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="79EF6B1D"/>
-    </Element>
-    <Element Type="Param" Id="79EF6B1D">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="415ACE83"/>
-        <FunctionCall Type="FunctionCall" Id="0299E32B"/>
-    </Element>
-    <Element Type="FunctionCall" Id="0299E32B">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="B9BB6748"/>
-        <Parameter Type="Param" Id="FA62E066"/>
-        <Parameter Type="Param" Id="A2709978"/>
-    </Element>
-    <Element Type="Param" Id="FA62E066">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="A03D86EA"/>
-        <Value>0</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="A2709978">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="BFA3710B"/>
-        <Variable Type="Variable" Id="D95A7186"/>
-    </Element>
     <Element Type="FunctionCall" Id="57FDFA1C">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="0366EE04"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
@@ -45481,6 +45628,29 @@
     <Element Type="Param" Id="B1E07F43">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="B55CF069"/>
         <Variable Type="Variable" Id="83D19CFA"/>
+    </Element>
+    <Element Type="FunctionCall" Id="6617F665">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="232935FA"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="79EF6B1D"/>
+    </Element>
+    <Element Type="Param" Id="79EF6B1D">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="415ACE83"/>
+        <FunctionCall Type="FunctionCall" Id="0299E32B"/>
+    </Element>
+    <Element Type="FunctionCall" Id="0299E32B">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="B9BB6748"/>
+        <Parameter Type="Param" Id="FA62E066"/>
+        <Parameter Type="Param" Id="A2709978"/>
+    </Element>
+    <Element Type="Param" Id="FA62E066">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="A03D86EA"/>
+        <Value>0</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="A2709978">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="BFA3710B"/>
+        <Variable Type="Variable" Id="D95A7186"/>
     </Element>
     <Element Type="FunctionCall" Id="AA2598EF">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="D16912F9"/>
@@ -45680,6 +45850,72 @@
     <Element Type="Param" Id="8ECB9806">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="BD48D330"/>
         <ValueType Type="text"/>
+    </Element>
+    <Element Type="FunctionDef" Id="1E9C7D09">
+        <FlagCall/>
+        <Parameter Type="ParamDef" Id="BAD755E9"/>
+        <Parameter Type="ParamDef" Id="60D0DE72"/>
+        <FunctionCall Type="FunctionCall" Id="C6121CB0"/>
+    </Element>
+    <Element Type="ParamDef" Id="BAD755E9">
+        <ParameterType>
+            <Type Value="int"/>
+        </ParameterType>
+        <Default Type="Param" Id="7C6F3871"/>
+    </Element>
+    <Element Type="Param" Id="7C6F3871">
+        <Value>0</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="ParamDef" Id="60D0DE72">
+        <ParameterType>
+            <Type Value="unit"/>
+        </ParameterType>
+        <Default Type="Param" Id="78351D86"/>
+    </Element>
+    <Element Type="Param" Id="78351D86">
+        <Preset Type="PresetValue" Library="Ntve" Id="D6EA4D09"/>
+    </Element>
+    <Element Type="FunctionCall" Id="C6121CB0">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+        <FunctionCall Type="FunctionCall" Id="C9F7EA71"/>
+        <FunctionCall Type="FunctionCall" Id="1E7059A4"/>
+    </Element>
+    <Element Type="FunctionCall" Id="C9F7EA71">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <ScriptCode>
+            gf_Corsair(lp_player, lp_unit);
+        </ScriptCode>
+    </Element>
+    <Element Type="FunctionCall" Id="1E7059A4">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+        <Parameter Type="Param" Id="B12724FA"/>
+        <Parameter Type="Param" Id="1CF9B25E"/>
+        <Parameter Type="Param" Id="CC85D8DF"/>
+    </Element>
+    <Element Type="Param" Id="B12724FA">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+        <FunctionCall Type="FunctionCall" Id="5D4FFA2B"/>
+    </Element>
+    <Element Type="FunctionCall" Id="5D4FFA2B">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000079"/>
+        <Parameter Type="Param" Id="563DEEC5"/>
+    </Element>
+    <Element Type="Param" Id="563DEEC5">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000138"/>
+        <Parameter Type="ParamDef" Id="60D0DE72"/>
+    </Element>
+    <Element Type="Param" Id="1CF9B25E">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+    </Element>
+    <Element Type="Param" Id="CC85D8DF">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+        <Value>CorsairHero</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Unit"/>
     </Element>
     <Element Type="Category" Id="27BAB375">
         <Item Type="Variable" Id="270A9FC0"/>

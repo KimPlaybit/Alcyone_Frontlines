@@ -9,6 +9,11 @@
         <TargetFind value="DarkTemplarShadowFury"/>
         <Validator value="CasterLifeLT60Percent"/>
     </CTacticalOrder>
+    <CTacticalOrder id="DTDecloak">
+        <Abil value="RogueGhostCloak"/>
+        <AbilCmdIndex value="1"/>
+        <Validator value="NoEnemiesNearby"/>
+    </CTacticalOrder>
     <CTacticalOrder id="MorphToBaneling">
         <Abil value="MorphZerglingBanelingHero"/>
         <Validator value="CasterLifeLT30Percent"/>
@@ -229,6 +234,7 @@
         <Array value="DTCloak"/>
         <Array value="Stasis"/>
         <Array value="DTBlink"/>
+        <Array value="DTDecloak"/>
     </CTacticalSet>
     <CTacticalSet id="SpectreHero">
         <Array value="SpectreCloaked"/>
