@@ -465,6 +465,9 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
+    AICampaignStart(1);
+    AICampaignStart(2);
+    AICampaignStart(3);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1156,7 +1159,6 @@ unit gf_FindHealspot (unit lp_unit) {
         }
     }
     if ((libNtve_gf_UnitGroupIsDead(lv_healUnits) == false)) {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(UnitGetOwner(lp_unit)) + StringExternal("Param/Value/C0D382DB")));
         autoA3B73AAB_g = lv_healUnits;
         autoA3B73AAB_u = UnitGroupCount(autoA3B73AAB_g, c_unitCountAll);
         for (;; autoA3B73AAB_u -= 1) {
@@ -1182,11 +1184,9 @@ unit gf_FindHealspot (unit lp_unit) {
         UnitGroupAddUnitGroup(lv_healUnits, gv_rtsPlayer2TownBuilding);
     }
     if ((libNtve_gf_UnitGroupIsDead(lv_healUnits) == false)) {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(UnitGetOwner(lp_unit)) + StringExternal("Param/Value/0592D05E")));
         return UnitGroupClosestToPoint(lv_healUnits, UnitGetPosition(lp_unit));
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(UnitGetOwner(lp_unit)) + StringExternal("Param/Value/4548FA08")));
     return null;
 }
 
@@ -1504,6 +1504,8 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
+    gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
     gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
     gv_rTSPlayer2 = PlayerGroupPlayer(GameAttributePlayersForTeam(2), 1);
     MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), PointFromId(1219627428));
@@ -4421,7 +4423,6 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                 AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
                 AISetDifficulty(lv_player, c_diffWaveLeashing, true);
                 AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
-                UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/4A57B1D1")));
                 AIAttackWaveSetTargetPoint(lv_player, lv_startPos);
                 AIAttackWaveCancel(AIWaveGet(lv_player, 0));
                 AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
@@ -4456,7 +4457,6 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                     AISetDifficulty(lv_player, c_diffWaveAvoidDanger, false);
                     libNtve_gf_AICast(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(lv_defendSpawner)));
                     AIAttackWaveSend(lv_player, 0, false);
-                    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + (StringExternal("Param/Value/970F4C5F") + StringExternal(libNtve_gf_ConvertPointToString(UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_defendSpawner)))))));
                     lv_lastPosition = lv_hostilePoint;
                     lv_stuckCounter = 0;
                     lv_state = 3;
@@ -4488,7 +4488,6 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                             AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroup(null, 15, RegionCircle(lv_hostilePoint, 5.0), UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
                             AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                             AIAttackWaveSend(lv_player, 0, false);
-                            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + (StringExternal("Param/Value/E72E4A77") + StringExternal(libNtve_gf_ConvertPointToString(lv_hostilePoint)))));
                             lv_lastPosition = lv_hostilePoint;
                             lv_stuckCounter = 0;
                             lv_state = 2;
@@ -4498,7 +4497,6 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                             AISetDifficulty(lv_player, c_diffWaveLeashing, true);
                             AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
                             AIAttackWaveCancel(AIWaveGet(lv_player, 0));
-                            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/1670B020")));
                             AIAttackWaveSetTargetPoint(lv_player, lv_startPos);
                             AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                             AIAttackWaveSend(lv_player, 0, false);
@@ -4523,7 +4521,6 @@ bool gt_Controller_Func (bool testConds, bool runActions) {
                         AISetDifficulty(lv_player, c_diffWaveLeashing, true);
                         AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
                         AIAttackWaveCancel(AIWaveGet(lv_player, 0));
-                        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/7FEA5A0F")));
                         if (((UnitGetType(lv_unit) == "ZerglingHero") || (UnitGetType(lv_unit) == "AvengerHero") || (UnitGetType(lv_unit) == "SpectreHero"))) {
                             AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroupAlliance(gf_GetEnemyRTSPlayer(lv_player), c_unitAllianceAllyExcludeSelf, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
                         }
