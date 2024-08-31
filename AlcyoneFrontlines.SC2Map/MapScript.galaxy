@@ -465,16 +465,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(1);
-    AICampaignStart(2);
-    AICampaignStart(3);
-    AICampaignStart(4);
-    AICampaignStart(5);
-    AICampaignStart(6);
-    AICampaignStart(7);
-    AICampaignStart(8);
-    AICampaignStart(9);
-    AICampaignStart(10);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -485,7 +475,6 @@ void cai_runall () {
 //--------------------------------------------------------------------------------------------------
 // Custom Script: ForceField
 //--------------------------------------------------------------------------------------------------
-
 static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
     order ord;
     point myPos = UnitGetPosition(aiUnit);
@@ -509,19 +498,16 @@ static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
     unit bestTargetUnit = null;
     bool extraEnergy = false;
     point forceFieldTarget = null;
-
     // Do not proceed if the order is invalid for some reason
     ord = AICreateOrder(player, c_AB_ForceField, 0);
     if (!UnitOrderIsValid(aiUnit, ord)) {
         return false;
     }
-
     // Filter out air units
     filterAI = AIFilter(player);
     AISetFilterPlane(filterAI, c_planeGround);
     AISetFilterCanAttackAlly(filterAI, c_groundAlliesNearby, false);
     groundEnemies = AIGetFilterGroup(filterAI, scanGroup);
-
     // Is there a threat in the area
     enemyCount = UnitGroupCount(groundEnemies, c_unitCountAll);
     if (enemyCount <= 0) {
@@ -532,27 +518,23 @@ static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
     filterAI = AIFilter(player);
     AISetFilterMelee(filterAI, c_onlyMelee);
     meleeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
-
     // Setup a friendly filter
     filterUnit = UnitFilter(0,0,0,0);
     UnitFilterSetState(filterUnit, c_targetFilterUncommandable,             c_unitFilterExcluded);
     UnitFilterSetState(filterUnit, c_targetFilterWorker,                    c_unitFilterExcluded);
     UnitFilterSetState(filterUnit, c_targetFilterUnderConstruction,         c_unitFilterExcluded);
     UnitFilterSetState(filterUnit, c_targetFilterStructure,                 c_unitFilterExcluded);
-
     // *** Scan the area for the following, set priority unit when found *** (highest first)
     // Priority 4: Melee enemy close to me
     // Priority 3: A friendly unit close to death, who has a melee enemy close by
     // Priority 2: A friendly ranged unit who has a melee enemy close by
     // Priority 1: Large clump of enemies (if we have extra energy)
     //
-
     // First check only melee enemies
     enemyCount = UnitGroupCount(meleeEnemyGroup, c_unitCountAll);
     while (enemyCount > 0) {
         enemyUnit = UnitGroupUnit(meleeEnemyGroup, enemyCount);
         enemyCount = enemyCount - 1;
-
         enemyPos = UnitGetPosition(enemyUnit);
         enemyDist = DistanceBetweenPoints(myPos, enemyPos);
         if (enemyDist <= c_forceFieldMeleeRange) {
@@ -569,7 +551,6 @@ static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
         while (friendlyCount > 0) {
             friendlyUnit = UnitGroupUnit(friendlyGroup, friendlyCount);
             friendlyCount = friendlyCount - 1;
-
             friendlyVit = UnitGetPropertyInt(friendlyUnit, c_unitPropVitalityPercent, c_unitPropCurrent);
             if (friendlyVit < 20) {
                 bestTargetUnit = enemyUnit;
@@ -586,7 +567,6 @@ static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
             }
         }
     }
-
     if (bestPrio == 0) {
         // no dangerous melee units found, split large ranged groups if we have extra energy 
         if (UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent) <= 125) {
@@ -595,12 +575,10 @@ static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
                 return false;
             }
         }
-
         // filter only ranged units
         filterAI = AIFilter(player);
         AISetFilterMelee(filterAI, c_onlyRanged);
         rangeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
-
         // see if there is a large group nearby to split
         forceFieldTarget = AIBestTargetPoint(
             rangeEnemyGroup,
@@ -625,12 +603,10 @@ static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
             forceFieldTarget = PointAlongLine(bestFriendPos, bestEnemyPos, enemyDist - 1.0);
         }
     }
-
     OrderSetTargetPoint(ord, forceFieldTarget);
     if (!UnitOrderIsValid(aiUnit, ord)) {
         return false;
     }
-
     AICast(aiUnit, ord, c_noMarker, c_castHold);
     return true;
 }
@@ -1528,16 +1504,6 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
-    PlayerGroupAdd(gv_soldierPlayers1, 5);
-    PlayerGroupAdd(gv_soldierPlayers1, 7);
-    PlayerGroupAdd(gv_soldierPlayers1, 9);
-    PlayerGroupAdd(gv_soldierPlayers1, 11);
-    gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
-    PlayerGroupAdd(gv_soldierPlayers2, 6);
-    PlayerGroupAdd(gv_soldierPlayers2, 8);
-    PlayerGroupAdd(gv_soldierPlayers2, 10);
-    PlayerGroupAdd(gv_soldierPlayers2, 12);
     gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
     gv_rTSPlayer2 = PlayerGroupPlayer(GameAttributePlayersForTeam(2), 1);
     MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), PointFromId(1219627428));

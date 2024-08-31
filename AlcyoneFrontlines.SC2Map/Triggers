@@ -117,16 +117,6 @@
         <Variable Type="Variable" Id="4DFA9F3D"/>
         <Variable Type="Variable" Id="F56CE7CF"/>
         <Event Type="FunctionCall" Id="A56D004B"/>
-        <Action Type="FunctionCall" Id="F18B6C2B"/>
-        <Action Type="FunctionCall" Id="0CF03BFC"/>
-        <Action Type="FunctionCall" Id="8583ECFD"/>
-        <Action Type="FunctionCall" Id="72705B54"/>
-        <Action Type="FunctionCall" Id="D124104E"/>
-        <Action Type="FunctionCall" Id="B82E130D"/>
-        <Action Type="FunctionCall" Id="314453D2"/>
-        <Action Type="FunctionCall" Id="2C77F70A"/>
-        <Action Type="FunctionCall" Id="78D7394A"/>
-        <Action Type="FunctionCall" Id="924783B8"/>
         <Action Type="FunctionCall" Id="86185F90"/>
         <Action Type="FunctionCall" Id="1A8B6E16"/>
         <Action Type="FunctionCall" Id="6C422BEA"/>
@@ -257,162 +247,6 @@
     </Element>
     <Element Type="FunctionCall" Id="A56D004B">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
-    </Element>
-    <Element Type="FunctionCall" Id="F18B6C2B">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
-        <Parameter Type="Param" Id="23047743"/>
-        <Parameter Type="Param" Id="4E7E99A7"/>
-    </Element>
-    <Element Type="Param" Id="23047743">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
-        <Variable Type="Variable" Id="9CAD3C6A"/>
-    </Element>
-    <Element Type="Param" Id="4E7E99A7">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-        <FunctionCall Type="FunctionCall" Id="E5EF96B5"/>
-    </Element>
-    <Element Type="FunctionCall" Id="E5EF96B5">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="2F695638"/>
-        <Parameter Type="Param" Id="6011E787"/>
-    </Element>
-    <Element Type="Param" Id="6011E787">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="B9EE4219"/>
-        <Value>3</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="FunctionCall" Id="0CF03BFC">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="15C2C248"/>
-        <Parameter Type="Param" Id="200BF02B"/>
-        <Parameter Type="Param" Id="3A6BC874"/>
-    </Element>
-    <Element Type="Param" Id="200BF02B">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1D6C8796"/>
-        <Value>5</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="3A6BC874">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
-        <Variable Type="Variable" Id="9CAD3C6A"/>
-    </Element>
-    <Element Type="FunctionCall" Id="8583ECFD">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="15C2C248"/>
-        <Parameter Type="Param" Id="B8264B5E"/>
-        <Parameter Type="Param" Id="55308053"/>
-    </Element>
-    <Element Type="Param" Id="B8264B5E">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1D6C8796"/>
-        <Value>7</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="55308053">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
-        <Variable Type="Variable" Id="9CAD3C6A"/>
-    </Element>
-    <Element Type="FunctionCall" Id="72705B54">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="15C2C248"/>
-        <Parameter Type="Param" Id="55E31670"/>
-        <Parameter Type="Param" Id="EDA876D8"/>
-    </Element>
-    <Element Type="Param" Id="55E31670">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1D6C8796"/>
-        <Value>9</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="EDA876D8">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
-        <Variable Type="Variable" Id="9CAD3C6A"/>
-    </Element>
-    <Element Type="FunctionCall" Id="D124104E">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="15C2C248"/>
-        <Parameter Type="Param" Id="90A27A2D"/>
-        <Parameter Type="Param" Id="C5DC1097"/>
-    </Element>
-    <Element Type="Param" Id="90A27A2D">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1D6C8796"/>
-        <Value>11</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="C5DC1097">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
-        <Variable Type="Variable" Id="9CAD3C6A"/>
-    </Element>
-    <Element Type="FunctionCall" Id="B82E130D">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
-        <Parameter Type="Param" Id="3CECF79B"/>
-        <Parameter Type="Param" Id="16BC785D"/>
-    </Element>
-    <Element Type="Param" Id="3CECF79B">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
-        <Variable Type="Variable" Id="72627959"/>
-    </Element>
-    <Element Type="Param" Id="16BC785D">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-        <FunctionCall Type="FunctionCall" Id="9F775657"/>
-    </Element>
-    <Element Type="FunctionCall" Id="9F775657">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="2F695638"/>
-        <Parameter Type="Param" Id="62154560"/>
-    </Element>
-    <Element Type="Param" Id="62154560">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="B9EE4219"/>
-        <Value>4</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="FunctionCall" Id="314453D2">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="15C2C248"/>
-        <Parameter Type="Param" Id="1CBC8D30"/>
-        <Parameter Type="Param" Id="2043755A"/>
-    </Element>
-    <Element Type="Param" Id="1CBC8D30">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1D6C8796"/>
-        <Value>6</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="2043755A">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
-        <Variable Type="Variable" Id="72627959"/>
-    </Element>
-    <Element Type="FunctionCall" Id="2C77F70A">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="15C2C248"/>
-        <Parameter Type="Param" Id="A8375E72"/>
-        <Parameter Type="Param" Id="476EF0A7"/>
-    </Element>
-    <Element Type="Param" Id="A8375E72">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1D6C8796"/>
-        <Value>8</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="476EF0A7">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
-        <Variable Type="Variable" Id="72627959"/>
-    </Element>
-    <Element Type="FunctionCall" Id="78D7394A">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="15C2C248"/>
-        <Parameter Type="Param" Id="7086A167"/>
-        <Parameter Type="Param" Id="B5F01E8B"/>
-    </Element>
-    <Element Type="Param" Id="7086A167">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1D6C8796"/>
-        <Value>10</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="B5F01E8B">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
-        <Variable Type="Variable" Id="72627959"/>
-    </Element>
-    <Element Type="FunctionCall" Id="924783B8">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="15C2C248"/>
-        <Parameter Type="Param" Id="D586CE75"/>
-        <Parameter Type="Param" Id="FCE8A8A4"/>
-    </Element>
-    <Element Type="Param" Id="D586CE75">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="1D6C8796"/>
-        <Value>12</Value>
-        <ValueType Type="int"/>
-    </Element>
-    <Element Type="Param" Id="FCE8A8A4">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
-        <Variable Type="Variable" Id="72627959"/>
     </Element>
     <Element Type="FunctionCall" Id="86185F90">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
@@ -33083,7 +32917,6 @@
     </Element>
     <Element Type="CustomScript" Id="8500E571">
         <ScriptCode>
-            
             static bool CorsairForceField (int player, unit aiUnit, unitgroup scanGroup) {
                 order ord;
                 point myPos = UnitGetPosition(aiUnit);
@@ -33107,19 +32940,16 @@
                 unit bestTargetUnit = null;
                 bool extraEnergy = false;
                 point forceFieldTarget = null;
-            
                 // Do not proceed if the order is invalid for some reason
                 ord = AICreateOrder(player, c_AB_ForceField, 0);
                 if (!UnitOrderIsValid(aiUnit, ord)) {
                     return false;
                 }
-            
                 // Filter out air units
                 filterAI = AIFilter(player);
                 AISetFilterPlane(filterAI, c_planeGround);
                 AISetFilterCanAttackAlly(filterAI, c_groundAlliesNearby, false);
                 groundEnemies = AIGetFilterGroup(filterAI, scanGroup);
-            
                 // Is there a threat in the area
                 enemyCount = UnitGroupCount(groundEnemies, c_unitCountAll);
                 if (enemyCount &lt;= 0) {
@@ -33130,27 +32960,23 @@
                 filterAI = AIFilter(player);
                 AISetFilterMelee(filterAI, c_onlyMelee);
                 meleeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
-            
                 // Setup a friendly filter
                 filterUnit = UnitFilter(0,0,0,0);
                 UnitFilterSetState(filterUnit, c_targetFilterUncommandable,             c_unitFilterExcluded);
                 UnitFilterSetState(filterUnit, c_targetFilterWorker,                    c_unitFilterExcluded);
                 UnitFilterSetState(filterUnit, c_targetFilterUnderConstruction,         c_unitFilterExcluded);
                 UnitFilterSetState(filterUnit, c_targetFilterStructure,                 c_unitFilterExcluded);
-            
                 // *** Scan the area for the following, set priority unit when found *** (highest first)
                 // Priority 4: Melee enemy close to me
                 // Priority 3: A friendly unit close to death, who has a melee enemy close by
                 // Priority 2: A friendly ranged unit who has a melee enemy close by
                 // Priority 1: Large clump of enemies (if we have extra energy)
                 //
-            
                 // First check only melee enemies
                 enemyCount = UnitGroupCount(meleeEnemyGroup, c_unitCountAll);
                 while (enemyCount &gt; 0) {
                     enemyUnit = UnitGroupUnit(meleeEnemyGroup, enemyCount);
                     enemyCount = enemyCount - 1;
-            
                     enemyPos = UnitGetPosition(enemyUnit);
                     enemyDist = DistanceBetweenPoints(myPos, enemyPos);
                     if (enemyDist &lt;= c_forceFieldMeleeRange) {
@@ -33167,7 +32993,6 @@
                     while (friendlyCount &gt; 0) {
                         friendlyUnit = UnitGroupUnit(friendlyGroup, friendlyCount);
                         friendlyCount = friendlyCount - 1;
-            
                         friendlyVit = UnitGetPropertyInt(friendlyUnit, c_unitPropVitalityPercent, c_unitPropCurrent);
                         if (friendlyVit &lt; 20) {
                             bestTargetUnit = enemyUnit;
@@ -33184,7 +33009,6 @@
                         }
                     }
                 }
-            
                 if (bestPrio == 0) {
                     // no dangerous melee units found, split large ranged groups if we have extra energy 
                     if (UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent) &lt;= 125) {
@@ -33193,12 +33017,10 @@
                             return false;
                         }
                     }
-            
                     // filter only ranged units
                     filterAI = AIFilter(player);
                     AISetFilterMelee(filterAI, c_onlyRanged);
                     rangeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
-            
                     // see if there is a large group nearby to split
                     forceFieldTarget = AIBestTargetPoint(
                         rangeEnemyGroup,
@@ -33223,12 +33045,10 @@
                         forceFieldTarget = PointAlongLine(bestFriendPos, bestEnemyPos, enemyDist - 1.0);
                     }
                 }
-            
                 OrderSetTargetPoint(ord, forceFieldTarget);
                 if (!UnitOrderIsValid(aiUnit, ord)) {
                     return false;
                 }
-            
                 AICast(aiUnit, ord, c_noMarker, c_castHold);
                 return true;
             }
