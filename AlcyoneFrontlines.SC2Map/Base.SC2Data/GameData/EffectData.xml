@@ -42,17 +42,35 @@
     <CEffectSet id="CCCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="DarkTemplarShadowFuryApplyDamageReduction">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="DamageReduction"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="DarkTemplarShadowFuryDamage">
         <Amount value="20"/>
+        <SearchFlags index="SameCliff" value="0"/>
     </CEffectDamage>
     <CEffectDamage id="DarkTemplarShadowFuryDamage2">
         <EditorCategories value=""/>
         <Amount value="1"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
+    <!-- Dark templar shadowfury -->
+    <CEffectCreatePersistent id="DarkTemplarShadowFuryPersistent">
+        <ValidatorArray index="0" value="DarkTemplarShadowFuryTargetsInArea"/>
+        <ValidatorArray index="1" removed="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="DarkTemplarShadowFuryApplyDamageReduction"/>
+    </CEffectCreatePersistent>
     <CEffectEnumArea id="DarkTemplarShadowFurySearch">
         <SearchFilters value="-;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport1CP"/>
+    <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport2CP"/>
+    <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport3CP"/>
+    <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport4CP"/>
+    <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport5CP"/>
     <CEffectDamage id="DefilerMPPlagueDamage2">
         <ValidatorArray value="DefilerMPPlagueLifeGT1"/>
         <ValidatorArray value="NotInvulnerable"/>
