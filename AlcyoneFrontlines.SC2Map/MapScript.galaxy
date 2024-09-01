@@ -42,8 +42,6 @@ unit gv_team2Spawner3;
 string gv_team2SpawnUnit;
 int gv_amountTeam2;
 int gv_ressTimer;
-unit[11] gv_unitSizeIndex;
-int[11] gv_unitSizes;
 int gv_sizeIndex;
 unitgroup gv_revivableUnits;
 string gv_terranFactions;
@@ -55,6 +53,8 @@ playergroup gv_soldierPlayers1;
 playergroup gv_soldierPlayers2;
 bool[17] gv_playerPicked;
 unitgroup gv_soldiers;
+unit[11] gv_unitSizeIndex;
+int[11] gv_unitSizes;
 unitgroup gv_healUnitsRTS1;
 unitgroup gv_healUnitsRTS2;
 unitgroup gv_unitGroup;
@@ -220,16 +220,12 @@ void InitGlobals () {
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
-point gf_GetSpawnPointTeam1 (unit lp_deadPlayer);
 int gf_GetAllyRTSPlayer (int lp_player);
 int gf_GetEnemyRTSPlayer (int lp_player);
-point gf_GetSpawnPointTeam2 (unit lp_deadPlayer);
 point gf_GetStartLocation (int lp_player);
 void gf_GiveResource (unit lp_killedUnit, int lp_player, int lp_killingPlayer);
 void gf_Respawn (unit lp_killedUnit);
-void gf_SetSize (unit lp_unitToSizeUp);
 void gf_SpawnDefenceTower (int lp_rTSPlayer, int lp_spawnForPlayer, point lp_spawn, point lp_facing);
-void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer);
 string gf_GetPlayerRaceName (int lp_player);
 bool gf_GetTurretStatus ();
 bool gf_GetWaveStatus ();
@@ -237,6 +233,11 @@ bool gf_IsNonKnownRace (int lp_player);
 bool gf_IsTerran (int lp_rTSPlayer);
 bool gf_IsZerg (int lp_rTSPlayer);
 bool gf_IsProtoss (int lp_rTSPlayer);
+void gf_GiveXPForHeroKills (unit lp_killingSoldier, unit lp_killedSoldier);
+void gf_SetSize (unit lp_unitToSizeUp);
+point gf_GetSpawnPointTeam1 (unit lp_deadPlayer);
+point gf_GetSpawnPointTeam2 (unit lp_deadPlayer);
+void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer);
 void gf_Corsair (int lp_player, unit lp_unit);
 unit gf_FindHealspot (unit lp_unit);
 unit gf_FindEnemyHero (unit lp_unit);
@@ -289,8 +290,6 @@ trigger gt_MindControlPrevent;
 trigger gt_Healburst;
 trigger gt_ZerglingToxicBlast;
 trigger gt_SensorTowerCreated;
-trigger gt_ReviveHeroesTeam1;
-trigger gt_ReviveHeroesTeam2;
 trigger gt_SoldierSelectionTeam1;
 trigger gt_SoldierSelectionTeam2;
 trigger gt_IncreaseSize;
@@ -303,6 +302,8 @@ trigger gt_AIBuildQueens;
 trigger gt_AIBuildMedivacs;
 trigger gt_AddRtsPlayer1Buildings;
 trigger gt_RemoveRtsPlayer1Buildings;
+trigger gt_ReviveHeroesTeam1;
+trigger gt_ReviveHeroesTeam2;
 trigger gt_BuiltHealSpotsTeam1;
 trigger gt_BuiltHealSpotsTeam2;
 trigger gt_EvaluatePower;
@@ -623,27 +624,6 @@ void InitCustomScript () {
 //--------------------------------------------------------------------------------------------------
 // Global Functions
 //--------------------------------------------------------------------------------------------------
-point gf_GetSpawnPointTeam1 (unit lp_deadPlayer) {
-    // Variable Declarations
-    unit lv_unit;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-
-    // Implementation
-    if ((libNtve_gf_UnitGroupIsDead(gv_rtsPlayer1TownBuilding) == false)) {
-        lv_unit = UnitGroupClosestToPoint(gv_rtsPlayer1TownBuilding, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
-        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
-    }
-
-    if ((libNtve_gf_UnitGroupIsDead(gv_rtsPlayer1Buildings) == false)) {
-        lv_unit = UnitGroupClosestToPoint(gv_rtsPlayer1Buildings, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
-        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
-    }
-
-    return PointFromId(1219627428);
-}
-
 int gf_GetAllyRTSPlayer (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -664,27 +644,6 @@ int gf_GetEnemyRTSPlayer (int lp_player) {
     else {
         return gv_rTSPlayer2;
     }
-}
-
-point gf_GetSpawnPointTeam2 (unit lp_deadPlayer) {
-    // Variable Declarations
-    unit lv_unit;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-
-    // Implementation
-    if ((libNtve_gf_UnitGroupIsDead(gv_rtsPlayer2TownBuilding) == false)) {
-        lv_unit = UnitGroupClosestToPoint(gv_rtsPlayer2TownBuilding, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
-        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
-    }
-
-    if ((libNtve_gf_UnitGroupIsDead(gv_rtsPlayer2Buildings) == false)) {
-        lv_unit = UnitGroupClosestToPoint(gv_rtsPlayer2Buildings, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
-        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
-    }
-
-    return PointFromId(1466456382);
 }
 
 point gf_GetStartLocation (int lp_player) {
@@ -902,37 +861,6 @@ void gf_Respawn (unit lp_killedUnit) {
 
 }
 
-void gf_SetSize (unit lp_unitToSizeUp) {
-    // Variable Declarations
-    int lv_scale;
-    int lv_indexOfUnit;
-    bool lv_unitIsInArray;
-
-    // Automatic Variable Declarations
-    int auto76C0E136_ae;
-    const int auto76C0E136_ai = 1;
-
-    // Variable Initialization
-
-    // Implementation
-    auto76C0E136_ae = gv_sizeIndex;
-    lv_indexOfUnit = 0;
-    for ( ; ( (auto76C0E136_ai >= 0 && lv_indexOfUnit <= auto76C0E136_ae) || (auto76C0E136_ai < 0 && lv_indexOfUnit >= auto76C0E136_ae) ) ; lv_indexOfUnit += auto76C0E136_ai ) {
-        if ((gv_unitSizeIndex[lv_indexOfUnit] == lp_unitToSizeUp)) {
-            lv_unitIsInArray = true;
-            break;
-        }
-
-    }
-    if ((lv_unitIsInArray == true)) {
-        lv_scale = gv_unitSizes[lv_indexOfUnit];
-    }
-    else {
-        lv_scale = 40;
-    }
-    UnitSetScale(EventUnit(), lv_scale, lv_scale, lv_scale);
-}
-
 void gf_SpawnDefenceTower (int lp_rTSPlayer, int lp_spawnForPlayer, point lp_spawn, point lp_facing) {
     // Variable Declarations
     bool lv_raceCheck;
@@ -966,28 +894,6 @@ void gf_SpawnDefenceTower (int lp_rTSPlayer, int lp_spawnForPlayer, point lp_spa
             libNtve_gf_UnitCreateFacingPoint(1, "KhaydarinMonolith", 0, lp_spawnForPlayer, lp_spawn, lp_facing);
         }
 
-    }
-
-}
-
-void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer) {
-    // Variable Declarations
-    int lv_miGa;
-    int lv_stats;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_miGa = gv_playerMiGa[lp_triggeringPlayer];
-    lv_stats = gv_playerStats[lp_triggeringPlayer];
-
-    // Implementation
-    if (((PlayerGroupHasPlayer(gv_soldierPlayers1, lp_triggeringPlayer) == true) || (PlayerGroupHasPlayer(gv_soldierPlayers2, lp_triggeringPlayer) == true))) {
-        gv_playerKills[lp_triggeringPlayer] = lp_kills;
-        gv_playerDeaths[lp_triggeringPlayer] = lp_deaths;
-        libNtve_gf_SetDialogItemText(lv_stats, ((IntToText(lp_kills) + StringExternal("Param/Value/6B3CCD2E")) + IntToText(lp_deaths)), PlayerGroupAll());
-        gv_playerMineral[lp_triggeringPlayer] = lp_minerals;
-        gv_playerGas[lp_triggeringPlayer] = lp_gas;
-        libNtve_gf_SetDialogItemText(lv_miGa, ((IntToText(lp_minerals) + StringExternal("Param/Value/CD0E2369")) + IntToText(lp_gas)), PlayerGroupAll());
     }
 
 }
@@ -1113,6 +1019,115 @@ bool gf_IsProtoss (int lp_rTSPlayer) {
     else {
         return false;
     }
+}
+
+void gf_GiveXPForHeroKills (unit lp_killingSoldier, unit lp_killedSoldier) {
+    // Variable Declarations
+    const int lv_baseXP = 50;
+    const int lv_xpPerLevel = 25;
+    int lv_amountOfXp;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_amountOfXp = (lv_baseXP + (100 * UnitXPGetCurrentLevel(lp_killedSoldier, null)));
+
+    // Implementation
+    UnitXPAddXP(lp_killingSoldier, null, lv_amountOfXp);
+}
+
+void gf_SetSize (unit lp_unitToSizeUp) {
+    // Variable Declarations
+    int lv_scale;
+    int lv_indexOfUnit;
+    bool lv_unitIsInArray;
+
+    // Automatic Variable Declarations
+    int auto76C0E136_ae;
+    const int auto76C0E136_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    auto76C0E136_ae = gv_sizeIndex;
+    lv_indexOfUnit = 0;
+    for ( ; ( (auto76C0E136_ai >= 0 && lv_indexOfUnit <= auto76C0E136_ae) || (auto76C0E136_ai < 0 && lv_indexOfUnit >= auto76C0E136_ae) ) ; lv_indexOfUnit += auto76C0E136_ai ) {
+        if ((gv_unitSizeIndex[lv_indexOfUnit] == lp_unitToSizeUp)) {
+            lv_unitIsInArray = true;
+            break;
+        }
+
+    }
+    if ((lv_unitIsInArray == true)) {
+        lv_scale = gv_unitSizes[lv_indexOfUnit];
+    }
+    else {
+        lv_scale = 40;
+    }
+    UnitSetScale(EventUnit(), lv_scale, lv_scale, lv_scale);
+}
+
+point gf_GetSpawnPointTeam1 (unit lp_deadPlayer) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((libNtve_gf_UnitGroupIsDead(gv_rtsPlayer1TownBuilding) == false)) {
+        lv_unit = UnitGroupClosestToPoint(gv_rtsPlayer1TownBuilding, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
+        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    }
+
+    if ((libNtve_gf_UnitGroupIsDead(gv_rtsPlayer1Buildings) == false)) {
+        lv_unit = UnitGroupClosestToPoint(gv_rtsPlayer1Buildings, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
+        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    }
+
+    return PointFromId(1219627428);
+}
+
+point gf_GetSpawnPointTeam2 (unit lp_deadPlayer) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((libNtve_gf_UnitGroupIsDead(gv_rtsPlayer2TownBuilding) == false)) {
+        lv_unit = UnitGroupClosestToPoint(gv_rtsPlayer2TownBuilding, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
+        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    }
+
+    if ((libNtve_gf_UnitGroupIsDead(gv_rtsPlayer2Buildings) == false)) {
+        lv_unit = UnitGroupClosestToPoint(gv_rtsPlayer2Buildings, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
+        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    }
+
+    return PointFromId(1466456382);
+}
+
+void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer) {
+    // Variable Declarations
+    int lv_miGa;
+    int lv_stats;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_miGa = gv_playerMiGa[lp_triggeringPlayer];
+    lv_stats = gv_playerStats[lp_triggeringPlayer];
+
+    // Implementation
+    if (((PlayerGroupHasPlayer(gv_soldierPlayers1, lp_triggeringPlayer) == true) || (PlayerGroupHasPlayer(gv_soldierPlayers2, lp_triggeringPlayer) == true))) {
+        gv_playerKills[lp_triggeringPlayer] = lp_kills;
+        gv_playerDeaths[lp_triggeringPlayer] = lp_deaths;
+        libNtve_gf_SetDialogItemText(lv_stats, ((IntToText(lp_kills) + StringExternal("Param/Value/6B3CCD2E")) + IntToText(lp_deaths)), PlayerGroupAll());
+        gv_playerMineral[lp_triggeringPlayer] = lp_minerals;
+        gv_playerGas[lp_triggeringPlayer] = lp_gas;
+        libNtve_gf_SetDialogItemText(lv_miGa, ((IntToText(lp_minerals) + StringExternal("Param/Value/CD0E2369")) + IntToText(lp_gas)), PlayerGroupAll());
+    }
+
 }
 
 void gf_Corsair (int lp_player, unit lp_unit) {
@@ -3152,218 +3167,6 @@ void gt_SensorTowerCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Revive Heroes Team 1
-//--------------------------------------------------------------------------------------------------
-bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    point lv_spawnPoint;
-    int lv_triggeringPlayerKills;
-    int lv_triggeringPlayerDeaths;
-    int lv_triggeringPlayerMinerals;
-    int lv_triggeringPlayerGas;
-    int lv_triggeringPlayer;
-    int lv_killingPlayer;
-    int lv_killingPlayersKills;
-    int lv_killingPlayersDeaths;
-    int lv_killingPlayerMinerals;
-    int lv_killingPlayerGas;
-    unit lv_dyingUnit;
-    timer lv_deathTimer;
-    int lv_timerWindow;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_spawnPoint = PointFromId(1219627428);
-    lv_triggeringPlayerKills = gv_playerKills[EventPlayer()];
-    lv_triggeringPlayerDeaths = (gv_playerDeaths[EventPlayer()] + 1);
-    lv_triggeringPlayerMinerals = gv_playerMineral[EventPlayer()];
-    lv_triggeringPlayerGas = gv_playerGas[EventPlayer()];
-    lv_triggeringPlayer = EventPlayer();
-    lv_killingPlayer = libNtve_gf_KillingPlayer();
-    lv_killingPlayersKills = gv_playerKills[libNtve_gf_KillingPlayer()];
-    lv_killingPlayersDeaths = gv_playerDeaths[libNtve_gf_KillingPlayer()];
-    lv_killingPlayerMinerals = (gv_playerMineral[libNtve_gf_KillingPlayer()] + 500);
-    lv_killingPlayerGas = (gv_playerGas[libNtve_gf_KillingPlayer()] + 300);
-    lv_dyingUnit = EventUnit();
-    lv_deathTimer = TimerCreate();
-    lv_timerWindow = c_timerWindowNone;
-
-    // Conditions
-    if (testConds) {
-        if (!((((UnitGetOwner(lv_dyingUnit) == gv_rTSPlayer1) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerType(gv_rTSPlayer1) == c_playerTypeComputer) && (UnitGroupHasUnit(gv_revivableUnits, EventUnit()) == true)) || ((UnitGroupHasUnit(gv_revivableUnits, EventUnit()) == true) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, gv_rTSPlayer1), UnitGetOwner(EventUnit())) == true))))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/B7DAE800") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/5B6D1714") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/C38921DF") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/6BE9876F")))))))));
-    gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
-    if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
-        gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
-        PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropMinerals) + 500));
-        PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropVespene) + 300));
-    }
-
-    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
-    UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
-    UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
-    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
-    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
-    UnitSetState(lv_dyingUnit, c_unitStateHidden, true);
-    UnitSetState(lv_dyingUnit, c_unitStateSleeping, true);
-    UnitSetState(lv_dyingUnit, c_unitStateStunned, true);
-    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, true);
-    lv_spawnPoint = gf_GetSpawnPointTeam1(lv_dyingUnit);
-    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
-    UnitRevive(lv_dyingUnit);
-    lv_deathTimer = TimerCreate();
-    TimerWindowCreate(lv_deathTimer, StringToText(""), false, false);
-    TimerStart(lv_deathTimer, gv_ressTimer, false, c_timeReal);
-    lv_timerWindow = TimerWindowLastCreated();
-    TimerWindowShow(lv_timerWindow, PlayerGroupSingle(lv_triggeringPlayer), true);
-    Wait(gv_ressTimer, c_timeReal);
-    lv_spawnPoint = gf_GetSpawnPointTeam1(lv_dyingUnit);
-    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
-    libNtve_gf_StopTimer(lv_deathTimer);
-    TimerWindowDestroy(lv_timerWindow);
-    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
-    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
-    UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
-    UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
-    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, true);
-    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, true);
-    UnitSetState(lv_dyingUnit, c_unitStateStunned, false);
-    UnitSetState(lv_dyingUnit, c_unitStateHidden, false);
-    UnitSetState(lv_dyingUnit, c_unitStateSleeping, false);
-    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropLifePercent, 100.0);
-    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropShieldsPercent, 100.0);
-    CameraPan(UnitGetOwner(lv_dyingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
-    UnitClearSelection(UnitGetOwner(lv_dyingUnit));
-    UnitSelect(lv_dyingUnit, UnitGetOwner(lv_dyingUnit), true);
-    if ((UnitGetType(EventUnit()) == "HotSTorrasque2")) {
-        gf_SetSize(lv_dyingUnit);
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_ReviveHeroesTeam1_Init () {
-    gt_ReviveHeroesTeam1 = TriggerCreate("gt_ReviveHeroesTeam1_Func");
-    TriggerAddEventUnitDied(gt_ReviveHeroesTeam1, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Revive Heroes Team 2
-//--------------------------------------------------------------------------------------------------
-bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    point lv_spawnPoint;
-    int lv_triggeringPlayerKills;
-    int lv_triggeringPlayerDeaths;
-    int lv_triggeringPlayerMinerals;
-    int lv_triggeringPlayerGas;
-    int lv_triggeringPlayer;
-    int lv_killingPlayersKills;
-    int lv_killingPlayersDeaths;
-    int lv_killingPlayerMinerals;
-    int lv_killingPlayerGas;
-    int lv_killingPlayer;
-    unit lv_dyingUnit;
-    timer lv_deathTimer;
-    int lv_timerWindow;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_spawnPoint = PointFromId(1466456382);
-    lv_triggeringPlayerKills = gv_playerKills[EventPlayer()];
-    lv_triggeringPlayerDeaths = (gv_playerDeaths[EventPlayer()] + 1);
-    lv_triggeringPlayerMinerals = gv_playerMineral[EventPlayer()];
-    lv_triggeringPlayerGas = gv_playerGas[EventPlayer()];
-    lv_triggeringPlayer = EventPlayer();
-    lv_killingPlayersKills = gv_playerKills[libNtve_gf_KillingPlayer()];
-    lv_killingPlayersDeaths = gv_playerDeaths[libNtve_gf_KillingPlayer()];
-    lv_killingPlayerMinerals = (gv_playerMineral[libNtve_gf_KillingPlayer()] + 500);
-    lv_killingPlayerGas = (gv_playerGas[libNtve_gf_KillingPlayer()] + 300);
-    lv_killingPlayer = libNtve_gf_KillingPlayer();
-    lv_dyingUnit = EventUnit();
-    lv_deathTimer = TimerCreate();
-    lv_timerWindow = c_timerWindowNone;
-
-    // Conditions
-    if (testConds) {
-        if (!((((UnitGroupHasUnit(gv_revivableUnits, EventUnit()) == true) && (UnitGetOwner(lv_dyingUnit) == gv_rTSPlayer2) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerType(gv_rTSPlayer1) == c_playerTypeComputer)) || ((UnitGroupHasUnit(gv_revivableUnits, EventUnit()) == true) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, gv_rTSPlayer2), UnitGetOwner(EventUnit())) == true))))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/4A0114E0") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/01AFC6B8") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/5E8667DD") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/560E1AB5")))))))));
-    gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
-    if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
-        gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
-        PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropMinerals) + 500));
-        PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropVespene) + 300));
-    }
-
-    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
-    UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
-    UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
-    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
-    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
-    UnitSetState(lv_dyingUnit, c_unitStateHidden, true);
-    UnitSetState(lv_dyingUnit, c_unitStateSleeping, true);
-    UnitSetState(lv_dyingUnit, c_unitStateStunned, true);
-    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, true);
-    lv_spawnPoint = gf_GetSpawnPointTeam2(lv_dyingUnit);
-    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
-    UnitRevive(lv_dyingUnit);
-    lv_deathTimer = TimerCreate();
-    TimerWindowCreate(lv_deathTimer, StringToText(""), false, false);
-    TimerStart(lv_deathTimer, gv_ressTimer, false, c_timeReal);
-    lv_timerWindow = TimerWindowLastCreated();
-    TimerWindowShow(lv_timerWindow, PlayerGroupSingle(lv_triggeringPlayer), true);
-    Wait(gv_ressTimer, c_timeReal);
-    lv_spawnPoint = gf_GetSpawnPointTeam2(lv_dyingUnit);
-    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
-    libNtve_gf_StopTimer(lv_deathTimer);
-    TimerWindowDestroy(lv_timerWindow);
-    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
-    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
-    UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
-    UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
-    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, true);
-    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, true);
-    UnitSetState(lv_dyingUnit, c_unitStateStunned, false);
-    UnitSetState(lv_dyingUnit, c_unitStateHidden, false);
-    UnitSetState(lv_dyingUnit, c_unitStateSleeping, false);
-    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropLifePercent, 100.0);
-    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropShieldsPercent, 100.0);
-    CameraPan(UnitGetOwner(lv_dyingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
-    UnitClearSelection(UnitGetOwner(lv_dyingUnit));
-    UnitSelect(lv_dyingUnit, UnitGetOwner(lv_dyingUnit), true);
-    if ((UnitGetType(EventUnit()) == "HotSTorrasque2")) {
-        gf_SetSize(lv_dyingUnit);
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_ReviveHeroesTeam2_Init () {
-    gt_ReviveHeroesTeam2 = TriggerCreate("gt_ReviveHeroesTeam2_Func");
-    TriggerAddEventUnitDied(gt_ReviveHeroesTeam2, null);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: Soldier Selection Team 1
 //--------------------------------------------------------------------------------------------------
 bool gt_SoldierSelectionTeam1_Func (bool testConds, bool runActions) {
@@ -3961,6 +3764,220 @@ bool gt_RemoveRtsPlayer1Buildings_Func (bool testConds, bool runActions) {
 void gt_RemoveRtsPlayer1Buildings_Init () {
     gt_RemoveRtsPlayer1Buildings = TriggerCreate("gt_RemoveRtsPlayer1Buildings_Func");
     TriggerAddEventUnitDied(gt_RemoveRtsPlayer1Buildings, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Revive Heroes Team 1
+//--------------------------------------------------------------------------------------------------
+bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_spawnPoint;
+    int lv_triggeringPlayerKills;
+    int lv_triggeringPlayerDeaths;
+    int lv_triggeringPlayerMinerals;
+    int lv_triggeringPlayerGas;
+    int lv_triggeringPlayer;
+    int lv_killingPlayer;
+    int lv_killingPlayersKills;
+    int lv_killingPlayersDeaths;
+    int lv_killingPlayerMinerals;
+    int lv_killingPlayerGas;
+    unit lv_dyingUnit;
+    timer lv_deathTimer;
+    int lv_timerWindow;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_spawnPoint = PointFromId(1219627428);
+    lv_triggeringPlayerKills = gv_playerKills[EventPlayer()];
+    lv_triggeringPlayerDeaths = (gv_playerDeaths[EventPlayer()] + 1);
+    lv_triggeringPlayerMinerals = gv_playerMineral[EventPlayer()];
+    lv_triggeringPlayerGas = gv_playerGas[EventPlayer()];
+    lv_triggeringPlayer = EventPlayer();
+    lv_killingPlayer = libNtve_gf_KillingPlayer();
+    lv_killingPlayersKills = gv_playerKills[libNtve_gf_KillingPlayer()];
+    lv_killingPlayersDeaths = gv_playerDeaths[libNtve_gf_KillingPlayer()];
+    lv_killingPlayerMinerals = (gv_playerMineral[libNtve_gf_KillingPlayer()] + 500);
+    lv_killingPlayerGas = (gv_playerGas[libNtve_gf_KillingPlayer()] + 300);
+    lv_dyingUnit = EventUnit();
+    lv_deathTimer = TimerCreate();
+    lv_timerWindow = c_timerWindowNone;
+
+    // Conditions
+    if (testConds) {
+        if (!((((UnitGetOwner(lv_dyingUnit) == gv_rTSPlayer1) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerType(gv_rTSPlayer1) == c_playerTypeComputer) && (UnitGroupHasUnit(gv_revivableUnits, EventUnit()) == true)) || ((UnitGroupHasUnit(gv_revivableUnits, EventUnit()) == true) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, gv_rTSPlayer1), UnitGetOwner(EventUnit())) == true))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/B7DAE800") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/5B6D1714") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/C38921DF") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/6BE9876F")))))))));
+    gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
+    gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
+    if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
+        gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
+        PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropMinerals) + 500));
+        PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropVespene) + 300));
+    }
+
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSleeping, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStunned, true);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, true);
+    lv_spawnPoint = gf_GetSpawnPointTeam1(lv_dyingUnit);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    UnitRevive(lv_dyingUnit);
+    lv_deathTimer = TimerCreate();
+    TimerWindowCreate(lv_deathTimer, StringToText(""), false, false);
+    TimerStart(lv_deathTimer, gv_ressTimer, false, c_timeReal);
+    lv_timerWindow = TimerWindowLastCreated();
+    TimerWindowShow(lv_timerWindow, PlayerGroupSingle(lv_triggeringPlayer), true);
+    Wait(gv_ressTimer, c_timeReal);
+    lv_spawnPoint = gf_GetSpawnPointTeam1(lv_dyingUnit);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    libNtve_gf_StopTimer(lv_deathTimer);
+    TimerWindowDestroy(lv_timerWindow);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStunned, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSleeping, false);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropShieldsPercent, 100.0);
+    CameraPan(UnitGetOwner(lv_dyingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
+    UnitClearSelection(UnitGetOwner(lv_dyingUnit));
+    UnitSelect(lv_dyingUnit, UnitGetOwner(lv_dyingUnit), true);
+    if ((UnitGetType(EventUnit()) == "HotSTorrasque2")) {
+        gf_SetSize(lv_dyingUnit);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ReviveHeroesTeam1_Init () {
+    gt_ReviveHeroesTeam1 = TriggerCreate("gt_ReviveHeroesTeam1_Func");
+    TriggerAddEventUnitDied(gt_ReviveHeroesTeam1, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Revive Heroes Team 2
+//--------------------------------------------------------------------------------------------------
+bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_spawnPoint;
+    int lv_triggeringPlayerKills;
+    int lv_triggeringPlayerDeaths;
+    int lv_triggeringPlayerMinerals;
+    int lv_triggeringPlayerGas;
+    int lv_triggeringPlayer;
+    int lv_killingPlayersKills;
+    int lv_killingPlayersDeaths;
+    int lv_killingPlayerMinerals;
+    int lv_killingPlayerGas;
+    int lv_killingPlayer;
+    unit lv_dyingUnit;
+    timer lv_deathTimer;
+    int lv_timerWindow;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_spawnPoint = PointFromId(1466456382);
+    lv_triggeringPlayerKills = gv_playerKills[EventPlayer()];
+    lv_triggeringPlayerDeaths = (gv_playerDeaths[EventPlayer()] + 1);
+    lv_triggeringPlayerMinerals = gv_playerMineral[EventPlayer()];
+    lv_triggeringPlayerGas = gv_playerGas[EventPlayer()];
+    lv_triggeringPlayer = EventPlayer();
+    lv_killingPlayersKills = gv_playerKills[libNtve_gf_KillingPlayer()];
+    lv_killingPlayersDeaths = gv_playerDeaths[libNtve_gf_KillingPlayer()];
+    lv_killingPlayerMinerals = (gv_playerMineral[libNtve_gf_KillingPlayer()] + 500);
+    lv_killingPlayerGas = (gv_playerGas[libNtve_gf_KillingPlayer()] + 300);
+    lv_killingPlayer = libNtve_gf_KillingPlayer();
+    lv_dyingUnit = EventUnit();
+    lv_deathTimer = TimerCreate();
+    lv_timerWindow = c_timerWindowNone;
+
+    // Conditions
+    if (testConds) {
+        if (!((((UnitGroupHasUnit(gv_revivableUnits, EventUnit()) == true) && (UnitGetOwner(lv_dyingUnit) == gv_rTSPlayer2) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerType(gv_rTSPlayer1) == c_playerTypeComputer)) || ((UnitGroupHasUnit(gv_revivableUnits, EventUnit()) == true) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, gv_rTSPlayer2), UnitGetOwner(EventUnit())) == true))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/4A0114E0") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/01AFC6B8") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/5E8667DD") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/560E1AB5")))))))));
+    gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
+    gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
+    if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
+        gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
+        PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropMinerals) + 500));
+        PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropVespene) + 300));
+    }
+
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSleeping, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStunned, true);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, true);
+    lv_spawnPoint = gf_GetSpawnPointTeam2(lv_dyingUnit);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    UnitRevive(lv_dyingUnit);
+    lv_deathTimer = TimerCreate();
+    TimerWindowCreate(lv_deathTimer, StringToText(""), false, false);
+    TimerStart(lv_deathTimer, gv_ressTimer, false, c_timeReal);
+    lv_timerWindow = TimerWindowLastCreated();
+    TimerWindowShow(lv_timerWindow, PlayerGroupSingle(lv_triggeringPlayer), true);
+    Wait(gv_ressTimer, c_timeReal);
+    lv_spawnPoint = gf_GetSpawnPointTeam2(lv_dyingUnit);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    libNtve_gf_StopTimer(lv_deathTimer);
+    TimerWindowDestroy(lv_timerWindow);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStunned, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSleeping, false);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropShieldsPercent, 100.0);
+    CameraPan(UnitGetOwner(lv_dyingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
+    UnitClearSelection(UnitGetOwner(lv_dyingUnit));
+    UnitSelect(lv_dyingUnit, UnitGetOwner(lv_dyingUnit), true);
+    if ((UnitGetType(EventUnit()) == "HotSTorrasque2")) {
+        gf_SetSize(lv_dyingUnit);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ReviveHeroesTeam2_Init () {
+    gt_ReviveHeroesTeam2 = TriggerCreate("gt_ReviveHeroesTeam2_Func");
+    TriggerAddEventUnitDied(gt_ReviveHeroesTeam2, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5363,8 +5380,6 @@ void InitTriggers () {
     gt_Healburst_Init();
     gt_ZerglingToxicBlast_Init();
     gt_SensorTowerCreated_Init();
-    gt_ReviveHeroesTeam1_Init();
-    gt_ReviveHeroesTeam2_Init();
     gt_SoldierSelectionTeam1_Init();
     gt_SoldierSelectionTeam2_Init();
     gt_IncreaseSize_Init();
@@ -5377,6 +5392,8 @@ void InitTriggers () {
     gt_AIBuildMedivacs_Init();
     gt_AddRtsPlayer1Buildings_Init();
     gt_RemoveRtsPlayer1Buildings_Init();
+    gt_ReviveHeroesTeam1_Init();
+    gt_ReviveHeroesTeam2_Init();
     gt_BuiltHealSpotsTeam1_Init();
     gt_BuiltHealSpotsTeam2_Init();
     gt_EvaluatePower_Init();
