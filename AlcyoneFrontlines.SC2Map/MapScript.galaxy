@@ -1023,8 +1023,8 @@ bool gf_IsProtoss (int lp_rTSPlayer) {
 
 void gf_GiveXPForHeroKills (unit lp_killingSoldier, unit lp_killedSoldier) {
     // Variable Declarations
-    const int lv_baseXP = 50;
-    const int lv_xpPerLevel = 25;
+    const int lv_baseXP = 75;
+    const int lv_xpPerLevel = 40;
     int lv_amountOfXp;
 
     // Automatic Variable Declarations
