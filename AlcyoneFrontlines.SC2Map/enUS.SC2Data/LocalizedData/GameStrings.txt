@@ -38,6 +38,7 @@ Attribute002/Value001/Name=On
 Attribute002/Value002/Desc=Turn off starting defence turret
 Attribute002/Value002/Name=Off
 Behavior/Name/CorsairDamageBonus=Corsair Damage Bonus
+Behavior/Name/DamageReduction=Damage Reduction
 Behavior/Name/DragoonDamageBonus=Dragoon Damage Bonus
 Behavior/Name/DragoonFrenzy=Frenzy
 Behavior/Name/FenixChampionPowerShield2=Damage Reduction
@@ -62,6 +63,7 @@ Behavior/Name/ZergEnergyBonus=Zerg Energy Bonus
 Behavior/Name/ZergHealthBonus=Zerg Health Bonus
 Behavior/Name/ZergLevels=Zerg Levels
 Behavior/Name/ZergMovementBonus=Zerg Movement Bonus
+Behavior/Tooltip/DamageReduction=50% Damage Reduction
 Behavior/Tooltip/DefilerMPDarkSwarm=[PH] Units inside of Dark Cloud take 60% less damage from range
 Behavior/Tooltip/DragoonFrenzy=Attack speed increased.
 Behavior/Tooltip/Stimpack2=This unit moves and attacks more quickly while under the effects of Stimpack.
@@ -210,7 +212,7 @@ Button/Tooltip/TimeWarp=Places target structure in a Chrono Boost, causing it to
 Button/Tooltip/TossGrenade2=Tosses a grenade that explodes for <d ref="Effect,TossGrenadeDamage,Amount"/> damage in a small radius. <n/><n/><c val="ffff8a">Does not harm friendly units.</c>
 Button/Tooltip/TossGrenade22=Grenade increases by 15 damage per level
 Button/Tooltip/VoidDarkTemplarDeepShadowBlink2=Teleports the Dark Templar to a nearby target location.
-Button/Tooltip/VoidDarkTemplarShadowFury=Jump from target to target, dealing <d ref="Effect,DarkTemplarShadowFuryDamage,Amount"/> damage with each jump. Hits <d ref="Behavior,DarkTemplarShadowFuryController,PeriodCount+1"/> times. Reduces damage taken by 90% while active.
+Button/Tooltip/VoidDarkTemplarShadowFury=Jump from target to target, dealing <d ref="Effect,DarkTemplarShadowFuryDamage,Amount"/> damage with each jump. Hits <d ref="Behavior,DarkTemplarShadowFuryController,PeriodCount+1"/> times. Reduces damage taken by 50% while active.
 Button/Tooltip/VoidDarkTemplarShadowFury2=Shadow fury damage on hit increases by 5 for each level the dark templar has
 Button/Tooltip/VoidImmortalStasisHeal=Creates a bubble around the dragoon, reduces movement speed by 40% and attack speed by 10% for all affected enemy units.
 Button/Tooltip/VoidShieldCapacitor=Fully restores shield to full. 
@@ -233,6 +235,7 @@ Dragoon=Dragoon
 Effect/Name/BurrowChargeStructureTargetSearch2=Burrow Charge Structure Target Search
 Effect/Name/BurrowChargeTargetDamage2=Burrow Charge Target Damage
 Effect/Name/BurrowChargeTargetSearch2=Burrow Charge Target Search
+Effect/Name/DarkTemplarShadowFuryApplyDamageReduction=DarkTemplarShadowFuryApplyDamageReduction
 Effect/Name/DarkTemplarShadowFuryDamage2=Dark Templar Shadow Fury Damage
 Effect/Name/DefilerMPPlagueDamage2=Plague Damage
 Effect/Name/FenixWhirlwindDamage2=Fenix Whirlwind Damage

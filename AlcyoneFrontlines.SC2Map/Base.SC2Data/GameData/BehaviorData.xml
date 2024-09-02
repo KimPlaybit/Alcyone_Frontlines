@@ -14,7 +14,6 @@
             <StateFlags index="Invulnerable" value="0"/>
             <StateFlags index="Stun" value="0"/>
         </Modification>
-        <DamageResponse ModifyFraction="0.1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DefilerMPDarkSwarm">
         <DamageResponse ModifyFraction="0.4"/>
@@ -38,6 +37,14 @@
     <CBehaviorBuff id="FenixChampionPowerShield2">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DamageResponse ModifyFraction="0.7">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DamageReduction">
+        <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-ShadowFury.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="1.6"/>
+        <DamageResponse ModifyFraction="0.5">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>

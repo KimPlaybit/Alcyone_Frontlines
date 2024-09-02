@@ -22,6 +22,9 @@
         <CombineArray value="EnemiesNearbyGT4"/>
         <CombineArray value="EnemiesNearbyWithLowShield"/>
     </CValidatorCombine>
+    <CValidatorLocationEnumArea id="DarkTemplarShadowFuryTargetsInArea">
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationCompareRange id="DistanceGT3">
         <WhichLocation Value="TargetUnit"/>
         <Compare value="GT"/>
