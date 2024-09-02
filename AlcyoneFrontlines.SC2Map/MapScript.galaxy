@@ -302,6 +302,7 @@ trigger gt_AIBuildQueens;
 trigger gt_AIBuildMedivacs;
 trigger gt_AddRtsPlayer1Buildings;
 trigger gt_RemoveRtsPlayer1Buildings;
+trigger gt_PsiOrb;
 trigger gt_ReviveHeroesTeam1;
 trigger gt_ReviveHeroesTeam2;
 trigger gt_BuiltHealSpotsTeam1;
@@ -468,7 +469,6 @@ wave cai_wave_createdWave (int w, int p) {
 void cai_startall () {
     AICampaignStart(1);
     AICampaignStart(2);
-    AICampaignStart(3);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3767,6 +3767,45 @@ void gt_RemoveRtsPlayer1Buildings_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: PsiOrb
+//--------------------------------------------------------------------------------------------------
+bool gt_PsiOrb_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_createdUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_createdUnit = EventUnitCreatedUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(lv_createdUnit) == "AlarakPsiOrbMissile") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(6.0, c_timeGame);
+    if ((UnitIsAlive(lv_createdUnit) == true)) {
+        UnitSetPosition(lv_createdUnit, Point(0.0, 0.0), false);
+        UnitKill(lv_createdUnit);
+        UnitRemove(lv_createdUnit);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_PsiOrb_Init () {
+    gt_PsiOrb = TriggerCreate("gt_PsiOrb_Func");
+    TriggerAddEventUnitCreated(gt_PsiOrb, null, "AlarakPsiOrb", null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Revive Heroes Team 1
 //--------------------------------------------------------------------------------------------------
 bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
@@ -5392,6 +5431,7 @@ void InitTriggers () {
     gt_AIBuildMedivacs_Init();
     gt_AddRtsPlayer1Buildings_Init();
     gt_RemoveRtsPlayer1Buildings_Init();
+    gt_PsiOrb_Init();
     gt_ReviveHeroesTeam1_Init();
     gt_ReviveHeroesTeam2_Init();
     gt_BuiltHealSpotsTeam1_Init();
