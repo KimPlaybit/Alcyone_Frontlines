@@ -952,11 +952,9 @@ bool gf_IsSurvival () {
 
     // Implementation
     if ((GameAttributeGameValue("3") == "0001")) {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/BEAB851C"));
         return true;
     }
     else {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/0D3203AC"));
         return false;
     }
 }
