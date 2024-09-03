@@ -229,6 +229,8 @@ void gf_SpawnDefenceTower (int lp_rTSPlayer, int lp_spawnForPlayer, point lp_spa
 string gf_GetPlayerRaceName (int lp_player);
 bool gf_GetTurretStatus ();
 bool gf_GetWaveStatus ();
+bool gf_IsSurvival ();
+bool gf_WithRTSPlayer ();
 bool gf_IsNonKnownRace (int lp_player);
 bool gf_IsTerran (int lp_rTSPlayer);
 bool gf_IsZerg (int lp_rTSPlayer);
@@ -279,6 +281,7 @@ trigger gt_GiveResourcesFromJungleRTSPlayer2;
 trigger gt_SetupTeams1;
 trigger gt_SetupTeams2;
 trigger gt_WinTeam1;
+trigger gt_SurvivalLoss;
 trigger gt_WinTeam2;
 trigger gt_BanelingCasted;
 trigger gt_BanelingCreated;
@@ -467,8 +470,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(1);
-    AICampaignStart(2);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -934,6 +935,42 @@ bool gf_GetWaveStatus () {
 
     // Implementation
     if ((GameAttributeGameValue("1") == "0001")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool gf_IsSurvival () {
+    // Variable Declarations
+    string lv_gameAttribute;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_gameAttribute = "";
+
+    // Implementation
+    if ((GameAttributeGameValue("3") == "0001")) {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/BEAB851C"));
+        return true;
+    }
+    else {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/0D3203AC"));
+        return false;
+    }
+}
+
+bool gf_WithRTSPlayer () {
+    // Variable Declarations
+    string lv_gameAttribute;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_gameAttribute = "";
+
+    // Implementation
+    if ((GameAttributeGameValue("4") == "0001")) {
         return true;
     }
     else {
@@ -1519,14 +1556,29 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
-    gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
-    gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
-    gv_rTSPlayer2 = PlayerGroupPlayer(GameAttributePlayersForTeam(2), 1);
-    MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), PointFromId(1219627428));
-    gf_SpawnDefenceTower(gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
-    MeleeInitUnitsForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2), PointFromId(1466456382));
-    gf_SpawnDefenceTower(gv_rTSPlayer2, 14, lv_offsetplayer2, lv_startpos1);
+    if ((gf_IsSurvival() == true)) {
+        if ((gf_WithRTSPlayer() == true)) {
+            gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
+            gv_soldierPlayers1 = GameAttributePlayersForTeam(2);
+            MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), PointFromId(1219627428));
+            gf_SpawnDefenceTower(gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
+        }
+        else {
+            gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
+            gv_soldierPlayers1 = GameAttributePlayersForTeam(2);
+            PlayerGroupAdd(gv_soldierPlayers1, gv_rTSPlayer1);
+        }
+    }
+    else {
+        gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
+        gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
+        gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
+        gv_rTSPlayer2 = PlayerGroupPlayer(GameAttributePlayersForTeam(2), 1);
+        MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), PointFromId(1219627428));
+        gf_SpawnDefenceTower(gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
+        MeleeInitUnitsForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2), PointFromId(1466456382));
+        gf_SpawnDefenceTower(gv_rTSPlayer2, 14, lv_offsetplayer2, lv_startpos1);
+    }
     MeleeInitResourcesForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1));
     MeleeInitResourcesForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2));
     CameraPan(gv_rTSPlayer1, PointFromId(1219627428), 0.0, -1, 10.0, false);
@@ -2634,7 +2686,7 @@ bool gt_WinTeam1_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((UnitCount(null, gv_rTSPlayer2, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+        if (!(((UnitCount(null, gv_rTSPlayer2, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (gf_IsSurvival() == false)))) {
             return false;
         }
     }
@@ -2670,6 +2722,47 @@ void gt_WinTeam1_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: SurvivalLoss
+//--------------------------------------------------------------------------------------------------
+bool gt_SurvivalLoss_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_loopedPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto82244436_g;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitCount(null, gv_rTSPlayer1, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (gf_IsSurvival() == true) && (gf_WithRTSPlayer() == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GameOver(gv_rTSPlayer1, c_gameOverDefeat, true, true);
+    auto82244436_g = gv_soldierPlayers1;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(auto82244436_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        GameOver(lv_loopedPlayer, c_gameOverDefeat, true, true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SurvivalLoss_Init () {
+    gt_SurvivalLoss = TriggerCreate("gt_SurvivalLoss_Func");
+    TriggerAddEventUnitDied(gt_SurvivalLoss, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: WinTeam2
 //--------------------------------------------------------------------------------------------------
 bool gt_WinTeam2_Func (bool testConds, bool runActions) {
@@ -2684,7 +2777,7 @@ bool gt_WinTeam2_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((UnitCount(null, gv_rTSPlayer1, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+        if (!(((UnitCount(null, gv_rTSPlayer1, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (gf_IsSurvival() == false)))) {
             return false;
         }
     }
@@ -3854,9 +3947,16 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/B7DAE800") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/5B6D1714") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/C38921DF") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/6BE9876F")))))))));
-    gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
+    if ((gf_WithRTSPlayer() == false)) {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/080E41B7") + (UnitGetName(EventUnit()) + StringExternal("Param/Value/4572AFAD")))));
+        GameOver(lv_triggeringPlayer, c_gameOverDefeat, true, true);
+        return false;
+    }
+    else {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/78E1C15D") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/1EC38BFD") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/46914403") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/8DBB0D73")))))))));
+    }
+    gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
         PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropMinerals) + 500));
@@ -5408,6 +5508,7 @@ void InitTriggers () {
     gt_SetupTeams1_Init();
     gt_SetupTeams2_Init();
     gt_WinTeam1_Init();
+    gt_SurvivalLoss_Init();
     gt_WinTeam2_Init();
     gt_BanelingCasted_Init();
     gt_BanelingCreated_Init();
