@@ -1070,6 +1070,70 @@
         <HotkeyCategory value="Unit/Category/ZergUnits"/>
         <AIOverideTargetPriority value="3"/>
     </CUnit>
+    <CUnitHero id="NydusCanal22" parent="AccelerationZoneBase">
+        <Name value="Unit/Name/NydusCanal22"/>
+        <Description value="Button/Tooltip/NydusCanal22"/>
+        <Facing value="29.9707"/>
+        <Race value="Zerg"/>
+        <FlagArray index="CreateVisible" value="0"/>
+        <FlagArray index="Uncommandable" value="0"/>
+        <FlagArray index="Untooltipable" value="1"/>
+        <FlagArray index="Untargetable" value="0"/>
+        <FlagArray index="PreventDefeat" value="1"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="Invulnerable" value="0"/>
+        <FlagArray index="AIThreatGround" value="1"/>
+        <FlagArray index="AIThreatAir" value="1"/>
+        <FlagArray index="AIHighPrioTarget" value="1"/>
+        <FlagArray index="AIDefense" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <EditorFlags index="NeutralDefault" value="0"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
+        <LifeArmor value="5"/>
+        <LifeRegenRate value="0.2734"/>
+        <LifeArmorName value="Unit/LifeArmorName/ZergBuildingArmor"/>
+        <StationaryTurningRate value="719.4726"/>
+        <TurningRate value="719.4726"/>
+        <Sight value="10"/>
+        <CostCategory value="Technology"/>
+        <AttackTargetPriority value="11"/>
+        <AIOverideTargetPriority value="3"/>
+        <AbilArray Link="Rally"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="Dig"/>
+        <AbilArray Link="stop"/>
+        <AbilArray/>
+        <BehaviorArray index="0" Link="ZergHealthBonus"/>
+        <BehaviorArray Link="ZergDamageBonus"/>
+        <BehaviorArray Link="ZergLevels"/>
+        <BehaviorArray Link="makeCreep4x4"/>
+        <WeaponArray Link="NydusWormSpit"/>
+        <CardLayouts>
+            <LayoutButtons Face="SetRallyPoint" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="SummonNydusWorm" Type="AbilCmd" AbilCmd="Dig,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <Footprint value="Footprint3x3IgnoreCreepContour"/>
+        <PlacementFootprint value="Footprint3x3IgnoreCreepContour"/>
+        <ScoreMake value="200"/>
+        <ScoreKill value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="2"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
+        <AIEvalFactor value="0.2"/>
+        <LeaderAlias value="NydusCanal22"/>
+        <HotkeyAlias value="NydusCanal22"/>
+        <GlossaryCategory value="Unit/Category/ZergUnits"/>
+        <GlossaryPriority value="261"/>
+        <HotkeyCategory value="Unit/Category/ZergUnits"/>
+    </CUnitHero>
     <CUnit id="NydusNetwork">
         <CostResource index="Vespene" value="150"/>
     </CUnit>

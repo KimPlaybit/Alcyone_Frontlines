@@ -15,6 +15,12 @@
     <CEffectDamage id="ArtanisLightningDashDamage">
         <Amount value="30"/>
     </CEffectDamage>
+    <CEffectTeleport id="DigTeleportMove">
+        <ValidatorArray value="HasVisionOfTarget"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+    </CEffectTeleport>
     <CEffectEnumArea id="BurrowChargeStructureTargetSearch2">
         <ValidatorArray value="CasterNotDead"/>
         <EditorCategories value="Race:Zerg"/>

@@ -375,6 +375,68 @@
         <On index="7" removed="1"/>
         <On index="8" removed="1"/>
     </CActorSimple>
+    <CActorUnit id="NydusCanal22" parent="ZergBuildingEx" unitName="NydusCanal22">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="BuildingFlattenTerrainMacro"/>
+        <Macros value="SnowVisualUnitMacroMP"/>
+        <On Terms="Abil.NydusCanalTransport.TransportUnloadStart" Send="AnimClear Birth"/>
+        <On Terms="Abil.NydusCanalTransport.TransportUnloadStart" Send="AnimBracketStart Unload Work,Start Work Work,End"/>
+        <On Terms="Abil.NydusCanalTransport.TransportUnloadStop" Send="AnimBracketStop Unload"/>
+        <On Terms="AbilTransport.NydusCanalTransport.TransportLoad; !AnimPlaying Pickup" Send="AnimPlay Pickup Pickup"/>
+        <On Terms="AbilTransport.NydusCanalTransport.TransportUnload" Send="$Spell"/>
+        <On Terms="Abil.NydusWormTransport.TransportUnloadStart" Send="AnimClear Birth"/>
+        <On Terms="Abil.NydusWormTransport.TransportUnloadStart" Send="AnimBracketStart Unload Work,Start Work Work,End"/>
+        <On Terms="Abil.NydusWormTransport.TransportUnloadStop" Send="AnimBracketStop Unload"/>
+        <On Terms="AbilTransport.NydusWormTransport.TransportLoad; !AnimPlaying Pickup" Send="AnimPlay Pickup Pickup"/>
+        <On Terms="AbilTransport.NydusWormTransport.TransportUnload" Send="$Spell"/>
+        <On Terms="Behavior.NydusWormInvuln.On" Send="SetScale 0.300000"/>
+        <On Terms="Behavior.NydusWormInvuln.On" Send="SetScale 1.000000 20.000000"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HasZergGenericDeath" Send="DeathCustomize Detached"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1" Send="DeathCustomize AntiGravZerg"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics High" Send="Create ModelRagdoll ZerglingDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics High; PassChance 50.000000" Send="Create ModelRagdoll HydraliskDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics High; PassChance 25.000000" Send="Create ModelRagdoll RoachDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics Ultra" Send="Create ModelRagdoll ZerglingDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics Ultra; PassChance 50.000000" Send="Create ModelRagdoll HydraliskDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics Ultra; PassChance 25.000000" Send="Create ModelRagdoll RoachDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics Extreme" Send="Create ModelRagdoll ZerglingDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics Extreme; PassChance 50.000000" Send="Create ModelRagdoll HydraliskDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics Extreme; PassChance 25.000000" Send="Create ModelRagdoll RoachDeathRagdoll"/>
+        <On Terms="UnitDeathCustomize; IsStatus InAir 1" Send="Create NydusCanalAirDeathForce"/>
+        <On Terms="Abil.Dig.SourceCastStop" Send="AnimPlay ConstructionDeath Stand,Birth,Death FullMatch"/>
+        <Model value="NydusCanal"/>
+        <Scale value="0.600000"/>
+        <BuildModel value="NydusRumble"/>
+        <DeathArray index="Normal" ModelLink="NydusCanalDeath" SoundLink=""/>
+        <DeathArray index="Disintegrate" ModelLink="NydusCanalDeathAcid" SoundLink="Uni_DeathFXAcid"/>
+        <DeathArray index="Fire" ModelLink="NydusCanalDeathFire" SoundLink="Uni_DeathFXFireLarge"/>
+        <DeathArray index="UnderConstruction" ModelLink="NydusCanalDeathUnderConstruction" SoundLink="Zerg_ExplosionLarge"/>
+        <DeathCustoms ModelLink="ZergGenericBuildingDeath" Name="Detached"/>
+        <DeathCustoms ModelLink="NydusCanalAirDeathLow" Name="AntiGravZerg"/>
+        <PlacementModel value="NydusCanalPlacement"/>
+        <PortraitModel value="NydusCanalPortrait"/>
+        <BarOffset value="80"/>
+        <BarWidth value="120"/>
+        <CustomUnitStatusFrame value="HotS_UnitStatus/KerriganHeroUnitStatusFrameTemplate"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-NydusWorm.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+        <NameOffset value="70"/>
+        <SoundArray index="Birth" value=""/>
+        <SoundArray index="Ready" value="NydusWorm_Ready"/>
+        <SoundArray index="What" value="NydusWorm_What"/>
+        <SoundArray index="Yes" value="NydusWorm_What"/>
+        <SoundArray index="Construction" value="Zerg_RockBuildingMorph_What"/>
+        <StatusBarOn index="Custom" value="1"/>
+        <UnitFlags index="ShowBlobShadow" value="1"/>
+        <UnitFlags index="StandAnimBirthVariation" value="1"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-NydusWorm.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorModel id="OverchargeFire" parent="ModelAnimationStyleContinuous">
         <Aliases value="_Doodad"/>
         <Aliases value="_Selectable"/>

@@ -62,6 +62,26 @@
         </Cost>
         <TargetFilters index="0" value="Structure,Visible;Self,Enemy,UnderConstruction"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="Dig">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="DigTeleportMove"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <TargetFilters value="Ground,Visible;Player,Ally,Neutral,Enemy"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <PrepTime value="3"/>
+        <CastIntroTime value="0.5"/>
+        <FinishTime value="3"/>
+        <UninterruptibleArray index="Approach" value="1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SummonNydusWorm"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="BanelingNestResearch">
         <InfoArray index="Research1" Time="71">
             <Resource index="Minerals" value="100"/>
