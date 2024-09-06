@@ -1107,7 +1107,7 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="Dig"/>
         <AbilArray Link="stop"/>
-        <AbilArray/>
+        <AbilArray Link="NydusSpawnZergUnits"/>
         <BehaviorArray index="0" Link="ZergHealthBonus"/>
         <BehaviorArray Link="ZergDamageBonus"/>
         <BehaviorArray Link="ZergLevels"/>
@@ -1117,6 +1117,7 @@
             <LayoutButtons Face="SetRallyPoint" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="SummonNydusWorm" Type="AbilCmd" AbilCmd="Dig,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="LocustMP" Type="AbilCmd" AbilCmd="NydusSpawnZergUnits,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>

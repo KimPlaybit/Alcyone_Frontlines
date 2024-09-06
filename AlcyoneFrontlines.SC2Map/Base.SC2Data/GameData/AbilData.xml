@@ -1015,6 +1015,19 @@
             <Cooldown TimeUse="35"/>
         </Cost>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="NydusSpawnZergUnits">
+        <Levels value="5"/>
+        <Effect index="0" value="LocustMPCreateSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Charge Link=""/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits" TimeUse="25"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LocustMP" Requirements="SwarmHostSpawn"/>
+    </CAbilEffectInstant>
     <CAbilResearch id="TemplarArchivesResearch">
         <InfoArray index="Research5" Time="79"/>
     </CAbilResearch>
