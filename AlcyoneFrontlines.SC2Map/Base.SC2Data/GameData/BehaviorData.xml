@@ -63,7 +63,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification MoveSpeedMultiplier="1.005" AttackSpeedMultiplier="1.05" ShieldArmorBonus="2">
             <DamageDealtUnscaled index="Ranged" value="1"/>
-            <DamageDealtUnscaled index="NoProc" value="5"/>
+            <DamageDealtUnscaled index="NoProc" value="6"/>
             <VitalMaxArray index="Life" value="20"/>
         </Modification>
     </CBehaviorAttribute>
@@ -339,7 +339,7 @@
     <CBehaviorAttribute id="SpectreAttackBonus">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification XPMultiplier="1.03">
-            <DamageDealtUnscaled index="Spell" value="5"/>
+            <DamageDealtUnscaled index="Spell" value="10"/>
             <DamageDealtUnscaled index="Melee" value="5"/>
             <DamageDealtUnscaled index="Ranged" value="5"/>
             <DamageDealtUnscaled index="Splash" value="5"/>
