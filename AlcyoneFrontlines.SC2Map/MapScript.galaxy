@@ -1066,7 +1066,10 @@ void gf_GiveXPForHeroKills (unit lp_killingSoldier, unit lp_killedSoldier) {
     lv_amountOfXp = (lv_baseXP + (100 * UnitXPGetCurrentLevel(lp_killedSoldier, null)));
 
     // Implementation
-    UnitXPAddXP(lp_killingSoldier, null, lv_amountOfXp);
+    if ((PlayerGetAlliance(UnitGetOwner(lp_killedSoldier), c_allianceIdChat, UnitGetOwner(lp_killingSoldier)) == false)) {
+        UnitXPAddXP(lp_killingSoldier, null, lv_amountOfXp);
+    }
+
 }
 
 void gf_SetSize (unit lp_unitToSizeUp) {

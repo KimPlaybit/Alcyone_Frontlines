@@ -6,7 +6,10 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="DarkArchonConfusion">
-        <Duration value="5"/>
+        <Duration value="2"/>
+        <Modification>
+            <StateFlags index="Uncommandable" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="DarkTemplarShadowFuryController">
         <RemoveValidatorArray value="CasterNotDeadAndCasterNotStunned"/>
@@ -508,6 +511,8 @@
             <WeaponArray Link="KaiserBlades2"/>
             <WeaponEnableArray value="KaiserBlades2"/>
             <WeaponDisableArray value="KaiserBlades"/>
+            <PlaneDelta index="Ground" value="1"/>
+            <PlaneDelta index="Air" value="1"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="QueenBonus">
