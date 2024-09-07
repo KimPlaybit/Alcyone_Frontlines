@@ -268,7 +268,6 @@ trigger gt_SetupSpawn3Team2;
 trigger gt_ExplainRules;
 trigger gt_SendDiscord;
 trigger gt_HydraliskImpale;
-trigger gt_HydraliskImpale2;
 trigger gt_HydraliskImpale5;
 trigger gt_HydraliskImpale6;
 trigger gt_Grenade;
@@ -2179,41 +2178,6 @@ bool gt_HydraliskImpale_Func (bool testConds, bool runActions) {
 void gt_HydraliskImpale_Init () {
     gt_HydraliskImpale = TriggerCreate("gt_HydraliskImpale_Func");
     TriggerAddEventUnitDamaged(gt_HydraliskImpale, null, c_unitDamageTypeAny, c_unitDamageEither, "HydraliskImpaleDamage");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: GoliathRockets
-//--------------------------------------------------------------------------------------------------
-bool gt_HydraliskImpale2_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_caster;
-    int lv_increase;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_caster = EventUnitDamageSourceUnit();
-    lv_increase = ((UnitXPGetCurrentLevel(lv_caster, "TerranLevels") * 1) / 1);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitDamage(EventUnitDamageSourceUnit(), "HydraliskImpaleDamage2", EventUnit(), lv_increase);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_HydraliskImpale2_Init () {
-    gt_HydraliskImpale2 = TriggerCreate("gt_HydraliskImpale2_Func");
-    TriggerAddEventUnitDamaged(gt_HydraliskImpale2, null, c_unitDamageTypeAny, c_unitDamageEither, "LokiHurricaneMissileDamage");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5493,7 +5457,6 @@ void InitTriggers () {
     gt_ExplainRules_Init();
     gt_SendDiscord_Init();
     gt_HydraliskImpale_Init();
-    gt_HydraliskImpale2_Init();
     gt_HydraliskImpale5_Init();
     gt_HydraliskImpale6_Init();
     gt_Grenade_Init();
