@@ -14,6 +14,7 @@
     </CEffectModifyUnit>
     <CEffectDamage id="ArtanisLightningDashDamage">
         <Amount value="30"/>
+        <Kind value="Spell"/>
     </CEffectDamage>
     <CEffectEnumArea id="BurrowChargeStructureTargetSearch2">
         <ValidatorArray value="CasterNotDead"/>
@@ -134,6 +135,9 @@
         <EffectArray value="Firebat2"/>
         <EffectArray value="FirebatUFull2"/>
     </CEffectSet>
+    <CEffectDamage id="FirebatUFull">
+        <KindSplash value="Splash"/>
+    </CEffectDamage>
     <CEffectDamage id="FirebatUFull2" parent="DU_WEAP_SPLASH">
         <ValidatorArray value="noMarkers"/>
         <EditorCategories value="Race:Terran"/>
@@ -163,6 +167,7 @@
     </CEffectDamage>
     <CEffectDamage id="GoliathAU">
         <AttributeBonus index="Armored" value="4"/>
+        <Kind value="NoProc"/>
     </CEffectDamage>
     <CEffectSet id="HatcheryCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
@@ -349,6 +354,12 @@
     <CEffectDamage id="PsionicLiftDamage">
         <Amount value="1"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="PsionicLiftDamageAB">
+        <Behavior value=""/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="PsionicLiftDummySearch">
+        <AreaArray index="0" Effect=""/>
+    </CEffectEnumArea>
     <CEffectEnumArea id="PsionicLiftRaiseSearch">
         <SearchFilters value="-;Player,Ally,Neutral,Air,Structure,Missile,Stasis,Dead,Invulnerable,Unstoppable,AirUnit"/>
         <AreaArray index="0" Effect="GravitonBeamUrun"/>

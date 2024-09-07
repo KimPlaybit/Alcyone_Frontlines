@@ -61,15 +61,35 @@
     </CBehaviorBuff>
     <CBehaviorAttribute id="GoliathLevelBonus">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Modification MoveSpeedMultiplier="1.01" AttackSpeedMultiplier="1.05" ShieldArmorBonus="2">
+        <Modification MoveSpeedMultiplier="1.005" AttackSpeedMultiplier="1.05" ShieldArmorBonus="2">
+            <DamageDealtUnscaled index="Ranged" value="1"/>
+            <DamageDealtUnscaled index="NoProc" value="5"/>
             <VitalMaxArray index="Life" value="20"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorBuff id="GravitonBeamUrun">
         <Duration value="2.7"/>
+        <Modification>
+            <StateFlags index="SuppressPassenger" value="1"/>
+            <AbilLinkEnableArray value="MorphToSwarmHostMP"/>
+            <AbilLinkEnableArray value="WidowMineUnburrow"/>
+            <AbilLinkEnableArray value="BurrowHotSRaptorUp"/>
+            <AbilLinkEnableArray value="BurrowHotSSwarmlingUp"/>
+            <AbilLinkEnableArray value="BurrowHunterUp"/>
+            <AbilLinkEnableArray value="BurrowHotSSplitterlingBigUp"/>
+            <AbilLinkEnableArray value="BurrowHotSSplitterlingMediumUp"/>
+            <AbilLinkEnableArray value="HotSBurrowVileUp"/>
+            <AbilLinkEnableArray value="BurrowHotSCorpserUp"/>
+            <AbilLinkEnableArray value="BurrowHydraliskLurkerUp"/>
+            <AbilLinkEnableArray value="BurrowHydraliskImpalerUp"/>
+            <AbilLinkEnableArray value="BurrowLurkerMPUp"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravitonBeamUrunHeight">
         <Duration value="3"/>
+        <Modification Height="3.75">
+            <PlaneDelta index="Ground" value="-1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravitonBeamUrunHeight2">
         <InfoFlags index="Hidden" value="1"/>
@@ -90,6 +110,9 @@
     <CBehaviorBuff id="Irradiate">
         <Duration value="10"/>
         <Period value="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganAbilityEfficiency">
+        <RefreshEffect value=""/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PrimalRavageBuff">
         <Modification HealTakenMultiplier="1.1"/>
@@ -241,7 +264,6 @@
     <CBehaviorAttribute id="FirebatAttackSpeed">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification ShieldArmorBonus="2">
-            <DamageDealtUnscaled index="Splash" value="4"/>
             <VitalMaxArray index="Life" value="30"/>
         </Modification>
     </CBehaviorAttribute>
@@ -335,7 +357,6 @@
     <CBehaviorAttribute id="TerranAttackBonus">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification>
-            <DamageDealtUnscaled index="Spell" value="5"/>
             <DamageDealtUnscaled index="Melee" value="5"/>
             <DamageDealtUnscaled index="Ranged" value="5"/>
             <DamageDealtUnscaled index="Splash" value="5"/>
