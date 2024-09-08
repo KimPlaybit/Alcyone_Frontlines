@@ -375,6 +375,60 @@
         <On index="7" removed="1"/>
         <On index="8" removed="1"/>
     </CActorSimple>
+    <CActorUnit id="Odin2" parent="GenericUnitBase" unitName="SpawnedOdin">
+        <Aliases value="_UnitHuge"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Odin" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom Odin" Send="Destroy"/>
+        <On Terms="WeaponStart.Odin.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.Odin.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.OdinEMPBurst.SourceCastStart" Send="AnimPlay EMPBurst Attack NonLooping"/>
+        <On Terms="Abil.OdinBarrage.SourcePrepStart" Send="AnimPlay Morph Morph 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStart" Send="AnimPlay LoopA Spell"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStart" Send="AnimClear Morph"/>
+        <On Terms="AnimDone; AnimName LoopA" Send="AnimPlay LoopB Spell"/>
+        <On Terms="AnimDone; AnimName LoopB" Send="AnimPlay LoopC Spell"/>
+        <On Terms="AnimDone; AnimName LoopC" Send="AnimPlay LoopD Spell"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimClear LoopA"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimClear LoopB"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimClear LoopC"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimClear LoopD"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimPlay MorphEnd Morph,End 0 -1.000000 -1.000000 1.833000 AsTimeScale"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryLeftSound" Send="Create OdinLeftCheerSquib"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryLeftSound" Send="Create OdinLeftCheerSquibB"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryRightSound" Send="Create OdinRightCheerSquib"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryRightSound" Send="Create OdinRightCheerSquibB"/>
+        <Model value="Odin"/>
+        <BuildModel value="Odin"/>
+        <DeathArray index="Normal" ModelLink="OdinDeath" SoundLink="Odin_Explode"/>
+        <PlacementModel value="Odin"/>
+        <PortraitModel value="MPOdinPortrait"/>
+        <StandAnimTurnTime value="5"/>
+        <WalkAnimMoveSpeed value="1.75"/>
+        <BarOffset value="200"/>
+        <BarWidth value="220"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Odin.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Terran-Odin.dds"/>
+        <HighlightTooltip value="Unit/Name/Odin2"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <NameOffset value="40"/>
+        <SoundArray index="Birth" value="Thor_Birth"/>
+        <SoundArray index="Ready" value="Thor_Ready"/>
+        <SoundArray index="Help" value="Thor_Help"/>
+        <SoundArray index="What" value="Thor_What"/>
+        <SoundArray index="Yes" value="Thor_Yes"/>
+        <SoundArray index="Attack" value="Thor_Attack"/>
+        <SoundArray index="Pissed" value="Thor_Pissed"/>
+        <SoundArray index="Movement" value="Thor_Movement"/>
+        <SoundArray index="Turning" value="Thor_Turning"/>
+        <SoundArray index="Board" value="Thor_Board"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Terran-Odin.dds"/>
+        <UnitKillRank Text="UnitKillRank/Odin2"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Odin.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorModel id="OverchargeFire" parent="ModelAnimationStyleContinuous">
         <Aliases value="_Doodad"/>
         <Aliases value="_Selectable"/>
