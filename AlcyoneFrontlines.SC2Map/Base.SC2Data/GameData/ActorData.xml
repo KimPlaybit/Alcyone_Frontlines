@@ -403,7 +403,6 @@
         <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics Extreme; PassChance 50.000000" Send="Create ModelRagdoll HydraliskDeathRagdoll"/>
         <On Terms="UnitDeathCustomize; IsStatus InAir 1; Option Physics Extreme; PassChance 25.000000" Send="Create ModelRagdoll RoachDeathRagdoll"/>
         <On Terms="UnitDeathCustomize; IsStatus InAir 1" Send="Create NydusCanalAirDeathForce"/>
-        <On Terms="Abil.Dig.SourceCastStop" Send="AnimPlay ConstructionDeath Stand,Birth,Death FullMatch"/>
         <Model value="NydusCanal"/>
         <Scale value="0.600000"/>
         <BuildModel value="NydusRumble"/>
@@ -480,6 +479,51 @@
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <ModelFlags index="IgnoreWalkables" value="1"/>
     </CActorModel>
+    <CActorUnit id="Roachling2" parent="GenericUnitBase" unitName="Roachling2">
+        <Aliases value="_UnitSmall"/>
+        <On Terms="ActorCreation" Send="SetScale 1.000000 0.250000"/>
+        <On Terms="ActorCreation" Send="$Birth,Inferior"/>
+        <On Terms="ActorCreation" Send="Create CorpserBirth"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.RoachlingNeedleClaws.AttackStart" Send="AnimBracketStart AttackCover Attack,Cover"/>
+        <On Terms="WeaponStop.RoachlingNeedleClaws.AttackStop" Send="AnimBracketStop AttackCover"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Broodling_Land"/>
+        <Model value="Roachling"/>
+        <Scale value="0.100000"/>
+        <BuildModel value="Roachling"/>
+        <DeathArray index="Normal" ModelLink="RoachDeath" SoundLink="Roachling_Explode" VoiceLink="Roachling_Death"/>
+        <DeathArray index="Disintegrate" ModelLink="RoachDeathAcid" SoundLink="Uni_DeathFXAcid"/>
+        <DeathArray index="Fire" ModelLink="RoachDeathFire" SoundLink="Uni_DeathFXFire"/>
+        <PlacementModel value="Roachling"/>
+        <PortraitModel value="RoachPortrait"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarOffset value="25"/>
+        <BarWidth value="40"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Roach.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-zerg-roachlings.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <SoundArray index="Ready" value="Roachling_Ready"/>
+        <SoundArray index="What" value="Roachling_What"/>
+        <SoundArray index="Yes" value="Roachling_Yes"/>
+        <SoundArray index="Attack" value="Roachling_Attack"/>
+        <SoundArray index="Pissed" value="Roachling_Pissed"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-roachlings.dds"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-Roach.dds"/>
+        </Wireframe>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
     <CActorSound id="StunningBlastImpactSound">
         <Sound value="Reaver_DeathExplosion"/>
     </CActorSound>

@@ -70,7 +70,7 @@
             <Cooldown TimeUse="30"/>
         </Cost>
         <TargetFilters value="Ground,Visible;Player,Ally,Neutral,Enemy"/>
-        <Range value="500"/>
+        <Range value="120"/>
         <Arc value="360"/>
         <PrepTime value="3"/>
         <CastIntroTime value="0.5"/>
@@ -1017,16 +1017,16 @@
     </CAbilEffectInstant>
     <CAbilEffectInstant id="NydusSpawnZergUnits">
         <Levels value="5"/>
-        <Effect index="0" value="LocustMPCreateSet"/>
+        <Effect index="0" value="MPCreateRoachling"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Cost>
             <Charge Link=""/>
-            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits" TimeUse="25"/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits" TimeUse="10"/>
         </Cost>
         <Arc value="360"/>
         <AutoCastFilters value="Self,Visible;-"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="LocustMP" Requirements="SwarmHostSpawn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LocustMP"/>
     </CAbilEffectInstant>
     <CAbilResearch id="TemplarArchivesResearch">
         <InfoArray index="Research5" Time="79"/>

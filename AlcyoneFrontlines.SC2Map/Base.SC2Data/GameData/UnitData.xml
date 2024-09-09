@@ -1117,7 +1117,7 @@
             <LayoutButtons Face="SetRallyPoint" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="SummonNydusWorm" Type="AbilCmd" AbilCmd="Dig,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="LocustMP" Type="AbilCmd" AbilCmd="NydusSpawnZergUnits,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="SpawningRoachlings" Type="Passive" Row="0" Column="0"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -1318,6 +1318,49 @@
             <ChanceArray index="Idle" value="33"/>
             <ChanceArray index="Turn" value="33"/>
         </Fidget>
+    </CUnit>
+    <CUnit id="Roachling2" parent="BroodlingDefault">
+        <Name value="Unit/Name/Roachling2"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="AcquireRally" value="1"/>
+        <FlagArray index="IgnoreAttackAlert" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Summoned" value="1"/>
+        <LifeStart value="45"/>
+        <LifeMax value="45"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
+        <Mover value="CliffJumper"/>
+        <Speed value="3.836"/>
+        <SpeedMultiplierCreep value="1.3"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Height value="0.2"/>
+        <CostCategory value="Army"/>
+        <KillXP value="1"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <BehaviorArray Link="HotSRaptorJump"/>
+        <WeaponArray Link="RoachlingNeedleClaws"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+        </CardLayouts>
+        <HotkeyAlias value="Roachling"/>
+        <GlossaryCategory value="Unit/Category/ZergUnits"/>
+        <GlossaryPriority value="66"/>
+        <HotkeyCategory value="Unit/Category/ZergStory"/>
     </CUnit>
     <CUnit id="SensorTower2">
         <DeathRevealRadius value="3"/>
@@ -5238,7 +5281,7 @@
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
-        <KillXP value="5"/>
+        <KillXP value="999"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>

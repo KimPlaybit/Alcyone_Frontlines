@@ -20,6 +20,7 @@
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
         <TargetLocation Value="TargetPoint"/>
+        <Range value="120"/>
     </CEffectTeleport>
     <CEffectEnumArea id="BurrowChargeStructureTargetSearch2">
         <ValidatorArray value="CasterNotDead"/>
@@ -295,6 +296,23 @@
     <CEffectCreatePersistent id="KorhalSporeCannonBombardmentDelay">
         <InitialDelay value="0.5"/>
     </CEffectCreatePersistent>
+    <CEffectCreateUnit id="MPCreateRoachlingA">
+        <EditorCategories value="Race:Zerg"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="LocustMPCreateSetA"/>
+        <SpawnUnit value="Roachling2"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="-0.4,-0.2"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="MPCreateRoachling">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+    </CEffectSet>
     <CEffectDamage id="LokiHurricaneMissileDamage">
         <AttributeBonus index="Light" value="0"/>
         <Amount value="2"/>
@@ -378,6 +396,9 @@
     </CEffectCreateUnit>
     <CEffectDamage id="RenegadeLongboltMissileU">
         <Amount value="75"/>
+    </CEffectDamage>
+    <CEffectDamage id="RoachlingNeedleClawsDamage">
+        <Amount value="8"/>
     </CEffectDamage>
     <CEffectDamage id="SOAPurifierBeamDamage">
         <AttributeBonus index="Armored" value="3"/>

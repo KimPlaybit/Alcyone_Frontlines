@@ -296,6 +296,7 @@ trigger gt_SensorTowerCreated;
 trigger gt_SoldierSelectionTeam1;
 trigger gt_SoldierSelectionTeam2;
 trigger gt_IncreaseSize;
+trigger gt_NydusWormLevelUp;
 trigger gt_SpawnPointsMinerals;
 trigger gt_AddTroop;
 trigger gt_AddRtsPlayer2Buildings;
@@ -3482,6 +3483,69 @@ void gt_IncreaseSize_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: NydusWormLevelUp
+//--------------------------------------------------------------------------------------------------
+bool gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_scale;
+    int lv_indexOfUnit;
+    bool lv_unitIsInArray;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "NydusCanal22"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 2) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", 1);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/5E433F25"));
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 3) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", 1);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/3240AA98"));
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 4) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", 1);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/2C05CBDE"));
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 5) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", 1);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/B5552E61"));
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 6) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", 1);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/90F5B0E1"));
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 7) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", 1);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/C4483774"));
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_NydusWormLevelUp_Init () {
+    gt_NydusWormLevelUp = TriggerCreate("gt_NydusWormLevelUp_Func");
+    TriggerAddEventUnitGainLevel(gt_NydusWormLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: SpawnPointsMinerals
 //--------------------------------------------------------------------------------------------------
 bool gt_SpawnPointsMinerals_Func (bool testConds, bool runActions) {
@@ -5521,6 +5585,7 @@ void InitTriggers () {
     gt_SoldierSelectionTeam1_Init();
     gt_SoldierSelectionTeam2_Init();
     gt_IncreaseSize_Init();
+    gt_NydusWormLevelUp_Init();
     gt_SpawnPointsMinerals_Init();
     gt_AddTroop_Init();
     gt_AddRtsPlayer2Buildings_Init();
