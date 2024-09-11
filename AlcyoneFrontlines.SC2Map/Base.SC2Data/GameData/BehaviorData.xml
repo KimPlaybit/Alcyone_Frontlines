@@ -284,6 +284,7 @@
     <CBehaviorAttribute id="FirebatAttackSpeed">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification ShieldArmorBonus="2">
+            <DamageDealtUnscaled index="Spell" value="5"/>
             <VitalMaxArray index="Life" value="30"/>
         </Modification>
     </CBehaviorAttribute>
