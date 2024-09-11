@@ -4561,7 +4561,7 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
         <AbilArray Link="DutchPlaceTurret"/>
-        <AbilArray Link="NovaWeaponPlasmaBlastNew"/>
+        <AbilArray Link="FirebatAvatar"/>
         <AbilArray Link="ThunderousCharge"/>
         <AbilArray Link="SuperStimpackNova"/>
         <AbilArray Link="ArtanisLightningDash"/>
@@ -4578,9 +4578,8 @@
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="ArtanisLightningDash" Type="AbilCmd" AbilCmd="ArtanisLightningDash,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="DutchPlaceTurret" Type="AbilCmd" AbilCmd="DutchPlaceTurret,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="NovaWeaponPlasmaBlastNew" Type="AbilCmd" AbilCmd="NovaWeaponPlasmaBlastNew,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="Avatar" Type="AbilCmd" AbilCmd="FirebatAvatar,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="SuperStimpackNova" Type="AbilCmd" AbilCmd="SuperStimpackNova,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="NovaHelmetGhostVisor2" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
         <Radius value="0.5"/>
         <InnerRadius value="0.4375"/>

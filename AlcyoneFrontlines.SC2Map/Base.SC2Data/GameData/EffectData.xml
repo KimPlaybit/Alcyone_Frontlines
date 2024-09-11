@@ -340,8 +340,35 @@
     <CEffectDamage id="OdinAADamage">
         <Amount value="40"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="AvatarApply">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FirebatAvatar"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AvatarApplyDamage">
+        <EditorCategories value=""/>
+        <Behavior value="OverchargeDamage"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="OverchargeDamage">
         <Amount value="3"/>
+    </CEffectDamage>
+    <CEffectSet id="AvatarSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AvatarApply"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AvatarSearch">
+        <EditorCategories value=""/>
+        <AINotifyFlags index="HurtFriend" value="1"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="AvatarDamage"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="AvatarDamage">
+        <ValidatorArray value="IsNotDisruptor"/>
+        <EditorCategories value=""/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="10"/>
+        <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectDamage id="PoisonNovaDirectDamage">
         <Amount value="1"/>

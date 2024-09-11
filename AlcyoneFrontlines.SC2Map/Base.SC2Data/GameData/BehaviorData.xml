@@ -118,6 +118,22 @@
     <CBehaviorBuff id="KerriganAbilityEfficiency">
         <RefreshEffect value=""/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FirebatAvatar">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <Duration value="15"/>
+        <Period value="1"/>
+        <PeriodicEffect value="AvatarSearch"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="300"/>
+            <VitalMaxArray index="Shields" value="150"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.5">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="PrimalRavageBuff">
         <Modification HealTakenMultiplier="1.1"/>
     </CBehaviorBuff>

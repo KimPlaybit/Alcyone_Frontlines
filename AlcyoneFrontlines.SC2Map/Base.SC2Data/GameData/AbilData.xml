@@ -449,6 +449,17 @@
         <AbilClassEnableArray index="CAbilMove" value="1"/>
         <AbilClassEnableArray index="CAbilStop" value="1"/>
     </CAbilMorph>
+    <CAbilEffectInstant id="FirebatAvatar">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AvatarSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="VoidDisruptorEnemyInRange"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Overcharge"/>
+    </CAbilEffectInstant>
     <CAbilResearch id="ResearchLurkerDen">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <InfoArray index="Research4" Time="57" Upgrade="AdaptiveTalons">

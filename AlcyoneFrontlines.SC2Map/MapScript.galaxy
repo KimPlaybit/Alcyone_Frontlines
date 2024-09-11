@@ -274,6 +274,7 @@ trigger gt_Grenade;
 trigger gt_PlasmaPuddleDamage;
 trigger gt_PlasmaPuddleDamageImpact;
 trigger gt_Obliterate;
+trigger gt_FirebatAvatar;
 trigger gt_SetupTeams1;
 trigger gt_SetupTeams2;
 trigger gt_WinTeam1;
@@ -471,8 +472,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(1);
-    AICampaignStart(2);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2371,6 +2370,34 @@ bool gt_Obliterate_Func (bool testConds, bool runActions) {
 void gt_Obliterate_Init () {
     gt_Obliterate = TriggerCreate("gt_Obliterate_Func");
     TriggerAddEventUnitDamaged(gt_Obliterate, null, c_unitDamageTypeAny, c_unitDamageEither, "Obliterate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FirebatAvatar
+//--------------------------------------------------------------------------------------------------
+bool gt_FirebatAvatar_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_caster;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_caster = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetScale(lv_caster, 110.0, 110.0, 110.0);
+    Wait(15.0, c_timeGame);
+    UnitSetScale(lv_caster, 100.0, 100.0, 100.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_FirebatAvatar_Init () {
+    gt_FirebatAvatar = TriggerCreate("gt_FirebatAvatar_Func");
+    TriggerAddEventUnitAbility(gt_FirebatAvatar, null, AbilityCommand("FirebatAvatar", 0), c_unitAbilStageExecute, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5520,6 +5547,7 @@ void InitTriggers () {
     gt_PlasmaPuddleDamage_Init();
     gt_PlasmaPuddleDamageImpact_Init();
     gt_Obliterate_Init();
+    gt_FirebatAvatar_Init();
     gt_SetupTeams1_Init();
     gt_SetupTeams2_Init();
     gt_WinTeam1_Init();
