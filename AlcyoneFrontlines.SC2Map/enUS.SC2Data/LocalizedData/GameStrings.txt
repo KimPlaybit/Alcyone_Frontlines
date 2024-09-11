@@ -146,8 +146,8 @@ Button/Tooltip/CloakOnSpectre2=Cloaks the unit, preventing enemy units from seei
 Button/Tooltip/CorsairHero=Nerazim Faction<n/>Air superiority starfighter. Can use Disruption Web.<n/><n/><c val="ffff8a">Can attack air units.</c>
 Button/Tooltip/DefilerHero=Defiler
 Button/Tooltip/DefilerMPConsume=Consumes an Enemy unit, turns it into Energy for the defiler. Cannot be used on hero units.
-Button/Tooltip/DefilerMPDarkSwarm=All friendly units under the cloud take 60% damage less from ranged attacks for <d ref="Effect,DefilerMPDarkSwarmCreatePersistent,PeriodCount*Effect,DefilerMPDarkSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds.
-Button/Tooltip/DefilerMPPlague=Infects all enemy units and buildings in the target area, inflicting <d ref="Effect,DefilerMPPlagueDamage,Amount*Behavior,DefilerMPPlague,Duration/Behavior,DefilerMPPlague,Period"/> damage over <d ref="Behavior,DefilerMPPlague,Duration"/> seconds. Cannot reduce units or buildings below 1 life. Ignores shields. Reveals infected cloaked units.
+Button/Tooltip/DefilerMPDarkSwarm=All friendly units under the cloud take 60% damage less from ranged attacks for <d ref="Effect,DefilerMPDarkSwarmCreatePersistent,PeriodCount*Effect,DefilerMPDarkSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds. Increases all affected units with 5% extra health regeneration.
+Button/Tooltip/DefilerMPPlague=Infects all enemy units and buildings in the target area, inflicting <d ref="Effect,DefilerMPPlagueDamage,Amount*Behavior,DefilerMPPlague,Duration/Behavior,DefilerMPPlague,Period"/> damage over <d ref="Behavior,DefilerMPPlague,Duration"/> seconds. Increases by 4 dps per level. Cannot reduce units or buildings below 15% life. Ignores shields. Reveals infected cloaked units. Stops infected units from regaining energy.
 Button/Tooltip/DigesterCreepSpray=Immobilizes enemies in the area of effect for 3 seconds. Target also takes more damage while under the effect of Noxious Creep.<n/>
 Button/Tooltip/DragoonFrenzy=Attack speed increased by 50% for <d ref="Behavior,HydraliskFrenzy,Duration"/> seconds.
 Button/Tooltip/DragoonHero=Aiur Faction<n/>Ranged assault strider. Has enhanced life and attack damage.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
@@ -172,7 +172,7 @@ Button/Tooltip/Impale2=Impale increases by 10 damage per level.
 Button/Tooltip/IncineratorNozzles3=Increases the Firebat's damage radius by 40%.
 Button/Tooltip/InfestedTerrans2=Spawn an Infested Terran. Infested Terrans last <d ref="Behavior,InfestedTerranTimedLife,Duration"/> seconds.
 Button/Tooltip/JuggernautPlating3=Increases the Firebat's armor by 2.
-Button/Tooltip/Leech=Drains all of the energy from an enemy unit and gives it to the Defiler.
+Button/Tooltip/Leech=Drains 50 Energy/second and 10 Health/s for 4 seconds from target enemy. Each level increases damage by 40. Disables them from using any ability for 4 seconds.
 Button/Tooltip/LightningBomb2=Improves the Tempest's Resonance Coil to deal +40 damage vs structures.
 Button/Tooltip/MarineHero=General-purpose infantry. Part of Mengsk's elite guard.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/MedicHeal=Heals a friendly biological or mechanical target.<n/><n/><c val="f078ff">Heals <d ref="Effect,NanoRepair,RechargeVitalRate"/> life per <d ref="Effect,NanoRepair,RechargeVitalRate * Effect,NanoRepair,DrainVitalCostFactor"/> energy.</c>
