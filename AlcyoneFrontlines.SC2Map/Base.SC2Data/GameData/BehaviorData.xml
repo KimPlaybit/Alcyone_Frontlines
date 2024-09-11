@@ -20,6 +20,16 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="DefilerMPDarkSwarm">
         <DamageResponse ModifyFraction="0.4"/>
+        <Modification>
+            <VitalRegenMultiplier index="Life" value="0.05"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DefilerMPPlague">
+        <Duration value="10"/>
+        <Period value="0.5"/>
+        <Modification>
+            <VitalRegenMultiplier index="Energy" value="-1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="DragoonFrenzy">
         <Alignment value="Positive"/>
@@ -117,6 +127,11 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="KerriganAbilityEfficiency">
         <RefreshEffect value=""/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Leech">
+        <Modification>
+            <StateFlags index="Silence" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="FirebatAvatar">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -626,6 +641,15 @@
             <VitalMaxArray index="Life" value="75"/>
         </Modification>
     </CBehaviorAttribute>
+    <CBehaviorAttribute id="DefilerDamageBonus">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Modification>
+            <DamageDealtUnscaled index="Spell" value="2"/>
+            <DamageDealtUnscaled index="NoProc" value="2"/>
+        </Modification>
+    </CBehaviorAttribute>
     <CBehaviorAttribute id="ZergEnergyBonus">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Modification>
@@ -653,6 +677,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="100">
@@ -666,6 +691,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="200">
@@ -679,6 +705,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="400">
@@ -692,6 +719,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="800">
@@ -705,6 +733,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1200">
@@ -719,6 +748,7 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskAirAttack" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1600">
@@ -732,6 +762,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2000">
@@ -745,6 +776,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2400">
@@ -758,6 +790,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
     </CBehaviorVeterancy>
