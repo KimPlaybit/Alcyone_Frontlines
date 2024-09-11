@@ -75,6 +75,11 @@
     <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport3CP"/>
     <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport4CP"/>
     <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport5CP"/>
+    <CEffectDamage id="DefilerMPPlagueDamage">
+        <Flags index="NoVitalAbsorbShields" value="0"/>
+        <Kind value="NoProc"/>
+        <Amount value="5"/>
+    </CEffectDamage>
     <CEffectDamage id="DefilerMPPlagueDamage2">
         <ValidatorArray value="DefilerMPPlagueLifeGT1"/>
         <ValidatorArray value="NotInvulnerable"/>
@@ -89,7 +94,7 @@
     <!--        <ImpactLocation Value="TargetPoint"/>-->
     <!--    </CEffectLaunchMissile-->
     <CEffectEnumArea id="DefilerMPPlagueSearch">
-        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectDamage id="DutchTurretFlameThrowerDamage">
         <Amount value="25"/>
@@ -294,6 +299,18 @@
     <CEffectCreatePersistent id="KorhalSporeCannonBombardmentDelay">
         <InitialDelay value="0.5"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="LeechDamage2">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Notification" value="1"/>
+        <Kind value="NoProc"/>
+        <KindSplash value="NoProc"/>
+        <Amount value="2"/>
+        <LeechFraction index="Energy" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="LeechSet">
+        <EffectArray value="LeechDamage2"/>
+    </CEffectSet>
     <CEffectDamage id="LokiHurricaneMissileDamage">
         <AttributeBonus index="Light" value="0"/>
         <Amount value="2"/>
