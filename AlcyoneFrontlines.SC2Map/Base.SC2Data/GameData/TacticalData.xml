@@ -222,8 +222,8 @@
         <TargetFind value="FirebatChargetarget"/>
     </CTacticalOrder>
     <CTacticalOrder id="FirebatHeroUlti">
-        <Abil value="NovaWeaponPlasmaBlastNew"/>
-        <TargetFind value="GravitonBeamHostileSomeEnergy2"/>
+        <Abil value="FirebatAvatar"/>
+        <Validator value="CasterLifeLT40Percent"/>
     </CTacticalOrder>
     <CTacticalOrder id="Whirlwind">
         <Abil value="ZealotWhirlWindHero"/>
