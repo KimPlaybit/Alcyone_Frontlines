@@ -4370,6 +4370,7 @@
         <BehaviorArray Link="ZergDamageBonus"/>
         <BehaviorArray Link="ZergMovementBonus"/>
         <BehaviorArray Link="ZergLevels"/>
+        <BehaviorArray Link="DefilerDamageBonus"/>
         <WeaponArray Link="SwarmQueenAcidSpines"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -5247,7 +5248,7 @@
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
-        <KillXP value="5"/>
+        <KillXP value="999"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
