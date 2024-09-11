@@ -52,6 +52,17 @@
     <CModel id="StunningBlastImpact">
         <Model value="Assets\Effects\Zerg\KerriganCorrosiveSporesImpact\KerriganCorrosiveSporesImpact.m3"/>
     </CModel>
+    <CModel id="Avatar" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Fenix_Whirlwind_Impact\Fenix_Whirlwind_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Birth,00"/>
+            <Name value="Fenix_VoidShieldCapacitor_Launch"/>
+            <Type value="Sound"/>
+            <Time value="0.001000"/>
+            <Payload value="Fenix_VoidShieldCapacitor_Launch"/>
+        </Events>
+    </CModel>
     <CModel id="ZerglingDeathExplosion" parent="UnitDeath" Race="Zerg">
         <Model value="Assets\Units\Zerg\BanelingEx1DeathCorrosive\BanelingEx1DeathCorrosive.m3"/>
         <LowQualityModel value="ZergMediumUnitDeathLow"/>

@@ -133,6 +133,22 @@
             <StateFlags index="Silence" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FirebatAvatar">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <Duration value="15"/>
+        <Period value="1"/>
+        <PeriodicEffect value="AvatarSearch"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="300"/>
+            <VitalMaxArray index="Shields" value="150"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.5">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="PrimalRavageBuff">
         <Modification HealTakenMultiplier="1.1"/>
     </CBehaviorBuff>
@@ -162,6 +178,7 @@
             <DamageDealtUnscaled index="Melee" value="10"/>
             <DamageDealtUnscaled index="Ranged" value="5"/>
             <DamageDealtUnscaled index="Splash" value="2"/>
+            <VitalMaxArray index="Shields" value="-40"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorVeterancy id="ProtossLevels">
@@ -283,6 +300,7 @@
     <CBehaviorAttribute id="FirebatAttackSpeed">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification ShieldArmorBonus="2">
+            <DamageDealtUnscaled index="Spell" value="5"/>
             <VitalMaxArray index="Life" value="30"/>
         </Modification>
     </CBehaviorAttribute>

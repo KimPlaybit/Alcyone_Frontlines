@@ -5,6 +5,7 @@ Abil/Name/DarkShrineResearch=Research
 Abil/Name/DragoonFrenzy=DragoonFrenzy
 Abil/Name/Explode2=Explode
 Abil/Name/ExplodeHeal2=Explode Heal
+Abil/Name/FirebatAvatar=Avatar
 Abil/Name/GravitonBeamUrun2=Graviton Beam - Urun
 Abil/Name/HeroDarkTemplarDeepShadowBlink=Hero Dark Templar Deep Shadow Blink
 Abil/Name/Impale2=Impale
@@ -50,6 +51,7 @@ Behavior/Name/DragoonDamageBonus=Dragoon Damage Bonus
 Behavior/Name/DragoonFrenzy=Frenzy
 Behavior/Name/FenixChampionPowerShield2=Damage Reduction
 Behavior/Name/FirebatAttackSpeed=Firebat Attack Speed
+Behavior/Name/FirebatAvatar=Avatar
 Behavior/Name/GoliathLevelBonus=Goliath Level Bonus
 Behavior/Name/HeroDarkTemplarDeepShadows=Hero Dark Templar Deep Shadows
 Behavior/Name/ProtossDamageBonus=Protoss Damage Bonus
@@ -73,12 +75,14 @@ Behavior/Name/ZergMovementBonus=Zerg Movement Bonus
 Behavior/Tooltip/DamageReduction=50% Damage Reduction
 Behavior/Tooltip/DefilerMPDarkSwarm=[PH] Units inside of Dark Cloud take 60% less damage from range
 Behavior/Tooltip/DragoonFrenzy=Attack speed increased.
+Behavior/Tooltip/FirebatAvatar=Dealing damage to any nearby units.
 Behavior/Tooltip/Stimpack2=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/Stimpack3=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/SuperStimNova=Firebat's attack and movement speeds are greatly increased. Firebat is healing life over time.
 Bhodaith=Bhodaith
 Button/Name/AdeptPhaseShift2=Psionic Transfer
 Button/Name/ArtanisLightningDash=Fire Dash
+Button/Name/Avatar=Avatar
 Button/Name/Charge2=Charge
 Button/Name/CloakOff2=Decloak
 Button/Name/CloakOnSpectre2=Cloak
@@ -102,7 +106,7 @@ Button/Name/MorphtoBanelingHero=Morph to Baneling
 Button/Name/MorphtoBanelingHero2=Zergling ward
 Button/Name/NovaHelmetGhostVisor2=Plasma Shot Passive
 Button/Name/NovaWeaponCanisterRifleSnipe2=Duck hunt
-Button/Name/NovaWeaponPlasmaBlastNew2=Plasma Shot Passive
+Button/Name/NovaWeaponPlasmaBlastNew2=Avatar Passive
 Button/Name/Obliterate2=Psionic Lash
 Button/Name/Overcharge2=Overcharge
 Button/Name/QueenBurstHeal2=Rapid Transfusion
@@ -129,6 +133,7 @@ Button/Tooltip/AdeptPhaseShift2=Projects an invulnerable Shade that can move but
 Button/Tooltip/AlarakPsiOrb=Launches a ball of energy, dealing 30 dmg/s to all enemy units around it. Deals an Additionally 50 damage on explosion to all enemy units within range.Each kill with Psionic orb reduces the cooldown of Psionic Orb with 2 seconds and returns 20 shield to the dragoon.
 Button/Tooltip/ArtanisAstralWind=Heals Medic and all nearby friendly units for <d ref="Effect,ArtanisAstralWindSelf,VitalArray[0].Change"/> life and <d ref="Effect,ArtanisAstralWindSelf,VitalArray[1].Change"/> shields.
 Button/Tooltip/ArtanisLightningDash=Firebat charges forward, unleashing a blast of fire that deals 60 damage to nearby enemies and stuns them for 2 seconds.
+Button/Tooltip/Avatar=Enhances the firebats suit. Dealing 10 damage per second to all enemies around him. While in this state, the firebat gains 300 extra health + 150 extra shield. The firebat also reduces damage taken by 50%. Lasts for 15 seconds
 Button/Tooltip/AvengerHero=Aiur Faction<n/>Deadly warrior-assassin. cloaked. Can use Blink.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/BanelingCocoonHero=This cocoon contains a Zergling that is morphing into a Baneling.
 Button/Tooltip/BanelingHero=Suicide unit. Does damage over a small area on death. <n/><n/><c val="ffff8a">Can attack ground units.</c>
@@ -141,8 +146,8 @@ Button/Tooltip/CloakOnSpectre2=Cloaks the unit, preventing enemy units from seei
 Button/Tooltip/CorsairHero=Nerazim Faction<n/>Air superiority starfighter. Can use Disruption Web.<n/><n/><c val="ffff8a">Can attack air units.</c>
 Button/Tooltip/DefilerHero=Defiler
 Button/Tooltip/DefilerMPConsume=Consumes an Enemy unit, turns it into Energy for the defiler. Cannot be used on hero units.
-Button/Tooltip/DefilerMPDarkSwarm=All friendly units under the cloud take 60% damage less from ranged attacks for <d ref="Effect,DefilerMPDarkSwarmCreatePersistent,PeriodCount*Effect,DefilerMPDarkSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds.
-Button/Tooltip/DefilerMPPlague=Infects all enemy units and buildings in the target area, inflicting <d ref="Effect,DefilerMPPlagueDamage,Amount*Behavior,DefilerMPPlague,Duration/Behavior,DefilerMPPlague,Period"/> damage over <d ref="Behavior,DefilerMPPlague,Duration"/> seconds. Cannot reduce units or buildings below 1 life. Ignores shields. Reveals infected cloaked units.
+Button/Tooltip/DefilerMPDarkSwarm=All friendly units under the cloud take 60% damage less from ranged attacks for <d ref="Effect,DefilerMPDarkSwarmCreatePersistent,PeriodCount*Effect,DefilerMPDarkSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds. Increases all affected units with 5% extra health regeneration.
+Button/Tooltip/DefilerMPPlague=Infects all enemy units and buildings in the target area, inflicting <d ref="Effect,DefilerMPPlagueDamage,Amount*Behavior,DefilerMPPlague,Duration/Behavior,DefilerMPPlague,Period"/> damage over <d ref="Behavior,DefilerMPPlague,Duration"/> seconds. Increases by 4 dps per level. Cannot reduce units or buildings below 15% life. Ignores shields. Reveals infected cloaked units. Stops infected units from regaining energy.
 Button/Tooltip/DigesterCreepSpray=Immobilizes enemies in the area of effect for 3 seconds. Target also takes more damage while under the effect of Noxious Creep.<n/>
 Button/Tooltip/DragoonFrenzy=Attack speed increased by 50% for <d ref="Behavior,HydraliskFrenzy,Duration"/> seconds.
 Button/Tooltip/DragoonHero=Aiur Faction<n/>Ranged assault strider. Has enhanced life and attack damage.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
@@ -167,7 +172,7 @@ Button/Tooltip/Impale2=Impale increases by 10 damage per level.
 Button/Tooltip/IncineratorNozzles3=Increases the Firebat's damage radius by 40%.
 Button/Tooltip/InfestedTerrans2=Spawn an Infested Terran. Infested Terrans last <d ref="Behavior,InfestedTerranTimedLife,Duration"/> seconds.
 Button/Tooltip/JuggernautPlating3=Increases the Firebat's armor by 2.
-Button/Tooltip/Leech=Drains all of the energy from an enemy unit and gives it to the Defiler.
+Button/Tooltip/Leech=Drains 50 Energy/second and 10 Health/s for 4 seconds from target enemy. Each level increases damage by 40. Disables them from using any ability for 4 seconds.
 Button/Tooltip/LightningBomb2=Improves the Tempest's Resonance Coil to deal +40 damage vs structures.
 Button/Tooltip/MarineHero=General-purpose infantry. Part of Mengsk's elite guard.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/MedicHeal=Heals a friendly biological or mechanical target.<n/><n/><c val="f078ff">Heals <d ref="Effect,NanoRepair,RechargeVitalRate"/> life per <d ref="Effect,NanoRepair,RechargeVitalRate * Effect,NanoRepair,DrainVitalCostFactor"/> energy.</c>
@@ -186,7 +191,7 @@ Button/Tooltip/MutaliskHero2=Air unit. Bounces its shot to strike multiple targe
 Button/Tooltip/NanoRepair=Heals a friendly mechanical unit.<n/><n/><c val="f078ff">Heals 9 life per 1 energy.</c>
 Button/Tooltip/NovaHelmetGhostVisor2=Plasma Rifle does 10 more damage on impact and 5 more damage per tick for each level achived.
 Button/Tooltip/NovaWeaponCanisterRifleSnipe2=Deals <d ref="Effect,NovaWeaponCanisterRifleSnipe,Amount"/>  + 50% of enemy health in damage to target enemy air unit from long range.</n></n><C val = "#ColorAttackInfo">Cannot target structures.</c>
-Button/Tooltip/NovaWeaponPlasmaBlastNew2=Plasma Rifle does 10 more damage on impact and 5 more damage per tick for each level achived.
+Button/Tooltip/NovaWeaponPlasmaBlastNew2=Avatars damage increases by 5 per second
 Button/Tooltip/NydusCanal2=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/Obliterate=Deals 30 damage to a single target.
 Button/Tooltip/Obliterate2=Psionic lash increases by 20 damage per level
@@ -240,6 +245,11 @@ DocInfo/Name=Alcyone Frontlines
 DocInfo/PatchNote001=Initial Version
 DocInfo/Website=https://discord.gg/abBfe66wey
 Dragoon=Dragoon
+Effect/Name/AvatarApply=Avatar (Apply)
+Effect/Name/AvatarApplyDamage=Avatar (Apply Damage)
+Effect/Name/AvatarDamage=Avatar (Damage)
+Effect/Name/AvatarSearch=Avatar (Search)
+Effect/Name/AvatarSet=Avatar (Set)
 Effect/Name/BurrowChargeStructureTargetSearch2=Burrow Charge Structure Target Search
 Effect/Name/BurrowChargeTargetDamage2=Burrow Charge Target Damage
 Effect/Name/BurrowChargeTargetSearch2=Burrow Charge Target Search

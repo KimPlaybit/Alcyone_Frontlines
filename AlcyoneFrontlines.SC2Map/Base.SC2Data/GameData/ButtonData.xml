@@ -66,6 +66,10 @@
         <AlertIcon value="Assets\Textures\btn-unit-zerg-overlordtransport.dds"/>
         <EditorCategories value="Race:Zerg"/>
     </CButton>
+    <CButton id="Avatar">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-empowermeslaves.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-alarak-empowermeslaves.dds"/>
+    </CButton>
     <CButton id="ResearchLurkerRange2">
         <Icon value="Assets\Textures\btn-upgrade-zerg-adaptivetalons.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-adaptivetalons.dds"/>
@@ -95,6 +99,8 @@
     <CButton id="NovaWeaponPlasmaBlastNew2" parent="WizButton" art="Assets\Textures\btn-upgrade-terran-plasmashot.dds">
         <Hotkey value="Button/Hotkey/NovaWeaponCanisterRifleSnipe"/>
         <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-empowermeslaves.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-alarak-empowermeslaves.dds"/>
     </CButton>
     <CButton id="Obliterate2">
         <Icon value="Assets\Textures\btn-techupgrade-terran-psioniclash.dds"/>
