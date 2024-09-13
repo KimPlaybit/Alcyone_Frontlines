@@ -525,6 +525,7 @@
             <LayoutButtons index="7" AbilCmd="255,255"/>
             <LayoutButtons index="8" Requirements="HaveBurrowResearched"/>
         </CardLayouts>
+        <BehaviorArray Link="WorkersResistanceToHeroic"/>
     </CUnit>
     <CUnit id="EngineeringBay">
         <CardLayouts index="0">
@@ -533,15 +534,18 @@
             <LayoutButtons index="9" Face="TerranInfantryArmorLevel2" AbilCmd="EngineeringBayResearch,Research8"/>
             <LayoutButtons index="10" Face="TerranInfantryArmorLevel3" AbilCmd="EngineeringBayResearch,Research9"/>
             <LayoutButtons index="11" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="1" Column="3"/>
-            <LayoutButtons index="12" removed="1"/>
-            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="12" Face="TerranDefenseStructureLevel1" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research10" Column="2"/>
+            <LayoutButtons index="13" Face="TerranDefenseStructureLevel12" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research11" Row="1"/>
+            <LayoutButtons Face="TerranDefenseStructureLevel13" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research12" Row="1" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="EvolutionChamber">
         <Collide index="Locust" value="0"/>
         <BehaviorArray index="3" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons index="11" removed="1"/>
+            <LayoutButtons index="11" Face="ZergDefenseStructureLevel1" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research10" Requirements=""/>
+            <LayoutButtons Face="ZergDefenseStructureLevel12" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research11" Row="1" Column="0"/>
+            <LayoutButtons Face="ZergDefenseStructureLevel13" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research12" Row="1" Column="0"/>
         </CardLayouts>
         <TechTreeUnlockedUnitArray index="0" removed="1"/>
     </CUnit>
@@ -566,9 +570,9 @@
     </CUnit>
     <CUnit id="Forge">
         <CardLayouts index="0">
-            <LayoutButtons index="11" removed="1"/>
-            <LayoutButtons index="12" removed="1"/>
-            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="11" Face="ProtossDefenseStructureUpgrade1" Type="AbilCmd" AbilCmd="ForgeResearch,Research10" Requirements="" Row="1"/>
+            <LayoutButtons index="12" Face="ProtossDefenseStructureUpgrade12" Type="AbilCmd" AbilCmd="ForgeResearch,Research11" Requirements=""/>
+            <LayoutButtons index="13" Face="ProtossDefenseStructureUpgrade13" Type="AbilCmd" AbilCmd="ForgeResearch,Research12" Requirements="" Column="0"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="FusionCore">
@@ -599,12 +603,21 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="Hatchery">
+        <Food value="6"/>
         <CardLayouts index="0">
             <LayoutButtons index="9" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
             <LayoutButtons index="10" removed="1"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="Hive">
         <Food value="6"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
+            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="9" removed="1"/>
+        </CardLayouts>
+        <TechTreeUnlockedUnitArray value="SnakeCaster"/>
     </CUnit>
     <CUnit id="HotSRaptorBurrowed">
         <LifeStart value="5"/>
@@ -868,12 +881,12 @@
         <!--GlossaryCategory value="Unit/Category/TerranUnits"/-->
     </CUnit>
     <CUnit id="Lair">
+        <Food value="6"/>
         <CardLayouts index="0">
             <LayoutButtons index="9" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
             <LayoutButtons index="10" removed="1"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
-        <Food value="6"/>
     </CUnit>
     <CUnit id="Larva">
         <CardLayouts index="0">
@@ -1006,6 +1019,35 @@
         <GlossaryWeakArray value="Phoenix"/>
         <HotkeyCategory value="Unit/Category/ZergStory"/>
     </CUnitHero>
+    <CUnit id="Nexus">
+        <Collide index="Locust" value="0"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <Food value="15"/>
+        <AbilArray index="1" Link="ChronoBoostEnergyCost"/>
+        <AbilArray index="2" Link="NexusTrain"/>
+        <AbilArray index="3" Link="RallyNexus"/>
+        <AbilArray index="4" Link="stopProtossBuilding"/>
+        <AbilArray index="5" Link="NexusInvulnerability"/>
+        <AbilArray index="6" Link="NexusTrainMothership"/>
+        <AbilArray index="7" Link="NexusTrainMothershipCore"/>
+        <AbilArray index="8" Link="attackProtossBuilding"/>
+        <AbilArray index="9" Link="StrategicRecall"/>
+        <AbilArray index="10" Link="que5"/>
+        <BehaviorArray index="1" removed="1"/>
+        <BehaviorArray index="2" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="4" AbilCmd="ChronoBoostEnergyCost,Execute"/>
+            <LayoutButtons index="5" Face="Mothership" AbilCmd="NexusTrainMothership,Train1" Row="0" Column="1"/>
+            <LayoutButtons index="6" Face="AttackBuildingPFort" AbilCmd="attackProtossBuilding,Execute" Column="4"/>
+            <LayoutButtons index="7" Face="Stop" AbilCmd="stopProtossBuilding,Stop" Column="3"/>
+            <LayoutButtons index="8" Face="StrategicRecall" AbilCmd="StrategicRecall,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="11" removed="1"/>
+        </CardLayouts>
+        <TechTreeProducedUnitArray value="MothershipCore"/>
+    </CUnit>
     <CUnit id="NydusCanal2">
         <DeathRevealRadius value="3"/>
         <Facing value="29.9707"/>
@@ -1087,6 +1129,12 @@
         <BehaviorArray Link="FenixChampionPowerShield2"/>
         <BehaviorArray Link="Detector20"/>
     </CUnit>
+    <CUnit id="OrbitalCommand">
+        <Food value="15"/>
+    </CUnit>
+    <CUnit id="PlanetaryFortress">
+        <Food value="15"/>
+    </CUnit>
     <CUnit id="SpawnedOdin">
         <DeathRevealRadius value="3"/>
         <Facing value="135"/>
@@ -1161,18 +1209,12 @@
             <ChanceArray index="Idle" value="90"/>
         </Fidget>
     </CUnit>
-    <CUnit id="OrbitalCommand">
-        <Food value="15"/>
-    </CUnit>
     <CUnit id="OrbitalCommandFlying">
         <Food value="15"/>
     </CUnit>
     <CUnit id="OverlordTransport">
         <CostResource index="Minerals" value="125"/>
         <CostResource index="Vespene" value="25"/>
-    </CUnit>
-    <CUnit id="PlanetaryFortress">
-        <Food value="15"/>
     </CUnit>
     <CUnit id="Probe">
         <CardLayouts index="1">
@@ -1223,11 +1265,13 @@
         </CardLayouts>
         <CardLayouts index="1" removed="1"/>
         <SubgroupPriority value="21"/>
+        <Food value="-1"/>
     </CUnit>
     <CUnit id="QueenBurrowed">
         <CostResource index="Vespene" value="0"/>
         <LifeStart value="175"/>
         <LifeMax value="175"/>
+        <Food value="-1"/>
     </CUnit>
     <CUnit id="Ravager">
         <AbilArray Link="RavagerCorrosiveBile"/>
@@ -2358,35 +2402,6 @@
         <AbilArray index="6" removed="1"/>
         <CostResource index="Minerals" value="150"/>
     </CUnit>
-    <CUnit id="Nexus">
-        <BehaviorArray index="1" removed="1"/>
-        <BehaviorArray index="2" removed="1"/>
-        <AbilArray index="1" Link="ChronoBoostEnergyCost"/>
-        <AbilArray index="2" Link="NexusTrain"/>
-        <AbilArray index="3" Link="RallyNexus"/>
-        <AbilArray index="4" Link="stopProtossBuilding"/>
-        <AbilArray index="5" Link="NexusInvulnerability"/>
-        <AbilArray index="6" Link="NexusTrainMothership"/>
-        <AbilArray index="7" Link="NexusTrainMothershipCore"/>
-        <AbilArray index="8" Link="attackProtossBuilding"/>
-        <AbilArray index="9" Link="StrategicRecall"/>
-        <AbilArray index="10" Link="que5"/>
-        <CardLayouts index="0">
-            <LayoutButtons index="4" AbilCmd="ChronoBoostEnergyCost,Execute"/>
-            <LayoutButtons index="5" Face="Mothership" AbilCmd="NexusTrainMothership,Train1" Row="0" Column="1"/>
-            <LayoutButtons index="6" Face="AttackBuildingPFort" AbilCmd="attackProtossBuilding,Execute" Column="4"/>
-            <LayoutButtons index="7" Face="Stop" AbilCmd="stopProtossBuilding,Stop" Column="3"/>
-            <LayoutButtons index="8" Face="StrategicRecall" AbilCmd="StrategicRecall,Execute" Row="2" Column="1"/>
-            <LayoutButtons index="9" removed="1"/>
-            <LayoutButtons index="10" removed="1"/>
-            <LayoutButtons index="11" removed="1"/>
-        </CardLayouts>
-        <Collide index="Locust" value="0"/>
-        <TechTreeProducedUnitArray value="MothershipCore"/>
-        <Food value="15"/>
-        <EnergyStart value="50"/>
-        <EnergyMax value="200"/>
-    </CUnit>
     <CUnit id="Starport">
         <TechTreeProducedUnitArray value="Battlecruiser"/>
         <CardLayouts index="0">
@@ -2445,6 +2460,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="MedivacSpeedBoost" Type="AbilCmd" AbilCmd="MedivacSpeedBoost,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <Food value="-1"/>
     </CUnit>
     <CUnit id="ExtendingBridgeNEWide8">
         <BehaviorArray Link="ExtendBridgeExtendingBridgeNEWide8Out"/>
@@ -2839,15 +2855,6 @@
         <SubgroupPriority value="14"/>
     </CUnit>
     <CUnit id="WarHound"/>
-    <CUnit id="Hive">
-        <TechTreeUnlockedUnitArray value="SnakeCaster"/>
-        <CardLayouts index="0">
-            <LayoutButtons index="7" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
-            <LayoutButtons index="8" removed="1"/>
-            <LayoutButtons index="9" removed="1"/>
-        </CardLayouts>
-        <Food value="6"/>
-    </CUnit>
     <CUnit id="WarpPrism">
         <CostResource index="Minerals" value="250"/>
         <LifeStart value="80"/>

@@ -67,6 +67,7 @@ Behavior/Name/TerranLevels=Terran Levels
 Behavior/Name/UltraliskAirAttack=UltraliskAirAttack
 Behavior/Name/ViralPlasma2=Viral Plasma
 Behavior/Name/VoidDarkTemplarDeepShadows2=Void Dark Templar Deep Shadows
+Behavior/Name/WorkersResistanceToHeroic=Workers Resistance To Heroic
 Behavior/Name/ZealotShieldBonus=Zealot Shield Bonus
 Behavior/Name/ZergEnergyBonus=Zerg Energy Bonus
 Behavior/Name/ZergHealthBonus=Zerg Health Bonus
@@ -109,6 +110,9 @@ Button/Name/NovaWeaponCanisterRifleSnipe2=Duck hunt
 Button/Name/NovaWeaponPlasmaBlastNew2=Avatar Passive
 Button/Name/Obliterate2=Psionic Lash
 Button/Name/Overcharge2=Overcharge
+Button/Name/ProtossDefenseStructureUpgrade1=Protoss Defense Structure Level 1
+Button/Name/ProtossDefenseStructureUpgrade12=Protoss Defense Structure Level 2
+Button/Name/ProtossDefenseStructureUpgrade13=Protoss Defense Structure Level 3
 Button/Name/QueenBurstHeal2=Rapid Transfusion
 Button/Name/RadarField2=Radar
 Button/Name/RapidQueen=Rapid Queen
@@ -122,6 +126,9 @@ Button/Name/SpectreBonus=Spectre Bonus
 Button/Name/Stim2=Stimpack
 Button/Name/StrategicRecall=Strategic Recall
 Button/Name/TectonicDestabilizers=Tectonic Destabilizers
+Button/Name/TerranDefenseStructureLevel1=Terran Defense Structure Level 1
+Button/Name/TerranDefenseStructureLevel12=Terran Defense Structure Level 2
+Button/Name/TerranDefenseStructureLevel13=Terran Defense Structure Level 3
 Button/Name/TossGrenade2=Grenade
 Button/Name/TossGrenade22=Grenade
 Button/Name/VoidDarkTemplarDeepShadowBlink2=Shadow Stride
@@ -129,6 +136,9 @@ Button/Name/VoidDarkTemplarShadowFury2=Shadow Fury
 Button/Name/VoidImmortalStasisHeal=Dragoon Time bomb
 Button/Name/WidowMineBioSplash2=Firepower
 Button/Name/WraithCloakOff=Decloak Hero
+Button/Name/ZergDefenseStructureLevel1=Zerg Defense Structure Level 1
+Button/Name/ZergDefenseStructureLevel12=Zerg Defense Structure Level 2
+Button/Name/ZergDefenseStructureLevel13=Zerg Defense Structure Level 3
 Button/Tooltip/AdeptPhaseShift2=Projects an invulnerable Shade that can move but cannot attack. Enemies that touch the shade take <d ref="Effect,AdeptPsionicTransferDamage,Amount"/> extra damage from all sources for <d ref="Behavior,AdeptPsionicTransferDamageDebuff,Duration"/> seconds.<n/><n/>The Adept teleports to the Shade's location <d ref="Behavior,AdeptPhaseShiftTimer,Duration"/> seconds after activation.<n/><n/>Can be canceled after activation.
 Button/Tooltip/AlarakPsiOrb=Launches a ball of energy, dealing 30 dmg/s to all enemy units around it. Deals an Additionally 50 damage on explosion to all enemy units within range.Each kill with Psionic orb reduces the cooldown of Psionic Orb with 2 seconds and returns 20 shield to the dragoon.
 Button/Tooltip/ArtanisAstralWind=Heals Medic and all nearby friendly units for <d ref="Effect,ArtanisAstralWindSelf,VitalArray[0].Change"/> life and <d ref="Effect,ArtanisAstralWindSelf,VitalArray[1].Change"/> shields.
@@ -200,6 +210,9 @@ Button/Tooltip/PoisonNova=Instantly deals 10% of the affected units total health
 Button/Tooltip/PrimalConsume=Kills target Enemy unit. Primal Caster gains +10 health per second for 10 seconds + increases healing taken by 10%.
 Button/Tooltip/PrimalGasCloud=Deals 30 damage per <d time="1" precision="1"/> to enemy units in target area.<n/><n/>Channeled ability.
 Button/Tooltip/PrimalRoar=Doubles attack speed and increases movement speed by 50% for the Mutalisk and nearby air units. Lasts 5 seconds.
+Button/Tooltip/ProtossDefenseStructureUpgrade1=Increases Photon Cannons Damage against Heroics by 20.
+Button/Tooltip/ProtossDefenseStructureUpgrade12=Increases Photon Cannons Damage against Heroics by 20.
+Button/Tooltip/ProtossDefenseStructureUpgrade13=Increases Photon Cannons Damage against Heroics by 20.
 Button/Tooltip/QueenBurstHeal2=Heals a unit or structure for 50 life over time.
 Button/Tooltip/RadarField2=Able to expose enemy movements within its radar capability. Does not reveal the area.
 Button/Tooltip/RapidQueen=Queens healing done is increased by 20% per level.
@@ -221,6 +234,9 @@ Button/Tooltip/StrategicRecall=Recalls all units owned by the player in the targ
 Button/Tooltip/StunningBlast=Stuns all enemies in an area for 3 seconds.
 Button/Tooltip/SuperStimpackNova=Increases Firebat's attack speed and movement speeds by <d ref="Behavior,SuperStimNova,Modification.AttackSpeedMultiplier *100-100"/>% for <d ref="Behavior,SuperStimNova,Duration"/> seconds. Heals Firebat for <d ref="Behavior,SuperStimNova,Modification.VitalRegenArray[Life]*Behavior,SuperStimNova,Duration"/> life over the effect's duration.
 Button/Tooltip/TectonicDestabilizers=Tempest's Resonance Coil deal +40 damage vs structures.
+Button/Tooltip/TerranDefenseStructureLevel1=Increases Missile Turret, Planetary and Siege Tanks Damage against Heroics by 20.
+Button/Tooltip/TerranDefenseStructureLevel12=Increases Missile Turret, Planetary and Siege Tanks Damage against Heroics by 20.
+Button/Tooltip/TerranDefenseStructureLevel13=Increases Missile Turret, Planetary and Siege Tanks Damage against Heroics by 20.
 Button/Tooltip/TimeWarp=Places target structure in a Chrono Boost, causing it to operate 50% faster for 20 seconds.
 Button/Tooltip/TossGrenade2=Tosses a grenade that explodes for <d ref="Effect,TossGrenadeDamage,Amount"/> damage in a small radius. <n/><n/><c val="ffff8a">Does not harm friendly units.</c>
 Button/Tooltip/TossGrenade22=Grenade increases by 15 damage per level
@@ -235,6 +251,9 @@ Button/Tooltip/ZHybridPsychicClones=Creates two identical clones for 40 seconds.
 Button/Tooltip/Zealot2=Powerful melee warrior. Can use Charge.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/ZealotHero=Aiur Faction<n/>Powerful melee warrior. Has Charge and Whirlwind abilities.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/ZeratulBlink=Teleports Templar to a nearby location.
+Button/Tooltip/ZergDefenseStructureLevel1=Increases Spores and Spines Damage against Heroics by 20.
+Button/Tooltip/ZergDefenseStructureLevel12=Increases Spores and Spines Damage against Heroics by 20.
+Button/Tooltip/ZergDefenseStructureLevel13=Increases Spores and Spines Damage against Heroics by 20.
 Button/Tooltip/Zergling2=Fast melee creature. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
 Button/Tooltip/ZerglingHero=Fast melee unit. Leaps over obstacles and onto targets from range. Deals increased damage. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
 Dark Templar=Dark Templar
@@ -508,6 +527,8 @@ Param/Value/FE1E61B1=Ultralisk (Easy)
 Queen=Queen
 RequirementNode/Tooltip/CountUnitRoboticsFacilityCompleteOnly790878647TechTreeCheat=Robotics Facility
 RequirementNode/Tooltip/CountUnitStargateCompleteOnly2435624496TechTreeCheat=Stargate
+RequirementNode/Tooltip/Eq1740904084CountUpgradeDefenseStructureUpdates12CompleteOnly1=Defense Structures Level 2
+RequirementNode/Tooltip/Eq1740904084CountUpgradeDefenseStructureUpdates1CompleteOnly1=Defense Structures Level 1
 Spectre=Spectre
 Thane Spaulding=Thane Spaulding
 Thokk=Thokk
@@ -555,6 +576,9 @@ Upgrade/Name/AbdominalFortitude2=Abdominal Fortitude
 Upgrade/Name/AdaptiveTalons=Adaptive Talons
 Upgrade/Name/AdvancedBallistics=Advanced Ballistics
 Upgrade/Name/CentrificalHooks2=Centrifugal Hooks
+Upgrade/Name/DefenseStructureUpdates1=Defense Structure Updates 1
+Upgrade/Name/DefenseStructureUpdates12=Defense Structure Updates 2
+Upgrade/Name/DefenseStructureUpdates13=Defense Structure Updates 3
 Upgrade/Name/HurricaneEngines=Hurricane Engines
 Upgrade/Name/HyperflightRotors=Hyperflight Rotors
 Upgrade/Name/PermanentCloakSpectre2=Nyx-Class Cloaking Module

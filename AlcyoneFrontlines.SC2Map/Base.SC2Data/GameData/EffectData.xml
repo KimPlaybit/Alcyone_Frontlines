@@ -46,6 +46,15 @@
     <CEffectSet id="CCCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
     </CEffectSet>
+    <CEffectDamage id="CrucioShockCannonBlast">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="CrucioShockCannonDirected">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="CrucioShockCannonDummy">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="DarkTemplarShadowFuryApplyDamageReduction">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -459,6 +468,9 @@
     <CEffectCreatePersistent id="SpectreNukeP">
         <FinalEffect value=""/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="SporeCrawlerU">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="Stimpack2">
         <EditorCategories value="Race:Terran"/>
     </CEffectApplyBehavior>
