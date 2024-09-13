@@ -45,6 +45,7 @@
     </CEffectEnumArea>
     <CEffectSet id="CCCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
+        <EffectArray value="ProtectWorkers"/>
     </CEffectSet>
     <CEffectDamage id="CrucioShockCannonBlast">
         <AttributeBonus index="Heroic" value="40"/>
@@ -188,7 +189,13 @@
     </CEffectDamage>
     <CEffectSet id="HatcheryCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
+        <EffectArray value="ProtectWorkers"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="ProtectWorkersBehaviour">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="WorkersResistanceToHeroic"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="HealHeroicUnitsAround3">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetUnit"/>
@@ -211,6 +218,23 @@
         <PeriodCount value="99"/>
         <PeriodicValidator value="NotVortexd"/>
         <PeriodicEffectArray value="HealHeroicUnitsAround3"/>
+        <PeriodicPeriodArray value="2"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ProtectWorkersSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Worker;Neutral,Enemy,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="ProtectWorkersBehaviour"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="ProtectWorkers">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="SourceUnit"/>
+        <InitialEffect value="ProtectWorkersSearch"/>
+        <FinalEffect value="ProtectWorkers"/>
+        <PeriodCount value="99"/>
+        <PeriodicEffectArray value="ProtectWorkersSearch"/>
         <PeriodicPeriodArray value="2"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="HotSBanelingExplodeLargeDirect">
@@ -351,6 +375,7 @@
     </CEffectCreateHealer>
     <CEffectSet id="NexusCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
+        <EffectArray value="ProtectWorkers"/>
     </CEffectSet>
     <CEffectDamage id="NovaPlasmaPuddleDamage">
         <Amount value="10"/>

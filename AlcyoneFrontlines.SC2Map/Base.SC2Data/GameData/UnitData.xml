@@ -391,6 +391,9 @@
     </CUnit>
     <CUnit id="CommandCenter">
         <Food value="15"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ProtectWorkers" Type="Passive" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="CommandCenterFlying">
         <Food value="15"/>
@@ -606,7 +609,7 @@
         <Food value="6"/>
         <CardLayouts index="0">
             <LayoutButtons index="9" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
-            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="10" Face="ProtectWorkers" Type="Passive" AbilCmd="" Column="2"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
     </CUnit>
@@ -614,7 +617,7 @@
         <Food value="6"/>
         <CardLayouts index="0">
             <LayoutButtons index="7" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
-            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="8" Face="ProtectWorkers" Type="Passive" AbilCmd="" Column="2"/>
             <LayoutButtons index="9" removed="1"/>
         </CardLayouts>
         <TechTreeUnlockedUnitArray value="SnakeCaster"/>
@@ -884,7 +887,7 @@
         <Food value="6"/>
         <CardLayouts index="0">
             <LayoutButtons index="9" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
-            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="10" Face="ProtectWorkers" Type="Passive" AbilCmd="" Column="2"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
     </CUnit>
@@ -910,6 +913,7 @@
             <LayoutButtons index="22" removed="1"/>
             <LayoutButtons index="23" removed="1"/>
         </CardLayouts>
+        <FlagArray index="Worker" value="1"/>
     </CUnit>
     <CUnit id="LiberatorAG">
         <AbilArray index="2" Link="LiberatorAATarget"/>
@@ -1042,7 +1046,7 @@
             <LayoutButtons index="6" Face="AttackBuildingPFort" AbilCmd="attackProtossBuilding,Execute" Column="4"/>
             <LayoutButtons index="7" Face="Stop" AbilCmd="stopProtossBuilding,Stop" Column="3"/>
             <LayoutButtons index="8" Face="StrategicRecall" AbilCmd="StrategicRecall,Execute" Row="2" Column="1"/>
-            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons index="9" Face="ProtectWorkers" Type="Passive" AbilCmd="" Row="1" Column="2"/>
             <LayoutButtons index="10" removed="1"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
@@ -1131,9 +1135,15 @@
     </CUnit>
     <CUnit id="OrbitalCommand">
         <Food value="15"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ProtectWorkers" Type="Passive" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="PlanetaryFortress">
         <Food value="15"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ProtectWorkers" Type="Passive" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SpawnedOdin">
         <DeathRevealRadius value="3"/>
