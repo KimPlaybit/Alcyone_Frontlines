@@ -75,6 +75,12 @@
     <CWeaponLegacy id="NeutronFlare">
         <TargetFilters value="-;Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="PrismaticBeam">
+        <Options index="Disabled" value="0"/>
+        <Options index="Hidden" value="0"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="1"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="1"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="RenegadeLongboltMissile">
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="15"/>

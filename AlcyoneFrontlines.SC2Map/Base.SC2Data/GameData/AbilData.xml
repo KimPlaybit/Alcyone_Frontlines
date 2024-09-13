@@ -148,6 +148,14 @@
         <Range index="0" value="6"/>
         <AutoCastRange value="6"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="CreepTumorBuild">
+        <InfoArray index="Build1">
+            <Button Requirements="CreepTumorExhausted"/>
+        </InfoArray>
+        <EffectArray index="Finish" value="CreepTumorExhausted"/>
+        <!--EffectArray index="Finish" value="CreepTumorLaunchMissile"/>
+        <EffectArray index="Cancel" value="CreepTumorLaunchMissile"/-->
+    </CAbilBuild>
     <CAbilResearch id="CyberneticsCoreResearch">
         <InfoArray index="Research1" Time="129"/>
         <InfoArray index="Research2" Time="154"/>

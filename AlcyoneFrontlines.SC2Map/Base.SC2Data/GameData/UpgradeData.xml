@@ -45,6 +45,18 @@
         <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="0.833200"/>
         <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
     </CUpgrade>
+    <CUpgrade id="ProtossAirWeaponsLevel1">
+        <EffectArray index="2" Reference="Weapon,VoidRaySwarm,Level"/>
+        <EffectArray index="15" Reference="Weapon,VoidRaySwarm,Icon"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirWeaponsLevel2">
+        <EffectArray index="2" Reference="Weapon,VoidRaySwarm,Level"/>
+        <EffectArray index="15" Reference="Weapon,VoidRaySwarm,Icon"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirWeaponsLevel3">
+        <EffectArray index="2" Reference="Weapon,VoidRaySwarm,Level"/>
+        <EffectArray index="15" Reference="Weapon,VoidRaySwarm,Icon"/>
+    </CUpgrade>
     <CUpgrade id="SeismicSpines">
         <Icon value="Assets\Textures\btn-upgrade-kerrigan-seismicspines.dds"/>
         <EffectArray Operation="Set" Reference="Effect,LurkerE,AreaArray[0].Radius" Value="0.8"/>

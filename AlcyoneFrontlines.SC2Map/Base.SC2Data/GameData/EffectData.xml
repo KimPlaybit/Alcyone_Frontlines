@@ -174,6 +174,9 @@
         <AttributeBonus index="Armored" value="4"/>
         <Kind value="NoProc"/>
     </CEffectDamage>
+    <CEffectDamage id="HailstormMissilePodsDamage">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectSet id="HatcheryCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
     </CEffectSet>
@@ -285,6 +288,9 @@
         <Movers Link="SpineCrawlerTentacleExtendShort" IfRangeLTE="3"/>
         <Movers Link="SpineCrawlerTentacleExtendLong" IfRangeLTE="7"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="ImpalerTentacleU">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectDamage id="ImpalerTentacleU2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
         <AttributeBonus index="Armored" value="5"/>
@@ -319,6 +325,9 @@
         <PeriodCount value="6"/>
         <PeriodicPeriodArray index="0" value="0.3"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="LongboltMissileU">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectEnumArea id="MothershipStasisSearch">
         <AreaArray index="0" Radius="5"/>
     </CEffectEnumArea>
@@ -389,6 +398,9 @@
         <Flags index="Notification" value="1"/>
         <Amount value="10"/>
         <Death value="Electrocute"/>
+    </CEffectDamage>
+    <CEffectDamage id="PhotonCannonU">
+        <AttributeBonus index="Heroic" value="40"/>
     </CEffectDamage>
     <CEffectDamage id="PoisonNovaDirectDamage">
         <Amount value="1"/>
@@ -497,6 +509,9 @@
         <ImpactEffect value="TossGrenadeDamage2"/>
         <AmmoUnit value="TossGrenadeWeapon2"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="TwinIbiksCannon">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="UltraliskBurrowChargeHold2">
         <EditorCategories value="Race:Zerg"/>
         <WhichUnit Value="Caster"/>
