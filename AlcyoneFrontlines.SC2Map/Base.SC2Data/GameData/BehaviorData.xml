@@ -115,8 +115,16 @@
             <PlaneDelta index="Air" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GatheringDummy" parent="TimedLife">
+        <BehaviorFlags index="Permanent" value="0"/>
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+        <InfoFlags index="Hidden" value="0"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="WorkersResistanceToHeroic">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="SCVIsRepairing"/>
         <Duration value="2"/>
         <DamageResponse ModifyFraction="0.02" TargetFilters="Heroic;-">
             <Chance value="1"/>

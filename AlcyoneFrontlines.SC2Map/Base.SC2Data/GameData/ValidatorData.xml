@@ -43,6 +43,10 @@
         <Value value="Odin"/>
         <Find value="0"/>
     </CValidatorUnitType>
+    <CValidatorUnitState id="SCVIsRepairing">
+        <Enabled value="1"/>
+        <State value="Harvesting"/>
+    </CValidatorUnitState>
     <CValidatorUnitCompareBehaviorCount id="UnithasPlague">
         <Compare value="NE"/>
         <Behavior value="DefilerMPPlague"/>
