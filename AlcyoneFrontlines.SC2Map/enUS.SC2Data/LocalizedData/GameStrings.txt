@@ -159,7 +159,7 @@ Button/Tooltip/CloakOnSpectre2=Cloaks the unit, preventing enemy units from seei
 Button/Tooltip/CorsairHero=Nerazim Faction<n/>Air superiority starfighter. Can use Disruption Web.<n/><n/><c val="ffff8a">Can attack air units.</c>
 Button/Tooltip/DefilerHero=Defiler
 Button/Tooltip/DefilerMPConsume=Consumes an Enemy unit, turns it into Energy for the defiler. Cannot be used on hero units.
-Button/Tooltip/DefilerMPDarkSwarm=All friendly units under the cloud take 60% damage less from ranged attacks for <d ref="Effect,DefilerMPDarkSwarmCreatePersistent,PeriodCount*Effect,DefilerMPDarkSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds. Increases all affected units with 5% extra health regeneration.
+Button/Tooltip/DefilerMPDarkSwarm=All friendly units under the cloud take 60% damage less from ranged attacks for <d ref="Effect,DefilerMPDarkSwarmCreatePersistent,PeriodCount*Effect,DefilerMPDarkSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds. Increases all affected units with 100% extra health regeneration.
 Button/Tooltip/DefilerMPPlague=Infects all enemy units and buildings in the target area, inflicting <d ref="Effect,DefilerMPPlagueDamage,Amount*Behavior,DefilerMPPlague,Duration/Behavior,DefilerMPPlague,Period"/> damage over <d ref="Behavior,DefilerMPPlague,Duration"/> seconds. Increases by 4 dps per level. Cannot reduce units or buildings below 15% life. Ignores shields. Reveals infected cloaked units. Stops infected units from regaining energy.
 Button/Tooltip/DigesterCreepSpray=Immobilizes enemies in the area of effect for 3 seconds. Target also takes more damage while under the effect of Noxious Creep.<n/>
 Button/Tooltip/DragoonFrenzy=Attack speed increased by 50% for <d ref="Behavior,HydraliskFrenzy,Duration"/> seconds.
@@ -235,7 +235,7 @@ Button/Tooltip/SpectreBonus=Spectre gains 3% extra XP per level.
 Button/Tooltip/SpectreHero=Infiltration unit. Can use Ultrasonic Pulse and Cloak. Can also call down Tactical Nukes built at the Ghost Academy.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/Stim2=Injects the unit with powerful stimulants that greatly increase attack and movement speeds for a few seconds. Injures the unit for 20% of the unit's life. Reduces healing Taken by 60%
 Button/Tooltip/StrategicRecall=Recalls all units owned by the player in the target area to the Caster.
-Button/Tooltip/StunningBlast=Stuns all enemies in an area for 3 seconds.
+Button/Tooltip/StunningBlast=Stuns all enemies in an area for 2 seconds. Hydralisks will not receive any energy for 5 seconds after using Stunning blast
 Button/Tooltip/SuperStimpackNova=Increases Firebat's attack speed and movement speeds by <d ref="Behavior,SuperStimNova,Modification.AttackSpeedMultiplier *100-100"/>% for <d ref="Behavior,SuperStimNova,Duration"/> seconds. Heals Firebat for <d ref="Behavior,SuperStimNova,Modification.VitalRegenArray[Life]*Behavior,SuperStimNova,Duration"/> life over the effect's duration.
 Button/Tooltip/TectonicDestabilizers=Tempest's Resonance Coil deal +40 damage vs structures.
 Button/Tooltip/TerranDefenseStructureLevel1=Increases Missile Turret, Planetary and Siege Tanks Damage against Heroics by 20.
