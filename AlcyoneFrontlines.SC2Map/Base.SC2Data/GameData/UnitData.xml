@@ -55,6 +55,7 @@
         <Collide index="Locust" value="1"/>
         <Collide index="Small" value="1"/>
         <Attributes index="Biological" value="1"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="30"/>
         <LifeMax value="30"/>
         <LifeRegenRate value="0.2734"/>
@@ -637,6 +638,7 @@
         <AbilArray Link="Explode2"/>
         <StationaryTurningRate value="2879.8242"/>
         <TurningRate value="2879.8242"/>
+        <Attributes index="Heroic" value="1"/>
     </CUnit>
     <CUnit id="HotSTorrasque2">
         <Subtitle value="UnitSubtitle/HotSTorrasque2"/>
@@ -1159,7 +1161,6 @@
         <Collide index="Small" value="1"/>
         <Attributes index="Armored" value="1"/>
         <Attributes index="Massive" value="1"/>
-        <Attributes index="Heroic" value="1"/>
         <Attributes index="MapBoss" value="1"/>
         <LifeStart value="3750"/>
         <LifeMax value="3750"/>
@@ -1181,7 +1182,7 @@
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
-        <KillXP value="2500"/>
+        <KillXP value="500"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>

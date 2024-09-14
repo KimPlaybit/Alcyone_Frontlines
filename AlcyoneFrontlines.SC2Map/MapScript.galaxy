@@ -1062,13 +1062,13 @@ void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
 
 void gf_GiveXPForHeroKills (unit lp_killingSoldier, unit lp_killedSoldier) {
     // Variable Declarations
-    const int lv_baseXP = 75;
+    const int lv_baseXP = 40;
     const int lv_xpPerLevel = 40;
     int lv_amountOfXp;
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_amountOfXp = (lv_baseXP + (100 * UnitXPGetCurrentLevel(lp_killedSoldier, null)));
+    lv_amountOfXp = (lv_baseXP + (lv_xpPerLevel * UnitXPGetCurrentLevel(lp_killedSoldier, null)));
 
     // Implementation
     if ((PlayerGetAlliance(UnitGetOwner(lp_killedSoldier), c_allianceIdChat, UnitGetOwner(lp_killingSoldier)) == false)) {

@@ -563,6 +563,7 @@
         <Cost index="0">
             <Cooldown TimeUse="60"/>
         </Cost>
+        <TargetFilters index="0" value="Visible;Self,Player,Ally,Neutral,Missile,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="LiberatorAATarget">
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy"/>
@@ -1041,6 +1042,7 @@
             <Vital index="Energy" value="75"/>
             <Cooldown TimeUse="0"/>
         </Cost>
+        <PostEffectBehavior Behavior="Angry2" Count="1"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="SuperStimpackNova">
         <Cost index="0">

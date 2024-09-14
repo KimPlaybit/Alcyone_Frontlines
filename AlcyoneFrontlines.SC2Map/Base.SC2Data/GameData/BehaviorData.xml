@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CBehaviorBuff id="Angry2">
+        <Name value="Behavior/Name/HinderEnergyRegn"/>
+        <Alignment value="Positive"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification>
+            <VitalRegenMultiplier index="Energy" value="-1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BurrowCharging">
         <Modification MoveSpeedMultiplier="2">
             <StateFlags index="LineMovement" value="1"/>
@@ -21,7 +30,7 @@
     <CBehaviorBuff id="DefilerMPDarkSwarm">
         <DamageResponse ModifyFraction="0.4"/>
         <Modification>
-            <VitalRegenMultiplier index="Life" value="0.05"/>
+            <VitalRegenMultiplier index="Life" value="1"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="DefilerMPPlague">
@@ -121,6 +130,9 @@
         <InfoFlags index="Hidden" value="0"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StunningBlast">
+        <Duration value="2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="WorkersResistanceToHeroic">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -620,6 +632,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification HealTakenMultiplier="1.05">
+            <DamageDealtUnscaled index="Ranged" value="-2"/>
             <VitalMaxArray index="Life" value="-30"/>
         </Modification>
     </CBehaviorAttribute>
