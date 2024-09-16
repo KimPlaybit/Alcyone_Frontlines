@@ -66,7 +66,7 @@
         <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-ShadowFury.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="1.6"/>
-        <DamageResponse ModifyFraction="0.5">
+        <DamageResponse ModifyFraction="0">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -134,6 +134,13 @@
     <CBehaviorBuff id="StunningBlast">
         <Duration value="2"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="VileAcidSlowEffectsLevel12">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-debilitatingbile.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+        <Modification MoveSpeedMultiplier="0.75" AttackSpeedMultiplier="0.75"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="WorkersResistanceToHeroic">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="SCVIsRepairing"/>
@@ -169,14 +176,13 @@
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <DisplayDuration index="Enemy" value="1"/>
-        <Duration value="15"/>
+        <Duration value="10"/>
         <Period value="1"/>
         <PeriodicEffect value="AvatarSearch"/>
         <Modification>
             <VitalMaxArray index="Life" value="300"/>
-            <VitalMaxArray index="Shields" value="150"/>
         </Modification>
-        <DamageResponse ModifyFraction="0.5">
+        <DamageResponse ModifyFraction="0.8">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>

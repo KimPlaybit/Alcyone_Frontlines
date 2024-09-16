@@ -3,6 +3,10 @@
     <CEffectCreatePersistent id="AetherMawAetherStormCreatePersistent">
         <PeriodCount value="2"/>
     </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="AlarakPsiOrbDestroyPersistent">
+        <Count value="10"/>
+        <Radius value="2"/>
+    </CEffectDestroyPersistent>
     <CEffectCreateUnit id="AlarakPsiOrbFinalUpgradedCU">
         <SpawnUnit index="0" removed="1"/>
     </CEffectCreateUnit>
@@ -191,6 +195,27 @@
         <EffectArray value="HealHeroicUnitsAround"/>
         <EffectArray value="ProtectWorkers"/>
     </CEffectSet>
+    <CEffectCreateUnit id="HotSRaptorLeap">
+        <ValidatorArray index="1" value="HotSRaptorChargeMaxDistance"/>
+        <ValidatorArray index="2" removed="1"/>
+        <SpawnOffset index="0" value="0,-0.1"/>
+    </CEffectCreateUnit>
+    <CEffectEnumArea id="PoisonNova">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <!--ValidatorArray value="HaveHotSNoxious"/-->
+    </CEffectEnumArea>
+    <CEffectSet id="PoisonNovaSet">
+        <EffectArray value="SlowApplyBehaviorCopy"/>
+        <!--EffectArray value="PoisonNovaAB"/-->
+    </CEffectSet>
+    <CEffectApplyBehavior id="SlowApplyBehaviorCopy">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="VileAcidSlowEffectsLevel12"/>
+    </CEffectApplyBehavior>
+    <CEffectDestroyPersistent id="PitAlarakPsiOrbDestroyPersistent">
+        <Radius value="0"/>
+    </CEffectDestroyPersistent>
     <CEffectApplyBehavior id="ProtectWorkersBehaviour">
         <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:Protoss"/>
@@ -569,6 +594,9 @@
         <EffectArray value="UltraliskOutOfCombat2RB2"/>
         <EffectArray value="UltraliskOutOfCombat3RB2"/>
     </CEffectSet>
+    <CEffectEnumArea id="UltrasonicPulseSearchArea">
+        <SearchFilters value="-;Player,Ally,Neutral,Structure,RawResource,HarvestableResource,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="VoidDarkTemplarDeepShadowBlinkApply2">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>

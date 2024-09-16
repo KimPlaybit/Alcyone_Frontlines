@@ -436,6 +436,18 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <CAbilAugment id="HotSRaptorCharge2">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DataCollection value="HotSRaptorCharge"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HotSRaptorCharge"/>
+        <AbilCmd value="attack,Execute"/>
+        <TargetType value="UnitOrPoint"/>
+        <Cost>
+            <Cooldown Link="HotSRaptorChargeHotSRaptorCharge2" Location="Unit" TimeUse="2"/>
+        </Cost>
+        <Effect value="HotSRaptorLeap"/>
+        <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
+    </CAbilAugment>
     <CAbilResearch id="HydraliskDenResearch">
         <InfoArray index="Research3" Time="50">
             <Resource index="Minerals" value="75"/>
@@ -722,8 +734,8 @@
         <Activity value="UI/Morphing"/>
         <ActorKey value="BanelingAspect"/>
         <InfoArray index="Train1" Alert="MorphComplete_Zerg">
-            <Charge TimeUse="45"/>
-            <Cooldown Location="Unit" TimeUse="45"/>
+            <Charge TimeUse="25"/>
+            <Cooldown Location="Unit" TimeUse="25"/>
             <Button DefaultButtonFace="MorphtoBanelingHero2">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
@@ -862,6 +874,9 @@
     <CAbilEffectInstant id="PoisonNova">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Cooldown TimeUse="6"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="ShadowStride">
         <AbilSetId value="MhndrBlnk"/>

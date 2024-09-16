@@ -5343,6 +5343,7 @@
         <FlagArray index="ArmySelect" value="1"/>
         <FogVisibility value="Hidden"/>
         <EditorFlags index="NeutralDefault" value="0"/>
+        <PushPriority value="9999"/>
         <Collide index="Land1" value="0"/>
         <Collide index="Land6" value="0"/>
         <Collide index="Land7" value="0"/>
@@ -5367,12 +5368,13 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="25"/>
         <AttackTargetPriority value="20"/>
+        <AIOverideTargetPriority value="4"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
-        <AbilArray Link="HotSRaptorCharge"/>
+        <AbilArray Link="HotSRaptorCharge2"/>
         <AbilArray Link="PoisonNova"/>
         <AbilArray Link="MorphZerglingBanelingHero"/>
         <AbilArray Link="MorphZerglingBanelingHero2"/>
@@ -5391,7 +5393,7 @@
             <LayoutButtons Face="MorphtoBanelingHero2" Type="AbilCmd" AbilCmd="MorphZerglingBanelingHero2,Train1" Row="2" Column="1"/>
             <LayoutButtons Face="PoisonNova" Type="AbilCmd" AbilCmd="PoisonNova,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="MorphtoBanelingHero" Type="AbilCmd" AbilCmd="MorphZerglingBanelingHero,Train1" Row="2" Column="3"/>
-            <LayoutButtons Face="HotSRaptorCharge" Type="AbilCmd" AbilCmd="HotSRaptorCharge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="HotSRaptorCharge" Type="AbilCmd" AbilCmd="HotSRaptorCharge2,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="RaptorCliffJumper" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
@@ -5423,9 +5425,7 @@
         </Fidget>
         <TauntDuration index="Cheer" value="5"/>
         <TauntDuration index="Dance" value="5"/>
-        <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="AvengerHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/AvengerHero"/>

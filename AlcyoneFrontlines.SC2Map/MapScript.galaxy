@@ -248,6 +248,7 @@ void gf_SetSize (unit lp_unitToSizeUp);
 point gf_GetSpawnPointTeam1 (unit lp_deadPlayer);
 point gf_GetSpawnPointTeam2 (unit lp_deadPlayer);
 void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer);
+void gf_ResetCooldownOfShadowFury (unit lp_killingUnit);
 void gf_Corsair (int lp_player, unit lp_unit);
 unit gf_FindHealspot (unit lp_unit);
 unit gf_FindEnemyHero (unit lp_unit);
@@ -277,25 +278,21 @@ trigger gt_HydraliskImpale;
 trigger gt_HydraliskImpale5;
 trigger gt_HydraliskImpale6;
 trigger gt_Grenade;
-trigger gt_PlasmaPuddleDamage;
-trigger gt_PlasmaPuddleDamageImpact;
 trigger gt_Obliterate;
 trigger gt_FirebatAvatar;
 trigger gt_WinTeam1;
 trigger gt_SurvivalLoss;
 trigger gt_WinTeam2;
 trigger gt_BanelingCasted;
+trigger gt_ResetCd;
 trigger gt_BanelingCreated;
 trigger gt_BanelingExplodes;
 trigger gt_ZerglingMineExplodes;
-trigger gt_Noxiouscreep;
-trigger gt_RemoveDragoonBall;
 trigger gt_MindControlPrevent;
 trigger gt_Healburst;
 trigger gt_ZerglingToxicBlast;
 trigger gt_SensorTowerCreated;
 trigger gt_IncreaseSize;
-trigger gt_AddTroop;
 trigger gt_AddRtsPlayer2Buildings;
 trigger gt_RemoveRtsPlayer2Buildings;
 trigger gt_AIBuildShieldBattery;
@@ -761,13 +758,27 @@ string gf_GetPlayerRaceName (int lp_player) {
     string lv_name_of_race;
 
     // Automatic Variable Declarations
+    string auto9AE8C225_val;
+
     // Variable Initialization
     lv_name_of_race = "";
 
     // Implementation
-    lv_name_of_race = CatalogFieldValueGet(c_gameCatalogRace, PlayerRace(lp_player), "Name", c_playerAny);
-    lv_text = StringExternal(lv_name_of_race);
-    return TextToString(lv_text);;
+    auto9AE8C225_val = PlayerRace(lp_player);
+    if (auto9AE8C225_val == "Prot") {
+        return "Protoss";
+    }
+    else if (auto9AE8C225_val == "Terr") {
+        return "Terran";
+    }
+    else if (auto9AE8C225_val == "Zerg") {
+        return "Zerg";
+    }
+    else {
+        lv_name_of_race = CatalogFieldValueGet(c_gameCatalogRace, PlayerRace(lp_player), "Name", c_playerAny);
+        lv_text = StringExternal(lv_name_of_race);
+        return TextToString(lv_text);;
+    }
 }
 
 bool gf_GetTurretStatus () {
@@ -1620,6 +1631,15 @@ void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_g
 
 }
 
+void gf_ResetCooldownOfShadowFury (unit lp_killingUnit) {
+    // Automatic Variable Declarations
+    // Implementation
+    if (((UnitGetType(lp_killingUnit) == "AvengerHero") == true)) {
+        UnitAbilityReset(lp_killingUnit, AbilityCommand("DarkTemplarShadowFury", 0), c_spendLocationAll);
+    }
+
+}
+
 void gf_Corsair (int lp_player, unit lp_unit) {
     // Variable Declarations
     unitgroup lv_unitsAround;
@@ -1843,99 +1863,102 @@ void gf_StartAi (point lp_startPos, int lp_player) {
         wavetarget targD;
         wavetarget targO;
         int attackersLimit;
-    	AIStart(lp_player, false, DifficultyAPM(diff));
-        if (diff == c_skirChInsane) {
-            // insane starts at 1.2 and ramps to 2.0
-            AIHarvestBonus(lp_player, 1.2);
-        }
-        
-        AISetDifficulty(lp_player, c_diffRepairDamage, true);
-        AISetDifficulty(lp_player, c_diffOptimizeGas, true);
-        AISetDifficulty(lp_player, c_diffDefendWithPeons, false);
-        AISetDifficulty(lp_player, c_diffEnableDangerMap, true);
-        AISetDifficulty(lp_player, c_diffNormalTargetPrio, true);
-        AISetDifficulty(lp_player, c_diffAllowResourceReq, true);
-        AISetDifficulty(lp_player, c_diffAdvancedRetreatLogic, true);
-        AISetDifficulty(lp_player, c_diffSupportsBeacons, true);
-        AISetDifficulty(lp_player, c_diffAutoBuildPrereqs, true);
-        AISetDifficulty(lp_player, c_diffAllowBuildInDanger, true);
-        AISetDifficulty(lp_player, c_diffTimeoutMakeRequests, true);
-        AISetDifficulty(lp_player, c_diffSetRallyPoints, true);
-        AISetDifficulty(lp_player, c_diffAllowLongDistanceMining, true);
-        AISetDifficulty(lp_player, c_diffBalancePeonsAcrossBases, true);
-        AISetDifficulty(lp_player, c_diffWaveLeashing, true);
-        AISetDifficulty(lp_player, c_diffAutoTransport, true);
-        AISetDifficulty(lp_player, c_diffAllowTransportGather, true);
-        AISetDifficulty(lp_player, c_diffAvoidMindControlled, true);
-        AISetDifficulty(lp_player, c_diffNormalVision,     (diff < c_skirChVision));       // normal vision, unless cheating
-        AISetDifficulty(lp_player, c_diffLimitAPM,         (diff < c_skirHard_VH));        // limit all apm on lower difficulties
-        AISetDifficulty(lp_player, c_diffLimitAPMCombat,   (diff < c_skirVeryHard));       // limit combat apm below elite
-        AISetDifficulty(lp_player, c_diffSplitAttacking,   (diff < c_skirVeryHard));       // split attacks below elite
-        AISetDifficulty(lp_player, c_diffSpotChangelings,   (diff >= c_skirVeryHard));
-        AISetDifficulty(lp_player, c_diffWaveAvoidDanger,   (diff >= c_skirHard));
-        AISetDifficulty(lp_player, c_diffEarlyDefenseScout, (diff >= c_skirHard));
-        AISetDifficulty(lp_player, c_diffUseExtraScouts,    (diff >= c_skirHard));
-        AISetDifficulty(lp_player, c_diffHoldAtIdleChokes,  (diff >= c_skirHard));
-        AISetDifficulty(lp_player, c_diffPressForward,      (diff >= c_skirMedium));
-        AISetDifficulty(lp_player, c_diffFleeWorkers,       (diff >= c_skirMedium));
-        AISetDifficulty(lp_player, c_diffFleeDanger,        (diff >= c_skirMedium));
-        AISetDifficulty(lp_player, c_diffTargetSpawners,    (diff >= c_skirMedium));
-        AISetDifficulty(lp_player, c_diffAllowKiting,       (diff >= c_skirHard_VH));
-        AISetDifficulty(lp_player, c_diffDelayAdvTargetting,(diff <= c_skirMedium));       // deliberately target interceptors/locusts on medium and below
-        AISetDifficulty(lp_player, c_diffAutoLoadBunkers, false);
-        AISetDifficulty(lp_player, c_diffEarlyGameRepair, false);
-        AISetFlag(lp_player, e_flagsAllowRetreat, (diff >= c_skirMed_Hard));
-        AISetFlag(lp_player, e_flagsAllowDropAttack, (diff >= c_skirChMoney));     // only going to allow resource cheating AIs to drop, it's rarely successful and often costs resources
-        AISetFlag(lp_player, e_flagsRunScared, false);
-        AISetFlag(lp_player, e_flagsLateScout, false);
-        AISetFlag(lp_player, e_flagsClearObs, false);
-        AIDeclareTown(lp_player, c_townOne, lp_startPos);
-        AISetMainTown(lp_player, c_townOne);
-        AIHarvest(lp_player, c_townOne);
-        AISetAllStates(lp_player, 1);
-        
-        targDPoint = AIWaveTargetGatherDPoint(lp_player, c_townMain);
-        targOPoint = AIWaveTargetGatherOPoint(lp_player, c_townMain);
-        targD = AIWaveTargetGatherD(lp_player, c_townMain);
-        targO = AIWaveTargetGatherMelee(lp_player);    
-        AIWaveSet(lp_player, c_waveMain,       AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
-        AIWaveSet(lp_player, c_waveAttack,     AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
-        AIWaveSet(lp_player, c_waveDivert1,    AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
-        AIWaveSet(lp_player, c_waveDivert2,    AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
-        AIWaveSet(lp_player, c_waveClearObs,   AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
-        AIWaveSet(lp_player, c_waveHome,       AIWaveCreate(AIWaveInfoCreate(), lp_player, targDPoint));
-        AIWaveSet(lp_player, c_waveDefend,     AIWaveCreate(AIWaveInfoCreate(), lp_player, targDPoint));
-        AIWaveSetType(AIWaveGet(lp_player, c_waveMain),     c_waveStateIdle, targO);
-        AIWaveSetType(AIWaveGet(lp_player, c_waveAttack),   c_waveStateIdle, targO);
-        AIWaveSetType(AIWaveGet(lp_player, c_waveDivert1),  c_waveStateIdle, targO);
-        AIWaveSetType(AIWaveGet(lp_player, c_waveDivert2),  c_waveStateIdle, targO);
-        AIWaveSetType(AIWaveGet(lp_player, c_waveClearObs), c_waveStateIdle, targO);
-        AIWaveSetType(AIWaveGet(lp_player, c_waveHome),     c_waveStateIdle, targD);
-        AIWaveSetType(AIWaveGet(lp_player, c_waveDefend),   c_waveStateIdle, targD);
-        attackersLimit = 1 << diff;
-        AISetMaxBestAttackersLimit(lp_player, attackersLimit);
-        AITransportIgnore(lp_player, "VikingAssault");
-        AITransportSetPanic(lp_player, 0.6);
-        AITransportSetReturn(lp_player, targDPoint);
-        AISetDefenseRadii(lp_player, 15.0, 10.0, 12.0);
-        AISetNumScouts(lp_player, 1);
-        AIEarlyDefenseEnable(lp_player, false, false);
-        if (diff < c_skirChVision) {
-            // need early defense scouting if not cheating vision
-            AIEarlyDefenseProps(lp_player, 30, 20, 30);
-        } else {
-            // let cheating AIs defend against further threats
-            AIEarlyDefenseProps(lp_player, 35, 35, 45);
-            if (!AIHasHumanAlly(lp_player)) {
-                AISetNumScouts(lp_player, 0);
+    if ((PlayerType(lp_player) == c_playerTypeComputer)) {
+        	AIStart(lp_player, false, DifficultyAPM(diff));
+            if (diff == c_skirChInsane) {
+                // insane starts at 1.2 and ramps to 2.0
+                AIHarvestBonus(lp_player, 1.2);
             }
-        }
-        AIScout(lp_player);
-        AISetUserInt(lp_player, c_numGroundStartLocs, AIGetGroundStartLocs(lp_startPos));
-        AISetUserInt(lp_player, c_numAirStartLocs, AIGetAirStartLocs(lp_startPos));
-        AISetUserInt(lp_player, c_delayNextAttack, 0);
-        AISpecifiedHealers(lp_player);
-        AISetDefaultCombatFlags(lp_player, true);
+            
+            AISetDifficulty(lp_player, c_diffRepairDamage, true);
+            AISetDifficulty(lp_player, c_diffOptimizeGas, true);
+            AISetDifficulty(lp_player, c_diffDefendWithPeons, false);
+            AISetDifficulty(lp_player, c_diffEnableDangerMap, true);
+            AISetDifficulty(lp_player, c_diffNormalTargetPrio, true);
+            AISetDifficulty(lp_player, c_diffAllowResourceReq, true);
+            AISetDifficulty(lp_player, c_diffAdvancedRetreatLogic, true);
+            AISetDifficulty(lp_player, c_diffSupportsBeacons, true);
+            AISetDifficulty(lp_player, c_diffAutoBuildPrereqs, true);
+            AISetDifficulty(lp_player, c_diffAllowBuildInDanger, true);
+            AISetDifficulty(lp_player, c_diffTimeoutMakeRequests, true);
+            AISetDifficulty(lp_player, c_diffSetRallyPoints, true);
+            AISetDifficulty(lp_player, c_diffAllowLongDistanceMining, true);
+            AISetDifficulty(lp_player, c_diffBalancePeonsAcrossBases, true);
+            AISetDifficulty(lp_player, c_diffWaveLeashing, true);
+            AISetDifficulty(lp_player, c_diffAutoTransport, true);
+            AISetDifficulty(lp_player, c_diffAllowTransportGather, true);
+            AISetDifficulty(lp_player, c_diffAvoidMindControlled, true);
+            AISetDifficulty(lp_player, c_diffNormalVision,     (diff < c_skirChVision));       // normal vision, unless cheating
+            AISetDifficulty(lp_player, c_diffLimitAPM,         (diff < c_skirHard_VH));        // limit all apm on lower difficulties
+            AISetDifficulty(lp_player, c_diffLimitAPMCombat,   (diff < c_skirVeryHard));       // limit combat apm below elite
+            AISetDifficulty(lp_player, c_diffSplitAttacking,   (diff < c_skirVeryHard));       // split attacks below elite
+            AISetDifficulty(lp_player, c_diffSpotChangelings,   (diff >= c_skirVeryHard));
+            AISetDifficulty(lp_player, c_diffWaveAvoidDanger,   (diff >= c_skirHard));
+            AISetDifficulty(lp_player, c_diffEarlyDefenseScout, (diff >= c_skirHard));
+            AISetDifficulty(lp_player, c_diffUseExtraScouts,    (diff >= c_skirHard));
+            AISetDifficulty(lp_player, c_diffHoldAtIdleChokes,  (diff >= c_skirHard));
+            AISetDifficulty(lp_player, c_diffPressForward,      (diff >= c_skirMedium));
+            AISetDifficulty(lp_player, c_diffFleeWorkers,       (diff >= c_skirMedium));
+            AISetDifficulty(lp_player, c_diffFleeDanger,        (diff >= c_skirMedium));
+            AISetDifficulty(lp_player, c_diffTargetSpawners,    (diff >= c_skirMedium));
+            AISetDifficulty(lp_player, c_diffAllowKiting,       (diff >= c_skirHard_VH));
+            AISetDifficulty(lp_player, c_diffDelayAdvTargetting,(diff <= c_skirMedium));       // deliberately target interceptors/locusts on medium and below
+            AISetDifficulty(lp_player, c_diffAutoLoadBunkers, false);
+            AISetDifficulty(lp_player, c_diffEarlyGameRepair, false);
+            AISetFlag(lp_player, e_flagsAllowRetreat, (diff >= c_skirMed_Hard));
+            AISetFlag(lp_player, e_flagsAllowDropAttack, (diff >= c_skirChMoney));     // only going to allow resource cheating AIs to drop, it's rarely successful and often costs resources
+            AISetFlag(lp_player, e_flagsRunScared, false);
+            AISetFlag(lp_player, e_flagsLateScout, false);
+            AISetFlag(lp_player, e_flagsClearObs, false);
+            AIDeclareTown(lp_player, c_townOne, lp_startPos);
+            AISetMainTown(lp_player, c_townOne);
+            AIHarvest(lp_player, c_townOne);
+            AISetAllStates(lp_player, 1);
+            
+            targDPoint = AIWaveTargetGatherDPoint(lp_player, c_townMain);
+            targOPoint = AIWaveTargetGatherOPoint(lp_player, c_townMain);
+            targD = AIWaveTargetGatherD(lp_player, c_townMain);
+            targO = AIWaveTargetGatherMelee(lp_player);    
+            AIWaveSet(lp_player, c_waveMain,       AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
+            AIWaveSet(lp_player, c_waveAttack,     AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
+            AIWaveSet(lp_player, c_waveDivert1,    AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
+            AIWaveSet(lp_player, c_waveDivert2,    AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
+            AIWaveSet(lp_player, c_waveClearObs,   AIWaveCreate(AIWaveInfoCreate(), lp_player, targOPoint));
+            AIWaveSet(lp_player, c_waveHome,       AIWaveCreate(AIWaveInfoCreate(), lp_player, targDPoint));
+            AIWaveSet(lp_player, c_waveDefend,     AIWaveCreate(AIWaveInfoCreate(), lp_player, targDPoint));
+            AIWaveSetType(AIWaveGet(lp_player, c_waveMain),     c_waveStateIdle, targO);
+            AIWaveSetType(AIWaveGet(lp_player, c_waveAttack),   c_waveStateIdle, targO);
+            AIWaveSetType(AIWaveGet(lp_player, c_waveDivert1),  c_waveStateIdle, targO);
+            AIWaveSetType(AIWaveGet(lp_player, c_waveDivert2),  c_waveStateIdle, targO);
+            AIWaveSetType(AIWaveGet(lp_player, c_waveClearObs), c_waveStateIdle, targO);
+            AIWaveSetType(AIWaveGet(lp_player, c_waveHome),     c_waveStateIdle, targD);
+            AIWaveSetType(AIWaveGet(lp_player, c_waveDefend),   c_waveStateIdle, targD);
+            attackersLimit = 1 << diff;
+            AISetMaxBestAttackersLimit(lp_player, attackersLimit);
+            AITransportIgnore(lp_player, "VikingAssault");
+            AITransportSetPanic(lp_player, 0.6);
+            AITransportSetReturn(lp_player, targDPoint);
+            AISetDefenseRadii(lp_player, 15.0, 10.0, 12.0);
+            AISetNumScouts(lp_player, 1);
+            AIEarlyDefenseEnable(lp_player, false, false);
+            if (diff < c_skirChVision) {
+                // need early defense scouting if not cheating vision
+                AIEarlyDefenseProps(lp_player, 30, 20, 30);
+            } else {
+                // let cheating AIs defend against further threats
+                AIEarlyDefenseProps(lp_player, 35, 35, 45);
+                if (!AIHasHumanAlly(lp_player)) {
+                    AISetNumScouts(lp_player, 0);
+                }
+            }
+            AIScout(lp_player);
+            AISetUserInt(lp_player, c_numGroundStartLocs, AIGetGroundStartLocs(lp_startPos));
+            AISetUserInt(lp_player, c_numAirStartLocs, AIGetAirStartLocs(lp_startPos));
+            AISetUserInt(lp_player, c_delayNextAttack, 0);
+            AISpecifiedHealers(lp_player);
+            AISetDefaultCombatFlags(lp_player, true);
+    }
+
 }
 
 void gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave) {
@@ -2032,19 +2055,20 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         MeleeInitUnitsForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2), PointFromId(1466456382));
         gf_SpawnDefenceTower(gv_rTSPlayer2, 14, lv_offsetplayer2, lv_startpos1);
     }
+    gf_SetupTeams1();
+    gf_SetupTeams2();
     MeleeInitResourcesForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1));
     MeleeInitResourcesForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2));
     CameraPan(gv_rTSPlayer1, PointFromId(1219627428), 0.0, -1, 10.0, false);
     CameraPan(gv_rTSPlayer2, PointFromId(1466456382), 0.0, -1, 10.0, false);
     gf_StartAi(lv_startpos1, gv_rTSPlayer1);
     gf_StartAi(lv_startpos2, gv_rTSPlayer2);
-    gf_SpawnJungle();
+    Wait(0.5, c_timeGame);
     gf_SpawnPointsMinerals();
+    gf_Scores();
     gf_SoldierSelectionTeam1();
     gf_SoldierSelectionTeam2();
-    gf_SetupTeams1();
-    gf_SetupTeams2();
-    gf_Scores();
+    Wait(0.5, c_timeGame);
     UISetAlertTypeVisible(PlayerGroupAll(), "AttackUnitAlly_Prot", false);
     UISetAlertTypeVisible(PlayerGroupAll(), "AttackUnitAlly_Zerg", false);
     UISetAlertTypeVisible(PlayerGroupAll(), "AttackUnitAlly_Terr", false);
@@ -2148,6 +2172,7 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
 
     }
 
+    gf_SpawnJungle();
     return true;
 }
 
@@ -2543,7 +2568,7 @@ bool gt_HydraliskImpale5_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Variable Initialization
     lv_caster = EventUnitDamageSourceUnit();
-    lv_increase = (UnitXPGetCurrentLevel(lv_caster, "ProtossLevels") * 5);
+    lv_increase = (UnitXPGetCurrentLevel(lv_caster, "ProtossLevels") * 6);
 
     // Conditions
     if (testConds) {
@@ -2635,76 +2660,6 @@ bool gt_Grenade_Func (bool testConds, bool runActions) {
 void gt_Grenade_Init () {
     gt_Grenade = TriggerCreate("gt_Grenade_Func");
     TriggerAddEventUnitDamaged(gt_Grenade, null, c_unitDamageTypeAny, c_unitDamageEither, "TossGrenadeDamage");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: PlasmaPuddleDamage
-//--------------------------------------------------------------------------------------------------
-bool gt_PlasmaPuddleDamage_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_caster;
-    int lv_increase;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_caster = EventUnitDamageSourceUnit();
-    lv_increase = (UnitXPGetCurrentLevel(lv_caster, "TerranLevels") * 5);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitDamage(EventUnitDamageSourceUnit(), "FirebatUFull", EventUnit(), lv_increase);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_PlasmaPuddleDamage_Init () {
-    gt_PlasmaPuddleDamage = TriggerCreate("gt_PlasmaPuddleDamage_Func");
-    TriggerAddEventUnitDamaged(gt_PlasmaPuddleDamage, null, c_unitDamageTypeAny, c_unitDamageEither, "NovaPlasmaPuddleDamage");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: PlasmaPuddleDamageImpact
-//--------------------------------------------------------------------------------------------------
-bool gt_PlasmaPuddleDamageImpact_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_caster;
-    int lv_increase;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_caster = EventUnitDamageSourceUnit();
-    lv_increase = (UnitXPGetCurrentLevel(lv_caster, "TerranLevels") * 10);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitDamage(EventUnitDamageSourceUnit(), "FirebatUFull", EventUnit(), lv_increase);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_PlasmaPuddleDamageImpact_Init () {
-    gt_PlasmaPuddleDamageImpact = TriggerCreate("gt_PlasmaPuddleDamageImpact_Func");
-    TriggerAddEventUnitDamaged(gt_PlasmaPuddleDamageImpact, null, c_unitDamageTypeAny, c_unitDamageEither, "NovaWeaponPlasmaBlastNewImpactDamage");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2948,6 +2903,19 @@ void gt_BanelingCasted_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ResetCd
+//--------------------------------------------------------------------------------------------------
+bool gt_ResetCd_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ResetCd_Init () {
+    gt_ResetCd = TriggerCreate("gt_ResetCd_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: BanelingCreated
 //--------------------------------------------------------------------------------------------------
 bool gt_BanelingCreated_Func (bool testConds, bool runActions) {
@@ -3126,60 +3094,6 @@ void gt_ZerglingMineExplodes_Init () {
     gt_ZerglingMineExplodes = TriggerCreate("gt_ZerglingMineExplodes_Func");
     TriggerAddEventUnitDamaged(gt_ZerglingMineExplodes, null, c_unitDamageTypeAny, c_unitDamageEither, "HotSBanelingExplodeLargeSearchDamage");
     TriggerAddEventUnitDamaged(gt_ZerglingMineExplodes, null, c_unitDamageTypeAny, c_unitDamageEither, "HotSBanelingExplodeLargeDirect");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Noxiouscreep
-//--------------------------------------------------------------------------------------------------
-bool gt_Noxiouscreep_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_noxiousCreep;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_noxiousCreep = EventUnitCreatedUnit();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(10.0, c_timeGame);
-    UnitKill(lv_noxiousCreep);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_Noxiouscreep_Init () {
-    gt_Noxiouscreep = TriggerCreate("gt_Noxiouscreep_Func");
-    TriggerAddEventUnitCreated(gt_Noxiouscreep, null, "NoxiousCreep", null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: RemoveDragoonBall
-//--------------------------------------------------------------------------------------------------
-bool gt_RemoveDragoonBall_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_ball;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_ball = EventUnitCreatedUnit();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(20.0, c_timeGame);
-    UnitKill(lv_ball);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_RemoveDragoonBall_Init () {
-    gt_RemoveDragoonBall = TriggerCreate("gt_RemoveDragoonBall_Func");
-    TriggerAddEventUnitCreated(gt_RemoveDragoonBall, null, "AlarakPsiOrb", null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3412,20 +3326,6 @@ bool gt_IncreaseSize_Func (bool testConds, bool runActions) {
 void gt_IncreaseSize_Init () {
     gt_IncreaseSize = TriggerCreate("gt_IncreaseSize_Func");
     TriggerAddEventUnitGainLevel(gt_IncreaseSize, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: AddTroop
-//--------------------------------------------------------------------------------------------------
-bool gt_AddTroop_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AddTroop_Init () {
-    gt_AddTroop = TriggerCreate("gt_AddTroop_Func");
-    TriggerAddEventUnitSelected(gt_AddTroop, UnitRefFromVariable("gv_team1Spawner1"), c_playerAny, true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3912,6 +3812,7 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/78E1C15D") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/1EC38BFD") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/46914403") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/8DBB0D73")))))))));
     }
     gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
+    gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
         PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropMinerals) + 500));
@@ -4019,6 +3920,7 @@ bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/4A0114E0") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/01AFC6B8") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/5E8667DD") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/560E1AB5")))))))));
     gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
     gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
+    gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
         PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropMinerals) + 500));
@@ -5400,25 +5302,21 @@ void InitTriggers () {
     gt_HydraliskImpale5_Init();
     gt_HydraliskImpale6_Init();
     gt_Grenade_Init();
-    gt_PlasmaPuddleDamage_Init();
-    gt_PlasmaPuddleDamageImpact_Init();
     gt_Obliterate_Init();
     gt_FirebatAvatar_Init();
     gt_WinTeam1_Init();
     gt_SurvivalLoss_Init();
     gt_WinTeam2_Init();
     gt_BanelingCasted_Init();
+    gt_ResetCd_Init();
     gt_BanelingCreated_Init();
     gt_BanelingExplodes_Init();
     gt_ZerglingMineExplodes_Init();
-    gt_Noxiouscreep_Init();
-    gt_RemoveDragoonBall_Init();
     gt_MindControlPrevent_Init();
     gt_Healburst_Init();
     gt_ZerglingToxicBlast_Init();
     gt_SensorTowerCreated_Init();
     gt_IncreaseSize_Init();
-    gt_AddTroop_Init();
     gt_AddRtsPlayer2Buildings_Init();
     gt_RemoveRtsPlayer2Buildings_Init();
     gt_AIBuildShieldBattery_Init();

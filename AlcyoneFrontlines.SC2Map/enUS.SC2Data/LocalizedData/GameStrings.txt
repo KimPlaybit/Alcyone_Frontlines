@@ -8,6 +8,7 @@ Abil/Name/ExplodeHeal2=Explode Heal
 Abil/Name/FirebatAvatar=Avatar
 Abil/Name/GravitonBeamUrun2=Graviton Beam - Urun
 Abil/Name/HeroDarkTemplarDeepShadowBlink=Hero Dark Templar Deep Shadow Blink
+Abil/Name/HotSRaptorCharge2=Leap No Auto
 Abil/Name/Impale2=Impale
 Abil/Name/MarineGrenade=Grenade
 Abil/Name/MorphZerglingBanelingHero=Morph (Zergling -> Baneling) Hero
@@ -67,6 +68,7 @@ Behavior/Name/TerranAttackBonus=Terran Attack Bonus
 Behavior/Name/TerranAttackSpeed=Terran Attack Speed
 Behavior/Name/TerranLevels=Terran Levels
 Behavior/Name/UltraliskAirAttack=UltraliskAirAttack
+Behavior/Name/VileAcidSlowEffectsLevel12=Slow
 Behavior/Name/ViralPlasma2=Viral Plasma
 Behavior/Name/VoidDarkTemplarDeepShadows2=Void Dark Templar Deep Shadows
 Behavior/Name/WorkersResistanceToHeroic=Workers Resistance To Heroic
@@ -75,13 +77,14 @@ Behavior/Name/ZergEnergyBonus=Zerg Energy Bonus
 Behavior/Name/ZergHealthBonus=Zerg Health Bonus
 Behavior/Name/ZergLevels=Zerg Levels
 Behavior/Name/ZergMovementBonus=Zerg Movement Bonus
-Behavior/Tooltip/DamageReduction=50% Damage Reduction
+Behavior/Tooltip/DamageReduction=100% Damage Reduction
 Behavior/Tooltip/DefilerMPDarkSwarm=[PH] Units inside of Dark Cloud take 60% less damage from range
 Behavior/Tooltip/DragoonFrenzy=Attack speed increased.
 Behavior/Tooltip/FirebatAvatar=Dealing damage to any nearby units.
 Behavior/Tooltip/Stimpack2=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/Stimpack3=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/SuperStimNova=Firebat's attack and movement speeds are greatly increased. Firebat is healing life over time.
+Behavior/Tooltip/VileAcidSlowEffectsLevel12=Attack and movement speeds are slightly slowed.
 Bhodaith=Bhodaith
 Button/Name/AdeptPhaseShift2=Psionic Transfer
 Button/Name/ArtanisLightningDash=Fire Dash
@@ -146,7 +149,7 @@ Button/Tooltip/AdeptPhaseShift2=Projects an invulnerable Shade that can move but
 Button/Tooltip/AlarakPsiOrb=Launches a ball of energy, dealing 30 dmg/s to all enemy units around it. Deals an Additionally 50 damage on explosion to all enemy units within range.Each kill with Psionic orb reduces the cooldown of Psionic Orb with 2 seconds and returns 20 shield to the dragoon.
 Button/Tooltip/ArtanisAstralWind=Heals Medic and all nearby friendly units for <d ref="Effect,ArtanisAstralWindSelf,VitalArray[0].Change"/> life and <d ref="Effect,ArtanisAstralWindSelf,VitalArray[1].Change"/> shields.
 Button/Tooltip/ArtanisLightningDash=Firebat charges forward, unleashing a blast of fire that deals 60 damage to nearby enemies and stuns them for 2 seconds.
-Button/Tooltip/Avatar=Enhances the firebats suit. Dealing 10 damage per second to all enemies around him. While in this state, the firebat gains 300 extra health + 150 extra shield. The firebat also reduces damage taken by 50%. Lasts for 15 seconds
+Button/Tooltip/Avatar=Enhances the firebats suit. Dealing 10 damage per second to all enemies around him. While in this state, the firebat gains 300 extra health. The firebat also reduces damage taken by 20%. Lasts for 10 seconds
 Button/Tooltip/AvengerHero=Aiur Faction<n/>Deadly warrior-assassin. cloaked. Can use Blink.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/BanelingCocoonHero=This cocoon contains a Zergling that is morphing into a Baneling.
 Button/Tooltip/BanelingHero=Suicide unit. Does damage over a small area on death. <n/><n/><c val="ffff8a">Can attack ground units.</c>
@@ -209,7 +212,7 @@ Button/Tooltip/NydusCanal2=Friendly ground units can use a Nydus Worm to instant
 Button/Tooltip/Obliterate=Deals 30 damage to a single target.
 Button/Tooltip/Obliterate2=Psionic lash increases by 20 damage per level
 Button/Tooltip/Overcharge2=Overcharge increases in damage per second by 8 per level.
-Button/Tooltip/PoisonNova=Instantly deals 10% of the affected units total health + 25 damage to enemy ground units nearby.
+Button/Tooltip/PoisonNova=Instantly deals 10% of the affected units total health + 25 damage to enemy ground units nearby. Additionaly slows all enemies with 25% for 3 seconds.<n/>
 Button/Tooltip/PrimalConsume=Kills target Enemy unit. Primal Caster gains +10 health per second for 10 seconds + increases healing taken by 10%.
 Button/Tooltip/PrimalGasCloud=Deals 30 damage per <d time="1" precision="1"/> to enemy units in target area.<n/><n/>Channeled ability.
 Button/Tooltip/PrimalRoar=Doubles attack speed and increases movement speed by 50% for the Mutalisk and nearby air units. Lasts 5 seconds.
@@ -245,8 +248,8 @@ Button/Tooltip/TimeWarp=Places target structure in a Chrono Boost, causing it to
 Button/Tooltip/TossGrenade2=Tosses a grenade that explodes for <d ref="Effect,TossGrenadeDamage,Amount"/> damage in a small radius. <n/><n/><c val="ffff8a">Does not harm friendly units.</c>
 Button/Tooltip/TossGrenade22=Grenade increases by 15 damage per level
 Button/Tooltip/VoidDarkTemplarDeepShadowBlink2=Teleports the Dark Templar to a nearby target location.
-Button/Tooltip/VoidDarkTemplarShadowFury=Jump from target to target, dealing <d ref="Effect,DarkTemplarShadowFuryDamage,Amount"/> damage with each jump. Hits <d ref="Behavior,DarkTemplarShadowFuryController,PeriodCount+1"/> times. Reduces damage taken by 50% while active.
-Button/Tooltip/VoidDarkTemplarShadowFury2=Shadow fury damage on hit increases by 5 for each level the dark templar has
+Button/Tooltip/VoidDarkTemplarShadowFury=Jump from target to target, dealing <d ref="Effect,DarkTemplarShadowFuryDamage,Amount"/> damage with each jump. Hits <d ref="Behavior,DarkTemplarShadowFuryController,PeriodCount+1"/> times. Reduces damage taken by 99% while active.
+Button/Tooltip/VoidDarkTemplarShadowFury2=Shadow fury damage on hit increases by 6 for each level the dark templar has. Additionaly, Shadow fury resets whenever Dark templar kills another soldier player.
 Button/Tooltip/VoidImmortalStasisHeal=Creates a bubble around the dragoon, reduces movement speed by 40% and attack speed by 10% for all affected enemy units.
 Button/Tooltip/VoidShieldCapacitor=Fully restores shield to full. 
 Button/Tooltip/VoodooShield=Surrounds the Marine in a shield of energy, absorbing incoming damage. Lasts <d time="10"/> or until it has absorbed 300 damage.
@@ -308,6 +311,7 @@ Effect/Name/ProtectWorkersSearch=Protect Workers
 Effect/Name/QueenBurstHeal2=Queen Burst Heal
 Effect/Name/QueenHeal2=Queen Heal
 Effect/Name/RadarApplybuff=Radar (Apply buff)
+Effect/Name/SlowApplyBehaviorCopy=Slow Apply Behavior Copy
 Effect/Name/Stimpack2=Stim Pack (Apply Buff)
 Effect/Name/Stimpack3=Stim Pack (Apply Buff)
 Effect/Name/TissueAssimilation2=Tissue Assimilation
