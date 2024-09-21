@@ -126,9 +126,7 @@
         <ValidatorArray value="HasBurrowUpgrade"/>
     </CAbilMorph>
     <CAbilArmMagazine id="CarrierHangar">
-        <InfoArray index="Ammo1" Time="8">
-            <Flags index="AutoBuildOn" value="0"/>
-        </InfoArray>
+        <InfoArray index="Ammo1" Time="8"/>
         <EffectArray index="Create" value=""/>
         <Flags index="AutoCastOffOwnerLeave" value="0"/>
         <Flags index="AutoCreate" value="1"/>
@@ -436,6 +434,9 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <CAbilQueue id="HangarQueue5">
+        <QueueSize value="10"/>
+    </CAbilQueue>
     <CAbilAugment id="HotSRaptorCharge2">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <DataCollection value="HotSRaptorCharge"/>
@@ -1190,6 +1191,19 @@
     <CAbilEffectTarget id="UltrasonicPulse">
         <Range index="0" value="13"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="UpgradeToPlanetaryFortress">
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="30"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="30"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="30"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <CAbilMorph id="UpgradeToWarpGate">
         <CmdButtonArray index="Execute" Requirements="UseWarpGate"/>
     </CAbilMorph>
@@ -1369,6 +1383,21 @@
         </InfoArray>
     </CAbilResearch>
     <CAbilQueue id="que5">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5Addon">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5CancelToSelection">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5LongBlend">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5Passive">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5PassiveCancelToSelection">
         <QueueSize value="10"/>
     </CAbilQueue>
 </Catalog>

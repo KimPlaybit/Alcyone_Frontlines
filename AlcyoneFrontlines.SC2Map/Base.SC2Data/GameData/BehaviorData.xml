@@ -9,6 +9,11 @@
             <VitalRegenMultiplier index="Energy" value="-1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BunkerWeaponRangeBonus">
+        <Modification>
+            <DamageDealtAttributeUnscaled index="Heroic" value="10"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BurrowCharging">
         <Modification MoveSpeedMultiplier="2">
             <StateFlags index="LineMovement" value="1"/>
