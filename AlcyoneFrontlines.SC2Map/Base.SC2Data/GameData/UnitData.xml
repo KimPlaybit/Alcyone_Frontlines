@@ -4332,6 +4332,7 @@
     </CUnit>
     <CUnitHero id="DefilerHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/DefilerHero"/>
+        <RandomNameArray value="Khudirn"/>
         <Description value="Button/Tooltip/DefilerHero"/>
         <Facing value="0"/>
         <Race value="Zerg"/>
@@ -4355,6 +4356,7 @@
         <FlagArray index="ArmySelect" value="1"/>
         <FogVisibility value="Hidden"/>
         <EditorFlags index="NeutralDefault" value="0"/>
+        <PushPriority value="9999"/>
         <Collide index="Land1" value="0"/>
         <Collide index="Land6" value="0"/>
         <Collide index="Land7" value="0"/>
@@ -4381,6 +4383,7 @@
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="150"/>
         <AttackTargetPriority value="20"/>
+        <AIOverideTargetPriority value="4"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="move"/>
         <AbilArray Link="DefilerMPConsume"/>
@@ -4422,10 +4425,7 @@
         <LeaderAlias value="DefilerHero"/>
         <HotkeyAlias value="DefilerHero"/>
         <KillDisplay value="Always"/>
-        <RandomNameArray value="Khudirn"/>
-        <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="DragoonHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/DragoonHero"/>
@@ -5209,9 +5209,9 @@
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="FaceEmbrace2" Type="AbilCmd" AbilCmd="Yoink,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="StunningBlast" Type="AbilCmd" AbilCmd="StunningBlast,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="WarbotCharge" Type="AbilCmd" AbilCmd="WarbotCharge,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="PrimalRoar" Type="AbilCmd" AbilCmd="PrimalRoar,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="ZHybridPsychicClones" Type="AbilCmd" AbilCmd="WarbotCharge,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="ZHybridPsychicClones" Type="AbilCmd" AbilCmd="ZHybridPsychicClones,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.5"/>
         <ScoreMake value="300"/>

@@ -60,6 +60,10 @@
     <CEffectDamage id="CrucioShockCannonDummy">
         <AttributeBonus index="Heroic" value="40"/>
     </CEffectDamage>
+    <CEffectDamage id="DarkSwarmImpactDummy">
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="DarkTemplarShadowFuryApplyDamageReduction">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -621,6 +625,9 @@
             <Change value="2000"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectDamage id="WarbotChargeDamage">
+        <Amount value="5"/>
+    </CEffectDamage>
     <CEffectEnumArea id="ZHybridPsionicShockwaveSearchArea">
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Buried,Stasis,Hidden,Invulnerable,Unstoppable"/>
     </CEffectEnumArea>

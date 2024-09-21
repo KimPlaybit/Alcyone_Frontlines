@@ -1277,6 +1277,13 @@
             <Cooldown TimeUse="85"/>
         </Cost>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="WarbotCharge">
+        <Cost>
+            <Charge Link="Abil/WarbotCharge"/>
+            <Cooldown Link="Abil/WarbotCharge" TimeUse="20"/>
+        </Cost>
+        <Range index="0" value="10"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="ZealotWhirlWindHero">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="VoidZealotWhirlwindSet"/>

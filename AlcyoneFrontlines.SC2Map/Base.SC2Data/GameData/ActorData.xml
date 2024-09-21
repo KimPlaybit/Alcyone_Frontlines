@@ -1520,7 +1520,7 @@
         <StatusColors index="Shields">
             <ColorArray index="0" value="255,0,128,0"/>
         </StatusColors>
-        <UnitFlags index="StandAnimBirthVariation" value="0"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
         <UnitIcon value="Assets\Textures\btn-unit-zerg-mutalisk-viper.dds"/>
         <VitalColors index="Shields">
             <ColorArray value="255,0,128,0"/>
@@ -1530,6 +1530,11 @@
             <Image value="Assets\Textures\Wireframe-Zerg-Mutaliskex1b.dds"/>
         </Wireframe>
         <WireframeShieldColor value="255,0,128,0"/>
+        <CustomUnitStatusFrame value="HotS_UnitStatus/KerriganHeroUnitStatusFrameTemplate"/>
+        <MinimapIcon value="Assets\Textures\mutaliskportrait_static.dds"/>
+        <MinimapIconIsTeamColored value="1"/>
+        <MinimapIconScale value="0.090000"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="MutaliskViper22" parent="GenericUnitStandard" unitName="MutaliskHero2">
         <Aliases value="_UnitMedium"/>

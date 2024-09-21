@@ -328,6 +328,7 @@ trigger gt_QueenPicked;
 trigger gt_DefilerPicked;
 trigger gt_HydraliskPicked;
 trigger gt_UltraliskPicked;
+trigger gt_MutaliskPicked;
 
 //--------------------------------------------------------------------------------------------------
 // Custom AI Functions
@@ -471,6 +472,7 @@ wave cai_wave_createdWave (int w, int p) {
 void cai_startall () {
     AICampaignStart(1);
     AICampaignStart(2);
+    AICampaignStart(3);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5338,6 +5340,57 @@ void gt_UltraliskPicked_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Mutalisk Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_MutaliskPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(gv_rTSPlayer1) == "Zerg") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer1)) || ((PlayerRace(gv_rTSPlayer2) == "Zerg") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer2)))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/0CF66C31")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
+    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
+    gv_playerPicked[EventPlayer()] = true;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MutaliskPicked_Init () {
+    gt_MutaliskPicked = TriggerCreate("gt_MutaliskPicked_Func");
+    TriggerAddEventChatMessage(gt_MutaliskPicked, c_playerAny, "-mutaliskEverywhere", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
@@ -5406,6 +5459,7 @@ void InitTriggers () {
     gt_DefilerPicked_Init();
     gt_HydraliskPicked_Init();
     gt_UltraliskPicked_Init();
+    gt_MutaliskPicked_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
