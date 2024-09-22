@@ -136,6 +136,10 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="PrimalSlash">
+        <InfoFlags index="Hidden" value="0"/>
+        <Modification AttackSpeedMultiplier="1.2"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="StunningBlast">
         <Duration value="2"/>
     </CBehaviorBuff>
@@ -193,9 +197,6 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="PrimalRavageBuff">
         <Modification HealTakenMultiplier="1.1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="PrimalSlash">
-        <InfoFlags index="Hidden" value="0"/>
     </CBehaviorBuff>
     <CBehaviorAttribute id="ProtossDamageBonus">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
