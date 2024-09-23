@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CBehaviorBuff id="Angry2">
+        <Name value="Behavior/Name/HinderEnergyRegn"/>
+        <Alignment value="Positive"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification>
+            <VitalRegenMultiplier index="Energy" value="-1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BunkerWeaponRangeBonus">
+        <Modification>
+            <DamageDealtAttributeUnscaled index="Heroic" value="10"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BurrowCharging">
         <Modification MoveSpeedMultiplier="2">
             <StateFlags index="LineMovement" value="1"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="DarkArchonConfusion">
-        <Duration value="5"/>
+        <Duration value="2"/>
+        <Modification>
+            <StateFlags index="Uncommandable" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="DarkTemplarShadowFuryController">
         <RemoveValidatorArray value="CasterNotDeadAndCasterNotStunned"/>
@@ -17,6 +34,16 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="DefilerMPDarkSwarm">
         <DamageResponse ModifyFraction="0.4"/>
+        <Modification>
+            <VitalRegenMultiplier index="Life" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DefilerMPPlague">
+        <Duration value="10"/>
+        <Period value="0.5"/>
+        <Modification>
+            <VitalRegenMultiplier index="Energy" value="-1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="DragoonFrenzy">
         <Alignment value="Positive"/>
@@ -44,7 +71,7 @@
         <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-ShadowFury.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="1.6"/>
-        <DamageResponse ModifyFraction="0.5">
+        <DamageResponse ModifyFraction="0">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -61,15 +88,36 @@
     </CBehaviorBuff>
     <CBehaviorAttribute id="GoliathLevelBonus">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Modification MoveSpeedMultiplier="1.01" AttackSpeedMultiplier="1.05" ShieldArmorBonus="2">
+        <Modification MoveSpeedMultiplier="1.005" AttackSpeedMultiplier="1.05" ShieldArmorBonus="2">
+            <DamageDealtUnscaled index="Spell" value="10"/>
+            <DamageDealtUnscaled index="Ranged" value="1"/>
+            <DamageDealtUnscaled index="NoProc" value="6"/>
             <VitalMaxArray index="Life" value="20"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorBuff id="GravitonBeamUrun">
         <Duration value="2.7"/>
+        <Modification>
+            <StateFlags index="SuppressPassenger" value="1"/>
+            <AbilLinkEnableArray value="MorphToSwarmHostMP"/>
+            <AbilLinkEnableArray value="WidowMineUnburrow"/>
+            <AbilLinkEnableArray value="BurrowHotSRaptorUp"/>
+            <AbilLinkEnableArray value="BurrowHotSSwarmlingUp"/>
+            <AbilLinkEnableArray value="BurrowHunterUp"/>
+            <AbilLinkEnableArray value="BurrowHotSSplitterlingBigUp"/>
+            <AbilLinkEnableArray value="BurrowHotSSplitterlingMediumUp"/>
+            <AbilLinkEnableArray value="HotSBurrowVileUp"/>
+            <AbilLinkEnableArray value="BurrowHotSCorpserUp"/>
+            <AbilLinkEnableArray value="BurrowHydraliskLurkerUp"/>
+            <AbilLinkEnableArray value="BurrowHydraliskImpalerUp"/>
+            <AbilLinkEnableArray value="BurrowLurkerMPUp"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravitonBeamUrunHeight">
         <Duration value="3"/>
+        <Modification Height="3.75">
+            <PlaneDelta index="Ground" value="-1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravitonBeamUrunHeight2">
         <InfoFlags index="Hidden" value="1"/>
@@ -81,6 +129,39 @@
             <PlaneDelta index="Air" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GatheringDummy" parent="TimedLife">
+        <BehaviorFlags index="Permanent" value="0"/>
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+        <InfoFlags index="Hidden" value="0"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PrimalSlash">
+        <InfoFlags index="Hidden" value="0"/>
+        <Modification AttackSpeedMultiplier="1.2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StunningBlast">
+        <Duration value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VileAcidSlowEffectsLevel12">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-debilitatingbile.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+        <Modification MoveSpeedMultiplier="0.75" AttackSpeedMultiplier="0.75"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WorkersResistanceToHeroic">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="SCVIsRepairing"/>
+        <Duration value="2"/>
+        <DamageResponse ModifyFraction="0.02" TargetFilters="Heroic;-">
+            <Chance value="1"/>
+            <Cost>
+                <Charge Link="Behavior/FenixChampionPowerShield2"/>
+                <Cooldown Link="Behavior/FenixChampionPowerShield2"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="HydraliskFrenzy">
         <Modification MoveSpeedMultiplier="1.05" AttackSpeedMultiplier="2">
             <DamageTotalMultiplier index="Melee" value="0.1"/>
@@ -91,11 +172,31 @@
         <Duration value="10"/>
         <Period value="0.5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganAbilityEfficiency">
+        <RefreshEffect value=""/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Leech">
+        <Modification>
+            <StateFlags index="Silence" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FirebatAvatar">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <Duration value="10"/>
+        <Period value="1"/>
+        <PeriodicEffect value="AvatarSearch"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="300"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.8">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="PrimalRavageBuff">
         <Modification HealTakenMultiplier="1.1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="PrimalSlash">
-        <InfoFlags index="Hidden" value="0"/>
     </CBehaviorBuff>
     <CBehaviorAttribute id="ProtossDamageBonus">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -120,6 +221,7 @@
             <DamageDealtUnscaled index="Melee" value="10"/>
             <DamageDealtUnscaled index="Ranged" value="5"/>
             <DamageDealtUnscaled index="Splash" value="2"/>
+            <VitalMaxArray index="Shields" value="-40"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorVeterancy id="ProtossLevels">
@@ -241,7 +343,7 @@
     <CBehaviorAttribute id="FirebatAttackSpeed">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification ShieldArmorBonus="2">
-            <DamageDealtUnscaled index="Splash" value="4"/>
+            <DamageDealtUnscaled index="Spell" value="5"/>
             <VitalMaxArray index="Life" value="30"/>
         </Modification>
     </CBehaviorAttribute>
@@ -317,7 +419,7 @@
     <CBehaviorAttribute id="SpectreAttackBonus">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification XPMultiplier="1.03">
-            <DamageDealtUnscaled index="Spell" value="5"/>
+            <DamageDealtUnscaled index="Spell" value="10"/>
             <DamageDealtUnscaled index="Melee" value="5"/>
             <DamageDealtUnscaled index="Ranged" value="5"/>
             <DamageDealtUnscaled index="Splash" value="5"/>
@@ -335,7 +437,6 @@
     <CBehaviorAttribute id="TerranAttackBonus">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification>
-            <DamageDealtUnscaled index="Spell" value="5"/>
             <DamageDealtUnscaled index="Melee" value="5"/>
             <DamageDealtUnscaled index="Ranged" value="5"/>
             <DamageDealtUnscaled index="Splash" value="5"/>
@@ -486,6 +587,8 @@
             <WeaponArray Link="KaiserBlades2"/>
             <WeaponEnableArray value="KaiserBlades2"/>
             <WeaponDisableArray value="KaiserBlades"/>
+            <PlaneDelta index="Ground" value="1"/>
+            <PlaneDelta index="Air" value="1"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="QueenBonus">
@@ -541,6 +644,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification HealTakenMultiplier="1.05">
+            <DamageDealtUnscaled index="Ranged" value="-2"/>
             <VitalMaxArray index="Life" value="-30"/>
         </Modification>
     </CBehaviorAttribute>
@@ -581,6 +685,15 @@
             <VitalMaxArray index="Life" value="75"/>
         </Modification>
     </CBehaviorAttribute>
+    <CBehaviorAttribute id="DefilerDamageBonus">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Modification>
+            <DamageDealtUnscaled index="Spell" value="2"/>
+            <DamageDealtUnscaled index="NoProc" value="2"/>
+        </Modification>
+    </CBehaviorAttribute>
     <CBehaviorAttribute id="ZergEnergyBonus">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Modification>
@@ -608,6 +721,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="100">
@@ -621,6 +735,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="200">
@@ -634,6 +749,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="400">
@@ -647,6 +763,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="800">
@@ -660,6 +777,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1200">
@@ -674,6 +792,7 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskAirAttack" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1600">
@@ -687,6 +806,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2000">
@@ -700,6 +820,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2400">
@@ -713,6 +834,7 @@
                 <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
+                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
     </CBehaviorVeterancy>

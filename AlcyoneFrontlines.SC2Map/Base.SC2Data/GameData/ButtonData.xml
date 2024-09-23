@@ -18,6 +18,11 @@
         <AlertIcon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
+    <CButton id="ProtossDefenseStructureUpgrade1">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
     <CButton id="Explode2">
         <Icon value="Assets\Textures\btn-ability-zerg-explode-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-zerg-explode-color.dds"/>
@@ -71,6 +76,27 @@
         <AlertIcon value="Assets\Textures\btn-unit-zerg-overlordtransport.dds"/>
         <EditorCategories value="Race:Zerg"/>
     </CButton>
+    <CButton id="Avatar">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-empowermeslaves.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-alarak-empowermeslaves.dds"/>
+    </CButton>
+    <CButton id="ProtossDefenseStructureUpgrade12">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="ProtossDefenseStructureUpgrade1"/>
+    </CButton>
+    <CButton id="ProtossDefenseStructureUpgrade13">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="ProtossDefenseStructureUpgrade1"/>
+    </CButton>
+    <CButton id="TerranDefenseStructureLevel1">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
     <CButton id="ResearchLurkerRange2">
         <Icon value="Assets\Textures\btn-upgrade-zerg-adaptivetalons.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-adaptivetalons.dds"/>
@@ -100,6 +126,8 @@
     <CButton id="NovaWeaponPlasmaBlastNew2" parent="WizButton" art="Assets\Textures\btn-upgrade-terran-plasmashot.dds">
         <Hotkey value="Button/Hotkey/NovaWeaponCanisterRifleSnipe"/>
         <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-empowermeslaves.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-alarak-empowermeslaves.dds"/>
     </CButton>
     <CButton id="Obliterate2">
         <Icon value="Assets\Textures\btn-techupgrade-terran-psioniclash.dds"/>
@@ -257,6 +285,23 @@
     <CButton id="Tempest">
         <Hotkey value="Button/Hotkey/Tempest"/>
     </CButton>
+    <CButton id="TerranDefenseStructureLevel12">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="ProtossDefenseStructureUpgrade1"/>
+    </CButton>
+    <CButton id="TerranDefenseStructureLevel13">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="ProtossDefenseStructureUpgrade1"/>
+    </CButton>
+    <CButton id="ZergDefenseStructureLevel1">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
     <CButton id="TossGrenade2">
         <Icon value="Assets\Textures\btn-ability-terran-raynortossgrenade.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-raynortossgrenade.dds"/>
@@ -288,4 +333,21 @@
         <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="WraithCloakOff"/>
+    <CButton id="ZergDefenseStructureLevel12">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="ZergDefenseStructureLevel1"/>
+    </CButton>
+    <CButton id="ZergDefenseStructureLevel13">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="ZergDefenseStructureLevel1"/>
+    </CButton>
+    <CButton id="ProtectWorkers">
+        <Icon value="Assets\Textures\btn-research-zerg-fortifiedbunker.dds"/>
+        <AlertIcon value="Assets\Textures\btn-research-zerg-fortifiedbunker.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
 </Catalog>

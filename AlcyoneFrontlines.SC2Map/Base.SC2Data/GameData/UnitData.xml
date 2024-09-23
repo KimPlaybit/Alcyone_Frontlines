@@ -55,6 +55,7 @@
         <Collide index="Locust" value="1"/>
         <Collide index="Small" value="1"/>
         <Attributes index="Biological" value="1"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="30"/>
         <LifeMax value="30"/>
         <LifeRegenRate value="0.2734"/>
@@ -391,6 +392,9 @@
     </CUnit>
     <CUnit id="CommandCenter">
         <Food value="15"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ProtectWorkers" Type="Passive" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="CommandCenterFlying">
         <Food value="15"/>
@@ -411,7 +415,8 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="CreepTumorBurrowed">
-        <FlagArray index="Buried" value="0"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <FlagArray index="AILifetime" value="0"/>
         <AbilArray index="2" removed="1"/>
         <BehaviorArray index="1" removed="1"/>
         <BehaviorArray index="2" removed="1"/>
@@ -425,6 +430,9 @@
     <CUnit id="CreepTumorQueen">
         <Footprint value="CreepTumorQueen"/>
         <PlacementFootprint value="CreepTumorQueen"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <FlagArray index="Buried" value="1"/>
     </CUnit>
     <CUnit id="DarkArchon">
         <EnergyStart value="100"/>
@@ -529,15 +537,18 @@
             <LayoutButtons index="9" Face="TerranInfantryArmorLevel2" AbilCmd="EngineeringBayResearch,Research8"/>
             <LayoutButtons index="10" Face="TerranInfantryArmorLevel3" AbilCmd="EngineeringBayResearch,Research9"/>
             <LayoutButtons index="11" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="1" Column="3"/>
-            <LayoutButtons index="12" removed="1"/>
-            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="12" Face="TerranDefenseStructureLevel1" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research10" Column="2"/>
+            <LayoutButtons index="13" Face="TerranDefenseStructureLevel12" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research11" Row="1"/>
+            <LayoutButtons Face="TerranDefenseStructureLevel13" Type="AbilCmd" AbilCmd="EngineeringBayResearch,Research12" Row="1" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="EvolutionChamber">
         <Collide index="Locust" value="0"/>
         <BehaviorArray index="3" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons index="11" removed="1"/>
+            <LayoutButtons index="11" Face="ZergDefenseStructureLevel1" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research10" Requirements=""/>
+            <LayoutButtons Face="ZergDefenseStructureLevel12" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research11" Row="1" Column="0"/>
+            <LayoutButtons Face="ZergDefenseStructureLevel13" Type="AbilCmd" AbilCmd="evolutionchamberresearch,Research12" Row="1" Column="0"/>
         </CardLayouts>
         <TechTreeUnlockedUnitArray index="0" removed="1"/>
     </CUnit>
@@ -562,9 +573,9 @@
     </CUnit>
     <CUnit id="Forge">
         <CardLayouts index="0">
-            <LayoutButtons index="11" removed="1"/>
-            <LayoutButtons index="12" removed="1"/>
-            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="11" Face="ProtossDefenseStructureUpgrade1" Type="AbilCmd" AbilCmd="ForgeResearch,Research10" Requirements="" Row="1"/>
+            <LayoutButtons index="12" Face="ProtossDefenseStructureUpgrade12" Type="AbilCmd" AbilCmd="ForgeResearch,Research11" Requirements=""/>
+            <LayoutButtons index="13" Face="ProtossDefenseStructureUpgrade13" Type="AbilCmd" AbilCmd="ForgeResearch,Research12" Requirements="" Column="0"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="FusionCore">
@@ -595,12 +606,21 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="Hatchery">
+        <Food value="6"/>
         <CardLayouts index="0">
             <LayoutButtons index="9" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
-            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="10" Face="ProtectWorkers" Type="Passive" AbilCmd="" Column="2"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="Hive">
         <Food value="6"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
+            <LayoutButtons index="8" Face="ProtectWorkers" Type="Passive" AbilCmd="" Column="2"/>
+            <LayoutButtons index="9" removed="1"/>
+        </CardLayouts>
+        <TechTreeUnlockedUnitArray value="SnakeCaster"/>
     </CUnit>
     <CUnit id="HotSRaptorBurrowed">
         <LifeStart value="5"/>
@@ -618,6 +638,7 @@
         <AbilArray Link="Explode2"/>
         <StationaryTurningRate value="2879.8242"/>
         <TurningRate value="2879.8242"/>
+        <Attributes index="Heroic" value="1"/>
     </CUnit>
     <CUnit id="HotSTorrasque2">
         <Subtitle value="UnitSubtitle/HotSTorrasque2"/>
@@ -864,12 +885,12 @@
         <!--GlossaryCategory value="Unit/Category/TerranUnits"/-->
     </CUnit>
     <CUnit id="Lair">
+        <Food value="6"/>
         <CardLayouts index="0">
             <LayoutButtons index="9" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
-            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="10" Face="ProtectWorkers" Type="Passive" AbilCmd="" Column="2"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
-        <Food value="6"/>
     </CUnit>
     <CUnit id="Larva">
         <CardLayouts index="0">
@@ -893,6 +914,7 @@
             <LayoutButtons index="22" removed="1"/>
             <LayoutButtons index="23" removed="1"/>
         </CardLayouts>
+        <FlagArray index="Worker" value="1"/>
     </CUnit>
     <CUnit id="LiberatorAG">
         <AbilArray index="2" Link="LiberatorAATarget"/>
@@ -947,6 +969,7 @@
         <Attributes index="Light" value="1"/>
         <Attributes index="Biological" value="1"/>
         <Attributes index="Structure" value="0"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="40"/>
         <LifeMax value="40"/>
         <LifeRegenRate value="0.2734"/>
@@ -1002,6 +1025,35 @@
         <GlossaryWeakArray value="Phoenix"/>
         <HotkeyCategory value="Unit/Category/ZergStory"/>
     </CUnitHero>
+    <CUnit id="Nexus">
+        <Collide index="Locust" value="0"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <Food value="15"/>
+        <AbilArray index="1" Link="ChronoBoostEnergyCost"/>
+        <AbilArray index="2" Link="NexusTrain"/>
+        <AbilArray index="3" Link="RallyNexus"/>
+        <AbilArray index="4" Link="stopProtossBuilding"/>
+        <AbilArray index="5" Link="NexusInvulnerability"/>
+        <AbilArray index="6" Link="NexusTrainMothership"/>
+        <AbilArray index="7" Link="NexusTrainMothershipCore"/>
+        <AbilArray index="8" Link="attackProtossBuilding"/>
+        <AbilArray index="9" Link="StrategicRecall"/>
+        <AbilArray index="10" Link="que5"/>
+        <BehaviorArray index="1" removed="1"/>
+        <BehaviorArray index="2" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="4" AbilCmd="ChronoBoostEnergyCost,Execute"/>
+            <LayoutButtons index="5" Face="Mothership" AbilCmd="NexusTrainMothership,Train1" Row="0" Column="1"/>
+            <LayoutButtons index="6" Face="AttackBuildingPFort" AbilCmd="attackProtossBuilding,Execute" Column="4"/>
+            <LayoutButtons index="7" Face="Stop" AbilCmd="stopProtossBuilding,Stop" Column="3"/>
+            <LayoutButtons index="8" Face="StrategicRecall" AbilCmd="StrategicRecall,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="9" Face="ProtectWorkers" Type="Passive" AbilCmd="" Row="1" Column="2"/>
+            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="11" removed="1"/>
+        </CardLayouts>
+        <TechTreeProducedUnitArray value="MothershipCore"/>
+    </CUnit>
     <CUnit id="NydusCanal2">
         <DeathRevealRadius value="3"/>
         <Facing value="29.9707"/>
@@ -1150,6 +1202,88 @@
     </CUnit>
     <CUnit id="OrbitalCommand">
         <Food value="15"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ProtectWorkers" Type="Passive" Row="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="PlanetaryFortress">
+        <Food value="15"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ProtectWorkers" Type="Passive" Row="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SpawnedOdin">
+        <DeathRevealRadius value="3"/>
+        <Facing value="135"/>
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TurnBeforeMove" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <PushPriority value="11"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <Attributes index="MapBoss" value="1"/>
+        <LifeStart value="3750"/>
+        <LifeMax value="3750"/>
+        <LifeArmor value="3"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
+        <EnergyStart value="250"/>
+        <EnergyMax value="250"/>
+        <EnergyRegenRate value="0.5625"/>
+        <Speed value="1.875"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <StationaryTurningRate value="359.2968"/>
+        <TurningRate value="359.2968"/>
+        <Sight value="13"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="500"/>
+        <CostResource index="Vespene" value="200"/>
+        <RepairTime value="180"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="500"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="OdinBarrage"/>
+        <BehaviorArray Link="Detector20"/>
+        <WeaponArray Link="OdinAntiAir"/>
+        <WeaponArray Link="Odin"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="OdinBarrage" Type="AbilCmd" AbilCmd="OdinBarrage,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="OdinBarrage,Cancel" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="1.5"/>
+        <SeparationRadius value="0.8"/>
+        <InnerRadius value="0.8125"/>
+        <ScoreMake value="1000"/>
+        <ScoreKill value="2000"/>
+        <SubgroupPriority value="49"/>
+        <MinimapRadius value="1.25"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <TacticalAIThink value="AIThinkOdin"/>
+        <TacticalAIChannel value="AIChannelOdin"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <GlossaryPriority value="360"/>
+        <GlossaryWeakArray value="Banshee"/>
+        <GlossaryWeakArray value="Battlecruiser"/>
+        <HotkeyCategory value="Unit/Category/TerranStory"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="10"/>
+            <ChanceArray index="Idle" value="90"/>
+        </Fidget>
     </CUnit>
     <CUnit id="OrbitalCommandFlying">
         <Food value="15"/>
@@ -1157,9 +1291,6 @@
     <CUnit id="OverlordTransport">
         <CostResource index="Minerals" value="125"/>
         <CostResource index="Vespene" value="25"/>
-    </CUnit>
-    <CUnit id="PlanetaryFortress">
-        <Food value="15"/>
     </CUnit>
     <CUnit id="Probe">
         <CardLayouts index="1">
@@ -1210,11 +1341,13 @@
         </CardLayouts>
         <CardLayouts index="1" removed="1"/>
         <SubgroupPriority value="21"/>
+        <Food value="-1"/>
     </CUnit>
     <CUnit id="QueenBurrowed">
         <CostResource index="Vespene" value="0"/>
         <LifeStart value="175"/>
         <LifeMax value="175"/>
+        <Food value="-1"/>
     </CUnit>
     <CUnit id="Ravager">
         <AbilArray Link="RavagerCorrosiveBile"/>
@@ -2337,6 +2470,10 @@
     </CUnit>
     <CUnit id="Viper">
         <CostResource index="Minerals" value="100"/>
+        <AbilArray Link="ParasiticBomb"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ParasiticBomb" Type="AbilCmd" AbilCmd="ParasiticBomb,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="VoidPylon">
         <LifeStart value="3000"/>
@@ -2345,14 +2482,6 @@
         <ShieldsMax value="1"/>
         <ShieldRegenRate value="1"/>
         <AIOverideTargetPriority value="3"/>
-    </CUnit>
-    <CUnit id="VoidRay">
-        <WeaponArray index="0" Link="VoidRaySwarm"/>
-        <AbilArray Link="VoidRaySwarmDamageBoost"/>
-        <CardLayouts index="0">
-            <LayoutButtons index="5" Face="VoidRaySwarmDamageBoost" Type="AbilCmd"/>
-        </CardLayouts>
-        <SubgroupPriority value="14"/>
     </CUnit>
     <CUnit id="FleetBeacon">
         <CardLayouts index="0">
@@ -2391,35 +2520,6 @@
         <AbilArray index="5" removed="1"/>
         <AbilArray index="6" removed="1"/>
         <CostResource index="Minerals" value="150"/>
-    </CUnit>
-    <CUnit id="Nexus">
-        <BehaviorArray index="1" removed="1"/>
-        <BehaviorArray index="2" removed="1"/>
-        <AbilArray index="1" Link="ChronoBoostEnergyCost"/>
-        <AbilArray index="2" Link="NexusTrain"/>
-        <AbilArray index="3" Link="RallyNexus"/>
-        <AbilArray index="4" Link="stopProtossBuilding"/>
-        <AbilArray index="5" Link="NexusInvulnerability"/>
-        <AbilArray index="6" Link="NexusTrainMothership"/>
-        <AbilArray index="7" Link="NexusTrainMothershipCore"/>
-        <AbilArray index="8" Link="attackProtossBuilding"/>
-        <AbilArray index="9" Link="StrategicRecall"/>
-        <AbilArray index="10" Link="que5"/>
-        <CardLayouts index="0">
-            <LayoutButtons index="4" AbilCmd="ChronoBoostEnergyCost,Execute"/>
-            <LayoutButtons index="5" Face="Mothership" AbilCmd="NexusTrainMothership,Train1" Row="0" Column="1"/>
-            <LayoutButtons index="6" Face="AttackBuildingPFort" AbilCmd="attackProtossBuilding,Execute" Column="4"/>
-            <LayoutButtons index="7" Face="Stop" AbilCmd="stopProtossBuilding,Stop" Column="3"/>
-            <LayoutButtons index="8" Face="StrategicRecall" AbilCmd="StrategicRecall,Execute" Row="2" Column="1"/>
-            <LayoutButtons index="9" removed="1"/>
-            <LayoutButtons index="10" removed="1"/>
-            <LayoutButtons index="11" removed="1"/>
-        </CardLayouts>
-        <Collide index="Locust" value="0"/>
-        <TechTreeProducedUnitArray value="MothershipCore"/>
-        <Food value="15"/>
-        <EnergyStart value="50"/>
-        <EnergyMax value="200"/>
     </CUnit>
     <CUnit id="Starport">
         <TechTreeProducedUnitArray value="Battlecruiser"/>
@@ -2479,6 +2579,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="MedivacSpeedBoost" Type="AbilCmd" AbilCmd="MedivacSpeedBoost,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <Food value="-1"/>
     </CUnit>
     <CUnit id="ExtendingBridgeNEWide8">
         <BehaviorArray Link="ExtendBridgeExtendingBridgeNEWide8Out"/>
@@ -2864,16 +2965,15 @@
         </CardLayouts>
         <Footprint value="AiurLightBridgeNWOut"/>
     </CUnit>
-    <CUnit id="WarHound"/>
-    <CUnit id="Hive">
-        <TechTreeUnlockedUnitArray value="SnakeCaster"/>
+    <CUnit id="VoidRay">
+        <AbilArray Link="VoidRaySwarmDamageBoost"/>
+        <WeaponArray index="0" Link="VoidRaySwarm"/>
         <CardLayouts index="0">
-            <LayoutButtons index="7" Face="ResearchBurrow" AbilCmd="LairResearch,Research4" Row="0" Column="4"/>
-            <LayoutButtons index="8" removed="1"/>
-            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons index="5" Face="VoidRaySwarmDamageBoost" Type="AbilCmd"/>
         </CardLayouts>
-        <Food value="6"/>
+        <SubgroupPriority value="14"/>
     </CUnit>
+    <CUnit id="WarHound"/>
     <CUnit id="WarpPrism">
         <CostResource index="Minerals" value="250"/>
         <LifeStart value="80"/>
@@ -4341,6 +4441,7 @@
     </CUnit>
     <CUnitHero id="DefilerHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/DefilerHero"/>
+        <RandomNameArray value="Khudirn"/>
         <Description value="Button/Tooltip/DefilerHero"/>
         <Facing value="0"/>
         <Race value="Zerg"/>
@@ -4364,6 +4465,7 @@
         <FlagArray index="ArmySelect" value="1"/>
         <FogVisibility value="Hidden"/>
         <EditorFlags index="NeutralDefault" value="0"/>
+        <PushPriority value="9999"/>
         <Collide index="Land1" value="0"/>
         <Collide index="Land6" value="0"/>
         <Collide index="Land7" value="0"/>
@@ -4390,6 +4492,7 @@
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="150"/>
         <AttackTargetPriority value="20"/>
+        <AIOverideTargetPriority value="4"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="move"/>
         <AbilArray Link="DefilerMPConsume"/>
@@ -4404,6 +4507,7 @@
         <BehaviorArray Link="ZergDamageBonus"/>
         <BehaviorArray Link="ZergMovementBonus"/>
         <BehaviorArray Link="ZergLevels"/>
+        <BehaviorArray Link="DefilerDamageBonus"/>
         <WeaponArray Link="SwarmQueenAcidSpines"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -4430,10 +4534,7 @@
         <LeaderAlias value="DefilerHero"/>
         <HotkeyAlias value="DefilerHero"/>
         <KillDisplay value="Always"/>
-        <RandomNameArray value="Khudirn"/>
-        <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="DragoonHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/DragoonHero"/>
@@ -4595,8 +4696,7 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
         <AbilArray Link="DutchPlaceTurret"/>
-        <AbilArray Link="NovaWeaponPlasmaBlastNew"/>
-        <AbilArray Link="ThunderousCharge"/>
+        <AbilArray Link="FirebatAvatar"/>
         <AbilArray Link="SuperStimpackNova"/>
         <AbilArray Link="ArtanisLightningDash"/>
         <BehaviorArray index="0" Link="TerranLevels"/>
@@ -4612,9 +4712,9 @@
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="ArtanisLightningDash" Type="AbilCmd" AbilCmd="ArtanisLightningDash,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="DutchPlaceTurret" Type="AbilCmd" AbilCmd="DutchPlaceTurret,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="NovaWeaponPlasmaBlastNew" Type="AbilCmd" AbilCmd="NovaWeaponPlasmaBlastNew,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="Avatar" Type="AbilCmd" AbilCmd="FirebatAvatar,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="SuperStimpackNova" Type="AbilCmd" AbilCmd="SuperStimpackNova,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="NovaHelmetGhostVisor2" Type="Passive" Row="1" Column="3"/>
+            <LayoutButtons Face="NovaWeaponPlasmaBlastNew2" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
         <Radius value="0.5"/>
         <InnerRadius value="0.4375"/>
@@ -5172,6 +5272,7 @@
         <Attributes index="Light" value="1"/>
         <Attributes index="Biological" value="1"/>
         <Attributes index="Structure" value="0"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="120"/>
         <LifeMax value="120"/>
         <LifeRegenRate value="0.2734"/>
@@ -5218,9 +5319,9 @@
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="FaceEmbrace2" Type="AbilCmd" AbilCmd="Yoink,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="StunningBlast" Type="AbilCmd" AbilCmd="StunningBlast,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="WarbotCharge" Type="AbilCmd" AbilCmd="WarbotCharge,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="PrimalRoar" Type="AbilCmd" AbilCmd="PrimalRoar,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="ZHybridPsychicClones" Type="AbilCmd" AbilCmd="WarbotCharge,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="ZHybridPsychicClones" Type="AbilCmd" AbilCmd="ZHybridPsychicClones,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.5"/>
         <ScoreMake value="300"/>
@@ -5352,6 +5453,7 @@
         <FlagArray index="ArmySelect" value="1"/>
         <FogVisibility value="Hidden"/>
         <EditorFlags index="NeutralDefault" value="0"/>
+        <PushPriority value="9999"/>
         <Collide index="Land1" value="0"/>
         <Collide index="Land6" value="0"/>
         <Collide index="Land7" value="0"/>
@@ -5376,12 +5478,13 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="25"/>
         <AttackTargetPriority value="20"/>
+        <AIOverideTargetPriority value="4"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
-        <AbilArray Link="HotSRaptorCharge"/>
+        <AbilArray Link="HotSRaptorCharge2"/>
         <AbilArray Link="PoisonNova"/>
         <AbilArray Link="MorphZerglingBanelingHero"/>
         <AbilArray Link="MorphZerglingBanelingHero2"/>
@@ -5400,7 +5503,7 @@
             <LayoutButtons Face="MorphtoBanelingHero2" Type="AbilCmd" AbilCmd="MorphZerglingBanelingHero2,Train1" Row="2" Column="1"/>
             <LayoutButtons Face="PoisonNova" Type="AbilCmd" AbilCmd="PoisonNova,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="MorphtoBanelingHero" Type="AbilCmd" AbilCmd="MorphZerglingBanelingHero,Train1" Row="2" Column="3"/>
-            <LayoutButtons Face="HotSRaptorCharge" Type="AbilCmd" AbilCmd="HotSRaptorCharge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="HotSRaptorCharge" Type="AbilCmd" AbilCmd="HotSRaptorCharge2,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="RaptorCliffJumper" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
@@ -5432,9 +5535,7 @@
         </Fidget>
         <TauntDuration index="Cheer" value="5"/>
         <TauntDuration index="Dance" value="5"/>
-        <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="AvengerHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/AvengerHero"/>
@@ -5576,7 +5677,7 @@
         <LifeMax value="100"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
-        <Speed value="4"/>
+        <Speed value="3.5"/>
         <Acceleration value="1000"/>
         <LateralAcceleration value="115.1875"/>
         <StationaryTurningRate value="999.8437"/>
@@ -5594,13 +5695,11 @@
         <AbilArray Link="move"/>
         <AbilArray Link="GravitonBeamUrun"/>
         <AbilArray Link="LokiMissilePods"/>
-        <AbilArray Link="NovaWeaponCanisterRifleSnipe2"/>
         <AbilArray Link="PsionicLift"/>
         <AbilArray Link="ZHybridPsionicShockwave"/>
         <AbilArray Link="StimpackHero2"/>
         <BehaviorArray Link="MultilockTargetingSystems"/>
         <BehaviorArray Link="ScavengingSystemsMechDeath"/>
-        <BehaviorArray Link="TerranAttackBonus"/>
         <BehaviorArray Link="UnknownBehavior"/>
         <BehaviorArray Link="TerranLevels"/>
         <BehaviorArray Link="GoliathLevelBonus"/>

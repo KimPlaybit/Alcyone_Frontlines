@@ -375,6 +375,60 @@
         <On index="7" removed="1"/>
         <On index="8" removed="1"/>
     </CActorSimple>
+    <CActorUnit id="Odin2" parent="GenericUnitBase" unitName="SpawnedOdin">
+        <Aliases value="_UnitHuge"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Odin" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom Odin" Send="Destroy"/>
+        <On Terms="WeaponStart.Odin.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.Odin.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.OdinEMPBurst.SourceCastStart" Send="AnimPlay EMPBurst Attack NonLooping"/>
+        <On Terms="Abil.OdinBarrage.SourcePrepStart" Send="AnimPlay Morph Morph 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStart" Send="AnimPlay LoopA Spell"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStart" Send="AnimClear Morph"/>
+        <On Terms="AnimDone; AnimName LoopA" Send="AnimPlay LoopB Spell"/>
+        <On Terms="AnimDone; AnimName LoopB" Send="AnimPlay LoopC Spell"/>
+        <On Terms="AnimDone; AnimName LoopC" Send="AnimPlay LoopD Spell"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimClear LoopA"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimClear LoopB"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimClear LoopC"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimClear LoopD"/>
+        <On Terms="Abil.OdinBarrage.SourceChannelStop" Send="AnimPlay MorphEnd Morph,End 0 -1.000000 -1.000000 1.833000 AsTimeScale"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryLeftSound" Send="Create OdinLeftCheerSquib"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryLeftSound" Send="Create OdinLeftCheerSquibB"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryRightSound" Send="Create OdinRightCheerSquib"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryRightSound" Send="Create OdinRightCheerSquibB"/>
+        <Model value="Odin"/>
+        <BuildModel value="Odin"/>
+        <DeathArray index="Normal" ModelLink="OdinDeath" SoundLink="Odin_Explode"/>
+        <PlacementModel value="Odin"/>
+        <PortraitModel value="MPOdinPortrait"/>
+        <StandAnimTurnTime value="5"/>
+        <WalkAnimMoveSpeed value="1.75"/>
+        <BarOffset value="200"/>
+        <BarWidth value="220"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Odin.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Terran-Odin.dds"/>
+        <HighlightTooltip value="Unit/Name/Odin2"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <NameOffset value="40"/>
+        <SoundArray index="Birth" value="Thor_Birth"/>
+        <SoundArray index="Ready" value="Thor_Ready"/>
+        <SoundArray index="Help" value="Thor_Help"/>
+        <SoundArray index="What" value="Thor_What"/>
+        <SoundArray index="Yes" value="Thor_Yes"/>
+        <SoundArray index="Attack" value="Thor_Attack"/>
+        <SoundArray index="Pissed" value="Thor_Pissed"/>
+        <SoundArray index="Movement" value="Thor_Movement"/>
+        <SoundArray index="Turning" value="Thor_Turning"/>
+        <SoundArray index="Board" value="Thor_Board"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Terran-Odin.dds"/>
+        <UnitKillRank Text="UnitKillRank/Odin2"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Odin.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorUnit id="NydusCanal22" parent="ZergBuildingEx" unitName="NydusCanal22">
         <Aliases value="_UnitHuge"/>
         <Macros value="BuildingFlattenTerrainMacro"/>
@@ -450,6 +504,23 @@
         <ModelFlags index="AutomatedGlobalLoopsIgnoreOrphan" value="1"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <ModelFlags index="IgnoreWalkables" value="1"/>
+    </CActorModel>
+    <CActorModel id="Avatar">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="ActorCreation; ScopeContains _NoGlaze" Send="Destroy"/>
+        <On Terms="Effect.AvatarSearch.Start; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="ActorCreation" Send="$Birth"/>
+        <On Terms="AnimDone; AnimName Birth" Send="ModelMaterialRemoveFrom ::Main"/>
+        <On Terms="AnimDone; AnimName Birth" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenterSoft"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorModel id="RangeEffect" parent="ModelAnimationStyleContinuous">
         <Aliases value="_Doodad"/>
@@ -1555,7 +1626,7 @@
         <StatusColors index="Shields">
             <ColorArray index="0" value="255,0,128,0"/>
         </StatusColors>
-        <UnitFlags index="StandAnimBirthVariation" value="0"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
         <UnitIcon value="Assets\Textures\btn-unit-zerg-mutalisk-viper.dds"/>
         <VitalColors index="Shields">
             <ColorArray value="255,0,128,0"/>
@@ -1565,6 +1636,11 @@
             <Image value="Assets\Textures\Wireframe-Zerg-Mutaliskex1b.dds"/>
         </Wireframe>
         <WireframeShieldColor value="255,0,128,0"/>
+        <CustomUnitStatusFrame value="HotS_UnitStatus/KerriganHeroUnitStatusFrameTemplate"/>
+        <MinimapIcon value="Assets\Textures\mutaliskportrait_static.dds"/>
+        <MinimapIconIsTeamColored value="1"/>
+        <MinimapIconScale value="0.090000"/>
+        <StatusBarOn index="Custom" value="1"/>
     </CActorUnit>
     <CActorUnit id="MutaliskViper22" parent="GenericUnitStandard" unitName="MutaliskHero2">
         <Aliases value="_UnitMedium"/>

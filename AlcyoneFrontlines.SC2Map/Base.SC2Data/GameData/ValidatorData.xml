@@ -25,6 +25,10 @@
     <CValidatorLocationEnumArea id="DarkTemplarShadowFuryTargetsInArea">
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareVital id="DefilerMPPlagueLifeGT1">
+        <Type value="Fraction"/>
+        <Value value="0.15"/>
+    </CValidatorUnitCompareVital>
     <CValidatorLocationCompareRange id="DistanceGT3">
         <WhichLocation Value="TargetUnit"/>
         <Compare value="GT"/>
@@ -39,6 +43,10 @@
         <Value value="Odin"/>
         <Find value="0"/>
     </CValidatorUnitType>
+    <CValidatorUnitState id="SCVIsRepairing">
+        <Enabled value="1"/>
+        <State value="Harvesting"/>
+    </CValidatorUnitState>
     <CValidatorUnitCompareBehaviorCount id="UnithasPlague">
         <Compare value="NE"/>
         <Behavior value="DefilerMPPlague"/>

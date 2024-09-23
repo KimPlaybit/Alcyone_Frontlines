@@ -146,9 +146,7 @@
         <ValidatorArray value="HasBurrowUpgrade"/>
     </CAbilMorph>
     <CAbilArmMagazine id="CarrierHangar">
-        <InfoArray index="Ammo1" Time="8">
-            <Flags index="AutoBuildOn" value="0"/>
-        </InfoArray>
+        <InfoArray index="Ammo1" Time="8"/>
         <EffectArray index="Create" value=""/>
         <Flags index="AutoCastOffOwnerLeave" value="0"/>
         <Flags index="AutoCreate" value="1"/>
@@ -168,6 +166,14 @@
         <Range index="0" value="6"/>
         <AutoCastRange value="6"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="CreepTumorBuild">
+        <InfoArray index="Build1">
+            <Button Requirements="CreepTumorExhausted"/>
+        </InfoArray>
+        <EffectArray index="Finish" value="CreepTumorExhausted"/>
+        <!--EffectArray index="Finish" value="CreepTumorLaunchMissile"/>
+        <EffectArray index="Cancel" value="CreepTumorLaunchMissile"/-->
+    </CAbilBuild>
     <CAbilResearch id="CyberneticsCoreResearch">
         <InfoArray index="Research1" Time="129"/>
         <InfoArray index="Research2" Time="154"/>
@@ -259,6 +265,21 @@
             <Resource index="Vespene" value="150"/>
         </InfoArray>
         <InfoArray index="Research9" Time="157"/>
+        <InfoArray index="Research10" Time="50" Upgrade="DefenseStructureUpdates1">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="TerranDefenseStructureLevel1" Requirements="LearnDefenseStructureUpgrade1"/>
+        </InfoArray>
+        <InfoArray index="Research11" Time="50" Upgrade="DefenseStructureUpdates12">
+            <Resource index="Minerals" value="185"/>
+            <Resource index="Vespene" value="185"/>
+            <Button DefaultButtonFace="TerranDefenseStructureLevel12" Requirements="LearnDefenseStructureUpgrade12"/>
+        </InfoArray>
+        <InfoArray index="Research12" Time="50" Upgrade="DefenseStructureUpdates13">
+            <Resource index="Minerals" value="225"/>
+            <Resource index="Vespene" value="225"/>
+            <Button DefaultButtonFace="TerranDefenseStructureLevel13" Requirements="LearnDefenseStructureUpgrade13"/>
+        </InfoArray>
     </CAbilResearch>
     <CAbilEffectTarget id="Ensnare">
         <Cost index="0">
@@ -354,6 +375,21 @@
         <InfoArray index="Research7" Time="122"/>
         <InfoArray index="Research8" Time="145"/>
         <InfoArray index="Research9" Time="168"/>
+        <InfoArray index="Research10" Time="50" Upgrade="DefenseStructureUpdates1">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ProtossDefenseStructureUpgrade1" Requirements="LearnDefenseStructureUpgrade1"/>
+        </InfoArray>
+        <InfoArray index="Research11" Time="50" Upgrade="DefenseStructureUpdates12">
+            <Resource index="Minerals" value="185"/>
+            <Resource index="Vespene" value="185"/>
+            <Button DefaultButtonFace="ProtossDefenseStructureUpgrade12" Requirements="LearnDefenseStructureUpgrade12"/>
+        </InfoArray>
+        <InfoArray index="Research12" Time="50" Upgrade="DefenseStructureUpdates13">
+            <Resource index="Minerals" value="225"/>
+            <Resource index="Vespene" value="225"/>
+            <Button DefaultButtonFace="ProtossDefenseStructureUpgrade13" Requirements="LearnDefenseStructureUpgrade13"/>
+        </InfoArray>
     </CAbilResearch>
     <CAbilEffectTarget id="Frenzy">
         <Cost index="0">
@@ -391,6 +427,9 @@
     <CAbilResearch id="GhostAcademyResearch">
         <InfoArray index="Research1" Time="86"/>
     </CAbilResearch>
+    <CAbilEffectTarget id="GravitonBeam">
+        <TargetFilters index="0" value="Ground,Heroic,Visible;Self,Neutral,Massive,Structure,Destructible,Invulnerable"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="GravitonBeamUrun">
         <Cost>
             <Charge Link="Abil/GravitonBeamUrun"/>
@@ -415,6 +454,21 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <CAbilQueue id="HangarQueue5">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilAugment id="HotSRaptorCharge2">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DataCollection value="HotSRaptorCharge"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HotSRaptorCharge"/>
+        <AbilCmd value="attack,Execute"/>
+        <TargetType value="UnitOrPoint"/>
+        <Cost>
+            <Cooldown Link="HotSRaptorChargeHotSRaptorCharge2" Location="Unit" TimeUse="2"/>
+        </Cost>
+        <Effect value="HotSRaptorLeap"/>
+        <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
+    </CAbilAugment>
     <CAbilResearch id="HydraliskDenResearch">
         <InfoArray index="Research3" Time="50">
             <Resource index="Minerals" value="75"/>
@@ -466,6 +520,17 @@
         <AbilClassEnableArray index="CAbilMove" value="1"/>
         <AbilClassEnableArray index="CAbilStop" value="1"/>
     </CAbilMorph>
+    <CAbilEffectInstant id="FirebatAvatar">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AvatarSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="VoidDisruptorEnemyInRange"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Overcharge"/>
+    </CAbilEffectInstant>
     <CAbilResearch id="ResearchLurkerDen">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <InfoArray index="Research4" Time="57" Upgrade="AdaptiveTalons">
@@ -531,6 +596,7 @@
         <Cost index="0">
             <Cooldown TimeUse="60"/>
         </Cost>
+        <TargetFilters index="0" value="Visible;Self,Player,Ally,Neutral,Missile,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="LiberatorAATarget">
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy"/>
@@ -689,8 +755,8 @@
         <Activity value="UI/Morphing"/>
         <ActorKey value="BanelingAspect"/>
         <InfoArray index="Train1" Alert="MorphComplete_Zerg">
-            <Charge TimeUse="45"/>
-            <Cooldown Location="Unit" TimeUse="45"/>
+            <Charge TimeUse="25"/>
+            <Cooldown Location="Unit" TimeUse="25"/>
             <Button DefaultButtonFace="MorphtoBanelingHero2">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
@@ -706,11 +772,11 @@
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="NanoRepair">
-        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,Uncommandable,Dead,Hidden,Invulnerable,MapBoss"/>
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <AutoCastAcquireLevel value="None"/>
-        <AutoCastFilters value="Visible;Player,Ally"/>
+        <AutoCastFilters value="Visible;Player,Ally,MapBoss"/>
         <AutoCastRange value="0"/>
         <AutoCastValidatorArray index="0" removed="1"/>
         <AutoCastValidatorArray index="1" removed="1"/>
@@ -778,13 +844,16 @@
             <Cooldown TimeUse="30"/>
         </Cost>
         <UninterruptibleArray index="Channel" value="0"/>
-        <Range index="0" value="10"/>
+        <Range index="0" value="7"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="PrimalRavage">
         <TargetFilters index="0" value="Ground;Player,Ally,Neutral,Massive,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable,HeroUnit"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="PrimalRoar">
         <AutoCastFilters value="Visible,AirUnit;Player,Ally"/>
+        <Cost index="0">
+            <Cooldown TimeUse="25"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="PrologueVoidArmor">
         <Cost index="0">
@@ -829,6 +898,9 @@
     <CAbilEffectInstant id="PoisonNova">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Cooldown TimeUse="6"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="ShadowStride">
         <AbilSetId value="MhndrBlnk"/>
@@ -846,6 +918,8 @@
     </CAbilEffectTarget>
     <CAbilBuild id="ProtossBuild">
         <InfoArray index="Build2" Time="18"/>
+        <InfoArray index="Build4" Time="30"/>
+        <InfoArray index="Build5" Time="20"/>
         <InfoArray index="Build8" Time="29"/>
         <InfoArray index="Build10">
             <Button Requirements="HaveCyberneticsCore"/>
@@ -1009,6 +1083,7 @@
             <Vital index="Energy" value="75"/>
             <Cooldown TimeUse="0"/>
         </Cost>
+        <PostEffectBehavior Behavior="Angry2" Count="1"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="SuperStimpackNova">
         <Cost index="0">
@@ -1041,6 +1116,8 @@
         <InfoArray index="Build3">
             <Button Requirements=""/>
         </InfoArray>
+        <InfoArray index="Build4" Time="30"/>
+        <InfoArray index="Build5" Time="15"/>
         <InfoArray index="Build6" Time="18"/>
         <InfoArray index="Build7" Time="29">
             <Button Requirements="HaveBarracks"/>
@@ -1117,7 +1194,7 @@
             <Resource index="Vespene" value="100"/>
         </InfoArray>
         <InfoArray index="Research2" Time="121"/>
-        <InfoArray index="Research3" Time="100">
+        <InfoArray index="Research3" Time="100" Upgrade="AdeptPiercingAttack">
             <Button DefaultButtonFace="AdeptPiercingUpgrade" Requirements="LearnAdeptPiercingAttack"/>
         </InfoArray>
     </CAbilResearch>
@@ -1150,6 +1227,19 @@
     <CAbilEffectTarget id="UltrasonicPulse">
         <Range index="0" value="13"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="UpgradeToPlanetaryFortress">
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="30"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="30"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="30"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <CAbilMorph id="UpgradeToWarpGate">
         <CmdButtonArray index="Execute" Requirements="UseWarpGate"/>
     </CAbilMorph>
@@ -1223,6 +1313,13 @@
             <Cooldown TimeUse="85"/>
         </Cost>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="WarbotCharge">
+        <Cost>
+            <Charge Link="Abil/WarbotCharge"/>
+            <Cooldown Link="Abil/WarbotCharge" TimeUse="20"/>
+        </Cost>
+        <Range index="0" value="10"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="ZealotWhirlWindHero">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="VoidZealotWhirlwindSet"/>
@@ -1291,6 +1388,8 @@
         <ProducedUnitArray index="0" value="MutaliskHero2"/>
     </CAbilEffectInstant>
     <CAbilBuild id="ZergBuild">
+        <InfoArray index="Build4" Time="14"/>
+        <InfoArray index="Build5" Time="18"/>
         <InfoArray index="Build15" Time="25"/>
         <InfoArray index="Build16" Time="21"/>
     </CAbilBuild>
@@ -1310,8 +1409,38 @@
         <InfoArray index="Research7" Time="114"/>
         <InfoArray index="Research8" Time="136"/>
         <InfoArray index="Research9" Time="157"/>
+        <InfoArray index="Research10" Time="50" Upgrade="DefenseStructureUpdates1">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ZergDefenseStructureLevel1" Requirements="LearnDefenseStructureUpgrade1"/>
+        </InfoArray>
+        <InfoArray index="Research11" Time="50" Upgrade="DefenseStructureUpdates12">
+            <Resource index="Minerals" value="185"/>
+            <Resource index="Vespene" value="185"/>
+            <Button DefaultButtonFace="ZergDefenseStructureLevel12" Requirements="LearnDefenseStructureUpgrade12"/>
+        </InfoArray>
+        <InfoArray index="Research12" Time="50" Upgrade="DefenseStructureUpdates13">
+            <Resource index="Minerals" value="225"/>
+            <Resource index="Vespene" value="225"/>
+            <Button DefaultButtonFace="ZergDefenseStructureLevel13" Requirements="LearnDefenseStructureUpgrade13"/>
+        </InfoArray>
     </CAbilResearch>
     <CAbilQueue id="que5">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5Addon">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5CancelToSelection">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5LongBlend">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5Passive">
+        <QueueSize value="10"/>
+    </CAbilQueue>
+    <CAbilQueue id="que5PassiveCancelToSelection">
         <QueueSize value="10"/>
     </CAbilQueue>
 </Catalog>

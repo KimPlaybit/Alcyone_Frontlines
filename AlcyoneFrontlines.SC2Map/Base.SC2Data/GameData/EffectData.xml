@@ -3,6 +3,10 @@
     <CEffectCreatePersistent id="AetherMawAetherStormCreatePersistent">
         <PeriodCount value="2"/>
     </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="AlarakPsiOrbDestroyPersistent">
+        <Count value="10"/>
+        <Radius value="2"/>
+    </CEffectDestroyPersistent>
     <CEffectCreateUnit id="AlarakPsiOrbFinalUpgradedCU">
         <SpawnUnit index="0" removed="1"/>
     </CEffectCreateUnit>
@@ -14,6 +18,7 @@
     </CEffectModifyUnit>
     <CEffectDamage id="ArtanisLightningDashDamage">
         <Amount value="30"/>
+        <Kind value="Spell"/>
     </CEffectDamage>
     <CEffectTeleport id="DigTeleportMove">
         <ValidatorArray value="HasVisionOfTarget"/>
@@ -51,7 +56,21 @@
     </CEffectEnumArea>
     <CEffectSet id="CCCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
+        <EffectArray value="ProtectWorkers"/>
     </CEffectSet>
+    <CEffectDamage id="CrucioShockCannonBlast">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="CrucioShockCannonDirected">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="CrucioShockCannonDummy">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="DarkSwarmImpactDummy">
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="DarkTemplarShadowFuryApplyDamageReduction">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -81,6 +100,11 @@
     <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport3CP"/>
     <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport4CP"/>
     <CEffectCreatePersistent id="DarkTemplarShadowFuryTeleport5CP"/>
+    <CEffectDamage id="DefilerMPPlagueDamage">
+        <Flags index="NoVitalAbsorbShields" value="0"/>
+        <Kind value="NoProc"/>
+        <Amount value="5"/>
+    </CEffectDamage>
     <CEffectDamage id="DefilerMPPlagueDamage2">
         <ValidatorArray value="DefilerMPPlagueLifeGT1"/>
         <ValidatorArray value="NotInvulnerable"/>
@@ -95,7 +119,7 @@
     <!--        <ImpactLocation Value="TargetPoint"/>-->
     <!--    </CEffectLaunchMissile-->
     <CEffectEnumArea id="DefilerMPPlagueSearch">
-        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectDamage id="DutchTurretFlameThrowerDamage">
         <Amount value="25"/>
@@ -141,6 +165,9 @@
         <EffectArray value="Firebat2"/>
         <EffectArray value="FirebatUFull2"/>
     </CEffectSet>
+    <CEffectDamage id="FirebatUFull">
+        <KindSplash value="Splash"/>
+    </CEffectDamage>
     <CEffectDamage id="FirebatUFull2" parent="DU_WEAP_SPLASH">
         <ValidatorArray value="noMarkers"/>
         <EditorCategories value="Race:Terran"/>
@@ -170,10 +197,41 @@
     </CEffectDamage>
     <CEffectDamage id="GoliathAU">
         <AttributeBonus index="Armored" value="4"/>
+        <Kind value="NoProc"/>
+    </CEffectDamage>
+    <CEffectDamage id="HailstormMissilePodsDamage">
+        <AttributeBonus index="Heroic" value="40"/>
     </CEffectDamage>
     <CEffectSet id="HatcheryCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
+        <EffectArray value="ProtectWorkers"/>
     </CEffectSet>
+    <CEffectCreateUnit id="HotSRaptorLeap">
+        <ValidatorArray index="1" value="HotSRaptorChargeMaxDistance"/>
+        <ValidatorArray index="2" removed="1"/>
+        <SpawnOffset index="0" value="0,-0.1"/>
+    </CEffectCreateUnit>
+    <CEffectEnumArea id="PoisonNova">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <!--ValidatorArray value="HaveHotSNoxious"/-->
+    </CEffectEnumArea>
+    <CEffectSet id="PoisonNovaSet">
+        <EffectArray value="SlowApplyBehaviorCopy"/>
+        <!--EffectArray value="PoisonNovaAB"/-->
+    </CEffectSet>
+    <CEffectApplyBehavior id="SlowApplyBehaviorCopy">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="VileAcidSlowEffectsLevel12"/>
+    </CEffectApplyBehavior>
+    <CEffectDestroyPersistent id="PitAlarakPsiOrbDestroyPersistent">
+        <Radius value="0"/>
+    </CEffectDestroyPersistent>
+    <CEffectApplyBehavior id="ProtectWorkersBehaviour">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="WorkersResistanceToHeroic"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="HealHeroicUnitsAround3">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetUnit"/>
@@ -196,6 +254,23 @@
         <PeriodCount value="99"/>
         <PeriodicValidator value="NotVortexd"/>
         <PeriodicEffectArray value="HealHeroicUnitsAround3"/>
+        <PeriodicPeriodArray value="2"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ProtectWorkersSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Worker;Neutral,Enemy,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="ProtectWorkersBehaviour"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="ProtectWorkers">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="SourceUnit"/>
+        <InitialEffect value="ProtectWorkersSearch"/>
+        <FinalEffect value="ProtectWorkers"/>
+        <PeriodCount value="99"/>
+        <PeriodicEffectArray value="ProtectWorkersSearch"/>
         <PeriodicPeriodArray value="2"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="HotSBanelingExplodeLargeDirect">
@@ -282,6 +357,9 @@
         <Movers Link="SpineCrawlerTentacleExtendShort" IfRangeLTE="3"/>
         <Movers Link="SpineCrawlerTentacleExtendLong" IfRangeLTE="7"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="ImpalerTentacleU">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectDamage id="ImpalerTentacleU2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
         <AttributeBonus index="Armored" value="5"/>
@@ -296,6 +374,18 @@
     <CEffectCreatePersistent id="KorhalSporeCannonBombardmentDelay">
         <InitialDelay value="0.5"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="LeechDamage2">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Notification" value="1"/>
+        <Kind value="NoProc"/>
+        <KindSplash value="NoProc"/>
+        <Amount value="2"/>
+        <LeechFraction index="Energy" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="LeechSet">
+        <EffectArray value="LeechDamage2"/>
+    </CEffectSet>
     <CEffectCreateUnit id="MPCreateRoachlingA">
         <EditorCategories value="Race:Zerg"/>
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
@@ -321,6 +411,12 @@
         <PeriodCount value="6"/>
         <PeriodicPeriodArray index="0" value="0.3"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="LongboltMissileU">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="MothershipStasisSearch">
+        <AreaArray index="0" Radius="5"/>
+    </CEffectEnumArea>
     <!--CEffectRemoveBehavior id="KerriganEpilogue03QuantumRayRB">-->
     <!--        <EditorCategories value=""/>-->
     <!--        <WhichUnit Value="Caster"/>-->
@@ -332,6 +428,7 @@
     </CEffectCreateHealer>
     <CEffectSet id="NexusCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
+        <EffectArray value="ProtectWorkers"/>
     </CEffectSet>
     <CEffectDamage id="NovaPlasmaPuddleDamage">
         <Amount value="10"/>
@@ -356,8 +453,41 @@
     <CEffectEnumArea id="ObserverSquadSightSearch">
         <SearchFilters value="Visible;Enemy,Structure,Missile,Stasis,Dead,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectDamage id="OdinAADamage">
+        <Amount value="40"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="AvatarApply">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FirebatAvatar"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AvatarApplyDamage">
+        <EditorCategories value=""/>
+        <Behavior value="OverchargeDamage"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="OverchargeDamage">
         <Amount value="3"/>
+    </CEffectDamage>
+    <CEffectSet id="AvatarSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AvatarApply"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AvatarSearch">
+        <EditorCategories value=""/>
+        <AINotifyFlags index="HurtFriend" value="1"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="AvatarDamage"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="AvatarDamage">
+        <ValidatorArray value="IsNotDisruptor"/>
+        <EditorCategories value=""/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="10"/>
+        <Death value="Electrocute"/>
+    </CEffectDamage>
+    <CEffectDamage id="PhotonCannonU">
+        <AttributeBonus index="Heroic" value="40"/>
     </CEffectDamage>
     <CEffectDamage id="PoisonNovaDirectDamage">
         <Amount value="1"/>
@@ -373,6 +503,12 @@
     <CEffectDamage id="PsionicLiftDamage">
         <Amount value="1"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="PsionicLiftDamageAB">
+        <Behavior value=""/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="PsionicLiftDummySearch">
+        <AreaArray index="0" Effect=""/>
+    </CEffectEnumArea>
     <CEffectEnumArea id="PsionicLiftRaiseSearch">
         <SearchFilters value="-;Player,Ally,Neutral,Air,Structure,Missile,Stasis,Dead,Invulnerable,Unstoppable,AirUnit"/>
         <AreaArray index="0" Effect="GravitonBeamUrun"/>
@@ -413,6 +549,9 @@
     <CEffectCreatePersistent id="SpectreNukeP">
         <FinalEffect value=""/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="SporeCrawlerU">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="Stimpack2">
         <EditorCategories value="Race:Terran"/>
     </CEffectApplyBehavior>
@@ -463,6 +602,9 @@
         <ImpactEffect value="TossGrenadeDamage2"/>
         <AmmoUnit value="TossGrenadeWeapon2"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="TwinIbiksCannon">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="UltraliskBurrowChargeHold2">
         <EditorCategories value="Race:Zerg"/>
         <WhichUnit Value="Caster"/>
@@ -483,6 +625,9 @@
         <EffectArray value="UltraliskOutOfCombat2RB2"/>
         <EffectArray value="UltraliskOutOfCombat3RB2"/>
     </CEffectSet>
+    <CEffectEnumArea id="UltrasonicPulseSearchArea">
+        <SearchFilters value="-;Player,Ally,Neutral,Structure,RawResource,HarvestableResource,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="VoidDarkTemplarDeepShadowBlinkApply2">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
@@ -507,6 +652,9 @@
             <Change value="2000"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectDamage id="WarbotChargeDamage">
+        <Amount value="5"/>
+    </CEffectDamage>
     <CEffectEnumArea id="ZHybridPsionicShockwaveSearchArea">
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Buried,Stasis,Hidden,Invulnerable,Unstoppable"/>
     </CEffectEnumArea>
