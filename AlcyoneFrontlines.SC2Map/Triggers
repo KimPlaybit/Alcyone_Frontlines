@@ -11343,6 +11343,48 @@
         <ValueGameType Type="Unit"/>
     </Element>
     <Element Type="Trigger" Id="AC23238C">
+        <Variable Type="Variable" Id="437C54C2"/>
+        <Variable Type="Variable" Id="78F71BD9"/>
+        <Variable Type="Variable" Id="9030C602"/>
+        <Event Type="FunctionCall" Id="2529C5B5"/>
+    </Element>
+    <Element Type="Variable" Id="437C54C2">
+        <VariableType>
+            <Type Value="int"/>
+        </VariableType>
+        <Value Type="Param" Id="5FD40467"/>
+    </Element>
+    <Element Type="Param" Id="5FD40467">
+        <Value>0</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Variable" Id="78F71BD9">
+        <VariableType>
+            <Type Value="int"/>
+        </VariableType>
+        <Value Type="Param" Id="16517324"/>
+    </Element>
+    <Element Type="Param" Id="16517324">
+        <Value>0</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Variable" Id="9030C602">
+        <VariableType>
+            <Type Value="bool"/>
+        </VariableType>
+        <Value Type="Param" Id="DDDA1D4F"/>
+    </Element>
+    <Element Type="Param" Id="DDDA1D4F">
+        <Value>false</Value>
+        <ValueType Type="bool"/>
+    </Element>
+    <Element Type="FunctionCall" Id="2529C5B5">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="58A61D51"/>
+        <Parameter Type="Param" Id="7F98DBE5"/>
+    </Element>
+    <Element Type="Param" Id="7F98DBE5">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="8399AFF5"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="C84C7A78"/>
     </Element>
     <Element Type="Trigger" Id="7A487666">
         <Event Type="FunctionCall" Id="301C4077"/>
