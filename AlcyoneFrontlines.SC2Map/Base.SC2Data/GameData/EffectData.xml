@@ -211,6 +211,49 @@
         <ValidatorArray index="2" removed="1"/>
         <SpawnOffset index="0" value="0,-0.1"/>
     </CEffectCreateUnit>
+    <CEffectLaunchMissile id="LocustMPCreateLMA2">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetUnitOrPoint"/>
+        <FinishEffect value="LocustMPCreateLMImpactSetA2"/>
+        <AmmoUnit value="InvisibleEscortFlying"/>
+        <Movers Link="LocustMPEggMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="LocustMPCreateLMImpactSetA2">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="RemovePrecursorLocust"/>
+        <EffectArray value="MPReady"/>
+    </CEffectSet>
+    <CEffectSet id="MPReady">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="LocustMPRally"/>
+        <EffectArray value="TimedLife"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="TimedLife">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="LocustMPTimedLife2"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MPCreateSetA">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MakePrecursorNydus"/>
+        <EffectArray value="LocustMPCreateLMA2"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="MPCreatePygalisk">
+        <EditorCategories value="Race:Zerg"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="MPCreateSetA"/>
+        <SpawnUnit value="Pygalisk2"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="-0.4,-0.2"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="MPCreatePygaliskSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreatePygalisk"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MakePrecursorNydus">
+        <Behavior value="PrecursorLocust"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="PoisonNova">
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <!--ValidatorArray value="HaveHotSNoxious"/-->
@@ -549,8 +592,18 @@
     <CEffectCreatePersistent id="SpectreNukeP">
         <FinalEffect value=""/>
     </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="SporeCrawler2">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="SporeCrawlerU2"/>
+        <AmmoUnit value="SporeCrawlerWeapon"/>
+    </CEffectLaunchMissile>
     <CEffectDamage id="SporeCrawlerU">
         <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="SporeCrawlerU2" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="15"/>
+        <Death value="Disintegrate"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="Stimpack2">
         <EditorCategories value="Race:Terran"/>

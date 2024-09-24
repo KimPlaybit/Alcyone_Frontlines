@@ -1160,6 +1160,7 @@
         <AbilArray Link="Dig"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="NydusSpawnZergUnits"/>
+        <AbilArray Link="SpawnZergUnits"/>
         <BehaviorArray index="0" Link="ZergHealthBonus"/>
         <BehaviorArray Link="ZergDamageBonus"/>
         <BehaviorArray Link="ZergLevels"/>
@@ -1168,8 +1169,9 @@
         <CardLayouts>
             <LayoutButtons Face="SetRallyPoint" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="SummonNydusWorm" Type="AbilCmd" AbilCmd="Dig,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BurrowMove2" Type="AbilCmd" AbilCmd="Dig,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="SpawningRoachlings" Type="Passive" Row="0" Column="0"/>
+            <LayoutButtons Face="SpawnHybridMutalisk" Type="AbilCmd" AbilCmd="SpawnZergUnits,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -1211,6 +1213,66 @@
         <CardLayouts index="0">
             <LayoutButtons Face="ProtectWorkers" Type="Passive" Row="1" Column="2"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="Pygalisk2">
+        <DeathRevealRadius value="3"/>
+        <Race value="Zerg"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="AILifetime" value="1"/>
+        <FlagArray index="AcquireRally" value="1"/>
+        <FlagArray index="IgnoreAttackAlert" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="50"/>
+        <LifeMax value="50"/>
+        <LifeArmor value="2"/>
+        <LifeRegenRate value="0.2734"/>
+        <LifeArmorName value="Unit/LifeArmorName/ZergUltraliskArmor"/>
+        <Speed value="2.9531"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <Sight value="9"/>
+        <Food value="-6"/>
+        <CostResource index="Minerals" value="300"/>
+        <CostResource index="Vespene" value="200"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="150"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <BehaviorArray Link="OnCreep"/>
+        <BehaviorArray Link="CreepMove3"/>
+        <WeaponArray Link="BabyUltralisk"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+        </CardLayouts>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="4"/>
+        <ScoreMake value="800"/>
+        <ScoreKill value="1600"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="12"/>
+        <MinimapRadius value="1"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <TacticalAI value="BabyUltralisk"/>
+        <GlossaryPriority value="304"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="50"/>
+            <ChanceArray index="Idle" value="50"/>
+        </Fidget>
     </CUnit>
     <CUnit id="SpawnedOdin">
         <DeathRevealRadius value="3"/>

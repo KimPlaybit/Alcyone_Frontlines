@@ -284,7 +284,6 @@ trigger gt_WinTeam1;
 trigger gt_SurvivalLoss;
 trigger gt_WinTeam2;
 trigger gt_BanelingCasted;
-trigger gt_ResetCd;
 trigger gt_BanelingCreated;
 trigger gt_BanelingExplodes;
 trigger gt_ZerglingMineExplodes;
@@ -293,8 +292,8 @@ trigger gt_Healburst;
 trigger gt_ZerglingToxicBlast;
 trigger gt_SensorTowerCreated;
 trigger gt_IncreaseSize;
-trigger gt_NydusWormLevelUp;
 trigger gt_AddRtsPlayer2Buildings;
+trigger gt_NydusWormLevelUp;
 trigger gt_RemoveRtsPlayer2Buildings;
 trigger gt_AIBuildShieldBattery;
 trigger gt_AIBuildQueens;
@@ -330,6 +329,7 @@ trigger gt_DefilerPicked;
 trigger gt_HydraliskPicked;
 trigger gt_UltraliskPicked;
 trigger gt_MutaliskPicked;
+trigger gt_NydusPicked;
 
 //--------------------------------------------------------------------------------------------------
 // Custom AI Functions
@@ -2906,19 +2906,6 @@ void gt_BanelingCasted_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ResetCd
-//--------------------------------------------------------------------------------------------------
-bool gt_ResetCd_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_ResetCd_Init () {
-    gt_ResetCd = TriggerCreate("gt_ResetCd_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: BanelingCreated
 //--------------------------------------------------------------------------------------------------
 bool gt_BanelingCreated_Func (bool testConds, bool runActions) {
@@ -3332,12 +3319,41 @@ void gt_IncreaseSize_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_NydusWormLevelUp_Init () {
-    gt_NydusWormLevelUp = TriggerCreate("gt_NydusWormLevelUp_Func");
-    TriggerAddEventUnitGainLevel(gt_NydusWormLevelUp, null);
+// Trigger: AddRtsPlayer2Buildings
+//--------------------------------------------------------------------------------------------------
+bool gt_AddRtsPlayer2Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(EventUnitCreatedUnit()) == gv_rTSPlayer2) && (UnitTypeTestAttribute(UnitGetType(EventUnitCreatedUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupAdd(gv_rtsPlayer2Buildings, EventUnitCreatedUnit());
+    if (((UnitGetType(EventUnitCreatedUnit()) == "Nexus") || (UnitGetType(EventUnitCreatedUnit()) == "Hive") || (UnitGetType(EventUnitCreatedUnit()) == "Lair") || (UnitGetType(EventUnitCreatedUnit()) == "Hatchery") || (UnitGetType(EventUnitCreatedUnit()) == "CommandCenter") || (UnitGetType(EventUnitCreatedUnit()) == "OrbitalCommand") || (UnitGetType(EventUnitCreatedUnit()) == "PlanetaryFortress"))) {
+        UnitGroupAdd(gv_rtsPlayer2TownBuilding, EventUnitCreatedUnit());
+    }
+
+    return true;
 }
+
+//--------------------------------------------------------------------------------------------------
+void gt_AddRtsPlayer2Buildings_Init () {
+    gt_AddRtsPlayer2Buildings = TriggerCreate("gt_AddRtsPlayer2Buildings_Func");
+    TriggerAddEventUnitCreated(gt_AddRtsPlayer2Buildings, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusWormLevelUp
+//--------------------------------------------------------------------------------------------------
 bool gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
-    // Variable Declarations
+      // Variable Declarations
     int lv_scale;
     int lv_indexOfUnit;
     bool lv_unitIsInArray;
@@ -3391,34 +3407,9 @@ bool gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AddRtsPlayer2Buildings
-//--------------------------------------------------------------------------------------------------
-bool gt_AddRtsPlayer2Buildings_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!(((UnitGetOwner(EventUnitCreatedUnit()) == gv_rTSPlayer2) && (UnitTypeTestAttribute(UnitGetType(EventUnitCreatedUnit()), c_unitAttributeStructure) == true)))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitGroupAdd(gv_rtsPlayer2Buildings, EventUnitCreatedUnit());
-    if (((UnitGetType(EventUnitCreatedUnit()) == "Nexus") || (UnitGetType(EventUnitCreatedUnit()) == "Hive") || (UnitGetType(EventUnitCreatedUnit()) == "Lair") || (UnitGetType(EventUnitCreatedUnit()) == "Hatchery") || (UnitGetType(EventUnitCreatedUnit()) == "CommandCenter") || (UnitGetType(EventUnitCreatedUnit()) == "OrbitalCommand") || (UnitGetType(EventUnitCreatedUnit()) == "PlanetaryFortress"))) {
-        UnitGroupAdd(gv_rtsPlayer2TownBuilding, EventUnitCreatedUnit());
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AddRtsPlayer2Buildings_Init () {
-    gt_AddRtsPlayer2Buildings = TriggerCreate("gt_AddRtsPlayer2Buildings_Func");
-    TriggerAddEventUnitCreated(gt_AddRtsPlayer2Buildings, null, null, null);
+void gt_NydusWormLevelUp_Init () {
+    gt_NydusWormLevelUp = TriggerCreate("gt_NydusWormLevelUp_Func");
+    TriggerAddEventUnitGainLevel(gt_NydusWormLevelUp, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5449,6 +5440,58 @@ void gt_MutaliskPicked_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Nydus Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_NydusPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(gv_rTSPlayer1) == "Zerg") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer1)) || ((PlayerRace(gv_rTSPlayer2) == "Zerg") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer2)))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIClearMessages(PlayerGroupAll(), c_messageAreaChat);
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/6E4F0C97")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "NydusCanal22", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "NydusCanal22", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
+    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
+    gv_playerPicked[EventPlayer()] = true;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_NydusPicked_Init () {
+    gt_NydusPicked = TriggerCreate("gt_NydusPicked_Func");
+    TriggerAddEventChatMessage(gt_NydusPicked, c_playerAny, "-nydug", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
@@ -5473,7 +5516,6 @@ void InitTriggers () {
     gt_SurvivalLoss_Init();
     gt_WinTeam2_Init();
     gt_BanelingCasted_Init();
-    gt_ResetCd_Init();
     gt_BanelingCreated_Init();
     gt_BanelingExplodes_Init();
     gt_ZerglingMineExplodes_Init();
@@ -5482,8 +5524,8 @@ void InitTriggers () {
     gt_ZerglingToxicBlast_Init();
     gt_SensorTowerCreated_Init();
     gt_IncreaseSize_Init();
-    gt_NydusWormLevelUp_Init();
     gt_AddRtsPlayer2Buildings_Init();
+    gt_NydusWormLevelUp_Init();
     gt_RemoveRtsPlayer2Buildings_Init();
     gt_AIBuildShieldBattery_Init();
     gt_AIBuildQueens_Init();
@@ -5519,6 +5561,7 @@ void InitTriggers () {
     gt_HydraliskPicked_Init();
     gt_UltraliskPicked_Init();
     gt_MutaliskPicked_Init();
+    gt_NydusPicked_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -531,6 +531,26 @@
         <AutoCastValidatorArray value="VoidDisruptorEnemyInRange"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Overcharge"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="SpawnZergUnits">
+        <DataCollection value="NydusSpawnZergUnits"/>
+        <Levels value="5"/>
+        <Effect index="0" value="MPCreatePygaliskSet"/>
+        <Cost>
+            <Charge>
+                <CountMax value="20"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="Abil/NydusSpawnCharge"/>
+                <TimeStart value="60"/>
+                <TimeUse value="60"/>
+            </Charge>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsSpawnZergUnits"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AINotifyEffect value="NydusSpawnZergUnits"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LocustMP"/>
+    </CAbilEffectInstant>
     <CAbilResearch id="ResearchLurkerDen">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <InfoArray index="Research4" Time="57" Upgrade="AdaptiveTalons">
