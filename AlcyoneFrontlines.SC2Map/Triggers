@@ -11428,6 +11428,7 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <FunctionCall Type="FunctionCall" Id="DA517E93"/>
         <FunctionCall Type="FunctionCall" Id="818DA2CA"/>
+        <FunctionCall Type="FunctionCall" Id="82943FE7"/>
         <FunctionCall Type="FunctionCall" Id="6239E4CD"/>
     </Element>
     <Element Type="FunctionCall" Id="DA517E93">
@@ -11561,6 +11562,39 @@
         <ValueType Type="gamelink"/>
         <ValueGameType Type="Upgrade"/>
     </Element>
+    <Element Type="FunctionCall" Id="82943FE7">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="8A0E7BFE"/>
+        <Parameter Type="Param" Id="16261718"/>
+        <Parameter Type="Param" Id="40DE966D"/>
+    </Element>
+    <Element Type="Param" Id="8A0E7BFE">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <FunctionCall Type="FunctionCall" Id="3AB8989C"/>
+    </Element>
+    <Element Type="FunctionCall" Id="3AB8989C">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
+        <Parameter Type="Param" Id="B0813B70"/>
+    </Element>
+    <Element Type="Param" Id="B0813B70">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
+        <FunctionCall Type="FunctionCall" Id="ED3BBF98"/>
+    </Element>
+    <Element Type="FunctionCall" Id="ED3BBF98">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000092"/>
+    </Element>
+    <Element Type="Param" Id="16261718">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="40DE966D">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>NydusZergMeleeWeaponsLevel12</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
     <Element Type="FunctionCall" Id="6239E4CD">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="0366EE04"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
@@ -11587,6 +11621,7 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <FunctionCall Type="FunctionCall" Id="DA0058CA"/>
         <FunctionCall Type="FunctionCall" Id="6139C035"/>
+        <FunctionCall Type="FunctionCall" Id="AE336687"/>
         <FunctionCall Type="FunctionCall" Id="CF48B91D"/>
     </Element>
     <Element Type="FunctionCall" Id="DA0058CA">
@@ -11720,6 +11755,39 @@
         <ValueType Type="gamelink"/>
         <ValueGameType Type="Upgrade"/>
     </Element>
+    <Element Type="FunctionCall" Id="AE336687">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="7540D6BE"/>
+        <Parameter Type="Param" Id="AA3102AE"/>
+        <Parameter Type="Param" Id="CBFAF5D2"/>
+    </Element>
+    <Element Type="Param" Id="7540D6BE">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <FunctionCall Type="FunctionCall" Id="27477CB4"/>
+    </Element>
+    <Element Type="FunctionCall" Id="27477CB4">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
+        <Parameter Type="Param" Id="73C0EBDB"/>
+    </Element>
+    <Element Type="Param" Id="73C0EBDB">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
+        <FunctionCall Type="FunctionCall" Id="4A0EC69C"/>
+    </Element>
+    <Element Type="FunctionCall" Id="4A0EC69C">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000092"/>
+    </Element>
+    <Element Type="Param" Id="AA3102AE">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="CBFAF5D2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>NydusZergGroundArmorsLevel1</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
     <Element Type="FunctionCall" Id="CF48B91D">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="0366EE04"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
@@ -11745,6 +11813,7 @@
     <Element Type="FunctionCall" Id="5722AD04">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <FunctionCall Type="FunctionCall" Id="03E0A7DD"/>
+        <FunctionCall Type="FunctionCall" Id="E1D56ACE"/>
         <FunctionCall Type="FunctionCall" Id="C47B2C80"/>
         <FunctionCall Type="FunctionCall" Id="6787B9A5"/>
     </Element>
@@ -11778,6 +11847,39 @@
     <Element Type="Param" Id="74B58FEE">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
         <Value>ZergMeleeWeaponsLevel2</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
+    <Element Type="FunctionCall" Id="E1D56ACE">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="1642980A"/>
+        <Parameter Type="Param" Id="A190004C"/>
+        <Parameter Type="Param" Id="6A554FB3"/>
+    </Element>
+    <Element Type="Param" Id="1642980A">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <FunctionCall Type="FunctionCall" Id="BA3462A3"/>
+    </Element>
+    <Element Type="FunctionCall" Id="BA3462A3">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
+        <Parameter Type="Param" Id="BCDD8AFC"/>
+    </Element>
+    <Element Type="Param" Id="BCDD8AFC">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
+        <FunctionCall Type="FunctionCall" Id="4AFB19D7"/>
+    </Element>
+    <Element Type="FunctionCall" Id="4AFB19D7">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000092"/>
+    </Element>
+    <Element Type="Param" Id="A190004C">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="6A554FB3">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>NydusZergMeleeAttacksLevel2</Value>
         <ValueType Type="gamelink"/>
         <ValueGameType Type="Upgrade"/>
     </Element>
@@ -11904,6 +12006,7 @@
     <Element Type="FunctionCall" Id="7B55E995">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <FunctionCall Type="FunctionCall" Id="41A2BAAF"/>
+        <FunctionCall Type="FunctionCall" Id="A79F55B0"/>
         <FunctionCall Type="FunctionCall" Id="AA6B3B68"/>
         <FunctionCall Type="FunctionCall" Id="E490B2D2"/>
     </Element>
@@ -11937,6 +12040,39 @@
     <Element Type="Param" Id="48AD35A1">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
         <Value>ZergGroundArmorsLevel2</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
+    <Element Type="FunctionCall" Id="A79F55B0">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="8F8718C6"/>
+        <Parameter Type="Param" Id="A00F3045"/>
+        <Parameter Type="Param" Id="BB183BFB"/>
+    </Element>
+    <Element Type="Param" Id="8F8718C6">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <FunctionCall Type="FunctionCall" Id="37A070B7"/>
+    </Element>
+    <Element Type="FunctionCall" Id="37A070B7">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
+        <Parameter Type="Param" Id="31E28E86"/>
+    </Element>
+    <Element Type="Param" Id="31E28E86">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
+        <FunctionCall Type="FunctionCall" Id="6A41C85A"/>
+    </Element>
+    <Element Type="FunctionCall" Id="6A41C85A">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000092"/>
+    </Element>
+    <Element Type="Param" Id="A00F3045">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="BB183BFB">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>NydusZergGroundArmorsLevel2</Value>
         <ValueType Type="gamelink"/>
         <ValueGameType Type="Upgrade"/>
     </Element>
@@ -12063,6 +12199,7 @@
     <Element Type="FunctionCall" Id="29289BFC">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <FunctionCall Type="FunctionCall" Id="A42D10B2"/>
+        <FunctionCall Type="FunctionCall" Id="E7F2E25E"/>
         <FunctionCall Type="FunctionCall" Id="2CF4C0B0"/>
         <FunctionCall Type="FunctionCall" Id="71DA4AB0"/>
     </Element>
@@ -12096,6 +12233,39 @@
     <Element Type="Param" Id="65292117">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
         <Value>ZergMeleeWeaponsLevel3</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
+    <Element Type="FunctionCall" Id="E7F2E25E">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="2CB8C082"/>
+        <Parameter Type="Param" Id="645BE6B5"/>
+        <Parameter Type="Param" Id="95CF87B4"/>
+    </Element>
+    <Element Type="Param" Id="2CB8C082">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <FunctionCall Type="FunctionCall" Id="9D15285B"/>
+    </Element>
+    <Element Type="FunctionCall" Id="9D15285B">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
+        <Parameter Type="Param" Id="165BBA8F"/>
+    </Element>
+    <Element Type="Param" Id="165BBA8F">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
+        <FunctionCall Type="FunctionCall" Id="33661013"/>
+    </Element>
+    <Element Type="FunctionCall" Id="33661013">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000092"/>
+    </Element>
+    <Element Type="Param" Id="645BE6B5">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="95CF87B4">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>NydusZergMeleeAttacksLevel3</Value>
         <ValueType Type="gamelink"/>
         <ValueGameType Type="Upgrade"/>
     </Element>
@@ -12222,6 +12392,7 @@
     <Element Type="FunctionCall" Id="B6310252">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
         <FunctionCall Type="FunctionCall" Id="CA08E23A"/>
+        <FunctionCall Type="FunctionCall" Id="5A252703"/>
         <FunctionCall Type="FunctionCall" Id="C35DE302"/>
         <FunctionCall Type="FunctionCall" Id="8B522853"/>
     </Element>
@@ -12255,6 +12426,39 @@
     <Element Type="Param" Id="71BD4430">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
         <Value>ZergGroundArmorsLevel3</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
+    <Element Type="FunctionCall" Id="5A252703">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="C64C8445"/>
+        <Parameter Type="Param" Id="75C74BFB"/>
+        <Parameter Type="Param" Id="6B3C4452"/>
+    </Element>
+    <Element Type="Param" Id="C64C8445">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <FunctionCall Type="FunctionCall" Id="6A3AAF7B"/>
+    </Element>
+    <Element Type="FunctionCall" Id="6A3AAF7B">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
+        <Parameter Type="Param" Id="D79229AB"/>
+    </Element>
+    <Element Type="Param" Id="D79229AB">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
+        <FunctionCall Type="FunctionCall" Id="DDD09F25"/>
+    </Element>
+    <Element Type="FunctionCall" Id="DDD09F25">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000092"/>
+    </Element>
+    <Element Type="Param" Id="75C74BFB">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="6B3C4452">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>NydusZergGroundArmorsLevel3</Value>
         <ValueType Type="gamelink"/>
         <ValueGameType Type="Upgrade"/>
     </Element>
@@ -30235,6 +30439,7 @@
         <Item Type="FunctionDef" Id="7885A130"/>
         <Item Type="FunctionDef" Id="F0FEC56B"/>
         <Item Type="FunctionDef" Id="09676412"/>
+        <Item Type="FunctionDef" Id="442520EE"/>
         <Item Type="Trigger" Id="BDB51B60"/>
         <Item Type="Trigger" Id="353A3144"/>
     </Element>
@@ -31715,6 +31920,232 @@
         <Value>true</Value>
         <ValueType Type="bool"/>
     </Element>
+    <Element Type="FunctionDef" Id="442520EE">
+        <FlagCall/>
+        <Parameter Type="ParamDef" Id="F146FC77"/>
+        <Variable Type="Variable" Id="88BFE37B"/>
+        <Variable Type="Variable" Id="5B502131"/>
+        <FunctionCall Type="FunctionCall" Id="E30D36A7"/>
+    </Element>
+    <Element Type="ParamDef" Id="F146FC77">
+        <ParameterType>
+            <Type Value="unit"/>
+        </ParameterType>
+        <Default Type="Param" Id="4F303DAB"/>
+    </Element>
+    <Element Type="Param" Id="4F303DAB">
+        <Preset Type="PresetValue" Library="Ntve" Id="D6EA4D09"/>
+    </Element>
+    <Element Type="Variable" Id="88BFE37B">
+        <VariableType>
+            <Type Value="fixed"/>
+        </VariableType>
+        <Value Type="Param" Id="E119C069"/>
+    </Element>
+    <Element Type="Param" Id="E119C069">
+        <FunctionCall Type="FunctionCall" Id="A9DDB883"/>
+    </Element>
+    <Element Type="FunctionCall" Id="A9DDB883">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="CC1B5055"/>
+        <Parameter Type="Param" Id="CD52A568"/>
+        <Parameter Type="Param" Id="72B30D15"/>
+    </Element>
+    <Element Type="Param" Id="CD52A568">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="F1B0BFC7"/>
+        <Parameter Type="ParamDef" Id="F146FC77"/>
+    </Element>
+    <Element Type="Param" Id="72B30D15">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="B81F16DE"/>
+        <CustomType Type="charge"/>
+        <ScriptCode>
+            &quot;Abil/NydusSpawnCharge&quot;
+        </ScriptCode>
+    </Element>
+    <Element Type="Variable" Id="5B502131">
+        <VariableType>
+            <Type Value="gamelink"/>
+            <GameType Value="Abil"/>
+        </VariableType>
+        <Value Type="Param" Id="276FD385"/>
+    </Element>
+    <Element Type="Param" Id="276FD385">
+        <Value>SpawnZergUnits</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Abil"/>
+    </Element>
+    <Element Type="FunctionCall" Id="E30D36A7">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+        <FunctionCall Type="FunctionCall" Id="B1A0F529"/>
+        <FunctionCall Type="FunctionCall" Id="48D45FEF"/>
+        <FunctionCall Type="FunctionCall" Id="6DD2BF64"/>
+        <FunctionCall Type="FunctionCall" Id="E6D4AFFC"/>
+    </Element>
+    <Element Type="FunctionCall" Id="B1A0F529">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="0366EE04"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="220E6DFD"/>
+        <Parameter Type="Param" Id="1AF6768E"/>
+        <Parameter Type="Param" Id="66D9DBED"/>
+    </Element>
+    <Element Type="Param" Id="220E6DFD">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="0D120C33"/>
+        <FunctionCall Type="FunctionCall" Id="F2FA5510"/>
+    </Element>
+    <Element Type="FunctionCall" Id="F2FA5510">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000192"/>
+    </Element>
+    <Element Type="Param" Id="1AF6768E">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="A4C19F41"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="875889C8"/>
+    </Element>
+    <Element Type="Param" Id="66D9DBED">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="78A54B52"/>
+        <FunctionCall Type="FunctionCall" Id="726C0B58"/>
+    </Element>
+    <Element Type="FunctionCall" Id="726C0B58">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="0FF0ADD6"/>
+        <Parameter Type="Param" Id="D55FD4EE"/>
+        <Parameter Type="Param" Id="CEC4D136"/>
+    </Element>
+    <Element Type="Param" Id="D55FD4EE">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="0A06ABFD"/>
+        <FunctionCall Type="FunctionCall" Id="F5F9AE07"/>
+    </Element>
+    <Element Type="FunctionCall" Id="F5F9AE07">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000129"/>
+        <Parameter Type="Param" Id="9DE79B9E"/>
+        <Parameter Type="Param" Id="FDA0A8E2"/>
+        <Parameter Type="Param" Id="F4776C96"/>
+    </Element>
+    <Element Type="Param" Id="9DE79B9E">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000209"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000086"/>
+    </Element>
+    <Element Type="Param" Id="FDA0A8E2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000210"/>
+        <Variable Type="Variable" Id="88BFE37B"/>
+    </Element>
+    <Element Type="Param" Id="F4776C96">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000208"/>
+        <Value>99.0</Value>
+        <ValueType Type="fixed"/>
+    </Element>
+    <Element Type="Param" Id="CEC4D136">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="D2E5A641"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="06588939"/>
+    </Element>
+    <Element Type="FunctionCall" Id="48D45FEF">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="F1200B76"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="13CF97A4"/>
+        <Parameter Type="Param" Id="99EDABB8"/>
+        <Parameter Type="Param" Id="7B2E0707"/>
+    </Element>
+    <Element Type="Param" Id="13CF97A4">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="99A469F3"/>
+        <FunctionCall Type="FunctionCall" Id="BFBAB840"/>
+    </Element>
+    <Element Type="FunctionCall" Id="BFBAB840">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000129"/>
+        <Parameter Type="Param" Id="47DA4B6E"/>
+        <Parameter Type="Param" Id="0A7D9D78"/>
+        <Parameter Type="Param" Id="BE372CA7"/>
+    </Element>
+    <Element Type="Param" Id="47DA4B6E">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000209"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000086"/>
+    </Element>
+    <Element Type="Param" Id="0A7D9D78">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000210"/>
+        <Variable Type="Variable" Id="88BFE37B"/>
+    </Element>
+    <Element Type="Param" Id="BE372CA7">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000208"/>
+        <Value>99.0</Value>
+        <ValueType Type="fixed"/>
+    </Element>
+    <Element Type="Param" Id="99EDABB8">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="6DDAD30B"/>
+        <CustomType Type="charge"/>
+        <ScriptCode>
+            &quot;Abil/NydusSpawnCharge&quot;
+        </ScriptCode>
+    </Element>
+    <Element Type="Param" Id="7B2E0707">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="61CBBDE4"/>
+        <Parameter Type="ParamDef" Id="F146FC77"/>
+    </Element>
+    <Element Type="FunctionCall" Id="6DD2BF64">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="F1200B76"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="59FB4967"/>
+        <Parameter Type="Param" Id="F49C6CA5"/>
+        <Parameter Type="Param" Id="882245EB"/>
+    </Element>
+    <Element Type="Param" Id="59FB4967">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="99A469F3"/>
+        <Value>-1.0</Value>
+        <ValueType Type="fixed"/>
+    </Element>
+    <Element Type="Param" Id="F49C6CA5">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="6DDAD30B"/>
+        <CustomType Type="charge"/>
+        <ScriptCode>
+            &quot;Abil/NydusSpawnCharge&quot;
+        </ScriptCode>
+    </Element>
+    <Element Type="Param" Id="882245EB">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="61CBBDE4"/>
+        <Parameter Type="ParamDef" Id="F146FC77"/>
+    </Element>
+    <Element Type="FunctionCall" Id="E6D4AFFC">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+        <Parameter Type="Param" Id="819F0F13"/>
+        <Parameter Type="Param" Id="B3F132E0"/>
+        <Parameter Type="Param" Id="42F3745F"/>
+    </Element>
+    <Element Type="Param" Id="819F0F13">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+        <FunctionCall Type="FunctionCall" Id="61345796"/>
+    </Element>
+    <Element Type="FunctionCall" Id="61345796">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+        <Parameter Type="Param" Id="08F233B2"/>
+        <Parameter Type="Param" Id="BD2F4A1B"/>
+        <Parameter Type="Param" Id="1C4307DC"/>
+    </Element>
+    <Element Type="Param" Id="08F233B2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+        <FunctionCall Type="FunctionCall" Id="E7A64570"/>
+    </Element>
+    <Element Type="FunctionCall" Id="E7A64570">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000079"/>
+        <Parameter Type="Param" Id="84D9AED8"/>
+    </Element>
+    <Element Type="Param" Id="84D9AED8">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000138"/>
+        <Parameter Type="ParamDef" Id="F146FC77"/>
+    </Element>
+    <Element Type="Param" Id="BD2F4A1B">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+    </Element>
+    <Element Type="Param" Id="1C4307DC">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+        <Value>NydusCanal22</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Unit"/>
+    </Element>
+    <Element Type="Param" Id="B3F132E0">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+    </Element>
+    <Element Type="Param" Id="42F3745F">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+        <Value>true</Value>
+        <ValueType Type="bool"/>
+    </Element>
     <Element Type="Trigger" Id="BDB51B60">
         <Variable Type="Variable" Id="E5D55862"/>
         <Variable Type="Variable" Id="C352EF48"/>
@@ -32648,6 +33079,7 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <ScriptCode>
             gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
+            gf_ResetChargesOfNydus(lv_dyingUnit);
         </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="1A39AFE5">
@@ -34430,6 +34862,7 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <ScriptCode>
             gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
+            gf_ResetChargesOfNydus(lv_dyingUnit);
         </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="EE5C7193">
@@ -56866,7 +57299,7 @@
     </Element>
     <Element Type="Param" Id="751FEB7B">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000192"/>
-        <Value>-nydug</Value>
+        <Value>-sudyn</Value>
         <ValueType Type="string"/>
     </Element>
     <Element Type="FunctionCall" Id="592F93FE">

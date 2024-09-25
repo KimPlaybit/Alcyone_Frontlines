@@ -9,6 +9,17 @@
             <VitalRegenMultiplier index="Energy" value="-1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="EmpowerZergBuilding">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-zerg-glialreconstitution.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="10"/>
+        <Modification>
+            <LifeArmorBonus value="15"/>
+            <VitalMaxArray index="Shields" value="150"/>
+            <WeaponEnableArray value="NydusWormSpit"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BunkerWeaponRangeBonus">
         <Modification>
             <DamageDealtAttributeUnscaled index="Heroic" value="10"/>
@@ -82,6 +93,19 @@
         <InfoIcon value="Assets\Textures\btn-upgrade-zerg-monarchblades.dds"/>
         <Duration value="6"/>
         <Modification MoveSpeedMultiplier="1.3"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NydusWhirlwind">
+        <InfoIcon value="Assets\Textures\btn-upgrade-zerg-glialreconstitution.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="10"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="WhirlwindSearch"/>
+        <Modification MoveSpeedMultiplier="1.3">
+            <StateFlags index="SuppressCollision" value="1"/>
+            <WeaponEnableArray value="FenixChampionWhirlwind"/>
+            <WeaponDisableArray value="FenixChampion"/>
+            <WeaponDisableArray value="FenixWeapon"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="FlagshipTimeBomb">
         <Modification MoveSpeedMultiplier="0.6" AttackSpeedMultiplier="0.9"/>

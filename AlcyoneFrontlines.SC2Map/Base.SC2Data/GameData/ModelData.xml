@@ -36,6 +36,10 @@
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
     </CModel>
+    <CModel id="EmpowerZergBuilding" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\WildMutationBuff\WildMutationBuff.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
     <CModel id="GenericProtossFire_Medium2" parent="Doodad">
         <Model value="Assets\Effects\Neutral\Hybrid_ProtossAdvanced_Experimented_VoidPuddle\Hybrid_ProtossAdvanced_Experimented_VoidPuddle.m3"/>
     </CModel>

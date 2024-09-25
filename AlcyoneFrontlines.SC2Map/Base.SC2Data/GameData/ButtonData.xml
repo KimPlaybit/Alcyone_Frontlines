@@ -13,9 +13,14 @@
         <Universal value="1"/>
         <SimpleDisplayText value="SimpleDisplay/Attack2"/>
     </CButton>
+    <CButton id="EmpowerZergBuilding">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-glialreconstitution.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-arcshield.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
     <CButton id="BurrowMove2">
-        <Icon value="Assets\Textures\btn-ability-zerg-burrow-color.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-zerg-burrow-color.dds"/>
+        <Icon value="Assets\Textures\btn-ability-zerg-deeptunnel.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-deeptunnel.dds"/>
         <EditorCategories value="Race:Zerg"/>
         <HotkeyAlias value="BurrowDown"/>
         <Universal value="1"/>
@@ -24,6 +29,23 @@
         <Icon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="HydraliskDenImpalerPassive2">
+        <Icon value="Assets\Textures\btn-unit-zerg-ultralisk.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
+        <Hotkey value="Button/Hotkey/PygaliskNydus"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="HydraliskDenImpalerPassive22">
+        <Icon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="SpawnaSmallNydusWorm">
+        <Icon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="NydusCanal"/>
     </CButton>
     <CButton id="ProtossDefenseStructureUpgrade1">
         <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
@@ -98,6 +120,11 @@
         <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
         <EditorCategories value="Race:Protoss"/>
         <HotkeyAlias value="ProtossDefenseStructureUpgrade1"/>
+    </CButton>
+    <CButton id="SmallSpawningRoachlings">
+        <Icon value="Assets\Textures\btn-unit-zerg-roachlings.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-roachlings.dds"/>
+        <EditorCategories value="Race:Zerg"/>
     </CButton>
     <CButton id="TerranDefenseStructureLevel1">
         <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>

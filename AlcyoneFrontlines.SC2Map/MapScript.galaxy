@@ -249,6 +249,7 @@ point gf_GetSpawnPointTeam1 (unit lp_deadPlayer);
 point gf_GetSpawnPointTeam2 (unit lp_deadPlayer);
 void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer);
 void gf_ResetCooldownOfShadowFury (unit lp_killingUnit);
+void gf_ResetChargesOfNydus (unit lp_killedUnit);
 void gf_Corsair (int lp_player, unit lp_unit);
 unit gf_FindHealspot (unit lp_unit);
 unit gf_FindEnemyHero (unit lp_unit);
@@ -1639,6 +1640,25 @@ void gf_ResetCooldownOfShadowFury (unit lp_killingUnit) {
     // Implementation
     if (((UnitGetType(lp_killingUnit) == "AvengerHero") == true)) {
         UnitAbilityReset(lp_killingUnit, AbilityCommand("DarkTemplarShadowFury", 0), c_spendLocationAll);
+    }
+
+}
+
+void gf_ResetChargesOfNydus (unit lp_killedUnit) {
+    // Variable Declarations
+    fixed lv_charges;
+    string lv_ability;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_charges = UnitGetChargeUsed(lp_killedUnit, "Abil/NydusSpawnCharge");
+    lv_ability = "SpawnZergUnits";
+
+    // Implementation
+    if (((UnitGetType(lp_killedUnit) == "NydusCanal22") == true)) {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, FixedToText((99.0 - lv_charges), c_fixedPrecisionAny));
+        UnitAddChargeUsed(lp_killedUnit, "Abil/NydusSpawnCharge", (99.0 - lv_charges));
+        UnitAddChargeUsed(lp_killedUnit, "Abil/NydusSpawnCharge", -1.0);
     }
 
 }
@@ -3375,31 +3395,37 @@ bool gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 2) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeWeaponsLevel12", 1);
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/E09B8CCA"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 3) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel1", 1);
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/3C655E90"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 4) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel2", 1);
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/408FE186"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 5) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel2", 1);
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/22A055EC"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 6) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel3", 1);
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/F6474790"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 7) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel3", 1);
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/655325CE"));
     }
 
@@ -3866,6 +3892,7 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
     }
     gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
+    gf_ResetChargesOfNydus(lv_dyingUnit);
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
         PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropMinerals) + 500));
@@ -3974,6 +4001,7 @@ bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
     gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
     gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
+    gf_ResetChargesOfNydus(lv_dyingUnit);
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
         PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropMinerals) + 500));
@@ -5488,7 +5516,7 @@ bool gt_NydusPicked_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_NydusPicked_Init () {
     gt_NydusPicked = TriggerCreate("gt_NydusPicked_Func");
-    TriggerAddEventChatMessage(gt_NydusPicked, c_playerAny, "-nydug", true);
+    TriggerAddEventChatMessage(gt_NydusPicked, c_playerAny, "-sudyn", true);
 }
 
 //--------------------------------------------------------------------------------------------------
