@@ -20,6 +20,17 @@
         <Amount value="30"/>
         <Kind value="Spell"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="EmpowerZergBuilding">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectTeleport id="DigTeleportMove">
+        <ValidatorArray value="HasVisionOfTarget"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <Range value="120"/>
+    </CEffectTeleport>
     <CEffectEnumArea id="BurrowChargeStructureTargetSearch2">
         <ValidatorArray value="CasterNotDead"/>
         <EditorCategories value="Race:Zerg"/>
@@ -125,12 +136,43 @@
         <ValidatorArray index="1" removed="1"/>
         <ValidatorArray index="2" removed="1"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="FenixWhirlwind2">
+        <Behavior value="NydusWhirlwind"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="FenixWhirlwindDamage">
         <Amount value="5"/>
     </CEffectDamage>
     <CEffectDamage id="FenixWhirlwindDamage2" parent="DU_WEAP">
         <Amount value="1"/>
         <Death value="Eviscerate"/>
+    </CEffectDamage>
+    <CEffectSet id="MPCreateNydusWormCanal2">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreateNydusWormCanal"/>
+        <TargetLocationType value="UnitOrPoint"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="MPCreateNydusWormCanal">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="MPCreateSetA"/>
+        <SpawnUnit value="SmallNydusSpawner"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="SmallMPCreateRoachling">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+    </CEffectSet>
+    <CEffectEnumArea id="WhirlwindSearch">
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="WhirlwindDamage"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="WhirlwindDamage" parent="DU_WEAP">
+        <Kind value="Spell"/>
+        <Amount value="5"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="Firebat2">
         <EditorCategories value="Race:Terran"/>
@@ -204,6 +246,74 @@
         <ValidatorArray index="2" removed="1"/>
         <SpawnOffset index="0" value="0,-0.1"/>
     </CEffectCreateUnit>
+    <CEffectLaunchMissile id="LocustMPCreateLMA2">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetUnitOrPoint"/>
+        <FinishEffect value="LocustMPCreateLMImpactSetA2"/>
+        <AmmoUnit value="InvisibleEscortFlying"/>
+        <Movers Link="LocustMPEggMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="LocustMPCreateLMImpactSetA2">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="RemovePrecursorLocust"/>
+        <EffectArray value="MPReady"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="MPCreateHydralisk">
+        <EditorCategories value="Race:Zerg"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="MPCreateSetA"/>
+        <SpawnUnit value="Hydralisk22"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="-0.4,-0.2"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="MPReady">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="LocustMPRally"/>
+        <EffectArray value="TimedLife"/>
+    </CEffectSet>
+    <CEffectDamage id="NeedleSpinesDamage2" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Ranged"/>
+        <Amount value="8"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="NeedleSpinesLaunchMissile2">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="NeedleSpinesImpactSwitch"/>
+        <AmmoUnit value="NeedleSpinesWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="EmpowerZergBuildingSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="EmpowerZergBuilding"/>
+        <EffectArray value="FenixWhirlwind2"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="TimedLife">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="LocustMPTimedLife2"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MPCreateSetA">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MakePrecursorNydus"/>
+        <EffectArray value="LocustMPCreateLMA2"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="MPCreatePygalisk">
+        <EditorCategories value="Race:Zerg"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="MPCreateSetA"/>
+        <SpawnUnit value="Pygalisk2"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="-0.4,-0.2"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="MPCreatePygaliskSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreatePygalisk"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MakePrecursorNydus">
+        <Behavior value="PrecursorLocust"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="PoisonNova">
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <!--ValidatorArray value="HaveHotSNoxious"/-->
@@ -379,6 +489,23 @@
     <CEffectSet id="LeechSet">
         <EffectArray value="LeechDamage2"/>
     </CEffectSet>
+    <CEffectCreateUnit id="MPCreateRoachlingA">
+        <EditorCategories value="Race:Zerg"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="LocustMPCreateSetA"/>
+        <SpawnUnit value="Roachling2"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="-0.4,-0.2"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="MPCreateRoachling">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+        <EffectArray value="MPCreateRoachlingA"/>
+    </CEffectSet>
     <CEffectDamage id="LokiHurricaneMissileDamage">
         <AttributeBonus index="Light" value="0"/>
         <Amount value="2"/>
@@ -509,6 +636,9 @@
     <CEffectDamage id="RenegadeLongboltMissileU">
         <Amount value="75"/>
     </CEffectDamage>
+    <CEffectDamage id="RoachlingNeedleClawsDamage">
+        <Amount value="8"/>
+    </CEffectDamage>
     <CEffectDamage id="SOAPurifierBeamDamage">
         <AttributeBonus index="Armored" value="3"/>
         <Amount value="3"/>
@@ -522,8 +652,18 @@
     <CEffectCreatePersistent id="SpectreNukeP">
         <FinalEffect value=""/>
     </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="SporeCrawler2">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="SporeCrawlerU2"/>
+        <AmmoUnit value="SporeCrawlerWeapon"/>
+    </CEffectLaunchMissile>
     <CEffectDamage id="SporeCrawlerU">
         <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
+    <CEffectDamage id="SporeCrawlerU2" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="15"/>
+        <Death value="Disintegrate"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="Stimpack2">
         <EditorCategories value="Race:Terran"/>

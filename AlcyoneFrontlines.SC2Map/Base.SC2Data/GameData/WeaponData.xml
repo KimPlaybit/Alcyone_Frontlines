@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CWeaponLegacy id="HydraliskMelee2">
+        <EditorCategories value="Race:Zerg"/>
+        <Options index="Hidden" value="1"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <DisplayEffect value="NeedleSpinesDamage2"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.5"/>
+        <Marker Link="Weapon/NeedleSpines"/>
+        <Cost>
+            <Cooldown Link="Weapon/NeedleSpines"/>
+        </Cost>
+        <Period value="0.83"/>
+        <DamagePoint value="0.3"/>
+        <Effect value="NeedleSpinesDamage2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NeedleSpines2">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <DisplayEffect value="NeedleSpinesDamage2"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Period value="0.83"/>
+        <DamagePoint value="0.208"/>
+        <Effect value="NeedleSpinesLaunchMissile2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NydusWormSpit">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <DisplayEffect value="SporeCrawlerU2"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <RangeSlop value="0"/>
+        <Arc value="360"/>
+        <Period value="0.8608"/>
+        <Effect value="SporeCrawler2"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="Firebat2">
         <EditorCategories value="Race:Terran"/>
         <Icon value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel0.dds"/>

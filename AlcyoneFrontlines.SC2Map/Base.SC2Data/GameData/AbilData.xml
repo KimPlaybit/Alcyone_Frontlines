@@ -62,6 +62,39 @@
         </Cost>
         <TargetFilters index="0" value="Structure,Visible;Self,Enemy,UnderConstruction"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="EmpowerZergBuilding">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EmpowerZergBuildingSet"/>
+        <Cost>
+            <Charge Link=""/>
+            <Cooldown Link="abil/EmpowerZergBuilding" TimeUse="15"/>
+        </Cost>
+        <TargetFilters value="Structure;Player,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <AINotifyEffect value="BuildingShield"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="EmpowerZergBuilding"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Dig">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="DigTeleportMove"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <TargetFilters value="Ground,Visible;Player,Ally,Neutral,Enemy"/>
+        <Range value="120"/>
+        <Arc value="360"/>
+        <PrepTime value="3"/>
+        <CastIntroTime value="0.5"/>
+        <FinishTime value="3"/>
+        <UninterruptibleArray index="Approach" value="1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SummonNydusWorm"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="BanelingNestResearch">
         <InfoArray index="Research1" Time="71">
             <Resource index="Minerals" value="100"/>
@@ -511,6 +544,53 @@
         <AutoCastValidatorArray value="VoidDisruptorEnemyInRange"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Overcharge"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="NydusSpawnCanal">
+        <Levels value="5"/>
+        <Effect index="0" value="MPCreateNydusWormCanal2"/>
+        <Flags index="BestUnit" value="0"/>
+        <Cost>
+            <Charge Link=""/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnCanal" TimeUse="30"/>
+        </Cost>
+        <Range value="100"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AmonSpawnTentacleA"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="SmallSpawnZergUnits">
+        <Levels value="5"/>
+        <Effect index="0" value="SmallMPCreateRoachling"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Charge Link=""/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsSmallSpawnZergUnits" TimeStart="2" TimeUse="15"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LocustMP"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="SpawnZergUnits">
+        <DataCollection value="NydusSpawnZergUnits"/>
+        <Levels value="5"/>
+        <Effect index="0" value="MPCreatePygaliskSet"/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="Abil/NydusSpawnCharge"/>
+                <Location value="Unit"/>
+                <TimeStart value="40"/>
+                <TimeUse value="40"/>
+            </Charge>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsSpawnZergUnits"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AINotifyEffect value="NydusSpawnZergUnits"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LocustMP"/>
+    </CAbilEffectInstant>
     <CAbilResearch id="ResearchLurkerDen">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <InfoArray index="Research4" Time="57" Upgrade="AdaptiveTalons">
@@ -633,6 +713,27 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="RaynorRadar">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="UseChargeSpawnHydralisk">
+        <DataCollection value="NydusSpawnZergUnits"/>
+        <Levels value="5"/>
+        <Effect index="0" value="MPCreateHydralisk"/>
+        <Cost>
+            <Charge>
+                <CountMax value="99"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="Abil/NydusSpawnCharge"/>
+                <Location value="Unit"/>
+                <TimeStart value="40"/>
+                <TimeUse value="40"/>
+            </Charge>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsSpawnZergUnits"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AINotifyEffect value="NydusSpawnZergUnits"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LocustMP"/>
     </CAbilEffectInstant>
     <CAbilResearch id="SpawningPoolResearch">
         <InfoArray index="Research1" Time="93"/>
@@ -1069,6 +1170,19 @@
         <Cost index="0">
             <Cooldown TimeUse="35"/>
         </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="NydusSpawnZergUnits">
+        <Levels value="5"/>
+        <Effect index="0" value="MPCreateRoachling"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Charge Link=""/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits" TimeStart="2" TimeUse="10"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LocustMP"/>
     </CAbilEffectInstant>
     <CAbilResearch id="TemplarArchivesResearch">
         <InfoArray index="Research5" Time="79"/>
