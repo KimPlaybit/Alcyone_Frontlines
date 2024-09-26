@@ -77,12 +77,12 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Dig">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <Effect index="0" value="DigTeleportMove"/>
+        <Effect index="0" value="DeepTunnel"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
             <Cooldown TimeUse="30"/>
         </Cost>
-        <TargetFilters value="Ground,Visible;Player,Ally,Neutral,Enemy"/>
+        <TargetFilters value="Ground,Structure,Visible;Player,Enemy,Invulnerable"/>
         <Range value="120"/>
         <Arc value="360"/>
         <PrepTime value="3"/>
@@ -552,10 +552,11 @@
             <Charge Link=""/>
             <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnCanal" TimeUse="30"/>
         </Cost>
-        <Range value="100"/>
+        <Range value="50"/>
         <Arc value="360"/>
         <AutoCastFilters value="Self,Visible;-"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="AmonSpawnTentacleA"/>
+        <CursorEffect value="MPCreateNydusWormCanal"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="SmallSpawnZergUnits">
         <Levels value="5"/>

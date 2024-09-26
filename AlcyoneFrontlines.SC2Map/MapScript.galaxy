@@ -134,6 +134,7 @@ int gv_queenTeam2;
 int gv_defilerTeam2;
 int gv_hydraliskTeam2;
 int gv_ultraliskTeam2;
+playergroup gv_playersWhoPicked;
 
 void InitGlobals () {
     int init_i;
@@ -216,6 +217,7 @@ void InitGlobals () {
     gv_defilerTeam2 = c_invalidDialogControlId;
     gv_hydraliskTeam2 = c_invalidDialogControlId;
     gv_ultraliskTeam2 = c_invalidDialogControlId;
+    gv_playersWhoPicked = PlayerGroupEmpty();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -995,6 +997,7 @@ void gf_SoldierSelectionTeam1 () {
     }
 
     DialogSetVisible(gv_dialogTeam1, gv_soldierPlayers1, true);
+    DialogSetVisible(gv_dialogTeam1, gv_playersWhoPicked, false);
 }
 
 void gf_SoldierSelectionTeam2 () {
@@ -1065,6 +1068,7 @@ void gf_SoldierSelectionTeam2 () {
     }
 
     DialogSetVisible(gv_dialogTeam2, gv_soldierPlayers2, true);
+    DialogSetVisible(gv_dialogTeam2, gv_playersWhoPicked, false);
 }
 
 void gf_SetupTeams1 () {
@@ -1656,7 +1660,6 @@ void gf_ResetChargesOfNydus (unit lp_killedUnit) {
 
     // Implementation
     if (((UnitGetType(lp_killedUnit) == "NydusCanal22") == true)) {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, FixedToText((99.0 - lv_charges), c_fixedPrecisionAny));
         UnitAddChargeUsed(lp_killedUnit, "Abil/NydusSpawnCharge", (99.0 - lv_charges));
         UnitAddChargeUsed(lp_killedUnit, "Abil/NydusSpawnCharge", -1.0);
     }
@@ -3396,37 +3399,31 @@ bool gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 2) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", 1);
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeWeaponsLevel12", 1);
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/E09B8CCA"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 3) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", 1);
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel1", 1);
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/3C655E90"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 4) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", 1);
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel2", 1);
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/408FE186"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 5) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", 1);
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel2", 1);
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/22A055EC"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 6) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", 1);
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel3", 1);
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/F6474790"));
     }
 
     if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 7) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", 1);
         TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel3", 1);
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/655325CE"));
     }
 
     return true;
@@ -5458,6 +5455,7 @@ bool gt_MutaliskPicked_Func (bool testConds, bool runActions) {
     UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
     UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
     gv_playerPicked[EventPlayer()] = true;
+    PlayerGroupAdd(gv_playersWhoPicked, EventPlayer());
     return true;
 }
 
@@ -5510,6 +5508,7 @@ bool gt_NydusPicked_Func (bool testConds, bool runActions) {
     UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
     UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
     gv_playerPicked[EventPlayer()] = true;
+    PlayerGroupAdd(gv_playersWhoPicked, EventPlayer());
     return true;
 }
 

@@ -28,8 +28,9 @@
         <ValidatorArray value="HasVisionOfTarget"/>
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
-        <TargetLocation Value="TargetPoint"/>
+        <TargetLocation Value="TargetUnit"/>
         <Range value="120"/>
+        <PlacementArc value="360"/>
     </CEffectTeleport>
     <CEffectEnumArea id="BurrowChargeStructureTargetSearch2">
         <ValidatorArray value="CasterNotDead"/>
@@ -150,6 +151,7 @@
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="MPCreateNydusWormCanal"/>
         <TargetLocationType value="UnitOrPoint"/>
+        <ValidatorArray value="TargetOnCreep"/>
     </CEffectSet>
     <CEffectCreateUnit id="MPCreateNydusWormCanal">
         <EditorCategories value="Race:Zerg"/>
@@ -637,7 +639,7 @@
         <Amount value="75"/>
     </CEffectDamage>
     <CEffectDamage id="RoachlingNeedleClawsDamage">
-        <Amount value="8"/>
+        <Amount value="4"/>
     </CEffectDamage>
     <CEffectDamage id="SOAPurifierBeamDamage">
         <AttributeBonus index="Armored" value="3"/>
