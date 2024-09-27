@@ -547,6 +547,96 @@
         <On Terms="AnimDone; AnimName Birth" Send="Destroy"/>
         <HostSiteOps Ops="SOpShadow"/>
     </CActorModel>
+    <CActorUnit id="MothershipCore2" parent="GenericUnitStandard" unitName="MothershipCoreHero">
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create MothershipCore_Land"/>
+        <On Terms="Behavior.MothershipCoreWeapon.On" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End"/>
+        <On Terms="Behavior.MothershipCoreWeapon.Off" Send="AnimGroupRemove Work"/>
+        <On Terms="Abil.MassRecall.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.MothershipCoreEnergize.SourceCastStart" Send="$Spell"/>
+        <On Terms="UnitBirth.MothershipCoreHero.Normal" Send="AnimPlay MorphStart Morph,End,A"/>
+        <On Terms="UnitBirth.MothershipCoreHero.Normal" Send="Create ProtoWormholeTransitEndSound"/>
+        <On Terms="AbilMorph.*.Delay; MorphFrom MothershipCore" Send="TimerSet 99.000000 DelayWarpOut"/>
+        <On Terms="TimerExpired; TimerName DelayWarpOut" Send="AnimPlay Morph Stand,Morph,Start PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Cancel; MorphFrom MothershipCore" Send="AnimClear Morph"/>
+        <On Terms="AbilMorph.*.Cancel; MorphFrom MothershipCore" Send="TimerKill DelayWarpOut"/>
+        <On Terms="AbilMorph.*.Cancel; MorphFrom MothershipCore" Target="MothershipCoreMorphAddition" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom MothershipCore" Target="MothershipCoreMorphAddition" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom MothershipCore" Send="Destroy"/>
+        <On Terms="Abil.MorphToMothership.Start" Send="Create MothershipCoreMorphAddition"/>
+        <On Terms="Abil.MorphToMothership.Start" Send="Create MothershipCore_UpgradeToMothershipStart"/>
+        <On Terms="Abil.MorphToMothership.Start" Send="Create MothershipCore_UpgradeToMothershipStart2"/>
+        <On Terms="Abil.MorphToMothership.Start" Send="Create MothershipCore_UpgradeToMothershipStart3"/>
+        <On Terms="Abil.MorphToMothership.Start" Send="Create MothershipCore_UpgradeToMothershipStart4"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>
+        <On Terms="UnitDeathCustomize; !ValidateUnit HasMothershipCoreWeapon" Send="DeathCustomize Variation0"/>
+        <On Terms="UnitDeathCustomize; Option Model Low" Send="DeathCustomize Low"/>
+        <On Terms="Behavior.MothershipCorePurifyNexus.On" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End"/>
+        <On Terms="Behavior.MothershipCorePurifyNexus.Off" Send="AnimGroupRemove Work"/>
+        <On Terms="Abil.MothershipCorePurifyNexus.SourceCastStart" Send="AnimPlay Spell Stand,Work,End"/>
+        <On Terms="Effect.MothershipCoreMassRecallTeleport.Start" Send="CombatRevealClearTimers"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HasMothershipCoreRecalling" Send="ClearTintColor 0.600000"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HasMothershipCoreRecalling" Send="ClearOpacity"/>
+        <On Terms="Behavior.LightofAiur.On" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End"/>
+        <On Terms="Behavior.LightofAiur.Off" Send="AnimGroupRemove Work"/>
+        <On Terms="Abil.MothershipCorePurifyNexus.SourceCastStart" Send="AnimPlay Burrow Stand,Work,End"/>
+        <On Terms="Abil.LightofAiur.SourceCastStart" Send="AnimPlay Burrow Stand,Work,End"/>
+        <Model value="MothershipCore"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="MothershipCoreTeleportIn"/>
+        <DeathArray index="Normal" AnimProps="Death,A" ModelLink="" SoundLink="Mothership_Explode"/>
+        <DeathCustoms AnimProps="Death,B" SoundLink="Mothership_Explode" Name="Variation0"/>
+        <DeathCustoms ModelLink="ProtossMediumUnitDeathLow" Name="Low"/>
+        <DeathCustoms ActorModel="MothershipCoreDeathRagdollFlier" Name="RagdollBasic" PhysicsMatchKeysOrdered="BasicAir,Basic">
+            <BodySquibs Name="Basic" Model="ProtossTinyRobotSquibDeathRagdoll"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathActorModel value="UnitDeathModelWithDeathMotionFlier"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PlacementModel value="MothershipCore"/>
+        <PortraitModel value="MothershipCorePortrait"/>
+        <AbilSoundArray AbilCmd="MothershipCoreTeleport,Execute" Sound="Mothership_WormholeTransitVO"/>
+        <BarOffset value="125"/>
+        <BarWidth value="90"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-mothershipcore.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-mothershipcore.dds"/>
+        <HighlightTooltip value="Unit/Name/MothershipCore2"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <NameOffset value="130"/>
+        <SelectAbilCmd value="Vortex,Execute"/>
+        <SoundArray index="Birth" value="Mothership_Birth"/>
+        <SoundArray index="Ready" value="Mothership_Ready"/>
+        <SoundArray index="Help" value="Mothership_Help"/>
+        <SoundArray index="What" value="Mothership_What"/>
+        <SoundArray index="Yes" value="Mothership_Yes"/>
+        <SoundArray index="Attack" value="Mothership_Attack"/>
+        <SoundArray index="Pissed" value="Mothership_Pissed"/>
+        <SoundArray index="Movement" value="MothershipCore_Movement"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-mothershipcore.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-mothershipcore.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-mothershipcore-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-mothershipcore-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-mothershipcore-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
     <CActorSimple id="Nova_Plasma_Death_Tinter">
         <On index="4" Target="" Send="TimerSet 0.100000 Delay"/>
         <On index="5" Terms="UnitDeathCustomize" Send="TimerSet 0.200000 DelayDestroy"/>

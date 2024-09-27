@@ -162,6 +162,10 @@
         <SpawnEffect value="MPCreateSetA"/>
         <SpawnUnit value="SmallNydusSpawner"/>
     </CEffectCreateUnit>
+    <CEffectApplyBehavior id="MothershipCoreApplyPurifyAB">
+        <ValidatorArray index="0" value="IsNotConstructing"/>
+        <ValidatorArray index="2" removed="1"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="SmallMPCreateRoachling">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="MPCreateRoachlingA"/>

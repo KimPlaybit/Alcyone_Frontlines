@@ -499,6 +499,21 @@
         <InfoArray index="Research2" Time="43"/>
         <InfoArray index="Research4" Time="71"/>
     </CAbilResearch>
+    <CAbilEffectTarget id="MothershipCoreEnergize">
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <TargetFilters index="0" value="CanHaveEnergy,Visible;Self,Player,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MothershipCorePurifyNexus">
+        <Cost index="0">
+            <Vital index="Energy" value="50"/>
+        </Cost>
+        <TargetFilters index="0" value="-;Player,Enemy"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MothershipCoreTeleport">
+        <TargetFilters index="0" value="Structure,Visible;Self,Player,Enemy,UnderConstruction"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="MutateVentralSacs">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Overlord" Requirements="UseOverseerMorph"/>
