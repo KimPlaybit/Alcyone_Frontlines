@@ -2784,11 +2784,9 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="VoidPylon">
-        <LifeStart value="3000"/>
-        <LifeMax value="3000"/>
-        <ShieldsStart value="0"/>
-        <ShieldsMax value="1"/>
-        <ShieldRegenRate value="1"/>
+        <LifeStart value="2500"/>
+        <LifeMax value="2500"/>
+        <ShieldRegenRate value="0.1992"/>
         <AIOverideTargetPriority value="3"/>
     </CUnit>
     <CUnit id="FleetBeacon">
@@ -5254,6 +5252,12 @@
         <AlliedPushPriority value="15"/>
         <AIOverideTargetPriority value="99"/>
         <AIKiteRange value="4"/>
+    </CUnit>
+    <CUnit id="XelNagaTower">
+        <FlagArray index="Uncommandable" value="0"/>
+        <CardLayouts>
+            <LayoutButtons Face="Designate" Type="AbilCmd" AbilCmd="TowerCapture,Designate" Row="0" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Zealot2">
         <DeathRevealRadius value="3"/>

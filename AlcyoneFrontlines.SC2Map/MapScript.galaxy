@@ -224,6 +224,7 @@ void InitGlobals () {
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
 int gf_GetAllyRTSPlayer (int lp_player);
+int gf_GetWavesPlayer (int lp_player);
 int gf_GetEnemyRTSPlayer (int lp_player);
 point gf_GetStartLocation (int lp_player);
 void gf_GiveResource (unit lp_killedUnit, int lp_player, int lp_killingPlayer);
@@ -242,6 +243,8 @@ void gf_SoldierSelectionTeam2 ();
 void gf_SetupTeams1 ();
 void gf_SetupTeams2 ();
 void gf_Scores ();
+bool gf_AddUpdateForWaves (string lp_upgrade, int lp_killingPlayer);
+bool gf_RemoveUpdateForWaves (string lp_upgrade, int lp_killingPlayer);
 void gf_SpawnPointsMinerals ();
 void gf_SpawnJungle ();
 void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer);
@@ -473,7 +476,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(1);
     AICampaignStart(2);
 }
 
@@ -638,6 +640,17 @@ int gf_GetAllyRTSPlayer (int lp_player) {
     }
     else {
         return gv_rTSPlayer2;
+    }
+}
+
+int gf_GetWavesPlayer (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libNtve_gf_PlayerIsEnemy(lp_player, gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
+        return 13;
+    }
+    else {
+        return 14;
     }
 }
 
@@ -1213,6 +1226,30 @@ void gf_Scores () {
     gv_showScore = DialogControlLastCreated();
 }
 
+bool gf_AddUpdateForWaves (string lp_upgrade, int lp_killingPlayer) {
+    // Automatic Variable Declarations
+    // Implementation
+    if (((lp_killingPlayer == gv_rTSPlayer1) || (gf_GetAllyRTSPlayer(lp_killingPlayer) == gv_rTSPlayer1))) {
+        TechTreeUpgradeAddLevel(13, lp_upgrade, 1);
+    }
+    else {
+        TechTreeUpgradeAddLevel(14, lp_upgrade, 1);
+    }
+    return true;
+}
+
+bool gf_RemoveUpdateForWaves (string lp_upgrade, int lp_killingPlayer) {
+    // Automatic Variable Declarations
+    // Implementation
+    if (((lp_killingPlayer == gv_rTSPlayer1) || (gf_GetAllyRTSPlayer(lp_killingPlayer) == gv_rTSPlayer1))) {
+        TechTreeUpgradeAddLevel(13, lp_upgrade, -1);
+    }
+    else {
+        TechTreeUpgradeAddLevel(14, lp_upgrade, -1);
+    }
+    return true;
+}
+
 void gf_SpawnPointsMinerals () {
     // Variable Declarations
     int lv_player;
@@ -1340,10 +1377,13 @@ void gf_SpawnJungle () {
     UnitGroupAddUnitGroup(gv_hydralisk_2, UnitLastCreatedGroup());
     libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(6)));
     UnitGroupAddUnitGroup(gv_vikings_1, UnitLastCreatedGroup());
+    UnitSetState(UnitFromId(1816851713), c_unitStateSilenced, true);
     libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(5)));
     UnitGroupAddUnitGroup(gv_vikings_2, UnitLastCreatedGroup());
+    UnitSetState(UnitFromId(1194941189), c_unitStateSilenced, true);
     libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(7)));
     UnitGroupAddUnitGroup(gv_vikings_3, UnitLastCreatedGroup());
+    UnitSetState(UnitFromId(1917433232), c_unitStateSilenced, true);
     libNtve_gf_CreateUnitsAtPoint2(10, "Zergling2", 0, 15, RegionGetCenter(RegionFromId(1)));
     UnitGroupAddUnitGroup(gv_zergling_1, UnitLastCreatedGroup());
     libNtve_gf_CreateUnitsAtPoint2(10, "Zergling2", 0, 15, RegionGetCenter(RegionFromId(2)));
@@ -1425,31 +1465,52 @@ void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
     }
 
     if (((UnitGroupHasUnit(gv_vikings_1, lp_killedUnit) == true) && (libNtve_gf_UnitGroupIsDead(gv_vikings_1) == true))) {
+        UnitSetState(UnitFromId(1816851713), c_unitStateSilenced, false);
+        UnitSetOwner(UnitFromId(1816851713), gf_GetWavesPlayer(lp_killingPlayer), true);
+        UnitIssueOrder(UnitFromId(1816851713), OrderTargetingUnit(AbilityCommand("TowerCapture", 0), UnitFromId(1816851713)), c_orderQueueReplace);
+        gf_AddUpdateForWaves("UpgradeFromXelnaga1", lp_killingPlayer);
         Wait(180.0, c_timeGame);
         if ((libNtve_gf_UnitGroupIsDead(gv_vikings_1) == true)) {
             libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(6)));
             UnitGroupClear(gv_vikings_1);
             UnitGroupAddUnitGroup(gv_vikings_1, UnitLastCreatedGroup());
+            UnitSetState(UnitFromId(1816851713), c_unitStateSilenced, true);
+            gf_RemoveUpdateForWaves("UpgradeFromXelnaga1", lp_killingPlayer);
+            UnitSetOwner(UnitFromId(1816851713), 0, true);
         }
 
     }
 
     if (((UnitGroupHasUnit(gv_vikings_2, lp_killedUnit) == true) && (libNtve_gf_UnitGroupIsDead(gv_vikings_2) == true))) {
+        UnitSetState(UnitFromId(1194941189), c_unitStateSilenced, false);
+        gf_AddUpdateForWaves("UpgradeFromXelnaga12", lp_killingPlayer);
+        UnitSetOwner(UnitFromId(1194941189), gf_GetWavesPlayer(lp_killingPlayer), true);
+        UnitIssueOrder(UnitFromId(1194941189), OrderTargetingUnit(AbilityCommand("TowerCapture", 0), UnitFromId(1194941189)), c_orderQueueReplace);
         Wait(180.0, c_timeGame);
         if ((libNtve_gf_UnitGroupIsDead(gv_vikings_2) == true)) {
             libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(5)));
             UnitGroupClear(gv_vikings_2);
             UnitGroupAddUnitGroup(gv_vikings_2, UnitLastCreatedGroup());
+            UnitSetState(UnitFromId(1194941189), c_unitStateSilenced, true);
+            gf_RemoveUpdateForWaves("UpgradeFromXelnaga12", lp_killingPlayer);
+            UnitSetOwner(UnitFromId(1194941189), 0, true);
         }
 
     }
 
     if (((UnitGroupHasUnit(gv_vikings_3, lp_killedUnit) == true) && (libNtve_gf_UnitGroupIsDead(gv_vikings_3) == true))) {
+        UnitSetState(UnitFromId(1917433232), c_unitStateSilenced, false);
+        UnitSetOwner(UnitFromId(1917433232), gf_GetWavesPlayer(lp_killingPlayer), true);
+        gf_AddUpdateForWaves("UpgradeFromXelnaga122", lp_killingPlayer);
+        UnitIssueOrder(UnitFromId(1917433232), OrderTargetingUnit(AbilityCommand("TowerCapture", 0), UnitFromId(1917433232)), c_orderQueueReplace);
         Wait(180.0, c_timeGame);
         if ((libNtve_gf_UnitGroupIsDead(gv_vikings_3) == true)) {
             libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(7)));
             UnitGroupClear(gv_vikings_3);
             UnitGroupAddUnitGroup(gv_vikings_3, UnitLastCreatedGroup());
+            UnitSetState(UnitFromId(1917433232), c_unitStateSilenced, true);
+            gf_RemoveUpdateForWaves("UpgradeFromXelnaga122", lp_killingPlayer);
+            UnitSetOwner(UnitFromId(1917433232), 0, true);
         }
 
     }
@@ -2749,7 +2810,7 @@ bool gt_WinTeam1_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((UnitCount(null, gv_rTSPlayer2, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (gf_IsSurvival() == false)))) {
+        if (!(((UnitCount(null, gv_rTSPlayer2, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (gf_IsSurvival() == false)))) {
             return false;
         }
     }
@@ -2840,7 +2901,7 @@ bool gt_WinTeam2_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((UnitCount(null, gv_rTSPlayer1, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (gf_IsSurvival() == false)))) {
+        if (!(((UnitCount(null, gv_rTSPlayer1, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (gf_IsSurvival() == false)))) {
             return false;
         }
     }

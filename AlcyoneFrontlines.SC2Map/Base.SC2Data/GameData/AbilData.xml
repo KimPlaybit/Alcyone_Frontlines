@@ -573,6 +573,9 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="AmonSpawnTentacleA"/>
         <CursorEffect value="MPCreateNydusWormCanal"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="ShieldBatteryRechargeChanneled">
+        <AutoCastFilters value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="SmallSpawnZergUnits">
         <Levels value="5"/>
         <Effect index="0" value="SmallMPCreateRoachling"/>
@@ -730,6 +733,12 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
+    <CAbilInteract id="TowerCapture">
+        <CmdButtonArray index="Designate">
+            <Flags index="AllowSelfCast" value="1"/>
+        </CmdButtonArray>
+        <TargetFilters value="Self;Enemy,Missile,Buried,Dead,Hidden"/>
+    </CAbilInteract>
     <CAbilEffectInstant id="UseChargeSpawnHydralisk">
         <DataCollection value="NydusSpawnZergUnits"/>
         <Levels value="5"/>
