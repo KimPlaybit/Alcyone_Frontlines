@@ -251,7 +251,6 @@ point gf_GetSpawnPointTeam1 (unit lp_deadPlayer);
 point gf_GetSpawnPointTeam2 (unit lp_deadPlayer);
 void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer);
 void gf_ResetCooldownOfShadowFury (unit lp_killingUnit);
-void gf_ResetChargesOfNydus (unit lp_killedUnit);
 void gf_Corsair (int lp_player, unit lp_unit);
 unit gf_FindHealspot (unit lp_unit);
 unit gf_FindEnemyHero (unit lp_unit);
@@ -474,6 +473,8 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
+    AICampaignStart(1);
+    AICampaignStart(2);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1644,24 +1645,6 @@ void gf_ResetCooldownOfShadowFury (unit lp_killingUnit) {
     // Implementation
     if (((UnitGetType(lp_killingUnit) == "AvengerHero") == true)) {
         UnitAbilityReset(lp_killingUnit, AbilityCommand("DarkTemplarShadowFury", 0), c_spendLocationAll);
-    }
-
-}
-
-void gf_ResetChargesOfNydus (unit lp_killedUnit) {
-    // Variable Declarations
-    fixed lv_charges;
-    string lv_ability;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_charges = UnitGetChargeUsed(lp_killedUnit, "Abil/NydusSpawnCharge");
-    lv_ability = "SpawnZergUnits";
-
-    // Implementation
-    if (((UnitGetType(lp_killedUnit) == "NydusCanal22") == true)) {
-        UnitAddChargeUsed(lp_killedUnit, "Abil/NydusSpawnCharge", (99.0 - lv_charges));
-        UnitAddChargeUsed(lp_killedUnit, "Abil/NydusSpawnCharge", -1.0);
     }
 
 }
@@ -3889,7 +3872,6 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
     }
     gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
-    gf_ResetChargesOfNydus(lv_dyingUnit);
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
         PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropMinerals) + 500));
@@ -3998,7 +3980,6 @@ bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
     gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
     gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
-    gf_ResetChargesOfNydus(lv_dyingUnit);
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
         PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropMinerals) + 500));

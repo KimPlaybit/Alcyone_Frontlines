@@ -30339,7 +30339,6 @@
         <Item Type="FunctionDef" Id="7885A130"/>
         <Item Type="FunctionDef" Id="F0FEC56B"/>
         <Item Type="FunctionDef" Id="09676412"/>
-        <Item Type="FunctionDef" Id="442520EE"/>
         <Item Type="Trigger" Id="BDB51B60"/>
         <Item Type="Trigger" Id="353A3144"/>
     </Element>
@@ -31820,177 +31819,6 @@
         <Value>true</Value>
         <ValueType Type="bool"/>
     </Element>
-    <Element Type="FunctionDef" Id="442520EE">
-        <FlagCall/>
-        <Parameter Type="ParamDef" Id="F146FC77"/>
-        <Variable Type="Variable" Id="88BFE37B"/>
-        <Variable Type="Variable" Id="5B502131"/>
-        <FunctionCall Type="FunctionCall" Id="E30D36A7"/>
-    </Element>
-    <Element Type="ParamDef" Id="F146FC77">
-        <ParameterType>
-            <Type Value="unit"/>
-        </ParameterType>
-        <Default Type="Param" Id="4F303DAB"/>
-    </Element>
-    <Element Type="Param" Id="4F303DAB">
-        <Preset Type="PresetValue" Library="Ntve" Id="D6EA4D09"/>
-    </Element>
-    <Element Type="Variable" Id="88BFE37B">
-        <VariableType>
-            <Type Value="fixed"/>
-        </VariableType>
-        <Value Type="Param" Id="E119C069"/>
-    </Element>
-    <Element Type="Param" Id="E119C069">
-        <FunctionCall Type="FunctionCall" Id="A9DDB883"/>
-    </Element>
-    <Element Type="FunctionCall" Id="A9DDB883">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="CC1B5055"/>
-        <Parameter Type="Param" Id="CD52A568"/>
-        <Parameter Type="Param" Id="72B30D15"/>
-    </Element>
-    <Element Type="Param" Id="CD52A568">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="F1B0BFC7"/>
-        <Parameter Type="ParamDef" Id="F146FC77"/>
-    </Element>
-    <Element Type="Param" Id="72B30D15">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="B81F16DE"/>
-        <CustomType Type="charge"/>
-        <ScriptCode>
-            &quot;Abil/NydusSpawnCharge&quot;
-        </ScriptCode>
-    </Element>
-    <Element Type="Variable" Id="5B502131">
-        <VariableType>
-            <Type Value="gamelink"/>
-            <GameType Value="Abil"/>
-        </VariableType>
-        <Value Type="Param" Id="276FD385"/>
-    </Element>
-    <Element Type="Param" Id="276FD385">
-        <Value>SpawnZergUnits</Value>
-        <ValueType Type="gamelink"/>
-        <ValueGameType Type="Abil"/>
-    </Element>
-    <Element Type="FunctionCall" Id="E30D36A7">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="48D45FEF"/>
-        <FunctionCall Type="FunctionCall" Id="6DD2BF64"/>
-        <FunctionCall Type="FunctionCall" Id="E6D4AFFC"/>
-    </Element>
-    <Element Type="FunctionCall" Id="48D45FEF">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="F1200B76"/>
-        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="13CF97A4"/>
-        <Parameter Type="Param" Id="99EDABB8"/>
-        <Parameter Type="Param" Id="7B2E0707"/>
-    </Element>
-    <Element Type="Param" Id="13CF97A4">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="99A469F3"/>
-        <FunctionCall Type="FunctionCall" Id="BFBAB840"/>
-    </Element>
-    <Element Type="FunctionCall" Id="BFBAB840">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000129"/>
-        <Parameter Type="Param" Id="47DA4B6E"/>
-        <Parameter Type="Param" Id="0A7D9D78"/>
-        <Parameter Type="Param" Id="BE372CA7"/>
-    </Element>
-    <Element Type="Param" Id="47DA4B6E">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000209"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="00000086"/>
-    </Element>
-    <Element Type="Param" Id="0A7D9D78">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000210"/>
-        <Variable Type="Variable" Id="88BFE37B"/>
-    </Element>
-    <Element Type="Param" Id="BE372CA7">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000208"/>
-        <Value>99.0</Value>
-        <ValueType Type="fixed"/>
-    </Element>
-    <Element Type="Param" Id="99EDABB8">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="6DDAD30B"/>
-        <CustomType Type="charge"/>
-        <ScriptCode>
-            &quot;Abil/NydusSpawnCharge&quot;
-        </ScriptCode>
-    </Element>
-    <Element Type="Param" Id="7B2E0707">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="61CBBDE4"/>
-        <Parameter Type="ParamDef" Id="F146FC77"/>
-    </Element>
-    <Element Type="FunctionCall" Id="6DD2BF64">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="F1200B76"/>
-        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="59FB4967"/>
-        <Parameter Type="Param" Id="F49C6CA5"/>
-        <Parameter Type="Param" Id="882245EB"/>
-    </Element>
-    <Element Type="Param" Id="59FB4967">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="99A469F3"/>
-        <Value>-1.0</Value>
-        <ValueType Type="fixed"/>
-    </Element>
-    <Element Type="Param" Id="F49C6CA5">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="6DDAD30B"/>
-        <CustomType Type="charge"/>
-        <ScriptCode>
-            &quot;Abil/NydusSpawnCharge&quot;
-        </ScriptCode>
-    </Element>
-    <Element Type="Param" Id="882245EB">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="61CBBDE4"/>
-        <Parameter Type="ParamDef" Id="F146FC77"/>
-    </Element>
-    <Element Type="FunctionCall" Id="E6D4AFFC">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
-        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
-        <Parameter Type="Param" Id="819F0F13"/>
-        <Parameter Type="Param" Id="B3F132E0"/>
-        <Parameter Type="Param" Id="42F3745F"/>
-    </Element>
-    <Element Type="Param" Id="819F0F13">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
-        <FunctionCall Type="FunctionCall" Id="61345796"/>
-    </Element>
-    <Element Type="FunctionCall" Id="61345796">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
-        <Parameter Type="Param" Id="08F233B2"/>
-        <Parameter Type="Param" Id="BD2F4A1B"/>
-        <Parameter Type="Param" Id="1C4307DC"/>
-    </Element>
-    <Element Type="Param" Id="08F233B2">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
-        <FunctionCall Type="FunctionCall" Id="E7A64570"/>
-    </Element>
-    <Element Type="FunctionCall" Id="E7A64570">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000079"/>
-        <Parameter Type="Param" Id="84D9AED8"/>
-    </Element>
-    <Element Type="Param" Id="84D9AED8">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000138"/>
-        <Parameter Type="ParamDef" Id="F146FC77"/>
-    </Element>
-    <Element Type="Param" Id="BD2F4A1B">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
-    </Element>
-    <Element Type="Param" Id="1C4307DC">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
-        <Value>NydusCanal22</Value>
-        <ValueType Type="gamelink"/>
-        <ValueGameType Type="Unit"/>
-    </Element>
-    <Element Type="Param" Id="B3F132E0">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
-    </Element>
-    <Element Type="Param" Id="42F3745F">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
-        <Value>true</Value>
-        <ValueType Type="bool"/>
-    </Element>
     <Element Type="Trigger" Id="BDB51B60">
         <Variable Type="Variable" Id="E5D55862"/>
         <Variable Type="Variable" Id="C352EF48"/>
@@ -32924,7 +32752,6 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <ScriptCode>
             gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
-            gf_ResetChargesOfNydus(lv_dyingUnit);
         </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="1A39AFE5">
@@ -34707,7 +34534,6 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <ScriptCode>
             gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
-            gf_ResetChargesOfNydus(lv_dyingUnit);
         </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="EE5C7193">
