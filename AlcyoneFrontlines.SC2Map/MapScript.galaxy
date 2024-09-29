@@ -309,6 +309,7 @@ trigger gt_PsiOrb;
 trigger gt_StartBossAi;
 trigger gt_GiveResourcesFromJungleRTSPlayer1;
 trigger gt_GiveResourcesFromJungleRTSPlayer2;
+trigger gt_SpawnVikings;
 trigger gt_IncreaseRessTimer;
 trigger gt_ReviveHeroesTeam1;
 trigger gt_ReviveHeroesTeam2;
@@ -1375,15 +1376,6 @@ void gf_SpawnJungle () {
     UnitGroupAddUnitGroup(gv_hydralisk_1, UnitLastCreatedGroup());
     libNtve_gf_CreateUnitsAtPoint2(4, "Hydralisk2", 0, 15, RegionGetCenter(RegionFromId(10)));
     UnitGroupAddUnitGroup(gv_hydralisk_2, UnitLastCreatedGroup());
-    libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(6)));
-    UnitGroupAddUnitGroup(gv_vikings_1, UnitLastCreatedGroup());
-    UnitSetState(UnitFromId(1816851713), c_unitStateSilenced, true);
-    libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(5)));
-    UnitGroupAddUnitGroup(gv_vikings_2, UnitLastCreatedGroup());
-    UnitSetState(UnitFromId(1194941189), c_unitStateSilenced, true);
-    libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(7)));
-    UnitGroupAddUnitGroup(gv_vikings_3, UnitLastCreatedGroup());
-    UnitSetState(UnitFromId(1917433232), c_unitStateSilenced, true);
     libNtve_gf_CreateUnitsAtPoint2(10, "Zergling2", 0, 15, RegionGetCenter(RegionFromId(1)));
     UnitGroupAddUnitGroup(gv_zergling_1, UnitLastCreatedGroup());
     libNtve_gf_CreateUnitsAtPoint2(10, "Zergling2", 0, 15, RegionGetCenter(RegionFromId(2)));
@@ -3848,6 +3840,35 @@ void gt_GiveResourcesFromJungleRTSPlayer2_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: SpawnVikings
+//--------------------------------------------------------------------------------------------------
+bool gt_SpawnVikings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(6)));
+    UnitGroupAddUnitGroup(gv_vikings_1, UnitLastCreatedGroup());
+    UnitSetState(UnitFromId(1816851713), c_unitStateSilenced, true);
+    libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(5)));
+    UnitGroupAddUnitGroup(gv_vikings_2, UnitLastCreatedGroup());
+    UnitSetState(UnitFromId(1194941189), c_unitStateSilenced, true);
+    libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(7)));
+    UnitGroupAddUnitGroup(gv_vikings_3, UnitLastCreatedGroup());
+    UnitSetState(UnitFromId(1917433232), c_unitStateSilenced, true);
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/E5CAA240"));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SpawnVikings_Init () {
+    gt_SpawnVikings = TriggerCreate("gt_SpawnVikings_Func");
+    TriggerAddEventTimeElapsed(gt_SpawnVikings, 5.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Increase RessTimer
 //--------------------------------------------------------------------------------------------------
 bool gt_IncreaseRessTimer_Func (bool testConds, bool runActions) {
@@ -5605,6 +5626,7 @@ void InitTriggers () {
     gt_StartBossAi_Init();
     gt_GiveResourcesFromJungleRTSPlayer1_Init();
     gt_GiveResourcesFromJungleRTSPlayer2_Init();
+    gt_SpawnVikings_Init();
     gt_IncreaseRessTimer_Init();
     gt_ReviveHeroesTeam1_Init();
     gt_ReviveHeroesTeam2_Init();
