@@ -238,6 +238,8 @@ bool gf_IsNonKnownRace (int lp_player);
 bool gf_IsTerran (int lp_rTSPlayer);
 bool gf_IsZerg (int lp_rTSPlayer);
 bool gf_IsProtoss (int lp_rTSPlayer);
+void gf_DisableaDialogItem (int lp_dialogItem);
+void gf_EnableaDialogItem (int lp_dialogItem);
 void gf_SoldierSelectionTeam1 ();
 void gf_SoldierSelectionTeam2 ();
 void gf_SetupTeams1 ();
@@ -329,6 +331,7 @@ trigger gt_DarkTemplarSoldierPicked;
 trigger gt_DragoonPicked;
 trigger gt_AdeptPicked;
 trigger gt_CorsairPicked;
+trigger gt_MothershipCorePicked;
 trigger gt_ZerglingPicked;
 trigger gt_QueenPicked;
 trigger gt_DefilerPicked;
@@ -477,7 +480,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(2);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -944,6 +946,24 @@ bool gf_IsProtoss (int lp_rTSPlayer) {
     }
 }
 
+void gf_DisableaDialogItem (int lp_dialogItem) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_dialogItem != c_invalidDialogControlId)) {
+        DialogControlSetEnabled(lp_dialogItem, PlayerGroupAll(), false);
+    }
+
+}
+
+void gf_EnableaDialogItem (int lp_dialogItem) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_dialogItem != c_invalidDialogControlId)) {
+        DialogControlSetEnabled(lp_dialogItem, PlayerGroupAll(), true);
+    }
+
+}
+
 void gf_SoldierSelectionTeam1 () {
     // Variable Declarations
     bool lv_raceCheck;
@@ -1013,6 +1033,37 @@ void gf_SoldierSelectionTeam1 () {
 
     DialogSetVisible(gv_dialogTeam1, gv_soldierPlayers1, true);
     DialogSetVisible(gv_dialogTeam1, gv_playersWhoPicked, false);
+    gf_DisableaDialogItem(gv_adeptTemplarTeam1);
+    gf_DisableaDialogItem(gv_corsairTemplarTeam1);
+    gf_DisableaDialogItem(gv_darkTemplarTeam1);
+    gf_DisableaDialogItem(gv_defilerTeam1);
+    gf_DisableaDialogItem(gv_dragoonTemplarTeam1);
+    gf_DisableaDialogItem(gv_firebatTeam1);
+    gf_DisableaDialogItem(gv_goliathTeam1);
+    gf_DisableaDialogItem(gv_hydraliskTeam1);
+    gf_DisableaDialogItem(gv_marineTeam1);
+    gf_DisableaDialogItem(gv_medicTeam1);
+    gf_DisableaDialogItem(gv_queenTeam1);
+    gf_DisableaDialogItem(gv_spectreTeam1);
+    gf_DisableaDialogItem(gv_ultraliskTeam1);
+    gf_DisableaDialogItem(gv_zealotTeam1);
+    gf_DisableaDialogItem(gv_zerglingTeam1);
+    Wait(2.0, c_timeReal);
+    gf_EnableaDialogItem(gv_adeptTemplarTeam1);
+    gf_EnableaDialogItem(gv_corsairTemplarTeam1);
+    gf_EnableaDialogItem(gv_darkTemplarTeam1);
+    gf_EnableaDialogItem(gv_defilerTeam1);
+    gf_EnableaDialogItem(gv_dragoonTemplarTeam1);
+    gf_EnableaDialogItem(gv_firebatTeam1);
+    gf_EnableaDialogItem(gv_goliathTeam1);
+    gf_EnableaDialogItem(gv_hydraliskTeam1);
+    gf_EnableaDialogItem(gv_marineTeam1);
+    gf_EnableaDialogItem(gv_medicTeam1);
+    gf_EnableaDialogItem(gv_queenTeam1);
+    gf_EnableaDialogItem(gv_spectreTeam1);
+    gf_EnableaDialogItem(gv_ultraliskTeam1);
+    gf_EnableaDialogItem(gv_zealotTeam1);
+    gf_EnableaDialogItem(gv_zerglingTeam1);
 }
 
 void gf_SoldierSelectionTeam2 () {
@@ -1084,6 +1135,37 @@ void gf_SoldierSelectionTeam2 () {
 
     DialogSetVisible(gv_dialogTeam2, gv_soldierPlayers2, true);
     DialogSetVisible(gv_dialogTeam2, gv_playersWhoPicked, false);
+    gf_DisableaDialogItem(gv_adeptTemplarTeam2);
+    gf_DisableaDialogItem(gv_corsairTemplarTeam2);
+    gf_DisableaDialogItem(gv_darkTemplarTeam2);
+    gf_DisableaDialogItem(gv_defilerTeam2);
+    gf_DisableaDialogItem(gv_dragoonTemplarTeam2);
+    gf_DisableaDialogItem(gv_firebatTeam2);
+    gf_DisableaDialogItem(gv_goliathTeam2);
+    gf_DisableaDialogItem(gv_hydraliskTeam2);
+    gf_DisableaDialogItem(gv_marineTeam2);
+    gf_DisableaDialogItem(gv_medicTeam2);
+    gf_DisableaDialogItem(gv_queenTeam2);
+    gf_DisableaDialogItem(gv_spectreTeam2);
+    gf_DisableaDialogItem(gv_ultraliskTeam2);
+    gf_DisableaDialogItem(gv_zealotTeam2);
+    gf_DisableaDialogItem(gv_zerglingTeam2);
+    Wait(2.0, c_timeReal);
+    gf_EnableaDialogItem(gv_adeptTemplarTeam2);
+    gf_EnableaDialogItem(gv_corsairTemplarTeam2);
+    gf_EnableaDialogItem(gv_darkTemplarTeam2);
+    gf_EnableaDialogItem(gv_defilerTeam2);
+    gf_EnableaDialogItem(gv_dragoonTemplarTeam2);
+    gf_EnableaDialogItem(gv_firebatTeam2);
+    gf_EnableaDialogItem(gv_goliathTeam2);
+    gf_EnableaDialogItem(gv_hydraliskTeam2);
+    gf_EnableaDialogItem(gv_marineTeam2);
+    gf_EnableaDialogItem(gv_medicTeam2);
+    gf_EnableaDialogItem(gv_queenTeam2);
+    gf_EnableaDialogItem(gv_spectreTeam2);
+    gf_EnableaDialogItem(gv_ultraliskTeam2);
+    gf_EnableaDialogItem(gv_zealotTeam2);
+    gf_EnableaDialogItem(gv_zerglingTeam2);
 }
 
 void gf_SetupTeams1 () {
@@ -1460,14 +1542,12 @@ void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
         UnitSetState(UnitFromId(1816851713), c_unitStateSilenced, false);
         UnitSetOwner(UnitFromId(1816851713), gf_GetWavesPlayer(lp_killingPlayer), true);
         UnitIssueOrder(UnitFromId(1816851713), OrderTargetingUnit(AbilityCommand("TowerCapture", 0), UnitFromId(1816851713)), c_orderQueueReplace);
-        gf_AddUpdateForWaves("UpgradeFromXelnaga1", lp_killingPlayer);
         Wait(180.0, c_timeGame);
         if ((libNtve_gf_UnitGroupIsDead(gv_vikings_1) == true)) {
             libNtve_gf_CreateUnitsAtPoint2(2, "VikingFighter", 0, 15, RegionGetCenter(RegionFromId(6)));
             UnitGroupClear(gv_vikings_1);
             UnitGroupAddUnitGroup(gv_vikings_1, UnitLastCreatedGroup());
             UnitSetState(UnitFromId(1816851713), c_unitStateSilenced, true);
-            gf_RemoveUpdateForWaves("UpgradeFromXelnaga1", lp_killingPlayer);
             UnitSetOwner(UnitFromId(1816851713), 0, true);
         }
 
@@ -1475,7 +1555,6 @@ void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
 
     if (((UnitGroupHasUnit(gv_vikings_2, lp_killedUnit) == true) && (libNtve_gf_UnitGroupIsDead(gv_vikings_2) == true))) {
         UnitSetState(UnitFromId(1194941189), c_unitStateSilenced, false);
-        gf_AddUpdateForWaves("UpgradeFromXelnaga12", lp_killingPlayer);
         UnitSetOwner(UnitFromId(1194941189), gf_GetWavesPlayer(lp_killingPlayer), true);
         UnitIssueOrder(UnitFromId(1194941189), OrderTargetingUnit(AbilityCommand("TowerCapture", 0), UnitFromId(1194941189)), c_orderQueueReplace);
         Wait(180.0, c_timeGame);
@@ -1484,7 +1563,6 @@ void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
             UnitGroupClear(gv_vikings_2);
             UnitGroupAddUnitGroup(gv_vikings_2, UnitLastCreatedGroup());
             UnitSetState(UnitFromId(1194941189), c_unitStateSilenced, true);
-            gf_RemoveUpdateForWaves("UpgradeFromXelnaga12", lp_killingPlayer);
             UnitSetOwner(UnitFromId(1194941189), 0, true);
         }
 
@@ -1493,7 +1571,6 @@ void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
     if (((UnitGroupHasUnit(gv_vikings_3, lp_killedUnit) == true) && (libNtve_gf_UnitGroupIsDead(gv_vikings_3) == true))) {
         UnitSetState(UnitFromId(1917433232), c_unitStateSilenced, false);
         UnitSetOwner(UnitFromId(1917433232), gf_GetWavesPlayer(lp_killingPlayer), true);
-        gf_AddUpdateForWaves("UpgradeFromXelnaga122", lp_killingPlayer);
         UnitIssueOrder(UnitFromId(1917433232), OrderTargetingUnit(AbilityCommand("TowerCapture", 0), UnitFromId(1917433232)), c_orderQueueReplace);
         Wait(180.0, c_timeGame);
         if ((libNtve_gf_UnitGroupIsDead(gv_vikings_3) == true)) {
@@ -1501,7 +1578,6 @@ void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
             UnitGroupClear(gv_vikings_3);
             UnitGroupAddUnitGroup(gv_vikings_3, UnitLastCreatedGroup());
             UnitSetState(UnitFromId(1917433232), c_unitStateSilenced, true);
-            gf_RemoveUpdateForWaves("UpgradeFromXelnaga122", lp_killingPlayer);
             UnitSetOwner(UnitFromId(1917433232), 0, true);
         }
 
@@ -3865,7 +3941,7 @@ bool gt_SpawnVikings_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_SpawnVikings_Init () {
     gt_SpawnVikings = TriggerCreate("gt_SpawnVikings_Func");
-    TriggerAddEventTimeElapsed(gt_SpawnVikings, 5.0, c_timeGame);
+    TriggerAddEventTimeElapsed(gt_SpawnVikings, 300.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5221,6 +5297,68 @@ void gt_CorsairPicked_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MothershipCore Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_MothershipCorePicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    unit lv_createdUnit;
+    unit lv_powerSource;
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(gv_rTSPlayer1) == "Prot") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer1)) || ((PlayerRace(gv_rTSPlayer2) == "Prot") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer2)))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/331FDE0A")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "MothershipCoreHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        lv_createdUnit = UnitLastCreated();
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        PlayerSetAlliance(EventPlayer(), c_allianceIdPower, gv_rTSPlayer1, true);
+        PlayerSetAlliance(gv_rTSPlayer1, c_allianceIdPower, EventPlayer(), true);
+        PlayerSetAlliance(13, c_allianceIdPower, EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "MothershipCoreHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        lv_createdUnit = UnitLastCreated();
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        PlayerSetAlliance(EventPlayer(), c_allianceIdPower, gv_rTSPlayer2, true);
+        PlayerSetAlliance(gv_rTSPlayer2, c_allianceIdPower, EventPlayer(), true);
+        PlayerSetAlliance(14, c_allianceIdPower, EventPlayer(), true);
+    }
+    UnitGroupAdd(gv_revivableUnits, lv_createdUnit);
+    UnitControlGroupAddUnit(EventPlayer(), 1, lv_createdUnit);
+    gv_playerPicked[EventPlayer()] = true;
+    PlayerGroupAdd(gv_playersWhoPicked, EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MothershipCorePicked_Init () {
+    gt_MothershipCorePicked = TriggerCreate("gt_MothershipCorePicked_Func");
+    TriggerAddEventChatMessage(gt_MothershipCorePicked, c_playerAny, "-PsiwebEstablished", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Zergling Picked 
 //--------------------------------------------------------------------------------------------------
 bool gt_ZerglingPicked_Func (bool testConds, bool runActions) {
@@ -5646,6 +5784,7 @@ void InitTriggers () {
     gt_DragoonPicked_Init();
     gt_AdeptPicked_Init();
     gt_CorsairPicked_Init();
+    gt_MothershipCorePicked_Init();
     gt_ZerglingPicked_Init();
     gt_QueenPicked_Init();
     gt_DefilerPicked_Init();

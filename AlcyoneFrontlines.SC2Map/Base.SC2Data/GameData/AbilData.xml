@@ -510,6 +510,7 @@
             <Vital index="Energy" value="50"/>
         </Cost>
         <TargetFilters index="0" value="-;Player,Enemy"/>
+        <Effect index="0" value="CreatePhotonOverchargeDummy"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MothershipCoreTeleport">
         <TargetFilters index="0" value="Structure,Visible;Self,Player,Enemy,UnderConstruction"/>
@@ -559,6 +560,11 @@
         <AutoCastValidatorArray value="VoidDisruptorEnemyInRange"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Overcharge"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="NovaGadgetFlashBangGrenades">
+        <Cost index="0">
+            <Cooldown TimeUse="15"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="NydusSpawnCanal">
         <Levels value="5"/>
         <Effect index="0" value="MPCreateNydusWormCanal2"/>
@@ -572,6 +578,9 @@
         <AutoCastFilters value="Self,Visible;-"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="AmonSpawnTentacleA"/>
         <CursorEffect value="MPCreateNydusWormCanal"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="PhaseCannon">
+        <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ShieldBatteryRechargeChanneled">
         <AutoCastFilters value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>

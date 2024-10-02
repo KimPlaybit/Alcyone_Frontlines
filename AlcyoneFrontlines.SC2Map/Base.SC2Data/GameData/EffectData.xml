@@ -162,10 +162,50 @@
         <SpawnEffect value="MPCreateSetA"/>
         <SpawnUnit value="SmallNydusSpawner"/>
     </CEffectCreateUnit>
+    <CEffectSet id="CreatePhotonOverchargeDummy">
+        <ValidatorArray value="IsNotConstructing"/>
+        <ValidatorArray value="IsNotConstructing"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="CreatePhotonOverchargeDummyUnit"/>
+        <EffectArray value="MothershipCoreApplyPurifyAB"/>
+        <TargetLocationType value="UnitOrPoint"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="CreatePhotonOverchargeDummyUnit">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="MPCreateSetA"/>
+        <SpawnUnit value="PhotonOverCharge"/>
+    </CEffectCreateUnit>
     <CEffectApplyBehavior id="MothershipCoreApplyPurifyAB">
         <ValidatorArray index="0" value="IsNotConstructing"/>
         <ValidatorArray index="2" removed="1"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="MothershipCoreWeaponDamage">
+        <AttributeBonus index="Heroic" value="20"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="MothershipCoreWeaponLM">
+        <ValidatorArray index="0" removed="1"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="NovaGadgetFlashBangGrenadeSearch">
+        <AreaArray index="0" Radius="2"/>
+    </CEffectEnumArea>
+    <CEffectCreateUnit id="PhaseCannon">
+        <SpawnUnit index="0" value="PhotonCannon2"/>
+    </CEffectCreateUnit>
+    <CEffectLaunchMissile id="PhotonCannonLM2">
+        <ValidatorArray index="0" value="PhotonCannonTargetFilters"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="PhotonCannonU2"/>
+        <AmmoUnit value="PhotonCannonWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="PhotonCannonU2" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Ranged"/>
+        <Amount value="10"/>
+    </CEffectDamage>
     <CEffectSet id="SmallMPCreateRoachling">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="MPCreateRoachlingA"/>

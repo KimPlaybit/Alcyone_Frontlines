@@ -95,6 +95,19 @@
         <Duration value="6"/>
         <Modification MoveSpeedMultiplier="1.3"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BuffDamage">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AlliedBaseAround"/>
+        <Duration value="99"/>
+        <Modification>
+            <DamageDealtUnscaled index="Ranged" value="10"/>
+            <DamageDealtAttributeUnscaled index="Heroic" value="40"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlashBangGrenade">
+        <Duration value="2"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="NydusWhirlwind">
         <InfoIcon value="Assets\Textures\btn-upgrade-zerg-glialreconstitution.dds"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
@@ -179,6 +192,12 @@
     <CBehaviorBuff id="PrimalSlash">
         <InfoFlags index="Hidden" value="0"/>
         <Modification AttackSpeedMultiplier="1.2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Purify">
+        <Modification>
+            <WeaponEnableArray value="MothershipPurifyWeapon"/>
+            <WeaponEnableArray value="MothershipCoreWeapon"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="StunningBlast">
         <Duration value="2"/>

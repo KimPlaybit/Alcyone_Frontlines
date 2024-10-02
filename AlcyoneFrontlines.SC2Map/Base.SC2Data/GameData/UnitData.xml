@@ -413,6 +413,7 @@
             <LayoutButtons index="1" removed="1"/>
             <LayoutButtons index="2" removed="1"/>
         </CardLayouts>
+        <Attributes index="Structure" value="0"/>
     </CUnit>
     <CUnit id="CreepTumorBurrowed">
         <FlagArray index="Cloaked" value="1"/>
@@ -426,6 +427,7 @@
             <LayoutButtons index="2" removed="1"/>
             <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
+        <Attributes index="Structure" value="0"/>
     </CUnit>
     <CUnit id="CreepTumorQueen">
         <Footprint value="CreepTumorQueen"/>
@@ -433,6 +435,16 @@
         <FlagArray index="PreventDestroy" value="1"/>
         <FlagArray index="Cloaked" value="1"/>
         <FlagArray index="Buried" value="1"/>
+        <Attributes index="Structure" value="0"/>
+    </CUnit>
+    <CUnit id="CreepTumorQueenNoCreep">
+        <Attributes index="Structure" value="0"/>
+    </CUnit>
+    <CUnit id="CreepTumorUsed">
+        <Attributes index="Structure" value="0"/>
+    </CUnit>
+    <CUnit id="CreepTumorZagara">
+        <Attributes index="Structure" value="0"/>
     </CUnit>
     <CUnit id="DarkArchon">
         <EnergyStart value="100"/>
@@ -570,6 +582,7 @@
     <CUnit id="FlamingBetty">
         <LifeStart value="700"/>
         <LifeMax value="700"/>
+        <Attributes index="Heroic" value="1"/>
     </CUnit>
     <CUnit id="Forge">
         <CardLayouts index="0">
@@ -1016,6 +1029,7 @@
         <Race value="Prot"/>
         <Mob value="Multiplayer"/>
         <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Hero" value="1"/>
         <FlagArray index="PreventDestroy" value="1"/>
         <FlagArray index="UseLineOfSight" value="1"/>
         <FlagArray index="AIHighPrioTarget" value="1"/>
@@ -1027,6 +1041,7 @@
         <Attributes index="Armored" value="1"/>
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Psionic" value="1"/>
+        <Attributes index="Heroic" value="1"/>
         <LifeStart value="130"/>
         <LifeMax value="130"/>
         <LifeArmor value="1"/>
@@ -1064,6 +1079,7 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="MothershipCorePurifyNexus"/>
         <AbilArray Link="Warpable"/>
+        <AbilArray Link="PhaseCannon"/>
         <BehaviorArray Link="ProtossLevels"/>
         <BehaviorArray Link="ProtossDamageBonus"/>
         <BehaviorArray Link="ProtossShieldBonus"/>
@@ -1081,6 +1097,7 @@
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="MothershipCorePurifyNexusCancel,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="TemporalField" Type="AbilCmd" AbilCmd="TemporalField,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="TemporalField" Type="AbilCmd" AbilCmd="TemporalField,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="PhotonCannonPassive" Type="AbilCmd" AbilCmd="PhaseCannon,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -1368,6 +1385,146 @@
         <GlossaryPriority value="261"/>
         <HotkeyCategory value="Unit/Category/ZergUnits"/>
     </CUnitHero>
+    <CUnit id="PhotonCannon2">
+        <Facing value="45"/>
+        <Race value="Prot"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="PreventDefeat" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="AIDefense" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossBuildingPlating"/>
+        <ShieldsStart value="150"/>
+        <ShieldsMax value="150"/>
+        <ShieldRegenDelay value="10"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Sight value="11"/>
+        <CostCategory value="Technology"/>
+        <CostResource index="Minerals" value="150"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="BuildInProgress"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <BehaviorArray Link="Detector11"/>
+        <BehaviorArray Link="PowerUserBaseDefenseSmall"/>
+        <BehaviorArray Link="UnderConstruction"/>
+        <BehaviorArray Link="BuffDamage"/>
+        <WeaponArray Link="PhotonCannon2" Turret="PhotonCannon"/>
+        <CardLayouts>
+            <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="Detector" Type="Passive" Requirements="NotUnderConstruction" Row="2" Column="3"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <Footprint value="Footprint2x2Contour"/>
+        <PlacementFootprint value="Footprint2x2"/>
+        <ScoreMake value="150"/>
+        <ScoreKill value="150"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="2"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <AIEvalFactor value="0.8"/>
+        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
+        <GlossaryPriority value="200"/>
+        <GlossaryStrongArray value="Banshee"/>
+        <GlossaryStrongArray value="Mutalisk"/>
+        <GlossaryStrongArray value="DarkTemplar"/>
+        <GlossaryWeakArray value="SiegeTankSieged"/>
+        <GlossaryWeakArray value="BroodLord"/>
+        <GlossaryWeakArray value="Immortal"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+    </CUnit>
+    <CUnit id="PhotonOverCharge">
+        <DeathRevealRadius value="3"/>
+        <Race value="Prot"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="HiddenCargoUI" value="1"/>
+        <FlagArray index="PreventDefeat" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="Unradarable" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="1"/>
+        <FlagArray index="HideFromHarvestingCount" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <Attributes index="Summoned" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossBuildingPlating"/>
+        <ShieldsStart value="200"/>
+        <ShieldsMax value="200"/>
+        <ShieldRegenDelay value="10"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <StationaryTurningRate value="719.4726"/>
+        <TurningRate value="719.4726"/>
+        <Sight value="9"/>
+        <CostCategory value="Army"/>
+        <AttackTargetPriority value="11"/>
+        <AbilArray Link="attack"/>
+        <TurretArray value="PylonCrystalRotate"/>
+        <TurretArray value="PylonRingRotate"/>
+        <WeaponArray Link="MothershipCoreWeapon" Turret="Nexus"/>
+        <CardLayouts>
+            <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stopProtossPylon,Stop" Row="0" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <ScoreMake value="100"/>
+        <ScoreKill value="100"/>
+        <ScoreResult value="BuildOrder"/>
+        <MinimapRadius value="1"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <GlossaryPriority value="18"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+    </CUnit>
     <CUnit id="SmallNydusSpawner">
         <DeathRevealRadius value="3"/>
         <Facing value="29.9707"/>
@@ -2788,6 +2945,7 @@
         <LifeMax value="2500"/>
         <ShieldRegenRate value="0.1992"/>
         <AIOverideTargetPriority value="3"/>
+        <AbilArray Link="attack"/>
     </CUnit>
     <CUnit id="FleetBeacon">
         <CardLayouts index="0">
@@ -6289,14 +6447,13 @@
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
         <AbilArray Link="stop"/>
-        <AbilArray Link="Flare"/>
+        <AbilArray Link="NovaGadgetFlashBangGrenades"/>
         <AbilArray Link="move"/>
         <AbilArray Link="D8Charge"/>
         <AbilArray Link="KD8Charge"/>
         <AbilArray Link="NanoRepair"/>
         <AbilArray Link="ObserverSquadSight"/>
         <AbilArray Link="ArtanisAstralWind"/>
-        <AbilArray Link="Irradiate"/>
         <BehaviorArray Link="UnknownBehavior"/>
         <BehaviorArray Link="TerranLevels"/>
         <BehaviorArray Link="TerranEnergyBonus"/>
@@ -6311,7 +6468,7 @@
             <LayoutButtons Face="MedicHeal" Type="AbilCmd" AbilCmd="NanoRepair,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="SquadSight" Type="AbilCmd" AbilCmd="ObserverSquadSight,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="ArtanisAstralWind" Type="AbilCmd" AbilCmd="ArtanisAstralWind,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="Irradiate" Type="AbilCmd" AbilCmd="Irradiate,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="NovaGadgetFlashBangGrenades" Type="AbilCmd" AbilCmd="NovaGadgetFlashBangGrenades,Execute" Row="2" Column="1"/>
             <LayoutButtons>
                 <Face value="StabilizerMedPacks"/>
                 <Type value="Passive"/>

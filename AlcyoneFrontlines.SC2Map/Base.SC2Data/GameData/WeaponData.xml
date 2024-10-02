@@ -16,6 +16,9 @@
         <DamagePoint value="0.3"/>
         <Effect value="NeedleSpinesDamage2"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="MothershipPurifyWeapon">
+        <Options index="Disabled" value="0"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="NeedleSpines2">
         <EditorCategories value="Race:Zerg"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
@@ -110,6 +113,16 @@
     <!--                                                                                         -->
     <CWeaponLegacy id="NeutronFlare">
         <TargetFilters value="-;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PhotonCannon2">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-building-protoss-photoncannon.dds"/>
+        <DisplayEffect value="PhotonCannonU2"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <RangeSlop value="0"/>
+        <Period value="1.25"/>
+        <Effect value="PhotonCannonLM2"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="PrismaticBeam">
         <Options index="Disabled" value="0"/>

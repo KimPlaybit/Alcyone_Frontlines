@@ -25,6 +25,15 @@
     <CValidatorLocationEnumArea id="DarkTemplarShadowFuryTargetsInArea">
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="AlliedBaseAround">
+        <AreaArray>
+            <Compare value="GT"/>
+            <Count value="0"/>
+            <Radius value="6"/>
+            <Validator value="IsStructure"/>
+        </AreaArray>
+        <SearchFilters value="Structure,Visible;Self,Player,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareVital id="DefilerMPPlagueLifeGT1">
         <Type value="Fraction"/>
         <Value value="0.15"/>
