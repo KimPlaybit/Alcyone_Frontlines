@@ -1010,6 +1010,143 @@
         <TechAliasArray value="Alias_HydraliskDen"/>
         <TechTreeUnlockedUnitArray value="Hydralisk"/>
     </CUnit>
+    <CUnit id="MarineWarfield">
+        <LifeStart value="135"/>
+        <LifeMax value="135"/>
+        <EnergyStart value="75"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="9999"/>
+        <AbilArray Link="MengskMercTrain"/>
+        <AbilArray Link="ObserverTargetLock"/>
+        <AbilArray Link="EMP"/>
+        <AbilArray Link="ResearchEngineeringBaywarfield"/>
+        <AbilArray Link="ResearchArmorywarfield"/>
+        <BehaviorArray Link="TerranAttackBonus"/>
+        <BehaviorArray Link="TerranAttackSpeed"/>
+        <BehaviorArray Link="TerranEnergyBonus"/>
+        <BehaviorArray Link="UnknownBehavior"/>
+        <BehaviorArray Link="TerranLevels"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="TerranBuildAdvanced"/>
+                <Type value="Submenu"/>
+                <SubmenuCardId value="0002"/>
+                <SubmenuFullSubCmdValidation value="1"/>
+                <SubmenuIsSticky value="1"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TerranBuild"/>
+                <Type value="Submenu"/>
+                <SubmenuCardId value="0003"/>
+                <SubmenuFullSubCmdValidation value="1"/>
+                <SubmenuIsSticky value="1"/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons Face="OdinEMPBurst" Type="AbilCmd" AbilCmd="EMP,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="TargetLock" Type="AbilCmd" AbilCmd="ObserverTargetLock,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <CardLayouts CardId="0002">
+            <LayoutButtons Face="Marine" Type="AbilCmd" AbilCmd="MengskMercTrain,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="Marauder" Type="AbilCmd" AbilCmd="MengskMercTrain,Train2" Row="0" Column="1"/>
+            <LayoutButtons Face="Medic" Type="AbilCmd" AbilCmd="MengskMercTrain,Train5" Row="0" Column="2"/>
+            <LayoutButtons Face="SiegeTank" Type="AbilCmd" AbilCmd="MengskMercTrain,Train8" Row="0" Column="3"/>
+            <LayoutButtons Face="VikingFighter" Type="AbilCmd" AbilCmd="MengskMercTrain,Train9" Row="0" Column="4"/>
+            <LayoutButtons Face="Battlecruiser" Type="AbilCmd" AbilCmd="MengskMercTrain,Train11" Row="1" Column="0"/>
+            <LayoutButtons Face="Cancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="2" Column="1"/>
+        </CardLayouts>
+        <CardLayouts CardId="0003">
+            <LayoutButtons Face="TerranInfantryWeaponsLevel1" Type="AbilCmd" AbilCmd="ResearchEngineeringBaywarfield,Research3" Row="0" Column="0"/>
+            <LayoutButtons Face="TerranInfantryWeaponsLevel2" Type="AbilCmd" AbilCmd="ResearchEngineeringBaywarfield,Research4" Row="0" Column="0"/>
+            <LayoutButtons Face="TerranInfantryWeaponsLevel3" Type="AbilCmd" AbilCmd="ResearchEngineeringBaywarfield,Research5" Row="0" Column="0"/>
+            <LayoutButtons Face="TerranInfantryArmorLevel1" Type="AbilCmd" AbilCmd="ResearchEngineeringBaywarfield,Research7" Row="0" Column="1"/>
+            <LayoutButtons Face="TerranInfantryArmorLevel2" Type="AbilCmd" AbilCmd="ResearchEngineeringBaywarfield,Research8" Row="0" Column="1"/>
+            <LayoutButtons Face="TerranInfantryArmorLevel3" Type="AbilCmd" AbilCmd="ResearchEngineeringBaywarfield,Research9" Row="0" Column="1"/>
+            <LayoutButtons Face="TerranVehicleWeaponsLevel1" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research6" Row="1" Column="0"/>
+            <LayoutButtons Face="TerranVehicleWeaponsLevel2" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research7" Row="1" Column="0"/>
+            <LayoutButtons Face="TerranVehicleWeaponsLevel3" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research8" Row="1" Column="0"/>
+            <LayoutButtons Face="TerranVehiclePlatingLevel1" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research3" Row="1" Column="1"/>
+            <LayoutButtons Face="TerranVehiclePlatingLevel2" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research4" Row="1" Column="1"/>
+            <LayoutButtons Face="TerranVehiclePlatingLevel3" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research5" Row="1" Column="1"/>
+            <LayoutButtons Face="TerranShipWeaponsLevel1" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research12" Row="2" Column="0"/>
+            <LayoutButtons Face="TerranShipWeaponsLevel2" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research13" Row="2" Column="0"/>
+            <LayoutButtons Face="TerranShipWeaponsLevel3" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research14" Row="2" Column="0"/>
+            <LayoutButtons Face="TerranShipPlatingLevel1" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research9" Row="2" Column="1"/>
+            <LayoutButtons Face="TerranShipPlatingLevel2" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research10" Row="2" Column="1"/>
+            <LayoutButtons Face="TerranShipPlatingLevel3" Type="AbilCmd" AbilCmd="ResearchArmorywarfield,Research11" Row="2" Column="1"/>
+            <LayoutButtons Face="Cancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MengskBC">
+        <Food value="0"/>
+        <CostResource index="Minerals" value="0"/>
+        <CostResource index="Vespene" value="0"/>
+        <AbilArray index="3" removed="1"/>
+        <AbilArray index="4" removed="1"/>
+        <AbilArray index="5" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MengskMarauder">
+        <Food value="0"/>
+        <CostResource index="Minerals" value="0"/>
+        <CostResource index="Vespene" value="0"/>
+        <AbilArray index="3" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MengskMarine">
+        <LifeStart value="75"/>
+        <LifeMax value="75"/>
+        <Food value="0"/>
+        <CostResource index="Minerals" value="0"/>
+        <AbilArray index="3" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MengskMedic">
+        <Food value="0"/>
+        <CostResource index="Minerals" value="0"/>
+        <CostResource index="Vespene" value="0"/>
+        <AbilArray index="1" Link="move"/>
+        <AbilArray index="2" Link="MengskMedicHeal"/>
+        <AbilArray index="3" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="7" AbilCmd="Flare,255"/>
+            <LayoutButtons index="8" removed="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MengskSiegeTank">
+        <Food value="0"/>
+        <CostResource index="Minerals" value="0"/>
+        <CostResource index="Vespene" value="0"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MengskVikingFighter">
+        <Food value="0"/>
+        <CostResource index="Minerals" value="0"/>
+        <CostResource index="Vespene" value="0"/>
+        <AbilArray index="3" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="MothershipCoreHero">
         <DeathRevealRadius value="3"/>
         <Facing value="45"/>

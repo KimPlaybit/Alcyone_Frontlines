@@ -39,6 +39,97 @@
         <InfoArray index="Research13" Time="136"/>
         <InfoArray index="Research14" Time="157"/>
     </CAbilResearch>
+    <CAbilTrain id="MengskMercTrain">
+        <InfoArray index="Train1" Time="0">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="45"/>
+        </InfoArray>
+        <InfoArray index="Train2" Time="0">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="65"/>
+            <Button Requirements="HaveGhostAlternate"/>
+        </InfoArray>
+        <InfoArray index="Train5" Time="0">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="85"/>
+            <Button Requirements="CrossSpectrumDampenersResearched"/>
+        </InfoArray>
+        <InfoArray index="Train8" Time="0">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="125"/>
+        </InfoArray>
+        <InfoArray index="Train9" Time="0">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="90"/>
+        </InfoArray>
+        <InfoArray index="Train11" Time="0">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="200"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilResearch id="ResearchArmorywarfield">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
+        <InfoArray index="Research3" Upgrade="TerranVehicleArmorsLevel1">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="75"/>
+            <Button DefaultButtonFace="TerranVehiclePlatingLevel1" State="Restricted" Requirements="LearnTerranVehicleArmor1"/>
+        </InfoArray>
+        <InfoArray index="Research4" Upgrade="TerranVehicleArmorsLevel2">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="100"/>
+            <Button DefaultButtonFace="TerranVehiclePlatingLevel2" State="Restricted" Requirements="LearnTerranVehicleArmor2"/>
+        </InfoArray>
+        <InfoArray index="Research5" Upgrade="TerranVehicleArmorsLevel3">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="125"/>
+            <Button DefaultButtonFace="TerranVehiclePlatingLevel3" State="Restricted" Requirements="LearnTerranVehicleArmor3"/>
+        </InfoArray>
+        <InfoArray index="Research6" Upgrade="TerranVehicleWeaponsLevel1">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="75"/>
+            <Button DefaultButtonFace="TerranVehicleWeaponsLevel1" State="Restricted" Requirements="LearnTerranVehicleWeapon1"/>
+        </InfoArray>
+        <InfoArray index="Research7" Upgrade="TerranVehicleWeaponsLevel2">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="100"/>
+            <Button DefaultButtonFace="TerranVehicleWeaponsLevel2" State="Restricted" Requirements="LearnTerranVehicleWeapon2"/>
+        </InfoArray>
+        <InfoArray index="Research8" Upgrade="TerranVehicleWeaponsLevel3">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="125"/>
+            <Button DefaultButtonFace="TerranVehicleWeaponsLevel3" State="Restricted" Requirements="LearnTerranVehicleWeapon3"/>
+        </InfoArray>
+        <InfoArray index="Research9" Upgrade="TerranShipArmorsLevel1">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="75"/>
+            <Button DefaultButtonFace="TerranShipPlatingLevel1" State="Restricted" Requirements="LearnTerranShipArmor1"/>
+        </InfoArray>
+        <InfoArray index="Research10" Upgrade="TerranShipArmorsLevel2">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="100"/>
+            <Button DefaultButtonFace="TerranShipPlatingLevel2" State="Restricted" Requirements="LearnTerranShipArmor2"/>
+        </InfoArray>
+        <InfoArray index="Research11" Upgrade="TerranShipArmorsLevel3">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="125"/>
+            <Button DefaultButtonFace="TerranShipPlatingLevel3" State="Restricted" Requirements="LearnTerranShipArmor3"/>
+        </InfoArray>
+        <InfoArray index="Research12" Upgrade="TerranShipWeaponsLevel1">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="75"/>
+            <Button DefaultButtonFace="TerranShipWeaponsLevel1" State="Restricted" Requirements="LearnTerranShipWeapon1"/>
+        </InfoArray>
+        <InfoArray index="Research13" Upgrade="TerranShipWeaponsLevel2">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="100"/>
+            <Button DefaultButtonFace="TerranShipWeaponsLevel2" State="Restricted" Requirements="LearnTerranShipWeapon2"/>
+        </InfoArray>
+        <InfoArray index="Research14" Upgrade="TerranShipWeaponsLevel3">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="125"/>
+            <Button DefaultButtonFace="TerranShipWeaponsLevel3" State="Restricted" Requirements="LearnTerranShipWeapon3"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilResearch id="ArmoryResearchSwarm">
         <InfoArray index="Research4" Time="114"/>
         <InfoArray index="Research5" Time="136"/>
@@ -278,6 +369,69 @@
             <Resource index="Vespene" value="150"/>
         </InfoArray>
         <InfoArray index="Research9" Time="157"/>
+        <InfoArray index="Research10" Time="50" Upgrade="DefenseStructureUpdates1">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="TerranDefenseStructureLevel1" Requirements="LearnDefenseStructureUpgrade1"/>
+        </InfoArray>
+        <InfoArray index="Research11" Time="50" Upgrade="DefenseStructureUpdates12">
+            <Resource index="Minerals" value="185"/>
+            <Resource index="Vespene" value="185"/>
+            <Button DefaultButtonFace="TerranDefenseStructureLevel12" Requirements="LearnDefenseStructureUpgrade12"/>
+        </InfoArray>
+        <InfoArray index="Research12" Time="50" Upgrade="DefenseStructureUpdates13">
+            <Resource index="Minerals" value="225"/>
+            <Resource index="Vespene" value="225"/>
+            <Button DefaultButtonFace="TerranDefenseStructureLevel13" Requirements="LearnDefenseStructureUpgrade13"/>
+        </InfoArray>
+    </CAbilResearch>
+    <CAbilResearch id="ResearchEngineeringBaywarfield">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
+        <InfoArray index="Research1" Time="57" Upgrade="HiSecAutoTracking">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchHiSecAutoTracking" State="Restricted" Requirements="LearnTerranDefenseRangeBonus"/>
+        </InfoArray>
+        <InfoArray index="Research2" Time="140" Upgrade="TerranBuildingArmor">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="UpgradeBuildingArmorLevel1" State="Restricted" Requirements="LearnTerranBuildingArmor"/>
+        </InfoArray>
+        <InfoArray index="Research3" Upgrade="TerranInfantryWeaponsLevel1">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="75"/>
+            <Button DefaultButtonFace="TerranInfantryWeaponsLevel1" State="Restricted" Requirements="LearnTerranInfantryWeapon1"/>
+        </InfoArray>
+        <InfoArray index="Research4" Upgrade="TerranInfantryWeaponsLevel2">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="100"/>
+            <Button DefaultButtonFace="TerranInfantryWeaponsLevel2" State="Restricted" Requirements="LearnTerranInfantryWeapon2"/>
+        </InfoArray>
+        <InfoArray index="Research5" Upgrade="TerranInfantryWeaponsLevel3">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="125"/>
+            <Button DefaultButtonFace="TerranInfantryWeaponsLevel3" State="Restricted" Requirements="LearnTerranInfantryWeapon3"/>
+        </InfoArray>
+        <InfoArray index="Research6" Time="100" Upgrade="NeosteelFrame">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ResearchNeosteelFrame" State="Restricted" Requirements="LearnNeosteelFrame"/>
+        </InfoArray>
+        <InfoArray index="Research7" Upgrade="TerranInfantryArmorsLevel1">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="75"/>
+            <Button DefaultButtonFace="TerranInfantryArmorLevel1" State="Restricted" Requirements="LearnTerranInfantryArmor1"/>
+        </InfoArray>
+        <InfoArray index="Research8" Upgrade="TerranInfantryArmorsLevel2">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="100"/>
+            <Button DefaultButtonFace="TerranInfantryArmorLevel2" State="Restricted" Requirements="LearnTerranInfantryArmor2"/>
+        </InfoArray>
+        <InfoArray index="Research9" Upgrade="TerranInfantryArmorsLevel3">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="125"/>
+            <Button DefaultButtonFace="TerranInfantryArmorLevel3" State="Restricted" Requirements="LearnTerranInfantryArmor3"/>
+        </InfoArray>
         <InfoArray index="Research10" Time="50" Upgrade="DefenseStructureUpdates1">
             <Resource index="Minerals" value="150"/>
             <Resource index="Vespene" value="150"/>

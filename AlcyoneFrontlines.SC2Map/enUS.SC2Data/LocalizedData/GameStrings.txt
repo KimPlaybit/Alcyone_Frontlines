@@ -20,6 +20,8 @@ Abil/Name/NovaWeaponCanisterRifleSnipe2=Snipe
 Abil/Name/NydusSpawnCanal=Nydus Spawn Canal
 Abil/Name/NydusSpawnZergUnits=Spawn Zerg Units
 Abil/Name/Radar=Radar
+Abil/Name/ResearchArmorywarfield=Research (Armory) (warfield)
+Abil/Name/ResearchEngineeringBaywarfield=Research (Engineering Bay) (warfield)
 Abil/Name/ResearchLurkerDen=Research (Lurker Den)
 Abil/Name/ShadowStride=Shadow Stride
 Abil/Name/SmallSpawnZergUnits=Spawn Zerg Units
@@ -213,9 +215,16 @@ Button/Tooltip/JuggernautPlating3=Increases the Firebat's armor by 2.
 Button/Tooltip/Leech=Drains 50 Energy/second and 10 Health/s for 4 seconds from target enemy. Each level increases damage by 40. Disables them from using any ability for 4 seconds.
 Button/Tooltip/LightningBomb2=Improves the Tempest's Resonance Coil to deal +40 damage vs structures.
 Button/Tooltip/MarineHero=General-purpose infantry. Part of Mengsk's elite guard.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/MarineWarfield=Commander of the Squad
 Button/Tooltip/MedicHeal=Heals a friendly biological or mechanical target.<n/><n/><c val="f078ff">Heals <d ref="Effect,NanoRepair,RechargeVitalRate"/> life per <d ref="Effect,NanoRepair,RechargeVitalRate * Effect,NanoRepair,DrainVitalCostFactor"/> energy.</c>
 Button/Tooltip/MedicHeal2=After being out of combat for 15 seconds. Marine will start to regenerate 2 life/second.
 Button/Tooltip/MedicHero=Support trooper. Heals nearby biological units.
+Button/Tooltip/MengskBC=Powerful warship. Part of the Commanders Squad.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/MengskMarauder=Heavy assault infantry. Part of the Commandes Squad.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/MengskMarine=General-purpose infantry. Part of the Commanders Squad.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/MengskMedic=Support trooper. Heals nearby biological units. Part of the Commanders Squad.<n/><n/><c val="ffff8a">Cannot attack.</c>
+Button/Tooltip/MengskSiegeTank=Heavy tank. Can switch to Siege Mode to provide long-range artillery support. Part of the Commanders Squad.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/MengskVikingFighter=Durable support flyer. Loaded with strong anti-capital air missiles. Part of the Commanders Squad.<n/><n/><c val="#ColorAttackInfo">Can attack air units.</c>
 Button/Tooltip/MissilePods2=Missile Pods increases by 10 damage per level. 
 Button/Tooltip/MonarchBlades2=Increases the ultralisks movement speed by 30% for 6 seconds. Deals 10 damage per second to all surrounding enemy units.
 Button/Tooltip/MorphToOverseer2=Enables the Overlord to transport units. Requires a Lair
@@ -631,7 +640,14 @@ Unit/Name/Hydralisk2=Hydralisk
 Unit/Name/Hydralisk22=Hydralisk
 Unit/Name/HydraliskHero=Hydralisk Hero
 Unit/Name/MarineHero=Marine
+Unit/Name/MarineWarfield=The Commander
 Unit/Name/MedicHero=Medic
+Unit/Name/MengskBC=Titan Warship
+Unit/Name/MengskMarauder=Warbringer
+Unit/Name/MengskMarine=Outlaw Trooper
+Unit/Name/MengskMedic=War Medic
+Unit/Name/MengskSiegeTank=Vanguard Breaker
+Unit/Name/MengskVikingFighter=Dominator
 Unit/Name/MothershipCoreHero=Mothership Core
 Unit/Name/MutaliskHero=Mutalisk Hero
 Unit/Name/MutaliskHero2=Mutalisk Hero
@@ -654,6 +670,7 @@ Unit/Name/ZerglingHero=Zergling Hero
 UnitKillRank/Odin2=Prototype
 UnitSubtitle/HotSTorrasque2=Torrasque Strain
 UnitSubtitle/HydraliskHero=Impaler Strain
+UnitSubtitle/MarineWarfield=General of the Underworld
 UnitSubtitle/MutaliskHero=Viper Strain
 UnitSubtitle/MutaliskHero2=Viper Strain
 UnitSubtitle/ZerglingHero=Raptor Strain
