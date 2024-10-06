@@ -30,6 +30,10 @@
         <AlertIcon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
+    <CButton id="FenixChampionPowerShield2">
+        <Icon value="Assets\Textures\btn-ability-protoss-hardenedshields-color.dds"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
     <CButton id="HydraliskDenImpalerPassive2">
         <Icon value="Assets\Textures\btn-unit-zerg-ultralisk.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
@@ -40,6 +44,26 @@
         <Icon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
         <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="MothershipCoreWeapon2">
+        <Icon value="Assets\Textures\BTN-Ability-Protoss-Purify.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-Purify.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="MothershipPassive2">
+        <Icon value="Assets\Textures\btn-unit-protoss-mothershipcore.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-mothership.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HotkeyAlias value="MothershipCore"/>
+    </CButton>
+    <CButton id="PhotonCannonPassive2">
+        <Icon value="Assets\Textures\btn-building-protoss-photoncannon.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="SOAMothershipBlinkStrike2">
+        <Icon value="Assets\Textures\btn-ability-protoss-wormholetransit-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="SpawnaSmallNydusWorm">
         <Icon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
@@ -125,6 +149,16 @@
         <Icon value="Assets\Textures\btn-unit-zerg-roachlings.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-roachlings.dds"/>
         <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="TemporalField2">
+        <Icon value="Assets\Textures\btn-ability-protoss-timewarp.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-timewarp.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="TemporalField3">
+        <Icon value="Assets\Textures\btn-ability-protoss-timewarp.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-timewarp.dds"/>
+        <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="TerranDefenseStructureLevel1">
         <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
@@ -330,6 +364,9 @@
         <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="ProtossDefenseStructureUpgrade1"/>
+    </CButton>
+    <CButton id="ReversalTimeWarp">
+        <Icon value="Assets\Textures\btn-ability-protoss-timewarp.dds"/>
     </CButton>
     <CButton id="ZergDefenseStructureLevel1">
         <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>

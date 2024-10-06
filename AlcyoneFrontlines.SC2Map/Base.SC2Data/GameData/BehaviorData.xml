@@ -9,6 +9,16 @@
             <VitalRegenMultiplier index="Energy" value="-1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BuffEnergyRegen">
+        <InfoIcon value="Assets\Textures\btn-unit-protoss-mothershipcore.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AroundNexusBase"/>
+        <Duration value="99"/>
+        <FinalEffect value="EnergyRegenerationApplyBehavior"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="EmpowerZergBuilding">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-zerg-glialreconstitution.dds"/>
@@ -189,18 +199,41 @@
         </Modification>
         <KillCredit Value="Caster"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="PhotonCannonTimedLife" parent="TimedLife">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="60"/>
+        <Modification>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="PrimalSlash">
         <InfoFlags index="Hidden" value="0"/>
         <Modification AttackSpeedMultiplier="1.2"/>
     </CBehaviorBuff>
+    <CBehaviorAttribute id="MothershipCoreLevelBonus">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxArray index="Energy" value="20"/>
+            <VitalRegenMultiplier index="Energy" value="0.01"/>
+        </Modification>
+    </CBehaviorAttribute>
     <CBehaviorBuff id="Purify">
         <Modification>
-            <WeaponEnableArray value="MothershipPurifyWeapon"/>
-            <WeaponEnableArray value="MothershipCoreWeapon"/>
+            <WeaponArray index="1" removed="1"/>
         </Modification>
+        <KillCredit Value="Caster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="StunningBlast">
         <Duration value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TemporalRiftUnit2">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-TimeBomb.dds"/>
+        <BehaviorCategories index="Fast" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.125"/>
+        <Modification MoveSpeedMultiplier="1.4" AttackSpeedMultiplier="1.4"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="VileAcidSlowEffectsLevel12">
         <Alignment value="Negative"/>
@@ -302,6 +335,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="100">
@@ -313,6 +347,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="200">
@@ -324,6 +359,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="400">
@@ -335,6 +371,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="800">
@@ -346,6 +383,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1200">
@@ -357,6 +395,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1600">
@@ -368,6 +407,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2000">
@@ -379,6 +419,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2400">
@@ -390,6 +431,7 @@
                 <AttributeChangeArray Attribute="DragoonDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="CorsairDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="ZealotShieldBonus" Points="1"/>
+                <AttributeChangeArray Attribute="MothershipCoreLevelBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
     </CBehaviorVeterancy>

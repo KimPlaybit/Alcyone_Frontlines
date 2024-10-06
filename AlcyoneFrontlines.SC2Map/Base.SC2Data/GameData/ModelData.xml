@@ -66,6 +66,10 @@
             <Time value="0.001000"/>
         </Events>
     </CModel>
+    <CModel id="ReversalFieldModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\TemporalField\TemporalField.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
     <CModel id="ZerglingDeathExplosion" parent="UnitDeath" Race="Zerg">
         <Model value="Assets\Units\Zerg\BanelingEx1DeathCorrosive\BanelingEx1DeathCorrosive.m3"/>
         <LowQualityModel value="ZergMediumUnitDeathLow"/>

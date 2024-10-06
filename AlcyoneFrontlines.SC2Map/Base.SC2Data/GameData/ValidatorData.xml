@@ -6,6 +6,15 @@
     <CValidatorUnitCompareVeterancyLevel default="1" id="CValidatorUnitCompareVeterancyLevel22">
         <Value value="2"/>
     </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorLocationEnumArea id="AroundNexusBase">
+        <AreaArray>
+            <Compare value="GT"/>
+            <Count value="0"/>
+            <Radius value="3"/>
+            <Validator value="IsNexus"/>
+        </AreaArray>
+        <SearchFilters value="Structure,Visible;Self,Player,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="BlinkTarget">
         <Type value="And"/>
         <CombineArray value="IsHeroic"/>
@@ -30,7 +39,7 @@
             <Compare value="GT"/>
             <Count value="0"/>
             <Radius value="6"/>
-            <Validator value="IsStructure"/>
+            <Validator value="IsNotMotherShipPhotonCannon"/>
         </AreaArray>
         <SearchFilters value="Structure,Visible;Self,Player,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
@@ -48,9 +57,22 @@
         <CombineArray value="EnemiesNearby"/>
         <CombineArray value="CasterShieldLT40Percent"/>
     </CValidatorCombine>
+    <CValidatorCombine id="IsPylon2">
+        <CombineArray value="IsPylon"/>
+        <CombineArray value="IsVoidPylon"/>
+        <CombineArray value="IsNexus"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsNotMotherShipPhotonCannon">
+        <Value value="PhotonCannon2"/>
+        <Find value="0"/>
+        <Type value="SelectAlias"/>
+    </CValidatorUnitType>
     <CValidatorUnitType id="IsNotOdin">
         <Value value="Odin"/>
         <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsVoidPylon">
+        <Value value="VoidPylon"/>
     </CValidatorUnitType>
     <CValidatorUnitState id="SCVIsRepairing">
         <Enabled value="1"/>

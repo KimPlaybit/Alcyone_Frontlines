@@ -301,6 +301,7 @@ trigger gt_SensorTowerCreated;
 trigger gt_IncreaseSize;
 trigger gt_AddRtsPlayer2Buildings;
 trigger gt_NydusWormLevelUp;
+trigger gt_MothershipCoreLevelUp;
 trigger gt_RemoveRtsPlayer2Buildings;
 trigger gt_AIBuildShieldBattery;
 trigger gt_AIBuildQueens;
@@ -3548,6 +3549,33 @@ void gt_NydusWormLevelUp_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MothershipCoreLevelUp
+//--------------------------------------------------------------------------------------------------
+bool gt_MothershipCoreLevelUp_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MothershipCoreHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "MothershipCoreUpgrades", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MothershipCoreLevelUp_Init () {
+    gt_MothershipCoreLevelUp = TriggerCreate("gt_MothershipCoreLevelUp_Func");
+    TriggerAddEventUnitGainLevel(gt_MothershipCoreLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: RemoveRtsPlayer2Buildings
 //--------------------------------------------------------------------------------------------------
 bool gt_RemoveRtsPlayer2Buildings_Func (bool testConds, bool runActions) {
@@ -4001,8 +4029,8 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
     lv_killingPlayer = libNtve_gf_KillingPlayer();
     lv_killingPlayersKills = gv_playerKills[libNtve_gf_KillingPlayer()];
     lv_killingPlayersDeaths = gv_playerDeaths[libNtve_gf_KillingPlayer()];
-    lv_killingPlayerMinerals = (gv_playerMineral[libNtve_gf_KillingPlayer()] + 500);
-    lv_killingPlayerGas = (gv_playerGas[libNtve_gf_KillingPlayer()] + 300);
+    lv_killingPlayerMinerals = (gv_playerMineral[libNtve_gf_KillingPlayer()] + 350);
+    lv_killingPlayerGas = (gv_playerGas[libNtve_gf_KillingPlayer()] + 200);
     lv_dyingUnit = EventUnit();
     lv_deathTimer = TimerCreate();
     lv_timerWindow = c_timerWindowNone;
@@ -4032,8 +4060,8 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
     gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
-        PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropMinerals) + 500));
-        PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropVespene) + 300));
+        PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropMinerals) + 350));
+        PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropVespene) + 200));
     }
 
     UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
@@ -4115,8 +4143,8 @@ bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
     lv_triggeringPlayer = EventPlayer();
     lv_killingPlayersKills = gv_playerKills[libNtve_gf_KillingPlayer()];
     lv_killingPlayersDeaths = gv_playerDeaths[libNtve_gf_KillingPlayer()];
-    lv_killingPlayerMinerals = (gv_playerMineral[libNtve_gf_KillingPlayer()] + 500);
-    lv_killingPlayerGas = (gv_playerGas[libNtve_gf_KillingPlayer()] + 300);
+    lv_killingPlayerMinerals = (gv_playerMineral[libNtve_gf_KillingPlayer()] + 350);
+    lv_killingPlayerGas = (gv_playerGas[libNtve_gf_KillingPlayer()] + 200);
     lv_killingPlayer = libNtve_gf_KillingPlayer();
     lv_dyingUnit = EventUnit();
     lv_deathTimer = TimerCreate();
@@ -4140,8 +4168,8 @@ bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
     gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
         gf_UpdateScoreboard(lv_killingPlayersKills + 1, lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
-        PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropMinerals) + 500));
-        PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropVespene) + 300));
+        PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropMinerals) + 350));
+        PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropVespene) + 200));
     }
 
     UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
@@ -5325,6 +5353,7 @@ bool gt_MothershipCorePicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    UIClearMessages(PlayerGroupAll(), c_messageAreaChat);
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/331FDE0A")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
@@ -5334,6 +5363,7 @@ bool gt_MothershipCorePicked_Func (bool testConds, bool runActions) {
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
         PlayerSetAlliance(EventPlayer(), c_allianceIdPower, gv_rTSPlayer1, true);
         PlayerSetAlliance(gv_rTSPlayer1, c_allianceIdPower, EventPlayer(), true);
+        PlayerSetAlliance(13, c_allianceIdPower, EventPlayer(), true);
         PlayerSetAlliance(13, c_allianceIdPower, EventPlayer(), true);
     }
     else {
@@ -5754,6 +5784,7 @@ void InitTriggers () {
     gt_IncreaseSize_Init();
     gt_AddRtsPlayer2Buildings_Init();
     gt_NydusWormLevelUp_Init();
+    gt_MothershipCoreLevelUp_Init();
     gt_RemoveRtsPlayer2Buildings_Init();
     gt_AIBuildShieldBattery_Init();
     gt_AIBuildQueens_Init();

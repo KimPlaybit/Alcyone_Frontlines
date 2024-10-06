@@ -354,6 +354,19 @@
             <Unit index="0" removed="1"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilEffectTarget id="FenixChampionPowerShield2">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="FenixChampionPowerShieldApply2"/>
+        <Flags index="BestUnit" value="0"/>
+        <Cost>
+            <Cooldown TimeUse="25"/>
+        </Cost>
+        <TargetFilters value="Structure;Self,Enemy,Invulnerable"/>
+        <Range value="8"/>
+        <Arc value="360"/>
+        <ArcSlop value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="FenixChampionPowerShield2"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="FenixWhirlwind">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
@@ -365,6 +378,19 @@
             <Cooldown Link="Abil/FlagshipTimeBomb" TimeUse="30"/>
         </Cost>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="FlagshipTimeBombTarget">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="DragoonFlagshipTimeBombCP2"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <Range value="10"/>
+        <Arc value="360"/>
+        <ArcSlop value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="VoidImmortalStasisHeal"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="FleetBeaconResearch">
         <InfoArray index="Research3" Time="64"/>
         <InfoArray index="Research5" Time="57" Upgrade="VoidRaySpeedUpgrade">
@@ -509,11 +535,15 @@
         <Cost index="0">
             <Vital index="Energy" value="50"/>
         </Cost>
-        <TargetFilters index="0" value="-;Player,Enemy"/>
+        <TargetFilters index="0" value="Structure;Player,Enemy,Invulnerable"/>
         <Effect index="0" value="CreatePhotonOverchargeDummy"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MothershipCoreTeleport">
         <TargetFilters index="0" value="Structure,Visible;Self,Player,Enemy,UnderConstruction"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <VitalFraction index="Energy" value="0.33"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilMorph id="MutateVentralSacs">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
@@ -580,6 +610,7 @@
         <CursorEffect value="MPCreateNydusWormCanal"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="PhaseCannon">
+        <Range index="0" value="11"/>
         <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ShieldBatteryRechargeChanneled">
@@ -742,6 +773,35 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="TemporalField2">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="TemporalFieldCreatePersistent2"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Charge TimeUse="60"/>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <CursorEffect value="TemporalFieldSearchArea"/>
+        <AINotifyEffect value="TemporalFieldCreatePersistent"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TemporalField2"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TemporalField3">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="TemporalFieldCreatePersistent"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <CursorEffect value="TemporalFieldSearchArea"/>
+        <AINotifyEffect value="TemporalFieldCreatePersistent"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TemporalField"/>
+    </CAbilEffectTarget>
     <CAbilInteract id="TowerCapture">
         <CmdButtonArray index="Designate">
             <Flags index="AllowSelfCast" value="1"/>

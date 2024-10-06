@@ -457,6 +457,7 @@
             <LayoutButtons index="4" removed="1"/>
             <LayoutButtons index="5" removed="1"/>
         </CardLayouts>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <!--CUnit id="ShadowArchon">-->
     <!--        <DeathRevealRadius value="3"/>-->
@@ -1080,10 +1081,15 @@
         <AbilArray Link="MothershipCorePurifyNexus"/>
         <AbilArray Link="Warpable"/>
         <AbilArray Link="PhaseCannon"/>
+        <AbilArray Link="FenixChampionPowerShield2"/>
+        <AbilArray Link="TemporalField2"/>
+        <AbilArray Link="MothershipCoreTeleport"/>
         <BehaviorArray Link="ProtossLevels"/>
         <BehaviorArray Link="ProtossDamageBonus"/>
         <BehaviorArray Link="ProtossShieldBonus"/>
         <BehaviorArray Link="WarpPrismPowerSource"/>
+        <BehaviorArray Link="MothershipCoreLevelBonus"/>
+        <BehaviorArray Link="BuffEnergyRegen"/>
         <WeaponArray Link="RepulsorCannon" Turret="MothershipCoreTurret"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -1091,13 +1097,14 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="MothershipCoreAttack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="MothershipCoreWeapon" Type="AbilCmd" AbilCmd="MothershipCorePurifyNexus,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="CancelUpgradeMorph" Type="AbilCmd" AbilCmd="MorphToMothership,Cancel" Row="2" Column="4"/>
-            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="MothershipCoreEnergize,Cancel" Row="2" Column="4"/>
-            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="MothershipCorePurifyNexusCancel,Execute" Row="2" Column="4"/>
-            <LayoutButtons Face="TemporalField" Type="AbilCmd" AbilCmd="TemporalField,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="TemporalField" Type="AbilCmd" AbilCmd="TemporalField,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="PhotonCannonPassive" Type="AbilCmd" AbilCmd="PhaseCannon,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="PhotonCannonPassive" Type="AbilCmd" AbilCmd="PhaseCannon,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="MothershipCoreWeapon" Type="AbilCmd" AbilCmd="MothershipCorePurifyNexus,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="FenixChampionPowerShield2" Type="AbilCmd" AbilCmd="FenixChampionPowerShield2,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="TemporalField2" Type="AbilCmd" AbilCmd="TemporalField2,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="SOAMothershipBlinkStrike2" Type="AbilCmd" AbilCmd="MothershipCoreTeleport,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="MothershipPassive2" Type="Passive" Row="1" Column="4"/>
+            <LayoutButtons Face="PhotonCannonPassive2" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="MothershipCoreWeapon2" Type="Passive" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -1410,8 +1417,8 @@
         <Attributes index="Armored" value="1"/>
         <Attributes index="Structure" value="1"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossBuildingPlating"/>
         <ShieldsStart value="150"/>
@@ -1524,6 +1531,9 @@
         <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
         <GlossaryPriority value="18"/>
         <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+    </CUnit>
+    <CUnit id="RoboticsFacilityWarp">
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="SmallNydusSpawner">
         <DeathRevealRadius value="3"/>
@@ -1770,6 +1780,7 @@
     </CUnit>
     <CUnit id="Pylon">
         <Food value="10"/>
+        <WeaponArray Turret="Nexus"/>
         <!--EnergyStart value="50"/>
         <EnergyMax value="200"/>
         <EnergyRegenRate value="0.5625"/>
@@ -2260,6 +2271,7 @@
         <AbilArray index="4" removed="1"/>
         <AbilArray index="5" removed="1"/>
         <AbilArray index="6" removed="1"/>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="StarportTechLab">
         <CardLayouts index="0">
@@ -2454,6 +2466,7 @@
             <LayoutButtons index="16" removed="1"/>
             <LayoutButtons index="17" removed="1"/>
         </CardLayouts>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="DebrisRampLeft">
         <BehaviorArray Link="RockCrushSearch"/>
@@ -2571,6 +2584,7 @@
             <LayoutButtons index="7" removed="1"/>
             <LayoutButtons index="8" removed="1"/>
         </CardLayouts>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="Archon">
         <BehaviorArray index="0" removed="1"/>
@@ -2897,6 +2911,7 @@
             <LayoutButtons index="5" removed="1"/>
             <LayoutButtons index="6" removed="1"/>
         </CardLayouts>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="Thor">
         <TechAliasArray value="Alias_Thor"/>
@@ -2946,6 +2961,7 @@
         <ShieldRegenRate value="0.1992"/>
         <AIOverideTargetPriority value="3"/>
         <AbilArray Link="attack"/>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="FleetBeacon">
         <CardLayouts index="0">
@@ -2967,6 +2983,7 @@
         <TechTreeUnlockedUnitArray index="2" value="Tempest"/>
         <TechTreeUnlockedUnitArray index="3" removed="1"/>
         <Collide index="Locust" value="0"/>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="RoboticsFacility">
         <TechTreeProducedUnitArray value="Disruptor"/>
@@ -2984,6 +3001,7 @@
         <AbilArray index="5" removed="1"/>
         <AbilArray index="6" removed="1"/>
         <CostResource index="Minerals" value="150"/>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="Starport">
         <TechTreeProducedUnitArray value="Battlecruiser"/>
@@ -4114,11 +4132,13 @@
         <TechTreeProducedUnitArray index="4" value="Adept"/>
         <TechTreeProducedUnitArray index="5" value="HighTemplar"/>
         <TechTreeProducedUnitArray value="DarkTemplar"/>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="WarpGate">
         <CardLayouts index="0">
             <LayoutButtons Face="WarpInAdept" Type="AbilCmd" AbilCmd="WarpGateTrain,Train7" Row="0" Column="3"/>
         </CardLayouts>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="TwilightCouncil">
         <CardLayouts index="0">
@@ -4138,6 +4158,7 @@
             <LayoutButtons index="17" removed="1"/>
         </CardLayouts>
         <AbilArray index="3" removed="1"/>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="Liberator">
         <TechAliasArray value="Alias_Liberator"/>
@@ -4340,6 +4361,7 @@
     <CUnit id="Assimilator">
         <BuiltOn value="PurifierVespeneGeyser"/>
         <BuiltOn value="ShakurasVespeneGeyser"/>
+        <WeaponArray Turret="Nexus"/>
     </CUnit>
     <CUnit id="Extractor">
         <BuiltOn value="PurifierVespeneGeyser"/>
@@ -5052,7 +5074,7 @@
         <AbilArray Link="Warpable"/>
         <AbilArray Link="ProgressRally"/>
         <AbilArray Link="ArtanisWormholeTransit"/>
-        <AbilArray Link="FlagshipTimeBomb"/>
+        <AbilArray Link="FlagshipTimeBombTarget"/>
         <AbilArray Link="FenixChampionPowerShield"/>
         <AbilArray Link="SOAPurifierBeam"/>
         <AbilArray Link="AlarakPsiOrb"/>
@@ -5069,7 +5091,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="VoidImmortalStasisHeal" Type="AbilCmd" AbilCmd="FlagshipTimeBomb,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="VoidImmortalStasisHeal" Type="AbilCmd" AbilCmd="FlagshipTimeBombTarget,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="VoidStalkerDragoonWeapon" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="VoidStalkerDragoonArmor" Type="Passive" Row="1" Column="1"/>
             <LayoutButtons Face="FenixChampionPowerShield" Type="AbilCmd" AbilCmd="FenixChampionPowerShield,Execute" Row="2" Column="1"/>

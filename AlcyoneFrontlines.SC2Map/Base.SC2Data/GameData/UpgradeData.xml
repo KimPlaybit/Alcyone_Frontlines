@@ -220,6 +220,16 @@
         <AffectedUnitArray value="ThorAP"/>
         <AffectedUnitArray value="Thor"/>
     </CUpgrade>
+    <CUpgrade id="MothershipCoreUpgrades">
+        <EffectArray Reference="Behavior,Purify,Modification.DamageDealtUnscaled[Ranged]" Value="5"/>
+        <EffectArray Reference="Behavior,BuffDamage,Modification.DamageDealtUnscaled[Ranged]" Value="5"/>
+        <EffectArray Reference="Behavior,PhotonCannonTimedLife,Duration" Value="10.000000"/>
+        <EffectArray Reference="Unit,PhotonCannon2,ShieldsMax" Value="25"/>
+        <EffectArray Reference="Unit,PhotonCannon2,ShieldsStart" Value="25"/>
+        <AffectedUnitArray value="MothershipCoreHero"/>
+        <AffectedUnitArray value="PhotonCannon2"/>
+        <MaxLevel value="10"/>
+    </CUpgrade>
     <CUpgrade id="UpgradeFromXelnaga1">
         <EffectArray Reference="Unit,Zealot2,Speed" Value="0.250000"/>
         <EffectArray Reference="Unit,Zealot2,LifeArmor" Value="2"/>
