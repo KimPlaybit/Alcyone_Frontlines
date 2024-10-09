@@ -6,12 +6,30 @@
     <CValidatorUnitCompareVeterancyLevel default="1" id="CValidatorUnitCompareVeterancyLevel22">
         <Value value="2"/>
     </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorLocationEnumArea id="AlliedBaseAround2">
+        <AreaArray>
+            <Compare value="GT"/>
+            <Count value="0"/>
+            <Radius value="6"/>
+            <Validator value="IsNotScienceVesselGasTurret"/>
+        </AreaArray>
+        <SearchFilters value="Structure,Visible;Self,Player,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="AroundNexusBase">
         <AreaArray>
             <Compare value="GT"/>
             <Count value="0"/>
             <Radius value="3"/>
             <Validator value="IsNexus"/>
+        </AreaArray>
+        <SearchFilters value="Structure,Visible;Self,Player,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="AroundNexusBase2">
+        <AreaArray>
+            <Compare value="GT"/>
+            <Count value="0"/>
+            <Radius value="3"/>
+            <Validator value="IsCommandCenter"/>
         </AreaArray>
         <SearchFilters value="Structure,Visible;Self,Player,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
@@ -57,6 +75,11 @@
         <CombineArray value="EnemiesNearby"/>
         <CombineArray value="CasterShieldLT40Percent"/>
     </CValidatorCombine>
+    <CValidatorUnitType id="IsNotScienceVesselGasTurret">
+        <Value value="LabTurretUp2"/>
+        <Find value="0"/>
+        <Type value="SelectAlias"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="IsPylon2">
         <CombineArray value="IsPylon"/>
         <CombineArray value="IsVoidPylon"/>

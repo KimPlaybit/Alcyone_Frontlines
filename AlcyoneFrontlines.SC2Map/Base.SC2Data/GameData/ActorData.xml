@@ -557,6 +557,38 @@
         <On Terms="AnimDone; AnimName Birth" Send="Destroy"/>
         <HostSiteOps Ops="SOpShadow"/>
     </CActorModel>
+    <CActorUnit id="LabTurret2" parent="TerranBuilding" unitName="LabTurret">
+        <Aliases value="_UnitLarge"/>
+        <On Terms="UnitBirth.LabTurretUp2" Send="Create"/>
+        <On Terms="UnitBirth.LabTurretUp2" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End ClosingFull,OpeningPlayForever,Instant"/>
+        <On Terms="AbilMorph.*.Start; MorphTo LabTurretUp" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End ClosingFull,OpeningPlayForever"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo LabTurretUp" Send="Create Doodad_UmojanLabGasTurret_StandWork"/>
+        <On Terms="AbilMorph.*.Start; MorphTo LabTurret" Target="Doodad_UmojanLabGasTurret_StandWork" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo LabTurret" Send="AnimBracketStop Work"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD_B GLbirth,B GLstand,B GLdeath,B"/>
+        <On Terms="AbilMorph.*.Start; MorphTo LabTurretUp" Send="Create LabTurretPoisonGasCloud"/>
+        <On Terms="AbilMorph.*.Start; MorphTo LabTurret" Target="LabTurretPoisonGasCloud" Send="Destroy"/>
+        <CreepHeightClass value="Small"/>
+        <DeathArray index="Normal" ModelLink="LabTurretDeath" SoundLink="PerditionTurret_Explode"/>
+        <DeathArray index="UnderConstruction" ModelLink="TerranBuildingDeath" SoundLink="PerditionTurret_Explode"/>
+        <DeathCustoms ModelLink="TerranBuildingDeath" SoundLink="Terran_ExplosionMedium" Name="Burrowed"/>
+        <PlacementModel value="PerditionTurretPlacement"/>
+        <PlacementSound value="Terran_BuildingPlacement"/>
+        <PortraitModel value="AdjutantPortrait"/>
+        <BarOffset value="75"/>
+        <BarWidth value="85"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        <HighlightTooltip value="Unit/Name/LabTurret2"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+        <SoundArray index="Construction" value="Terran_ConstructionWhat"/>
+        <UnitIcon value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorUnit id="MothershipCore2" parent="GenericUnitStandard" unitName="MothershipCoreHero">
         <Macros value="PhysicsDeathsSwarmAir"/>
         <Macros value="PhysicsDeathsVoidAir"/>
@@ -646,6 +678,10 @@
             <Image value="Assets\Textures\Wireframe-Protoss-mothershipcore-Shield02.dds"/>
             <Image value="Assets\Textures\Wireframe-Protoss-mothershipcore-Shield03.dds"/>
         </WireframeShield>
+        <MinimapIcon value="Assets\Textures\mothershipportrait_static.dds"/>
+        <MinimapIconIsTeamColored value="1"/>
+        <MinimapIconScale value="0.090000"/>
+        <MinimapIconBackgroundIsTeamColored value="1"/>
     </CActorUnit>
     <CActorSimple id="Nova_Plasma_Death_Tinter">
         <On index="4" Target="" Send="TimerSet 0.100000 Delay"/>
@@ -1051,6 +1087,75 @@
         <UnitIcon value="Assets\Textures\btn-building-terran-missileturret.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-MissileTurret.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="RoguePurifierSupportDroneA2" parent="GenericUnitStandard" unitName="ScienceRepairDrone">
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Observer_Land"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="Create RoguePurifierSupportDroneAPowerUp"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="Create RoguePurifierSupportDroneAPowerUpSound"/>
+        <On Terms="WeaponStop.*.AttackStop" Target="RoguePurifierSupportDroneAPowerUp" Send="Destroy"/>
+        <On Terms="WeaponStop.*.AttackStop" Target="RoguePurifierSupportDroneAPowerUpSound" Send="Destroy"/>
+        <Model value="RoguePurifierSupportDroneA"/>
+        <Scale value="0.300000"/>
+        <AnimBlendTime value="1.200000"/>
+        <BuildModel value="RoguePurifierSupportDroneA"/>
+        <DeathArray index="Normal" ModelLink="RoguePurifierSupportDroneADeath" SoundLink="Observer_Explode"/>
+        <PlacementModel value="RoguePurifierSupportDroneA"/>
+        <PortraitModel value="WardenSupportAlphaPortrait"/>
+        <BarOffset value="40"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-PurifierWardenSupportDrone.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/RoguePurifierSupportDroneA2"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="Observer_Ready"/>
+        <SoundArray index="What" value="Observer_What"/>
+        <SoundArray index="Yes" value="Observer_Yes"/>
+        <SoundArray index="Pissed" value="Observer_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-observer.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-PurifierWardenSupportDrone.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-PurifierWardenSupportDrone-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-PurifierWardenSupportDrone-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-PurifierWardenSupportDrone-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorUnit id="ScienceVessel2" parent="GenericUnitBase" unitName="ScienceVessel2">
+        <Aliases value="_UnitHuge"/>
+        <On Terms="Abil.Irradiate.SourceCastStart" Send="$Spell"/>
+        <On Terms="Effect.VoidScienceVesselNanoRepairTargetAB.Start; At Caster" Send="Create VoidScienceVesselNanoRepairBeam"/>
+        <Model value="ScienceVessel"/>
+        <BuildModel value="ScienceVessel"/>
+        <DeathArray index="Normal" ModelLink="ScienceVesselDeath" SoundLink=""/>
+        <DeathActorModel value="ScienceVesselDeathModel"/>
+        <PlacementModel value="ScienceVessel"/>
+        <PortraitModel value="ScienceVesselPortrait"/>
+        <BarWidth value="36"/>
+        <CustomUnitStatusFrame value="HotS_UnitStatus/KerriganHeroUnitStatusFrameTemplate"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-sciencevessel.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Terran-ScienceVessel.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <MinimapIcon value="Assets\Textures\sciencevesselportrait_static.dds"/>
+        <MinimapIconIsTeamColored value="1"/>
+        <MinimapIconScale value="0.090000"/>
+        <MinimapIconBackgroundIsTeamColored value="1"/>
+        <SoundArray index="Ready" value="ScienceVessel_Ready"/>
+        <SoundArray index="Help" value="ScienceVessel_Help"/>
+        <SoundArray index="What" value="ScienceVessel_What"/>
+        <SoundArray index="Yes" value="ScienceVessel_Yes"/>
+        <SoundArray index="Attack" value="ScienceVessel_Attack"/>
+        <SoundArray index="Pissed" value="ScienceVessel_Pissed"/>
+        <SoundArray index="Movement" value="ScienceVessel_Movement"/>
+        <StatusBarOn index="Custom" value="1"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Terran-ScienceVessel.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-sciencevessel.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorSound id="StunningBlastImpactSound">

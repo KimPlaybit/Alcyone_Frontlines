@@ -134,6 +134,21 @@
         <EffectArray index="2" Reference="Weapon,VoidRaySwarm,Level"/>
         <EffectArray index="15" Reference="Weapon,VoidRaySwarm,Icon"/>
     </CUpgrade>
+    <CUpgrade id="ScienceVesselUpgrades">
+        <EffectArray Reference="Effect,IrradiatePeriodicDamage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,CarrierRepairDroneHealTarget,VitalArray[Life].Change" Value="0.1"/>
+        <EffectArray Reference="Effect,KaraxRepairDroneRepairShield,VitalArray[Life].Change" Value="0.3"/>
+        <EffectArray Reference="Effect,NovaDefensiveDronePlaceholderShot,Amount" Value="4"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtAttributeUnscaled[Heroic]" Value="2"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtUnscaled[Spell]" Value="2"/>
+        <EffectArray Reference="Behavior,MedivacSpeedBoost,Duration" Value="0.500000"/>
+        <EffectArray Reference="Behavior,MedivacSpeedBoost,Modification.MoveSpeedMultiplier" Value="0.05"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.VitalMaxArray[Life]" Value="10"/>
+        <AffectedUnitArray value="ScienceVessel2"/>
+        <AffectedUnitArray value="LabTurretUp2"/>
+        <AffectedUnitArray value="ScienceRepairDrone"/>
+        <MaxLevel value="10"/>
+    </CUpgrade>
     <CUpgrade id="SeismicSpines">
         <Icon value="Assets\Textures\btn-upgrade-kerrigan-seismicspines.dds"/>
         <EffectArray Operation="Set" Reference="Effect,LurkerE,AreaArray[0].Radius" Value="0.8"/>

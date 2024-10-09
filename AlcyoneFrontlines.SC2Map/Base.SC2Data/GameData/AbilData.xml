@@ -62,6 +62,83 @@
         </Cost>
         <TargetFilters index="0" value="Structure,Visible;Self,Enemy,UnderConstruction"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="KaraxRepairDrone">
+        <Arc value="360"/>
+        <ArcSlop value="360"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="NovaGadgetDefensiveDroneSummon">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+        <Arc value="360"/>
+        <ArcSlop value="360"/>
+        <CmdButtonArray index="Execute" Requirements=""/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TurretLab">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="LabTurret"/>
+        <Flags index="RangeUseCasterRadius" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge Link="Abil/SpawnTurretLab"/>
+            <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnTurretLab" Location="Unit" TimeUse="10"/>
+        </Cost>
+        <Placeholder value="LabTurretUp"/>
+        <Range value="11"/>
+        <Arc value="360"/>
+        <AINotifyEffect value="PhaseCannon"/>
+        <ProducedUnitArray value="LabTurretUp"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GasTurret"/>
+        <PlaceUnit value="LabTurretUp"/>
+    </CAbilEffectTarget>
+    <CAbilArmMagazine id="ScienceVesselRepairDroneHanger">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Launch value="ReleaseAtSource"/>
+        <Flags index="AutoCreate" value="1"/>
+        <Flags index="Retarget" value="1"/>
+        <Leash value="4"/>
+        <InfoArray index="Ammo1" CountStart="2" Manage="Recall" Unit="ScienceRepairDrone">
+            <Charge HideCount="1" Link="CarrierRepairDrone" Location="Unit"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="RepairDrones">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <EffectArray index="Create" value="CarrierRepairDroneRecall"/>
+        <ExternalAngle value="-135"/>
+        <ExternalAngle value="135"/>
+        <MaxCount value="2"/>
+    </CAbilArmMagazine>
+    <CAbilArmMagazine id="RepairDrones">
+        <AbilSetId value="CarrierHanger"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Flags index="AutoCastOffOwnerLeave" value="0"/>
+        <Flags index="AutoCreate" value="1"/>
+        <Flags index="Retarget" value="1"/>
+        <Leash value="12"/>
+        <InfoArray index="Ammo1" Time="8" CountStart="4" Manage="Recall" Unit="Interceptor">
+            <Charge Link="CarrierInterceptor" Location="Unit"/>
+            <Cooldown Link="CarrierTrainInterceptor" TimeUse="0.01"/>
+            <Button DefaultButtonFace="Interceptor" Requirements="ArmInterceptor">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="LeashRetarget" value="1"/>
+        </InfoArray>
+        <Alert value="TrainComplete"/>
+        <EffectArray index="Death" value="InterceptorFate"/>
+        <MaxCount value="8"/>
+    </CAbilArmMagazine>
+    <CAbilEffectTarget id="CarrierRepairDroneHeal">
+        <TargetFilters index="0" value="Mechanical,Visible;Self,Enemy,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <ArcSlop value="360"/>
+        <AutoCastFilters value="Mechanical,Visible;Self,Enemy,Missile,Dead,Hidden,Invulnerable"/>
+        <AutoCastValidatorArray index="3" value="CasterNotStunned"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="EmpowerZergBuilding">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="EmpowerZergBuildingSet"/>
@@ -689,7 +766,7 @@
         <Cost index="0">
             <Vital index="Energy" value="50"/>
         </Cost>
-        <TargetFilters index="0" value="-;Player,Ally,Neutral,Structure,RawResource,HarvestableResource,Item,Dead,Hidden,Invulnerable"/>
+        <TargetFilters index="0" value="Structure;Enemy,RawResource,HarvestableResource,Item,Dead,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="KerriganEpilogue03CreepTeleport">
         <Cost index="0">

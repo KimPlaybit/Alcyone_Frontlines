@@ -9,6 +9,31 @@
             <VitalRegenMultiplier index="Energy" value="-1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BuffEnergyRegen2">
+        <InfoIcon value="Assets\Textures\btn-unit-protoss-mothershipcore.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AroundNexusBase2"/>
+        <Duration value="99"/>
+        <FinalEffect value="EnergyRegenerationApplyBehavior2"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ScienceVesselBuffDamage">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AlliedBaseAround2"/>
+        <Duration value="99"/>
+        <Modification SightBonus="3">
+            <VitalMaxArray index="Life" value="100"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0.5">
+            <Chance value="1"/>
+            <Cost>
+                <Charge Link="Behavior/DamageReduction"/>
+                <Cooldown Link="Behavior/DamageReduction"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BuffEnergyRegen">
         <InfoIcon value="Assets\Textures\btn-unit-protoss-mothershipcore.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -206,6 +231,16 @@
             <StateFlags index="SuppressFoodUsed" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="PoisonGas">
+        <InfoFlags index="Hidden" value="0"/>
+        <Duration value="0.25"/>
+        <Period value="0.2"/>
+        <InitialEffect value="IrradiatePeriodicDamage"/>
+        <Modification MoveSpeedMultiplier="0.8"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PoisonGasFiring">
+        <Period value="0.25"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="PrimalSlash">
         <InfoFlags index="Hidden" value="0"/>
         <Modification AttackSpeedMultiplier="1.2"/>
@@ -263,6 +298,7 @@
     <CBehaviorBuff id="Irradiate">
         <Duration value="10"/>
         <Period value="0.5"/>
+        <KillCredit Value="Caster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="KerriganAbilityEfficiency">
         <RefreshEffect value=""/>

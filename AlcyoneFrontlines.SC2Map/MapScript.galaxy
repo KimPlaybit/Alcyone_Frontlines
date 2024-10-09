@@ -118,6 +118,9 @@ int gv_queenTeam1;
 int gv_defilerTeam1;
 int gv_hydraliskTeam1;
 int gv_ultraliskTeam1;
+int gv_scienceVesselTeam1;
+int gv_nydusTeam1;
+int gv_mothershipTeam1;
 int gv_dialogTeam2;
 int gv_firebatTeam2;
 int gv_medicTeam2;
@@ -134,6 +137,9 @@ int gv_queenTeam2;
 int gv_defilerTeam2;
 int gv_hydraliskTeam2;
 int gv_ultraliskTeam2;
+int gv_scienceVesselTeam2;
+int gv_nydusTeam2;
+int gv_mothershipTeam2;
 playergroup gv_playersWhoPicked;
 
 void InitGlobals () {
@@ -201,6 +207,9 @@ void InitGlobals () {
     gv_defilerTeam1 = c_invalidDialogControlId;
     gv_hydraliskTeam1 = c_invalidDialogControlId;
     gv_ultraliskTeam1 = c_invalidDialogControlId;
+    gv_scienceVesselTeam1 = c_invalidDialogControlId;
+    gv_nydusTeam1 = c_invalidDialogControlId;
+    gv_mothershipTeam1 = c_invalidDialogControlId;
     gv_dialogTeam2 = c_invalidDialogId;
     gv_firebatTeam2 = c_invalidDialogControlId;
     gv_medicTeam2 = c_invalidDialogControlId;
@@ -217,6 +226,9 @@ void InitGlobals () {
     gv_defilerTeam2 = c_invalidDialogControlId;
     gv_hydraliskTeam2 = c_invalidDialogControlId;
     gv_ultraliskTeam2 = c_invalidDialogControlId;
+    gv_scienceVesselTeam2 = c_invalidDialogControlId;
+    gv_nydusTeam2 = c_invalidDialogControlId;
+    gv_mothershipTeam2 = c_invalidDialogControlId;
     gv_playersWhoPicked = PlayerGroupEmpty();
 }
 
@@ -302,6 +314,7 @@ trigger gt_IncreaseSize;
 trigger gt_AddRtsPlayer2Buildings;
 trigger gt_NydusWormLevelUp;
 trigger gt_MothershipCoreLevelUp;
+trigger gt_MothershipCoreLevelUp2;
 trigger gt_RemoveRtsPlayer2Buildings;
 trigger gt_AIBuildShieldBattery;
 trigger gt_AIBuildQueens;
@@ -340,6 +353,7 @@ trigger gt_HydraliskPicked;
 trigger gt_UltraliskPicked;
 trigger gt_MutaliskPicked;
 trigger gt_NydusPicked;
+trigger gt_ScienceVesselPicked;
 
 //--------------------------------------------------------------------------------------------------
 // Custom AI Functions
@@ -481,6 +495,9 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
+    AICampaignStart(1);
+    AICampaignStart(2);
+    AICampaignStart(3);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -973,7 +990,7 @@ void gf_SoldierSelectionTeam1 () {
     // Variable Initialization
 
     // Implementation
-    DialogCreate(500, 460, c_anchorCenter, 0, 0, true);
+    DialogCreate(500, 520, c_anchorCenter, 0, -60, true);
     gv_dialogTeam1 = DialogLastCreated();
     libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, 125, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/6B0E4B41"), ColorWithAlpha(0,0,0,0), false, 2.0);
     lv_raceCheck = gf_IsTerran(gv_rTSPlayer1);;
@@ -988,6 +1005,8 @@ void gf_SoldierSelectionTeam1 () {
         gv_marineTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/95662C04"), StringExternal("Param/Value/676144C1"), "");
         gv_spectreTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/C663381F"), StringExternal("Param/Value/0537FEF8"), "");
+        gv_scienceVesselTeam1 = DialogControlLastCreated();
     }
 
     lv_raceCheck = gf_IsZerg(gv_rTSPlayer1);;
@@ -1002,6 +1021,8 @@ void gf_SoldierSelectionTeam1 () {
         gv_ultraliskTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/76D64F9E"), StringExternal("Param/Value/498B9EE8"), "");
         gv_defilerTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/A41C81D6"), StringExternal("Param/Value/084A955C"), "");
+        gv_nydusTeam1 = DialogControlLastCreated();
     }
 
     lv_raceCheck = gf_IsProtoss(gv_rTSPlayer1);;
@@ -1016,6 +1037,8 @@ void gf_SoldierSelectionTeam1 () {
         gv_darkTemplarTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/C04D76E6"), StringExternal("Param/Value/ECA4DCC4"), "");
         gv_corsairTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/7520AAD2"), StringExternal("Param/Value/EBE8A6C8"), "");
+        gv_mothershipTeam1 = DialogControlLastCreated();
     }
 
     lv_raceCheck = gf_IsNonKnownRace(gv_rTSPlayer1);;
@@ -1030,6 +1053,8 @@ void gf_SoldierSelectionTeam1 () {
         gv_darkTemplarTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/7F5A5EF3"), StringExternal("Param/Value/5F7E8ECB"), "");
         gv_corsairTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/2468C4D9"), StringExternal("Param/Value/2315B703"), "");
+        gv_mothershipTeam1 = DialogControlLastCreated();
     }
 
     DialogSetVisible(gv_dialogTeam1, gv_soldierPlayers1, true);
@@ -1049,6 +1074,9 @@ void gf_SoldierSelectionTeam1 () {
     gf_DisableaDialogItem(gv_ultraliskTeam1);
     gf_DisableaDialogItem(gv_zealotTeam1);
     gf_DisableaDialogItem(gv_zerglingTeam1);
+    gf_DisableaDialogItem(gv_nydusTeam1);
+    gf_DisableaDialogItem(gv_scienceVesselTeam1);
+    gf_DisableaDialogItem(gv_mothershipTeam1);
     Wait(2.0, c_timeReal);
     gf_EnableaDialogItem(gv_adeptTemplarTeam1);
     gf_EnableaDialogItem(gv_corsairTemplarTeam1);
@@ -1065,6 +1093,9 @@ void gf_SoldierSelectionTeam1 () {
     gf_EnableaDialogItem(gv_ultraliskTeam1);
     gf_EnableaDialogItem(gv_zealotTeam1);
     gf_EnableaDialogItem(gv_zerglingTeam1);
+    gf_EnableaDialogItem(gv_scienceVesselTeam1);
+    gf_EnableaDialogItem(gv_nydusTeam1);
+    gf_EnableaDialogItem(gv_mothershipTeam1);
 }
 
 void gf_SoldierSelectionTeam2 () {
@@ -1075,7 +1106,7 @@ void gf_SoldierSelectionTeam2 () {
     // Variable Initialization
 
     // Implementation
-    DialogCreate(500, 460, c_anchorCenter, 0, 0, true);
+    DialogCreate(500, 520, c_anchorCenter, 0, -60, true);
     gv_dialogTeam2 = DialogLastCreated();
     libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, 125, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/2375821A"), ColorWithAlpha(0,0,0,0), false, 2.0);
     lv_raceCheck = gf_IsTerran(gv_rTSPlayer2);;
@@ -1090,6 +1121,8 @@ void gf_SoldierSelectionTeam2 () {
         gv_marineTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/FA73D067"), StringExternal("Param/Value/50EC7606"), "");
         gv_spectreTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/43D63725"), StringExternal("Param/Value/3F50B0F3"), "");
+        gv_scienceVesselTeam2 = DialogControlLastCreated();
     }
 
     lv_raceCheck = gf_IsZerg(gv_rTSPlayer2);;
@@ -1104,6 +1137,8 @@ void gf_SoldierSelectionTeam2 () {
         gv_ultraliskTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/7AA40919"), StringExternal("Param/Value/0A4BE2A9"), "");
         gv_defilerTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/74A2598A"), StringExternal("Param/Value/17222890"), "");
+        gv_nydusTeam2 = DialogControlLastCreated();
     }
 
     lv_raceCheck = gf_IsProtoss(gv_rTSPlayer2);;
@@ -1118,6 +1153,8 @@ void gf_SoldierSelectionTeam2 () {
         gv_darkTemplarTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/BD6DEDF2"), StringExternal("Param/Value/2766BD99"), "");
         gv_corsairTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/8F2FA7A7"), StringExternal("Param/Value/855B8B59"), "");
+        gv_mothershipTeam2 = DialogControlLastCreated();
     }
 
     lv_raceCheck = gf_IsNonKnownRace(gv_rTSPlayer2);;
@@ -1132,6 +1169,8 @@ void gf_SoldierSelectionTeam2 () {
         gv_darkTemplarTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/14D64E8A"), StringExternal("Param/Value/EA754D91"), "");
         gv_corsairTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/F96CB842"), StringExternal("Param/Value/4BD35D3F"), "");
+        gv_mothershipTeam2 = DialogControlLastCreated();
     }
 
     DialogSetVisible(gv_dialogTeam2, gv_soldierPlayers2, true);
@@ -1151,6 +1190,9 @@ void gf_SoldierSelectionTeam2 () {
     gf_DisableaDialogItem(gv_ultraliskTeam2);
     gf_DisableaDialogItem(gv_zealotTeam2);
     gf_DisableaDialogItem(gv_zerglingTeam2);
+    gf_DisableaDialogItem(gv_nydusTeam2);
+    gf_DisableaDialogItem(gv_scienceVesselTeam2);
+    gf_DisableaDialogItem(gv_mothershipTeam2);
     Wait(2.0, c_timeReal);
     gf_EnableaDialogItem(gv_adeptTemplarTeam2);
     gf_EnableaDialogItem(gv_corsairTemplarTeam2);
@@ -1167,6 +1209,9 @@ void gf_SoldierSelectionTeam2 () {
     gf_EnableaDialogItem(gv_ultraliskTeam2);
     gf_EnableaDialogItem(gv_zealotTeam2);
     gf_EnableaDialogItem(gv_zerglingTeam2);
+    gf_EnableaDialogItem(gv_scienceVesselTeam2);
+    gf_EnableaDialogItem(gv_nydusTeam2);
+    gf_EnableaDialogItem(gv_mothershipTeam2);
 }
 
 void gf_SetupTeams1 () {
@@ -3576,6 +3621,33 @@ void gt_MothershipCoreLevelUp_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MothershipCoreLevelUp 2
+//--------------------------------------------------------------------------------------------------
+bool gt_MothershipCoreLevelUp2_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ScienceVesselUpgrades", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MothershipCoreLevelUp2_Init () {
+    gt_MothershipCoreLevelUp2 = TriggerCreate("gt_MothershipCoreLevelUp2_Func");
+    TriggerAddEventUnitGainLevel(gt_MothershipCoreLevelUp2, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: RemoveRtsPlayer2Buildings
 //--------------------------------------------------------------------------------------------------
 bool gt_RemoveRtsPlayer2Buildings_Func (bool testConds, bool runActions) {
@@ -5343,7 +5415,7 @@ bool gt_MothershipCorePicked_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(gv_rTSPlayer1) == "Prot") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer1)) || ((PlayerRace(gv_rTSPlayer2) == "Prot") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer2)))))) {
+        if (!(((gv_playerPicked[EventPlayer()] == false) && ((gv_mothershipTeam1 == EventDialogControl()) || (gv_mothershipTeam2 == EventDialogControl()))))) {
             return false;
         }
     }
@@ -5385,7 +5457,7 @@ bool gt_MothershipCorePicked_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_MothershipCorePicked_Init () {
     gt_MothershipCorePicked = TriggerCreate("gt_MothershipCorePicked_Func");
-    TriggerAddEventChatMessage(gt_MothershipCorePicked, c_playerAny, "-PsiwebEstablished", true);
+    TriggerAddEventDialogControl(gt_MothershipCorePicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5713,7 +5785,7 @@ bool gt_NydusPicked_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(gv_rTSPlayer1) == "Zerg") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer1)) || ((PlayerRace(gv_rTSPlayer2) == "Zerg") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer2)))))) {
+        if (!(((gv_playerPicked[EventPlayer()] == false) && ((gv_nydusTeam1 == EventDialogControl()) || (gv_nydusTeam2 == EventDialogControl()))))) {
             return false;
         }
     }
@@ -5746,7 +5818,60 @@ bool gt_NydusPicked_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_NydusPicked_Init () {
     gt_NydusPicked = TriggerCreate("gt_NydusPicked_Func");
-    TriggerAddEventChatMessage(gt_NydusPicked, c_playerAny, "-sudyn", true);
+    TriggerAddEventDialogControl(gt_NydusPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Science Vessel Picked
+//--------------------------------------------------------------------------------------------------
+bool gt_ScienceVesselPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_playerPicked[EventPlayer()] == false) && ((gv_scienceVesselTeam1 == EventDialogControl()) || (gv_scienceVesselTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIClearMessages(PlayerGroupAll(), c_messageAreaChat);
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/0C3AC057")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "ScienceVessel2", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "ScienceVessel2", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
+    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
+    gv_playerPicked[EventPlayer()] = true;
+    PlayerGroupAdd(gv_playersWhoPicked, EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ScienceVesselPicked_Init () {
+    gt_ScienceVesselPicked = TriggerCreate("gt_ScienceVesselPicked_Func");
+    TriggerAddEventDialogControl(gt_ScienceVesselPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5785,6 +5910,7 @@ void InitTriggers () {
     gt_AddRtsPlayer2Buildings_Init();
     gt_NydusWormLevelUp_Init();
     gt_MothershipCoreLevelUp_Init();
+    gt_MothershipCoreLevelUp2_Init();
     gt_RemoveRtsPlayer2Buildings_Init();
     gt_AIBuildShieldBattery_Init();
     gt_AIBuildQueens_Init();
@@ -5823,6 +5949,7 @@ void InitTriggers () {
     gt_UltraliskPicked_Init();
     gt_MutaliskPicked_Init();
     gt_NydusPicked_Init();
+    gt_ScienceVesselPicked_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

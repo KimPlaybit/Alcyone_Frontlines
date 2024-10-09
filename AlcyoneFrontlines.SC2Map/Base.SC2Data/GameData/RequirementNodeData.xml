@@ -32,35 +32,32 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDefenseStructureUpdates12CompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DefenseStructureUpdates12" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDefenseStructureUpdates12QueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DefenseStructureUpdates12" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDefenseStructureUpdates13QueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DefenseStructureUpdates13" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDefenseStructureUpdates1CompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DefenseStructureUpdates1" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDefenseStructureUpdates1QueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DefenseStructureUpdates1" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDefenseStructureUpdates1Total">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DefenseStructureUpdates1" State="Total"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHaveAlarakPsiOrbCompleteOnly">
+        <Count Link="" State="QueuedOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHaveKaraxRepairDroneCompleteOnly">
         <Count Link="" State="QueuedOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHurricaneEnginesQueuedOrBetter">
@@ -119,22 +116,18 @@
         <OperandArray index="1" value="1"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeDefenseStructureUpdates12QueuedOrBetter0">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeDefenseStructureUpdates12QueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeDefenseStructureUpdates13QueuedOrBetter0">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeDefenseStructureUpdates13QueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeDefenseStructureUpdates1QueuedOrBetter0">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeDefenseStructureUpdates1QueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
     </CRequirementEq>
     <CRequirementGTE id="GTECountUpgradeDefenseStructureUpdates12CompleteOnly1">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeDefenseStructureUpdates12CompleteOnly"/>
         <OperandArray index="1" value="1"/>
     </CRequirementGTE>

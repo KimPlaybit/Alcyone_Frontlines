@@ -364,6 +364,167 @@
         <HotkeyCategory value="Unit/Category/TerranUnits"/>
         <AIOverideTargetPriority value="3"/>
     </CUnit>
+    <!--CUnit id="Harbinger">-->
+    <!--        <DeathRevealRadius value="3"/>-->
+    <!--        <Mob value="Campaign"/>-->
+    <!--        <FlagArray index="UseLineOfSight" value="1"/>-->
+    <!--        <PlaneArray index="Ground" value="1"/>-->
+    <!--        <LifeStart value="5000"/>-->
+    <!--        <LifeMax value="5000"/>-->
+    <!--        <LifeArmor value="2"/>-->
+    <!--        <LifeRegenRate value="0.2734"/>-->
+    <!--        <LifeArmorName value="Unit/LifeArmorName/HybridArmor"/>-->
+    <!--        <EnergyStart value="200"/>-->
+    <!--        <EnergyMax value="200"/>-->
+    <!--        <Mover value="Dragoon"/>-->
+    <!--        <Height value="1"/>-->
+    <!--        <Speed value="1.5"/>-->
+    <!--        <Acceleration value="6.25"/>-->
+    <!--        <LateralAcceleration value="46"/>-->
+    <!--        <Sight value="9"/>-->
+    <!--        <AttackTargetPriority value="20"/>-->
+    <!--        <DamageDealtXP value="1"/>-->
+    <!--        <DamageTakenXP value="1"/>-->
+    <!--        <KillXP value="80"/>-->
+    <!--        <WeaponArray Link="HarbingerWeapon"/>-->
+    <!--        <BehaviorArray Link="HarbingerAura"/>-->
+    <!--        <AbilArray Link="stop"/>-->
+    <!--        <AbilArray Link="attack"/>-->
+    <!--        <AbilArray Link="move"/>-->
+    <!--        <AbilArray Link="DisruptionCloud"/>-->
+    <!--        <AbilArray Link="VoidHarbingerDarkConsumption"/>-->
+    <!--        <AbilArray Link="VoidHarbingerVoidEmpowerment"/>-->
+    <!--        <AbilArray Link="EnervatingBeam"/>-->
+    <!--        <CardLayouts>-->
+    <!--            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>-->
+    <!--            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>-->
+    <!--            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>-->
+    <!--            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>-->
+    <!--            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>-->
+    <!--            <LayoutButtons Face="DisruptionCloud" Type="AbilCmd" AbilCmd="DisruptionCloud,Execute" Row="2" Column="0"/>-->
+    <!--            <LayoutButtons Face="DarkConsumptionOn" Type="AbilCmd" AbilCmd="VoidHarbingerDarkConsumption,On" Row="2" Column="1"/>-->
+    <!--            <LayoutButtons Face="DarkConsumptionOff" Type="AbilCmd" AbilCmd="VoidHarbingerDarkConsumption,Off" Row="2" Column="1"/>-->
+    <!--            <LayoutButtons Face="VoidEmpowermentOff" Type="AbilCmd" AbilCmd="VoidHarbingerVoidEmpowerment,Off" Row="2" Column="2"/>-->
+    <!--            <LayoutButtons Face="VoidEmpowermentOn" Type="AbilCmd" AbilCmd="VoidHarbingerVoidEmpowerment,On" Row="2" Column="2"/>-->
+    <!--            <LayoutButtons Face="HarbingerEnervatingBeam" Type="AbilCmd" AbilCmd="EnervatingBeam,Execute" Row="2" Column="3"/>-->
+    <!--        </CardLayouts>-->
+    <!--        <Radius value="1.5"/>-->
+    <!--        <InnerRadius value="1"/>-->
+    <!--        <CargoSize value="4"/>-->
+    <!--        <ScoreKill value="1600"/>-->
+    <!--        <SubgroupPriority value="15"/>-->
+    <!--        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>-->
+    <!--        <Attributes index="Psionic" value="1"/>-->
+    <!--        <Attributes index="Massive" value="1"/>-->
+    <!--    </CUnit>-->
+    <!--    <CUnit id="HarbingerKillEverythingWeapon" parent="MISSILE">-->
+    <!--        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>-->
+    <!--    </CUnit>-->
+    <!--    <CUnit id="HarbingerLaunchMissileWeapon" parent="MISSILE">-->
+    <!--        <Mover value="HarbingerKillEverythingWeapon"/>-->
+    <!--        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>-->
+    <!--    </CUnit-->
+    <CUnit id="CarrierRepairDrone">
+        <Speed value="5"/>
+    </CUnit>
+    <CUnit id="LabTurretUp2">
+        <DeathRevealRadius value="3"/>
+        <Facing value="29.9926"/>
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="AIDefense" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranBuildingPlating"/>
+        <Sight value="7"/>
+        <CostResource index="Minerals" value="150"/>
+        <RepairTime value="33.3332"/>
+        <AttackTargetPriority value="20"/>
+        <BehaviorArray Link="TerranBuildingBurnDown"/>
+        <BehaviorArray Link="PoisonGasFiring"/>
+        <BehaviorArray Link="ScienceVesselBuffDamage"/>
+        <WeaponArray Turret="LabTurret"/>
+        <CardLayouts>
+            <LayoutButtons Face="Halt" Type="AbilCmd" AbilCmd="BuildInProgress,Halt" Row="2" Column="3"/>
+            <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="Detector" Type="Passive" Behavior="DistortionSensors" Row="2" Column="3"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="LabTurretBurrow,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <ScoreMake value="50"/>
+        <ScoreKill value="150"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="12"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <GlossaryPriority value="263"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+    </CUnit>
+    <CUnit id="NovaDefensiveDrone">
+        <Attributes index="Heroic" value="1"/>
+        <BehaviorArray Link="KaraxRepairDroneShieldRestore"/>
+        <BehaviorArray Link="KaraxRepairDroneTimedLife"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="KaraxRepairDroneRepair" Type="Passive" Row="1" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ScienceRepairDrone">
+        <Race value="Prot"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="AISupport" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Mover value="Fly"/>
+        <Speed value="5"/>
+        <Acceleration value="2.125"/>
+        <Height value="3.75"/>
+        <CostCategory value="Army"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="CarrierRepairDroneHeal"/>
+        <BehaviorArray Link="AbilityTargetExclusionBehavior"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
+            <LayoutButtons Face="CarrierRepairDroneHeal" Type="AbilCmd" AbilCmd="CarrierRepairDroneHeal,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="4"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
     <CUnit id="CollapsibleRockTowerDebrisRampLeftGreen">
         <BehaviorArray Link="RockCrushSearch"/>
     </CUnit>
@@ -1131,6 +1292,7 @@
         <GlossaryWeakArray value="Mutalisk"/>
         <GlossaryWeakArray value="Phoenix"/>
         <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+        <RandomNameArray value="Irega"/>
     </CUnit>
     <CUnitHero id="MutaliskHero2" parent="AccelerationZoneBase">
         <Name value="Unit/Name/MutaliskHero2"/>
@@ -1391,6 +1553,7 @@
         <GlossaryCategory value="Unit/Category/ZergUnits"/>
         <GlossaryPriority value="261"/>
         <HotkeyCategory value="Unit/Category/ZergUnits"/>
+        <RandomNameArray value="Sudyn"/>
     </CUnitHero>
     <CUnit id="PhotonCannon2">
         <Facing value="45"/>
@@ -1535,6 +1698,115 @@
     <CUnit id="RoboticsFacilityWarp">
         <WeaponArray Turret="Nexus"/>
     </CUnit>
+    <CUnitHero id="ScienceVessel2" parent="AccelerationZoneBase">
+        <Name value="Unit/Name/ScienceVessel2"/>
+        <RandomNameArray value="Joseph Newbery"/>
+        <Description value="Button/Tooltip/ScienceVessel2"/>
+        <Facing value="0"/>
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="CreateVisible" value="0"/>
+        <FlagArray index="Uncommandable" value="0"/>
+        <FlagArray index="Untooltipable" value="1"/>
+        <FlagArray index="Untargetable" value="0"/>
+        <FlagArray index="Hero" value="1"/>
+        <FlagArray index="Invulnerable" value="0"/>
+        <FlagArray index="NoPortraitTalk" value="0"/>
+        <FlagArray index="AISupport" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="0"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <FogVisibility value="Hidden"/>
+        <EditorFlags index="NeutralDefault" value="0"/>
+        <PlaneArray index="Ground" value="0"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Land1" value="0"/>
+        <Collide index="Land2" value="0"/>
+        <Collide index="Land6" value="0"/>
+        <Collide index="Land7" value="0"/>
+        <Collide index="Land9" value="0"/>
+        <Collide index="Land16" value="0"/>
+        <Collide index="Air1" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Structure" value="0"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <Mover value="Fly"/>
+        <Speed value="2.3984"/>
+        <Acceleration value="1000"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="11"/>
+        <Height value="3"/>
+        <VisionHeight value="4"/>
+        <Food value="-2"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="100"/>
+        <CostResource index="Vespene" value="200"/>
+        <RepairTime value="41.667"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="45"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="Irradiate"/>
+        <AbilArray Link="NovaGadgetDefensiveDroneSummon"/>
+        <AbilArray Link="ScienceVesselRepairDroneHanger"/>
+        <AbilArray Link="MedivacSpeedBoost"/>
+        <AbilArray Link="TurretLab"/>
+        <BehaviorArray index="0" Link="Detector11"/>
+        <BehaviorArray Link="TerranLevels"/>
+        <BehaviorArray Link="UnknownBehavior"/>
+        <BehaviorArray Link="TerranEnergyBonus"/>
+        <BehaviorArray Link="TerranAttackBonus"/>
+        <BehaviorArray Link="BuffEnergyRegen2"/>
+        <WeaponArray Turret="ScienceVesselRotate"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
+            <LayoutButtons Face="Irradiate" Type="AbilCmd" AbilCmd="Irradiate,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ScienceSpeedBoost22" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="ScienceSpeedBoost2" Type="AbilCmd" AbilCmd="MedivacSpeedBoost,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="CommanderTraitNovaDefensiveDrone" Type="AbilCmd" AbilCmd="NovaGadgetDefensiveDroneSummon,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="GasTurret" Type="AbilCmd" AbilCmd="TurretLab,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="Irradiate2" Type="Passive" Row="1" Column="1"/>
+            <LayoutButtons Face="Detector" Type="Passive" Row="1" Column="4"/>
+            <LayoutButtons Face="RepairDrones" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="CommanderTraitNovaDefensiveDrone2" Type="Passive" Row="1" Column="2"/>
+            <LayoutButtons Face="GasTurret2" Type="Passive" Row="1" Column="3"/>
+        </CardLayouts>
+        <Radius value="0.625"/>
+        <SeparationRadius value="0.625"/>
+        <ScoreMake value="300"/>
+        <ScoreKill value="600"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="19"/>
+        <MinimapRadius value="0.625"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
+        <TacticalAI value=""/>
+        <LeaderAlias value="ScienceVessel2"/>
+        <HotkeyAlias value="ScienceVessel2"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <GlossaryPriority value="180"/>
+        <HotkeyCategory value="Unit/Category/TerranStory"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="33"/>
+            <ChanceArray index="Idle" value="33"/>
+        </Fidget>
+    </CUnitHero>
     <CUnit id="SmallNydusSpawner">
         <DeathRevealRadius value="3"/>
         <Facing value="29.9707"/>

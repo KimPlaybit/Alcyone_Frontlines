@@ -13,6 +13,10 @@
         <Universal value="1"/>
         <SimpleDisplayText value="SimpleDisplay/Attack2"/>
     </CButton>
+    <CButton id="CommanderTraitNovaDefensiveDrone2">
+        <Icon value="Assets\Textures\btn-upgrade-terran-nova-defensivedrone.dds"/>
+        <HotkeyAlias value="CommanderTraitNovaDefensiveDrone"/>
+    </CButton>
     <CButton id="EmpowerZergBuilding">
         <Icon value="Assets\Textures\btn-upgrade-zerg-glialreconstitution.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-arcshield.dds"/>
@@ -34,6 +38,11 @@
         <Icon value="Assets\Textures\btn-ability-protoss-hardenedshields-color.dds"/>
         <HidesForSimpleText value="0"/>
     </CButton>
+    <CButton id="GasTurret2">
+        <Icon value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        <AlertIcon value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        <HotkeyAlias value="GasTurret"/>
+    </CButton>
     <CButton id="HydraliskDenImpalerPassive2">
         <Icon value="Assets\Textures\btn-unit-zerg-ultralisk.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
@@ -44,6 +53,26 @@
         <Icon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-hydralisk-impaler.dds"/>
         <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="GasTurret">
+        <Icon value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        <AlertIcon value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+    </CButton>
+    <CButton id="Irradiate2">
+        <Icon value="Assets\Textures\btn-ability-terran-irradiate.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-irradiate.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="RepairDrone">
+        <Icon value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ScienceSpeedBoost2">
+        <Icon value="Assets\Textures\BTN-Upgrade-Terran-MedivacEmergencyThrusters.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Upgrade-Terran-MedivacEmergencyThrusters.dds"/>
+        <EditorCategories value="Race:Neutral"/>
     </CButton>
     <CButton id="MothershipCoreWeapon2">
         <Icon value="Assets\Textures\BTN-Ability-Protoss-Purify.dds"/>
@@ -64,6 +93,12 @@
     <CButton id="SOAMothershipBlinkStrike2">
         <Icon value="Assets\Textures\btn-ability-protoss-wormholetransit-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ScienceSpeedBoost22">
+        <Icon value="Assets\Textures\BTN-Upgrade-Terran-MedivacEmergencyThrusters.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Upgrade-Terran-MedivacEmergencyThrusters.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <HotkeyAlias value="ScienceSpeedBoost2"/>
     </CButton>
     <CButton id="SpawnaSmallNydusWorm">
         <Icon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
