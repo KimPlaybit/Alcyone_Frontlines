@@ -10,7 +10,7 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="BuffEnergyRegen2">
-        <InfoIcon value="Assets\Textures\btn-unit-protoss-mothershipcore.dds"/>
+        <InfoIcon value="Assets\Textures\BTN-Unit-Terran-ScienceVessel.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="AroundNexusBase2"/>
         <Duration value="99"/>
@@ -18,6 +18,9 @@
         <Modification>
             <VitalRegenArray index="Energy" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KaraxRepairDroneTimedLife">
+        <Duration value="10"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ScienceVesselBuffDamage">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -233,13 +236,8 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="PoisonGas">
         <InfoFlags index="Hidden" value="0"/>
-        <Duration value="0.25"/>
-        <Period value="0.2"/>
-        <InitialEffect value="IrradiatePeriodicDamage"/>
+        <Duration value="0.45"/>
         <Modification MoveSpeedMultiplier="0.8"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="PoisonGasFiring">
-        <Period value="0.25"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PrimalSlash">
         <InfoFlags index="Hidden" value="0"/>
@@ -257,6 +255,14 @@
             <WeaponArray index="1" removed="1"/>
         </Modification>
         <KillCredit Value="Caster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ScienceVesselBuffDamage2">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AlliedBaseAround2"/>
+        <Duration value="99"/>
+        <Modification SightBonus="3">
+            <VitalMaxArray index="Energy" value="100"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="StunningBlast">
         <Duration value="2"/>
@@ -277,6 +283,12 @@
         <Duration value="3"/>
         <Modification MoveSpeedMultiplier="0.75" AttackSpeedMultiplier="0.75"/>
     </CBehaviorBuff>
+    <CBehaviorPowerSource id="WarpPrismPowerSource2">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
+        <Radius value="3.75"/>
+        <PowerLink value="PowerSource"/>
+    </CBehaviorPowerSource>
     <CBehaviorBuff id="WorkersResistanceToHeroic">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="SCVIsRepairing"/>
@@ -561,7 +573,7 @@
             <DamageDealtUnscaled index="Ranged" value="5"/>
             <DamageDealtUnscaled index="Splash" value="5"/>
             <DamageDealtUnscaled index="NoProc" value="5"/>
-            <VitalRegenMultiplier index="Energy" value="0.02"/>
+            <VitalRegenMultiplier index="Energy" value="0.6"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="TerranAttackSpeed">
@@ -587,7 +599,7 @@
         <Modification SightBonus="1" MoveSpeedMultiplier="1.02">
             <LifeArmorBonus value="1"/>
             <VitalMaxArray index="Energy" value="10"/>
-            <VitalRegenMultiplier index="Energy" value="0.3"/>
+            <VitalRegenMultiplier index="Energy" value="0.5"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorVeterancy id="TerranLevels">
@@ -753,7 +765,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification>
             <VitalMaxArray index="Energy" value="10"/>
-            <VitalRegenMultiplier index="Energy" value="1.3"/>
+            <VitalRegenMultiplier index="Energy" value="0.15"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="UnknownBehavior2">

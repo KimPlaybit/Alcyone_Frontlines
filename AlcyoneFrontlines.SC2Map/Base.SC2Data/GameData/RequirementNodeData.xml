@@ -7,6 +7,11 @@
         <Count Link="RoboticsFacility" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitRoboticsFacilityCompleteOnlyTechTreeCheat"/>
+    <CRequirementCountUnit id="CountUnitScienceRepairDroneQueuedOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="ScienceRepairDrone"/>
+    </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitSpectreNukeCompleteOnly3748442553">
         <Count Link="" State="QueuedOnly"/>
     </CRequirementCountUnit>
@@ -131,6 +136,10 @@
         <OperandArray index="0" value="CountUpgradeDefenseStructureUpdates12CompleteOnly"/>
         <OperandArray index="1" value="1"/>
     </CRequirementGTE>
+    <CRequirementLT id="LT2210218377CountUnitScienceRepairDroneQueuedOnly2">
+        <OperandArray index="0" value="CountUnitScienceRepairDroneQueuedOnly"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementLT>
     <CRequirementNot id="NotCountUpgradeAdaptiveTalonsQueuedOrBetterTechTreeCheat">
         <OperandArray index="0" value="CountUpgradeAdaptiveTalonsQueuedOrBetterTechTreeCheat"/>
     </CRequirementNot>

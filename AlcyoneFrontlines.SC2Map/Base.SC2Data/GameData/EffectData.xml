@@ -141,6 +141,11 @@
         <EditorCategories value=""/>
         <Behavior value="FenixChampionPowerShield"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="GasTurretApplyEffects">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="PoisonGasCloudAB"/>
+        <EffectArray value="IrradiatePeriodicDamage"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="FenixSOACharge">
         <ValidatorArray index="0" removed="1"/>
         <ValidatorArray index="1" removed="1"/>
@@ -227,7 +232,7 @@
     </CEffectLaunchMissile>
     <CEffectModifyUnit id="NovaDefensiveDroneRemoveEnergy">
         <VitalArray index="Energy">
-            <Change value="-4"/>
+            <Change value="-5"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectEnumArea id="NovaGadgetFlashBangGrenadeSearch">
@@ -266,8 +271,8 @@
         <ValidatorArray index="1" removed="1"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="PoisonGasCloudSearch">
-        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Invulnerable"/>
-        <AreaArray index="0" Radius="5"/>
+        <SearchFilters value="Ground,Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Invulnerable"/>
+        <AreaArray index="0" Radius="3" Effect="GasTurretApplyEffects"/>
     </CEffectEnumArea>
     <CEffectSet id="SmallMPCreateRoachling">
         <EditorCategories value="Race:Zerg"/>

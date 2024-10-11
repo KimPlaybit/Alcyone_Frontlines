@@ -497,7 +497,6 @@ wave cai_wave_createdWave (int w, int p) {
 void cai_startall () {
     AICampaignStart(1);
     AICampaignStart(2);
-    AICampaignStart(3);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4136,8 +4135,10 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
         PlayerModifyPropertyInt(gv_rTSPlayer2, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer2, c_playerPropVespene) + 200));
     }
 
-    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lv_triggeringPlayer, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, gv_rTSPlayer1, false);
     UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
     UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
     UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
     UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
@@ -4159,6 +4160,8 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
     libNtve_gf_StopTimer(lv_deathTimer);
     TimerWindowDestroy(lv_timerWindow);
     libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lv_triggeringPlayer, true);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, gv_rTSPlayer1, true);
     UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
     UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
     UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
@@ -4244,6 +4247,8 @@ bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
         PlayerModifyPropertyInt(gv_rTSPlayer1, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(gv_rTSPlayer1, c_playerPropVespene) + 200));
     }
 
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lv_triggeringPlayer, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, gv_rTSPlayer2, false);
     UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
     UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
     UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
@@ -4267,6 +4272,8 @@ bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
     libNtve_gf_StopTimer(lv_deathTimer);
     TimerWindowDestroy(lv_timerWindow);
     libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lv_triggeringPlayer, true);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, gv_rTSPlayer2, true);
     UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
     UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
     UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);

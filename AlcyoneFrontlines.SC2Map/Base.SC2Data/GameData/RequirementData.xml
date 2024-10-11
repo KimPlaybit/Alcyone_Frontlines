@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CRequirement id="ArmScienceVesselRepair">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <NodeArray index="Use" Link="LT2210218377CountUnitScienceRepairDroneQueuedOnly2"/>
+    </CRequirement>
     <CRequirement id="DontHaveVoidSentryNoMPHallucination">
         <NodeArray index="Show" Link=""/>
     </CRequirement>

@@ -469,6 +469,8 @@
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0.75"/>
+        <Footprint value="Footprint2x2Contour"/>
+        <PlacementFootprint value="Footprint2x2"/>
         <ScoreMake value="50"/>
         <ScoreKill value="150"/>
         <ScoreResult value="BuildOrder"/>
@@ -481,9 +483,13 @@
         <RankDisplay value="Always"/>
     </CUnit>
     <CUnit id="NovaDefensiveDrone">
+        <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="50"/>
         <BehaviorArray Link="KaraxRepairDroneShieldRestore"/>
         <BehaviorArray Link="KaraxRepairDroneTimedLife"/>
+        <BehaviorArray Link="ScienceVesselBuffDamage2"/>
         <CardLayouts index="0">
             <LayoutButtons Face="KaraxRepairDroneRepair" Type="Passive" Row="1" Column="1"/>
         </CardLayouts>
@@ -499,6 +505,8 @@
         <Collide index="Flying" value="1"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="9999"/>
+        <LifeMax value="9999"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
         <Mover value="Fly"/>
@@ -1249,7 +1257,6 @@
         <BehaviorArray Link="ProtossDamageBonus"/>
         <BehaviorArray Link="ProtossShieldBonus"/>
         <BehaviorArray Link="WarpPrismPowerSource"/>
-        <BehaviorArray Link="MothershipCoreLevelBonus"/>
         <BehaviorArray Link="BuffEnergyRegen"/>
         <WeaponArray Link="RepulsorCannon" Turret="MothershipCoreTurret"/>
         <CardLayouts>
@@ -1745,7 +1752,6 @@
         <Sight value="11"/>
         <Height value="3"/>
         <VisionHeight value="4"/>
-        <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="200"/>
@@ -1761,6 +1767,7 @@
         <AbilArray Link="ScienceVesselRepairDroneHanger"/>
         <AbilArray Link="MedivacSpeedBoost"/>
         <AbilArray Link="TurretLab"/>
+        <AbilArray Link="HangarQueue5"/>
         <BehaviorArray index="0" Link="Detector11"/>
         <BehaviorArray Link="TerranLevels"/>
         <BehaviorArray Link="UnknownBehavior"/>
