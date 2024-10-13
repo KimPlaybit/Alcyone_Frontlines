@@ -268,6 +268,7 @@ point gf_GetSpawnPointTeam1 (unit lp_deadPlayer);
 point gf_GetSpawnPointTeam2 (unit lp_deadPlayer);
 void gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer);
 void gf_ResetCooldownOfShadowFury (unit lp_killingUnit);
+void gf_DisplayDeathMessage (unit lp_killed, unit lp_killer, fixed lp_reviveTime);
 void gf_Corsair (int lp_player, unit lp_unit);
 unit gf_FindHealspot (unit lp_unit);
 unit gf_FindEnemyHero (unit lp_unit);
@@ -1817,6 +1818,46 @@ void gf_ResetCooldownOfShadowFury (unit lp_killingUnit) {
     // Implementation
     if (((UnitGetType(lp_killingUnit) == "AvengerHero") == true)) {
         UnitAbilityReset(lp_killingUnit, AbilityCommand("DarkTemplarShadowFury", 0), c_spendLocationAll);
+    }
+
+}
+
+void gf_DisplayDeathMessage (unit lp_killed, unit lp_killer, fixed lp_reviveTime) {
+    // Variable Declarations
+    color lv__AllyColor;
+    color lv__EnemyColor;
+    text lv__KilledTextBuilder;
+    text lv__KillerTextBuilder;
+
+    // Automatic Variable Declarations
+    playergroup auto89BF13A0_g;
+    int auto89BF13A0_var;
+
+    // Variable Initialization
+    lv__AllyColor = Color(28*100/255,167*100/255,234*100/255);
+    lv__EnemyColor = Color(100.00, 0.00, 0.00);
+
+    // Implementation
+    if ((lp_killed != null) && (lp_killer != null)) {
+        auto89BF13A0_g = PlayerGroupActive();
+        auto89BF13A0_var = -1;
+        while (true) {
+            auto89BF13A0_var = PlayerGroupNextPlayer(auto89BF13A0_g, auto89BF13A0_var);
+            if (auto89BF13A0_var < 0) { break; }
+            if ((libNtve_gf_PlayerIsEnemy(auto89BF13A0_var, UnitGetOwner(lp_killed), libNtve_ge_PlayerRelation_Enemy) == true)) {
+                lv__KilledTextBuilder = TextWithColor((PlayerName(UnitGetOwner(lp_killed)) + StringExternal("Param/Value/3E8A6F88") + UnitGetName(lp_killed)), lv__EnemyColor);
+            }
+            else {
+                lv__KilledTextBuilder = TextWithColor((PlayerName(UnitGetOwner(lp_killed)) + StringExternal("Param/Value/6AEE038F") + UnitGetName(lp_killed)), lv__AllyColor);
+            }
+            if ((libNtve_gf_PlayerIsEnemy(auto89BF13A0_var, UnitGetOwner(lp_killer), libNtve_ge_PlayerRelation_Enemy) == true)) {
+                lv__KillerTextBuilder = TextWithColor((PlayerName(UnitGetOwner(lp_killer)) + StringExternal("Param/Value/26A6547B") + UnitGetName(lp_killer)), lv__EnemyColor);
+            }
+            else {
+                lv__KillerTextBuilder = TextWithColor((PlayerName(UnitGetOwner(lp_killer)) + StringExternal("Param/Value/9F5BDE31") + UnitGetName(lp_killer)), lv__AllyColor);
+            }
+            UIDisplayMessage(PlayerGroupSingle(auto89BF13A0_var), c_messageAreaSubtitle, (lv__KilledTextBuilder + StringExternal("Param/Value/D6A77AD3") + lv__KillerTextBuilder + StringExternal("Param/Value/3ECC372B") + FixedToText(lp_reviveTime, c_fixedPrecisionAny) + StringExternal("Param/Value/2E1FE212")));
+        }
     }
 
 }
@@ -4123,7 +4164,7 @@ bool gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
         return false;
     }
     else {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/78E1C15D") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/1EC38BFD") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/46914403") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/8DBB0D73")))))))));
+        gf_DisplayDeathMessage(EventUnit(), libNtve_gf_KillingUnit(), gv_ressTimer);
     }
     gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
@@ -4235,7 +4276,7 @@ bool gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/4A0114E0") + (UnitGetName(EventUnit()) + (StringExternal("Param/Value/01AFC6B8") + (PlayerName(libNtve_gf_KillingPlayer()) + (StringExternal("Param/Value/5E8667DD") + (IntToText(gv_ressTimer) + StringExternal("Param/Value/560E1AB5")))))))));
+    gf_DisplayDeathMessage(EventUnit(), libNtve_gf_KillingUnit(), gv_ressTimer);
     gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
     gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
