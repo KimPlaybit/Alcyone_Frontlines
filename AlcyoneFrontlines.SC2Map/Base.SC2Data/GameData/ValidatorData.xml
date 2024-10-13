@@ -38,6 +38,10 @@
         </AreaArray>
         <SearchFilters value="Structure,Visible;Self,Player,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="HealableActive">
+        <Compare value="LE"/>
+        <Behavior value="Healable"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="BlinkTarget">
         <Type value="And"/>
         <CombineArray value="IsHeroic"/>
@@ -111,6 +115,10 @@
     <CValidatorUnitType id="IsVoidPylon">
         <Value value="VoidPylon"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareDamageTakenTime id="ReaperOutOfCombat2">
+        <Compare value="LE"/>
+        <Value value="7"/>
+    </CValidatorUnitCompareDamageTakenTime>
     <CValidatorUnitState id="SCVIsRepairing">
         <Enabled value="1"/>
         <State value="Harvesting"/>

@@ -73,16 +73,20 @@ Behavior/Name/FirebatAttackSpeed=Firebat Attack Speed
 Behavior/Name/FirebatAvatar=Avatar
 Behavior/Name/GatheringDummy=Gathering Dummy
 Behavior/Name/GoliathLevelBonus=Goliath Level Bonus
+Behavior/Name/GuardianShield2=Guardian Shield
+Behavior/Name/Healable=Not Healable
 Behavior/Name/HeroDarkTemplarDeepShadows=Hero Dark Templar Deep Shadows
 Behavior/Name/HinderEnergyRegn=Hinder Energy Regenerate
 Behavior/Name/MothershipCoreLevelBonus=Mothership Core Level Bonus
 Behavior/Name/NydusWhirlwind=Whirlwind
+Behavior/Name/PrologueVoidArmor2=Void Armor
 Behavior/Name/ProtossDamageBonus=Protoss Damage Bonus
 Behavior/Name/ProtossLevels=Protoss Levels
 Behavior/Name/ProtossMovementBonus=Protoss Movement Bonus
 Behavior/Name/ProtossShieldBonus=Protoss Shield Bonus
 Behavior/Name/ScienceVesselBuffDamage=Buff Damage
 Behavior/Name/ScienceVesselBuffDamage2=Buff Energy
+Behavior/Name/ShieldRegeneration=Shield Regeneration
 Behavior/Name/SpectreAttackBonus=Spectre Level Bonus
 Behavior/Name/Stimpack2=Stimpack
 Behavior/Name/Stimpack3=Stimpack
@@ -104,6 +108,7 @@ Behavior/Tooltip/DamageReduction=100% Damage Reduction
 Behavior/Tooltip/DefilerMPDarkSwarm=[PH] Units inside of Dark Cloud take 60% less damage from range
 Behavior/Tooltip/DragoonFrenzy=Attack speed increased.
 Behavior/Tooltip/FirebatAvatar=Dealing damage to any nearby units.
+Behavior/Tooltip/GuardianShield2=Incoming attack damage reduced by 2.
 Behavior/Tooltip/NydusWhirlwind=This unit is dealing damage to nearby enemies.
 Behavior/Tooltip/Stimpack2=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/Stimpack3=This unit moves and attacks more quickly while under the effects of Stimpack.
@@ -131,6 +136,7 @@ Button/Name/GasTurret2=Gas Turret
 Button/Name/GravitonBeamUrun=Graviton Beam
 Button/Name/GravitonOvercharge=Graviton Overcharge
 Button/Name/GuardianShield2=Guardian Shield
+Button/Name/Healable=Healable
 Button/Name/HurricaneEngines=Research Hurricane Engines
 Button/Name/HydraliskDenImpalerPassive2=Pygalisk
 Button/Name/HydraliskDenImpalerPassive22=Hydralisk
@@ -233,6 +239,7 @@ Button/Tooltip/GoliathHero=Heavy-fire support unit.<n/><n/><c val="#ColorAttackI
 Button/Tooltip/GravitonBeamUrun=Makes the units in the area float in the air, disabling their abilities. Effect lasts up to <d time="3"/>.<n/><n/><c val="#ColorAttackInfo">Massive units are immune.</c>
 Button/Tooltip/GravitonOvercharge=Overcharges the goliath graviton, Causing an explosion and lifts all enemy units around him up for 3 seconds. (does not work on buried targets)
 Button/Tooltip/GuardianShield2=Creates a range 4 aura that reduces all incoming attack damage to friendly units by 2. Lasts <d time="15"/>.
+Button/Tooltip/Healable=After being out of combat for 15 seconds. Marine will start to regenerate 2 life/second.
 Button/Tooltip/HotSTorrasque2=Heavy assault beast. Has an area-damage cleave attack. When killed, can be revived.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/HugeSpineCrawler=Anti-ground defensive structure. <n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/HurricaneEngines=Increases the move speed of Cyclone's to 4.73.
@@ -265,7 +272,7 @@ Button/Tooltip/MorphtoBanelingHero2=Puts a burrowed Zergling in the ground. Expl
 Button/Tooltip/MothershipCoreHero=Mobile flying caster. Can use Photon Overcharge, Mass Recall, and Time Warp abilities. Can upgrade into the Mothership.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/MothershipCoreTeleport=Teleports the Dragoon to an ally building.
 Button/Tooltip/MothershipCoreWeapon2=Increases Photon Overcharges damage by 5 per level
-Button/Tooltip/MothershipPassive2=Being around an Allied Nexus increases energy Regeneration to 1 Energy/Second. Additionally, shares Power with RTS Player.
+Button/Tooltip/MothershipPassive2=Being around an Allied Nexus increases energy Regeneration to 1 Energy/Second.<n/>Mothership core has a small power source under it and shares Power with RTS Player. Additionally, has a small detection under Mothership core.
 Button/Tooltip/MothershipStasis=Temporarily traps the Corsair and all air units nearby into a Stasis field. 
 Button/Tooltip/MuscularAugments=Hydralisk Movement speed increased by 25%.
 Button/Tooltip/MutaliskHero=Air unit. Bounces its shot to strike multiple targets. Can morph into a Viper.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
@@ -309,6 +316,7 @@ Button/Tooltip/ScienceRepairDrone=Flying spy. Cloak renders the unit invisible t
 Button/Tooltip/ScienceSpeedBoost2=Increases the Science vessels movement speed by 70% for <d time="8"/>.
 Button/Tooltip/ScienceSpeedBoost22=Increases Afterburners Speed by 5% per level and duration by 0.5s per level
 Button/Tooltip/ScienceVessel2=Aerial support unit. Can use Irradiate and Nano-Repair abilities.<n/><n/><c val="FFE303">Detector</c>
+Button/Tooltip/SentryPurifier2=Purifier Faction<n/>Robotic support unit. Can use Chrono Beam and Phasing Mode.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/ShieldBatteryRecharge2=Restores target unit or structure's shields.<n/><n/><c val="f078ff">Restores 3 shields per 1 energy.</c><n/><n/><c val="#ColorAttackInfo">Autocasting targets units and defensive structures only.</c>
 Button/Tooltip/SlivanPuke=Vomits acid onto the ground that damages and slows units in the area.
 Button/Tooltip/SmallNydusSpawner=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
@@ -474,9 +482,12 @@ Effect/Name/FlameThrowerApplyDoTBehavior2=Flame Thrower (Apply DoT Behavior)
 Effect/Name/FlameThrowerDamageSet2=Flame Thrower (Damage Set)
 Effect/Name/FlameThrowerViralPlasmaDoTDamage2=Flame Thrower (Viral Plasma DoT Damage)
 Effect/Name/GasTurretApplyEffects=GasTurretApplyEffects
+Effect/Name/GuardianShieldApplyBehavior2=Guardian Shield
+Effect/Name/GuardianShieldSearch2=Guardian Shield
 Effect/Name/HealHeroicUnitsAround=Heal Heroic Units Around
 Effect/Name/HealHeroicUnitsAround2=Heal Heroic Units Around
 Effect/Name/HealHeroicUnitsAround3=Heal Heroic Units Around
+Effect/Name/HeroGuardianShieldPresistant=Guardian Shield
 Effect/Name/HotSBanelingExplodeLargeSearchDamage2=Hot SBaneling Explode Large Search Damage
 Effect/Name/HotSUltraliskKaiserBlades2=Hot SUltralisk Kaiser Blades
 Effect/Name/HotSUltraliskKaiserBladesDamage2=Hot SUltralisk Kaiser Blades Damage
@@ -506,6 +517,7 @@ Effect/Name/NeedleSpinesLaunchMissile2=Needle Spines
 Effect/Name/PhotonCannonLM2=Photon Cannon (Launch Missile)
 Effect/Name/PhotonCannonU2=Photon Cannon (Damage)
 Effect/Name/PrimalGasCloudDamage2=Primal Gas Cloud Damage
+Effect/Name/PrologueVoidArmorSet2=Prologue Void Armor Set
 Effect/Name/ProtectWorkers=ProtectWorkers
 Effect/Name/ProtectWorkersBehaviour=Protect Workers
 Effect/Name/ProtectWorkersSearch=Protect Workers
@@ -829,6 +841,7 @@ Unit/Name/RoguePurifierSupportDroneA2=Warden Support Alpha
 Unit/Name/ScienceRepairDrone=Repair Drone
 Unit/Name/ScienceVessel2=Science Vessel
 Unit/Name/SensorTower2=Sensor Tower
+Unit/Name/SentryPurifier2=Energizer
 Unit/Name/SmallNydusSpawner=Small NydusSpawner
 Unit/Name/SpawnPoints=SpawnPoints
 Unit/Name/SpawnedOdin=Boss Odin

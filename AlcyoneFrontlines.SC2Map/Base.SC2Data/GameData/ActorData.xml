@@ -417,6 +417,10 @@
         <On Terms="ModelEvent; ModelEventName SoundLoopEnd" Send="Create FlagshipTimeBombDeathSound"/>
         <Model value="FlagshipTimeBomb"/>
     </CActorModel>
+    <CActorModel id="GuardianShield">
+        <On Terms="Effect.HeroGuardianShieldPresistant.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.HeroGuardianShieldPresistant.Stop; At Caster" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorUnit id="Hydralisk22" parent="GenericUnitBase" unitName="Hydralisk22">
         <Aliases value="_UnitMedium"/>
         <Macros value="ZergBurrowStandardAnimMacro"/>
@@ -728,7 +732,7 @@
         <DeathArray index="UnderConstruction" ModelLink="NydusCanalDeathUnderConstruction" SoundLink="Zerg_ExplosionLarge"/>
         <DeathCustoms ModelLink="ZergGenericBuildingDeath" Name="Detached"/>
         <DeathCustoms ModelLink="NydusCanalAirDeathLow" Name="AntiGravZerg"/>
-        <PlacementModel value="NydusCanalPlacement"/>
+        <PlacementModel value="NydusCanalPlacement2"/>
         <PortraitModel value="NydusCanalPortrait"/>
         <BarOffset value="115"/>
         <BarWidth value="85"/>
@@ -1157,6 +1161,57 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-sciencevessel.dds"/>
         </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="SentryPurifier2" parent="GenericUnitStandard" unitName="SentryPurifier2">
+        <Macros value="TerrainSquibAnimations"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Sentry_Land"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom SentryPurifier; MorphTo SentryPhasing" Send="AnimBracketStart Work Stand,Work,Start,A Stand,Work,A Stand,Work,End,A"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom SentryPhasing; MorphTo SentryPurifier" Send="AnimBracketStop Work"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Sentry_Land"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SentryPurifier" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom SentryPurifier" Send="Destroy"/>
+        <On Terms="Signal.*.CampaignBeamCreated" Send="RefSetFromMsg ::actor.MyAttackBeam ::Sender"/>
+        <On Terms="Signal.*.UnitRemoved" Target="::actor.MyAttackBeam" Send="Destroy Immediate"/>
+        <HostSiteOps Ops="SOpBankerSentry"/>
+        <Model value="SentryPurifier"/>
+        <AnimBlendTime value="0.650000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
+        <BuildModel value="SentryPurifierWarpIn"/>
+        <DeathArray index="Normal" ModelLink="SentryPurifierDeath" SoundLink="Energizer_Explode"/>
+        <PlacementModel value="SentryPurifierPlacement"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PortraitModel value="SentryPurifierPortrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="0.600000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleLargeVehicle"/>
+        </TerrainSquibs>
+        <BarOffset value="40"/>
+        <BarWidth value="50"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="Energizer_Ready"/>
+        <SoundArray index="Help" value="Energizer_Help"/>
+        <SoundArray index="What" value="Energizer_What"/>
+        <SoundArray index="Yes" value="Energizer_Yes"/>
+        <SoundArray index="Attack" value="Energizer_Attack"/>
+        <SoundArray index="Pissed" value="Energizer_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield03.dds"/>
+        </WireframeShield>
     </CActorUnit>
     <CActorSound id="StunningBlastImpactSound">
         <Sound value="Reaver_DeathExplosion"/>

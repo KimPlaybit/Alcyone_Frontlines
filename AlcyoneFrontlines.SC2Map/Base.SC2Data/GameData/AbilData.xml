@@ -84,7 +84,7 @@
             <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnTurretLab" Location="Unit" TimeUse="10"/>
         </Cost>
         <Placeholder value="LabTurretUp2"/>
-        <Range value="11"/>
+        <Range value="7"/>
         <Arc value="360"/>
         <AINotifyEffect value="PhaseCannon"/>
         <ProducedUnitArray value="LabTurretUp2"/>
@@ -140,6 +140,7 @@
         <ArcSlop value="360"/>
         <AutoCastFilters value="Mechanical,Visible;Self,Enemy,Missile,Dead,Hidden,Invulnerable"/>
         <AutoCastValidatorArray index="3" value="CasterNotStunned"/>
+        <AutoCastValidatorArray value="HealableActive"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="EmpowerZergBuilding">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
@@ -687,6 +688,8 @@
         <AutoCastFilters value="Self,Visible;-"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="AmonSpawnTentacleA"/>
         <CursorEffect value="MPCreateNydusWormCanal"/>
+        <Placeholder value="SmallNydusSpawner"/>
+        <PlaceUnit value="SmallNydusSpawner"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="PhaseCannon">
         <Range index="0" value="11"/>
@@ -1111,8 +1114,9 @@
     </CAbilEffectInstant>
     <CAbilEffectInstant id="PrologueVoidArmor">
         <Cost index="0">
-            <Cooldown TimeUse="45"/>
+            <Cooldown TimeUse="60"/>
         </Cost>
+        <Effect index="0" value="PrologueVoidArmorSet2"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="PsionicShockwave">
         <Cost>

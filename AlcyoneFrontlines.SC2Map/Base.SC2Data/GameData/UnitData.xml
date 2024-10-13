@@ -427,6 +427,9 @@
     <CUnit id="CarrierRepairDrone">
         <Speed value="5"/>
     </CUnit>
+    <CUnit id="LabTurret">
+        <Attributes index="Structure" value="0"/>
+    </CUnit>
     <CUnit id="LabTurretUp2">
         <DeathRevealRadius value="3"/>
         <Facing value="29.9926"/>
@@ -448,8 +451,8 @@
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Structure" value="1"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranBuildingPlating"/>
         <Sight value="7"/>
@@ -1258,6 +1261,7 @@
         <BehaviorArray Link="ProtossShieldBonus"/>
         <BehaviorArray Link="WarpPrismPowerSource"/>
         <BehaviorArray Link="BuffEnergyRegen"/>
+        <BehaviorArray Link="Detector375"/>
         <WeaponArray Link="RepulsorCannon" Turret="MothershipCoreTurret"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -1737,8 +1741,8 @@
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
+        <LifeStart value="125"/>
+        <LifeMax value="125"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
         <EnergyStart value="50"/>
@@ -1774,6 +1778,7 @@
         <BehaviorArray Link="TerranEnergyBonus"/>
         <BehaviorArray Link="TerranAttackBonus"/>
         <BehaviorArray Link="BuffEnergyRegen2"/>
+        <BehaviorArray Link="Healable"/>
         <WeaponArray Turret="ScienceVesselRotate"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -1814,6 +1819,29 @@
             <ChanceArray index="Idle" value="33"/>
         </Fidget>
     </CUnitHero>
+    <CUnit id="SentryPurifier2" parent="SentryCampaignBase">
+        <FlagArray index="Hero" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <AbilArray Link="VoidSentryChronoBeam"/>
+        <AbilArray Link="VoidSentryPhasingMode"/>
+        <AbilArray Link="VoidSentryShieldRepairDouble"/>
+        <AbilArray Link="ForceFieldMonitor"/>
+        <AbilArray Link="PrologueVoidArmor"/>
+        <AbilArray Link="HallucinationPhoenix"/>
+        <BehaviorArray Link="ProtossShieldBonus"/>
+        <BehaviorArray Link="UnknownBehavior2"/>
+        <BehaviorArray Link="ProtossMovementBonus"/>
+        <BehaviorArray Link="ProtossLevels"/>
+        <WeaponArray index="0" Link="EnergizerWeapon"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="VoidSentryChronoBeam" Type="AbilCmd" AbilCmd="VoidSentryChronoBeam,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="VoidSentryShieldRepairDouble" Type="AbilCmd" AbilCmd="VoidSentryShieldRepairDouble,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="GuardianShield" Type="AbilCmd" AbilCmd="PrologueVoidArmor,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="SentryTaldarimForceField" Type="AbilCmd" AbilCmd="ForceFieldMonitor,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
+        <HotkeyCategory value="Unit/Category/ProtossStory"/>
+    </CUnit>
     <CUnit id="SmallNydusSpawner">
         <DeathRevealRadius value="3"/>
         <Facing value="29.9707"/>
@@ -1841,7 +1869,6 @@
         <Collide index="Small" value="1"/>
         <Attributes index="Armored" value="1"/>
         <Attributes index="Biological" value="1"/>
-        <Attributes index="Structure" value="1"/>
         <LifeStart value="50"/>
         <LifeMax value="50"/>
         <LifeArmor value="1"/>
@@ -1866,8 +1893,8 @@
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
-        <Footprint value="Footprint3x3IgnoreCreepContour"/>
-        <PlacementFootprint value="Footprint3x3IgnoreCreepContour"/>
+        <Footprint value="Footprint1x1Creep"/>
+        <PlacementFootprint value="Footprint1x1Creep"/>
         <ScoreMake value="200"/>
         <ScoreKill value="200"/>
         <ScoreResult value="BuildOrder"/>

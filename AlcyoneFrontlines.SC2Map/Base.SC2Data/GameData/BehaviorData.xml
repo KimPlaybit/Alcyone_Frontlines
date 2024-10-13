@@ -19,8 +19,54 @@
             <VitalRegenArray index="Energy" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Detector375" parent="Detector">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-status-detector.dds"/>
+        <Modification Detect="3.75"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GuardianShield2">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-shieldbattery.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.6"/>
+        <Modification>
+            <VitalRegenArray index="Shields" value="10"/>
+        </Modification>
+        <DamageResponse>
+            <Kind index="Spell" value="0"/>
+            <ModifyAmount value="-2"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="KaraxRepairDroneTimedLife">
         <Duration value="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PrologueVoidArmor2">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="ShieldGZero"/>
+        <Duration value="0.6"/>
+        <Modification>
+            <VitalMaxArray index="Shields" value="100"/>
+            <VitalRegenArray index="Shields" value="5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Healable">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="ReaperOutOfCombat2"/>
+        <DisableValidatorArray value="NotFullLife"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShieldRegeneration">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="ShieldGZero"/>
+        <Duration value="0.6"/>
+        <Modification>
+            <VitalRegenArray index="Shields" value="10"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="ScienceVesselBuffDamage">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>

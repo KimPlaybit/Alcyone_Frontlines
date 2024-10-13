@@ -20,6 +20,9 @@
         <Amount value="30"/>
         <Kind value="Spell"/>
     </CEffectDamage>
+    <CEffectSet id="CarrierRepairDroneHealSet">
+        <ValidatorArray value="HealableActive"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="EmpowerZergBuilding">
         <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:Protoss"/>
@@ -168,6 +171,28 @@
         <PeriodicEffectArray value="FlagshipTimeBombSearch"/>
         <PeriodicPeriodArray value="0.125"/>
     </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GuardianShieldApplyBehavior2">
+        <ValidatorArray index="0" value="SourceNotHidden"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GuardianShield2"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="GuardianShieldSearch2">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4" Effect="GuardianShieldApplyBehavior2"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="HeroGuardianShieldPresistant">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="SourceUnit"/>
+        <InitialEffect value="GuardianShieldSearch2"/>
+        <PeriodCount value="20"/>
+        <PeriodicValidator value="NotVortexd"/>
+        <PeriodicEffectArray value="GuardianShieldSearch2"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
     <CEffectEnumArea id="IrradiateSearchArea">
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="4"/>
@@ -237,6 +262,7 @@
     </CEffectModifyUnit>
     <CEffectEnumArea id="NovaGadgetFlashBangGrenadeSearch">
         <AreaArray index="0" Radius="2"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Destructible,Item,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
     </CEffectEnumArea>
     <CEffectCreateUnit id="PhaseCannon">
         <SpawnUnit index="0" value="PhotonCannon2"/>
@@ -271,9 +297,16 @@
         <ValidatorArray index="1" removed="1"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="PoisonGasCloudSearch">
-        <SearchFilters value="Ground,Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Invulnerable"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Invulnerable"/>
         <AreaArray index="0" Radius="3" Effect="GasTurretApplyEffects"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="PrologueVoidArmorSearch">
+        <AreaArray index="0" Radius="4"/>
+    </CEffectEnumArea>
+    <CEffectSet id="PrologueVoidArmorSet2">
+        <EffectArray value="PrologueVoidArmorSearch"/>
+        <EffectArray value="HeroGuardianShieldPresistant"/>
+    </CEffectSet>
     <CEffectSet id="SmallMPCreateRoachling">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="MPCreateRoachlingA"/>
