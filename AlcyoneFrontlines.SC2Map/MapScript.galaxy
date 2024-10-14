@@ -323,6 +323,7 @@ trigger gt_SetupSpawn3Team1;
 trigger gt_SetupSpawn1Team2;
 trigger gt_SetupSpawn2Team2;
 trigger gt_SetupSpawn3Team2;
+trigger gt_VikingsIncrease;
 trigger gt_StartBossAi;
 trigger gt_GiveResourcesFromJungleRTSPlayer1;
 trigger gt_GiveResourcesFromJungleRTSPlayer2;
@@ -496,6 +497,7 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
+    AICampaignStart(2);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3933,6 +3935,26 @@ void gt_SetupSpawn3Team2_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: VikingsIncrease
+//--------------------------------------------------------------------------------------------------
+bool gt_VikingsIncrease_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(15, "VikingsUpgrade", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_VikingsIncrease_Init () {
+    gt_VikingsIncrease = TriggerCreate("gt_VikingsIncrease_Func");
+    TriggerAddEventTimePeriodic(gt_VikingsIncrease, 600.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: StartBossAi
 //--------------------------------------------------------------------------------------------------
 bool gt_StartBossAi_Func (bool testConds, bool runActions) {
@@ -5964,6 +5986,7 @@ void InitTriggers () {
     gt_SetupSpawn1Team2_Init();
     gt_SetupSpawn2Team2_Init();
     gt_SetupSpawn3Team2_Init();
+    gt_VikingsIncrease_Init();
     gt_StartBossAi_Init();
     gt_GiveResourcesFromJungleRTSPlayer1_Init();
     gt_GiveResourcesFromJungleRTSPlayer2_Init();

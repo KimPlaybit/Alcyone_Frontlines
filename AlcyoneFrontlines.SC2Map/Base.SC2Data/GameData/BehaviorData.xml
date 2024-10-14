@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CBehaviorBuff id="GetCredit">
+        <DisableValidatorArray value="IsNotHeroic"/>
+        <Duration value="5"/>
+        <KillCredit Value="Caster"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Angry2">
         <Name value="Behavior/Name/HinderEnergyRegn"/>
         <Alignment value="Positive"/>

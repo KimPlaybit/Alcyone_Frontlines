@@ -10,6 +10,14 @@
     <CEffectCreateUnit id="AlarakPsiOrbFinalUpgradedCU">
         <SpawnUnit index="0" removed="1"/>
     </CEffectCreateUnit>
+    <CEffectSet id="ArtanisAstralWindOtherSet">
+        <EffectArray value="GiveCredit"/>
+        <!--EffectArray value="ArtanisAstralWindOtherAB"/-->
+    </CEffectSet>
+    <CEffectApplyBehavior id="GiveCredit">
+        <EditorCategories value=""/>
+        <Behavior value="GetCredit"/>
+    </CEffectApplyBehavior>
     <CEffectModifyUnit id="AlarakSoulStealModifyCooldowns">
         <Cost index="0" ChargeTimeUse="-2"/>
         <VitalArray index="Shields">
@@ -306,6 +314,11 @@
     <CEffectSet id="PrologueVoidArmorSet2">
         <EffectArray value="PrologueVoidArmorSearch"/>
         <EffectArray value="HeroGuardianShieldPresistant"/>
+    </CEffectSet>
+    <CEffectSet id="Observersight">
+        <EditorCategories value=""/>
+        <EffectArray value="ObserverSquadSightAB"/>
+        <EffectArray value="GiveCredit"/>
     </CEffectSet>
     <CEffectSet id="SmallMPCreateRoachling">
         <EditorCategories value="Race:Zerg"/>
@@ -696,6 +709,8 @@
     <CEffectCreateHealer id="NanoRepair">
         <DrainVitalCostFactor value="0.1"/>
         <RechargeVitalRate value="30"/>
+        <InitialEffect value="GiveCredit"/>
+        <FinalEffect value="GiveCredit"/>
     </CEffectCreateHealer>
     <CEffectSet id="NexusCreateSet">
         <EffectArray value="HealHeroicUnitsAround"/>
@@ -723,6 +738,7 @@
     </CEffectDamage>
     <CEffectEnumArea id="ObserverSquadSightSearch">
         <SearchFilters value="Visible;Enemy,Structure,Missile,Stasis,Dead,Invulnerable"/>
+        <AreaArray index="0" Effect="Observersight"/>
     </CEffectEnumArea>
     <CEffectDamage id="OdinAADamage">
         <Amount value="40"/>

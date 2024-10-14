@@ -298,6 +298,14 @@
         <EffectArray Reference="Unit,Bunker2,LifeArmor" Value="2"/>
         <LeaderAlias value="UpgradeFromXelnaga1"/>
     </CUpgrade>
+    <CUpgrade id="VikingsUpgrade">
+        <EffectArray Reference="Unit,VikingFighter,LifeStart" Value="100"/>
+        <EffectArray Reference="Unit,VikingAssault,LifeMax" Value="100"/>
+        <EffectArray Reference="Unit,VikingAssault,LifeStart" Value="100"/>
+        <EffectArray Reference="Unit,VikingFighter,LifeMax" Value="100"/>
+        <MaxLevel value="99"/>
+        <LeaderAlias value="UpgradeFromXelnaga1"/>
+    </CUpgrade>
     <CUpgrade id="VoidDarkTemplarDeepShadows">
         <EffectArray index="0" removed="1"/>
         <EffectArray index="1" removed="1"/>

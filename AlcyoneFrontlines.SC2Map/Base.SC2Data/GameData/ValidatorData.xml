@@ -93,6 +93,9 @@
     <CValidatorUnitType id="IsCommandCenter22">
         <Value value="PlanetaryFortress"/>
     </CValidatorUnitType>
+    <CValidatorUnitFilters id="IsNotHeroic">
+        <Filters value="-;Heroic"/>
+    </CValidatorUnitFilters>
     <CValidatorUnitType id="IsNotScienceVesselGasTurret">
         <Value value="LabTurretUp2"/>
         <Find value="0"/>

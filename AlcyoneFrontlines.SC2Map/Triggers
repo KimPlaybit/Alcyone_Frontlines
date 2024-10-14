@@ -25154,6 +25154,7 @@
         <ValueType Type="int"/>
     </Element>
     <Element Type="Category" Id="F31063E8">
+        <Item Type="Trigger" Id="C76C06DE"/>
         <Item Type="FunctionDef" Id="93264449"/>
         <Item Type="FunctionDef" Id="061E9D7A"/>
         <Item Type="Variable" Id="B1C14427"/>
@@ -25164,6 +25165,46 @@
         <Item Type="Trigger" Id="F9AA3B59"/>
         <Item Type="FunctionDef" Id="7771B0BB"/>
         <Item Type="Trigger" Id="EF70A145"/>
+    </Element>
+    <Element Type="Trigger" Id="C76C06DE">
+        <Event Type="FunctionCall" Id="4FF424DC"/>
+        <Action Type="FunctionCall" Id="84F2FC63"/>
+    </Element>
+    <Element Type="FunctionCall" Id="4FF424DC">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="6D565EB4"/>
+        <Parameter Type="Param" Id="6D2E3617"/>
+        <Parameter Type="Param" Id="EEB2A02C"/>
+    </Element>
+    <Element Type="Param" Id="6D2E3617">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="4AB413B8"/>
+        <Value>600.0</Value>
+        <ValueType Type="fixed"/>
+    </Element>
+    <Element Type="Param" Id="EEB2A02C">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="3E8E573F"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000013"/>
+    </Element>
+    <Element Type="FunctionCall" Id="84F2FC63">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <Parameter Type="Param" Id="5044EB74"/>
+        <Parameter Type="Param" Id="696F3BA9"/>
+        <Parameter Type="Param" Id="4E7ECD66"/>
+    </Element>
+    <Element Type="Param" Id="5044EB74">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <Value>15</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="696F3BA9">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="4E7ECD66">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>VikingsUpgrade</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
     </Element>
     <Element Type="FunctionDef" Id="93264449">
         <FlagAction/>
