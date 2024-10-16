@@ -1564,6 +1564,15 @@
             <Cooldown TimeUse="42"/>
         </Cost>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="VoidSentryChronoBeam">
+        <Flags index="AutoCast" value="0"/>
+        <Flags index="AutoCastOn" value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="VoidSentryShieldRepairDouble">
+        <Flags index="AutoCast" value="0"/>
+        <Flags index="AutoCastOn" value="0"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy,Missile,Stasis,Dead,Hallucination,Invulnerable"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="VoidShieldCapacitor">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>

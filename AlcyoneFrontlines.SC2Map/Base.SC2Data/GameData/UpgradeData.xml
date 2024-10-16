@@ -311,6 +311,15 @@
         <EffectArray index="1" removed="1"/>
         <EffectArray index="2" removed="1"/>
     </CUpgrade>
+    <CUpgrade id="LevelUpgrade">
+        <EffectArray Reference="Effect,VoidSentryShieldRepairDouble,RechargeVitalRate" Value="1.000000"/>
+        <EffectArray Reference="Behavior,PrologueVoidArmor,Modification.VitalMaxArray[Shields]" Value="30"/>
+        <EffectArray Reference="Behavior,GuardianShield,DamageResponse.ModifyAmount" Value="-0.4"/>
+        <EffectArray Reference="Effect,VoidSentryShieldRepairDouble2,RechargeVitalRate" Value="1.000000"/>
+        <EffectArray Reference="Effect,VoidSentryShieldRepairDoubleExtra,RechargeVitalRate" Value="1.000000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
     <CUpgrade id="ZergGroundArmorsLevel1">
         <EffectArray index="16" Reference="Unit,Roachling2,LifeArmor"/>
         <EffectArray index="128" Reference="Unit,Roachling2,LifeArmorLevel"/>

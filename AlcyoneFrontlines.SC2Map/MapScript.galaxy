@@ -111,7 +111,7 @@ int gv_spectreTeam1;
 int gv_zealotTeam1;
 int gv_darkTemplarTeam1;
 int gv_dragoonTemplarTeam1;
-int gv_adeptTemplarTeam1;
+int gv_sentryTemplarTeam1;
 int gv_corsairTemplarTeam1;
 int gv_zerglingTeam1;
 int gv_queenTeam1;
@@ -130,7 +130,7 @@ int gv_spectreTeam2;
 int gv_zealotTeam2;
 int gv_darkTemplarTeam2;
 int gv_dragoonTemplarTeam2;
-int gv_adeptTemplarTeam2;
+int gv_sentryTemplarTeam2;
 int gv_corsairTemplarTeam2;
 int gv_zerglingTeam2;
 int gv_queenTeam2;
@@ -200,7 +200,7 @@ void InitGlobals () {
     gv_zealotTeam1 = c_invalidDialogControlId;
     gv_darkTemplarTeam1 = c_invalidDialogControlId;
     gv_dragoonTemplarTeam1 = c_invalidDialogControlId;
-    gv_adeptTemplarTeam1 = c_invalidDialogControlId;
+    gv_sentryTemplarTeam1 = c_invalidDialogControlId;
     gv_corsairTemplarTeam1 = c_invalidDialogControlId;
     gv_zerglingTeam1 = c_invalidDialogControlId;
     gv_queenTeam1 = c_invalidDialogControlId;
@@ -219,7 +219,7 @@ void InitGlobals () {
     gv_zealotTeam2 = c_invalidDialogControlId;
     gv_darkTemplarTeam2 = c_invalidDialogControlId;
     gv_dragoonTemplarTeam2 = c_invalidDialogControlId;
-    gv_adeptTemplarTeam2 = c_invalidDialogControlId;
+    gv_sentryTemplarTeam2 = c_invalidDialogControlId;
     gv_corsairTemplarTeam2 = c_invalidDialogControlId;
     gv_zerglingTeam2 = c_invalidDialogControlId;
     gv_queenTeam2 = c_invalidDialogControlId;
@@ -298,6 +298,7 @@ trigger gt_AIBuildMedivacs;
 trigger gt_NydusWormLevelUp;
 trigger gt_MothershipCoreLevelUp;
 trigger gt_ScienceVesselLevelUp;
+trigger gt_ScienceVesselLevelUp2;
 trigger gt_PsiOrb;
 trigger gt_HydraliskImpale;
 trigger gt_HydraliskImpale5;
@@ -345,6 +346,7 @@ trigger gt_SpectreSoldierPicked;
 trigger gt_ZealotSoldierPicked;
 trigger gt_DarkTemplarSoldierPicked;
 trigger gt_DragoonPicked;
+trigger gt_SentryPicked;
 trigger gt_AdeptPicked;
 trigger gt_CorsairPicked;
 trigger gt_MothershipCorePicked;
@@ -497,7 +499,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(2);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1030,7 +1031,7 @@ void gf_SoldierSelectionTeam1 () {
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/9670AD67"), StringExternal("Param/Value/469B33A7"), "");
         gv_zealotTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/EDFF375E"), StringExternal("Param/Value/D27C8C12"), "");
-        gv_adeptTemplarTeam1 = DialogControlLastCreated();
+        gv_sentryTemplarTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/2EEE1E4A"), StringExternal("Param/Value/E366B597"), "");
         gv_dragoonTemplarTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/4E5A3FE3"), StringExternal("Param/Value/8BE281F7"), "");
@@ -1046,7 +1047,7 @@ void gf_SoldierSelectionTeam1 () {
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/3DF31E31"), StringExternal("Param/Value/789BF772"), "");
         gv_zealotTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/CCA29A96"), StringExternal("Param/Value/90650553"), "");
-        gv_adeptTemplarTeam1 = DialogControlLastCreated();
+        gv_sentryTemplarTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/DDB97FDD"), StringExternal("Param/Value/1DCDEC5F"), "");
         gv_dragoonTemplarTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/CEBFA09D"), StringExternal("Param/Value/569241EF"), "");
@@ -1059,7 +1060,7 @@ void gf_SoldierSelectionTeam1 () {
 
     DialogSetVisible(gv_dialogTeam1, gv_soldierPlayers1, true);
     DialogSetVisible(gv_dialogTeam1, gv_playersWhoPicked, false);
-    gf_DisableaDialogItem(gv_adeptTemplarTeam1);
+    gf_DisableaDialogItem(gv_sentryTemplarTeam1);
     gf_DisableaDialogItem(gv_corsairTemplarTeam1);
     gf_DisableaDialogItem(gv_darkTemplarTeam1);
     gf_DisableaDialogItem(gv_defilerTeam1);
@@ -1078,7 +1079,7 @@ void gf_SoldierSelectionTeam1 () {
     gf_DisableaDialogItem(gv_scienceVesselTeam1);
     gf_DisableaDialogItem(gv_mothershipTeam1);
     Wait(2.0, c_timeReal);
-    gf_EnableaDialogItem(gv_adeptTemplarTeam1);
+    gf_EnableaDialogItem(gv_sentryTemplarTeam1);
     gf_EnableaDialogItem(gv_corsairTemplarTeam1);
     gf_EnableaDialogItem(gv_darkTemplarTeam1);
     gf_EnableaDialogItem(gv_defilerTeam1);
@@ -1146,7 +1147,7 @@ void gf_SoldierSelectionTeam2 () {
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/BE16115E"), StringExternal("Param/Value/BA855623"), "");
         gv_zealotTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/9A355169"), StringExternal("Param/Value/9DAFA36C"), "");
-        gv_adeptTemplarTeam2 = DialogControlLastCreated();
+        gv_sentryTemplarTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/EDD8496E"), StringExternal("Param/Value/78195E6D"), "");
         gv_dragoonTemplarTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/4BB3C7FA"), StringExternal("Param/Value/96EEE7D5"), "");
@@ -1162,7 +1163,7 @@ void gf_SoldierSelectionTeam2 () {
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/696B79F2"), StringExternal("Param/Value/391FFCA1"), "");
         gv_zealotTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/655B16B3"), StringExternal("Param/Value/EA0A0768"), "");
-        gv_adeptTemplarTeam2 = DialogControlLastCreated();
+        gv_sentryTemplarTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/F8DB1D4C"), StringExternal("Param/Value/F7CBFF8B"), "");
         gv_dragoonTemplarTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, gv_buttonSizePickX, gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/2DDAA31C"), StringExternal("Param/Value/601B7872"), "");
@@ -1175,7 +1176,7 @@ void gf_SoldierSelectionTeam2 () {
 
     DialogSetVisible(gv_dialogTeam2, gv_soldierPlayers2, true);
     DialogSetVisible(gv_dialogTeam2, gv_playersWhoPicked, false);
-    gf_DisableaDialogItem(gv_adeptTemplarTeam2);
+    gf_DisableaDialogItem(gv_sentryTemplarTeam2);
     gf_DisableaDialogItem(gv_corsairTemplarTeam2);
     gf_DisableaDialogItem(gv_darkTemplarTeam2);
     gf_DisableaDialogItem(gv_defilerTeam2);
@@ -1194,7 +1195,7 @@ void gf_SoldierSelectionTeam2 () {
     gf_DisableaDialogItem(gv_scienceVesselTeam2);
     gf_DisableaDialogItem(gv_mothershipTeam2);
     Wait(2.0, c_timeReal);
-    gf_EnableaDialogItem(gv_adeptTemplarTeam2);
+    gf_EnableaDialogItem(gv_sentryTemplarTeam2);
     gf_EnableaDialogItem(gv_corsairTemplarTeam2);
     gf_EnableaDialogItem(gv_darkTemplarTeam2);
     gf_EnableaDialogItem(gv_defilerTeam2);
@@ -2856,6 +2857,33 @@ bool gt_ScienceVesselLevelUp_Func (bool testConds, bool runActions) {
 void gt_ScienceVesselLevelUp_Init () {
     gt_ScienceVesselLevelUp = TriggerCreate("gt_ScienceVesselLevelUp_Func");
     TriggerAddEventUnitGainLevel(gt_ScienceVesselLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ScienceVesselLevelUp 2
+//--------------------------------------------------------------------------------------------------
+bool gt_ScienceVesselLevelUp2_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "SentryPurifier2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "LevelUpgrade", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ScienceVesselLevelUp2_Init () {
+    gt_ScienceVesselLevelUp2 = TriggerCreate("gt_ScienceVesselLevelUp2_Func");
+    TriggerAddEventUnitGainLevel(gt_ScienceVesselLevelUp2, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5363,7 +5391,58 @@ void gt_DragoonPicked_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Adept Picked 
+// Trigger: Sentry Picked 
+//--------------------------------------------------------------------------------------------------
+bool gt_SentryPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_player[init_i] = PlayerGroupEmpty();
+    }
+
+    // Conditions
+    if (testConds) {
+        if (!(((gv_playerPicked[EventPlayer()] == false) && ((gv_sentryTemplarTeam1 == EventDialogControl()) || (gv_sentryTemplarTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/E91D5630")));
+    PlayerGroupAdd(lv_player[0], EventPlayer());
+    if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        libNtve_gf_UnitCreateFacingPoint(1, "SentryPurifier2", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    else {
+        libNtve_gf_UnitCreateFacingPoint(1, "SentryPurifier2", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, lv_player[0], false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    }
+    UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
+    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
+    gv_playerPicked[EventPlayer()] = true;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SentryPicked_Init () {
+    gt_SentryPicked = TriggerCreate("gt_SentryPicked_Func");
+    TriggerAddEventDialogControl(gt_SentryPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Adept Picked
 //--------------------------------------------------------------------------------------------------
 bool gt_AdeptPicked_Func (bool testConds, bool runActions) {
     int init_i;
@@ -5379,7 +5458,7 @@ bool gt_AdeptPicked_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!(((gv_playerPicked[EventPlayer()] == false) && ((gv_adeptTemplarTeam1 == EventDialogControl()) || (gv_adeptTemplarTeam2 == EventDialogControl()))))) {
+        if (!(((gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(gv_rTSPlayer1) == "Prot") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer1)) || ((PlayerRace(gv_rTSPlayer2) == "Prot") && (gf_GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer2)))))) {
             return false;
         }
     }
@@ -5389,7 +5468,7 @@ bool gt_AdeptPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/E91D5630")));
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/913E08A9")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
         libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(gv_rTSPlayer2));
@@ -5410,7 +5489,7 @@ bool gt_AdeptPicked_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_AdeptPicked_Init () {
     gt_AdeptPicked = TriggerCreate("gt_AdeptPicked_Func");
-    TriggerAddEventDialogControl(gt_AdeptPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+    TriggerAddEventChatMessage(gt_AdeptPicked, c_playerAny, "-Adept", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5961,6 +6040,7 @@ void InitTriggers () {
     gt_NydusWormLevelUp_Init();
     gt_MothershipCoreLevelUp_Init();
     gt_ScienceVesselLevelUp_Init();
+    gt_ScienceVesselLevelUp2_Init();
     gt_PsiOrb_Init();
     gt_HydraliskImpale_Init();
     gt_HydraliskImpale5_Init();
@@ -6008,6 +6088,7 @@ void InitTriggers () {
     gt_ZealotSoldierPicked_Init();
     gt_DarkTemplarSoldierPicked_Init();
     gt_DragoonPicked_Init();
+    gt_SentryPicked_Init();
     gt_AdeptPicked_Init();
     gt_CorsairPicked_Init();
     gt_MothershipCorePicked_Init();

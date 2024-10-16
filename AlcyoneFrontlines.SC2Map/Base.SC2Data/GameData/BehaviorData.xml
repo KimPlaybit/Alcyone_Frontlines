@@ -35,14 +35,13 @@
         <InfoIcon value="Assets\Textures\btn-ability-protoss-shieldbattery.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="0.6"/>
-        <Modification>
-            <VitalRegenArray index="Shields" value="10"/>
-        </Modification>
         <DamageResponse>
             <Kind index="Spell" value="0"/>
             <ModifyAmount value="-2"/>
             <Chance value="1"/>
         </DamageResponse>
+        <Period value="0.3"/>
+        <PeriodicEffect value="VoidSentryShieldRepairDouble2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="KaraxRepairDroneTimedLife">
         <Duration value="10"/>
@@ -62,6 +61,11 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="ReaperOutOfCombat2"/>
         <DisableValidatorArray value="NotFullLife"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SentryShieldRepairDoubleHealing">
+        <Duration value="5"/>
+        <InitialEffect value="GiveCredit"/>
+        <PeriodicEffect value="GiveCredit"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShieldRegeneration">
         <Alignment value="Positive"/>
@@ -333,6 +337,10 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="3"/>
         <Modification MoveSpeedMultiplier="0.75" AttackSpeedMultiplier="0.75"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VoidSentryChronoBeam">
+        <Period value="5"/>
+        <PeriodicEffect value="GiveCredit"/>
     </CBehaviorBuff>
     <CBehaviorPowerSource id="WarpPrismPowerSource2">
         <InfoFlags index="Hidden" value="1"/>

@@ -187,7 +187,7 @@
     <CEffectEnumArea id="GuardianShieldSearch2">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetUnit"/>
-        <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="4" Effect="GuardianShieldApplyBehavior2"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <SearchFlags index="SameCliff" value="1"/>
@@ -310,7 +310,11 @@
     </CEffectEnumArea>
     <CEffectEnumArea id="PrologueVoidArmorSearch">
         <AreaArray index="0" Radius="4"/>
+        <SearchFilters value="-;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectSet id="PrologueVoidArmorSet">
+        <EffectArray value="GiveCredit"/>
+    </CEffectSet>
     <CEffectSet id="PrologueVoidArmorSet2">
         <EffectArray value="PrologueVoidArmorSearch"/>
         <EffectArray value="HeroGuardianShieldPresistant"/>
@@ -346,6 +350,29 @@
         <AreaArray Radius="3.5" Effect="ReversalFieldApplyBehavior"/>
         <AreaArray Radius="3.5" Effect="ReversalFieldApplyBehavior"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="VoidSentryChronoBeamAB"/>
+    <CEffectSet id="VoidSentryChronoBeamSet">
+        <EffectArray value="GiveCredit"/>
+    </CEffectSet>
+    <CEffectCreateHealer id="VoidSentryShieldRepairDouble2">
+        <ValidatorArray value="ShieldsNotFull"/>
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="HiddenCompareAB"/>
+        <ValidatorArray value="HiddenCompareBA"/>
+        <ValidatorArray value="NotVortexd"/>
+        <PeriodicEffect value="GiveCredit"/>
+        <PeriodicPeriod value="0.33"/>
+        <DrainVital value="Energy"/>
+        <RechargeVital value="Shields"/>
+        <RechargeVitalRate value="9"/>
+    </CEffectCreateHealer>
+    <CEffectEnumArea id="VoidSentryShieldRepairDoubleExtraSearch1">
+        <SearchFilters value="-;Self,Enemy,Structure,Missile,Stasis,Dead"/>
+    </CEffectEnumArea>
+    <CEffectSet id="VoidSentryShieldRepairDoubleInitialSet">
+        <EffectArray value="GiveCredit"/>
+    </CEffectSet>
     <CEffectEnumArea id="WhirlwindSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="4" Effect="WhirlwindDamage"/>

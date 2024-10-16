@@ -1836,11 +1836,12 @@
         <CardLayouts index="0">
             <LayoutButtons index="5" Face="VoidSentryChronoBeam" Type="AbilCmd" AbilCmd="VoidSentryChronoBeam,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="VoidSentryShieldRepairDouble" Type="AbilCmd" AbilCmd="VoidSentryShieldRepairDouble,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="GuardianShield" Type="AbilCmd" AbilCmd="PrologueVoidArmor,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="GuardianShield3" Type="AbilCmd" AbilCmd="PrologueVoidArmor,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="SentryTaldarimForceField" Type="AbilCmd" AbilCmd="ForceFieldMonitor,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
         <HotkeyCategory value="Unit/Category/ProtossStory"/>
+        <Speed value="3"/>
     </CUnit>
     <CUnit id="SmallNydusSpawner">
         <DeathRevealRadius value="3"/>
@@ -5759,8 +5760,8 @@
         <Collide index="Small" value="1"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Biological" value="1"/>
-        <LifeStart value="105"/>
-        <LifeMax value="105"/>
+        <LifeStart value="75"/>
+        <LifeMax value="75"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
         <ShieldRegenDelay value="10"/>
@@ -5822,6 +5823,8 @@
         </Fidget>
         <TauntDuration index="Cheer" value="5"/>
         <TauntDuration index="Dance" value="5"/>
+        <ShieldsStart value="30"/>
+        <ShieldsMax value="30"/>
     </CUnit>
     <CUnitHero id="ZealotHero" parent="AccelerationZoneBase">
         <Name value="Unit/Name/ZealotHero"/>
