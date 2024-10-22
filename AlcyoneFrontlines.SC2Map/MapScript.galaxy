@@ -72,6 +72,7 @@ unitgroup[100] gv_jungleUnitGroups;
 int gv_lastIndexOfSpawn;
 gs_Spawn[100] gv_jungleToSpawn;
 int gv_indexToSpawn;
+unit gv_jG_KillingUnit;
 int gv_killingPlayerOfJungle;
 unitgroup gv_revivableUnits;
 int gv_ressTimer;
@@ -91,38 +92,6 @@ int gv_scoreDialog;
 int gv_hiddenDialog;
 int gv_showScore;
 int gv_hideScore;
-unit gv_zerglingExpansionTeam2_point;
-unitgroup gv_zerglingExpansionTeam2;
-unit gv_zerglingExpansionTeam1_point;
-unitgroup gv_zerglingExpansionTeam1;
-unit gv_zergExpansionTeam1_point;
-unitgroup gv_zergExpansionTeam1;
-unit gv_zergExpansionTeam2_point;
-unitgroup gv_zergExpansionTeam2;
-unit gv_terranExpansionTeam1_point;
-unitgroup gv_terranExpansionTeam1;
-unit gv_terranExpansionTeam2_point;
-unitgroup gv_terranExpansionTeam2;
-unit gv_topExpansionTeam1_point;
-unitgroup gv_topExpansionTeam1;
-unit gv_topExpansionTeam2_point;
-unitgroup gv_topExpansionTeam2;
-unit gv_topExpansion_point;
-unitgroup gv_topExpansion;
-unit gv_botExpansion_point;
-unitgroup gv_botExpansion;
-unit gv_midExpansion_point;
-unitgroup gv_midExpansion;
-unitgroup gv_hydralisk_1;
-unitgroup gv_hydralisk_2;
-unitgroup gv_vikings_1;
-unitgroup gv_vikings_2;
-unitgroup gv_vikings_3;
-unitgroup gv_zergling_1;
-unitgroup gv_zergling_2;
-unitgroup gv_marines_1;
-unitgroup gv_marines_2;
-unitgroup gv_boss;
 int gv_dialogTeam1;
 int gv_firebatTeam1;
 int gv_medicTeam1;
@@ -162,6 +131,38 @@ int gv_scienceVesselTeam2;
 int gv_nydusTeam2;
 int gv_mothershipTeam2;
 playergroup gv_playersWhoPicked;
+unit gv_zerglingExpansionTeam2_point;
+unitgroup gv_zerglingExpansionTeam2;
+unit gv_zerglingExpansionTeam1_point;
+unitgroup gv_zerglingExpansionTeam1;
+unit gv_zergExpansionTeam1_point;
+unitgroup gv_zergExpansionTeam1;
+unit gv_zergExpansionTeam2_point;
+unitgroup gv_zergExpansionTeam2;
+unit gv_terranExpansionTeam1_point;
+unitgroup gv_terranExpansionTeam1;
+unit gv_terranExpansionTeam2_point;
+unitgroup gv_terranExpansionTeam2;
+unit gv_topExpansionTeam1_point;
+unitgroup gv_topExpansionTeam1;
+unit gv_topExpansionTeam2_point;
+unitgroup gv_topExpansionTeam2;
+unit gv_topExpansion_point;
+unitgroup gv_topExpansion;
+unit gv_botExpansion_point;
+unitgroup gv_botExpansion;
+unit gv_midExpansion_point;
+unitgroup gv_midExpansion;
+unitgroup gv_hydralisk_1;
+unitgroup gv_hydralisk_2;
+unitgroup gv_vikings_1;
+unitgroup gv_vikings_2;
+unitgroup gv_vikings_3;
+unitgroup gv_zergling_1;
+unitgroup gv_zergling_2;
+unitgroup gv_marines_1;
+unitgroup gv_marines_2;
+unitgroup gv_boss;
 
 void InitGlobals () {
     int init_i;
@@ -194,27 +195,6 @@ void InitGlobals () {
     gv_hiddenDialog = c_invalidDialogId;
     gv_showScore = c_invalidDialogControlId;
     gv_hideScore = c_invalidDialogControlId;
-    gv_zerglingExpansionTeam2 = UnitGroupEmpty();
-    gv_zerglingExpansionTeam1 = UnitGroupEmpty();
-    gv_zergExpansionTeam1 = UnitGroupEmpty();
-    gv_zergExpansionTeam2 = UnitGroupEmpty();
-    gv_terranExpansionTeam1 = UnitGroupEmpty();
-    gv_terranExpansionTeam2 = UnitGroupEmpty();
-    gv_topExpansionTeam1 = UnitGroupEmpty();
-    gv_topExpansionTeam2 = UnitGroupEmpty();
-    gv_topExpansion = UnitGroupEmpty();
-    gv_botExpansion = UnitGroupEmpty();
-    gv_midExpansion = UnitGroupEmpty();
-    gv_hydralisk_1 = UnitGroupEmpty();
-    gv_hydralisk_2 = UnitGroupEmpty();
-    gv_vikings_1 = UnitGroupEmpty();
-    gv_vikings_2 = UnitGroupEmpty();
-    gv_vikings_3 = UnitGroupEmpty();
-    gv_zergling_1 = UnitGroupEmpty();
-    gv_zergling_2 = UnitGroupEmpty();
-    gv_marines_1 = UnitGroupEmpty();
-    gv_marines_2 = UnitGroupEmpty();
-    gv_boss = UnitGroupEmpty();
     gv_dialogTeam1 = c_invalidDialogId;
     gv_firebatTeam1 = c_invalidDialogControlId;
     gv_medicTeam1 = c_invalidDialogControlId;
@@ -254,13 +234,34 @@ void InitGlobals () {
     gv_nydusTeam2 = c_invalidDialogControlId;
     gv_mothershipTeam2 = c_invalidDialogControlId;
     gv_playersWhoPicked = PlayerGroupEmpty();
+    gv_zerglingExpansionTeam2 = UnitGroupEmpty();
+    gv_zerglingExpansionTeam1 = UnitGroupEmpty();
+    gv_zergExpansionTeam1 = UnitGroupEmpty();
+    gv_zergExpansionTeam2 = UnitGroupEmpty();
+    gv_terranExpansionTeam1 = UnitGroupEmpty();
+    gv_terranExpansionTeam2 = UnitGroupEmpty();
+    gv_topExpansionTeam1 = UnitGroupEmpty();
+    gv_topExpansionTeam2 = UnitGroupEmpty();
+    gv_topExpansion = UnitGroupEmpty();
+    gv_botExpansion = UnitGroupEmpty();
+    gv_midExpansion = UnitGroupEmpty();
+    gv_hydralisk_1 = UnitGroupEmpty();
+    gv_hydralisk_2 = UnitGroupEmpty();
+    gv_vikings_1 = UnitGroupEmpty();
+    gv_vikings_2 = UnitGroupEmpty();
+    gv_vikings_3 = UnitGroupEmpty();
+    gv_zergling_1 = UnitGroupEmpty();
+    gv_zergling_2 = UnitGroupEmpty();
+    gv_marines_1 = UnitGroupEmpty();
+    gv_marines_2 = UnitGroupEmpty();
+    gv_boss = UnitGroupEmpty();
 }
 
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
-void gf_SpawnJungle ();
 void gf_SpawnPointsMinerals ();
+void gf_SpawnJungle ();
 bool gf_IsNonKnownRace (int lp_player);
 bool gf_IsProtoss (int lp_rTSPlayer);
 bool gf_IsZerg (int lp_rTSPlayer);
@@ -288,7 +289,7 @@ void gf_SpawnJungleUnits ();
 void gf_AddJungleSpawn (structref<gs_Spawn> lp_toSpawn);
 void gf_AddJungleUnitGroup (unitgroup lp_addUnitGroup, point lp_minimapPoint);
 void gf_GiveResource (unit lp_killedUnit, int lp_player, int lp_killingPlayer);
-void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer);
+void gf_Respawn (unit lp_killedUnit, unit lp_killingUnit);
 bool gf_AddUpdateForWaves (string lp_upgrade, int lp_killingPlayer);
 bool gf_RemoveUpdateForWaves (string lp_upgrade, int lp_killingPlayer);
 void gf_GiveXPForHeroKills (unit lp_killingSoldier, unit lp_killedSoldier);
@@ -312,6 +313,9 @@ void gf_HeroSpells (int lp_player, unit lp_unit);
 //--------------------------------------------------------------------------------------------------
 // Trigger Variables
 //--------------------------------------------------------------------------------------------------
+trigger gt_ActivateXelNagaTower1;
+trigger gt_ActivateXelNagaTower2;
+trigger gt_ActivateXelNagaTower3;
 trigger gt_SilenceXelNagaTower;
 trigger gt_VikingsIncrease;
 trigger gt_StartBossAi;
@@ -530,7 +534,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(2);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -686,6 +689,98 @@ void InitCustomScript () {
 //--------------------------------------------------------------------------------------------------
 // Global Functions
 //--------------------------------------------------------------------------------------------------
+void gf_SpawnPointsMinerals () {
+    // Variable Declarations
+    unitgroup lv_localUnitGroup;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_localUnitGroup = UnitGroupEmpty();
+
+    // Implementation
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(2135450201));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(26998780));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(119509140));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1009550906));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(943914126));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1915795107));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(23)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(112359909));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1747723070));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1765844085));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1222483982));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(618760829));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(736906130));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(22)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(663222779));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(282550555));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1034140613));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1694252051));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(24)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1405344780));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(524702445));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1215282703));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1696395952));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(25)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(70584511));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1625380429));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1146268127));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(524619993));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(961574489));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(26)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1844006287));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(462735503));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(915242605));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1952880305));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(895661860));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(27)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(558205797));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(239234110));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(236326518));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1052197475));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(31)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(313329896));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(568574036));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(2033880865));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1369178179));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1199289011));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(29)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1742545785));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(541843240));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(916897576));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(919776662));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(2080387357));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(30)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1136085384));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1354700421));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1055136827));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(506154393));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(275815961));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(214491526));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1720349280));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1818441287));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(28)));
+    lv_localUnitGroup = UnitGroupEmpty();
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(121451784));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1146848915));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1739240493));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1089039214));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(1858709356));
+    UnitGroupAdd(lv_localUnitGroup, UnitFromId(938198134));
+    gf_AddJungleUnitGroup(lv_localUnitGroup, RegionGetCenter(RegionFromId(32)));
+    lv_localUnitGroup = UnitGroupEmpty();
+}
+
 void gf_SpawnJungle () {
     // Variable Declarations
     gs_Spawn lv_spawn;
@@ -698,6 +793,7 @@ void gf_SpawnJungle () {
     lv_spawn.lv_respawnTime = 180;
     lv_spawn.lv_unitSpawn[0].lv_unitType = "Hydralisk2";
     lv_spawn.lv_unitSpawn[0].lv_amount = 4;
+    lv_spawn.lv_deathCallbackTrigger = null;
     gf_AddJungleSpawn(lv_spawn);
     lv_spawn.lv_point = RegionGetCenter(RegionFromId(10));
     gf_AddJungleSpawn(lv_spawn);
@@ -721,128 +817,21 @@ void gf_SpawnJungle () {
     lv_spawn.lv_spawnTime = 300;
     lv_spawn.lv_unitSpawn[0].lv_unitType = "VikingFighter";
     lv_spawn.lv_unitSpawn[0].lv_amount = 2;
+    lv_spawn.lv_deathCallbackTrigger = gt_ActivateXelNagaTower1;
     gf_AddJungleSpawn(lv_spawn);
     lv_spawn.lv_point = RegionGetCenter(RegionFromId(5));
+    lv_spawn.lv_deathCallbackTrigger = gt_ActivateXelNagaTower2;
     gf_AddJungleSpawn(lv_spawn);
     lv_spawn.lv_point = RegionGetCenter(RegionFromId(7));
+    lv_spawn.lv_deathCallbackTrigger = gt_ActivateXelNagaTower3;
     gf_AddJungleSpawn(lv_spawn);
     lv_spawn.lv_point = RegionGetCenter(RegionFromId(8));
-    lv_spawn.lv_spawnTime = 600;
+    lv_spawn.lv_spawnTime = 595;
     lv_spawn.lv_respawnTime = 300;
     lv_spawn.lv_unitSpawn[0].lv_unitType = "Odin";
     lv_spawn.lv_unitSpawn[0].lv_amount = 1;
+    lv_spawn.lv_deathCallbackTrigger = null;
     gf_AddJungleSpawn(lv_spawn);
-}
-
-void gf_SpawnPointsMinerals () {
-    // Variable Declarations
-    unitgroup lv_unitGroup;
-    int lv_player;
-
-    // Automatic Variable Declarations
-    playergroup auto0AFA277D_g;
-
-    // Variable Initialization
-    lv_unitGroup = UnitGroupEmpty();
-
-    // Implementation
-    UnitGroupAdd(lv_unitGroup, UnitFromId(2135450201));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(26998780));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(119509140));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(1009550906));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(943914126));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(1915795107));
-    gf_AddJungleUnitGroup(lv_unitGroup, RegionGetCenter(RegionFromId(23)));
-    lv_unitGroup = null;
-    UnitGroupAdd(lv_unitGroup, UnitFromId(112359909));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(1747723070));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(1765844085));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(1222483982));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(618760829));
-    UnitGroupAdd(lv_unitGroup, UnitFromId(736906130));
-    gf_AddJungleUnitGroup(lv_unitGroup, RegionGetCenter(RegionFromId(22)));
-    lv_unitGroup = null;
-    UnitGroupAdd(gv_zergExpansionTeam1, UnitFromId(663222779));
-    UnitGroupAdd(gv_zergExpansionTeam1, UnitFromId(282550555));
-    UnitGroupAdd(gv_zergExpansionTeam1, UnitFromId(1034140613));
-    UnitGroupAdd(gv_zergExpansionTeam1, UnitFromId(1694252051));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(24)), 0.0, 0.0));
-    gv_zergExpansionTeam1_point = UnitLastCreated();
-    UnitGroupAdd(gv_zergExpansionTeam2, UnitFromId(1405344780));
-    UnitGroupAdd(gv_zergExpansionTeam2, UnitFromId(524702445));
-    UnitGroupAdd(gv_zergExpansionTeam2, UnitFromId(1215282703));
-    UnitGroupAdd(gv_zergExpansionTeam2, UnitFromId(1696395952));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(25)), 0.0, 0.0));
-    gv_zergExpansionTeam2_point = UnitLastCreated();
-    UnitGroupAdd(gv_terranExpansionTeam1, UnitFromId(70584511));
-    UnitGroupAdd(gv_terranExpansionTeam1, UnitFromId(1625380429));
-    UnitGroupAdd(gv_terranExpansionTeam1, UnitFromId(1146268127));
-    UnitGroupAdd(gv_terranExpansionTeam1, UnitFromId(524619993));
-    UnitGroupAdd(gv_terranExpansionTeam1, UnitFromId(961574489));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(26)), 0.0, 0.0));
-    gv_terranExpansionTeam1_point = UnitLastCreated();
-    UnitGroupAdd(gv_terranExpansionTeam2, UnitFromId(1844006287));
-    UnitGroupAdd(gv_terranExpansionTeam2, UnitFromId(462735503));
-    UnitGroupAdd(gv_terranExpansionTeam2, UnitFromId(915242605));
-    UnitGroupAdd(gv_terranExpansionTeam2, UnitFromId(1952880305));
-    UnitGroupAdd(gv_terranExpansionTeam2, UnitFromId(895661860));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(27)), 0.0, 0.0));
-    gv_terranExpansionTeam2_point = UnitLastCreated();
-    UnitGroupAdd(gv_topExpansion, UnitFromId(558205797));
-    UnitGroupAdd(gv_topExpansion, UnitFromId(239234110));
-    UnitGroupAdd(gv_topExpansion, UnitFromId(236326518));
-    UnitGroupAdd(gv_topExpansion, UnitFromId(1052197475));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(31)), 0.0, 0.0));
-    gv_topExpansion_point = UnitLastCreated();
-    UnitGroupAdd(gv_topExpansionTeam1, UnitFromId(313329896));
-    UnitGroupAdd(gv_topExpansionTeam1, UnitFromId(568574036));
-    UnitGroupAdd(gv_topExpansionTeam1, UnitFromId(2033880865));
-    UnitGroupAdd(gv_topExpansionTeam1, UnitFromId(1369178179));
-    UnitGroupAdd(gv_topExpansionTeam1, UnitFromId(1199289011));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(29)), 0.0, 0.0));
-    gv_topExpansionTeam1_point = UnitLastCreated();
-    UnitGroupAdd(gv_topExpansionTeam2, UnitFromId(1742545785));
-    UnitGroupAdd(gv_topExpansionTeam2, UnitFromId(541843240));
-    UnitGroupAdd(gv_topExpansionTeam2, UnitFromId(916897576));
-    UnitGroupAdd(gv_topExpansionTeam2, UnitFromId(919776662));
-    UnitGroupAdd(gv_topExpansionTeam2, UnitFromId(2080387357));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(30)), 0.0, 0.0));
-    gv_topExpansionTeam2_point = UnitLastCreated();
-    UnitGroupAdd(gv_botExpansion, UnitFromId(1136085384));
-    UnitGroupAdd(gv_botExpansion, UnitFromId(1354700421));
-    UnitGroupAdd(gv_botExpansion, UnitFromId(1055136827));
-    UnitGroupAdd(gv_botExpansion, UnitFromId(506154393));
-    UnitGroupAdd(gv_botExpansion, UnitFromId(275815961));
-    UnitGroupAdd(gv_botExpansion, UnitFromId(214491526));
-    UnitGroupAdd(gv_botExpansion, UnitFromId(1720349280));
-    UnitGroupAdd(gv_botExpansion, UnitFromId(1818441287));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(28)), 0.0, 0.0));
-    gv_botExpansion_point = UnitLastCreated();
-    UnitGroupAdd(gv_midExpansion, UnitFromId(121451784));
-    UnitGroupAdd(gv_midExpansion, UnitFromId(1146848915));
-    UnitGroupAdd(gv_midExpansion, UnitFromId(1739240493));
-    UnitGroupAdd(gv_midExpansion, UnitFromId(1089039214));
-    UnitGroupAdd(gv_midExpansion, UnitFromId(1858709356));
-    UnitGroupAdd(gv_midExpansion, UnitFromId(938198134));
-    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, PointWithOffset(RegionGetCenter(RegionFromId(32)), 0.0, 0.0));
-    gv_midExpansion_point = UnitLastCreated();
-    auto0AFA277D_g = PlayerGroupAll();
-    lv_player = -1;
-    while (true) {
-        lv_player = PlayerGroupNextPlayer(auto0AFA277D_g, lv_player);
-        if (lv_player < 0) { break; }
-        VisRevealArea(lv_player, RegionFromId(24), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(25), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(23), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(22), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(26), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(27), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(31), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(29), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(30), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(32), 0.1, false);
-        VisRevealArea(lv_player, RegionFromId(28), 0.1, false);
-    }
 }
 
 bool gf_IsNonKnownRace (int lp_player) {
@@ -1584,6 +1573,7 @@ void gf_AddJungleSpawn (structref<gs_Spawn> lp_toSpawn) {
     gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_point = lp_toSpawn.lv_point;
     gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_respawnTime = lp_toSpawn.lv_respawnTime;
     gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_spawnTime = lp_toSpawn.lv_spawnTime;
+    gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_deathCallbackTrigger = lp_toSpawn.lv_deathCallbackTrigger;
     lv_spawnLoop = 0;
     for ( ; ( (auto380784D7_ai >= 0 && lv_spawnLoop <= auto380784D7_ae) || (auto380784D7_ai < 0 && lv_spawnLoop >= auto380784D7_ae) ) ; lv_spawnLoop += auto380784D7_ai ) {
         if ((lp_toSpawn.lv_unitSpawn[lv_spawnLoop].lv_unitType != "")) {
@@ -1601,6 +1591,8 @@ void gf_AddJungleUnitGroup (unitgroup lp_addUnitGroup, point lp_minimapPoint) {
     int lv_spawnLoop;
 
     // Automatic Variable Declarations
+    playergroup autoDC496C5D_g;
+
     // Variable Initialization
 
     // Implementation
@@ -1608,6 +1600,13 @@ void gf_AddJungleUnitGroup (unitgroup lp_addUnitGroup, point lp_minimapPoint) {
     libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, lp_minimapPoint);
     gv_spawnPoints[gv_lastIndexOfSpawn] = UnitLastCreated();
     gv_lastIndexOfSpawn = (gv_lastIndexOfSpawn + 1);
+    autoDC496C5D_g = PlayerGroupAll();
+    lv_spawnLoop = -1;
+    while (true) {
+        lv_spawnLoop = PlayerGroupNextPlayer(autoDC496C5D_g, lv_spawnLoop);
+        if (lv_spawnLoop < 0) { break; }
+        VisRevealArea(lv_spawnLoop, RegionCircle(lp_minimapPoint, 1.0), 0.1, false);
+    }
 }
 
 void gf_GiveResource (unit lp_killedUnit, int lp_player, int lp_killingPlayer) {
@@ -1669,7 +1668,7 @@ void gf_GiveResource (unit lp_killedUnit, int lp_player, int lp_killingPlayer) {
     }
 }
 
-void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
+void gf_Respawn (unit lp_killedUnit, unit lp_killingUnit) {
     // Variable Declarations
     int lv_index;
     unitgroup lv_unitGroup;
@@ -1691,11 +1690,19 @@ void gf_Respawn (unit lp_killedUnit, int lp_killingPlayer) {
         }
 
     }
-    UnitKill(gv_spawnPoints[lv_index]);
-    if (((libNtve_gf_UnitGroupIsDead(lv_unitGroup) == true) && (gv_jungleToSpawn[lv_index].lv_respawnTime > 0))) {
-        Wait(gv_jungleToSpawn[lv_index].lv_respawnTime, c_timeGame);
-        if ((libNtve_gf_UnitGroupIsDead(gv_jungleUnitGroups[lv_index]) == true)) {
-            gf_CreateJungleUnits(lv_index, gv_jungleToSpawn[lv_index]);
+    if (((libNtve_gf_UnitGroupIsDead(lv_unitGroup) == true))) {
+        UnitKill(gv_spawnPoints[lv_index]);
+        if ((gv_jungleToSpawn[lv_index].lv_deathCallbackTrigger != null)) {
+            gv_jG_KillingUnit = lp_killingUnit;
+            TriggerExecute(gv_jungleToSpawn[lv_index].lv_deathCallbackTrigger, true, false);
+        }
+
+        if ((gv_jungleToSpawn[lv_index].lv_respawnTime > 0)) {
+            Wait(gv_jungleToSpawn[lv_index].lv_respawnTime, c_timeGame);
+            if ((libNtve_gf_UnitGroupIsDead(gv_jungleUnitGroups[lv_index]) == true)) {
+                gf_CreateJungleUnits(lv_index, gv_jungleToSpawn[lv_index]);
+            }
+
         }
 
     }
@@ -2253,6 +2260,117 @@ void gf_HeroSpells (int lp_player, unit lp_unit) {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ActivateXelNagaTower1
+//--------------------------------------------------------------------------------------------------
+bool gt_ActivateXelNagaTower1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_killingPlayer;
+    unit lv_tower;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_killingPlayer = UnitGetOwner(gv_jG_KillingUnit);
+    lv_tower = UnitFromId(1816851713);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetState(lv_tower, c_unitStateSilenced, false);
+    if ((gf_GetEnemyRTSPlayer(lv_killingPlayer) == gv_rTSPlayer1)) {
+        UnitSetOwner(lv_tower, 14, true);
+    }
+    else {
+        UnitSetOwner(lv_tower, 13, true);
+    }
+    UnitIssueOrder(lv_tower, OrderTargetingUnit(AbilityCommand("TowerCapture", 0), lv_tower), c_orderQueueReplace);
+    Wait(180.0, c_timeGame);
+    UnitSetOwner(lv_tower, 0, true);
+    UnitSetState(lv_tower, c_unitStateSilenced, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ActivateXelNagaTower1_Init () {
+    gt_ActivateXelNagaTower1 = TriggerCreate("gt_ActivateXelNagaTower1_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ActivateXelNagaTower2
+//--------------------------------------------------------------------------------------------------
+bool gt_ActivateXelNagaTower2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_killingPlayer;
+    unit lv_tower;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_killingPlayer = UnitGetOwner(gv_jG_KillingUnit);
+    lv_tower = UnitFromId(1194941189);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetState(lv_tower, c_unitStateSilenced, false);
+    if ((gf_GetEnemyRTSPlayer(lv_killingPlayer) == gv_rTSPlayer1)) {
+        UnitSetOwner(lv_tower, 14, true);
+    }
+    else {
+        UnitSetOwner(lv_tower, 13, true);
+    }
+    UnitIssueOrder(lv_tower, OrderTargetingUnit(AbilityCommand("TowerCapture", 0), lv_tower), c_orderQueueReplace);
+    Wait(180.0, c_timeGame);
+    UnitSetOwner(lv_tower, 0, true);
+    UnitSetState(lv_tower, c_unitStateSilenced, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ActivateXelNagaTower2_Init () {
+    gt_ActivateXelNagaTower2 = TriggerCreate("gt_ActivateXelNagaTower2_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ActivateXelNagaTower3
+//--------------------------------------------------------------------------------------------------
+bool gt_ActivateXelNagaTower3_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_killingPlayer;
+    unit lv_tower;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_killingPlayer = UnitGetOwner(gv_jG_KillingUnit);
+    lv_tower = UnitFromId(1917433232);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetState(lv_tower, c_unitStateSilenced, false);
+    if ((gf_GetEnemyRTSPlayer(lv_killingPlayer) == gv_rTSPlayer1)) {
+        UnitSetOwner(lv_tower, 14, true);
+    }
+    else {
+        UnitSetOwner(lv_tower, 13, true);
+    }
+    UnitIssueOrder(lv_tower, OrderTargetingUnit(AbilityCommand("TowerCapture", 0), lv_tower), c_orderQueueReplace);
+    Wait(180.0, c_timeGame);
+    UnitSetOwner(lv_tower, 0, true);
+    UnitSetState(lv_tower, c_unitStateSilenced, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ActivateXelNagaTower3_Init () {
+    gt_ActivateXelNagaTower3 = TriggerCreate("gt_ActivateXelNagaTower3_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: SilenceXelNagaTower
 //--------------------------------------------------------------------------------------------------
 bool gt_SilenceXelNagaTower_Func (bool testConds, bool runActions) {
@@ -2371,7 +2489,6 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    VisRevealArea(1, RegionEntireMap(), 32767.0, false);
     if ((gf_IsSurvival() == true)) {
         if ((gf_WithRTSPlayer() == true)) {
             gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
@@ -4107,7 +4224,7 @@ bool gt_GiveResourcesFromJungleRTSPlayer1_Func (bool testConds, bool runActions)
     }
 
     gf_GiveResource(lv_killedUnit, gv_rTSPlayer1, lv_killingPlayer);
-    gf_Respawn(lv_killedUnit, lv_killingPlayer);
+    gf_Respawn(lv_killedUnit, libNtve_gf_KillingUnit());
     return true;
 }
 
@@ -4143,7 +4260,7 @@ bool gt_GiveResourcesFromJungleRTSPlayer2_Func (bool testConds, bool runActions)
     }
 
     gf_GiveResource(lv_killedUnit, gv_rTSPlayer2, lv_killingPlayer);
-    gf_Respawn(lv_killedUnit, lv_killingPlayer);
+    gf_Respawn(lv_killedUnit, libNtve_gf_KillingUnit());
     return true;
 }
 
@@ -6046,6 +6163,9 @@ void gt_ScienceVesselPicked_Init () {
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
+    gt_ActivateXelNagaTower1_Init();
+    gt_ActivateXelNagaTower2_Init();
+    gt_ActivateXelNagaTower3_Init();
     gt_SilenceXelNagaTower_Init();
     gt_VikingsIncrease_Init();
     gt_StartBossAi_Init();
