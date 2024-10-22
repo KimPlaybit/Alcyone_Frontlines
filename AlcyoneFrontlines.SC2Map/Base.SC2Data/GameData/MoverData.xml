@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CMoverMissile id="AlarakPsiOrbMissile">
+        <MotionPhases index="0" MaxSpeed="10"/>
+        <!--MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="4"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="4,6.5"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases index="1">
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="2"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases-->
+    </CMoverMissile>
     <CMoverAvoid id="Ground2">
         <PlacementArray index="Prevent">
             <Bits index="GroundNoSpawn" value="1"/>
         </PlacementArray>
     </CMoverAvoid>
+    <CMoverMissile id="PitAlarakPsiOrbMissile">
+        <MotionPhases index="0" MaxSpeed="15" ThrowBandYaw="-360,-360,-360,-360" ThrowBandPitch="-360,-360,-360,-360"/>
+    </CMoverMissile>
     <CMoverMissile id="TossGrenade2">
         <MotionPhases Driver="Ballistic" Gravity="12" FlightTime="0.5"/>
     </CMoverMissile>

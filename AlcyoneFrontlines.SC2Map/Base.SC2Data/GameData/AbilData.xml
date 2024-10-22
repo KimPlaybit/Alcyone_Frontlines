@@ -1567,10 +1567,16 @@
     <CAbilEffectTarget id="VoidSentryChronoBeam">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="20"/>
+        </Cost>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,Item,Uncommandable,Stasis,Dead,Hidden"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="VoidSentryShieldRepairDouble">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy,Missile,Stasis,Dead,Hallucination,Invulnerable"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="VoidShieldCapacitor">

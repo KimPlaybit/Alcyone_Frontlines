@@ -74,6 +74,11 @@
         <AlertIcon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
+    <CButton id="VoidArmorPassive">
+        <Icon value="Assets\Textures\btn-ability-protoss-shieldbattery-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="PrologueVoidArmor"/>
+    </CButton>
     <CButton id="RepairDrone">
         <Icon value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
@@ -412,6 +417,14 @@
     </CButton>
     <CButton id="ReversalTimeWarp">
         <Icon value="Assets\Textures\btn-ability-protoss-timewarp.dds"/>
+    </CButton>
+    <CButton id="ChronoBeamPassive">
+        <Icon value="Assets\Textures\btn-ability-protoss-chronobeam.dds"/>
+        <HotkeyAlias value="VoidSentryChronoBeam"/>
+    </CButton>
+    <CButton id="VoidSentryShieldRepairDouble2">
+        <Icon value="Assets\Textures\btn-ability-protoss-doubleshieldrecharge.dds"/>
+        <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="ZergDefenseStructureLevel1">
         <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>

@@ -687,6 +687,27 @@
         <MinimapIconScale value="0.090000"/>
         <MinimapIconBackgroundIsTeamColored value="1"/>
     </CActorUnit>
+    <CActorModel id="VoidPylonSpawner" parent="ModelAddition">
+        <Aliases index="0" removed="1"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorOrphan" Send="Destroy"/>
+        <On index="1" Terms="UnitBirth.VoidPylon" Send="Create"/>
+        <On index="2" Terms="UnitDeath.VoidPylon" Send="Destroy"/>
+        <On Terms="UnitBirth" Send="AnimBracketStart Attack Birth Walk {} OpeningPlayForever"/>
+        <HostSiteOps Ops="SOpShadow SOpHigherBy3"/>
+    </CActorModel>
     <CActorSimple id="Nova_Plasma_Death_Tinter">
         <On index="4" Target="" Send="TimerSet 0.100000 Delay"/>
         <On index="5" Terms="UnitDeathCustomize" Send="TimerSet 0.200000 DelayDestroy"/>

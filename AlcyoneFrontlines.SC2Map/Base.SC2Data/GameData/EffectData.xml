@@ -10,6 +10,9 @@
     <CEffectCreateUnit id="AlarakPsiOrbFinalUpgradedCU">
         <SpawnUnit index="0" removed="1"/>
     </CEffectCreateUnit>
+    <CEffectEnumArea id="AlarakPsiOrbSearch">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectSet id="ArtanisAstralWindOtherSet">
         <EffectArray value="GiveCredit"/>
         <!--EffectArray value="ArtanisAstralWindOtherAB"/-->
@@ -324,6 +327,12 @@
         <EffectArray value="ObserverSquadSightAB"/>
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
+    <CEffectDamage id="SOAPylonWeaponDamage">
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectDamage id="ShrikeTurretDamage">
+        <Amount value="10"/>
+    </CEffectDamage>
     <CEffectSet id="SmallMPCreateRoachling">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="MPCreateRoachlingA"/>
@@ -335,6 +344,14 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="TemporalRiftUnit2"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="SporeCrawlerSpawner" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="15"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectDamage id="SporeCrawlerU">
+        <AttributeBonus index="Heroic" value="40"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="TemporalFieldCreatePersistent2">
         <EditorCategories value="Race:Protoss"/>
         <InitialEffect value="TemporalFieldSearchAreaImpactDummy"/>
@@ -351,6 +368,9 @@
         <AreaArray Radius="3.5" Effect="ReversalFieldApplyBehavior"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="VoidSentryChronoBeamAB"/>
+    <CEffectCreatePersistent id="VoidSentryChronoBeamCP">
+        <PeriodicPeriodArray index="0" value="0.2"/>
+    </CEffectCreatePersistent>
     <CEffectSet id="VoidSentryChronoBeamSet">
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
@@ -368,7 +388,7 @@
         <RechargeVitalRate value="9"/>
     </CEffectCreateHealer>
     <CEffectEnumArea id="VoidSentryShieldRepairDoubleExtraSearch1">
-        <SearchFilters value="-;Self,Enemy,Structure,Missile,Stasis,Dead"/>
+        <SearchFilters value="-;Self,Enemy,Missile,Stasis,Dead"/>
     </CEffectEnumArea>
     <CEffectSet id="VoidSentryShieldRepairDoubleInitialSet">
         <EffectArray value="GiveCredit"/>
@@ -868,9 +888,6 @@
         <ImpactEffect value="SporeCrawlerU2"/>
         <AmmoUnit value="SporeCrawlerWeapon"/>
     </CEffectLaunchMissile>
-    <CEffectDamage id="SporeCrawlerU">
-        <AttributeBonus index="Heroic" value="40"/>
-    </CEffectDamage>
     <CEffectDamage id="SporeCrawlerU2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
         <Amount value="15"/>

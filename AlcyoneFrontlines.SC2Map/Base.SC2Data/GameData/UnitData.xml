@@ -497,6 +497,9 @@
             <LayoutButtons Face="KaraxRepairDroneRepair" Type="Passive" Row="1" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="PitAlarakPsiOrbMissile">
+        <Speed value="15"/>
+    </CUnit>
     <CUnit id="ScienceRepairDrone">
         <Race value="Prot"/>
         <Mob value="Campaign"/>
@@ -1465,6 +1468,7 @@
         <AbilArray Link="BuildinProgressNydusCanal"/>
         <AbilArray Link="NydusWormTransport"/>
         <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
         <BehaviorArray Link="makeCreep4x4"/>
         <BehaviorArray Link="NydusDetect"/>
         <CardLayouts>
@@ -1488,6 +1492,7 @@
         <GlossaryPriority value="261"/>
         <HotkeyCategory value="Unit/Category/ZergUnits"/>
         <AIOverideTargetPriority value="3"/>
+        <WeaponArray Link="AcidSpewSpawner" Turret="SporeCrawler"/>
     </CUnit>
     <CUnitHero id="NydusCanal22" parent="AccelerationZoneBase">
         <Name value="Unit/Name/NydusCanal22"/>
@@ -1838,10 +1843,14 @@
             <LayoutButtons Face="VoidSentryShieldRepairDouble" Type="AbilCmd" AbilCmd="VoidSentryShieldRepairDouble,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="GuardianShield3" Type="AbilCmd" AbilCmd="PrologueVoidArmor,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="SentryTaldarimForceField" Type="AbilCmd" AbilCmd="ForceFieldMonitor,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="VoidSentryShieldRepairDouble2" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="VoidArmorPassive" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
         <HotkeyCategory value="Unit/Category/ProtossStory"/>
+        <PushPriority value="9999"/>
         <Speed value="3"/>
+        <AlliedPushPriority value="15"/>
     </CUnit>
     <CUnit id="SmallNydusSpawner">
         <DeathRevealRadius value="3"/>
@@ -3268,7 +3277,7 @@
         <ShieldRegenRate value="0.1992"/>
         <AIOverideTargetPriority value="3"/>
         <AbilArray Link="attack"/>
-        <WeaponArray Turret="Nexus"/>
+        <WeaponArray Link="SOAPylonWeapon" Turret="Nexus"/>
     </CUnit>
     <CUnit id="FleetBeacon">
         <CardLayouts index="0">
