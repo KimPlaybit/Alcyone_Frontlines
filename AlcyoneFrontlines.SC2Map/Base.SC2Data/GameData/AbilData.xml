@@ -66,6 +66,18 @@
         <Arc value="360"/>
         <ArcSlop value="360"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="ScienceVesselEmergencyThrusters">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="MedivacSpeedBoost"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="45"/>
+        </Cost>
+        <AINotifyEffect value="MedivacSpeedBoost"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MedivacSpeedBoost">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="NovaGadgetDefensiveDroneSummon">
         <Cost index="0">
             <Vital index="Energy" value="0"/>
@@ -81,7 +93,7 @@
         <Cost>
             <Vital index="Energy" value="25"/>
             <Charge Link="Abil/SpawnTurretLab"/>
-            <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnTurretLab" Location="Unit" TimeUse="10"/>
+            <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnTurretLab" Location="Unit" TimeUse="25"/>
         </Cost>
         <Placeholder value="LabTurretUp2"/>
         <Range value="7"/>
