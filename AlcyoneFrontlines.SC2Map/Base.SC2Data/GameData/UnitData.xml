@@ -1774,7 +1774,7 @@
         <AbilArray Link="Irradiate"/>
         <AbilArray Link="NovaGadgetDefensiveDroneSummon"/>
         <AbilArray Link="ScienceVesselRepairDroneHanger"/>
-        <AbilArray Link="MedivacSpeedBoost"/>
+        <AbilArray Link="ScienceVesselEmergencyThrusters"/>
         <AbilArray Link="TurretLab"/>
         <AbilArray Link="HangarQueue5"/>
         <BehaviorArray index="0" Link="Detector11"/>
@@ -1794,7 +1794,7 @@
             <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
             <LayoutButtons Face="Irradiate" Type="AbilCmd" AbilCmd="Irradiate,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="ScienceSpeedBoost22" Type="Passive" Row="1" Column="0"/>
-            <LayoutButtons Face="ScienceSpeedBoost2" Type="AbilCmd" AbilCmd="MedivacSpeedBoost,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ScienceSpeedBoost2" Type="AbilCmd" AbilCmd="ScienceVesselEmergencyThrusters,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="CommanderTraitNovaDefensiveDrone" Type="AbilCmd" AbilCmd="NovaGadgetDefensiveDroneSummon,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="GasTurret" Type="AbilCmd" AbilCmd="TurretLab,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="Irradiate2" Type="Passive" Row="1" Column="1"/>
