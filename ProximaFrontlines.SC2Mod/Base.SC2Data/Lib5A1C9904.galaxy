@@ -321,7 +321,7 @@ string lib5A1C9904_gf_GetPlayerRaceName (int lp_player) {
 int lib5A1C9904_gf_GetAllyRTSPlayer (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    if (((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true))) {
+    if (((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true) || (lp_player == 13))) {
         return lib5A1C9904_gv_rTSPlayer1;
     }
     else {
@@ -343,7 +343,7 @@ int lib5A1C9904_gf_GetWavesPlayer (int lp_player) {
 int lib5A1C9904_gf_GetEnemyRTSPlayer (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    if ((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Enemy) == true)) {
+    if ((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Enemy) == true) && (lp_player == 14)) {
         return lib5A1C9904_gv_rTSPlayer1;
     }
     else {
