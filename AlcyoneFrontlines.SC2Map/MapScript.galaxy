@@ -311,17 +311,17 @@ void gf_SetupSpawners () {
     lv_waveUnitType = lib5A1C9904_gf_GetDefaultWaveType(14);
     lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(14);
     lv_amount = lib5A1C9904_gf_GetDefaultWaveAmount(14);
-    lv_spawnerId = lib5A1C9904_gf_AddSpawner(PointFromId(1320118314), lv_spawnerUnitType, lv_waveUnitType, lv_amount, 13);
+    lv_spawnerId = lib5A1C9904_gf_AddSpawner(PointFromId(1320118314), lv_spawnerUnitType, lv_waveUnitType, lv_amount, 14);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1063931463), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1673487216), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(2008666934), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(221368982), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1219627428), lv_spawnerId);
-    lv_spawnerId = lib5A1C9904_gf_AddSpawner(RegionGetCenter(RegionFromId(14)), lv_spawnerUnitType, lv_waveUnitType, lv_amount, 13);
+    lv_spawnerId = lib5A1C9904_gf_AddSpawner(RegionGetCenter(RegionFromId(14)), lv_spawnerUnitType, lv_waveUnitType, lv_amount, 14);
     lib5A1C9904_gf_AddNewWavePoint(RegionGetCenter(RegionFromId(17)), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(RegionGetCenter(RegionFromId(12)), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1219627428), lv_spawnerId);
-    lv_spawnerId = lib5A1C9904_gf_AddSpawner(RegionGetCenter(RegionFromId(15)), lv_spawnerUnitType, lv_waveUnitType, lv_amount, 13);
+    lv_spawnerId = lib5A1C9904_gf_AddSpawner(RegionGetCenter(RegionFromId(15)), lv_spawnerUnitType, lv_waveUnitType, lv_amount, 14);
     lib5A1C9904_gf_AddNewWavePoint(RegionGetCenter(RegionFromId(21)), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(RegionGetCenter(RegionFromId(13)), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1219627428), lv_spawnerId);
@@ -519,16 +519,18 @@ bool gt_StartBossAi_Func (bool testConds, bool runActions) {
 
     if ((lib5A1C9904_gf_GetAllyRTSPlayer(lv_killingPlayer) == lib5A1C9904_gv_rTSPlayer1)) {
         libNtve_gf_CreateUnitsAtPoint2(1, "SpawnedOdin", 0, 13, RegionGetCenter(RegionFromId(8)));
+        lv_enemyRTSPlayer = lib5A1C9904_gf_GetEnemyRTSPlayer(13);
         lv_spawnUnit = UnitLastCreated();
     }
     else {
         libNtve_gf_CreateUnitsAtPoint2(1, "SpawnedOdin", 0, 14, RegionGetCenter(RegionFromId(8)));
+        lv_enemyRTSPlayer = lib5A1C9904_gf_GetEnemyRTSPlayer(14);
         lv_spawnUnit = UnitLastCreated();
     }
     UnitIssueOrder(lv_spawnUnit, OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionEntireMap())), c_orderQueueReplace);
     while ((UnitIsAlive(lv_spawnUnit) == true)) {
         if ((UnitOrder(lv_spawnUnit, 0) == null)) {
-            if (true) {
+            if ((lv_enemyRTSPlayer == lib5A1C9904_gv_rTSPlayer1)) {
                 UnitIssueOrder(lv_spawnUnit, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGroupCenterOfGroup(lib5A1C9904_gv_rtsPlayer1Buildings)), c_orderQueueReplace);
             }
             else {
