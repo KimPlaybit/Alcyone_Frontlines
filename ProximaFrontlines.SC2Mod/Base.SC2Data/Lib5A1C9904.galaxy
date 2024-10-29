@@ -115,7 +115,7 @@ void lib5A1C9904_InitVariables () {
 }
 
 // Functions
-void lib5A1C9904_gf_StartProximaGame () {
+void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, fixed lp_turretOffset1X, fixed lp_turretOffset1Y, fixed lp_turretOffset2X, fixed lp_turretOffset2Y) {
     // Variable Declarations
     bool lv_waves;
     string lv_raceName;
@@ -128,16 +128,16 @@ void lib5A1C9904_gf_StartProximaGame () {
     // Variable Initialization
     lv_waves = lib5A1C9904_gf_GetWaveStatus();
     lv_raceName = "";
-    lv_startpos1 = PointFromId(1219627428);
-    lv_startpos2 = PointFromId(1466456382);
-    lv_offsetplayer1 = PointWithOffset(PointFromId(1219627428), 3.0, 3.0);
-    lv_offsetplayer2 = PointWithOffset(PointFromId(1466456382), -2.0, -3.0);
+    lv_startpos1 = lp_startPosition1;
+    lv_startpos2 = lp_startPosition2;
+    lv_offsetplayer1 = PointWithOffset(lp_startPosition1, 3.0, 3.0);
+    lv_offsetplayer2 = PointWithOffset(lp_startPosition2, -2.0, -3.0);
 
     // Implementation
     if ((lib5A1C9904_gf_IsSurvival() == true)) {
         if ((lib5A1C9904_gf_WithRTSPlayer() == true)) {
             lib5A1C9904_gv_soldierPlayers1 = GameAttributePlayersForTeam(2);
-            MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1), PointFromId(1219627428));
+            MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1), lv_startpos1);
             lib5A1C9904_gf_SpawnDefenceTower(lib5A1C9904_gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
         }
         else {
@@ -148,9 +148,9 @@ void lib5A1C9904_gf_StartProximaGame () {
     else {
         lib5A1C9904_gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
         lib5A1C9904_gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
-        MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1), PointFromId(1219627428));
+        MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1), lv_startpos1);
         lib5A1C9904_gf_SpawnDefenceTower(lib5A1C9904_gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
-        MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer2, PlayerRace(lib5A1C9904_gv_rTSPlayer2), PointFromId(1466456382));
+        MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer2, PlayerRace(lib5A1C9904_gv_rTSPlayer2), lv_startpos2);
         lib5A1C9904_gf_SpawnDefenceTower(lib5A1C9904_gv_rTSPlayer2, 14, lv_offsetplayer2, lv_startpos1);
     }
     lib5A1C9904_gf_SetupTeams1();
@@ -159,8 +159,8 @@ void lib5A1C9904_gf_StartProximaGame () {
     MeleeInitResourcesForPlayer(lib5A1C9904_gv_rTSPlayer2, PlayerRace(lib5A1C9904_gv_rTSPlayer2));
     libNtve_gf_SetUpgradeLevelForPlayer(13, "ShrikeTurret", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(14, "ShrikeTurret", 1);
-    CameraPan(lib5A1C9904_gv_rTSPlayer1, PointFromId(1219627428), 0.0, -1, 10.0, false);
-    CameraPan(lib5A1C9904_gv_rTSPlayer2, PointFromId(1466456382), 0.0, -1, 10.0, false);
+    CameraPan(lib5A1C9904_gv_rTSPlayer1, lv_startpos1, 0.0, -1, 10.0, false);
+    CameraPan(lib5A1C9904_gv_rTSPlayer2, lib5A1C9904_gv_startPosition2, 0.0, -1, 10.0, false);
     lib5A1C9904_gf_StartAi(lv_startpos1, lib5A1C9904_gv_rTSPlayer1);
     lib5A1C9904_gf_StartAi(lv_startpos2, lib5A1C9904_gv_rTSPlayer2);
     Wait(0.5, c_timeGame);
@@ -579,10 +579,10 @@ point lib5A1C9904_gf_GetStartLocation (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     if ((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
-        return PointFromId(1219627428);
+        return lib5A1C9904_gv_startPosition1;
     }
     else {
-        return PointFromId(1466456382);
+        return lib5A1C9904_gv_startPosition2;
     }
 }
 
@@ -849,7 +849,7 @@ void lib5A1C9904_gf_SetupTeams1 () {
         }
         libNtve_gf_SetAlliance(13, lv_loopedPlayer, libNtve_ge_AllianceSetting_NeutralWithSharedVision);
         libNtve_gf_SetAlliance(14, lv_loopedPlayer, libNtve_ge_AllianceSetting_Enemy);
-        CameraPan(lv_loopedPlayer, PointFromId(1219627428), 0.0, -1, 10.0, false);
+        CameraPan(lv_loopedPlayer, lib5A1C9904_gv_startPosition1, 0.0, -1, 10.0, false);
     }
 }
 
@@ -884,7 +884,7 @@ void lib5A1C9904_gf_SetupTeams2 () {
         libNtve_gf_SetAlliance(lv_loopedPlayer, lib5A1C9904_gv_rTSPlayer2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
         libNtve_gf_SetAlliance(14, lv_loopedPlayer, libNtve_ge_AllianceSetting_NeutralWithSharedVision);
         libNtve_gf_SetAlliance(13, lv_loopedPlayer, libNtve_ge_AllianceSetting_Enemy);
-        CameraPan(lv_loopedPlayer, PointFromId(1466456382), 0.0, -1, 10.0, false);
+        CameraPan(lv_loopedPlayer, lib5A1C9904_gv_startPosition2, 0.0, -1, 10.0, false);
     }
 }
 
@@ -1252,7 +1252,7 @@ point lib5A1C9904_gf_GetSpawnPointTeam1 (unit lp_deadPlayer) {
         return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
     }
 
-    return PointFromId(1219627428);
+    return lib5A1C9904_gv_startPosition1;
 }
 
 point lib5A1C9904_gf_GetSpawnPointTeam2 (unit lp_deadPlayer) {
@@ -1273,7 +1273,7 @@ point lib5A1C9904_gf_GetSpawnPointTeam2 (unit lp_deadPlayer) {
         return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
     }
 
-    return PointFromId(1466456382);
+    return lib5A1C9904_gv_startPosition2;
 }
 
 void lib5A1C9904_gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer) {
@@ -3517,7 +3517,7 @@ bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
     int autoD1FD18C2_val;
 
     // Variable Initialization
-    lv_startPos = PointFromId(1219627428);
+    lv_startPos = lib5A1C9904_gv_startPosition1;
 
     // Actions
     if (!runActions) {
@@ -3541,23 +3541,23 @@ bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
             if ((lv_raceCheck == true)) {
                 auto74D8FDF6_val = lv_random;
                 if (auto74D8FDF6_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_D9CB5152")));
                 }
                 else if (auto74D8FDF6_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_5A84CAED")));
                 }
                 else if (auto74D8FDF6_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_710B2B61")));
                 }
                 else if (auto74D8FDF6_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_AA757172")));
                 }
                 else if (auto74D8FDF6_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_708720DB")));
                 }
                 else {
@@ -3568,27 +3568,27 @@ bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
             if ((lv_raceCheck == true)) {
                 autoE03F8687_val = lv_random;
                 if (autoE03F8687_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_9ACD18A4")));
                 }
                 else if (autoE03F8687_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_CAA5DCDD")));
                 }
                 else if (autoE03F8687_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_33BE9386")));
                 }
                 else if (autoE03F8687_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_8A5EDF0C")));
                 }
                 else if (autoE03F8687_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_1275C5B1")));
                 }
                 else if (autoE03F8687_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_9FE8F972")));
                 }
                 else {
@@ -3599,23 +3599,23 @@ bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
             if ((lv_raceCheck == true)) {
                 autoC41BA067_val = lv_random;
                 if (autoC41BA067_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_152A66FA")));
                 }
                 else if (autoC41BA067_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_A2B2DA65")));
                 }
                 else if (autoC41BA067_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_A29CFC43")));
                 }
                 else if (autoC41BA067_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_AAF3B2FF")));
                 }
                 else if (autoC41BA067_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_D91C90AE")));
                 }
                 else {
@@ -3626,23 +3626,23 @@ bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
             if ((lv_raceCheck == false)) {
                 autoD1FD18C2_val = lv_random;
                 if (autoD1FD18C2_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_E24A6336")));
                 }
                 else if (autoD1FD18C2_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_04F8C258")));
                 }
                 else if (autoD1FD18C2_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_A4E9EAB5")));
                 }
                 else if (autoD1FD18C2_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_AFDA49F0")));
                 }
                 else if (autoD1FD18C2_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_820BB715")));
                 }
                 else {
@@ -3684,7 +3684,7 @@ bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
     int auto181C63E3_val;
 
     // Variable Initialization
-    lv_startPos = PointFromId(1466456382);
+    lv_startPos = lib5A1C9904_gv_startPosition2;
 
     // Actions
     if (!runActions) {
@@ -3708,23 +3708,23 @@ bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
             if ((lv_raceCheck == true)) {
                 autoB78648F1_val = lv_random;
                 if (autoB78648F1_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_CD2AC9D5")));
                 }
                 else if (autoB78648F1_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_FCA78A59")));
                 }
                 else if (autoB78648F1_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_6A7465F3")));
                 }
                 else if (autoB78648F1_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_71D8F85C")));
                 }
                 else if (autoB78648F1_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_6AE07A1A")));
                 }
                 else {
@@ -3735,27 +3735,27 @@ bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
             if ((lv_raceCheck == true)) {
                 auto6FE56CB2_val = lv_random;
                 if (auto6FE56CB2_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_D90DCF89")));
                 }
                 else if (auto6FE56CB2_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_ED1596B5")));
                 }
                 else if (auto6FE56CB2_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_7FE3D72B")));
                 }
                 else if (auto6FE56CB2_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_C98DC2AE")));
                 }
                 else if (auto6FE56CB2_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_36BFC19A")));
                 }
                 else if (auto6FE56CB2_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_89937BE5")));
                 }
                 else {
@@ -3766,23 +3766,23 @@ bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
             if ((lv_raceCheck == true)) {
                 autoF526F516_val = lv_random;
                 if (autoF526F516_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_DAF1657E")));
                 }
                 else if (autoF526F516_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_92451847")));
                 }
                 else if (autoF526F516_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_DC1E8D16")));
                 }
                 else if (autoF526F516_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_0942BB65")));
                 }
                 else if (autoF526F516_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_8AF502DE")));
                 }
                 else {
@@ -3793,23 +3793,23 @@ bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
             if ((lv_raceCheck == false)) {
                 auto181C63E3_val = lv_random;
                 if (auto181C63E3_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_D6C323DD")));
                 }
                 else if (auto181C63E3_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_9D20C22F")));
                 }
                 else if (auto181C63E3_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_0599BA84")));
                 }
                 else if (auto181C63E3_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_AC4B2CAE")));
                 }
                 else if (auto181C63E3_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_DF99A591")));
                 }
                 else {
@@ -4046,12 +4046,12 @@ bool lib5A1C9904_gt_FirebatSoldierPicked_Func (bool testConds, bool runActions) 
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_07A6199C")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4097,12 +4097,12 @@ bool lib5A1C9904_gt_MedicSoldierPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_6A686599")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4148,12 +4148,12 @@ bool lib5A1C9904_gt_GoliathSoldierPicked_Func (bool testConds, bool runActions) 
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_0316399F")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4199,12 +4199,12 @@ bool lib5A1C9904_gt_MarineSoldierPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_F2D7419D")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4250,12 +4250,12 @@ bool lib5A1C9904_gt_SpectreSoldierPicked_Func (bool testConds, bool runActions) 
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_3F97D3D6")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4301,12 +4301,12 @@ bool lib5A1C9904_gt_ZealotSoldierPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_A13357E0")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4352,12 +4352,12 @@ bool lib5A1C9904_gt_DarkTemplarSoldierPicked_Func (bool testConds, bool runActio
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_1258901B")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4403,12 +4403,12 @@ bool lib5A1C9904_gt_DragoonPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_8E2C0B03")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4454,12 +4454,12 @@ bool lib5A1C9904_gt_SentryPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_DCFCFCFA")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "SentryPurifier2", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "SentryPurifier2", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "SentryPurifier2", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "SentryPurifier2", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4505,12 +4505,12 @@ bool lib5A1C9904_gt_AdeptPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_9670DC38")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4557,12 +4557,12 @@ bool lib5A1C9904_gt_CorsairPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_6C680DE3")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4611,7 +4611,7 @@ bool lib5A1C9904_gt_MothershipCorePicked_Func (bool testConds, bool runActions) 
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_C9C10DD3")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "MothershipCoreHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "MothershipCoreHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         lv_createdUnit = UnitLastCreated();
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
@@ -4621,7 +4621,7 @@ bool lib5A1C9904_gt_MothershipCorePicked_Func (bool testConds, bool runActions) 
         PlayerSetAlliance(13, c_allianceIdPower, EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "MothershipCoreHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "MothershipCoreHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         lv_createdUnit = UnitLastCreated();
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
@@ -4672,12 +4672,12 @@ bool lib5A1C9904_gt_ZerglingPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_862C7605")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4723,12 +4723,12 @@ bool lib5A1C9904_gt_QueenPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_130BF7CF")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4774,12 +4774,12 @@ bool lib5A1C9904_gt_DefilerPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_53FF420E")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4825,12 +4825,12 @@ bool lib5A1C9904_gt_HydraliskPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_1F297095")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4876,12 +4876,12 @@ bool lib5A1C9904_gt_UltraliskPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_96516D3D")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4928,12 +4928,12 @@ bool lib5A1C9904_gt_MutaliskPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_E103F095")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -4981,12 +4981,12 @@ bool lib5A1C9904_gt_NydusPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_774E7360")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "NydusCanal22", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "NydusCanal22", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "NydusCanal22", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "NydusCanal22", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
@@ -5034,12 +5034,12 @@ bool lib5A1C9904_gt_ScienceVesselPicked_Func (bool testConds, bool runActions) {
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_E57F333A")));
     PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "ScienceVessel2", 0, EventPlayer(), PointFromId(1219627428), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        libNtve_gf_UnitCreateFacingPoint(1, "ScienceVessel2", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "ScienceVessel2", 0, EventPlayer(), PointFromId(1466456382), PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        libNtve_gf_UnitCreateFacingPoint(1, "ScienceVessel2", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
         DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
     }

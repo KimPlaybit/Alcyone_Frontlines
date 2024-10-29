@@ -42,6 +42,8 @@ struct lib5A1C9904_gs_Spawn {
 };
 
 // Variable Declarations
+point lib5A1C9904_gv_startPosition1;
+point lib5A1C9904_gv_startPosition2;
 string lib5A1C9904_gv_terranFactions;
 string lib5A1C9904_gv_zergFactions;
 string lib5A1C9904_gv_protossFactions;
@@ -162,7 +164,7 @@ unitgroup lib5A1C9904_gv_marines_2;
 unitgroup lib5A1C9904_gv_boss;
 
 // Function Declarations
-void lib5A1C9904_gf_StartProximaGame ();
+void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, fixed lp_turretOffset1X, fixed lp_turretOffset1Y, fixed lp_turretOffset2X, fixed lp_turretOffset2Y);
 bool lib5A1C9904_gf_IsKnownRace (int lp_player);
 bool lib5A1C9904_gf_IsProtoss (int lp_rTSPlayer);
 bool lib5A1C9904_gf_IsZerg (int lp_rTSPlayer);
