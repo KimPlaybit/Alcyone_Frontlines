@@ -115,7 +115,37 @@ void lib5A1C9904_InitVariables () {
 }
 
 // Functions
+trigger auto_lib5A1C9904_gf_StartProximaGame_Trigger = null;
+point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
+point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2;
+fixed auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X;
+fixed auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y;
+fixed auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X;
+fixed auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y;
+
 void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, fixed lp_turretOffset1X, fixed lp_turretOffset1Y, fixed lp_turretOffset2X, fixed lp_turretOffset2Y) {
+    auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1 = lp_startPosition1;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2 = lp_startPosition2;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X = lp_turretOffset1X;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y = lp_turretOffset1Y;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X = lp_turretOffset2X;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y = lp_turretOffset2Y;
+
+    if (auto_lib5A1C9904_gf_StartProximaGame_Trigger == null) {
+        auto_lib5A1C9904_gf_StartProximaGame_Trigger = TriggerCreate("auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib5A1C9904_gf_StartProximaGame_Trigger, false, false);
+}
+
+bool auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc (bool testConds, bool runActions) {
+    point lp_startPosition1 = auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
+    point lp_startPosition2 = auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2;
+    fixed lp_turretOffset1X = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X;
+    fixed lp_turretOffset1Y = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y;
+    fixed lp_turretOffset2X = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X;
+    fixed lp_turretOffset2Y = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y;
+
     // Variable Declarations
     bool lv_waves;
     string lv_raceName;
@@ -175,6 +205,7 @@ void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPos
     UISetAlertTypeVisible(PlayerGroupAll(), "AttackUnitAlly_Terr", false);
     lib5A1C9904_gf_CreateSpawners();
     lib5A1C9904_gf_SpawnJungleUnits();
+    return true;
 }
 
 bool lib5A1C9904_gf_IsKnownRace (int lp_player) {
@@ -588,7 +619,17 @@ point lib5A1C9904_gf_GetStartLocation (int lp_player) {
     }
 }
 
+trigger auto_lib5A1C9904_gf_SoldierSelectionTeam1_Trigger = null;
+
 void lib5A1C9904_gf_SoldierSelectionTeam1 () {
+    if (auto_lib5A1C9904_gf_SoldierSelectionTeam1_Trigger == null) {
+        auto_lib5A1C9904_gf_SoldierSelectionTeam1_Trigger = TriggerCreate("auto_lib5A1C9904_gf_SoldierSelectionTeam1_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib5A1C9904_gf_SoldierSelectionTeam1_Trigger, false, false);
+}
+
+bool auto_lib5A1C9904_gf_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool runActions) {
     // Variable Declarations
     bool lv_raceCheck;
 
@@ -702,9 +743,20 @@ void lib5A1C9904_gf_SoldierSelectionTeam1 () {
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_scienceVesselTeam1);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_nydusTeam1);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_mothershipTeam1);
+    return true;
 }
 
+trigger auto_lib5A1C9904_gf_SoldierSelectionTeam2_Trigger = null;
+
 void lib5A1C9904_gf_SoldierSelectionTeam2 () {
+    if (auto_lib5A1C9904_gf_SoldierSelectionTeam2_Trigger == null) {
+        auto_lib5A1C9904_gf_SoldierSelectionTeam2_Trigger = TriggerCreate("auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib5A1C9904_gf_SoldierSelectionTeam2_Trigger, false, false);
+}
+
+bool auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool runActions) {
     // Variable Declarations
     bool lv_raceCheck;
 
@@ -818,6 +870,7 @@ void lib5A1C9904_gf_SoldierSelectionTeam2 () {
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_scienceVesselTeam2);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_nydusTeam2);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_mothershipTeam2);
+    return true;
 }
 
 void lib5A1C9904_gf_SetupTeams1 () {

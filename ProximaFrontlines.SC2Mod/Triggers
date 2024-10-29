@@ -21,6 +21,7 @@
         </Element>
         <Element Type="FunctionDef" Id="EFDF3189">
             <FlagAction/>
+            <FlagCreateThread/>
             <Parameter Type="ParamDef" Library="5A1C9904" Id="2A01E005"/>
             <Parameter Type="ParamDef" Library="5A1C9904" Id="9C2F004C"/>
             <Parameter Type="ParamDef" Library="5A1C9904" Id="551955C5"/>
@@ -13574,7 +13575,6 @@
             <ValueType Type="bool"/>
         </Element>
         <Element Type="Variable" Id="FC91F3E8">
-            <Internal/>
             <VariableType>
                 <Type Value="unitgroup"/>
             </VariableType>
@@ -13587,7 +13587,6 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000104"/>
         </Element>
         <Element Type="Variable" Id="7609795E">
-            <Internal/>
             <VariableType>
                 <Type Value="playergroup"/>
             </VariableType>
@@ -13600,7 +13599,6 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000056"/>
         </Element>
         <Element Type="Variable" Id="4515A9F8">
-            <Internal/>
             <VariableType>
                 <Type Value="playergroup"/>
             </VariableType>
@@ -14384,6 +14382,7 @@
         </Element>
         <Element Type="FunctionDef" Id="FA94AAC1">
             <FlagAction/>
+            <FlagCreateThread/>
             <Variable Type="Variable" Library="5A1C9904" Id="8C89DE8D"/>
             <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="4856AF18"/>
             <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="9F059A76"/>
@@ -16830,6 +16829,7 @@
         </Element>
         <Element Type="FunctionDef" Id="57A7FC94">
             <FlagAction/>
+            <FlagCreateThread/>
             <Variable Type="Variable" Library="5A1C9904" Id="D997CD8F"/>
             <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="BAA44110"/>
             <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="D1E30C63"/>
