@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTargetFindEnumArea id="DarkTemplarShadowFury">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <MinCount value="4"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="DarkTemplarShadowFury"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DarkTemplarBlink">
+        <CasterValidator value="CasterShieldGT50Percent"/>
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="6" Validator="BlinkTarget"/>
+        <Abil value="ZeratulBlink"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DefilerConsume">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Heroic,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <MinCount value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="4"/>
+        <Abil value="DefilerMPConsume"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DefilerPlagueTarget">
+        <TargetValidator value="DefilerMPPlagueLifeGT1"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <MinCount value="4"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="8" Validator="UnithasPlague"/>
+        <Abil value="DefilerMPPlague"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DefilerDarkSwarmTarget">
+        <TargetValidator value="EnemiesNearby"/>
+        <SearchFilters value="-;Self,Enemy,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <MinCount value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="8" Validator="UnitdoesnothaveDarkSwarm"/>
+        <Abil value="DefilerMPPlague"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DefilerLeechTarget">
+        <TargetValidator value="CasterEnergyGE50"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <MinCount value="4"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="8" Validator="UnithasPlague"/>
+        <Abil value="Leech"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DragoonTransit">
+        <SearchFilters value="-;Self,Player,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <MinCount value="4"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="500" Validator="IsStructure"/>
+        <Abil value="ArtanisWormholeTransit"/>
+    </CTargetFindEnumArea>
+    <CTargetFindSet id="FirebatChargetarget">
+        <CasterValidator value="IdleAttackAirGroundValidator2"/>
+        <Type value="Successful"/>
+        <Array value="PsiStorm"/>
+    </CTargetFindSet>
+    <CTargetFindSet id="SpectreStun">
+        <CasterValidator value="SpectreStun"/>
+        <Type value="Successful"/>
+        <Array value="PsiStorm"/>
+    </CTargetFindSet>
+    <CTargetFindSet id="GoliathMissilePods">
+        <TargetValidator value="MissilePods"/>
+        <Type value="Successful"/>
+        <Array value="LokiMissilePods"/>
+    </CTargetFindSet>
+    <CTargetFindSet id="FirebatUltiTarget">
+        <TargetValidator value="IdleAttackAirGroundValidator2"/>
+        <Type value="Successful"/>
+        <Array value="PsiStorm"/>
+    </CTargetFindSet>
+    <CTargetFindSet id="FirebatUltiTarget2">
+        <Type value="Successful"/>
+        <Array value="DarkTemplarShadowFuryHero"/>
+        <Array value="DarkTemplarShadowFury"/>
+    </CTargetFindSet>
+    <CTargetFindEnumArea id="GravitonBeamHostileSomeEnergy2">
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Validator="IsHeroic"/>
+        <Abil value="NovaWeaponPlasmaBlastNew"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DarkTemplarShadowFuryHero">
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Validator="IsHeroic"/>
+        <Abil value="DarkTemplarShadowFury"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="GravitonBeamHostileSomeEnergy22">
+        <SearchFilters value="Heroic;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="13" Validator="IsHeroic"/>
+        <Abil value="Obliterate"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+            <SortArray value="TSLifeLowestFirst"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
+    <CTargetFindOrder id="Zealotwhirlwind">
+        <Abil value="ZealotWhirlWindHero"/>
+    </CTargetFindOrder>
+</Catalog>

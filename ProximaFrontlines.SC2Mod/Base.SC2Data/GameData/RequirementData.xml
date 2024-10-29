@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirement id="ArmScienceVesselRepair">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <NodeArray index="Use" Link="LT2210218377CountUnitScienceRepairDroneQueuedOnly2"/>
+    </CRequirement>
+    <CRequirement id="DontHaveVoidSentryNoMPHallucination">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveAlarakForkedLightning">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveKaraxRepairDrone">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveNovaGadgetDefensiveDrone">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveNovaGadgetFlashBangGrenades">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveShadowStride">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeVoidDarkTemplarDeepShadowsCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HaveDarkShrine">
+        <CanBeSuppressed index="Use" value="1"/>
+    </CRequirement>
+    <CRequirement id="HaveHotSExplosiveGlaive">
+        <NodeArray index="Show" Link="CountUpgradeSJHyperionHangerCheckQueuedOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveHotSHydraliskFrenzy">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveHotSLurker">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveHotSUltraliskBurrowCharge">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveHotSViciousGlaive">
+        <NodeArray index="Show" Link="CountUpgradeSJHyperionHangerCheckQueuedOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveK5CrushingGrip">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveNovaWeaponCanisterRifleBehavior">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveNovaWeaponCanisterRifleBehavior2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+    </CRequirement>
+    <CRequirement id="HaveNovaWeaponPlasmaRifle">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveNovaWeaponPsiBlade">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveRoboticsFa">
+        <NodeArray index="Use" Link="CountUnitRoboticsFacilityCompleteOnly790878647TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HaveSOAPurifierBeam">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveStargate">
+        <NodeArray index="Use" Link="CountUnitStargateCompleteOnly2435624496TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HaveSuperStimpackNova">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveVoidDarkTemplarDeepShadows">
+        <NodeArray index="Use" Link="CountUpgradeVoidDarkTemplarDeepShadowsCompleteOnly"/>
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="HaveVoidImmortalDisruptorOrb">
+        <NodeArray index="Use" Link="CountUnitRoboticsBayCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="LearnAdvancedBallistics">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAdvancedBallisticsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LearnDefenseStructureUpgrade12">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1740904084CountUpgradeDefenseStructureUpdates1CompleteOnly1"/>
+        <NodeArray index="Show" Link="EqCountUpgradeDefenseStructureUpdates12QueuedOrBetter0"/>
+    </CRequirement>
+    <CRequirement id="LearnDefenseStructureUpgrade13">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Eq1740904084CountUpgradeDefenseStructureUpdates12CompleteOnly1"/>
+        <NodeArray index="Show" Link="EqCountUpgradeDefenseStructureUpdates13QueuedOrBetter0"/>
+    </CRequirement>
+    <CRequirement id="LearnHurricaneEngines">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHurricaneEnginesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LearnHydraliskSpeedUpgrade2">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAdaptiveTalonsQueuedOrBetterTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnDefenseStructureUpgrade1">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="EqCountUpgradeDefenseStructureUpdates1QueuedOrBetter0"/>
+    </CRequirement>
+    <CRequirement id="LearnSeismicSpinesUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitHiveCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSeismicSpinesQueuedOrBetterTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnHyperflightRotors">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHyperflightRotorsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HaveBurrowResearched">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeBurrowCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnTectonicDestabilizersUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTectonicDestabilizersQueuedOrBetterTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LearnSmartServos">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitArmoryCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeResearchSmartServosQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HasTectonicDestabilizersUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTectonicDestabilizersCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnFluxVanesUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVoidRaySpeedUpgradeQueuedOrBetterTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="Level2Required"/>
+    <CRequirement id="ScavengingSystemsResearched">
+        <NodeArray index="Use" Link=""/>
+    </CRequirement>
+    <CRequirement id="SpectreHaveNuke">
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link=""/>
+    </CRequirement>
+    <CRequirement id="UnknownRequirement">
+        <NodeArray index="Show" Link="NotCountUpgradeVoidDarkTemplarDeepShadowsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="UseAresClassWeaponsSystem">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseCombatShield">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseIncineratorNozzles">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseIncineratorNozzles2">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="CountUpgradeBearclawNozzlesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseIncineratorNozzles3">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="CountUpgradeBearclawNozzlesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseJuggernautPlatingFirebat">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseJuggernautPlatingFirebat2">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="CountUpgradeFirebatJuggernautPlatingCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseJuggernautPlatingFirebat3">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="CountUpgradeFirebatJuggernautPlatingCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseMultilockTargetingSystems">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseOverlordTransport">
+        <NodeArray index="Use" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseSpectreNyxSuit">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseStabilizerMedpacks">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseStimpackSM">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="UseUltrasonicPulse">
+        <NodeArray index="Show" Link=""/>
+    </CRequirement>
+    <CRequirement id="WidowMineArmed2">
+        <EditorCategories value="Race:Zerg,TechType:Unit"/>
+    </CRequirement>
+</Catalog>
