@@ -309,6 +309,8 @@ bool gt__1SetupJungle_Func (bool testConds, bool runActions) {
     lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(3), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(3)));
     lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(2), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(2)));
     lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(1), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(1)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(9), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(9)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(8), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(8)));
     return true;
 }
 
