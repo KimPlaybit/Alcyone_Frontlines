@@ -13449,14 +13449,11 @@
             <Item Type="Variable" Library="5A1C9904" Id="4515A9F8"/>
             <Item Type="Variable" Library="5A1C9904" Id="782CEBAD"/>
             <Item Type="Variable" Library="5A1C9904" Id="D94EBC61"/>
-            <Item Type="Variable" Library="5A1C9904" Id="131460D6"/>
-            <Item Type="Variable" Library="5A1C9904" Id="2555C47B"/>
-            <Item Type="Variable" Library="5A1C9904" Id="0C0D1FEF"/>
-            <Item Type="Variable" Library="5A1C9904" Id="C6CAD148"/>
             <Item Type="Variable" Library="5A1C9904" Id="5EAFE04A"/>
             <Item Type="Variable" Library="5A1C9904" Id="C27D821D"/>
         </Element>
         <Element Type="Variable" Id="65882864">
+            <Internal/>
             <VariableType>
                 <Type Value="bool"/>
                 <ArraySize Dim="0" Value="16"/>
@@ -13468,6 +13465,7 @@
             <ValueType Type="bool"/>
         </Element>
         <Element Type="Variable" Id="FC91F3E8">
+            <Internal/>
             <VariableType>
                 <Type Value="unitgroup"/>
             </VariableType>
@@ -13480,6 +13478,7 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000104"/>
         </Element>
         <Element Type="Variable" Id="7609795E">
+            <Internal/>
             <VariableType>
                 <Type Value="playergroup"/>
             </VariableType>
@@ -13492,6 +13491,7 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000056"/>
         </Element>
         <Element Type="Variable" Id="4515A9F8">
+            <Internal/>
             <VariableType>
                 <Type Value="playergroup"/>
             </VariableType>
@@ -13567,47 +13567,8 @@
             <Value>1</Value>
             <ValueType Type="int"/>
         </Element>
-        <Element Type="Variable" Id="131460D6">
-            <VariableType>
-                <Type Value="gamelink"/>
-                <GameType Value="Unit"/>
-            </VariableType>
-            <Value Type="Param" Library="5A1C9904" Id="B2F46DD5"/>
-        </Element>
-        <Element Type="Param" Id="B2F46DD5">
-            <Preset Type="PresetValue" Library="Ntve" Id="C9DCA6C0"/>
-        </Element>
-        <Element Type="Variable" Id="2555C47B">
-            <VariableType>
-                <Type Value="int"/>
-            </VariableType>
-            <Value Type="Param" Library="5A1C9904" Id="28FE3C80"/>
-        </Element>
-        <Element Type="Param" Id="28FE3C80">
-            <Value>0</Value>
-            <ValueType Type="int"/>
-        </Element>
-        <Element Type="Variable" Id="0C0D1FEF">
-            <VariableType>
-                <Type Value="gamelink"/>
-                <GameType Value="Unit"/>
-            </VariableType>
-            <Value Type="Param" Library="5A1C9904" Id="75555BAB"/>
-        </Element>
-        <Element Type="Param" Id="75555BAB">
-            <Preset Type="PresetValue" Library="Ntve" Id="C9DCA6C0"/>
-        </Element>
-        <Element Type="Variable" Id="C6CAD148">
-            <VariableType>
-                <Type Value="int"/>
-            </VariableType>
-            <Value Type="Param" Library="5A1C9904" Id="4EFCCB87"/>
-        </Element>
-        <Element Type="Param" Id="4EFCCB87">
-            <Value>0</Value>
-            <ValueType Type="int"/>
-        </Element>
         <Element Type="Variable" Id="5EAFE04A">
+            <Internal/>
             <VariableType>
                 <Type Value="int"/>
                 <Constant/>
@@ -13619,6 +13580,7 @@
             <ValueType Type="int"/>
         </Element>
         <Element Type="Variable" Id="C27D821D">
+            <Internal/>
             <VariableType>
                 <Type Value="int"/>
                 <Constant/>
