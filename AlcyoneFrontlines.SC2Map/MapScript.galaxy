@@ -604,7 +604,7 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
     gf_SetupSpawners();
     gf_SetupJungle();
     gf_SpawnPointsMinerals();
-    lib5A1C9904_gf_StartProximaGame();
+    lib5A1C9904_gf_StartProximaGame(PointFromId(1219627428), PointFromId(1466456382), 3.0, 3.0, -2.0, -3.0);
     return true;
 }
 

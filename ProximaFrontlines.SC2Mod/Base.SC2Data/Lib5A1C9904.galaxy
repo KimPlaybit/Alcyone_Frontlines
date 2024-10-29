@@ -130,8 +130,8 @@ void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPos
     lv_raceName = "";
     lv_startpos1 = lp_startPosition1;
     lv_startpos2 = lp_startPosition2;
-    lv_offsetplayer1 = PointWithOffset(lp_startPosition1, 3.0, 3.0);
-    lv_offsetplayer2 = PointWithOffset(lp_startPosition2, -2.0, -3.0);
+    lv_offsetplayer1 = PointWithOffset(lv_startpos1, 3.0, 3.0);
+    lv_offsetplayer2 = PointWithOffset(lv_startpos2, -2.0, -3.0);
 
     // Implementation
     if ((lib5A1C9904_gf_IsSurvival() == true)) {
@@ -153,6 +153,8 @@ void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPos
         MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer2, PlayerRace(lib5A1C9904_gv_rTSPlayer2), lv_startpos2);
         lib5A1C9904_gf_SpawnDefenceTower(lib5A1C9904_gv_rTSPlayer2, 14, lv_offsetplayer2, lv_startpos1);
     }
+    lib5A1C9904_gv_startPosition1 = lv_startpos1;
+    lib5A1C9904_gv_startPosition2 = lv_startpos2;
     lib5A1C9904_gf_SetupTeams1();
     lib5A1C9904_gf_SetupTeams2();
     MeleeInitResourcesForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1));
@@ -160,7 +162,7 @@ void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPos
     libNtve_gf_SetUpgradeLevelForPlayer(13, "ShrikeTurret", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(14, "ShrikeTurret", 1);
     CameraPan(lib5A1C9904_gv_rTSPlayer1, lv_startpos1, 0.0, -1, 10.0, false);
-    CameraPan(lib5A1C9904_gv_rTSPlayer2, lib5A1C9904_gv_startPosition2, 0.0, -1, 10.0, false);
+    CameraPan(lib5A1C9904_gv_rTSPlayer2, lv_startpos2, 0.0, -1, 10.0, false);
     lib5A1C9904_gf_StartAi(lv_startpos1, lib5A1C9904_gv_rTSPlayer1);
     lib5A1C9904_gf_StartAi(lv_startpos2, lib5A1C9904_gv_rTSPlayer2);
     Wait(0.5, c_timeGame);
