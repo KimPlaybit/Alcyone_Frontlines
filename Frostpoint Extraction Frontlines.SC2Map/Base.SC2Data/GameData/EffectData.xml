@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectTeleport id="AshWormBurrowMove">
+        <ValidatorArray value="TargetPointIsCreep"/>
+        <ValidatorArray value="HasVisionOfTarget"/>
+        <PreloadValidatorArray value="TargetPointIsCreep"/>
+        <PreloadValidatorArray value="HasVisionOfTarget"/>
+        <ClearQueuedOrders value="1"/>
+        <Range value="150"/>
+        <TargetLocation Effect="AshWormBurrowMove"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+    </CEffectTeleport>
+    <CEffectDamage id="AshWormDamage">
+        <Amount value="33"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectDamage id="DevastatingShotDamage">
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectCreateUnit id="Summon_Minion_Effect">
+        <ValidatorArray value="TargetOnCreep"/>
+        <ValidatorArray value="HasVisionOfTarget"/>
+        <EditorCategories value=""/>
+        <OwningPlayer Value="Caster"/>
+        <WhichLocation Effect="Summon_Minion_Effect" Value="TargetPoint"/>
+        <Origin Effect="Summon_Minion_Effect" Value="TargetPoint"/>
+        <SpawnOwner Value="Caster"/>
+        <SpawnEffect value="makeCreep4x4Enhanced"/>
+        <SpawnUnit value="NydusCanalAttacker"/>
+        <SpawnCount value="2"/>
+        <SpawnRange value="2"/>
+    </CEffectCreateUnit>
+</Catalog>

@@ -1,0 +1,721 @@
+//==================================================================================================
+// 
+// Generated Map Script
+// 
+// Name:   Frostpoint Extraction
+// 
+//==================================================================================================
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904"
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+void InitLibs () {
+    libNtve_InitLib();
+    lib5A1C9904_InitLib();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Constants
+//--------------------------------------------------------------------------------------------------
+const int gv_eEMaxTicks = 500;
+const fixed gv_eETimePerTick = 1.0;
+const int gv_eEMineralsPerTick = 10;
+const int gv_eEVespenePerTick = 10;
+
+//--------------------------------------------------------------------------------------------------
+// Global Variables
+//--------------------------------------------------------------------------------------------------
+int gv_eEResourceCaptureDialog;
+int[2] gv_eETeamBars;
+int[2] gv_eETeamArrowIndicators;
+int gv_eEExtractionText;
+int gv_eEMasterPanel;
+int[2][2] gv_eEResourceText;
+int gv_eEState;
+int gv_eETickCounter;
+int[2] gv_eEPlayerTicks;
+
+void InitGlobals () {
+    int init_i;
+    int init_j;
+
+    gv_eEResourceCaptureDialog = c_invalidDialogId;
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        gv_eETeamBars[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        gv_eETeamArrowIndicators[init_i] = c_invalidDialogControlId;
+    }
+    gv_eEExtractionText = c_invalidDialogControlId;
+    gv_eEMasterPanel = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        for (init_j = 0; init_j <= 1; init_j += 1) {
+            gv_eEResourceText[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Function Declarations
+//--------------------------------------------------------------------------------------------------
+void gf_EECreateCaptureUI ();
+void gf_EEUpdateUI ();
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Variables
+//--------------------------------------------------------------------------------------------------
+trigger gt_Init;
+trigger gt_SetupSnow;
+trigger gt__1SetupJungle;
+trigger gt__2SetupWaves;
+trigger gt_EEStartEvent;
+trigger gt_EEOnEnterExit;
+trigger gt_EETick;
+trigger gt_EEShutdown;
+trigger gt_EEFlickerBar;
+
+//--------------------------------------------------------------------------------------------------
+// Global Functions
+//--------------------------------------------------------------------------------------------------
+void gf_EECreateCaptureUI () {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogCreate(800, 100, c_anchorTop, 0, 10, true);
+    gv_eEResourceCaptureDialog = DialogLastCreated();
+    DialogSetImageVisible(gv_eEResourceCaptureDialog, false);
+    DialogControlCreate(gv_eEResourceCaptureDialog, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), DialogGetWidth(gv_eEResourceCaptureDialog), DialogGetHeight(gv_eEResourceCaptureDialog));
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, 0, 0);
+    gv_eEMasterPanel = DialogControlLastCreated();
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_console_tooltip_background_defaultprotoss.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeBorder, PlayerGroupAll());
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), DialogGetWidth(gv_eEResourceCaptureDialog), 40);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTop, 0, 0);
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_ingame_hotscampaign_unitstatus_healthbar.dds", PlayerGroupAll());
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 1, 20);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, 10, 10);
+    gv_eETeamBars[0] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemDesaturated(DialogControlLastCreated(), true, PlayerGroupAll());
+    libNtve_gf_SetDialogItemDesaturationColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lib5A1C9904_gv_rTSPlayer1, false)), PlayerGroupAll());
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_ingame_hotscampaign_unitstatus_healthbar.dds", PlayerGroupAll());
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 1, 20);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopRight, 10, 10);
+    gv_eETeamBars[1] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemDesaturated(DialogControlLastCreated(), true, PlayerGroupAll());
+    libNtve_gf_SetDialogItemDesaturationColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lib5A1C9904_gv_rTSPlayer2, false)), PlayerGroupAll());
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\sc2_ui_glues_icons_doublearrow.dds", PlayerGroupAll());
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 32, 32);
+    libNtve_gf_SetDialogItemRotation(DialogControlLastCreated(), 180, PlayerGroupAll());
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, 10, 4);
+    gv_eETeamArrowIndicators[0] = DialogControlLastCreated();
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\sc2_ui_glues_icons_doublearrow.dds", PlayerGroupAll());
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 32, 32);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopRight, 10, 4);
+    gv_eETeamArrowIndicators[1] = DialogControlLastCreated();
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeLabel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 400, 40);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTop, 0, 35);
+    libNtve_gf_SetDialogItemText(DialogControlLastCreated(), StringExternal("Param/Value/580F7346"), PlayerGroupAll());
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "ExtractionEventText", PlayerGroupAll());
+    gv_eEExtractionText = DialogControlLastCreated();
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 30, 30);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, 0, 35);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\icon-mineral-nobg.dds", PlayerGroupAll());
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeLabel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 80, 35);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, 30, 35);
+    libNtve_gf_SetDialogItemText(DialogControlLastCreated(), StringExternal("Param/Value/9948EC78"), PlayerGroupAll());
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "EventResourcesTextLeft", PlayerGroupAll());
+    gv_eEResourceText[0][0] = DialogControlLastCreated();
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 30, 30);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, 110, 35);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\icon-gas-terran-nobg.dds", PlayerGroupAll());
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeLabel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 80, 35);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, 140, 35);
+    libNtve_gf_SetDialogItemText(DialogControlLastCreated(), StringExternal("Param/Value/7233B2C0"), PlayerGroupAll());
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "EventResourcesTextLeft", PlayerGroupAll());
+    gv_eEResourceText[0][1] = DialogControlLastCreated();
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 30, 30);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopRight, 110, 35);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\icon-mineral-nobg.dds", PlayerGroupAll());
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeLabel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 80, 35);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopRight, 140, 35);
+    libNtve_gf_SetDialogItemText(DialogControlLastCreated(), StringExternal("Param/Value/4AE4B0AD"), PlayerGroupAll());
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "EventResourcesTextRight", PlayerGroupAll());
+    gv_eEResourceText[1][0] = DialogControlLastCreated();
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 30, 30);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopRight, 0, 35);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\icon-gas-terran-nobg.dds", PlayerGroupAll());
+    DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeLabel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 80, 35);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopRight, 30, 35);
+    libNtve_gf_SetDialogItemText(DialogControlLastCreated(), StringExternal("Param/Value/2428C026"), PlayerGroupAll());
+    libNtve_gf_SetDialogItemStyle(DialogControlLastCreated(), "EventResourcesTextRight", PlayerGroupAll());
+    gv_eEResourceText[1][1] = DialogControlLastCreated();
+}
+
+void gf_EEUpdateUI () {
+    // Variable Declarations
+    int lv_totalBarWidth;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_totalBarWidth = (DialogGetWidth(gv_eEResourceCaptureDialog) - 20);
+    DialogControlSetSize(gv_eETeamBars[0], PlayerGroupAll(), FixedToInt(Ceiling(((gv_eEPlayerTicks[0] / IntToFixed(gv_eEMaxTicks)) * lv_totalBarWidth))), DialogControlGetHeight(gv_eETeamBars[0], 1));
+    DialogControlSetSize(gv_eETeamBars[1], PlayerGroupAll(), FixedToInt(Ceiling(((gv_eEPlayerTicks[1] / IntToFixed(gv_eEMaxTicks)) * lv_totalBarWidth))), DialogControlGetHeight(gv_eETeamBars[1], 1));
+    if ((gv_eEState == 1)) {
+        DialogControlSetVisible(gv_eETeamArrowIndicators[0], PlayerGroupAll(), true);
+        DialogControlSetVisible(gv_eETeamArrowIndicators[1], PlayerGroupAll(), false);
+    }
+    else if ((gv_eEState == 2)) {
+        DialogControlSetVisible(gv_eETeamArrowIndicators[0], PlayerGroupAll(), false);
+        DialogControlSetVisible(gv_eETeamArrowIndicators[1], PlayerGroupAll(), true);
+    }
+    else if (true) {
+        DialogControlSetVisible(gv_eETeamArrowIndicators[0], PlayerGroupAll(), false);
+        DialogControlSetVisible(gv_eETeamArrowIndicators[1], PlayerGroupAll(), false);
+    }
+    libNtve_gf_SetDialogItemText(gv_eEResourceText[0][0], IntToText((gv_eEPlayerTicks[0] * gv_eEMineralsPerTick)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(gv_eEResourceText[0][1], IntToText((gv_eEPlayerTicks[0] * gv_eEVespenePerTick)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(gv_eEResourceText[1][0], IntToText((gv_eEPlayerTicks[1] * gv_eEMineralsPerTick)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(gv_eEResourceText[1][1], IntToText((gv_eEPlayerTicks[1] * gv_eEVespenePerTick)), PlayerGroupAll());
+    DialogControlSetPosition(gv_eETeamArrowIndicators[0], PlayerGroupAll(), c_anchorTopLeft, (DialogControlGetWidth(gv_eETeamBars[0], 1) - 15), DialogControlGetOffsetY(gv_eETeamArrowIndicators[0], 1));
+    DialogControlSetPosition(gv_eETeamArrowIndicators[1], PlayerGroupAll(), c_anchorTopRight, (DialogControlGetWidth(gv_eETeamBars[1], 1) - 15), DialogControlGetOffsetY(gv_eETeamArrowIndicators[1], 1));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Init
+//--------------------------------------------------------------------------------------------------
+bool gt_Init_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(gt_SetupSnow, true, false);
+    gf_EECreateCaptureUI();
+    TriggerExecute(gt__1SetupJungle, true, true);
+    TriggerExecute(gt__2SetupWaves, true, true);
+    TechTreeUpgradeAddLevel(15, "PunisherGrenades", 1);
+    TechTreeUpgradeAddLevel(15, "ShieldWall", 1);
+    TechTreeUpgradeAddLevel(15, "AresClassWeaponsSystem", 1);
+    TechTreeUpgradeAddLevel(15, "ResearchSmartServos", 1);
+    TechTreeUpgradeAddLevel(15, "ReinforcedSuperstructure", 1);
+    lib5A1C9904_gf_StartProximaGame(PointFromId(1534686828), PointFromId(184001369), (PointGetX(PointFromId(1534686828)) - PointGetX(PointFromId(1754254981))), (PointGetY(PointFromId(1534686828)) - PointGetY(PointFromId(1754254981))), (PointGetX(PointFromId(184001369)) - PointGetX(PointFromId(346679881))), (PointGetY(PointFromId(184001369)) - PointGetY(PointFromId(346679881))));
+    Wait(600.0, c_timeGame);
+    TriggerExecute(gt_EEStartEvent, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_Init_Init () {
+    gt_Init = TriggerCreate("gt_Init_Func");
+    TriggerAddEventMapInit(gt_Init);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SetupSnow
+//--------------------------------------------------------------------------------------------------
+bool gt_SetupSnow_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_offset;
+    int lv_numberOfDecor;
+    int lv_i;
+    int lv_o;
+
+    // Automatic Variable Declarations
+    int autoAC6B573E_ae;
+    const int autoAC6B573E_ai = 1;
+    int auto18A476C9_ae;
+    const int auto18A476C9_ai = 1;
+
+    // Variable Initialization
+    lv_offset = 18.0;
+    lv_numberOfDecor = FixedToInt(((libNtve_gf_WidthOfRegion(RegionEntireMap()) - (lv_offset * 2.0)) / lv_offset));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoAC6B573E_ae = lv_numberOfDecor;
+    lv_i = 1;
+    for ( ; ( (autoAC6B573E_ai >= 0 && lv_i <= autoAC6B573E_ae) || (autoAC6B573E_ai < 0 && lv_i >= autoAC6B573E_ae) ) ; lv_i += autoAC6B573E_ai ) {
+        auto18A476C9_ae = lv_numberOfDecor;
+        lv_o = 1;
+        for ( ; ( (auto18A476C9_ai >= 0 && lv_o <= auto18A476C9_ae) || (auto18A476C9_ai < 0 && lv_o >= auto18A476C9_ae) ) ; lv_o += auto18A476C9_ai ) {
+            libNtve_gf_CreateActorAtPoint("SnowLight", Point((lv_i * lv_offset), (lv_o * lv_offset)));
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_SetupSnow_Init () {
+    gt_SetupSnow = TriggerCreate("gt_SetupSnow_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 1 - Setup Jungle
+//--------------------------------------------------------------------------------------------------
+bool gt__1SetupJungle_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    lib5A1C9904_gs_Spawn lv_spawnBuilder;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5A1C9904_gf_AddUnitJunglePrice("WarPig", 35, 0);
+    lib5A1C9904_gf_AddUnitJunglePrice("HammerSecurity", 50, 10);
+    lib5A1C9904_gf_AddUnitJunglePrice("MercMedic", 20, 30);
+    lib5A1C9904_gf_AddUnitJunglePrice("HelsAngelAssault", 40, 20);
+    lib5A1C9904_gf_AddUnitJunglePrice("HelsAngelFighter", 40, 20);
+    lib5A1C9904_gf_AddUnitJunglePrice("Vulture", 20, 10);
+    lib5A1C9904_gf_AddUnitJunglePrice("SpiderMineBurrowed", 10, 10);
+    lib5A1C9904_gf_AddUnitJunglePrice("SpiderMine", 10, 10);
+    lib5A1C9904_gf_AddUnitJunglePrice("SpartanCompany", 10, 40);
+    lv_spawnBuilder.lv_respawnTime = 180;
+    lv_spawnBuilder.lv_deathCallbackTrigger = null;
+    lv_spawnBuilder.lv_point = PointFromId(840944426);
+    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "WarPig";
+    lv_spawnBuilder.lv_unitSpawn[0].lv_amount = 4;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(845608077);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(2080496879);
+    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "HelsAngelFighter";
+    lv_spawnBuilder.lv_unitSpawn[0].lv_amount = 2;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(1198583764);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(1267864538);
+    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "HammerSecurity";
+    lv_spawnBuilder.lv_unitSpawn[0].lv_amount = 3;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(1550976051);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(666080746);
+    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "WarPig";
+    lv_spawnBuilder.lv_unitSpawn[0].lv_amount = 5;
+    lv_spawnBuilder.lv_unitSpawn[1].lv_unitType = "MercMedic";
+    lv_spawnBuilder.lv_unitSpawn[1].lv_amount = 1;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(1466883146);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(1700447823);
+    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "WarPig";
+    lv_spawnBuilder.lv_unitSpawn[0].lv_amount = 5;
+    lv_spawnBuilder.lv_unitSpawn[1].lv_unitType = null;
+    lv_spawnBuilder.lv_unitSpawn[1].lv_amount = 0;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(953013560);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(600974464);
+    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "WarPig";
+    lv_spawnBuilder.lv_unitSpawn[0].lv_amount = 4;
+    lv_spawnBuilder.lv_unitSpawn[1].lv_unitType = "MercMedic";
+    lv_spawnBuilder.lv_unitSpawn[1].lv_amount = 2;
+    lv_spawnBuilder.lv_unitSpawn[2].lv_unitType = "HammerSecurity";
+    lv_spawnBuilder.lv_unitSpawn[1].lv_amount = 2;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(103608042);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(555594195);
+    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "SpartanCompany";
+    lv_spawnBuilder.lv_unitSpawn[0].lv_amount = 2;
+    lv_spawnBuilder.lv_unitSpawn[1].lv_unitType = "HelsAngelFighter";
+    lv_spawnBuilder.lv_unitSpawn[1].lv_amount = 2;
+    lv_spawnBuilder.lv_unitSpawn[2].lv_unitType = "Vulture";
+    lv_spawnBuilder.lv_unitSpawn[3].lv_amount = 3;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lv_spawnBuilder.lv_point = PointFromId(1234253991);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(4), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(4)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(5), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(5)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(6), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(6)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(7), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(7)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(3), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(3)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(2), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(2)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(1), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(1)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(9), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(9)));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(8), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), RegionGetCenter(RegionFromId(8)));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt__1SetupJungle_Init () {
+    gt__1SetupJungle = TriggerCreate("gt__1SetupJungle_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: 2 - Setup Waves
+//--------------------------------------------------------------------------------------------------
+bool gt__2SetupWaves_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_waveUnitType;
+    string lv_spawnerUnitType;
+    int lv_waveAmount;
+    int lv_spawnerID;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_waveUnitType = lib5A1C9904_gf_GetDefaultWaveType(13);
+    lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(13);
+    lv_waveAmount = lib5A1C9904_gf_GetDefaultWaveAmount(13);
+    lv_spawnerID = lib5A1C9904_gf_AddSpawner(PointFromId(237049761), lv_spawnerUnitType, lv_waveUnitType, lv_waveAmount, 13);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1870525223), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(29445189), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1457128357), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(867091743), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1958283927), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(184001369), lv_spawnerID);
+    lv_spawnerID = lib5A1C9904_gf_AddSpawner(PointFromId(205441489), lv_spawnerUnitType, lv_waveUnitType, lv_waveAmount, 13);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1919646869), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(983462084), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(593845587), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1516855880), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1958283927), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(184001369), lv_spawnerID);
+    lv_spawnerID = lib5A1C9904_gf_AddSpawner(PointFromId(1931159309), lv_spawnerUnitType, lv_waveUnitType, lv_waveAmount, 13);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(658550613), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1348485756), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(2021055571), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1135231814), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(669005037), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1958283927), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(184001369), lv_spawnerID);
+    lv_waveUnitType = lib5A1C9904_gf_GetDefaultWaveType(14);
+    lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(14);
+    lv_waveAmount = lib5A1C9904_gf_GetDefaultWaveAmount(14);
+    lv_spawnerID = lib5A1C9904_gf_AddSpawner(PointFromId(867091743), lv_spawnerUnitType, lv_waveUnitType, lv_waveAmount, 14);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1457128357), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(29445189), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1870525223), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(237049761), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1286811888), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1534686828), lv_spawnerID);
+    lv_spawnerID = lib5A1C9904_gf_AddSpawner(PointFromId(1516855880), lv_spawnerUnitType, lv_waveUnitType, lv_waveAmount, 14);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(593845587), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(983462084), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1919646869), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(205441489), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1958283927), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(184001369), lv_spawnerID);
+    lv_spawnerID = lib5A1C9904_gf_AddSpawner(PointFromId(669005037), lv_spawnerUnitType, lv_waveUnitType, lv_waveAmount, 14);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1135231814), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(2021055571), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1348485756), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(658550613), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1931159309), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1958283927), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(184001369), lv_spawnerID);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt__2SetupWaves_Init () {
+    gt__2SetupWaves = TriggerCreate("gt__2SetupWaves_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: EE - StartEvent
+//--------------------------------------------------------------------------------------------------
+bool gt_EEStartEvent_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(gt_EETick, true);
+    TriggerEnable(gt_EEOnEnterExit, true);
+    DialogSetVisible(gv_eEResourceCaptureDialog, PlayerGroupAll(), true);
+    DialogControlFadeTransparency(gv_eEMasterPanel, PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(gv_eEMasterPanel, PlayerGroupAll(), 3.0, 0.0);
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/E6832E10"));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_EEStartEvent_Init () {
+    gt_EEStartEvent = TriggerCreate("gt_EEStartEvent_Func");
+    TriggerAddEventChatMessage(gt_EEStartEvent, c_playerAny, "-", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: EE - OnEnter/Exit
+//--------------------------------------------------------------------------------------------------
+bool gt_EEOnEnterExit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    playergroup lv_team1Group;
+    playergroup lv_team2Group;
+    bool lv_team1Exist;
+    bool lv_team2Exist;
+
+    // Automatic Variable Declarations
+    unitgroup autoA719D5CF_g;
+    int autoA719D5CF_u;
+    unit autoA719D5CF_var;
+
+    // Variable Initialization
+    lv_team1Group = PlayerGroupEmpty();
+    lv_team2Group = PlayerGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lib5A1C9904_gv_soldierPlayers1, lv_team1Group);
+    PlayerGroupAdd(lv_team1Group, lib5A1C9904_gv_rTSPlayer1);
+    PlayerGroupAdd(lv_team1Group, 13);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lib5A1C9904_gv_soldierPlayers2, lv_team2Group);
+    PlayerGroupAdd(lv_team2Group, lib5A1C9904_gv_rTSPlayer2);
+    PlayerGroupAdd(lv_team2Group, 14);
+    autoA719D5CF_g = UnitGroup(null, c_playerAny, RegionFromId(1), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoA719D5CF_u = UnitGroupCount(autoA719D5CF_g, c_unitCountAll);
+    for (;; autoA719D5CF_u -= 1) {
+        autoA719D5CF_var = UnitGroupUnitFromEnd(autoA719D5CF_g, autoA719D5CF_u);
+        if (autoA719D5CF_var == null) { break; }
+        if ((PlayerGroupHasPlayer(lv_team1Group, UnitGetOwner(autoA719D5CF_var)) == true)) {
+            lv_team1Exist = true;
+        }
+        else if ((PlayerGroupHasPlayer(lv_team2Group, UnitGetOwner(autoA719D5CF_var)) == true)) {
+            lv_team2Exist = true;
+        }
+    }
+    if ((lv_team1Exist == false) && (lv_team2Exist == false) && (gv_eEState != 0)) {
+        gv_eEState = 0;
+        libNtve_gf_SetDialogItemText(gv_eEExtractionText, StringExternal("Param/Value/FC59F6C8"), PlayerGroupAll());
+        TriggerStop(gt_EETick);
+        TriggerStop(gt_EEFlickerBar);
+        DialogControlFadeTransparency(gv_eETeamBars[0], PlayerGroupAll(), 0.0, 0.0);
+        DialogControlFadeTransparency(gv_eETeamBars[1], PlayerGroupAll(), 0.0, 0.0);
+    }
+    else if ((lv_team1Exist == true) && (lv_team2Exist == false) && (gv_eEState != 1)) {
+        gv_eEState = 1;
+        libNtve_gf_SetDialogItemText(gv_eEExtractionText, StringExternal("Param/Value/05ED8DA5"), PlayerGroupAll());
+        TriggerStop(gt_EETick);
+        TriggerStop(gt_EEFlickerBar);
+        TriggerExecute(gt_EETick, true, false);
+        TriggerExecute(gt_EEFlickerBar, true, false);
+        DialogControlFadeTransparency(gv_eETeamBars[0], PlayerGroupAll(), 0.0, 0.0);
+        DialogControlFadeTransparency(gv_eETeamBars[1], PlayerGroupAll(), 0.0, 0.0);
+    }
+    else if ((lv_team2Exist == true) && (lv_team1Exist == false) && (gv_eEState != 2)) {
+        gv_eEState = 2;
+        libNtve_gf_SetDialogItemText(gv_eEExtractionText, StringExternal("Param/Value/03D6F9B6"), PlayerGroupAll());
+        TriggerStop(gt_EETick);
+        TriggerStop(gt_EEFlickerBar);
+        TriggerExecute(gt_EETick, true, false);
+        TriggerExecute(gt_EEFlickerBar, true, false);
+        DialogControlFadeTransparency(gv_eETeamBars[0], PlayerGroupAll(), 0.0, 0.0);
+        DialogControlFadeTransparency(gv_eETeamBars[1], PlayerGroupAll(), 0.0, 0.0);
+    }
+    else if ((lv_team1Exist == true) && (lv_team2Exist == true) && (gv_eEState != 3)) {
+        gv_eEState = 3;
+        libNtve_gf_SetDialogItemText(gv_eEExtractionText, StringExternal("Param/Value/74D9A43E"), PlayerGroupAll());
+        TriggerStop(gt_EETick);
+        TriggerStop(gt_EEFlickerBar);
+        DialogControlFadeTransparency(gv_eETeamBars[0], PlayerGroupAll(), 0.0, 0.0);
+        DialogControlFadeTransparency(gv_eETeamBars[1], PlayerGroupAll(), 0.0, 0.0);
+    }
+    gf_EEUpdateUI();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_EEOnEnterExit_Init () {
+    gt_EEOnEnterExit = TriggerCreate("gt_EEOnEnterExit_Func");
+    TriggerEnable(gt_EEOnEnterExit, false);
+    TriggerAddEventUnitRegion(gt_EEOnEnterExit, null, RegionFromId(1), true);
+    TriggerAddEventUnitRegion(gt_EEOnEnterExit, null, RegionFromId(1), false);
+    TriggerAddEventUnitDied(gt_EEOnEnterExit, null);
+    TriggerAddEventTimePeriodic(gt_EEOnEnterExit, 0.5, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: EE - Tick
+//--------------------------------------------------------------------------------------------------
+bool gt_EETick_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_rTSPlayer1;
+    int lv_rTSPlayer2;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_rTSPlayer1 = 1;
+    lv_rTSPlayer2 = 2;
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    while (true) {
+        Wait(gv_eETimePerTick, c_timeGame);
+        if ((gv_eEState == 1)) {
+            PlayerModifyPropertyInt(lv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperAdd, gv_eEMineralsPerTick);
+            PlayerModifyPropertyInt(lv_rTSPlayer1, c_playerPropVespene, c_playerPropOperAdd, gv_eEVespenePerTick);
+            gv_eEPlayerTicks[0] += 1;
+        }
+
+        if ((gv_eEState == 2)) {
+            PlayerModifyPropertyInt(lv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperAdd, gv_eEMineralsPerTick);
+            PlayerModifyPropertyInt(lv_rTSPlayer2, c_playerPropVespene, c_playerPropOperAdd, gv_eEVespenePerTick);
+            gv_eEPlayerTicks[1] += 1;
+        }
+
+        gv_eETickCounter += 1;
+        gf_EEUpdateUI();
+        if ((gv_eETickCounter >= gv_eEMaxTicks)) {
+            TriggerExecute(gt_EEShutdown, true, false);
+            break;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_EETick_Init () {
+    gt_EETick = TriggerCreate("gt_EETick_Func");
+    TriggerEnable(gt_EETick, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: EE - Shutdown
+//--------------------------------------------------------------------------------------------------
+bool gt_EEShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(gt_EETick, false);
+    TriggerEnable(gt_EEOnEnterExit, false);
+    libNtve_gf_SetDialogItemText(gv_eEExtractionText, StringExternal("Param/Value/A74A5E6A"), PlayerGroupAll());
+    DialogControlSetVisible(gv_eETeamArrowIndicators[0], PlayerGroupAll(), false);
+    DialogControlSetVisible(gv_eETeamArrowIndicators[1], PlayerGroupAll(), false);
+    Wait(5.0, c_timeReal);
+    DialogControlFadeTransparency(gv_eEMasterPanel, PlayerGroupAll(), 10.0, 100.0);
+    Wait(15.0, c_timeReal);
+    DialogSetVisible(gv_eEResourceCaptureDialog, PlayerGroupAll(), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_EEShutdown_Init () {
+    gt_EEShutdown = TriggerCreate("gt_EEShutdown_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: EE - FlickerBar
+//--------------------------------------------------------------------------------------------------
+bool gt_EEFlickerBar_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_transparencyState;
+    fixed lv_transparencyValue;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    while (true) {
+        Wait(0.5, c_timeGame);
+        if ((lv_transparencyState == 0)) {
+            lv_transparencyState = 1;
+            lv_transparencyValue = 60.0;
+        }
+        else {
+            lv_transparencyState = 0;
+            lv_transparencyValue = 0.0;
+        }
+        if ((gv_eEState == 1)) {
+            DialogControlFadeTransparency(gv_eETeamBars[0], PlayerGroupAll(), 0.5, lv_transparencyValue);
+        }
+
+        if ((gv_eEState == 2)) {
+            DialogControlFadeTransparency(gv_eETeamBars[1], PlayerGroupAll(), 0.5, lv_transparencyValue);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_EEFlickerBar_Init () {
+    gt_EEFlickerBar = TriggerCreate("gt_EEFlickerBar_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Initialization
+//--------------------------------------------------------------------------------------------------
+void InitTriggers () {
+    gt_Init_Init();
+    gt_SetupSnow_Init();
+    gt__1SetupJungle_Init();
+    gt__2SetupWaves_Init();
+    gt_EEStartEvent_Init();
+    gt_EEOnEnterExit_Init();
+    gt_EETick_Init();
+    gt_EEShutdown_Init();
+    gt_EEFlickerBar_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Map Initialization
+//--------------------------------------------------------------------------------------------------
+void InitMap () {
+    InitLibs();
+    InitGlobals();
+    InitTriggers();
+}

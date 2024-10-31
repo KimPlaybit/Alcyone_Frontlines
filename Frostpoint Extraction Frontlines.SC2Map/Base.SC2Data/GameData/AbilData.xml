@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectTarget id="AshWormBurrowMove">
+        <Range index="0" value="50"/>
+        <SmartValidatorArray value="HasVision"/>
+        <SmartValidatorArray value="OnCreep"/>
+        <DefaultError value="CantLandTooFarFromCreepSource"/>
+        <CmdButtonArray index="Execute">
+            <Flags index="UseDefaultButton" value="1"/>
+            <Flags index="CreateDefaultButton" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DevastatingShot">
+        <Cost index="0">
+            <Display index="Energy" value="1"/>
+            <Vital index="Energy" value="5"/>
+            <Cooldown TimeUse="0"/>
+        </Cost>
+        <Range index="0" value="20"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Summon_Minions">
+        <OrderArray index="0" Model="Assets\UI\Cursors\WayPointConfirm_Void\WayPointConfirm_Void.m3"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Summon_Minion_Effect"/>
+    </CAbilEffectInstant>
+</Catalog>
