@@ -19,7 +19,7 @@ void InitLibs () {
 //--------------------------------------------------------------------------------------------------
 // Constants
 //--------------------------------------------------------------------------------------------------
-const int gv_eEMaxTicks = 500;
+const int gv_eEMaxTicks = 750;
 const fixed gv_eETimePerTick = 1.0;
 const int gv_eEMineralsPerTick = 10;
 const int gv_eEVespenePerTick = 10;
@@ -216,7 +216,6 @@ bool gt_Init_Func (bool testConds, bool runActions) {
     TriggerExecute(gt__2SetupWaves, true, true);
     TechTreeUpgradeAddLevel(15, "PunisherGrenades", 1);
     TechTreeUpgradeAddLevel(15, "ShieldWall", 1);
-    TechTreeUpgradeAddLevel(15, "AresClassWeaponsSystem", 1);
     TechTreeUpgradeAddLevel(15, "ResearchSmartServos", 1);
     TechTreeUpgradeAddLevel(15, "ReinforcedSuperstructure", 1);
     lib5A1C9904_gf_StartProximaGame(PointFromId(1534686828), PointFromId(184001369), (PointGetX(PointFromId(1534686828)) - PointGetX(PointFromId(1754254981))), (PointGetY(PointFromId(1534686828)) - PointGetY(PointFromId(1754254981))), (PointGetX(PointFromId(184001369)) - PointGetX(PointFromId(346679881))), (PointGetY(PointFromId(184001369)) - PointGetY(PointFromId(346679881))));
@@ -306,7 +305,7 @@ bool gt__1SetupJungle_Func (bool testConds, bool runActions) {
     lv_spawnBuilder.lv_point = PointFromId(845608077);
     lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
     lv_spawnBuilder.lv_point = PointFromId(2080496879);
-    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "HelsAngelFighter";
+    lv_spawnBuilder.lv_unitSpawn[0].lv_unitType = "SpartanCompany";
     lv_spawnBuilder.lv_unitSpawn[0].lv_amount = 2;
     lib5A1C9904_gf_AddJungleSpawn(lv_spawnBuilder);
     lv_spawnBuilder.lv_point = PointFromId(1198583764);
@@ -428,16 +427,16 @@ bool gt__2SetupWaves_Func (bool testConds, bool runActions) {
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(983462084), lv_spawnerID);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1919646869), lv_spawnerID);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(205441489), lv_spawnerID);
-    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1958283927), lv_spawnerID);
-    lib5A1C9904_gf_AddNewWavePoint(PointFromId(184001369), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1286811888), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1534686828), lv_spawnerID);
     lv_spawnerID = lib5A1C9904_gf_AddSpawner(PointFromId(669005037), lv_spawnerUnitType, lv_waveUnitType, lv_waveAmount, 14);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1135231814), lv_spawnerID);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(2021055571), lv_spawnerID);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1348485756), lv_spawnerID);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(658550613), lv_spawnerID);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1931159309), lv_spawnerID);
-    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1958283927), lv_spawnerID);
-    lib5A1C9904_gf_AddNewWavePoint(PointFromId(184001369), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1286811888), lv_spawnerID);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1534686828), lv_spawnerID);
     return true;
 }
 
@@ -580,8 +579,8 @@ bool gt_EETick_Func (bool testConds, bool runActions) {
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_rTSPlayer1 = 1;
-    lv_rTSPlayer2 = 2;
+    lv_rTSPlayer1 = lib5A1C9904_gv_rTSPlayer1;
+    lv_rTSPlayer2 = lib5A1C9904_gv_rTSPlayer2;
 
     // Conditions
     if (testConds) {

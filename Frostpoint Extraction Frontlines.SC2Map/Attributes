@@ -7,7 +7,7 @@
         <ModeId Value="1"/>
         <ModeName Value="Variant001/ModeName"/>
         <ModeDesc Value="Variant001/ModeDesc"/>
-        <MaxTeamSize Value="12"/>
+        <MaxTeamSize Value="5"/>
         <TeamName Value="Variant001/Team/00"/>
         <TeamName Value="Variant001/Team/01"/>
         <TeamName Value="Variant001/Team/02"/>
@@ -18,7 +18,7 @@
         <TeamName Value=""/>
         <TeamName Value=""/>
         <TeamName Value=""/>
-        <TeamName Value=""/>
+        <TeamName Value="Variant001/Team/10"/>
         <TeamName Value="Variant001/Team/11"/>
         <AttributeHidden Namespace="999" Id="3006"/>
         <AttributeHidden Namespace="328879" Id="3"/>
@@ -33,11 +33,18 @@
         <Attribute Namespace="999" Id="2000">
             <Default>
                 <Slot Id="Global"/>
-                <Value Id="1131770740"/>
+                <Value Id="29748"/>
                 <Locked/>
             </Default>
         </Attribute>
-        <Attribute Namespace="999" Id="2018">
+        <Attribute Namespace="999" Id="3000">
+            <Default>
+                <Slot Id="Global"/>
+                <Value Id="1180791666"/>
+                <Locked/>
+            </Default>
+        </Attribute>
+        <Attribute Namespace="999" Id="2013">
             <Default>
                 <Slot Id="0"/>
                 <Value Id="21553"/>
@@ -85,13 +92,6 @@
             <Default>
                 <Slot Id="11"/>
                 <Value Id="21556" Index="4"/>
-            </Default>
-        </Attribute>
-        <Attribute Namespace="999" Id="3000">
-            <Default>
-                <Slot Id="Global"/>
-                <Value Id="1180791666"/>
-                <Locked/>
             </Default>
         </Attribute>
     </Variant>
