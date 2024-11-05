@@ -2079,14 +2079,7 @@ void lib5A1C9904_gt_AIBuildMedivacs_Init () {
 // Trigger: NydusWormLevelUp
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_scale;
-    int lv_indexOfUnit;
-    bool lv_unitIsInArray;
-
     // Automatic Variable Declarations
-    // Variable Initialization
-
     // Conditions
     if (testConds) {
         if (!((UnitGetType(EventUnit()) == "NydusCanal22"))) {
@@ -2217,6 +2210,148 @@ bool lib5A1C9904_gt_SentryLevelUp_Func (bool testConds, bool runActions) {
 void lib5A1C9904_gt_SentryLevelUp_Init () {
     lib5A1C9904_gt_SentryLevelUp = TriggerCreate("lib5A1C9904_gt_SentryLevelUp_Func");
     TriggerAddEventUnitGainLevel(lib5A1C9904_gt_SentryLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ZerglingLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ZerglingLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "ZerglingHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zergling1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zergling5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zergling8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ZerglingLevelUp_Init () {
+    lib5A1C9904_gt_ZerglingLevelUp = TriggerCreate("lib5A1C9904_gt_ZerglingLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_ZerglingLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: BanelingUnitCreated
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_BanelingUnitCreated_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) == "BanelingHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSelect(EventUnitCreatedUnit(), UnitGetOwner(EventUnitCreatedUnit()), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_BanelingUnitCreated_Init () {
+    lib5A1C9904_gt_BanelingUnitCreated = TriggerCreate("lib5A1C9904_gt_BanelingUnitCreated_Func");
+    TriggerAddEventUnitCreated(lib5A1C9904_gt_BanelingUnitCreated, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: BanelingCreated
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_BanelingCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_spawnPoint;
+    int lv_amountOfTicks;
+    int lv_player;
+    unit lv_castingUnit;
+    bool lv_unitdead;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_spawnPoint = PointFromId(1219627428);
+    lv_player = EventPlayer();
+    lv_castingUnit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(lv_castingUnit) == "ZerglingHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetState(lv_castingUnit, c_unitStateHighlightable, false);
+    UnitSetState(lv_castingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_castingUnit, c_unitStateSelectable, false);
+    UnitSetState(lv_castingUnit, c_unitStateTooltipable, false);
+    UnitSetState(lv_castingUnit, c_unitStateStatusBar, false);
+    UnitSetScale(lv_castingUnit, 1.0, 1.0, 1.0);
+    UnitSetState(lv_castingUnit, c_unitStateSleeping, true);
+    UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, false);
+    libNtve_gf_MakeUnitInvulnerable(lv_castingUnit, true);
+    UnitClearSelection(UnitGetOwner(lv_castingUnit));
+    Wait(10.0, c_timeGame);
+    if ((lib5A1C9904_gf_GetEnemyRTSPlayer(lv_player) == lib5A1C9904_gv_rTSPlayer1)) {
+        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam2(lv_castingUnit);
+    }
+    else {
+        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam1(lv_castingUnit);
+    }
+    UnitSetPosition(lv_castingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    UnitSetScale(lv_castingUnit, 100.0, 100.0, 100.0);
+    libNtve_gf_MakeUnitInvulnerable(lv_castingUnit, false);
+    UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, true);
+    UnitSetState(lv_castingUnit, c_unitStateHighlightable, true);
+    UnitSetState(lv_castingUnit, c_unitStateCursorable, true);
+    UnitSetState(lv_castingUnit, c_unitStateSelectable, true);
+    UnitSetState(lv_castingUnit, c_unitStateTooltipable, true);
+    UnitSetState(lv_castingUnit, c_unitStateStatusBar, true);
+    UnitSetState(lv_castingUnit, c_unitStateHidden, false);
+    UnitSetState(lv_castingUnit, c_unitStateSleeping, false);
+    UnitSetPropertyFixed(lv_castingUnit, c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(lv_castingUnit, c_unitPropShieldsPercent, 100.0);
+    CameraPan(UnitGetOwner(lv_castingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
+    UnitClearSelection(UnitGetOwner(lv_castingUnit));
+    UnitSelect(lv_castingUnit, UnitGetOwner(lv_castingUnit), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_BanelingCreated_Init () {
+    lib5A1C9904_gt_BanelingCreated = TriggerCreate("lib5A1C9904_gt_BanelingCreated_Func");
+    TriggerAddEventUnitAbility(lib5A1C9904_gt_BanelingCreated, null, AbilityCommand("Baneling", 0), c_unitAbilStageExecute, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2423,223 +2558,6 @@ void lib5A1C9904_gt_FirebatAvatar_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: BanelingCasted
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_BanelingCasted_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_player;
-    unit lv_baneling;
-    unit lv_castingUnit;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_player = EventPlayer();
-    lv_castingUnit = EventUnit();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitSetState(lv_castingUnit, c_unitStateSelectable, false);
-    UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, false);
-    UnitClearSelection(UnitGetOwner(lv_castingUnit));
-    libNtve_gf_UnitSetVariation(lv_castingUnit, "BanelingCocoon", 0, "");
-    Wait(1.0, c_timeGame);
-    UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, true);
-    UnitSetState(lv_castingUnit, c_unitStateSelectable, true);
-    libNtve_gf_UnitSetVariation(lv_castingUnit, "HotSRaptor", 0, "");
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_BanelingCasted_Init () {
-    lib5A1C9904_gt_BanelingCasted = TriggerCreate("lib5A1C9904_gt_BanelingCasted_Func");
-    TriggerAddEventUnitAbility(lib5A1C9904_gt_BanelingCasted, null, AbilityCommand("MorphZerglingBanelingHero", 0), c_unitAbilStageExecute, false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: BanelingCreated
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_BanelingCreated_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    point lv_spawnPoint;
-    int lv_amountOfTicks;
-    int lv_player;
-    unit lv_baneling;
-    unit lv_castingUnit;
-    bool lv_unitdead;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_spawnPoint = PointFromId(1219627428);
-    lv_player = EventPlayer();
-    lv_baneling = EventUnitCreatedUnit();
-    lv_castingUnit = EventUnit();
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnitCreatedUnit()) == "BanelingHero"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libNtve_gf_MakeUnitInvulnerable(lv_baneling, true);
-    UnitSelect(lv_baneling, UnitGetOwner(lv_castingUnit), true);
-    UnitSetState(lv_castingUnit, c_unitStateHighlightable, false);
-    UnitSetState(lv_castingUnit, c_unitStateCursorable, false);
-    UnitSetState(lv_castingUnit, c_unitStateSelectable, false);
-    UnitSetState(lv_castingUnit, c_unitStateTooltipable, false);
-    UnitSetState(lv_castingUnit, c_unitStateStatusBar, false);
-    UnitSetScale(lv_castingUnit, 1.0, 1.0, 1.0);
-    UnitSetState(lv_castingUnit, c_unitStateSleeping, true);
-    UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, false);
-    libNtve_gf_MakeUnitInvulnerable(lv_castingUnit, true);
-    UnitSetPosition(lv_baneling, PointWithOffset(UnitGetPosition(lv_castingUnit), 0.0, 0.0), false);
-    while ((lv_unitdead == false)) {
-        UnitSetState(lv_castingUnit, c_unitStateSelectable, false);
-        UnitSetPosition(lv_castingUnit, PointWithOffset(UnitGetPosition(lv_baneling), 0.0, 0.0), false);
-        lv_unitdead = !(UnitIsAlive(lv_baneling));
-        lv_amountOfTicks = (lv_amountOfTicks + 1);
-        Wait(2.0, c_timeGame);
-        if ((lv_amountOfTicks == 4)) {
-            lv_unitdead = true;
-        }
-
-    }
-    UnitKill(lv_baneling);
-    Wait(1.0, c_timeGame);
-    if ((libNtve_gf_PlayerIsEnemy(lv_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
-        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam1(lv_castingUnit);
-    }
-    else {
-        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam2(lv_castingUnit);
-    }
-    UnitSetScale(lv_castingUnit, 100.0, 100.0, 100.0);
-    UnitSetPosition(lv_castingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
-    libNtve_gf_MakeUnitInvulnerable(lv_castingUnit, false);
-    UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, true);
-    UnitSetState(lv_castingUnit, c_unitStateHighlightable, true);
-    UnitSetState(lv_castingUnit, c_unitStateCursorable, true);
-    UnitSetState(lv_castingUnit, c_unitStateSelectable, true);
-    UnitSetState(lv_castingUnit, c_unitStateTooltipable, true);
-    UnitSetState(lv_castingUnit, c_unitStateStatusBar, true);
-    UnitSetState(lv_castingUnit, c_unitStateHidden, false);
-    UnitSetState(lv_castingUnit, c_unitStateSleeping, false);
-    UnitSetPropertyFixed(lv_castingUnit, c_unitPropLifePercent, 100.0);
-    UnitSetPropertyFixed(lv_castingUnit, c_unitPropShieldsPercent, 100.0);
-    CameraPan(UnitGetOwner(lv_castingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
-    UnitClearSelection(UnitGetOwner(lv_castingUnit));
-    UnitSelect(lv_castingUnit, UnitGetOwner(lv_castingUnit), true);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_BanelingCreated_Init () {
-    lib5A1C9904_gt_BanelingCreated = TriggerCreate("lib5A1C9904_gt_BanelingCreated_Func");
-    TriggerAddEventUnitCreated(lib5A1C9904_gt_BanelingCreated, null, "MorphZerglingBanelingHero", null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: BanelingExplodes
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_BanelingExplodes_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_unitsDmg;
-    int lv_unitsShield;
-    int lv_unitsHealth;
-    int lv_halfHealth;
-    int lv_halfShield;
-    int lv_totalDmg;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_unitsDmg = 100;
-    lv_unitsShield = UnitGetPropertyInt(EventUnit(), c_unitPropShieldsMax, c_unitPropCurrent);
-    lv_unitsHealth = UnitGetPropertyInt(EventUnit(), c_unitPropLifeMax, c_unitPropCurrent);
-    lv_halfHealth = (lv_unitsHealth / 3);
-    lv_halfShield = (lv_unitsShield / 3);
-    lv_totalDmg = (lv_unitsShield + lv_unitsDmg);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnitDamageSourceUnit()) == "BanelingHero"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitDamage(EventUnitDamageSourceUnit(), "HotSBanelingExplodeLargeSearchDamage2", EventUnit(), lv_totalDmg);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_BanelingExplodes_Init () {
-    lib5A1C9904_gt_BanelingExplodes = TriggerCreate("lib5A1C9904_gt_BanelingExplodes_Func");
-    TriggerAddEventUnitDamaged(lib5A1C9904_gt_BanelingExplodes, null, c_unitDamageTypeAny, c_unitDamageEither, "HotSBanelingExplodeLargeSearchDamage");
-    TriggerAddEventUnitDamaged(lib5A1C9904_gt_BanelingExplodes, null, c_unitDamageTypeAny, c_unitDamageEither, "HotSBanelingExplodeLargeDirect");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: ZerglingMineExplodes
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_ZerglingMineExplodes_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_unitsDmg;
-    int lv_unitsShield;
-    int lv_unitsHealth;
-    int lv_quadHealth;
-    int lv_quadShield;
-    int lv_totalDmg;
-    unit lv_damagingUnit;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_unitsDmg = 75;
-    lv_unitsShield = UnitGetPropertyInt(EventUnit(), c_unitPropShieldsMax, c_unitPropCurrent);
-    lv_unitsHealth = UnitGetPropertyInt(EventUnit(), c_unitPropLifeMax, c_unitPropCurrent);
-    lv_quadHealth = (lv_unitsHealth / 4);
-    lv_quadShield = (lv_unitsShield / 4);
-    lv_totalDmg = ((lv_quadHealth + lv_quadShield) + lv_unitsDmg);
-    lv_damagingUnit = EventUnitDamageSourceUnit();
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnitDamageSourceUnit()) == "HotSRaptorBurrowed"))) {
-            return false;
-        }
-
-        if (!((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitDamage(lv_damagingUnit, "HotSBanelingExplodeLargeSearchDamage2", EventUnit(), lv_totalDmg);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_ZerglingMineExplodes_Init () {
-    lib5A1C9904_gt_ZerglingMineExplodes = TriggerCreate("lib5A1C9904_gt_ZerglingMineExplodes_Func");
-    TriggerAddEventUnitDamaged(lib5A1C9904_gt_ZerglingMineExplodes, null, c_unitDamageTypeAny, c_unitDamageEither, "HotSBanelingExplodeLargeSearchDamage");
-    TriggerAddEventUnitDamaged(lib5A1C9904_gt_ZerglingMineExplodes, null, c_unitDamageTypeAny, c_unitDamageEither, "HotSBanelingExplodeLargeDirect");
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: MindControlPrevent
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_MindControlPrevent_Func (bool testConds, bool runActions) {
@@ -2732,53 +2650,6 @@ bool lib5A1C9904_gt_Healburst_Func (bool testConds, bool runActions) {
 void lib5A1C9904_gt_Healburst_Init () {
     lib5A1C9904_gt_Healburst = TriggerCreate("lib5A1C9904_gt_Healburst_Func");
     TriggerAddEventUnitAbility(lib5A1C9904_gt_Healburst, null, AbilityCommand("QueenBurstHeal", 0), c_unitAbilStageExecute, false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: ZerglingToxicBlast
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_ZerglingToxicBlast_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_unitsDmg;
-    int lv_unitsShield;
-    int lv_unitsHealth;
-    int lv_quadHealth;
-    int lv_quadShield;
-    int lv_totalDmg;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_unitsDmg = 25;
-    lv_unitsShield = UnitGetPropertyInt(EventUnit(), c_unitPropShieldsMax, c_unitPropCurrent);
-    lv_unitsHealth = UnitGetPropertyInt(EventUnit(), c_unitPropLifeMax, c_unitPropCurrent);
-    lv_quadHealth = (lv_unitsHealth / 10);
-    lv_quadShield = (lv_unitsShield / 10);
-    lv_totalDmg = ((lv_quadHealth + lv_quadShield) + lv_unitsDmg);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnitDamageSourceUnit()) == "ZerglingHero"))) {
-            return false;
-        }
-
-        if (!((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitDamage(EventUnitDamageSourceUnit(), "HotSBanelingExplodeLargeSearchDamage2", EventUnit(), lv_totalDmg);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_ZerglingToxicBlast_Init () {
-    lib5A1C9904_gt_ZerglingToxicBlast = TriggerCreate("lib5A1C9904_gt_ZerglingToxicBlast_Func");
-    TriggerAddEventUnitDamaged(lib5A1C9904_gt_ZerglingToxicBlast, null, c_unitDamageTypeAny, c_unitDamageEither, "PoisonNovaDirectDamage");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5127,19 +4998,17 @@ void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_MothershipCoreLevelUp_Init();
     lib5A1C9904_gt_ScienceVesselLevelUp_Init();
     lib5A1C9904_gt_SentryLevelUp_Init();
+    lib5A1C9904_gt_ZerglingLevelUp_Init();
+    lib5A1C9904_gt_BanelingUnitCreated_Init();
+    lib5A1C9904_gt_BanelingCreated_Init();
     lib5A1C9904_gt_HydraliskImpale_Init();
     lib5A1C9904_gt_HydraliskImpale5_Init();
     lib5A1C9904_gt_HydraliskImpale6_Init();
     lib5A1C9904_gt_Grenade_Init();
     lib5A1C9904_gt_Obliterate_Init();
     lib5A1C9904_gt_FirebatAvatar_Init();
-    lib5A1C9904_gt_BanelingCasted_Init();
-    lib5A1C9904_gt_BanelingCreated_Init();
-    lib5A1C9904_gt_BanelingExplodes_Init();
-    lib5A1C9904_gt_ZerglingMineExplodes_Init();
     lib5A1C9904_gt_MindControlPrevent_Init();
     lib5A1C9904_gt_Healburst_Init();
-    lib5A1C9904_gt_ZerglingToxicBlast_Init();
     lib5A1C9904_gt_SensorTowerCreated_Init();
     lib5A1C9904_gt_IncreaseSize_Init();
     lib5A1C9904_gt_SpawnUnits_Init();

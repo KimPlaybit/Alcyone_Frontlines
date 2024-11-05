@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CUpgrade default="1" id="ZergFlyerArmors"/>
     <CUpgrade id="AbdominalFortitude2">
         <Flags index="UpgradeCheat" value="0"/>
         <Alert value="ResearchComplete"/>
@@ -121,6 +122,13 @@
         <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.833200"/>
         <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="0.833200"/>
         <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="Zergling1to4">
+        <EffectArray Reference="Effect,PoisonNovaDirectDamage,Amount" Value="3"/>
+        <EffectArray Operation="Subtract" Reference="Abil,Baneling,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ZerglingMine,Cost[0].Cooldown.TimeUse" Value="1.000000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
     </CUpgrade>
     <CUpgrade id="ProtossAirWeaponsLevel1">
         <EffectArray index="2" Reference="Weapon,VoidRaySwarm,Level"/>
@@ -1537,6 +1545,20 @@
     </CUpgrade>
     <CUpgrade id="ZergMeleeWeaponsLevel3">
         <EffectArray index="61" Value="2"/>
+    </CUpgrade>
+    <CUpgrade id="Zergling5to7">
+        <EffectArray Reference="Effect,PoisonNovaDirectDamage,Amount" Value="5"/>
+        <EffectArray Operation="Subtract" Reference="Abil,Baneling,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ZerglingMine,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Zergling8to10">
+        <EffectArray Reference="Effect,PoisonNovaDirectDamage,Amount" Value="10"/>
+        <EffectArray Operation="Subtract" Reference="Abil,Baneling,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ZerglingMine,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
     </CUpgrade>
     <CUpgrade id="overlordspeed">
         <EffectArray Operation="Set" Reference="Unit,OverlordTransport,Speed" Value="1.879000"/>

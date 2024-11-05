@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CBehaviorBuff id="TimedLifeBaneling">
+        <Tooltip value="Behavior/Tooltip/BroodlingFate"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-explode.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="8"/>
+        <DurationRandomMax value="0.5"/>
+        <ExpireEffect value="TimedLifeFate"/>
+        <Modification>
+            <StateFlags index="Summoned" value="1"/>
+        </Modification>
+        <KillCredit Value="Caster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TimedLifeCacoon">
+        <Tooltip value="Behavior/Tooltip/BroodlingFate"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-explode.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="1"/>
+        <ExpireEffect value="TimedLifeFate"/>
+        <Modification>
+            <StateFlags index="Summoned" value="1"/>
+        </Modification>
+        <KillCredit Value="Caster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TurnBaneling">
+        <Duration value="1"/>
+        <FinalEffect value="MPCreateBanelingCocoon2"/>
+        <Modification MoveSpeedMultiplier="0.01">
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GetCredit">
-        <DisableValidatorArray value="IsNotHeroic"/>
         <Duration value="5"/>
         <KillCredit Value="Caster"/>
     </CBehaviorBuff>
@@ -29,6 +64,10 @@
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-status-detector.dds"/>
         <Modification Detect="3.75"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GetCredit2">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <KillCredit Value="Caster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GuardianShield2">
         <Alignment value="Positive"/>
@@ -331,6 +370,14 @@
         <Duration value="0.125"/>
         <Modification MoveSpeedMultiplier="1.4" AttackSpeedMultiplier="1.4"/>
     </CBehaviorBuff>
+    <CBehaviorAttribute id="Zergling1to4">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Modification MoveSpeedMultiplier="1.01">
+            <DamageDealtUnscaled index="Melee" value="5"/>
+            <VitalMaxArray index="Life" value="25"/>
+        </Modification>
+    </CBehaviorAttribute>
     <CBehaviorBuff id="VileAcidSlowEffectsLevel12">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-zerg-debilitatingbile.dds"/>
@@ -556,14 +603,13 @@
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorBuff id="HealHeroicUnitsAround">
-        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="ReaperOutOfCombat"/>
         <DisableValidatorArray value="NotFullLife"/>
-        <Duration value="2"/>
-        <Modification>
-            <VitalRegenArray index="Life" value="2"/>
-        </Modification>
+        <Duration value="1"/>
+        <RemoveValidatorArray value="ReaperOutOfCombat"/>
+        <RemoveValidatorArray value="NotFullLife"/>
+        <FinalEffect value="OutOfCombatRegen"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TimeWarpProduction">
         <Cost>
@@ -923,13 +969,10 @@
                 <VitalMaxIncreaseAffectsCurrentArray index="Life" value="0"/>
                 <VitalMaxIncreaseAffectsCurrentArray index="Shields" value="0"/>
                 <VitalMaxIncreaseAffectsCurrentArray index="Energy" value="0"/>
-                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
-                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
-                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
-                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling1to4" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="100">
@@ -944,6 +987,7 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling1to4" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="200">
@@ -958,6 +1002,7 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling1to4" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="400">
@@ -972,6 +1017,7 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="800">
@@ -986,6 +1032,7 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1200">
@@ -1001,6 +1048,7 @@
                 <AttributeChangeArray Attribute="UltraliskAirAttack" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1600">
@@ -1015,6 +1063,7 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling8to10" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2000">
@@ -1029,6 +1078,7 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling8to10"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2400">
@@ -1043,11 +1093,28 @@
                 <AttributeChangeArray Attribute="UltraliskBonus" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Zergling8to10"/>
             </Modification>
         </VeterancyLevelArray>
     </CBehaviorVeterancy>
     <CBehaviorAttribute id="ZergMovementBonus">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Modification MoveSpeedMultiplier="1.05"/>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="Zergling5to7">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Modification MoveSpeedMultiplier="1.02">
+            <DamageDealtUnscaled index="Melee" value="7"/>
+            <VitalMaxArray index="Life" value="50"/>
+        </Modification>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="Zergling8to10">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Modification MoveSpeedMultiplier="1.03">
+            <DamageDealtUnscaled index="Melee" value="8"/>
+            <VitalMaxArray index="Life" value="75"/>
+        </Modification>
     </CBehaviorAttribute>
 </Catalog>

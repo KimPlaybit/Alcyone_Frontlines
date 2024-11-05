@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectModifyUnit id="AdeptPhaseShiftSelect2">
+        <ImpactUnit Value="Caster"/>
+        <SelectTransferUnit Value="Caster"/>
+        <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+        <FacingLocation Value="SourceUnit"/>
+    </CEffectModifyUnit>
     <CEffectCreatePersistent id="AetherMawAetherStormCreatePersistent">
         <PeriodCount value="2"/>
     </CEffectCreatePersistent>
@@ -186,6 +192,10 @@
         <PeriodicEffectArray value="FlagshipTimeBombSearch"/>
         <PeriodicPeriodArray value="0.125"/>
     </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GiveCredit2">
+        <EditorCategories value=""/>
+        <Behavior value="GetCredit2"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GuardianShieldApplyBehavior2">
         <ValidatorArray index="0" value="SourceNotHidden"/>
         <EditorCategories value="Race:Protoss"/>
@@ -220,6 +230,10 @@
         <Amount value="12"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
+    <CEffectDamage id="HotSUltraliskKaiserBladesSecondaryDamage">
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+    </CEffectDamage>
     <CEffectEnumArea id="HotSUltraliskKaiserBladesSearch3">
         <EditorCategories value="Race:Zerg"/>
         <ImpactLocation Value="TargetUnit"/>
@@ -228,9 +242,34 @@
         <AreaArray Arc="180" Radius="2" Effect="HotSUltraliskKaiserBladesSecondaryDamageSet"/>
         <SearchFlags index="OffsetByUnitRadius" value="1"/>
     </CEffectEnumArea>
-    <CEffectDamage id="HotSUltraliskKaiserBladesSecondaryDamage">
+    <CEffectSet id="HotSBanelingDeathExplodeLargeSet2">
+        <EffectArray value="HotSRemoveBanelingExplodeLargeDeathBehavior"/>
+        <EffectArray value="BanelingExplodeLargeSearchAll"/>
+        <EffectArray value="SuicideDelay"/>
+    </CEffectSet>
+    <CEffectDamage id="BanelingExplodeLargeSearchDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <ImpactLocation Value="TargetUnit"/>
         <Kind value="Splash"/>
-        <KindSplash value="Splash"/>
+        <Amount value="75"/>
+        <VitalFractionMax index="Life" value="0.5"/>
+        <VitalFractionMax index="Shields" value="0.5"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="BanelingExplodeLargeSearchAll">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="BanelingExplodeLargeSearchDamage"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <!-- standard baneling weapon target attack, check for friendly+heal upgrade, or not -->
+    <CEffectSwitch id="HotSBanelingExplodeLargeTarget">
+        <CaseDefault value="HotSBanelingDeathExplodeLargeSet2"/>
+    </CEffectSwitch>
+    <CEffectDamage id="HotSRaptorClawsDamage">
+        <KindSplash value="Melee"/>
     </CEffectDamage>
     <CEffectEnumArea id="IrradiateSearchArea">
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Dead,Hidden,Invulnerable"/>
@@ -249,6 +288,17 @@
             <Change value="0"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectCreateUnit id="MPCreateBanelingCocoon2">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="GiveCredit2"/>
+        <SpawnUnit value="BanelingHero"/>
+        <SpawnRange value="0"/>
+        <SpawnOffset value="0,0"/>
+    </CEffectCreateUnit>
     <CEffectSet id="MPCreateNydusWormCanal2">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="MPCreateNydusWormCanal"/>
@@ -280,6 +330,36 @@
         <SpawnEffect value="MPCreateSetA"/>
         <SpawnUnit value="PhotonOverCharge"/>
     </CEffectCreateUnit>
+    <CEffectCreateUnit id="MPCreatePygalisk2">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="GiveCredit2"/>
+        <SpawnUnit value="HotSRaptorBurrowed"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="0,0"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="MPCreateBanelingCocoon">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="TurnBanelingCocoon"/>
+        <SpawnUnit value="BanelingCocoonHero"/>
+        <SpawnRange value="0"/>
+        <SpawnOffset value="0,0"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="MPCreatePygaliskSet2">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreatePygalisk2"/>
+    </CEffectSet>
+    <CEffectSet id="CreateBanelingSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreateBanelingCocoon"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="MothershipCoreApplyPurifyAB">
         <ValidatorArray index="0" value="IsNotConstructing"/>
         <ValidatorArray index="2" removed="1"/>
@@ -339,6 +419,11 @@
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Invulnerable"/>
         <AreaArray index="0" Radius="3" Effect="GasTurretApplyEffects"/>
     </CEffectEnumArea>
+    <CEffectDamage id="PoisonNovaDirectDamage">
+        <Amount value="25"/>
+        <VitalFractionMax index="Life" value="0.1"/>
+        <VitalFractionMax index="Shields" value="0.1"/>
+    </CEffectDamage>
     <CEffectEnumArea id="PrologueVoidArmorSearch">
         <AreaArray index="0" Radius="4"/>
         <SearchFilters value="-;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -355,6 +440,20 @@
         <EffectArray value="ObserverSquadSightAB"/>
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
+    <CEffectModifyUnit id="HealHeroic">
+        <ValidatorArray value="ReaperOutOfCombat"/>
+        <ValidatorArray value="NotFullLife"/>
+        <EditorCategories value="Race:Zerg"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.05"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.05"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.01"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectDamage id="SOAPylonWeaponDamage">
         <Amount value="30"/>
     </CEffectDamage>
@@ -371,6 +470,12 @@
         <ValidatorArray value="NotFrenzied"/>
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="TemporalRiftUnit2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TurnBanelingCocoon">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TurnBaneling"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="SporeCrawlerSpawner" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
@@ -575,7 +680,8 @@
         <!--ValidatorArray value="HaveHotSNoxious"/-->
     </CEffectEnumArea>
     <CEffectSet id="PoisonNovaSet">
-        <EffectArray value="SlowApplyBehaviorCopy"/>
+        <EffectArray index="0" value="SlowApplyBehaviorCopy"/>
+        <EffectArray value="PoisonNovaDirectDamage"/>
         <!--EffectArray value="PoisonNovaAB"/-->
     </CEffectSet>
     <CEffectApplyBehavior id="SlowApplyBehaviorCopy">
@@ -642,8 +748,10 @@
         <AreaArray index="0" Radius="2"/>
     </CEffectEnumArea>
     <CEffectDamage id="HotSBanelingExplodeLargeSearchDamage">
-        <Amount value="1"/>
-        <AttributeBonus index="Armored" value="50"/>
+        <Amount value="25"/>
+        <AttributeBonus index="Structure" value="0"/>
+        <VitalFractionMax index="Life" value="0.3"/>
+        <VitalFractionMax index="Shields" value="0.3"/>
     </CEffectDamage>
     <CEffectDamage id="HotSBanelingExplodeLargeSearchDamage2" parent="DU_WEAP">
         <EditorCategories value="Race:Zerg"/>
@@ -665,7 +773,7 @@
     </CEffectSet>
     <CEffectDamage id="HotSUltraliskKaiserBladesDamage2" parent="DU_WEAP">
         <KindSplash value="Melee"/>
-        <Amount value="12"/>
+        <Amount value="25"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
     <CEffectEnumArea id="HotSUltraliskKaiserBladesSearch">
@@ -683,7 +791,6 @@
         <ValidatorArray value="NotHaveHotSMonarchBlades"/>
         <Amount value="5"/>
         <Death value="Eviscerate"/>
-        <Kind value="Splash"/>
     </CEffectDamage>
     <CEffectSet id="HotSUltraliskKaiserBladesSecondaryDamageSet2">
         <EditorCategories value="Race:Zerg"/>
@@ -851,9 +958,6 @@
     </CEffectDamage>
     <CEffectDamage id="PhotonCannonU">
         <AttributeBonus index="Heroic" value="40"/>
-    </CEffectDamage>
-    <CEffectDamage id="PoisonNovaDirectDamage">
-        <Amount value="1"/>
     </CEffectDamage>
     <CEffectDamage id="PrimalGasCloudDamage">
         <Amount value="30"/>
@@ -1040,4 +1144,11 @@
     <CEffectCreateUnit id="ZHybridPsychicClonesCreateUnit">
         <SpawnUnit index="0" value="MutaliskHero2"/>
     </CEffectCreateUnit>
+    <CEffectSet id="OutOfCombatRegen">
+        <ValidatorArray value="ReaperOutOfCombat"/>
+        <ValidatorArray value="NotFullLife"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="HealHeroicUnitsAround2"/>
+        <EffectArray value="HealHeroic"/>
+    </CEffectSet>
 </Catalog>

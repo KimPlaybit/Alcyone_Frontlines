@@ -86,6 +86,19 @@
         <ArcSlop value="360"/>
         <CmdButtonArray index="Execute" Requirements=""/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="ZerglingMine">
+        <DataCollection value="NydusSpawnZergUnits"/>
+        <Levels value="5"/>
+        <Effect index="0" value="MPCreatePygaliskSet2"/>
+        <Cost>
+            <Charge Link="Abil/NydusSpawnCharge" Location="Unit"/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusZerglingMineSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarm" TimeUse="45"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AINotifyEffect value="NydusSpawnZergUnits"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoBanelingHero2"/>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="TurretLab">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="LabTurret"/>
@@ -408,7 +421,7 @@
     <CAbilEffectInstant id="ExplodeHeal2">
         <AbilSetId value="Explode"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <Effect index="0" value="HotSBanelingDeathExplodeLargeSet"/>
+        <Effect index="0" value="HotSBanelingDeathExplodeLargeSet2"/>
         <Cost>
             <Cooldown Link="Abil/Explode" TimeUse="0.5"/>
         </Cost>
@@ -1675,6 +1688,19 @@
         <InfoArray index="Build15" Time="25"/>
         <InfoArray index="Build16" Time="21"/>
     </CAbilBuild>
+    <CAbilEffectInstant id="Baneling">
+        <DataCollection value="NydusSpawnZergUnits"/>
+        <Levels value="5"/>
+        <Effect index="0" value="CreateBanelingSet"/>
+        <Cost>
+            <Charge Link="Abil/NydusSpawnCharge" Location="Unit"/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusZerglingMineSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarm" TimeUse="120"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AINotifyEffect value="NydusSpawnZergUnits"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Baneling"/>
+    </CAbilEffectInstant>
     <CAbilResearch id="evolutionchamberresearch">
         <InfoArray index="Research1" Time="114"/>
         <InfoArray index="Research2" Time="136"/>
