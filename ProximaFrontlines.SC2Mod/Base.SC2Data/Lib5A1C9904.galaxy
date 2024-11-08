@@ -2076,62 +2076,6 @@ void lib5A1C9904_gt_AIBuildMedivacs_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: NydusWormLevelUp
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnit()) == "NydusCanal22"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 2) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", 1);
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeWeaponsLevel12", 1);
-    }
-
-    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 3) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", 1);
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel1", 1);
-    }
-
-    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 4) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", 1);
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel2", 1);
-    }
-
-    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 5) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", 1);
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel2", 1);
-    }
-
-    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 6) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", 1);
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel3", 1);
-    }
-
-    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 7) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", 1);
-        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel3", 1);
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_NydusWormLevelUp_Init () {
-    lib5A1C9904_gt_NydusWormLevelUp = TriggerCreate("lib5A1C9904_gt_NydusWormLevelUp_Func");
-    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_NydusWormLevelUp, null);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: MothershipCoreLevelUp
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_MothershipCoreLevelUp_Func (bool testConds, bool runActions) {
@@ -2355,9 +2299,297 @@ void lib5A1C9904_gt_BanelingCreated_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: HydraliskImpale
+// Trigger: UltraliskLevelUp
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_HydraliskImpale_Func (bool testConds, bool runActions) {
+bool lib5A1C9904_gt_UltraliskLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "HotSTorrasque2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Ultralisk1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Ultralisk5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Ultralisk8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_UltraliskLevelUp_Init () {
+    lib5A1C9904_gt_UltraliskLevelUp = TriggerCreate("lib5A1C9904_gt_UltraliskLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_UltraliskLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: IncreaseSize
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_IncreaseSize_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_scale;
+    int lv_indexOfUnit;
+    bool lv_unitIsInArray;
+
+    // Automatic Variable Declarations
+    int auto36E69086_ae;
+    const int auto36E69086_ai = 1;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "HotSTorrasque2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto36E69086_ae = lib5A1C9904_gv_sizeIndex;
+    lv_indexOfUnit = 0;
+    for ( ; ( (auto36E69086_ai >= 0 && lv_indexOfUnit <= auto36E69086_ae) || (auto36E69086_ai < 0 && lv_indexOfUnit >= auto36E69086_ae) ) ; lv_indexOfUnit += auto36E69086_ai ) {
+        if ((lib5A1C9904_gv_unitSizeIndex[lv_indexOfUnit] == EventUnit())) {
+            lv_unitIsInArray = true;
+            break;
+        }
+
+    }
+    if ((lv_unitIsInArray == true)) {
+        lv_scale = (lib5A1C9904_gv_unitSizes[lv_indexOfUnit] + 7);
+        lib5A1C9904_gv_unitSizes[lv_indexOfUnit] = (lv_scale + 7);
+    }
+    else {
+        lv_scale = 52;
+        lib5A1C9904_gv_unitSizeIndex[lib5A1C9904_gv_sizeIndex] = EventUnit();
+        lib5A1C9904_gv_unitSizes[lib5A1C9904_gv_sizeIndex] = lv_scale;
+        lib5A1C9904_gv_sizeIndex = (lib5A1C9904_gv_sizeIndex + 1);
+    }
+    UnitSetScale(EventUnit(), lv_scale, lv_scale, lv_scale);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_IncreaseSize_Init () {
+    lib5A1C9904_gt_IncreaseSize = TriggerCreate("lib5A1C9904_gt_IncreaseSize_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_IncreaseSize, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HydraliskLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HydraliskLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "HydraliskHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Hydralisk1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Hydralisk5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Hydralisk8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_HydraliskLevelUp_Init () {
+    lib5A1C9904_gt_HydraliskLevelUp = TriggerCreate("lib5A1C9904_gt_HydraliskLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HydraliskLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: QueenLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_QueenLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "BroodQueenHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Queen1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Queen5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Queen5to72", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_QueenLevelUp_Init () {
+    lib5A1C9904_gt_QueenLevelUp = TriggerCreate("lib5A1C9904_gt_QueenLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_QueenLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusWormLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "NydusCanal22"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 2) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeWeaponsLevel12", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 3) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel1", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 4) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel2", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 5) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel2", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 6) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel3", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 7) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel3", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_NydusWormLevelUp_Init () {
+    lib5A1C9904_gt_NydusWormLevelUp = TriggerCreate("lib5A1C9904_gt_NydusWormLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_NydusWormLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DefilerLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_DefilerLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "DefilerHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Defiler1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Defiler5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Defiler7to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DefilerLevelUp_Init () {
+    lib5A1C9904_gt_DefilerLevelUp = TriggerCreate("lib5A1C9904_gt_DefilerLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_DefilerLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Grenade
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_Grenade_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_caster;
     int lv_increase;
@@ -2365,7 +2597,7 @@ bool lib5A1C9904_gt_HydraliskImpale_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Variable Initialization
     lv_caster = EventUnitDamageSourceUnit();
-    lv_increase = (UnitXPGetCurrentLevel(lv_caster, "ZergLevels") * 10);
+    lv_increase = (UnitXPGetCurrentLevel(lv_caster, "TerranLevels") * 15);
 
     // Conditions
     if (testConds) {
@@ -2384,9 +2616,9 @@ bool lib5A1C9904_gt_HydraliskImpale_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_HydraliskImpale_Init () {
-    lib5A1C9904_gt_HydraliskImpale = TriggerCreate("lib5A1C9904_gt_HydraliskImpale_Func");
-    TriggerAddEventUnitDamaged(lib5A1C9904_gt_HydraliskImpale, null, c_unitDamageTypeAny, c_unitDamageEither, "HydraliskImpaleDamage");
+void lib5A1C9904_gt_Grenade_Init () {
+    lib5A1C9904_gt_Grenade = TriggerCreate("lib5A1C9904_gt_Grenade_Func");
+    TriggerAddEventUnitDamaged(lib5A1C9904_gt_Grenade, null, c_unitDamageTypeAny, c_unitDamageEither, "TossGrenadeDamage");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2457,41 +2689,6 @@ bool lib5A1C9904_gt_HydraliskImpale6_Func (bool testConds, bool runActions) {
 void lib5A1C9904_gt_HydraliskImpale6_Init () {
     lib5A1C9904_gt_HydraliskImpale6 = TriggerCreate("lib5A1C9904_gt_HydraliskImpale6_Func");
     TriggerAddEventUnitDamaged(lib5A1C9904_gt_HydraliskImpale6, null, c_unitDamageTypeAny, c_unitDamageEither, "OverchargeDamage");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Grenade
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_Grenade_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_caster;
-    int lv_increase;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_caster = EventUnitDamageSourceUnit();
-    lv_increase = (UnitXPGetCurrentLevel(lv_caster, "TerranLevels") * 15);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == false))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitDamage(EventUnitDamageSourceUnit(), "HydraliskImpaleDamage2", EventUnit(), lv_increase);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_Grenade_Init () {
-    lib5A1C9904_gt_Grenade = TriggerCreate("lib5A1C9904_gt_Grenade_Func");
-    TriggerAddEventUnitDamaged(lib5A1C9904_gt_Grenade, null, c_unitDamageTypeAny, c_unitDamageEither, "TossGrenadeDamage");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2605,141 +2802,6 @@ void lib5A1C9904_gt_MindControlPrevent_Init () {
     TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 8)));
     TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 9)));
     TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 10)));
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Healburst
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_Healburst_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_amountOftimes;
-    int lv_extraIndex;
-    unit lv_victim;
-    unit lv_caster;
-    int lv_increase;
-
-    // Automatic Variable Declarations
-    const int auto12C832AD_ae = 5;
-    const int auto12C832AD_ai = 1;
-    int auto66111EC0_ae;
-    const int auto66111EC0_ai = 1;
-
-    // Variable Initialization
-    lv_victim = EventUnitTargetUnit();
-    lv_caster = EventUnit();
-    lv_increase = ((UnitXPGetCurrentLevel(lv_caster, "ZergLevels") * 20) / 10);
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_amountOftimes = 1;
-    for ( ; ( (auto12C832AD_ai >= 0 && lv_amountOftimes <= auto12C832AD_ae) || (auto12C832AD_ai < 0 && lv_amountOftimes >= auto12C832AD_ae) ) ; lv_amountOftimes += auto12C832AD_ai ) {
-        auto66111EC0_ae = lv_increase;
-        lv_extraIndex = 1;
-        for ( ; ( (auto66111EC0_ai >= 0 && lv_extraIndex <= auto66111EC0_ae) || (auto66111EC0_ai < 0 && lv_extraIndex >= auto66111EC0_ae) ) ; lv_extraIndex += auto66111EC0_ai ) {
-            UnitCreateEffectUnit(lv_caster, "QueenHeal2", lv_victim);
-        }
-        Wait(0.5, c_timeGame);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_Healburst_Init () {
-    lib5A1C9904_gt_Healburst = TriggerCreate("lib5A1C9904_gt_Healburst_Func");
-    TriggerAddEventUnitAbility(lib5A1C9904_gt_Healburst, null, AbilityCommand("QueenBurstHeal", 0), c_unitAbilStageExecute, false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: SensorTowerCreated
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_SensorTowerCreated_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_sensorTower;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_sensorTower = EventUnitCreatedUnit();
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnitCreatedUnit()) == "SensorTower2"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(60.0, c_timeGame);
-    UnitKill(lv_sensorTower);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_SensorTowerCreated_Init () {
-    lib5A1C9904_gt_SensorTowerCreated = TriggerCreate("lib5A1C9904_gt_SensorTowerCreated_Func");
-    TriggerAddEventUnitCreated(lib5A1C9904_gt_SensorTowerCreated, null, "SpawnSensorTower", null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: IncreaseSize
-//--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_IncreaseSize_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_scale;
-    int lv_indexOfUnit;
-    bool lv_unitIsInArray;
-
-    // Automatic Variable Declarations
-    int auto36E69086_ae;
-    const int auto36E69086_ai = 1;
-
-    // Variable Initialization
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(EventUnit()) == "HotSTorrasque2"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    auto36E69086_ae = lib5A1C9904_gv_sizeIndex;
-    lv_indexOfUnit = 0;
-    for ( ; ( (auto36E69086_ai >= 0 && lv_indexOfUnit <= auto36E69086_ae) || (auto36E69086_ai < 0 && lv_indexOfUnit >= auto36E69086_ae) ) ; lv_indexOfUnit += auto36E69086_ai ) {
-        if ((lib5A1C9904_gv_unitSizeIndex[lv_indexOfUnit] == EventUnit())) {
-            lv_unitIsInArray = true;
-            break;
-        }
-
-    }
-    if ((lv_unitIsInArray == true)) {
-        lv_scale = (lib5A1C9904_gv_unitSizes[lv_indexOfUnit] + 10);
-        lib5A1C9904_gv_unitSizes[lv_indexOfUnit] = (lv_scale + 10);
-    }
-    else {
-        lv_scale = 55;
-        lib5A1C9904_gv_unitSizeIndex[lib5A1C9904_gv_sizeIndex] = EventUnit();
-        lib5A1C9904_gv_unitSizes[lib5A1C9904_gv_sizeIndex] = lv_scale;
-        lib5A1C9904_gv_sizeIndex = (lib5A1C9904_gv_sizeIndex + 1);
-    }
-    UnitSetScale(EventUnit(), lv_scale, lv_scale, lv_scale);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_IncreaseSize_Init () {
-    lib5A1C9904_gt_IncreaseSize = TriggerCreate("lib5A1C9904_gt_IncreaseSize_Func");
-    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_IncreaseSize, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4994,23 +5056,24 @@ void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_AIBuildShieldBattery_Init();
     lib5A1C9904_gt_AIBuildQueens_Init();
     lib5A1C9904_gt_AIBuildMedivacs_Init();
-    lib5A1C9904_gt_NydusWormLevelUp_Init();
     lib5A1C9904_gt_MothershipCoreLevelUp_Init();
     lib5A1C9904_gt_ScienceVesselLevelUp_Init();
     lib5A1C9904_gt_SentryLevelUp_Init();
     lib5A1C9904_gt_ZerglingLevelUp_Init();
     lib5A1C9904_gt_BanelingUnitCreated_Init();
     lib5A1C9904_gt_BanelingCreated_Init();
-    lib5A1C9904_gt_HydraliskImpale_Init();
+    lib5A1C9904_gt_UltraliskLevelUp_Init();
+    lib5A1C9904_gt_IncreaseSize_Init();
+    lib5A1C9904_gt_HydraliskLevelUp_Init();
+    lib5A1C9904_gt_QueenLevelUp_Init();
+    lib5A1C9904_gt_NydusWormLevelUp_Init();
+    lib5A1C9904_gt_DefilerLevelUp_Init();
+    lib5A1C9904_gt_Grenade_Init();
     lib5A1C9904_gt_HydraliskImpale5_Init();
     lib5A1C9904_gt_HydraliskImpale6_Init();
-    lib5A1C9904_gt_Grenade_Init();
     lib5A1C9904_gt_Obliterate_Init();
     lib5A1C9904_gt_FirebatAvatar_Init();
     lib5A1C9904_gt_MindControlPrevent_Init();
-    lib5A1C9904_gt_Healburst_Init();
-    lib5A1C9904_gt_SensorTowerCreated_Init();
-    lib5A1C9904_gt_IncreaseSize_Init();
     lib5A1C9904_gt_SpawnUnits_Init();
     lib5A1C9904_gt_ControlUnits_Init();
     lib5A1C9904_gt_SurvivalLoss_Init();

@@ -24,8 +24,16 @@
         <!--EffectArray value="ArtanisAstralWindOtherAB"/-->
     </CEffectSet>
     <CEffectDamage id="BurrowChargeTargetDamage">
-        <Amount value="12"/>
+        <Amount value="10"/>
     </CEffectDamage>
+    <CEffectModifyUnit id="DefilerMPConsumeModifyUnit">
+        <VitalArray index="Energy">
+            <Change value="25"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="DefilerMPDarkSwarmSearch">
+        <AreaArray index="0" Radius="1.5"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="GiveCredit">
         <EditorCategories value=""/>
         <Behavior value="GetCredit"/>
@@ -131,7 +139,7 @@
     <CEffectDamage id="DefilerMPPlagueDamage">
         <Flags index="NoVitalAbsorbShields" value="0"/>
         <Kind value="NoProc"/>
-        <Amount value="5"/>
+        <Amount value="2"/>
     </CEffectDamage>
     <CEffectDamage id="DefilerMPPlagueDamage2">
         <ValidatorArray value="DefilerMPPlagueLifeGT1"/>
@@ -178,7 +186,7 @@
         <Behavior value="NydusWhirlwind"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="FenixWhirlwindDamage">
-        <Amount value="5"/>
+        <Amount value="3"/>
         <Kind value="Spell"/>
     </CEffectDamage>
     <CEffectDamage id="FenixWhirlwindDamage2" parent="DU_WEAP">
@@ -424,6 +432,11 @@
         <VitalFractionMax index="Life" value="0.1"/>
         <VitalFractionMax index="Shields" value="0.1"/>
     </CEffectDamage>
+    <CEffectModifyUnit id="PrimalRavageBuffHeal">
+        <VitalArray index="Life">
+            <Change value="5"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectEnumArea id="PrologueVoidArmorSearch">
         <AreaArray index="0" Radius="4"/>
         <SearchFilters value="-;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -959,9 +972,6 @@
     <CEffectDamage id="PhotonCannonU">
         <AttributeBonus index="Heroic" value="40"/>
     </CEffectDamage>
-    <CEffectDamage id="PrimalGasCloudDamage">
-        <Amount value="30"/>
-    </CEffectDamage>
     <CEffectDamage id="PrimalGasCloudDamage2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
         <Amount value="10"/>
@@ -995,7 +1005,7 @@
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectCreateUnit id="QueenMPSpawnBroodlingsCreate">
-        <SpawnCount value="10"/>
+        <SpawnCount value="5"/>
     </CEffectCreateUnit>
     <CEffectDamage id="RenegadeLongboltMissileU">
         <Amount value="75"/>

@@ -1738,9 +1738,9 @@
         <On Terms="UnitBirth.HotSTorrasqueBurrowed" Send="Create"/>
         <On Terms="UnitBirth.HotSTorrasqueBurrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="WeaponStart.KaiserBlades.AttackStart; !ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,A"/>
-        <On Terms="WeaponStart.KaiserBlades.AttackStart; ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,D"/>
-        <On Terms="WeaponStop.KaiserBlades.AttackStop" Send="AnimClear Attack"/>
+        <On Terms="WeaponStart.KaiserBlades3.AttackStart; !ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,A"/>
+        <On Terms="WeaponStart.KaiserBlades3.AttackStart; ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,D"/>
+        <On Terms="WeaponStop.KaiserBlades3.AttackStop" Send="AnimClear Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="Create BurrowDownUltralisk"/>
         <On Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; !AbilKey BurrowUp" Send="Create"/>
@@ -1791,7 +1791,7 @@
         <On Terms="Effect.BurrowChargeStructureTargetSearch.Start; At Caster" Send="AnimBaselineStart"/>
         <On Terms="Effect.BurrowChargeStructureTargetSearch.Start; At Caster" Send="Create BurrowChargeUpSound"/>
         <On Terms="Effect.BurrowChargeStructureTargetSearch.Start; At Caster" Send="StatusSet BurrowCharging 0"/>
-        <On Terms="WeaponStart.KaiserBlades.AttackStart" Send="AnimClear BurrowChargeUp"/>
+        <On Terms="WeaponStart.KaiserBlades3.AttackStart" Send="AnimClear BurrowChargeUp"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear BurrowChargeUp"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Ultra_Land"/>
         <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Birth" Send="AnimClear Birth"/>

@@ -402,6 +402,7 @@
     <CAbilEffectTarget id="Ensnare">
         <Cost index="0">
             <Vital index="Energy" value="30"/>
+            <Cooldown TimeUse="8"/>
         </Cost>
         <TargetFilters value="-;Player,Ally,Neutral"/>
     </CAbilEffectTarget>
@@ -476,6 +477,9 @@
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <AutoCastRange value="0"/>
+        <Cost index="0">
+            <Cooldown TimeUse="30"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="FlagshipTimeBomb">
         <Cost>
@@ -1127,6 +1131,9 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="PrimalRavage">
         <TargetFilters index="0" value="Ground;Player,Ally,Neutral,Massive,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable,HeroUnit"/>
+        <Cost index="0">
+            <Cooldown TimeUse="40"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="PrimalRoar">
         <AutoCastFilters value="Visible,AirUnit;Player,Ally"/>
@@ -1493,6 +1500,10 @@
         <AutoCastValidatorArray index="2" removed="1"/>
         <AutoCastValidatorArray index="3" removed="1"/>
         <AutoCastValidatorArray index="4" removed="1"/>
+        <Cost index="0">
+            <Charge CountStart="9999" HideCount="1"/>
+            <Cooldown TimeUse="20"/>
+        </Cost>
         <!--This makes it so it will no longer snap to units, also makes it so it wont autocast on units though-->
         <!--IgnoreFilters value="Structure;-"/-->
     </CAbilEffectTarget>

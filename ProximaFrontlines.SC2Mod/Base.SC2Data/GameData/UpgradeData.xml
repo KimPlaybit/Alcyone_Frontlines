@@ -112,6 +112,24 @@
         <AffectedUnitArray value="MissileTurret"/>
         <LeaderAlias value="DefenseStructureUpdates12"/>
     </CUpgrade>
+    <CUpgrade id="Defiler5to7">
+        <EffectArray Reference="Effect,DefilerMPConsumeModifyUnit,VitalArray[Energy].Change" Value="25"/>
+        <EffectArray Reference="Effect,DefilerMPDarkSwarmSearch,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Effect,DefilerMPPlagueDamage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,LeechDamage2,Amount" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DefilerMPConsume,Cost[0].Cooldown.TimeUse" Value="1.500000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Defiler7to10">
+        <EffectArray Reference="Effect,DefilerMPConsumeModifyUnit,VitalArray[Energy].Change" Value="30"/>
+        <EffectArray Reference="Effect,DefilerMPDarkSwarmSearch,AreaArray[0].Radius" Value="0.6"/>
+        <EffectArray Reference="Effect,DefilerMPPlagueDamage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,LeechDamage2,Amount" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DefilerMPConsume,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
     <CUpgrade id="ExtendedThermalLance">
         <EffectArray index="0" Value="2"/>
         <EffectArray index="1" Value="2"/>
@@ -122,6 +140,80 @@
         <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.833200"/>
         <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="0.833200"/>
         <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="Hydralisk1to4">
+        <EffectArray Reference="Unit,HydraliskHero,EnergyRegenRate" Value="0.351500"/>
+        <EffectArray Reference="Effect,HydraliskImpaleDamage,Amount" Value="5"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Queen1to4">
+        <EffectArray Reference="Effect,QueenMPSpawnBroodlingsCreate,SpawnCount" Value="1"/>
+        <EffectArray Reference="Effect,QueenBurstHeal,VitalArray[Life].Change" Value="2"/>
+        <EffectArray Reference="Effect,PrimalGasCloudDamage,Amount" Value="2"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Hydralisk5to7">
+        <EffectArray Reference="Unit,HydraliskHero,EnergyRegenRate" Value="0.601500"/>
+        <EffectArray Reference="Effect,HydraliskImpaleDamage,Amount" Value="8"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Hydralisk8to10">
+        <EffectArray Reference="Unit,HydraliskHero,EnergyRegenRate" Value="1.000000"/>
+        <EffectArray Reference="Effect,HydraliskImpaleDamage,Amount" Value="10"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Defiler1to4">
+        <EffectArray Reference="Effect,DefilerMPConsumeModifyUnit,VitalArray[Energy].Change" Value="20"/>
+        <EffectArray Reference="Effect,DefilerMPDarkSwarmSearch,AreaArray[0].Radius" Value="0.4"/>
+        <EffectArray Reference="Effect,DefilerMPPlagueDamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,LeechDamage2,Amount" Value="0.5"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DefilerMPConsume,Cost[0].Cooldown.TimeUse" Value="1.000000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Queen5to7">
+        <EffectArray Reference="Effect,QueenMPSpawnBroodlingsCreate,SpawnCount" Value="1"/>
+        <EffectArray Reference="Effect,QueenBurstHeal,VitalArray[Life].Change" Value="3"/>
+        <EffectArray Reference="Effect,PrimalGasCloudDamage,Amount" Value="3"/>
+        <EffectArray Reference="Unit,KerriganInfestBroodling,LifeMax" Value="4"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Queen5to72">
+        <EffectArray Reference="Effect,QueenMPSpawnBroodlingsCreate,SpawnCount" Value="1"/>
+        <EffectArray Reference="Effect,QueenBurstHeal,VitalArray[Life].Change" Value="5"/>
+        <EffectArray Reference="Effect,PrimalGasCloudDamage,Amount" Value="5"/>
+        <EffectArray Reference="Unit,KerriganInfestBroodling,LifeMax" Value="4"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Ultralisk5to7">
+        <EffectArray Reference="Effect,BurrowChargeTargetDamage,Amount" Value="3"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowChargeMP,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
+        <EffectArray Reference="Effect,FenixWhirlwindDamage,Amount" Value="0.5"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FenixWhirlwind,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,PrimalRavage,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <EffectArray Reference="Effect,PrimalRavageBuffHeal,VitalArray[Life].Change" Value="3"/>
+        <EffectArray Reference="Effect,BurrowChargeTargetSearch,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Effect,FenixWhirlwindSearch,AreaArray[0].Radius" Value="0.5"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Ultralisk8to10">
+        <EffectArray Reference="Effect,BurrowChargeTargetDamage,Amount" Value="4"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowChargeMP,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <EffectArray Reference="Effect,FenixWhirlwindDamage,Amount" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FenixWhirlwind,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,PrimalRavage,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <EffectArray Reference="Effect,PrimalRavageBuffHeal,VitalArray[Life].Change" Value="4"/>
+        <EffectArray Reference="Effect,BurrowChargeTargetSearch,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Effect,FenixWhirlwindSearch,AreaArray[0].Radius" Value="0.5"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
     </CUpgrade>
     <CUpgrade id="Zergling1to4">
         <EffectArray Reference="Effect,PoisonNovaDirectDamage,Amount" Value="3"/>
@@ -1545,6 +1637,18 @@
     </CUpgrade>
     <CUpgrade id="ZergMeleeWeaponsLevel3">
         <EffectArray index="61" Value="2"/>
+    </CUpgrade>
+    <CUpgrade id="Ultralisk1to4">
+        <EffectArray Reference="Effect,BurrowChargeTargetDamage,Amount" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowChargeMP,Cost[0].Cooldown.TimeUse" Value="1.000000"/>
+        <EffectArray Reference="Effect,FenixWhirlwindDamage,Amount" Value="0.5"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FenixWhirlwind,Cost[0].Cooldown.TimeUse" Value="1.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,PrimalRavage,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
+        <EffectArray Reference="Effect,PrimalRavageBuffHeal,VitalArray[Life].Change" Value="2"/>
+        <EffectArray Reference="Effect,BurrowChargeTargetSearch,AreaArray[0].Radius" Value="0.5"/>
+        <EffectArray Reference="Effect,FenixWhirlwindSearch,AreaArray[0].Radius" Value="0.5"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
     </CUpgrade>
     <CUpgrade id="Zergling5to7">
         <EffectArray Reference="Effect,PoisonNovaDirectDamage,Amount" Value="5"/>

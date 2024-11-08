@@ -876,7 +876,9 @@
         <BehaviorArray Link="MassiveVoidRayVulnerability"/>
         <BehaviorArray Link="UltraliskOutOfCombat1"/>
         <BehaviorArray Link="ZergLevels"/>
-        <BehaviorArray Link="UltraliskBonus"/>
+        <BehaviorArray Link="Ultralisk1to4"/>
+        <BehaviorArray Link="Ultralisk5to7"/>
+        <BehaviorArray Link="Ultralisk8to10"/>
         <BehaviorArray Link="UltraliskAirAttack"/>
         <WeaponArray Link="KaiserBlades3"/>
         <CardLayouts>
@@ -885,9 +887,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="Frenzied2" Type="Passive" Behavior="Frenzy" Row="2" Column="3"/>
-            <LayoutButtons Face="MonarchBlades" Type="Passive" Requirements="HaveHotSMonarchBlades" Row="2" Column="0"/>
-            <LayoutButtons Face="TissueAssimilation" Type="Passive" Requirements="HaveHotSTissueAssimilation" Row="2" Column="0"/>
+            <LayoutButtons Face="Frenzied2" Type="Passive" Row="2" Column="3"/>
             <LayoutButtons Face="BurrowChargeCampaign" Type="AbilCmd" AbilCmd="UltraliskBurrowCharge,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="PrimalConsume" Type="AbilCmd" AbilCmd="PrimalRavage,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="MonarchBlades2" Type="AbilCmd" AbilCmd="FenixWhirlwind,Execute" Row="2" Column="2"/>
@@ -5300,12 +5300,10 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="Leech"/>
         <AbilArray Link="Frenzy"/>
-        <BehaviorArray index="0" Link="ZergHealthBonus"/>
-        <BehaviorArray Link="ZergEnergyBonus"/>
-        <BehaviorArray Link="ZergDamageBonus"/>
-        <BehaviorArray Link="ZergMovementBonus"/>
+        <BehaviorArray index="0" Link="Defiler1to4"/>
         <BehaviorArray Link="ZergLevels"/>
-        <BehaviorArray Link="DefilerDamageBonus"/>
+        <BehaviorArray Link="Defiler5to7"/>
+        <BehaviorArray Link="Defiler8to10"/>
         <WeaponArray Link="SwarmQueenAcidSpines"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -5995,10 +5993,10 @@
         <AbilArray Link="Impale2"/>
         <AbilArray Link="NoxiousCreep"/>
         <AbilArray Link="StunningBlast"/>
-        <BehaviorArray index="0" Link="ZergMovementBonus"/>
-        <BehaviorArray Link="ZergHealthBonus"/>
-        <BehaviorArray Link="ZergDamageBonus"/>
-        <BehaviorArray Link="ZergLevels"/>
+        <BehaviorArray index="0" Link="ZergLevels"/>
+        <BehaviorArray Link="Hydralisk1to4"/>
+        <BehaviorArray Link="Hydralisk5to7"/>
+        <BehaviorArray Link="Hydralisk5to72"/>
         <WeaponArray Link="HydraliskMelee"/>
         <WeaponArray Link="NeedleSpines"/>
         <CardLayouts>
@@ -6043,7 +6041,7 @@
         <AlliedPushPriority value="15"/>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
-        <EnergyRegenRate value="12"/>
+        <EnergyRegenRate value="6"/>
         <AIOverideTargetPriority value="4"/>
     </CUnitHero>
     <CUnitHero id="MutaliskHero" parent="AccelerationZoneBase">
@@ -6891,11 +6889,10 @@
         <AbilArray Link="QueenBuild"/>
         <AbilArray Link="QueenBurstHeal"/>
         <AbilArray Link="PrimalGasCloud"/>
-        <BehaviorArray index="0" Link="ZergLevels"/>
-        <BehaviorArray Link="ZergEnergyBonus"/>
-        <BehaviorArray Link="ZergHealthBonus"/>
-        <BehaviorArray Link="ZergMovementBonus"/>
-        <BehaviorArray Link="QueenBonus"/>
+        <BehaviorArray index="0" Link="Queen1to4"/>
+        <BehaviorArray Link="Queen1to42"/>
+        <BehaviorArray Link="Queen1to422"/>
+        <BehaviorArray Link="ZergLevels"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -6906,7 +6903,6 @@
             <LayoutButtons Face="QueenMPSpawnBroodlings" Type="AbilCmd" AbilCmd="QueenMPSpawnBroodlings,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="QueenBurstHeal2" Type="AbilCmd" AbilCmd="QueenBurstHeal,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="PrimalGasCloud" Type="AbilCmd" AbilCmd="PrimalGasCloud,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="RapidQueen" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0.75"/>
