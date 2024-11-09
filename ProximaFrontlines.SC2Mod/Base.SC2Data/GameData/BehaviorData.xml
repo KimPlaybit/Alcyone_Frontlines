@@ -20,6 +20,32 @@
             <VitalRegenMultiplier index="Energy" value="0.02"/>
         </Modification>
     </CBehaviorAttribute>
+    <CBehaviorBuff id="Ensnare">
+        <Duration value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorAttribute id="Firebat1to4">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification>
+            <DamageDealtUnscaled index="Ranged" value="3"/>
+            <DamageDealtUnscaled index="Splash" value="3"/>
+            <VitalMaxArray index="Life" value="40"/>
+        </Modification>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="ScienceVessel1to4">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="25"/>
+            <VitalMaxArray index="Energy" value="10"/>
+        </Modification>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="Firebat8to10">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification>
+            <DamageDealtUnscaled index="Ranged" value="6"/>
+            <DamageDealtUnscaled index="Splash" value="6"/>
+            <VitalMaxArray index="Life" value="75"/>
+        </Modification>
+    </CBehaviorAttribute>
     <CBehaviorAttribute id="Hydralisk5to7">
         <BehaviorFlags index="Permanent" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
@@ -50,6 +76,20 @@
         <BehaviorFlags index="Permanent" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Modification SightBonus="1">
+            <VitalMaxArray index="Life" value="60"/>
+            <VitalMaxArray index="Energy" value="50"/>
+        </Modification>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="ScienceVessel5to7">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="40"/>
+            <VitalMaxArray index="Energy" value="20"/>
+        </Modification>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="ScienceVessel8to10">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification>
             <VitalMaxArray index="Life" value="60"/>
             <VitalMaxArray index="Energy" value="50"/>
         </Modification>
@@ -676,9 +716,10 @@
     </CBehaviorAttribute>
     <CBehaviorAttribute id="FirebatAttackSpeed">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Modification ShieldArmorBonus="2">
-            <DamageDealtUnscaled index="Spell" value="5"/>
-            <VitalMaxArray index="Life" value="30"/>
+        <Modification>
+            <DamageDealtUnscaled index="Ranged" value="4"/>
+            <DamageDealtUnscaled index="Splash" value="4"/>
+            <VitalMaxArray index="Life" value="50"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorBuff id="HealHeroicUnitsAround">
@@ -746,7 +787,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="SuperStimNova">
         <Modification>
-            <VitalRegenArray index="Life" value="35"/>
+            <VitalRegenArray index="Life" value="10"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorAttribute id="SpectreAttackBonus">
@@ -802,11 +843,12 @@
                 <AttributeChangeArray Attribute="UnknownBehavior" Points="1"/>
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
-                <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Firebat1to4" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel1to4" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="100">
@@ -815,11 +857,12 @@
                 <AttributeChangeArray Attribute="UnknownBehavior" Points="1"/>
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
-                <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Firebat1to4" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel1to4" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="200">
@@ -828,11 +871,12 @@
                 <AttributeChangeArray Attribute="UnknownBehavior" Points="1"/>
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
-                <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Firebat1to4" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel1to4" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="400">
@@ -846,6 +890,7 @@
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="800">
@@ -859,6 +904,7 @@
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1200">
@@ -872,6 +918,7 @@
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1600">
@@ -880,11 +927,12 @@
                 <AttributeChangeArray Attribute="UnknownBehavior" Points="1"/>
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
-                <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
+                <AttributeChangeArray Attribute="Firebat8to10" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel8to10" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2000">
@@ -893,11 +941,12 @@
                 <AttributeChangeArray Attribute="UnknownBehavior" Points="1"/>
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
-                <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
+                <AttributeChangeArray Attribute="Firebat8to10" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel8to10" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2400">
@@ -906,11 +955,12 @@
                 <AttributeChangeArray Attribute="UnknownBehavior" Points="1"/>
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
-                <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
+                <AttributeChangeArray Attribute="Firebat8to10" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
                 <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ScienceVessel8to10" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
     </CBehaviorVeterancy>
@@ -1055,6 +1105,11 @@
                 <AttributeChangeArray Attribute="Zergling1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler1to4" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="100">
@@ -1064,10 +1119,14 @@
                 <VitalMaxIncreaseAffectsCurrentArray index="Energy" value="0"/>
                 <AttributeChangeArray Attribute="Ultralisk1to4" Points="1"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
-                <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
                 <AttributeChangeArray Attribute="Zergling1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler1to4" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="200">
@@ -1081,6 +1140,11 @@
                 <AttributeChangeArray Attribute="Zergling1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler1to4" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="400">
@@ -1094,6 +1158,11 @@
                 <AttributeChangeArray Attribute="Zergling5to7" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk5to7" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to42" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler5to7" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="800">
@@ -1107,6 +1176,11 @@
                 <AttributeChangeArray Attribute="Ultralisk5to7" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk5to7" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to42" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler5to7" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1200">
@@ -1121,6 +1195,11 @@
                 <AttributeChangeArray Attribute="Ultralisk5to7" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk5to7" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to42" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler5to7" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1600">
@@ -1134,6 +1213,11 @@
                 <AttributeChangeArray Attribute="Ultralisk8to10" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk5to72" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to422" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler8to10" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2000">
@@ -1143,10 +1227,15 @@
                 <VitalMaxIncreaseAffectsCurrentArray index="Energy" value="0"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
-                <AttributeChangeArray Attribute="Zergling8to10"/>
+                <AttributeChangeArray Attribute="Zergling8to10" Points="1"/>
                 <AttributeChangeArray Attribute="Ultralisk8to10" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk5to72" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to422" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler8to10" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2400">
@@ -1156,10 +1245,15 @@
                 <VitalMaxIncreaseAffectsCurrentArray index="Energy" value="0"/>
                 <AttributeChangeArray Attribute="QueenBonus" Points="1"/>
                 <AttributeChangeArray Attribute="DefilerDamageBonus" Points="1"/>
-                <AttributeChangeArray Attribute="Zergling8to10"/>
+                <AttributeChangeArray Attribute="Zergling8to10" Points="1"/>
                 <AttributeChangeArray Attribute="Ultralisk8to10" Points="1"/>
                 <AttributeChangeArray Attribute="Hydralisk5to72" Points="1"/>
                 <AttributeChangeArray Attribute="Queen1to422" Points="1"/>
+                <AttributeChangeArray Attribute="Defiler8to10" Points="1"/>
+                <AttributeChangeArray Attribute="ZergDamageBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergHealthBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergMovementBonus" Points="1"/>
+                <AttributeChangeArray Attribute="ZergEnergyBonus" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
     </CBehaviorVeterancy>

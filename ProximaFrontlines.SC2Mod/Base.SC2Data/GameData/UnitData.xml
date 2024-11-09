@@ -1774,12 +1774,12 @@
         <AbilArray Link="TurretLab"/>
         <AbilArray Link="HangarQueue5"/>
         <BehaviorArray index="0" Link="Detector11"/>
-        <BehaviorArray Link="TerranLevels"/>
-        <BehaviorArray Link="UnknownBehavior"/>
-        <BehaviorArray Link="TerranEnergyBonus"/>
-        <BehaviorArray Link="TerranAttackBonus"/>
         <BehaviorArray Link="BuffEnergyRegen2"/>
         <BehaviorArray Link="Healable"/>
+        <BehaviorArray Link="TerranLevels"/>
+        <BehaviorArray Link="ScienceVessel1to4"/>
+        <BehaviorArray Link="ScienceVessel5to7"/>
+        <BehaviorArray Link="ScienceVessel8to10"/>
         <WeaponArray Turret="ScienceVesselRotate"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -5496,9 +5496,9 @@
         <AbilArray Link="SuperStimpackNova"/>
         <AbilArray Link="ArtanisLightningDash"/>
         <BehaviorArray index="0" Link="TerranLevels"/>
-        <BehaviorArray Link="TerranAttackBonus"/>
-        <BehaviorArray Link="UnknownBehavior"/>
+        <BehaviorArray Link="Firebat1to4"/>
         <BehaviorArray Link="FirebatAttackSpeed"/>
+        <BehaviorArray Link="Firebat8to10"/>
         <WeaponArray Link="Firebat"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>

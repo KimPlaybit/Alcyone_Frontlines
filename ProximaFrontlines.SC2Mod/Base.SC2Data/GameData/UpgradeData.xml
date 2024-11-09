@@ -112,6 +112,45 @@
         <AffectedUnitArray value="MissileTurret"/>
         <LeaderAlias value="DefenseStructureUpdates12"/>
     </CUpgrade>
+    <CUpgrade id="Firebat1to4">
+        <EffectArray Operation="Subtract" Reference="Abil,ArtanisLightningDash,Cost[0].Cooldown.TimeStart" Value="3.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SuperStimpackNova,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FirebatAvatar,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DutchPlaceTurret,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <EffectArray Reference="Behavior,SuperStimNova,Modification.VitalRegenArray[Life]" Value="2.000000"/>
+        <EffectArray Reference="Effect,AvatarDamage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,DutchTurretFlameThrowerDamage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,ArtanisLightningDashDamage,Amount" Value="3"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="ScienceVessel1to4">
+        <EffectArray Reference="Effect,IrradiatePeriodicDamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,CarrierRepairDroneHealTarget,VitalArray[Life].Change" Value="0.05"/>
+        <EffectArray Reference="Effect,KaraxRepairDroneRepairShield,VitalArray[Life].Change" Value="0.2"/>
+        <EffectArray Reference="Effect,NovaDefensiveDronePlaceholderShot,Amount" Value="2"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtAttributeUnscaled[Heroic]" Value="1"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtUnscaled[Spell]" Value="1"/>
+        <EffectArray Reference="Behavior,MedivacSpeedBoost,Duration" Value="0.200000"/>
+        <EffectArray Reference="Behavior,MedivacSpeedBoost,Modification.MoveSpeedMultiplier" Value="0.05"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.VitalMaxArray[Life]" Value="3"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ScienceVesselEmergencyThrusters,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,TurretLab,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="Firebat5to7">
+        <EffectArray Operation="Subtract" Reference="Abil,ArtanisLightningDash,Cost[0].Cooldown.TimeStart" Value="4.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SuperStimpackNova,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FirebatAvatar,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DutchPlaceTurret,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
+        <EffectArray Reference="Behavior,SuperStimNova,Modification.VitalRegenArray[Life]" Value="3.000000"/>
+        <EffectArray Reference="Effect,AvatarDamage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,DutchTurretFlameThrowerDamage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,ArtanisLightningDashDamage,Amount" Value="4"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
     <CUpgrade id="Defiler5to7">
         <EffectArray Reference="Effect,DefilerMPConsumeModifyUnit,VitalArray[Energy].Change" Value="25"/>
         <EffectArray Reference="Effect,DefilerMPDarkSwarmSearch,AreaArray[0].Radius" Value="0.5"/>
@@ -141,9 +180,22 @@
         <EffectArray Operation="Set" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="0.833200"/>
         <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
     </CUpgrade>
+    <CUpgrade id="Firebat8to10">
+        <EffectArray Operation="Subtract" Reference="Abil,ArtanisLightningDash,Cost[0].Cooldown.TimeStart" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SuperStimpackNova,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FirebatAvatar,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DutchPlaceTurret,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Reference="Behavior,SuperStimNova,Modification.VitalRegenArray[Life]" Value="4.000000"/>
+        <EffectArray Reference="Effect,AvatarDamage,Amount" Value="4"/>
+        <EffectArray Reference="Effect,DutchTurretFlameThrowerDamage,Amount" Value="5"/>
+        <EffectArray Reference="Effect,ArtanisLightningDashDamage,Amount" Value="5"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
     <CUpgrade id="Hydralisk1to4">
         <EffectArray Reference="Unit,HydraliskHero,EnergyRegenRate" Value="0.351500"/>
         <EffectArray Reference="Effect,HydraliskImpaleDamage,Amount" Value="5"/>
+        <EffectArray Reference="Behavior,Ensnare,Duration" Value="0.300000"/>
         <MaxLevel value="10"/>
         <LeaderAlias value="VoidSentryEnergy"/>
     </CUpgrade>
@@ -157,12 +209,14 @@
     <CUpgrade id="Hydralisk5to7">
         <EffectArray Reference="Unit,HydraliskHero,EnergyRegenRate" Value="0.601500"/>
         <EffectArray Reference="Effect,HydraliskImpaleDamage,Amount" Value="8"/>
+        <EffectArray Reference="Behavior,Ensnare,Duration" Value="0.300000"/>
         <MaxLevel value="10"/>
         <LeaderAlias value="VoidSentryEnergy"/>
     </CUpgrade>
     <CUpgrade id="Hydralisk8to10">
         <EffectArray Reference="Unit,HydraliskHero,EnergyRegenRate" Value="1.000000"/>
         <EffectArray Reference="Effect,HydraliskImpaleDamage,Amount" Value="10"/>
+        <EffectArray Reference="Behavior,Ensnare,Duration" Value="0.400000"/>
         <MaxLevel value="10"/>
         <LeaderAlias value="VoidSentryEnergy"/>
     </CUpgrade>
@@ -188,6 +242,36 @@
         <EffectArray Reference="Effect,QueenBurstHeal,VitalArray[Life].Change" Value="5"/>
         <EffectArray Reference="Effect,PrimalGasCloudDamage,Amount" Value="5"/>
         <EffectArray Reference="Unit,KerriganInfestBroodling,LifeMax" Value="4"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="ScienceVessel5to7">
+        <EffectArray Reference="Effect,IrradiatePeriodicDamage,Amount" Value="1.5"/>
+        <EffectArray Reference="Effect,CarrierRepairDroneHealTarget,VitalArray[Life].Change" Value="0.07"/>
+        <EffectArray Reference="Effect,KaraxRepairDroneRepairShield,VitalArray[Life].Change" Value="0.25"/>
+        <EffectArray Reference="Effect,NovaDefensiveDronePlaceholderShot,Amount" Value="3"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtAttributeUnscaled[Heroic]" Value="1.5"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtUnscaled[Spell]" Value="1.5"/>
+        <EffectArray Reference="Behavior,MedivacSpeedBoost,Duration" Value="0.250000"/>
+        <EffectArray Reference="Behavior,MedivacSpeedBoost,Modification.MoveSpeedMultiplier" Value="0.08"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.VitalMaxArray[Life]" Value="4"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ScienceVesselEmergencyThrusters,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,TurretLab,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
+        <MaxLevel value="10"/>
+        <LeaderAlias value="VoidSentryEnergy"/>
+    </CUpgrade>
+    <CUpgrade id="ScienceVessel8to10">
+        <EffectArray Reference="Effect,IrradiatePeriodicDamage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,CarrierRepairDroneHealTarget,VitalArray[Life].Change" Value="1"/>
+        <EffectArray Reference="Effect,KaraxRepairDroneRepairShield,VitalArray[Life].Change" Value="0.5"/>
+        <EffectArray Reference="Effect,NovaDefensiveDronePlaceholderShot,Amount" Value="5"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtAttributeUnscaled[Heroic]" Value="2"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtUnscaled[Spell]" Value="2"/>
+        <EffectArray Reference="Behavior,MedivacSpeedBoost,Duration" Value="0.400000"/>
+        <EffectArray Reference="Behavior,MedivacSpeedBoost,Modification.MoveSpeedMultiplier" Value="0.17"/>
+        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.VitalMaxArray[Life]" Value="8"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ScienceVesselEmergencyThrusters,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,TurretLab,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
         <MaxLevel value="10"/>
         <LeaderAlias value="VoidSentryEnergy"/>
     </CUpgrade>
@@ -233,21 +317,6 @@
     <CUpgrade id="ProtossAirWeaponsLevel3">
         <EffectArray index="2" Reference="Weapon,VoidRaySwarm,Level"/>
         <EffectArray index="15" Reference="Weapon,VoidRaySwarm,Icon"/>
-    </CUpgrade>
-    <CUpgrade id="ScienceVesselUpgrades">
-        <EffectArray Reference="Effect,IrradiatePeriodicDamage,Amount" Value="2"/>
-        <EffectArray Reference="Effect,CarrierRepairDroneHealTarget,VitalArray[Life].Change" Value="0.1"/>
-        <EffectArray Reference="Effect,KaraxRepairDroneRepairShield,VitalArray[Life].Change" Value="0.3"/>
-        <EffectArray Reference="Effect,NovaDefensiveDronePlaceholderShot,Amount" Value="4"/>
-        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtAttributeUnscaled[Heroic]" Value="2"/>
-        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.DamageDealtUnscaled[Spell]" Value="2"/>
-        <EffectArray Reference="Behavior,MedivacSpeedBoost,Duration" Value="0.500000"/>
-        <EffectArray Reference="Behavior,MedivacSpeedBoost,Modification.MoveSpeedMultiplier" Value="0.05"/>
-        <EffectArray Reference="Behavior,ScienceVesselBuffDamage,Modification.VitalMaxArray[Life]" Value="10"/>
-        <AffectedUnitArray value="ScienceVessel2"/>
-        <AffectedUnitArray value="LabTurretUp2"/>
-        <AffectedUnitArray value="ScienceRepairDrone"/>
-        <MaxLevel value="10"/>
     </CUpgrade>
     <CUpgrade id="SeismicSpines">
         <Icon value="Assets\Textures\btn-upgrade-kerrigan-seismicspines.dds"/>

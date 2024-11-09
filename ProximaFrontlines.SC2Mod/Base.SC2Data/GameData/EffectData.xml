@@ -45,7 +45,7 @@
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="ArtanisLightningDashDamage">
-        <Amount value="30"/>
+        <Amount value="5"/>
         <Kind value="Spell"/>
     </CEffectDamage>
     <CEffectSet id="CarrierRepairDroneHealSet">
@@ -158,7 +158,7 @@
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectDamage id="DutchTurretFlameThrowerDamage">
-        <Amount value="25"/>
+        <Amount value="10"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="EnergyRegenerationApplyBehavior2">
         <ValidatorArray index="0" removed="1"/>
@@ -576,6 +576,7 @@
     </CEffectSet>
     <CEffectDamage id="FirebatUFull">
         <KindSplash value="Splash"/>
+        <AttributeBonus index="Light" value="0"/>
     </CEffectDamage>
     <CEffectDamage id="FirebatUFull2" parent="DU_WEAP_SPLASH">
         <ValidatorArray value="noMarkers"/>
@@ -846,7 +847,7 @@
         <Amount value="100"/>
     </CEffectDamage>
     <CEffectDamage id="IrradiatePeriodicDamage">
-        <Amount value="5"/>
+        <Amount value="1"/>
     </CEffectDamage>
     <CEffectDamage id="KorhalPalaceGateDamage">
         <Amount value="100"/>
@@ -966,7 +967,7 @@
         <ValidatorArray value="IsNotDisruptor"/>
         <EditorCategories value=""/>
         <Flags index="Notification" value="1"/>
-        <Amount value="10"/>
+        <Amount value="1"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectDamage id="PhotonCannonU">

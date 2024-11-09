@@ -52,7 +52,7 @@
     <CAbilEffectTarget id="ArtanisLightningDash">
         <Cost index="0">
             <!--Vital index="Energy" value="50"/-->
-            <Cooldown TimeUse="10"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ArtanisWormholeTransit">
@@ -71,7 +71,7 @@
         <Effect index="0" value="MedivacSpeedBoost"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="45"/>
+            <Cooldown TimeUse="70"/>
         </Cost>
         <AINotifyEffect value="MedivacSpeedBoost"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="MedivacSpeedBoost">
@@ -106,7 +106,7 @@
         <Cost>
             <Vital index="Energy" value="25"/>
             <Charge Link="Abil/SpawnTurretLab"/>
-            <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnTurretLab" Location="Unit" TimeUse="20"/>
+            <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnTurretLab" Location="Unit" TimeUse="45"/>
         </Cost>
         <Placeholder value="LabTurretUp2"/>
         <Range value="7"/>
@@ -359,7 +359,7 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DutchPlaceTurret">
         <Cost index="0">
-            <Cooldown TimeStart="20" TimeUse="60"/>
+            <Cooldown TimeUse="90"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilResearch id="EngineeringBayResearch">
@@ -690,7 +690,7 @@
         <Effect index="0" value="AvatarSet"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="60"/>
+            <Cooldown TimeUse="90"/>
         </Cost>
         <AutoCastRange value="5"/>
         <AutoCastValidatorArray value="VoidDisruptorEnemyInRange"/>
@@ -1374,7 +1374,7 @@
     </CAbilEffectTarget>
     <CAbilEffectInstant id="SuperStimpackNova">
         <Cost index="0">
-            <Cooldown TimeUse="35"/>
+            <Cooldown TimeUse="75"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="NydusSpawnZergUnits">
