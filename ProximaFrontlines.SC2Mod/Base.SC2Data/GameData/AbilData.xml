@@ -835,7 +835,7 @@
     <CAbilEffectTarget id="LokiMissilePods">
         <Cost index="0">
             <Vital index="Energy" value="0"/>
-            <Cooldown TimeUse="40"/>
+            <Cooldown TimeUse="20"/>
         </Cost>
         <Range index="0" value="9"/>
     </CAbilEffectTarget>
@@ -843,7 +843,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="0"/>
-            <Cooldown TimeUse="15"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="QueenBurstHeal">
@@ -983,7 +983,7 @@
         <Effect index="0" value="Stimpack2"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="25"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
         <AINotifyEffect value="Stimpack"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Stim" State="Restricted" Requirements="UseStimpackSM">
@@ -1319,7 +1319,7 @@
         <Effect index="0" value="Stimpack3"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <VitalFraction index="Life" value="0.2"/>
+            <VitalFraction index="Life" value="0.25"/>
             <Cooldown TimeUse="15"/>
         </Cost>
         <AINotifyEffect value="Stimpack3"/>
@@ -1654,7 +1654,7 @@
     <CAbilEffectInstant id="VoodooShield">
         <Cost index="0">
             <Vital index="Energy" value="0"/>
-            <Cooldown TimeUse="75"/>
+            <Cooldown TimeUse="100"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="WidowMineAttack2">

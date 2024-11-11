@@ -31,6 +31,40 @@
             <VitalMaxArray index="Life" value="40"/>
         </Modification>
     </CBehaviorAttribute>
+    <CBehaviorAttribute id="Goliath5to7">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification AttackSpeedMultiplier="1.02">
+            <DamageDealtUnscaled index="Ranged" value="7"/>
+            <DamageDealtUnscaled index="NoProc" value="3"/>
+            <VitalMaxArray index="Life" value="40"/>
+        </Modification>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="Goliath8to10">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification AttackSpeedMultiplier="1.03">
+            <DamageDealtUnscaled index="Ranged" value="8"/>
+            <DamageDealtUnscaled index="NoProc" value="4"/>
+            <VitalMaxArray index="Life" value="60"/>
+        </Modification>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="Marine5to7">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Modification AttackSpeedMultiplier="1.1">
+            <DamageDealtUnscaled index="Ranged" value="7"/>
+            <VitalMaxArray index="Life" value="30"/>
+        </Modification>
+    </CBehaviorAttribute>
+    <CBehaviorAttribute id="Marine8to10">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Modification AttackSpeedMultiplier="1.1">
+            <DamageDealtUnscaled index="Ranged" value="9"/>
+            <VitalMaxArray index="Life" value="45"/>
+        </Modification>
+    </CBehaviorAttribute>
     <CBehaviorAttribute id="ScienceVessel1to4">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification>
@@ -347,12 +381,11 @@
     <CBehaviorBuff id="FlagshipTimeBomb">
         <Modification MoveSpeedMultiplier="0.6" AttackSpeedMultiplier="0.9"/>
     </CBehaviorBuff>
-    <CBehaviorAttribute id="GoliathLevelBonus">
+    <CBehaviorAttribute id="Goliath1to4">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Modification MoveSpeedMultiplier="1.005" AttackSpeedMultiplier="1.05" ShieldArmorBonus="2">
-            <DamageDealtUnscaled index="Spell" value="10"/>
-            <DamageDealtUnscaled index="Ranged" value="1"/>
-            <DamageDealtUnscaled index="NoProc" value="6"/>
+        <Modification>
+            <DamageDealtUnscaled index="Ranged" value="6"/>
+            <DamageDealtUnscaled index="NoProc" value="2"/>
             <VitalMaxArray index="Life" value="20"/>
         </Modification>
     </CBehaviorAttribute>
@@ -762,7 +795,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
         <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
         <Modification Radar="30" RadarFilters="-;Neutral,RawResource,HarvestableResource,Missile,Destructible,Buried,Cloaked"/>
-        <Duration value="25"/>
+        <Duration value="15"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SpectreCloaking">
         <Modification>
@@ -790,15 +823,10 @@
             <VitalRegenArray index="Life" value="10"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorAttribute id="SpectreAttackBonus">
+    <CBehaviorAttribute id="Spectre1to4">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification XPMultiplier="1.03">
-            <DamageDealtUnscaled index="Spell" value="10"/>
-            <DamageDealtUnscaled index="Melee" value="5"/>
             <DamageDealtUnscaled index="Ranged" value="5"/>
-            <DamageDealtUnscaled index="Splash" value="5"/>
-            <DamageDealtUnscaled index="NoProc" value="5"/>
-            <VitalRegenMultiplier index="Energy" value="0.6"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="TerranAttackSpeed">
@@ -844,9 +872,9 @@
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Marine1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Firebat1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel1to4" Points="1"/>
             </Modification>
@@ -858,9 +886,9 @@
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Marine1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Firebat1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel1to4" Points="1"/>
             </Modification>
@@ -872,9 +900,9 @@
                 <AttributeChangeArray Attribute="TerranAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Marine1to4" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="Firebat1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel1to4" Points="1"/>
             </Modification>
@@ -887,9 +915,9 @@
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath5to7" Points="1"/>
+                <AttributeChangeArray Attribute="Marine5to7" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
@@ -901,9 +929,9 @@
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath5to7" Points="1"/>
+                <AttributeChangeArray Attribute="Marine5to7" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
@@ -915,9 +943,9 @@
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="FirebatAttackSpeed" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath5to7" Points="1"/>
+                <AttributeChangeArray Attribute="Marine5to7" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel5to7" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
@@ -929,9 +957,9 @@
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="Firebat8to10" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath8to10" Points="1"/>
+                <AttributeChangeArray Attribute="Marine8to10" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel8to10" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
@@ -943,9 +971,9 @@
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="Firebat8to10" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath8to10" Points="1"/>
+                <AttributeChangeArray Attribute="Marine8to10" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel8to10" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
@@ -957,9 +985,9 @@
                 <AttributeChangeArray Attribute="TerranEnergyBonus" Points="1"/>
                 <AttributeChangeArray Attribute="Firebat8to10" Points="1"/>
                 <AttributeChangeArray Attribute="MediclevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="GoliathLevelBonus" Points="1"/>
-                <AttributeChangeArray Attribute="MarineStatsBonus" Points="1"/>
-                <AttributeChangeArray Attribute="SpectreAttackBonus" Points="1"/>
+                <AttributeChangeArray Attribute="Goliath8to10" Points="1"/>
+                <AttributeChangeArray Attribute="Marine8to10" Points="1"/>
+                <AttributeChangeArray Attribute="Spectre1to4" Points="1"/>
                 <AttributeChangeArray Attribute="ScienceVessel8to10" Points="1"/>
             </Modification>
         </VeterancyLevelArray>
@@ -1023,13 +1051,13 @@
             <StateFlags index="Undetectable" value="1"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorAttribute id="MarineStatsBonus">
+    <CBehaviorAttribute id="Marine1to4">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
-        <Modification HealTakenMultiplier="1.05">
-            <DamageDealtUnscaled index="Ranged" value="-2"/>
-            <VitalMaxArray index="Life" value="-30"/>
+        <Modification AttackSpeedMultiplier="1.05">
+            <DamageDealtUnscaled index="Ranged" value="5"/>
+            <VitalMaxArray index="Life" value="15"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorBuff id="ViralPlasma2">
@@ -1050,6 +1078,9 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="VoodooShield">
         <Duration value="10"/>
+        <Modification>
+            <VitalMaxArray index="Shields" value="50"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorAttribute id="ZergDamageBonus">
         <BehaviorFlags index="Permanent" value="1"/>

@@ -6497,16 +6497,16 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
-        <AbilArray Link="GravitonBeamUrun"/>
         <AbilArray Link="LokiMissilePods"/>
         <AbilArray Link="PsionicLift"/>
         <AbilArray Link="ZHybridPsionicShockwave"/>
         <AbilArray Link="StimpackHero2"/>
         <BehaviorArray Link="MultilockTargetingSystems"/>
         <BehaviorArray Link="ScavengingSystemsMechDeath"/>
-        <BehaviorArray Link="UnknownBehavior"/>
         <BehaviorArray Link="TerranLevels"/>
-        <BehaviorArray Link="GoliathLevelBonus"/>
+        <BehaviorArray Link="Goliath1to4"/>
+        <BehaviorArray Link="Goliath5to7"/>
+        <BehaviorArray Link="Goliath8to10"/>
         <WeaponArray Link="GoliathA" Turret="Goliath"/>
         <WeaponArray Link="GoliathG" Turret="Goliath"/>
         <WeaponArray Link="GoliathAUpgraded" Turret="FreeRotate"/>
@@ -6606,12 +6606,11 @@
         <AbilArray Link="StimpackHero"/>
         <AbilArray Link="VoodooShield"/>
         <AbilArray Link="Radar"/>
-        <BehaviorArray Link="TerranAttackBonus"/>
-        <BehaviorArray Link="UnknownBehavior"/>
         <BehaviorArray Link="TerranLevels"/>
-        <BehaviorArray Link="TerranAttackSpeed"/>
-        <BehaviorArray Link="MarineStatsBonus"/>
+        <BehaviorArray Link="Marine5to7"/>
+        <BehaviorArray Link="Marine1to4"/>
         <BehaviorArray Link="ReaperRegen"/>
+        <BehaviorArray Link="Marine8to10"/>
         <WeaponArray Link="MengskMarine"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -6704,7 +6703,7 @@
         <BehaviorArray Link="TerranLevels"/>
         <BehaviorArray Link="TerranEnergyBonus"/>
         <BehaviorArray Link="TerranAttackBonus"/>
-        <BehaviorArray Link="SpectreAttackBonus"/>
+        <BehaviorArray Link="Spectre1to4"/>
         <WeaponArray Link="Specter"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>

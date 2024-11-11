@@ -204,6 +204,10 @@
         <EditorCategories value=""/>
         <Behavior value="GetCredit2"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="GoliathG">
+        <Kind value="NoProc"/>
+        <Amount value="6"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="GuardianShieldApplyBehavior2">
         <ValidatorArray index="0" value="SourceNotHidden"/>
         <EditorCategories value="Race:Protoss"/>
@@ -606,8 +610,7 @@
         <Amount value="2"/>
     </CEffectDamage>
     <CEffectDamage id="GoliathAU">
-        <AttributeBonus index="Armored" value="4"/>
-        <Kind value="NoProc"/>
+        <AttributeBonus index="Armored" value="0"/>
     </CEffectDamage>
     <CEffectDamage id="HailstormMissilePodsDamage">
         <AttributeBonus index="Heroic" value="40"/>
@@ -886,7 +889,7 @@
     </CEffectSet>
     <CEffectDamage id="LokiHurricaneMissileDamage">
         <AttributeBonus index="Light" value="0"/>
-        <Amount value="2"/>
+        <Amount value="6"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="LokiHurricaneMissileDamagePersistent">
         <PeriodCount value="6"/>
@@ -1067,7 +1070,7 @@
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="TossGrenadeDamage">
-        <Amount value="35"/>
+        <Amount value="15"/>
         <AttributeBonus index="Structure" value="0"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,Air,Missile,Stasis,Dead,Invulnerable"/>
     </CEffectDamage>
@@ -1147,7 +1150,7 @@
         <EffectArray value="GravitonBeamUrun"/>
     </CEffectSet>
     <CEffectDamage id="ZHybridPsionicShockwaveSpellDamage">
-        <Amount value="10"/>
+        <Amount value="5"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="ZHybridPsychicClonesCreatePersistent">
         <PeriodicEffectArray value="ZHybridPsychicClonesCreateUnit"/>

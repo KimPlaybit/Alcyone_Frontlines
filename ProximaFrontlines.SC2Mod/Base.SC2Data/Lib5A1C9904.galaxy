@@ -2560,6 +2560,50 @@ void lib5A1C9904_gt_DefilerLevelUp_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: GoliathLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_GoliathLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "GoliathHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Goliath1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Goliath5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Goliath8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_GoliathLevelUp_Init () {
+    lib5A1C9904_gt_GoliathLevelUp = TriggerCreate("lib5A1C9904_gt_GoliathLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_GoliathLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ScienceVesselLevelUp
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_ScienceVesselLevelUp_Func (bool testConds, bool runActions) {
@@ -2676,21 +2720,19 @@ void lib5A1C9904_gt_FirebatLevelUp_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Grenade
+// Trigger: MarineLevelUp
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_Grenade_Func (bool testConds, bool runActions) {
+bool lib5A1C9904_gt_MarineLevelUp_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_caster;
-    int lv_increase;
+    int lv_level;
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_caster = EventUnitDamageSourceUnit();
-    lv_increase = (UnitXPGetCurrentLevel(lv_caster, "TerranLevels") * 15);
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
 
     // Conditions
     if (testConds) {
-        if (!((UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == false))) {
+        if (!((UnitGetType(EventUnit()) == "MarineHero"))) {
             return false;
         }
     }
@@ -2700,14 +2742,25 @@ bool lib5A1C9904_gt_Grenade_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UnitDamage(EventUnitDamageSourceUnit(), "HydraliskImpaleDamage2", EventUnit(), lv_increase);
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Marine1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Marine5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Marine8to10", 1);
+    }
+
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_Grenade_Init () {
-    lib5A1C9904_gt_Grenade = TriggerCreate("lib5A1C9904_gt_Grenade_Func");
-    TriggerAddEventUnitDamaged(lib5A1C9904_gt_Grenade, null, c_unitDamageTypeAny, c_unitDamageEither, "TossGrenadeDamage");
+void lib5A1C9904_gt_MarineLevelUp_Init () {
+    lib5A1C9904_gt_MarineLevelUp = TriggerCreate("lib5A1C9904_gt_MarineLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_MarineLevelUp, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5128,10 +5181,11 @@ void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_QueenLevelUp_Init();
     lib5A1C9904_gt_NydusWormLevelUp_Init();
     lib5A1C9904_gt_DefilerLevelUp_Init();
+    lib5A1C9904_gt_GoliathLevelUp_Init();
     lib5A1C9904_gt_ScienceVesselLevelUp_Init();
     lib5A1C9904_gt_FirebatAvatar_Init();
     lib5A1C9904_gt_FirebatLevelUp_Init();
-    lib5A1C9904_gt_Grenade_Init();
+    lib5A1C9904_gt_MarineLevelUp_Init();
     lib5A1C9904_gt_HydraliskImpale5_Init();
     lib5A1C9904_gt_HydraliskImpale6_Init();
     lib5A1C9904_gt_Obliterate_Init();
