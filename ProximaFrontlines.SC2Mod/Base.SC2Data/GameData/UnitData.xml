@@ -1171,7 +1171,6 @@
             <LayoutButtons index="22" removed="1"/>
             <LayoutButtons index="23" removed="1"/>
         </CardLayouts>
-        <FlagArray index="Worker" value="1"/>
     </CUnit>
     <CUnit id="LiberatorAG">
         <AbilArray index="2" Link="LiberatorAATarget"/>
@@ -1258,10 +1257,10 @@
         <BehaviorArray Link="ProtossLevels"/>
         <BehaviorArray Link="MothershipCore1to4"/>
         <BehaviorArray Link="MothershipCore5to7"/>
+        <BehaviorArray Link="MothershipCore8to10"/>
         <BehaviorArray Link="WarpPrismPowerSource"/>
         <BehaviorArray Link="BuffEnergyRegen"/>
         <BehaviorArray Link="Detector375"/>
-        <BehaviorArray Link="MothershipCore8to10"/>
         <WeaponArray Link="RepulsorCannon" Turret="MothershipCoreTurret"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -1918,6 +1917,7 @@
     </CUnit>
     <CUnit id="Observer">
         <Sight value="13"/>
+        <FlagArray index="ArmySelect" value="1"/>
     </CUnit>
     <CUnit id="Odin">
         <LifeStart value="7500"/>
@@ -2081,6 +2081,7 @@
     </CUnit>
     <CUnit id="Probe">
         <CardLayouts index="1">
+            <LayoutButtons index="9" Face="Gateway" AbilCmd="ProtossBuild,Build9"/>
             <LayoutButtons index="10" Face="ShieldBattery" AbilCmd="ProtossBuild,Build22"/>
             <LayoutButtons index="11" removed="1"/>
         </CardLayouts>
@@ -5389,10 +5390,10 @@
         <AbilArray Link="FenixChampionPowerShield"/>
         <AbilArray Link="AlarakPsiOrb"/>
         <BehaviorArray index="0" Link="SOAHeroicShieldProcBuff"/>
-        <BehaviorArray Link="Dragoon8to10"/>
-        <BehaviorArray Link="Dragoon5to7"/>
-        <BehaviorArray Link="ProtossLevels"/>
         <BehaviorArray Link="Dragoon1to4"/>
+        <BehaviorArray Link="Dragoon5to7"/>
+        <BehaviorArray Link="Dragoon8to10"/>
+        <BehaviorArray Link="ProtossLevels"/>
         <WeaponArray Link="Dragoon" Turret="Dragoon"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -5608,10 +5609,10 @@
         <AbilArray Link="MothershipStasis"/>
         <BehaviorArray index="0" Link="SOAHeroicShieldProcBuff"/>
         <BehaviorArray Link="CorsairDisableFakeWeapon"/>
-        <BehaviorArray Link="Corsair8to10"/>
         <BehaviorArray Link="Corsair1to4"/>
-        <BehaviorArray Link="ProtossLevels"/>
         <BehaviorArray Link="Corsair5to7"/>
+        <BehaviorArray Link="Corsair8to10"/>
+        <BehaviorArray Link="ProtossLevels"/>
         <WeaponArray Link="NeutronFlare"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -6602,10 +6603,10 @@
         <AbilArray Link="VoodooShield"/>
         <AbilArray Link="Radar"/>
         <BehaviorArray Link="TerranLevels"/>
-        <BehaviorArray Link="Marine5to7"/>
         <BehaviorArray Link="Marine1to4"/>
-        <BehaviorArray Link="ReaperRegen"/>
+        <BehaviorArray Link="Marine5to7"/>
         <BehaviorArray Link="Marine8to10"/>
+        <BehaviorArray Link="ReaperRegen"/>
         <WeaponArray Link="MengskMarine"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -6695,9 +6696,9 @@
         <AbilArray Link="SpectreHoldFire"/>
         <AbilArray Link="SpectreWeaponsFree"/>
         <BehaviorArray Link="TerranLevels"/>
-        <BehaviorArray Link="Spectre8to10"/>
-        <BehaviorArray Link="Spectre5to7"/>
         <BehaviorArray Link="Spectre1to4"/>
+        <BehaviorArray Link="Spectre5to7"/>
+        <BehaviorArray Link="Spectre8to10"/>
         <WeaponArray Link="Specter"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CActorModel id="ArtanisMothershipTeleportOut">
+        <On index="3" Terms="Abil.ArtanisWormholeTransit.SourcePrepStart"/>
+    </CActorModel>
     <CActorUnit id="BabyUltralisk2" parent="GenericUnitBase" unitName="Pygalisk2">
         <Aliases value="_UnitMedium"/>
         <On Terms="WeaponStart.BabyUltralisk.AttackStart" Send="AnimBracketStart Attack Attack"/>

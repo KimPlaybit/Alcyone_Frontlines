@@ -61,6 +61,7 @@
             <Cooldown TimeStart="60" TimeUse="135"/>
         </Cost>
         <TargetFilters index="0" value="Structure,Visible;Self,Enemy,UnderConstruction"/>
+        <PrepTime index="0" value="2"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="FenixChampionPowerShield">
         <Cost index="0">
@@ -1234,6 +1235,9 @@
         <InfoArray index="Build4" Time="30"/>
         <InfoArray index="Build5" Time="20"/>
         <InfoArray index="Build8" Time="29"/>
+        <InfoArray index="Build9" Unit="WarpGate">
+            <Button DefaultButtonFace="WarpInWarpGate" Requirements="HaveNexusAndNotHaveSOAWarpTech2"/>
+        </InfoArray>
         <InfoArray index="Build10">
             <Button Requirements="HaveCyberneticsCore"/>
         </InfoArray>
