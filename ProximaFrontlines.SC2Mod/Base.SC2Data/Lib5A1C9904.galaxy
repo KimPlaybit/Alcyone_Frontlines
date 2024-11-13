@@ -2076,10 +2076,187 @@ void lib5A1C9904_gt_AIBuildMedivacs_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: DarkTemplarLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_DarkTemplarLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "AvengerHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "DarkTemplar1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "DarkTemplar5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "DarkTemplar8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DarkTemplarLevelUp_Init () {
+    lib5A1C9904_gt_DarkTemplarLevelUp = TriggerCreate("lib5A1C9904_gt_DarkTemplarLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_DarkTemplarLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CorsairLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_CorsairLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "CorsairHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Corsair1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Corsair5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Corsair8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_CorsairLevelUp_Init () {
+    lib5A1C9904_gt_CorsairLevelUp = TriggerCreate("lib5A1C9904_gt_CorsairLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_CorsairLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DragoonLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_DragoonLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "DragoonHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Dragoon1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Dragoon5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Dragoon8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DragoonLevelUp_Init () {
+    lib5A1C9904_gt_DragoonLevelUp = TriggerCreate("lib5A1C9904_gt_DragoonLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_DragoonLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ZealotLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ZealotLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "ZealotHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zealot1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zealot5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zealot8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ZealotLevelUp_Init () {
+    lib5A1C9904_gt_ZealotLevelUp = TriggerCreate("lib5A1C9904_gt_ZealotLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_ZealotLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MothershipCoreLevelUp
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_MothershipCoreLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+
     // Conditions
     if (testConds) {
         if (!((UnitGetType(EventUnit()) == "MothershipCoreHero"))) {
@@ -2092,7 +2269,18 @@ bool lib5A1C9904_gt_MothershipCoreLevelUp_Func (bool testConds, bool runActions)
         return true;
     }
 
-    TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "MothershipCoreUpgrades", 1);
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "MothershipCore1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "MothershipCore5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "MothershipCore8to10", 1);
+    }
+
     return true;
 }
 
@@ -2106,7 +2294,12 @@ void lib5A1C9904_gt_MothershipCoreLevelUp_Init () {
 // Trigger: SentryLevelUp
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_SentryLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+
     // Conditions
     if (testConds) {
         if (!((UnitGetType(EventUnit()) == "SentryPurifier2"))) {
@@ -2119,7 +2312,18 @@ bool lib5A1C9904_gt_SentryLevelUp_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "LevelUpgrade", 1);
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Sentry1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Sentry5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Sentry8to10", 1);
+    }
+
     return true;
 }
 
@@ -2560,6 +2764,50 @@ void lib5A1C9904_gt_DefilerLevelUp_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: SpectreLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SpectreLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "SpectreHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Spectre1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Spectre5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Spectre8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SpectreLevelUp_Init () {
+    lib5A1C9904_gt_SpectreLevelUp = TriggerCreate("lib5A1C9904_gt_SpectreLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_SpectreLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: GoliathLevelUp
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_GoliathLevelUp_Func (bool testConds, bool runActions) {
@@ -2601,6 +2849,50 @@ bool lib5A1C9904_gt_GoliathLevelUp_Func (bool testConds, bool runActions) {
 void lib5A1C9904_gt_GoliathLevelUp_Init () {
     lib5A1C9904_gt_GoliathLevelUp = TriggerCreate("lib5A1C9904_gt_GoliathLevelUp_Func");
     TriggerAddEventUnitGainLevel(lib5A1C9904_gt_GoliathLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MedicLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MedicLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MedicHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Medic1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Medic5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Medic8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MedicLevelUp_Init () {
+    lib5A1C9904_gt_MedicLevelUp = TriggerCreate("lib5A1C9904_gt_MedicLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_MedicLevelUp, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5170,6 +5462,10 @@ void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_AIBuildShieldBattery_Init();
     lib5A1C9904_gt_AIBuildQueens_Init();
     lib5A1C9904_gt_AIBuildMedivacs_Init();
+    lib5A1C9904_gt_DarkTemplarLevelUp_Init();
+    lib5A1C9904_gt_CorsairLevelUp_Init();
+    lib5A1C9904_gt_DragoonLevelUp_Init();
+    lib5A1C9904_gt_ZealotLevelUp_Init();
     lib5A1C9904_gt_MothershipCoreLevelUp_Init();
     lib5A1C9904_gt_SentryLevelUp_Init();
     lib5A1C9904_gt_ZerglingLevelUp_Init();
@@ -5181,7 +5477,9 @@ void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_QueenLevelUp_Init();
     lib5A1C9904_gt_NydusWormLevelUp_Init();
     lib5A1C9904_gt_DefilerLevelUp_Init();
+    lib5A1C9904_gt_SpectreLevelUp_Init();
     lib5A1C9904_gt_GoliathLevelUp_Init();
+    lib5A1C9904_gt_MedicLevelUp_Init();
     lib5A1C9904_gt_ScienceVesselLevelUp_Init();
     lib5A1C9904_gt_FirebatAvatar_Init();
     lib5A1C9904_gt_FirebatLevelUp_Init();

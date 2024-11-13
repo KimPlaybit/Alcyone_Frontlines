@@ -62,6 +62,16 @@
         </Cost>
         <TargetFilters index="0" value="Structure,Visible;Self,Enemy,UnderConstruction"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="FenixChampionPowerShield">
+        <Cost index="0">
+            <Cooldown TimeUse="40"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ForceField">
+        <Cost index="0">
+            <Vital index="Energy" value="80"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="KaraxRepairDrone">
         <Arc value="360"/>
         <ArcSlop value="360"/>
@@ -85,6 +95,11 @@
         <Arc value="360"/>
         <ArcSlop value="360"/>
         <CmdButtonArray index="Execute" Requirements=""/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ZeratulBlink">
+        <Cost index="0">
+            <Cooldown TimeUse="15"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="ZerglingMine">
         <DataCollection value="NydusSpawnZergUnits"/>
@@ -283,6 +298,9 @@
         <Flags index="AutoCastOn" value="0"/>
         <Range index="0" value="6"/>
         <AutoCastRange value="6"/>
+        <Cost index="0">
+            <Cooldown TimeUse="45"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilBuild id="CreepTumorBuild">
         <InfoArray index="Build1">
@@ -323,11 +341,9 @@
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Charge"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <AbilCmd value="attack,Execute"/>
         <Cost>
-            <Cooldown Link="ChargeCharge2" Location="Unit" TimeUse="10"/>
+            <Cooldown Link="ChargeCharge2" Location="Unit" TimeUse="20"/>
         </Cost>
         <Effect value="Charge"/>
         <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
@@ -337,12 +353,15 @@
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <TargetFilters index="0" value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Cost index="0">
+            <Cooldown TimeUse="20"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DarkTemplarVoidStasis">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <Cost index="0">
-            <Cooldown TimeStart="60" TimeUse="60"/>
+            <Cooldown TimeStart="60" TimeUse="75"/>
         </Cost>
         <TargetFilters index="0" value="-;Player,Ally,Missile,Stasis,UnderConstruction,Hidden"/>
     </CAbilEffectTarget>
@@ -493,7 +512,7 @@
         <Flags index="BestUnit" value="0"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="30"/>
+            <Cooldown TimeUse="45"/>
         </Cost>
         <Range value="10"/>
         <Arc value="360"/>
@@ -698,7 +717,9 @@
     </CAbilEffectInstant>
     <CAbilEffectTarget id="NovaGadgetFlashBangGrenades">
         <Cost index="0">
-            <Cooldown TimeUse="15"/>
+            <Vital index="Energy" value="0"/>
+            <VitalFraction index="Energy" value="0.35"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="NydusSpawnCanal">
@@ -1051,7 +1072,7 @@
     </CAbilTrain>
     <CAbilEffectInstant id="MothershipStasis">
         <Cost index="0">
-            <Cooldown TimeUse="60"/>
+            <Cooldown TimeUse="80"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="NanoRepair">
@@ -1105,22 +1126,27 @@
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Obliterate">
-        <PrepTime index="0" value="1"/>
+        <PrepTime index="0" value="2"/>
         <Range index="0" value="13"/>
         <RangeSlop value="13"/>
         <TargetFilters index="0" value="Visible;Self,Ally,Neutral,Missile,Stasis,Dead,Invulnerable"/>
         <Cost index="0">
             <Vital index="Energy" value="75"/>
         </Cost>
+        <PrepEffect value="FlameThrowerApplyDoTBehavior22"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="ObserverSquadSight">
         <Cost index="0">
-            <Cooldown TimeUse="25"/>
+            <VitalFraction index="Energy" value="0.2"/>
+            <Cooldown TimeUse="45"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="Overcharge">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Cooldown TimeUse="50"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="PrimalGasCloud">
         <Cost index="0">
@@ -1151,7 +1177,7 @@
         <Cost>
             <Vital index="Energy" value="20"/>
             <Charge Link="Abil/PsionicShockwave"/>
-            <Cooldown Link="Abil/PsionicShockwave" TimeUse="20"/>
+            <Cooldown Link="Abil/PsionicShockwave" TimeUse="35"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="SOAPurifierBeam">
@@ -1517,6 +1543,11 @@
     </CAbilResearch>
     <CAbilEffectTarget id="UltrasonicPulse">
         <Range index="0" value="13"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <VitalFraction index="Energy" value="0.75"/>
+            <Cooldown TimeUse="20"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilMorph id="UpgradeToPlanetaryFortress">
         <InfoArray index="0">
@@ -1616,7 +1647,7 @@
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <Cost index="0">
-            <Cooldown TimeUse="85"/>
+            <Cooldown TimeUse="110"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="WarbotCharge">
@@ -1631,7 +1662,7 @@
         <Effect index="0" value="VoidZealotWhirlwindSet"/>
         <Flags index="TransientPreferred" value="1"/>
         <Cost>
-            <Cooldown TimeUse="10"/>
+            <Cooldown TimeUse="40"/>
         </Cost>
         <AutoCastRange value="1.5"/>
         <AutoCastValidatorArray value="VoidZealotWhirlwindCheck"/>

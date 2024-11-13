@@ -19,10 +19,29 @@
     <CEffectEnumArea id="AlarakPsiOrbSearch">
         <SearchFilters value="-;Self,Player,Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectModifyUnit id="ArtanisAstralWindOther">
+        <VitalArray index="Life">
+            <Change value="50"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectSet id="ArtanisAstralWindOtherSet">
         <EffectArray value="GiveCredit"/>
         <!--EffectArray value="ArtanisAstralWindOtherAB"/-->
     </CEffectSet>
+    <CEffectModifyUnit id="ArtanisAstralWindSelf">
+        <VitalArray index="Life">
+            <Change value="50"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectDamage id="AvengerWeapon">
+        <Amount value="20"/>
+    </CEffectDamage>
     <CEffectDamage id="BurrowChargeTargetDamage">
         <Amount value="10"/>
     </CEffectDamage>
@@ -34,6 +53,11 @@
     <CEffectEnumArea id="DefilerMPDarkSwarmSearch">
         <AreaArray index="0" Radius="1.5"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="FlameThrowerApplyDoTBehavior22">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="PsionicLashPrepare"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GiveCredit">
         <EditorCategories value=""/>
         <Behavior value="GetCredit"/>
@@ -41,7 +65,7 @@
     <CEffectModifyUnit id="AlarakSoulStealModifyCooldowns">
         <Cost index="0" ChargeTimeUse="-2"/>
         <VitalArray index="Shields">
-            <Change value="20"/>
+            <Change value="5"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="ArtanisLightningDashDamage">
@@ -329,6 +353,7 @@
     <CEffectSet id="CreatePhotonOverchargeDummy">
         <ValidatorArray value="IsNotConstructing"/>
         <ValidatorArray value="IsNotConstructing"/>
+        <ValidatorArray value="IsPylon2"/>
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="MothershipCoreApplyPurifyAB"/>
         <TargetLocationType value="UnitOrPoint"/>
@@ -524,6 +549,100 @@
     <CEffectSet id="VoidSentryChronoBeamSet">
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
+    <!--CEffectCreateHealer id="SentryShieldRepairDoubleHeal">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <DrainVital value="Energy"/>-->
+    <!--        <DrainVitalCostFactor value="0.33"/>-->
+    <!--        <RechargeVital value="Shields"/>-->
+    <!--        <RechargeVitalRate value="9"/>-->
+    <!--        <Marker>-->
+    <!--            <MatchFlags index="Link" value="1"/>-->
+    <!--        </Marker>-->
+    <!--        <InitialEffect value="SentryShieldRepairDoubleApplyBehavior"/>-->
+    <!--        <ExpireEffect value="SentryShieldRepairDoubleRemoveBehavior"/>-->
+    <!--        <FinalEffect value="SentryShieldRepairDoubleRemoveBehavior"/>-->
+    <!--    </CEffectCreateHealer>-->
+    <!--    <CEffectCreateHealer id="SentryShieldRepairDoubleSecondHeal">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <DrainVital value="Energy"/>-->
+    <!--        <DrainVitalCostFactor value="0.33"/>-->
+    <!--        <RechargeVital value="Shields"/>-->
+    <!--        <RechargeVitalRate value="9"/>-->
+    <!--        <Marker Link="Effect/SentryShieldRepairDoubleHeal">-->
+    <!--            <MatchFlags index="Link" value="1"/>-->
+    <!--        </Marker>-->
+    <!--        <Flags index="Channeled" value="0"/>-->
+    <!--        <PeriodCount value="4"/>-->
+    <!--    </CEffectCreateHealer>-->
+    <!--    <CEffectEnumArea id="SentryShieldRepairDoubleSearch">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <SearchFilters value="Visible;Self,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>-->
+    <!--        <AreaArray>-->
+    <!--            <Arc value="180"/>-->
+    <!--            <MaxCount value="1"/>-->
+    <!--            <Radius value="4"/>-->
+    <!--            <Effect value="SentryShieldRepairDoubleSecondPersistent"/>-->
+    <!--        </AreaArray>-->
+    <!--        <MaxCount value="1"/>-->
+    <!--        <ExcludeArray Value="Target"/>-->
+    <!--        <ImpactLocation Value="CasterUnit"/>-->
+    <!--        <LaunchLocation Value="CasterUnit"/>-->
+    <!--    </CEffectEnumArea>-->
+    <!--    <CEffectCreatePersistent id="SentryShieldRepairDoublePersistent">-->
+    <!--        <WhichLocation Value="TargetUnit"/>-->
+    <!--        <Flags index="Channeled" value="1"/>-->
+    <!--        <Flags index="PersistUntilDestroyed" value="1"/>-->
+    <!--        <InitialEffect value="SentryShieldRepairDoubleHeal"/>-->
+    <!--        <PeriodicEffectArray value="SentryShieldRepairDoubleSearch"/>-->
+    <!--        <PeriodicPeriodArray value="0.25"/>-->
+    <!--        <ValidatorArray value="ShieldsNotFull"/>-->
+    <!--        <ValidatorArray value="NotWarpingIn"/>-->
+    <!--        <ValidatorArray value="HiddenCompareAB"/>-->
+    <!--        <ValidatorArray value="HiddenCompareBA"/>-->
+    <!--        <ValidatorArray value="NotVortexd"/>-->
+    <!--        <ValidatorArray value="NotUncommandable"/>-->
+    <!--        <ValidatorArray value="SourceNotHidden"/>-->
+    <!--        <ValidatorArray value="NotInterceptor"/>-->
+    <!--        <ValidatorArray value="TargetIsNotBeingRepairedBySentry"/>-->
+    <!--        <Marker>-->
+    <!--            <MatchFlags index="Link" value="1"/>-->
+    <!--        </Marker>-->
+    <!--        <PeriodicValidator value="SentryPeriodicHealingValidator"/>-->
+    <!--    </CEffectCreatePersistent>-->
+    <!--    <CEffectCreatePersistent id="SentryShieldRepairDoubleSecondPersistent">-->
+    <!--        <ValidatorArray value="ShieldsNotFull"/>-->
+    <!--        <ValidatorArray value="NotWarpingIn"/>-->
+    <!--        <ValidatorArray value="HiddenCompareAB"/>-->
+    <!--        <ValidatorArray value="HiddenCompareBA"/>-->
+    <!--        <ValidatorArray value="NotVortexd"/>-->
+    <!--        <ValidatorArray value="NotUncommandable"/>-->
+    <!--        <ValidatorArray value="SourceNotHidden"/>-->
+    <!--        <ValidatorArray value="NotInterceptor"/>-->
+    <!--        <ValidatorArray value="TargetIsNotBeingRepairedBySentry"/>-->
+    <!--        <WhichLocation Value="TargetUnit"/>-->
+    <!--        <InitialEffect value="SentryShieldRepairDoubleSecondHeal"/>-->
+    <!--        <PeriodCount value="3"/>-->
+    <!--        <PeriodicEffectArray value="SentryShieldRepairDoubleImpactDummy"/>-->
+    <!--        <PeriodicEffectArray value="SentryShieldRepairDoubleApplyBehavior"/>-->
+    <!--        <PeriodicEffectArray value="SentryShieldRepairDoubleRemoveBehavior"/>-->
+    <!--        <PeriodicPeriodArray value="0"/>-->
+    <!--        <PeriodicPeriodArray value="0"/>-->
+    <!--        <PeriodicPeriodArray value="0.20"/>-->
+    <!--    </CEffectCreatePersistent>-->
+    <!--    <CEffectApplyBehavior id="SentryShieldRepairDoubleApplyBehavior">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <Behavior value="SentryShieldRepairDoubleHealing"/>-->
+    <!--    </CEffectApplyBehavior>-->
+    <!--    <CEffectRemoveBehavior id="SentryShieldRepairDoubleRemoveBehavior">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <BehaviorLink value="SentryShieldRepairDoubleHealing"/>-->
+    <!--    </CEffectRemoveBehavior>-->
+    <!--    <CEffectModifyUnit id="SentryShieldRepairDoubleImpactDummy"/-->
+    <CEffectCreateHealer id="VoidSentryShieldRepairDouble">
+        <RechargeVitalRate value="5"/>
+        <!-- cannot validate the behavior in the healer, it toggles on and off quickly as the behavior is applied and removed -->
+        <!--ValidatorArray value="TargetNotBeingHealed"/-->
+    </CEffectCreateHealer>
     <CEffectCreateHealer id="VoidSentryShieldRepairDouble2">
         <ValidatorArray value="ShieldsNotFull"/>
         <ValidatorArray value="noMarkers"/>
@@ -537,12 +656,18 @@
         <RechargeVital value="Shields"/>
         <RechargeVitalRate value="9"/>
     </CEffectCreateHealer>
+    <CEffectCreateHealer id="VoidSentryShieldRepairDoubleExtra">
+        <RechargeVitalRate value="5"/>
+    </CEffectCreateHealer>
     <CEffectEnumArea id="VoidSentryShieldRepairDoubleExtraSearch1">
         <SearchFilters value="-;Self,Enemy,Missile,Stasis,Dead"/>
     </CEffectEnumArea>
     <CEffectSet id="VoidSentryShieldRepairDoubleInitialSet">
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
+    <CEffectDamage id="VoidZealotWhirlwindDamage">
+        <Kind value="Spell"/>
+    </CEffectDamage>
     <CEffectEnumArea id="WhirlwindSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="4" Effect="WhirlwindDamage"/>
@@ -908,7 +1033,6 @@
     <!--    </CEffectRemoveBehavior-->
     <CEffectCreateHealer id="NanoRepair">
         <DrainVitalCostFactor value="0.1"/>
-        <RechargeVitalRate value="30"/>
         <InitialEffect value="GiveCredit"/>
         <FinalEffect value="GiveCredit"/>
     </CEffectCreateHealer>
@@ -1137,7 +1261,8 @@
     </CEffectTeleport>
     <CEffectModifyUnit id="VoidShieldCapacitor">
         <VitalArray index="Shields">
-            <Change value="2000"/>
+            <Change value="0"/>
+            <ChangeFraction value="1"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="WarbotChargeDamage">

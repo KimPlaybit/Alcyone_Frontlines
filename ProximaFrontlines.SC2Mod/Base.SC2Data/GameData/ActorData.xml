@@ -688,8 +688,9 @@
         <MinimapIconBackgroundIsTeamColored value="1"/>
     </CActorUnit>
     <CActorModel id="ObliterateTargetChannel" parent="ModelAnimationStyleContinuous">
-        <On Terms="Abil.Obliterate.SourcePrepStart" Send="Create"/>
-        <On Terms="Abil.Obliterate.SourcePrepStop" Send="Destroy"/>
+        <On Terms="Behavior.PsionicLashPrepare.Create" Send="Create"/>
+        <On Terms="Behavior.PsionicLashPrepare.Off" Send="Destroy"/>
+        <On Terms="Behavior.PsionicLashPrepare.Destroy" Send="Destroy"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <Model value="ObliterateCasterChannel"/>

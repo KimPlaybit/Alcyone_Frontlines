@@ -1256,11 +1256,12 @@
         <AbilArray Link="TemporalField2"/>
         <AbilArray Link="MothershipCoreTeleport"/>
         <BehaviorArray Link="ProtossLevels"/>
-        <BehaviorArray Link="ProtossDamageBonus"/>
-        <BehaviorArray Link="ProtossShieldBonus"/>
+        <BehaviorArray Link="MothershipCore1to4"/>
+        <BehaviorArray Link="MothershipCore5to7"/>
         <BehaviorArray Link="WarpPrismPowerSource"/>
         <BehaviorArray Link="BuffEnergyRegen"/>
         <BehaviorArray Link="Detector375"/>
+        <BehaviorArray Link="MothershipCore8to10"/>
         <WeaponArray Link="RepulsorCannon" Turret="MothershipCoreTurret"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -1822,17 +1823,19 @@
     </CUnitHero>
     <CUnit id="SentryPurifier2" parent="SentryCampaignBase">
         <FlagArray index="Hero" value="1"/>
+        <PushPriority value="9999"/>
         <Attributes index="Heroic" value="1"/>
+        <Speed value="3"/>
         <AbilArray Link="VoidSentryChronoBeam"/>
         <AbilArray Link="VoidSentryPhasingMode"/>
         <AbilArray Link="VoidSentryShieldRepairDouble"/>
         <AbilArray Link="ForceFieldMonitor"/>
         <AbilArray Link="PrologueVoidArmor"/>
         <AbilArray Link="HallucinationPhoenix"/>
-        <BehaviorArray Link="ProtossShieldBonus"/>
-        <BehaviorArray Link="UnknownBehavior2"/>
-        <BehaviorArray Link="ProtossMovementBonus"/>
         <BehaviorArray Link="ProtossLevels"/>
+        <BehaviorArray Link="Sentry1to4"/>
+        <BehaviorArray Link="Sentry5to7"/>
+        <BehaviorArray Link="Sentry8to10"/>
         <WeaponArray index="0" Link="EnergizerWeapon"/>
         <CardLayouts index="0">
             <LayoutButtons index="5" Face="VoidSentryChronoBeam" Type="AbilCmd" AbilCmd="VoidSentryChronoBeam,Execute" Row="2" Column="1"/>
@@ -1844,8 +1847,6 @@
         </CardLayouts>
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
         <HotkeyCategory value="Unit/Category/ProtossStory"/>
-        <PushPriority value="9999"/>
-        <Speed value="3"/>
         <AlliedPushPriority value="15"/>
     </CUnit>
     <CUnit id="SmallNydusSpawner">
@@ -5386,14 +5387,12 @@
         <AbilArray Link="ArtanisWormholeTransit"/>
         <AbilArray Link="FlagshipTimeBombTarget"/>
         <AbilArray Link="FenixChampionPowerShield"/>
-        <AbilArray Link="SOAPurifierBeam"/>
         <AbilArray Link="AlarakPsiOrb"/>
         <BehaviorArray index="0" Link="SOAHeroicShieldProcBuff"/>
-        <BehaviorArray Link="ProtossDamageBonus"/>
-        <BehaviorArray Link="ProtossMovementBonus"/>
-        <BehaviorArray Link="ProtossShieldBonus"/>
+        <BehaviorArray Link="Dragoon8to10"/>
+        <BehaviorArray Link="Dragoon5to7"/>
         <BehaviorArray Link="ProtossLevels"/>
-        <BehaviorArray Link="DragoonDamageBonus"/>
+        <BehaviorArray Link="Dragoon1to4"/>
         <WeaponArray Link="Dragoon" Turret="Dragoon"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -5609,12 +5608,10 @@
         <AbilArray Link="MothershipStasis"/>
         <BehaviorArray index="0" Link="SOAHeroicShieldProcBuff"/>
         <BehaviorArray Link="CorsairDisableFakeWeapon"/>
-        <BehaviorArray Link="ProtossDamageBonus"/>
-        <BehaviorArray Link="UnknownBehavior2"/>
-        <BehaviorArray Link="ProtossMovementBonus"/>
-        <BehaviorArray Link="ProtossShieldBonus"/>
+        <BehaviorArray Link="Corsair8to10"/>
+        <BehaviorArray Link="Corsair1to4"/>
         <BehaviorArray Link="ProtossLevels"/>
-        <BehaviorArray Link="CorsairDamageBonus"/>
+        <BehaviorArray Link="Corsair5to7"/>
         <WeaponArray Link="NeutronFlare"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -5886,11 +5883,10 @@
         <AbilArray Link="VoidShieldCapacitor"/>
         <AbilArray Link="Overcharge"/>
         <BehaviorArray index="0" Link="SOAHeroicShieldProcBuff"/>
-        <BehaviorArray Link="ProtossDamageBonus"/>
-        <BehaviorArray Link="ProtossMovementBonus"/>
-        <BehaviorArray Link="ProtossShieldBonus"/>
+        <BehaviorArray Link="Zealot1to4"/>
+        <BehaviorArray Link="Zealot5to7"/>
+        <BehaviorArray Link="Zealot8to10"/>
         <BehaviorArray Link="ProtossLevels"/>
-        <BehaviorArray Link="ZealotShieldBonus"/>
         <WeaponArray Link="SolariteReaper"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -6403,11 +6399,10 @@
         <AbilArray Link="DarkTemplarShadowFury"/>
         <AbilArray Link="DarkTemplarVoidStasis"/>
         <BehaviorArray index="0" Link="HeroDarkTemplarDeepShadows"/>
-        <BehaviorArray Link="UnknownBehavior2"/>
-        <BehaviorArray Link="ProtossMovementBonus"/>
-        <BehaviorArray Link="ProtossShieldBonus"/>
+        <BehaviorArray Link="DarkTemplar1to4"/>
+        <BehaviorArray Link="DarkTemplar5to7"/>
+        <BehaviorArray Link="DarkTemplar8to10"/>
         <BehaviorArray Link="ProtossLevels"/>
-        <BehaviorArray Link="ProtossDamageBonus"/>
         <BehaviorArray Link="VoidDarkTemplarShadowFuryTargeted"/>
         <BehaviorArray Link="DarkTemplarShadowFuryFinalDelay"/>
         <BehaviorArray Link="DarkTemplarShadowFuryController"/>
@@ -6699,10 +6694,9 @@
         <AbilArray Link="Obliterate"/>
         <AbilArray Link="SpectreHoldFire"/>
         <AbilArray Link="SpectreWeaponsFree"/>
-        <BehaviorArray Link="UnknownBehavior"/>
         <BehaviorArray Link="TerranLevels"/>
-        <BehaviorArray Link="TerranEnergyBonus"/>
-        <BehaviorArray Link="TerranAttackBonus"/>
+        <BehaviorArray Link="Spectre8to10"/>
+        <BehaviorArray Link="Spectre5to7"/>
         <BehaviorArray Link="Spectre1to4"/>
         <WeaponArray Link="Specter"/>
         <CardLayouts>
@@ -6782,15 +6776,13 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="NovaGadgetFlashBangGrenades"/>
         <AbilArray Link="move"/>
-        <AbilArray Link="D8Charge"/>
-        <AbilArray Link="KD8Charge"/>
         <AbilArray Link="NanoRepair"/>
         <AbilArray Link="ObserverSquadSight"/>
         <AbilArray Link="ArtanisAstralWind"/>
-        <BehaviorArray Link="UnknownBehavior"/>
         <BehaviorArray Link="TerranLevels"/>
-        <BehaviorArray Link="TerranEnergyBonus"/>
-        <BehaviorArray Link="MediclevelBonus"/>
+        <BehaviorArray Link="Medic1to4"/>
+        <BehaviorArray Link="Medic5to7"/>
+        <BehaviorArray Link="Medic8to10"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
