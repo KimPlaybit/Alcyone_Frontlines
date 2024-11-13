@@ -12,21 +12,21 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Melee" value="6"/>
-            <VitalMaxFractionArray index="Shields" value="20"/>
+            <VitalMaxArray index="Shields" value="20"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="DarkTemplar5to7">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Melee" value="8"/>
-            <VitalMaxFractionArray index="Shields" value="40"/>
+            <VitalMaxArray index="Shields" value="40"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="DarkTemplar8to10">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Melee" value="10"/>
-            <VitalMaxFractionArray index="Shields" value="60"/>
+            <VitalMaxArray index="Shields" value="60"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Defiler5to7">
@@ -92,7 +92,6 @@
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Medic5to7">
         <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification SightBonus="1">
             <VitalMaxArray index="Life" value="40"/>
@@ -100,7 +99,6 @@
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Medic8to10">
         <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification>
             <VitalMaxArray index="Life" value="55"/>
@@ -155,7 +153,6 @@
     </CBehaviorBuff>
     <CBehaviorAttribute id="Marine5to7">
         <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification AttackSpeedMultiplier="1.1">
             <DamageDealtUnscaled index="Ranged" value="7"/>
@@ -164,7 +161,6 @@
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Marine8to10">
         <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification AttackSpeedMultiplier="1.1">
             <DamageDealtUnscaled index="Ranged" value="9"/>
@@ -1033,7 +1029,6 @@
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Medic1to4">
         <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification SightBonus="1">
             <VitalMaxArray index="Life" value="20"/>
@@ -1235,7 +1230,6 @@
     </CBehaviorBuff>
     <CBehaviorAttribute id="Marine1to4">
         <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification AttackSpeedMultiplier="1.05">
             <DamageDealtUnscaled index="Ranged" value="5"/>
