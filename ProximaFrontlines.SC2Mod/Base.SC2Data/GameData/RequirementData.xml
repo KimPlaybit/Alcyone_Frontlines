@@ -13,6 +13,13 @@
     <CRequirement id="HaveKaraxRepairDrone">
         <NodeArray index="Show" Link=""/>
     </CRequirement>
+    <CRequirement id="HaveNexusAndNotHaveSOAWarpTech">
+        <NodeArray index="Show" Link="NotCountUpgradeWarpGateResearchCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveNexusAndNotHaveSOAWarpTech2">
+        <NodeArray index="Use" Link="CountUnitNexusCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="AndCountUpgradeWarpGateResearchCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="HaveNovaGadgetDefensiveDrone">
         <NodeArray index="Show" Link=""/>
     </CRequirement>

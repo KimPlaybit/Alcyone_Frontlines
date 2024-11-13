@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CActorModel id="ArtanisMothershipTeleportOut">
+        <On index="3" Terms="Abil.ArtanisWormholeTransit.SourcePrepStart"/>
+    </CActorModel>
     <CActorUnit id="BabyUltralisk2" parent="GenericUnitBase" unitName="Pygalisk2">
         <Aliases value="_UnitMedium"/>
         <On Terms="WeaponStart.BabyUltralisk.AttackStart" Send="AnimBracketStart Attack Attack"/>
@@ -687,6 +690,14 @@
         <MinimapIconScale value="0.090000"/>
         <MinimapIconBackgroundIsTeamColored value="1"/>
     </CActorUnit>
+    <CActorModel id="ObliterateTargetChannel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.PsionicLashPrepare.Create" Send="Create"/>
+        <On Terms="Behavior.PsionicLashPrepare.Off" Send="Destroy"/>
+        <On Terms="Behavior.PsionicLashPrepare.Destroy" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="ObliterateCasterChannel"/>
+    </CActorModel>
     <CActorModel id="VoidPylonSpawner" parent="ModelAddition">
         <Aliases index="0" removed="1"/>
         <Inherits index="BaseModelScale" value="0"/>
@@ -1738,9 +1749,9 @@
         <On Terms="UnitBirth.HotSTorrasqueBurrowed" Send="Create"/>
         <On Terms="UnitBirth.HotSTorrasqueBurrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="WeaponStart.KaiserBlades.AttackStart; !ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,A"/>
-        <On Terms="WeaponStart.KaiserBlades.AttackStart; ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,D"/>
-        <On Terms="WeaponStop.KaiserBlades.AttackStop" Send="AnimClear Attack"/>
+        <On Terms="WeaponStart.KaiserBlades3.AttackStart; !ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,A"/>
+        <On Terms="WeaponStart.KaiserBlades3.AttackStart; ValidateUnit HaveHotSMonarchBlades" Send="AnimPlay Attack Spell,D"/>
+        <On Terms="WeaponStop.KaiserBlades3.AttackStop" Send="AnimClear Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="Create BurrowDownUltralisk"/>
         <On Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; !AbilKey BurrowUp" Send="Create"/>
@@ -1791,7 +1802,7 @@
         <On Terms="Effect.BurrowChargeStructureTargetSearch.Start; At Caster" Send="AnimBaselineStart"/>
         <On Terms="Effect.BurrowChargeStructureTargetSearch.Start; At Caster" Send="Create BurrowChargeUpSound"/>
         <On Terms="Effect.BurrowChargeStructureTargetSearch.Start; At Caster" Send="StatusSet BurrowCharging 0"/>
-        <On Terms="WeaponStart.KaiserBlades.AttackStart" Send="AnimClear BurrowChargeUp"/>
+        <On Terms="WeaponStart.KaiserBlades3.AttackStart" Send="AnimClear BurrowChargeUp"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear BurrowChargeUp"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Ultra_Land"/>
         <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Birth" Send="AnimClear Birth"/>

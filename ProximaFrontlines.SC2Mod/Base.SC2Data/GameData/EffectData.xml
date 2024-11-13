@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectModifyUnit id="AdeptPhaseShiftSelect2">
+        <ImpactUnit Value="Caster"/>
+        <SelectTransferUnit Value="Caster"/>
+        <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+        <FacingLocation Value="SourceUnit"/>
+    </CEffectModifyUnit>
     <CEffectCreatePersistent id="AetherMawAetherStormCreatePersistent">
         <PeriodCount value="2"/>
     </CEffectCreatePersistent>
@@ -7,16 +13,54 @@
         <Count value="10"/>
         <Radius value="2"/>
     </CEffectDestroyPersistent>
+    <CEffectDamage id="AlarakPsiOrbFinalDamage">
+        <Amount value="15"/>
+    </CEffectDamage>
     <CEffectCreateUnit id="AlarakPsiOrbFinalUpgradedCU">
         <SpawnUnit index="0" removed="1"/>
     </CEffectCreateUnit>
     <CEffectEnumArea id="AlarakPsiOrbSearch">
         <SearchFilters value="-;Self,Player,Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectModifyUnit id="ArtanisAstralWindOther">
+        <VitalArray index="Life">
+            <Change value="50"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectSet id="ArtanisAstralWindOtherSet">
         <EffectArray value="GiveCredit"/>
         <!--EffectArray value="ArtanisAstralWindOtherAB"/-->
     </CEffectSet>
+    <CEffectModifyUnit id="ArtanisAstralWindSelf">
+        <VitalArray index="Life">
+            <Change value="50"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectDamage id="AvengerWeapon">
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectDamage id="BurrowChargeTargetDamage">
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="DefilerMPConsumeModifyUnit">
+        <VitalArray index="Energy">
+            <Change value="25"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="DefilerMPDarkSwarmSearch">
+        <AreaArray index="0" Radius="1.5"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="FlameThrowerApplyDoTBehavior22">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="PsionicLashPrepare"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GiveCredit">
         <EditorCategories value=""/>
         <Behavior value="GetCredit"/>
@@ -24,11 +68,11 @@
     <CEffectModifyUnit id="AlarakSoulStealModifyCooldowns">
         <Cost index="0" ChargeTimeUse="-2"/>
         <VitalArray index="Shields">
-            <Change value="20"/>
+            <Change value="5"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="ArtanisLightningDashDamage">
-        <Amount value="30"/>
+        <Amount value="5"/>
         <Kind value="Spell"/>
     </CEffectDamage>
     <CEffectSet id="CarrierRepairDroneHealSet">
@@ -122,7 +166,7 @@
     <CEffectDamage id="DefilerMPPlagueDamage">
         <Flags index="NoVitalAbsorbShields" value="0"/>
         <Kind value="NoProc"/>
-        <Amount value="5"/>
+        <Amount value="2"/>
     </CEffectDamage>
     <CEffectDamage id="DefilerMPPlagueDamage2">
         <ValidatorArray value="DefilerMPPlagueLifeGT1"/>
@@ -141,7 +185,7 @@
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectDamage id="DutchTurretFlameThrowerDamage">
-        <Amount value="25"/>
+        <Amount value="10"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="EnergyRegenerationApplyBehavior2">
         <ValidatorArray index="0" removed="1"/>
@@ -169,7 +213,8 @@
         <Behavior value="NydusWhirlwind"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="FenixWhirlwindDamage">
-        <Amount value="5"/>
+        <Amount value="3"/>
+        <Kind value="Spell"/>
     </CEffectDamage>
     <CEffectDamage id="FenixWhirlwindDamage2" parent="DU_WEAP">
         <Amount value="1"/>
@@ -182,6 +227,14 @@
         <PeriodicEffectArray value="FlagshipTimeBombSearch"/>
         <PeriodicPeriodArray value="0.125"/>
     </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="GiveCredit2">
+        <EditorCategories value=""/>
+        <Behavior value="GetCredit2"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GoliathG">
+        <Kind value="NoProc"/>
+        <Amount value="6"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="GuardianShieldApplyBehavior2">
         <ValidatorArray index="0" value="SourceNotHidden"/>
         <EditorCategories value="Race:Protoss"/>
@@ -204,6 +257,59 @@
         <PeriodicEffectArray value="GuardianShieldSearch2"/>
         <PeriodicPeriodArray value="0.5"/>
     </CEffectCreatePersistent>
+    <CEffectSet id="HotSUltraliskKaiserBlades3">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="HotSUltraliskKaiserBladesSearch"/>
+        <EffectArray value="HotSUltraliskKaiserBladesDamage3"/>
+        <EffectArray value="UltraliskBurrowChargeHold"/>
+        <EffectArray value="UltraliskOutOfCombatRBSet"/>
+    </CEffectSet>
+    <CEffectDamage id="HotSUltraliskKaiserBladesDamage3" parent="DU_WEAP">
+        <KindSplash value="Melee"/>
+        <Amount value="12"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+    <CEffectDamage id="HotSUltraliskKaiserBladesSecondaryDamage">
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="HotSUltraliskKaiserBladesSearch3">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <ExcludeArray Effect="HotSUltraliskKaiserBlades" Value="Target"/>
+        <SearchFilters value="Ground,Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Arc="180" Radius="2" Effect="HotSUltraliskKaiserBladesSecondaryDamageSet"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HotSBanelingDeathExplodeLargeSet2">
+        <EffectArray value="HotSRemoveBanelingExplodeLargeDeathBehavior"/>
+        <EffectArray value="BanelingExplodeLargeSearchAll"/>
+        <EffectArray value="SuicideDelay"/>
+    </CEffectSet>
+    <CEffectDamage id="BanelingExplodeLargeSearchDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Kind value="Splash"/>
+        <Amount value="75"/>
+        <VitalFractionMax index="Life" value="0.5"/>
+        <VitalFractionMax index="Shields" value="0.5"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="BanelingExplodeLargeSearchAll">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="BanelingExplodeLargeSearchDamage"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <!-- standard baneling weapon target attack, check for friendly+heal upgrade, or not -->
+    <CEffectSwitch id="HotSBanelingExplodeLargeTarget">
+        <CaseDefault value="HotSBanelingDeathExplodeLargeSet2"/>
+    </CEffectSwitch>
+    <CEffectDamage id="HotSRaptorClawsDamage">
+        <KindSplash value="Melee"/>
+    </CEffectDamage>
     <CEffectEnumArea id="IrradiateSearchArea">
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="4"/>
@@ -221,6 +327,17 @@
             <Change value="0"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectCreateUnit id="MPCreateBanelingCocoon2">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="GiveCredit2"/>
+        <SpawnUnit value="BanelingHero"/>
+        <SpawnRange value="0"/>
+        <SpawnOffset value="0,0"/>
+    </CEffectCreateUnit>
     <CEffectSet id="MPCreateNydusWormCanal2">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="MPCreateNydusWormCanal"/>
@@ -239,6 +356,7 @@
     <CEffectSet id="CreatePhotonOverchargeDummy">
         <ValidatorArray value="IsNotConstructing"/>
         <ValidatorArray value="IsNotConstructing"/>
+        <ValidatorArray value="IsPylon2"/>
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="MothershipCoreApplyPurifyAB"/>
         <TargetLocationType value="UnitOrPoint"/>
@@ -252,6 +370,36 @@
         <SpawnEffect value="MPCreateSetA"/>
         <SpawnUnit value="PhotonOverCharge"/>
     </CEffectCreateUnit>
+    <CEffectCreateUnit id="MPCreatePygalisk2">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="GiveCredit2"/>
+        <SpawnUnit value="HotSRaptorBurrowed"/>
+        <SpawnRange value="1.5"/>
+        <SpawnOffset value="0,0"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="MPCreateBanelingCocoon">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <RallyUnit Value="Source"/>
+        <SpawnEffect value="TurnBanelingCocoon"/>
+        <SpawnUnit value="BanelingCocoonHero"/>
+        <SpawnRange value="0"/>
+        <SpawnOffset value="0,0"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="MPCreatePygaliskSet2">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreatePygalisk2"/>
+    </CEffectSet>
+    <CEffectSet id="CreateBanelingSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MPCreateBanelingCocoon"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="MothershipCoreApplyPurifyAB">
         <ValidatorArray index="0" value="IsNotConstructing"/>
         <ValidatorArray index="2" removed="1"/>
@@ -311,6 +459,16 @@
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Invulnerable"/>
         <AreaArray index="0" Radius="3" Effect="GasTurretApplyEffects"/>
     </CEffectEnumArea>
+    <CEffectDamage id="PoisonNovaDirectDamage">
+        <Amount value="25"/>
+        <VitalFractionMax index="Life" value="0.1"/>
+        <VitalFractionMax index="Shields" value="0.1"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="PrimalRavageBuffHeal">
+        <VitalArray index="Life">
+            <Change value="5"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectEnumArea id="PrologueVoidArmorSearch">
         <AreaArray index="0" Radius="4"/>
         <SearchFilters value="-;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -327,6 +485,20 @@
         <EffectArray value="ObserverSquadSightAB"/>
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
+    <CEffectModifyUnit id="HealHeroic">
+        <ValidatorArray value="ReaperOutOfCombat"/>
+        <ValidatorArray value="NotFullLife"/>
+        <EditorCategories value="Race:Zerg"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.05"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="0.05"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.01"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectDamage id="SOAPylonWeaponDamage">
         <Amount value="30"/>
     </CEffectDamage>
@@ -343,6 +515,12 @@
         <ValidatorArray value="NotFrenzied"/>
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="TemporalRiftUnit2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TurnBanelingCocoon">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="TurnBaneling"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="SporeCrawlerSpawner" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
@@ -374,6 +552,100 @@
     <CEffectSet id="VoidSentryChronoBeamSet">
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
+    <!--CEffectCreateHealer id="SentryShieldRepairDoubleHeal">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <DrainVital value="Energy"/>-->
+    <!--        <DrainVitalCostFactor value="0.33"/>-->
+    <!--        <RechargeVital value="Shields"/>-->
+    <!--        <RechargeVitalRate value="9"/>-->
+    <!--        <Marker>-->
+    <!--            <MatchFlags index="Link" value="1"/>-->
+    <!--        </Marker>-->
+    <!--        <InitialEffect value="SentryShieldRepairDoubleApplyBehavior"/>-->
+    <!--        <ExpireEffect value="SentryShieldRepairDoubleRemoveBehavior"/>-->
+    <!--        <FinalEffect value="SentryShieldRepairDoubleRemoveBehavior"/>-->
+    <!--    </CEffectCreateHealer>-->
+    <!--    <CEffectCreateHealer id="SentryShieldRepairDoubleSecondHeal">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <DrainVital value="Energy"/>-->
+    <!--        <DrainVitalCostFactor value="0.33"/>-->
+    <!--        <RechargeVital value="Shields"/>-->
+    <!--        <RechargeVitalRate value="9"/>-->
+    <!--        <Marker Link="Effect/SentryShieldRepairDoubleHeal">-->
+    <!--            <MatchFlags index="Link" value="1"/>-->
+    <!--        </Marker>-->
+    <!--        <Flags index="Channeled" value="0"/>-->
+    <!--        <PeriodCount value="4"/>-->
+    <!--    </CEffectCreateHealer>-->
+    <!--    <CEffectEnumArea id="SentryShieldRepairDoubleSearch">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <SearchFilters value="Visible;Self,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>-->
+    <!--        <AreaArray>-->
+    <!--            <Arc value="180"/>-->
+    <!--            <MaxCount value="1"/>-->
+    <!--            <Radius value="4"/>-->
+    <!--            <Effect value="SentryShieldRepairDoubleSecondPersistent"/>-->
+    <!--        </AreaArray>-->
+    <!--        <MaxCount value="1"/>-->
+    <!--        <ExcludeArray Value="Target"/>-->
+    <!--        <ImpactLocation Value="CasterUnit"/>-->
+    <!--        <LaunchLocation Value="CasterUnit"/>-->
+    <!--    </CEffectEnumArea>-->
+    <!--    <CEffectCreatePersistent id="SentryShieldRepairDoublePersistent">-->
+    <!--        <WhichLocation Value="TargetUnit"/>-->
+    <!--        <Flags index="Channeled" value="1"/>-->
+    <!--        <Flags index="PersistUntilDestroyed" value="1"/>-->
+    <!--        <InitialEffect value="SentryShieldRepairDoubleHeal"/>-->
+    <!--        <PeriodicEffectArray value="SentryShieldRepairDoubleSearch"/>-->
+    <!--        <PeriodicPeriodArray value="0.25"/>-->
+    <!--        <ValidatorArray value="ShieldsNotFull"/>-->
+    <!--        <ValidatorArray value="NotWarpingIn"/>-->
+    <!--        <ValidatorArray value="HiddenCompareAB"/>-->
+    <!--        <ValidatorArray value="HiddenCompareBA"/>-->
+    <!--        <ValidatorArray value="NotVortexd"/>-->
+    <!--        <ValidatorArray value="NotUncommandable"/>-->
+    <!--        <ValidatorArray value="SourceNotHidden"/>-->
+    <!--        <ValidatorArray value="NotInterceptor"/>-->
+    <!--        <ValidatorArray value="TargetIsNotBeingRepairedBySentry"/>-->
+    <!--        <Marker>-->
+    <!--            <MatchFlags index="Link" value="1"/>-->
+    <!--        </Marker>-->
+    <!--        <PeriodicValidator value="SentryPeriodicHealingValidator"/>-->
+    <!--    </CEffectCreatePersistent>-->
+    <!--    <CEffectCreatePersistent id="SentryShieldRepairDoubleSecondPersistent">-->
+    <!--        <ValidatorArray value="ShieldsNotFull"/>-->
+    <!--        <ValidatorArray value="NotWarpingIn"/>-->
+    <!--        <ValidatorArray value="HiddenCompareAB"/>-->
+    <!--        <ValidatorArray value="HiddenCompareBA"/>-->
+    <!--        <ValidatorArray value="NotVortexd"/>-->
+    <!--        <ValidatorArray value="NotUncommandable"/>-->
+    <!--        <ValidatorArray value="SourceNotHidden"/>-->
+    <!--        <ValidatorArray value="NotInterceptor"/>-->
+    <!--        <ValidatorArray value="TargetIsNotBeingRepairedBySentry"/>-->
+    <!--        <WhichLocation Value="TargetUnit"/>-->
+    <!--        <InitialEffect value="SentryShieldRepairDoubleSecondHeal"/>-->
+    <!--        <PeriodCount value="3"/>-->
+    <!--        <PeriodicEffectArray value="SentryShieldRepairDoubleImpactDummy"/>-->
+    <!--        <PeriodicEffectArray value="SentryShieldRepairDoubleApplyBehavior"/>-->
+    <!--        <PeriodicEffectArray value="SentryShieldRepairDoubleRemoveBehavior"/>-->
+    <!--        <PeriodicPeriodArray value="0"/>-->
+    <!--        <PeriodicPeriodArray value="0"/>-->
+    <!--        <PeriodicPeriodArray value="0.20"/>-->
+    <!--    </CEffectCreatePersistent>-->
+    <!--    <CEffectApplyBehavior id="SentryShieldRepairDoubleApplyBehavior">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <Behavior value="SentryShieldRepairDoubleHealing"/>-->
+    <!--    </CEffectApplyBehavior>-->
+    <!--    <CEffectRemoveBehavior id="SentryShieldRepairDoubleRemoveBehavior">-->
+    <!--        <EditorCategories value="Race:Protoss"/>-->
+    <!--        <BehaviorLink value="SentryShieldRepairDoubleHealing"/>-->
+    <!--    </CEffectRemoveBehavior>-->
+    <!--    <CEffectModifyUnit id="SentryShieldRepairDoubleImpactDummy"/-->
+    <CEffectCreateHealer id="VoidSentryShieldRepairDouble">
+        <RechargeVitalRate value="5"/>
+        <!-- cannot validate the behavior in the healer, it toggles on and off quickly as the behavior is applied and removed -->
+        <!--ValidatorArray value="TargetNotBeingHealed"/-->
+    </CEffectCreateHealer>
     <CEffectCreateHealer id="VoidSentryShieldRepairDouble2">
         <ValidatorArray value="ShieldsNotFull"/>
         <ValidatorArray value="noMarkers"/>
@@ -387,12 +659,18 @@
         <RechargeVital value="Shields"/>
         <RechargeVitalRate value="9"/>
     </CEffectCreateHealer>
+    <CEffectCreateHealer id="VoidSentryShieldRepairDoubleExtra">
+        <RechargeVitalRate value="5"/>
+    </CEffectCreateHealer>
     <CEffectEnumArea id="VoidSentryShieldRepairDoubleExtraSearch1">
         <SearchFilters value="-;Self,Enemy,Missile,Stasis,Dead"/>
     </CEffectEnumArea>
     <CEffectSet id="VoidSentryShieldRepairDoubleInitialSet">
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
+    <CEffectDamage id="VoidZealotWhirlwindDamage">
+        <Kind value="Spell"/>
+    </CEffectDamage>
     <CEffectEnumArea id="WhirlwindSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="4" Effect="WhirlwindDamage"/>
@@ -430,6 +708,7 @@
     </CEffectSet>
     <CEffectDamage id="FirebatUFull">
         <KindSplash value="Splash"/>
+        <AttributeBonus index="Light" value="0"/>
     </CEffectDamage>
     <CEffectDamage id="FirebatUFull2" parent="DU_WEAP_SPLASH">
         <ValidatorArray value="noMarkers"/>
@@ -459,8 +738,7 @@
         <Amount value="2"/>
     </CEffectDamage>
     <CEffectDamage id="GoliathAU">
-        <AttributeBonus index="Armored" value="4"/>
-        <Kind value="NoProc"/>
+        <AttributeBonus index="Armored" value="0"/>
     </CEffectDamage>
     <CEffectDamage id="HailstormMissilePodsDamage">
         <AttributeBonus index="Heroic" value="40"/>
@@ -547,7 +825,8 @@
         <!--ValidatorArray value="HaveHotSNoxious"/-->
     </CEffectEnumArea>
     <CEffectSet id="PoisonNovaSet">
-        <EffectArray value="SlowApplyBehaviorCopy"/>
+        <EffectArray index="0" value="SlowApplyBehaviorCopy"/>
+        <EffectArray value="PoisonNovaDirectDamage"/>
         <!--EffectArray value="PoisonNovaAB"/-->
     </CEffectSet>
     <CEffectApplyBehavior id="SlowApplyBehaviorCopy">
@@ -614,8 +893,10 @@
         <AreaArray index="0" Radius="2"/>
     </CEffectEnumArea>
     <CEffectDamage id="HotSBanelingExplodeLargeSearchDamage">
-        <Amount value="1"/>
-        <AttributeBonus index="Armored" value="50"/>
+        <Amount value="25"/>
+        <AttributeBonus index="Structure" value="0"/>
+        <VitalFractionMax index="Life" value="0.3"/>
+        <VitalFractionMax index="Shields" value="0.3"/>
     </CEffectDamage>
     <CEffectDamage id="HotSBanelingExplodeLargeSearchDamage2" parent="DU_WEAP">
         <EditorCategories value="Race:Zerg"/>
@@ -697,7 +978,7 @@
         <Amount value="100"/>
     </CEffectDamage>
     <CEffectDamage id="IrradiatePeriodicDamage">
-        <Amount value="5"/>
+        <Amount value="1"/>
     </CEffectDamage>
     <CEffectDamage id="KorhalPalaceGateDamage">
         <Amount value="100"/>
@@ -736,7 +1017,7 @@
     </CEffectSet>
     <CEffectDamage id="LokiHurricaneMissileDamage">
         <AttributeBonus index="Light" value="0"/>
-        <Amount value="2"/>
+        <Amount value="6"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="LokiHurricaneMissileDamagePersistent">
         <PeriodCount value="6"/>
@@ -755,7 +1036,6 @@
     <!--    </CEffectRemoveBehavior-->
     <CEffectCreateHealer id="NanoRepair">
         <DrainVitalCostFactor value="0.1"/>
-        <RechargeVitalRate value="30"/>
         <InitialEffect value="GiveCredit"/>
         <FinalEffect value="GiveCredit"/>
     </CEffectCreateHealer>
@@ -817,17 +1097,11 @@
         <ValidatorArray value="IsNotDisruptor"/>
         <EditorCategories value=""/>
         <Flags index="Notification" value="1"/>
-        <Amount value="10"/>
+        <Amount value="1"/>
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectDamage id="PhotonCannonU">
         <AttributeBonus index="Heroic" value="40"/>
-    </CEffectDamage>
-    <CEffectDamage id="PoisonNovaDirectDamage">
-        <Amount value="1"/>
-    </CEffectDamage>
-    <CEffectDamage id="PrimalGasCloudDamage">
-        <Amount value="30"/>
     </CEffectDamage>
     <CEffectDamage id="PrimalGasCloudDamage2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
@@ -862,7 +1136,7 @@
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectCreateUnit id="QueenMPSpawnBroodlingsCreate">
-        <SpawnCount value="10"/>
+        <SpawnCount value="5"/>
     </CEffectCreateUnit>
     <CEffectDamage id="RenegadeLongboltMissileU">
         <Amount value="75"/>
@@ -923,7 +1197,7 @@
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="TossGrenadeDamage">
-        <Amount value="35"/>
+        <Amount value="15"/>
         <AttributeBonus index="Structure" value="0"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,Air,Missile,Stasis,Dead,Invulnerable"/>
     </CEffectDamage>
@@ -990,7 +1264,8 @@
     </CEffectTeleport>
     <CEffectModifyUnit id="VoidShieldCapacitor">
         <VitalArray index="Shields">
-            <Change value="2000"/>
+            <Change value="0"/>
+            <ChangeFraction value="1"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="WarbotChargeDamage">
@@ -1003,7 +1278,7 @@
         <EffectArray value="GravitonBeamUrun"/>
     </CEffectSet>
     <CEffectDamage id="ZHybridPsionicShockwaveSpellDamage">
-        <Amount value="10"/>
+        <Amount value="5"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="ZHybridPsychicClonesCreatePersistent">
         <PeriodicEffectArray value="ZHybridPsychicClonesCreateUnit"/>
@@ -1011,4 +1286,11 @@
     <CEffectCreateUnit id="ZHybridPsychicClonesCreateUnit">
         <SpawnUnit index="0" value="MutaliskHero2"/>
     </CEffectCreateUnit>
+    <CEffectSet id="OutOfCombatRegen">
+        <ValidatorArray value="ReaperOutOfCombat"/>
+        <ValidatorArray value="NotFullLife"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="HealHeroicUnitsAround2"/>
+        <EffectArray value="HealHeroic"/>
+    </CEffectSet>
 </Catalog>

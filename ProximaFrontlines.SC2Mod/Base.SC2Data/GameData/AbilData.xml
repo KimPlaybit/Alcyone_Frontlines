@@ -52,7 +52,7 @@
     <CAbilEffectTarget id="ArtanisLightningDash">
         <Cost index="0">
             <!--Vital index="Energy" value="50"/-->
-            <Cooldown TimeUse="10"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ArtanisWormholeTransit">
@@ -61,6 +61,17 @@
             <Cooldown TimeStart="60" TimeUse="135"/>
         </Cost>
         <TargetFilters index="0" value="Structure,Visible;Self,Enemy,UnderConstruction"/>
+        <PrepTime index="0" value="2"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="FenixChampionPowerShield">
+        <Cost index="0">
+            <Cooldown TimeUse="40"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ForceField">
+        <Cost index="0">
+            <Vital index="Energy" value="80"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="KaraxRepairDrone">
         <Arc value="360"/>
@@ -71,7 +82,7 @@
         <Effect index="0" value="MedivacSpeedBoost"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="45"/>
+            <Cooldown TimeUse="70"/>
         </Cost>
         <AINotifyEffect value="MedivacSpeedBoost"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="MedivacSpeedBoost">
@@ -86,6 +97,24 @@
         <ArcSlop value="360"/>
         <CmdButtonArray index="Execute" Requirements=""/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="ZeratulBlink">
+        <Cost index="0">
+            <Cooldown TimeUse="15"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="ZerglingMine">
+        <DataCollection value="NydusSpawnZergUnits"/>
+        <Levels value="5"/>
+        <Effect index="0" value="MPCreatePygaliskSet2"/>
+        <Cost>
+            <Charge Link="Abil/NydusSpawnCharge" Location="Unit"/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusZerglingMineSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarm" TimeUse="45"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AINotifyEffect value="NydusSpawnZergUnits"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoBanelingHero2"/>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="TurretLab">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="LabTurret"/>
@@ -93,7 +122,7 @@
         <Cost>
             <Vital index="Energy" value="25"/>
             <Charge Link="Abil/SpawnTurretLab"/>
-            <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnTurretLab" Location="Unit" TimeUse="20"/>
+            <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnTurretLab" Location="Unit" TimeUse="45"/>
         </Cost>
         <Placeholder value="LabTurretUp2"/>
         <Range value="7"/>
@@ -270,6 +299,9 @@
         <Flags index="AutoCastOn" value="0"/>
         <Range index="0" value="6"/>
         <AutoCastRange value="6"/>
+        <Cost index="0">
+            <Cooldown TimeUse="45"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilBuild id="CreepTumorBuild">
         <InfoArray index="Build1">
@@ -310,11 +342,9 @@
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Charge"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <AbilCmd value="attack,Execute"/>
         <Cost>
-            <Cooldown Link="ChargeCharge2" Location="Unit" TimeUse="10"/>
+            <Cooldown Link="ChargeCharge2" Location="Unit" TimeUse="20"/>
         </Cost>
         <Effect value="Charge"/>
         <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
@@ -324,12 +354,15 @@
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <TargetFilters index="0" value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Cost index="0">
+            <Cooldown TimeUse="20"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DarkTemplarVoidStasis">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <Cost index="0">
-            <Cooldown TimeStart="60" TimeUse="60"/>
+            <Cooldown TimeStart="60" TimeUse="75"/>
         </Cost>
         <TargetFilters index="0" value="-;Player,Ally,Missile,Stasis,UnderConstruction,Hidden"/>
     </CAbilEffectTarget>
@@ -346,7 +379,7 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DutchPlaceTurret">
         <Cost index="0">
-            <Cooldown TimeStart="20" TimeUse="60"/>
+            <Cooldown TimeUse="90"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilResearch id="EngineeringBayResearch">
@@ -389,6 +422,7 @@
     <CAbilEffectTarget id="Ensnare">
         <Cost index="0">
             <Vital index="Energy" value="30"/>
+            <Cooldown TimeUse="8"/>
         </Cost>
         <TargetFilters value="-;Player,Ally,Neutral"/>
     </CAbilEffectTarget>
@@ -408,7 +442,7 @@
     <CAbilEffectInstant id="ExplodeHeal2">
         <AbilSetId value="Explode"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <Effect index="0" value="HotSBanelingDeathExplodeLargeSet"/>
+        <Effect index="0" value="HotSBanelingDeathExplodeLargeSet2"/>
         <Cost>
             <Cooldown Link="Abil/Explode" TimeUse="0.5"/>
         </Cost>
@@ -463,6 +497,9 @@
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <AutoCastRange value="0"/>
+        <Cost index="0">
+            <Cooldown TimeUse="30"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="FlagshipTimeBomb">
         <Cost>
@@ -476,7 +513,7 @@
         <Flags index="BestUnit" value="0"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="30"/>
+            <Cooldown TimeUse="45"/>
         </Cost>
         <Range value="10"/>
         <Arc value="360"/>
@@ -673,7 +710,7 @@
         <Effect index="0" value="AvatarSet"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="60"/>
+            <Cooldown TimeUse="90"/>
         </Cost>
         <AutoCastRange value="5"/>
         <AutoCastValidatorArray value="VoidDisruptorEnemyInRange"/>
@@ -681,7 +718,9 @@
     </CAbilEffectInstant>
     <CAbilEffectTarget id="NovaGadgetFlashBangGrenades">
         <Cost index="0">
-            <Cooldown TimeUse="15"/>
+            <Vital index="Energy" value="0"/>
+            <VitalFraction index="Energy" value="0.35"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="NydusSpawnCanal">
@@ -780,7 +819,7 @@
         <Cost index="0">
             <Vital index="Energy" value="50"/>
         </Cost>
-        <TargetFilters index="0" value="Structure;Enemy,RawResource,HarvestableResource,Item,Dead,Hidden,Invulnerable"/>
+        <TargetFilters index="0" value="Structure;Player,Enemy,RawResource,HarvestableResource,Item,Dead,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="KerriganEpilogue03CreepTeleport">
         <Cost index="0">
@@ -818,7 +857,7 @@
     <CAbilEffectTarget id="LokiMissilePods">
         <Cost index="0">
             <Vital index="Energy" value="0"/>
-            <Cooldown TimeUse="40"/>
+            <Cooldown TimeUse="20"/>
         </Cost>
         <Range index="0" value="9"/>
     </CAbilEffectTarget>
@@ -826,7 +865,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="0"/>
-            <Cooldown TimeUse="15"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="QueenBurstHeal">
@@ -966,7 +1005,7 @@
         <Effect index="0" value="Stimpack2"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="25"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
         <AINotifyEffect value="Stimpack"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Stim" State="Restricted" Requirements="UseStimpackSM">
@@ -1034,7 +1073,7 @@
     </CAbilTrain>
     <CAbilEffectInstant id="MothershipStasis">
         <Cost index="0">
-            <Cooldown TimeUse="60"/>
+            <Cooldown TimeUse="80"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="NanoRepair">
@@ -1088,22 +1127,27 @@
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Obliterate">
-        <PrepTime index="0" value="1"/>
+        <PrepTime index="0" value="2"/>
         <Range index="0" value="13"/>
         <RangeSlop value="13"/>
         <TargetFilters index="0" value="Visible;Self,Ally,Neutral,Missile,Stasis,Dead,Invulnerable"/>
         <Cost index="0">
             <Vital index="Energy" value="75"/>
         </Cost>
+        <PrepEffect value="FlameThrowerApplyDoTBehavior22"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="ObserverSquadSight">
         <Cost index="0">
-            <Cooldown TimeUse="25"/>
+            <VitalFraction index="Energy" value="0.2"/>
+            <Cooldown TimeUse="45"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="Overcharge">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Cooldown TimeUse="50"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="PrimalGasCloud">
         <Cost index="0">
@@ -1114,6 +1158,9 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="PrimalRavage">
         <TargetFilters index="0" value="Ground;Player,Ally,Neutral,Massive,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable,HeroUnit"/>
+        <Cost index="0">
+            <Cooldown TimeUse="40"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="PrimalRoar">
         <AutoCastFilters value="Visible,AirUnit;Player,Ally"/>
@@ -1131,7 +1178,7 @@
         <Cost>
             <Vital index="Energy" value="20"/>
             <Charge Link="Abil/PsionicShockwave"/>
-            <Cooldown Link="Abil/PsionicShockwave" TimeUse="20"/>
+            <Cooldown Link="Abil/PsionicShockwave" TimeUse="35"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="SOAPurifierBeam">
@@ -1188,6 +1235,9 @@
         <InfoArray index="Build4" Time="30"/>
         <InfoArray index="Build5" Time="20"/>
         <InfoArray index="Build8" Time="29"/>
+        <InfoArray index="Build9" Unit="WarpGate">
+            <Button DefaultButtonFace="WarpInWarpGate" Requirements="HaveNexusAndNotHaveSOAWarpTech2"/>
+        </InfoArray>
         <InfoArray index="Build10">
             <Button Requirements="HaveCyberneticsCore"/>
         </InfoArray>
@@ -1299,7 +1349,7 @@
         <Effect index="0" value="Stimpack3"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <VitalFraction index="Life" value="0.2"/>
+            <VitalFraction index="Life" value="0.25"/>
             <Cooldown TimeUse="15"/>
         </Cost>
         <AINotifyEffect value="Stimpack3"/>
@@ -1354,7 +1404,7 @@
     </CAbilEffectTarget>
     <CAbilEffectInstant id="SuperStimpackNova">
         <Cost index="0">
-            <Cooldown TimeUse="35"/>
+            <Cooldown TimeUse="75"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="NydusSpawnZergUnits">
@@ -1480,6 +1530,10 @@
         <AutoCastValidatorArray index="2" removed="1"/>
         <AutoCastValidatorArray index="3" removed="1"/>
         <AutoCastValidatorArray index="4" removed="1"/>
+        <Cost index="0">
+            <Charge CountStart="9999" HideCount="1"/>
+            <Cooldown TimeUse="20"/>
+        </Cost>
         <!--This makes it so it will no longer snap to units, also makes it so it wont autocast on units though-->
         <!--IgnoreFilters value="Structure;-"/-->
     </CAbilEffectTarget>
@@ -1493,6 +1547,11 @@
     </CAbilResearch>
     <CAbilEffectTarget id="UltrasonicPulse">
         <Range index="0" value="13"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <VitalFraction index="Energy" value="0.75"/>
+            <Cooldown TimeUse="20"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilMorph id="UpgradeToPlanetaryFortress">
         <InfoArray index="0">
@@ -1592,7 +1651,7 @@
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
         <Cost index="0">
-            <Cooldown TimeUse="85"/>
+            <Cooldown TimeUse="110"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="WarbotCharge">
@@ -1607,7 +1666,7 @@
         <Effect index="0" value="VoidZealotWhirlwindSet"/>
         <Flags index="TransientPreferred" value="1"/>
         <Cost>
-            <Cooldown TimeUse="10"/>
+            <Cooldown TimeUse="40"/>
         </Cost>
         <AutoCastRange value="1.5"/>
         <AutoCastValidatorArray value="VoidZealotWhirlwindCheck"/>
@@ -1630,7 +1689,7 @@
     <CAbilEffectInstant id="VoodooShield">
         <Cost index="0">
             <Vital index="Energy" value="0"/>
-            <Cooldown TimeUse="75"/>
+            <Cooldown TimeUse="100"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="WidowMineAttack2">
@@ -1675,6 +1734,19 @@
         <InfoArray index="Build15" Time="25"/>
         <InfoArray index="Build16" Time="21"/>
     </CAbilBuild>
+    <CAbilEffectInstant id="Baneling">
+        <DataCollection value="NydusSpawnZergUnits"/>
+        <Levels value="5"/>
+        <Effect index="0" value="CreateBanelingSet"/>
+        <Cost>
+            <Charge Link="Abil/NydusSpawnCharge" Location="Unit"/>
+            <Cooldown Link="SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnits2SwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusZerglingMineSwarmHostSpawnLocustsSwarmHostSpawnLocusts2SwarmHostSpawnLocustsNydusSpawnZergUnitsSwarm" TimeUse="120"/>
+        </Cost>
+        <Arc value="360"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AINotifyEffect value="NydusSpawnZergUnits"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Baneling"/>
+    </CAbilEffectInstant>
     <CAbilResearch id="evolutionchamberresearch">
         <InfoArray index="Research1" Time="114"/>
         <InfoArray index="Research2" Time="136"/>

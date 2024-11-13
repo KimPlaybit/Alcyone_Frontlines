@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CRequirementAnd id="AndCountUpgradeWarpGateResearchCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeWarpGateResearchCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUnit id="CountUnitHiveCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
     </CRequirementCountUnit>
@@ -9,7 +13,6 @@
     <CRequirementCountUnit id="CountUnitRoboticsFacilityCompleteOnlyTechTreeCheat"/>
     <CRequirementCountUnit id="CountUnitScienceRepairDroneQueuedOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="ScienceRepairDrone"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitSpectreNukeCompleteOnly3748442553">
@@ -112,6 +115,11 @@
     <CRequirementCountUpgrade id="CountUpgradeVoidRaySpeedUpgradeQueuedOrBetterTechTreeCheat">
         <Count Link="VoidRaySpeedUpgrade" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeWarpGateResearchCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="WarpGateResearch" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementEq id="Eq1740904084CountUpgradeDefenseStructureUpdates12CompleteOnly1">
         <OperandArray index="0" value="CountUpgradeDefenseStructureUpdates12CompleteOnly"/>
         <OperandArray index="1" value="1"/>
@@ -166,6 +174,10 @@
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeVoidRaySpeedUpgradeQueuedOrBetterTechTreeCheat">
         <OperandArray index="0" value="CountUpgradeVoidRaySpeedUpgradeQueuedOrBetterTechTreeCheat"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeWarpGateResearchCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeWarpGateResearchCompleteOnly"/>
     </CRequirementNot>
     <CRequirementCountUpgrade id="UpgradeBaneling2CompleteOnly">
         <Count Link="" State="Total"/>
