@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorUnit id="Bunker3" parent="TerranBuildingEx" unitName="BunkerLane">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="BunkerTransportAnim"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit BunkerIsEmpty" Send="DeathCustomize Empty"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit NeosteelFramePurchasedNoConstruction" Send="DeathCustomize Upgrade"/>
+        <On Terms="Upgrade.NeosteelFrame.Add; ValidateUnit HasCargo" Send="AnimGroupApply Stand,Work Stand,Work,Start Stand,Work,End"/>
+        <On Terms="UnitBirth.BunkerLane; ValidateUnit NeosteelFramePurchased" Send="ModelSwap BunkerUpgrade"/>
+        <On Terms="Upgrade.NeosteelFrame.Add; ValidateUnit NotDeadOrConstruction" Send="ModelSwap BunkerUpgrade"/>
+        <On Terms="UnitBirth.BunkerLane" Send="StatusSet BunkerBuilt 1"/>
+        <On Terms="Behavior.ShrikeTurret.On" Send="StatusSet ShrikeTurret 1"/>
+        <On Terms="Behavior.ShrikeTurret.On" Send="Create ShrikeTurret"/>
+        <On Terms="Behavior.ShrikeTurret.On; IsStatus BunkerBuilt 0" Send="Create ShrikeTurretPlaceholder"/>
+        <On Terms="Behavior.ShrikeTurret.On; IsStatus BunkerBuilt 0" Target="ShrikeTurret" Send="Signal TurretHide"/>
+        <On Terms="UnitDeathCustomize; IsStatus ShrikeTurret 1" Target="ShrikeTurret" Send="Signal TurretDeath"/>
+        <On Terms="UnitDeathCustomize; IsStatus ShrikeTurret 1" Target="ShrikeTurretPlaceholder" Send="Signal TurretDeath"/>
+        <On Terms="UnitBirth.BunkerLane" Target="ShrikeTurretPlaceholder" Send="Destroy"/>
+        <On Terms="UnitBirth.BunkerLane" Target="ShrikeTurret" Send="Signal TurretShow"/>
+        <On Terms="Upgrade.TerranBuildingArmor.Add; ValidateUnit HasCargo" Send="AnimGroupApply Stand,Work Stand,Work,Start Stand,Work,End"/>
+        <On Terms="Upgrade.TerranBuildingArmor.Add; ValidateUnit NotDeadOrConstruction" Send="ModelSwap BunkerUpgrade"/>
+        <On Terms="UnitBirth.BunkerLane" Send="StatusSet BunkerBuilt 1"/>
+        <On Terms="Behavior.ShrikeTurret.On" Send="StatusSet ShrikeTurret 1"/>
+        <On Terms="Behavior.ShrikeTurret.On" Send="Create ShrikeTurret"/>
+        <On Terms="Behavior.ShrikeTurret.On; IsStatus BunkerBuilt 0" Send="Create ShrikeTurretPlaceholder"/>
+        <On Terms="Behavior.ShrikeTurret.On; IsStatus BunkerBuilt 0" Target="ShrikeTurret" Send="Signal TurretHide"/>
+        <On Terms="UnitDeathCustomize; IsStatus ShrikeTurret 1" Target="ShrikeTurret" Send="Signal TurretDeath"/>
+        <On Terms="UnitDeathCustomize; IsStatus ShrikeTurret 1" Target="ShrikeTurretPlaceholder" Send="Signal TurretDeath"/>
+        <On Terms="UnitBirth.BunkerLane" Target="ShrikeTurretPlaceholder" Send="Destroy"/>
+        <On Terms="UnitBirth.BunkerLane" Target="ShrikeTurret" Send="Signal TurretShow"/>
+        <On Terms="Upgrade.NeoSteelFrame.Add; ValidateUnit NotDeadOrConstruction" Send="ModelSwap JumboBunker"/>
+        <On Terms="UnitBirth.BunkerLane; ValidatePlayer JumboBunkerResearched" Send="ModelSwap JumboBunker"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit JumboBunkerResearched" Send="DeathCustomize Upgrade"/>
+        <Model value="Bunker"/>
+        <Scale value="1.300000"/>
+        <CreepHeightClass value="Small"/>
+        <BuildModel value="Bunker"/>
+        <DeathArray index="Normal" ModelLink="BunkerDeath"/>
+        <DeathArray index="UnderConstruction" ModelLink="TerranBuildingDeath" SoundLink="Bunker_Explode"/>
+        <DeathCustoms ModelLink="BunkerUpgradeDeath" Name="Upgrade"/>
+        <DeathCustoms ModelLink="BunkerDeathEmpty" Name="Empty"/>
+        <PlacementModel value="BunkerPlacement"/>
+        <PlacementActorModel value="BunkerPlacementModel"/>
+        <PlaceholderActorModel value="BunkerPlaceholderModel"/>
+        <PortraitModel value="BunkerPortrait"/>
+        <BarOffset value="80"/>
+        <BarWidth value="85"/>
+        <GlossaryAnim value="Stand,Work"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Bunker.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-terran-Bunker.dds"/>
+        <HighlightTooltip value="Unit/Name/Bunker3"/>
+        <NameOffset value="70"/>
+        <SoundArray index="Ready" value="Bunker_Ready"/>
+        <SoundArray index="What" value="Bunker_What"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-building-terran-Bunker.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Bunker.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="PhotonCannon3" parent="ProtossBuildingEx" unitName="SelfPoweredPhotonCannon">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="ProtossBuildingPowerUp"/>
+        <Macros value="VoidMPUnpoweredAnim"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit CasterIsUnpoweredAndNotUnderConstruction" Send="DeathCustomize Variation2"/>
+        <On Terms="ActorCreation" Send="Create PhotonCannonTurretLookAt"/>
+        <On Terms="Abil.attack.ReadyStart" Target="PhotonCannonTurretLookAt" Send="LookAtEngage"/>
+        <On Terms="Abil.attack.ReadyStop" Target="PhotonCannonTurretLookAt" Send="LookAtDisengage"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById PhotonCannonDarkDiffuse"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById PhotonCannonDarkSpecular"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById PhotonCannonDarkEmissive"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById PhotonCannonBaseDarkDiffuse"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById PhotonCannonBaseDarkSpecular"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById PhotonCannonBaseDarkEmissive"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById LazerBoltGreen"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById GradRaysGreen"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById TronSquareGreen"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="TextureSelectById WarpLineGreen"/>
+        <On Terms="ActorCreation; ValidateUnit NoDarkProtoss" Send="TextureSelectById PhotonCannonDarkDiffuse"/>
+        <On Terms="ActorCreation; ValidateUnit NoDarkProtoss" Send="TextureSelectById PhotonCannonDarkSpecular"/>
+        <On Terms="ActorCreation; ValidateUnit NoDarkProtoss" Send="TextureSelectById PhotonCannonDarkEmissive"/>
+        <On Terms="ActorCreation; ValidateUnit NoDarkProtoss" Send="TextureSelectById PhotonCannonBaseDarkDiffuse"/>
+        <On Terms="ActorCreation; ValidateUnit NoDarkProtoss" Send="TextureSelectById PhotonCannonBaseDarkSpecular"/>
+        <On Terms="ActorCreation; ValidateUnit NoDarkProtoss" Send="TextureSelectById PhotonCannonBaseDarkEmissive"/>
+        <On Terms="UnitBirth; ValidateUnit NoDarkProtoss" Send="TextureSelectById LazerBoltGreen"/>
+        <On Terms="UnitBirth; ValidateUnit NoDarkProtoss" Send="TextureSelectById GradRaysGreen"/>
+        <On Terms="UnitBirth; ValidateUnit NoDarkProtoss" Send="TextureSelectById TronSquareGreen"/>
+        <On Terms="UnitBirth; ValidateUnit NoDarkProtoss" Send="TextureSelectById WarpLineGreen"/>
+        <On Terms="UnitBirth; ValidateUnit HasPurifierProtoss" Send="TextureSelectById PurifierHackDiffuse"/>
+        <On Terms="Upgrade.PurifierProtoss.Add" Send="TextureSelectById PurifierHackDiffuse"/>
+        <On Terms="Signal.*.PurifierHack" Send="TextureSelectById PurifierHackDiffuse"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo PhotonCannon" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom PhotonCannon" Send="Destroy"/>
+        <On Terms="Effect.PhotonCannonTeleportBuildStartCP.Start; At Caster" Send="Create PhotonCannonTeleportOutModel"/>
+        <On Terms="Effect.PhotonCannonTeleportBuildFinishSet.Start; At Caster" Target="PhotonCannonTeleportOutModel" Send="Destroy"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="ModelSwap PhotonCannonTaldarim"/>
+        <On Terms="UnitBirth; ValidateUnit NoDarkProtoss" Send="ModelSwap PhotonCannonTaldarim"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit NoDarkProtoss" Send="DeathCustomize DarkProtoss"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit CasterIsUnpoweredAndNotUnderConstructionAndHasDarkProtoss" Send="DeathCustomize Variation3"/>
+        <On Terms="Behavior.PhaseCannonInitialStun.On" Send="ModelSwap PhotonCannonBirth"/>
+        <On Terms="Behavior.PhaseCannonInitialStun.On" Send="AnimPlay Birth Stand,Build,End"/>
+        <On Terms="Behavior.PhaseCannonInitialStun.On" Send="AnimSetTime Birth 5.000000"/>
+        <On Terms="Behavior.PhaseCannonInitialStun.On" Send="AnimSetTimeScale Birth 2.000000"/>
+        <On Terms="AnimDone; AnimPlaying Birth" Send="ModelSwap PhotonCannon"/>
+        <On Terms="AnimDone; AnimPlaying Birth" Send="AnimPlay Creation Stand,Unpowered,End"/>
+        <On Terms="AnimDone; AnimPlaying Birth" Send="AnimSetTimeScale Creation 2.000000"/>
+        <Model value="PhotonCannon"/>
+        <Scale value="1.300000"/>
+        <CreepHeightClass value="Tiny"/>
+        <BuildModel value="PhotonCannonBirth"/>
+        <DeathArray index="Normal" ModelLink="PhotonCannonDeath" SoundLink="PhotonCannon_Explode"/>
+        <DeathArray index="Timeout" AnimProps="Birth" ModelLink="PhaseCannonWarpOut"/>
+        <DeathArray index="UnderConstruction" ModelLink="PhotonCannonDeathUnderConstruction" SoundLink="PhotonCannon_Explode"/>
+        <DeathCustoms ModelLink="PhotonCannonDeathUnpowered" SoundLink="PhotonCannon_Explode" Name="Variation2"/>
+        <DeathCustoms ModelLink="PhotonCannonTaldarimDeath" Name="DarkProtoss"/>
+        <DeathCustoms ModelLink="PhotonCannonTaldarimDeathUnpowered" Name="Variation3"/>
+        <DeathActorModel value="PhotonCannonDeath"/>
+        <PlacementModel value="PhotonCannonPlacement"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PlacementActorModel value="PhotonCannonPlacementModel"/>
+        <PortraitModel value="PhotonCannonPortrait"/>
+        <BarOffset value="60"/>
+        <BarWidth value="75"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-protoss-PhotonCannon.dds"/>
+        <HighlightTooltip value="Unit/Name/PhotonCannon3"/>
+        <SoundArray index="Ready" value="PhotonCannon_Ready"/>
+        <SoundArray index="What" value="PhotonCannon_What"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-building-protoss-PhotonCannon.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorUnit id="SpineCrawler3" parent="ZergBuildingEx" unitName="CreepSpineCrawler">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <Remove Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <Remove Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <Remove Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="UnitBirth.CreepSpineCrawler" Send="AnimGroupApply Burrow {} {} Instant"/>
+        <On Terms="AbilMorph.*.Start; AbilKey Root" Send="Create LargeBurrowDownEffects"/>
+        <On Terms="AbilMorph.*.Start; AbilKey Root" Send="Create BurrowDownLarge"/>
+        <On Terms="AbilMorph.*.Start; AbilKey Uproot" Send="Create LargeBurrowUpEffects"/>
+        <On Terms="AbilMorph.*.Start; AbilKey Uproot" Send="Create BurrowUpLarge"/>
+        <On Terms="UnitBirth.SpineCrawlerUprooted" Send="Create"/>
+        <On Terms="UnitBirth.SpineCrawlerUprooted" Target="_BuildingTerrainFlatten" Send="Destroy"/>
+        <On Terms="UnitBirth.SpineCrawlerUprooted" Send="AnimBlendTimeApply 0.100000"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawlerUprooted" Send="AnimGroupRemove Burrow"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawlerUprooted" Send="AnimPlay Unburrow Unburrow"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawlerUprooted" Target="_BuildingTerrainFlatten" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawlerUprooted" Send="AnimClear Morph"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawlerUprooted" Send="AnimGroupRemove Ready"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SpineCrawlerUprooted" Send="AnimBlendTimeApply 0.100000"/>
+        <On Terms="AbilMorph.*.Cancel; MorphTo SpineCrawler" Send="AnimBracketStop Morph Instant"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawler" Send="Create BuildingTerrainFlatten"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawler" Send="Create SpineCrawlerBurrowLoop"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SpineCrawler" Send="AnimGroupApply Burrow"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SpineCrawler" Send="AnimBracketStop Morph"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SpineCrawler" Target="SpineCrawlerBurrowLoop" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Cancel; MorphTo SpineCrawler" Target="SpineCrawlerBurrowLoop" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom SpineCrawler" Send="AnimClear AttackEnd"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SpineCrawler" Send="AnimBlendTimeApply 0.400000"/>
+        <On Terms="Behavior.Corruption.On" Send="AnimSetPaused Morph"/>
+        <On Terms="Behavior.Corruption.Off" Send="AnimSetPaused Morph 0"/>
+        <On Terms="WeaponStart.ImpalerTentacleAir.AttackStart; AnimPlaying Burrow" Send="AnimClear Burrow"/>
+        <On Terms="WeaponStart.ImpalerTentacleAir.AttackStart" Send="AnimPlay Attack Attack PlayForever"/>
+        <On Terms="WeaponStop.ImpalerTentacleAir.AttackStop; !MissileTentacleIsReturning TentacleAttack" Send="AnimClear Attack"/>
+        <On Terms="WeaponStop.ImpalerTentacleAir.AttackStop; !MissileTentacleIsReturning TentacleAttack" Send="AnimGroupRemove Ready"/>
+        <On Terms="MissileTentacleRetracted" Send="AnimClear Attack"/>
+        <On Terms="MissileTentacleRetracted" Send="RefClear TentacleAttack"/>
+        <On Terms="MissileTentacleRetracted" Send="AnimGroupRemove Ready"/>
+        <On Terms="MissileTentacleRetracted; ValidateUnit SpineCrawler" Send="AnimPlay AttackEnd Attack,End 0 0.000000"/>
+        <On Terms="UnitDeathCustomize.SpineCrawlerUprooted" Send="DeathCustomize Uprooted"/>
+        <On Terms="UnitDeathCustomize; AnimPlaying Morph" Send="DeathCustomize Uprooted"/>
+        <On Terms="UnitDeathCustomize.CreepSpineCrawler" Send="AnimSetTimeScaleGlobal 1.000000"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawler" Send="AnimBracketStart Morph IGNORE Burrow,Superior Stand,Burrow ContentPlayOnce"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SpineCrawler" Send="AnimBracketStart Morph IGNORE Burrow,Superior Stand,Burrow ContentPlayOnce"/>
+        <On Terms="UnitBirth.SpineCrawlerUprooted" Send="TerrainSquibActivateGroup RippleStandard"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SpineCrawlerUprooted" Send="TerrainSquibActivateGroup RippleStandard"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SpineCrawler" Send="TerrainSquibDeactivate"/>
+        <On Terms="Behavior.ZeratulStun.On" Send="AnimSetPaused Morph"/>
+        <On Terms="Behavior.ZeratulStun.Off" Send="AnimSetPaused Morph 0"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HasZergGenericDeath" Send="DeathCustomize Detached"/>
+        <On Terms="WeaponStart.ImpalerTentacle2.AttackStart; AnimPlaying Burrow" Send="AnimClear Burrow"/>
+        <On Terms="WeaponStart.ImpalerTentacle2.AttackStart" Send="AnimPlay Attack Attack PlayForever"/>
+        <On Terms="WeaponStop.ImpalerTentacle2.AttackStop; !MissileTentacleIsReturning TentacleAttack" Send="AnimGroupRemove Ready"/>
+        <Model value="SpineCrawler"/>
+        <Scale value="1.300000"/>
+        <AnimBlendTime value="0.400000"/>
+        <HostedAttaches Name="TentacleAttack">
+            <AttachQuery Methods="Weapon"/>
+        </HostedAttaches>
+        <EventDataSound Name="SpineCrawlerBurrowEnd" Actor="UnitSound" Sound="Zerg_BurrowLarge"/>
+        <BuildModel value="SpineCrawler"/>
+        <DeathArray index="Normal" ModelLink="SpineCrawler" SoundLink="SpineCrawler_Explode"/>
+        <DeathArray index="UnderConstruction" ModelLink="SpineCrawlerDeathUnderConstruction" SoundLink="SpineCrawler_Explode"/>
+        <DeathCustoms ModelLink="SpineCrawlerUnburrowedDeath" Name="Uprooted"/>
+        <DeathCustoms ModelLink="ZergGenericBuildingDeath" Name="Detached"/>
+        <PlacementModel value="SpineCrawlerPlacement"/>
+        <PlacementSound value="Zerg_BuildingPlacementSmall"/>
+        <PlacementActorModel value="SpineCrawlerPlacementModel"/>
+        <PlaceholderActorModel value="SpineCrawlerPlacementModel"/>
+        <PortraitModel value="SpineCrawlerPortrait"/>
+        <TerrainSquibs>
+            <GroupName value="RippleStandard"/>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="2.000000"/>
+            <RangeDown value="2.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive15"/>
+        </TerrainSquibs>
+        <WalkAnimMoveSpeed value="0.7968"/>
+        <BarOffset value="110"/>
+        <BarWidth value="90"/>
+        <ErrorArray Error="CantSeeBuildLocation" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
+        <ErrorArray Error="CantSeeLandLocation" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
+        <ErrorArray Error="CantBuildLocationInvalid" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
+        <ErrorArray Error="CantLandLocationInvalid" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
+        <ErrorArray Error="CantBuildTooFarFromCreepSource" Sound="Alert_ZergPlaceOnCreep" GroupSound="Alert_ZergPlaceOnCreep"/>
+        <ErrorArray Error="CantLandTooFarFromCreepSource" Sound="Alert_ZergPlaceOnCreep" GroupSound="Alert_ZergPlaceOnCreep"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-SpineCrawler.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-zerg-spinecrawler.dds"/>
+        <HighlightTooltip value="Unit/Name/SpineCrawler3"/>
+        <NameOffset value="30"/>
+        <SoundArray index="Ready" value="SpineCrawler_Ready"/>
+        <SoundArray index="What" value="SpineCrawler_What"/>
+        <SoundArray index="Yes" value="SpineCrawler_Yes"/>
+        <SoundArray index="Attack" value="SpineCrawler_Attack"/>
+        <UnitIcon value="Assets\Textures\btn-building-zerg-spinecrawler.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-SpineCrawler.dds"/>
+        </Wireframe>
+    </CActorUnit>
+</Catalog>

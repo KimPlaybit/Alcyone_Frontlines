@@ -1,0 +1,475 @@
+//==================================================================================================
+// 
+// Generated Map Script
+// 
+// Name:   Purifiers Frontlines
+// 
+//==================================================================================================
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904"
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+void InitLibs () {
+    libNtve_InitLib();
+    lib5A1C9904_InitLib();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Variables
+//--------------------------------------------------------------------------------------------------
+unit[6] gv_bases;
+
+void InitGlobals () {
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Function Declarations
+//--------------------------------------------------------------------------------------------------
+void gf_AddJungleDrop ();
+void gf_SpawnProtossDef (int lp_player, point lp_point);
+void gf_SpawnZergDef (int lp_player, point lp_point);
+void gf_SpawnTerranDef (int lp_player, point lp_point);
+int gf_GetAlly (int lp_killedPlayer, int lp_killingPlayer);
+string gf_GetDefaultExpansionBase (int lp_player);
+string gf_GetDefaultExpansionWorker (int lp_player);
+void gf_SpawnTurrets ();
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Variables
+//--------------------------------------------------------------------------------------------------
+trigger gt_MeleeInitialization;
+trigger gt_UnitMovesOutOfRegion;
+trigger gt_UnitMovesOutOfTeam1Worker;
+trigger gt_UnitMovesOutOfTeam2Worker;
+trigger gt_BaseDies;
+
+//--------------------------------------------------------------------------------------------------
+// Global Functions
+//--------------------------------------------------------------------------------------------------
+void gf_AddJungleDrop () {
+    // Automatic Variable Declarations
+    // Implementation
+    lib5A1C9904_gf_AddUnitJunglePrice("ColossusPurifier", 100, 100);
+    lib5A1C9904_gf_AddUnitJunglePrice("StoneZealot", 250, 250);
+    lib5A1C9904_gf_AddUnitJunglePrice("StalkerPurifier", 25, 25);
+    lib5A1C9904_gf_AddUnitJunglePrice("PhoenixPurifier", 50, 25);
+    lib5A1C9904_gf_AddUnitJunglePrice("ZealotPurifier", 25, 25);
+}
+
+void gf_SpawnProtossDef (int lp_player, point lp_point) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "SelfPoweredPhotonCannon", 0, lp_player, lp_point);
+}
+
+void gf_SpawnZergDef (int lp_player, point lp_point) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "CreepSpineCrawler", 0, lp_player, lp_point);
+}
+
+void gf_SpawnTerranDef (int lp_player, point lp_point) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "BunkerLane", 0, lp_player, lp_point);
+}
+
+int gf_GetAlly (int lp_killedPlayer, int lp_killingPlayer) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libNtve_gf_PlayerIsEnemy(lp_killedPlayer, lp_killingPlayer, libNtve_ge_PlayerRelation_Ally) == true)) {
+        return lib5A1C9904_gf_GetEnemyRTSPlayer(lp_killingPlayer);
+    }
+
+    if ((lp_killingPlayer == 13)) {
+        return lib5A1C9904_gv_rTSPlayer1;
+    }
+
+    if ((lp_killingPlayer == 14)) {
+        return lib5A1C9904_gv_rTSPlayer2;
+    }
+
+    return lib5A1C9904_gf_GetAllyRTSPlayer(lp_killingPlayer);
+}
+
+string gf_GetDefaultExpansionBase (int lp_player) {
+    // Automatic Variable Declarations
+    string autoD02CECAC_val;
+
+    // Implementation
+    autoD02CECAC_val = PlayerRace(gf_GetAlly(0, lp_player));
+    if (autoD02CECAC_val == "Zerg") {
+        return "Hatchery";
+    }
+    else if (autoD02CECAC_val == "Terr") {
+        return "CommandCenter";
+    }
+    else if (autoD02CECAC_val == "Prot") {
+        return "Nexus";
+    }
+    else {
+        return "Nexus";
+    }
+}
+
+string gf_GetDefaultExpansionWorker (int lp_player) {
+    // Automatic Variable Declarations
+    string autoFC9C4EE0_val;
+
+    // Implementation
+    autoFC9C4EE0_val = PlayerRace(gf_GetAlly(0, lp_player));
+    if (autoFC9C4EE0_val == "Zerg") {
+        return "Drone";
+    }
+    else if (autoFC9C4EE0_val == "Terr") {
+        return "SCV";
+    }
+    else if (autoFC9C4EE0_val == "Prot") {
+        return "Probe";
+    }
+    else {
+        return "Probe";
+    }
+}
+
+void gf_SpawnTurrets () {
+    // Variable Declarations
+    int lv_index;
+
+    // Automatic Variable Declarations
+    string auto025A1A3E_val;
+    string autoC3F02E41_val;
+
+    // Variable Initialization
+
+    // Implementation
+    auto025A1A3E_val = PlayerRace(lib5A1C9904_gv_rTSPlayer1);
+    if (auto025A1A3E_val == "Zerg") {
+        gf_SpawnZergDef(13, PointFromId(1243366727));
+        gf_SpawnZergDef(13, PointFromId(1633046537));
+        gf_SpawnZergDef(13, PointFromId(1069747271));
+        gf_SpawnZergDef(13, PointFromId(1868860973));
+    }
+    else if (auto025A1A3E_val == "Prot") {
+        gf_SpawnProtossDef(13, PointFromId(1243366727));
+        gf_SpawnProtossDef(13, PointFromId(1633046537));
+        gf_SpawnProtossDef(13, PointFromId(1868860973));
+        gf_SpawnProtossDef(13, PointFromId(1069747271));
+    }
+    else if (auto025A1A3E_val == "Terr") {
+        gf_SpawnTerranDef(13, PointFromId(1069747271));
+        gf_SpawnTerranDef(13, PointFromId(1868860973));
+        gf_SpawnTerranDef(13, PointFromId(1633046537));
+        gf_SpawnTerranDef(13, PointFromId(1243366727));
+    }
+    else {
+        gf_SpawnProtossDef(13, PointFromId(1243366727));
+        gf_SpawnProtossDef(13, PointFromId(1633046537));
+        gf_SpawnProtossDef(13, PointFromId(1868860973));
+        gf_SpawnProtossDef(13, PointFromId(1069747271));
+    }
+    autoC3F02E41_val = PlayerRace(lib5A1C9904_gv_rTSPlayer2);
+    if (autoC3F02E41_val == "Prot") {
+        gf_SpawnProtossDef(14, PointFromId(1837618182));
+        gf_SpawnProtossDef(14, PointFromId(1123039004));
+        gf_SpawnProtossDef(14, PointFromId(1371126610));
+        gf_SpawnProtossDef(14, PointFromId(1231980995));
+    }
+    else if (autoC3F02E41_val == "Zerg") {
+        gf_SpawnZergDef(14, PointFromId(1837618182));
+        gf_SpawnZergDef(14, PointFromId(1123039004));
+        gf_SpawnZergDef(14, PointFromId(1231980995));
+        gf_SpawnZergDef(14, PointFromId(1371126610));
+    }
+    else if (autoC3F02E41_val == "Terr") {
+        gf_SpawnTerranDef(14, PointFromId(1371126610));
+        gf_SpawnTerranDef(14, PointFromId(1231980995));
+        gf_SpawnTerranDef(14, PointFromId(1837618182));
+        gf_SpawnTerranDef(14, PointFromId(1123039004));
+    }
+    else {
+        gf_SpawnProtossDef(14, PointFromId(1837618182));
+        gf_SpawnProtossDef(14, PointFromId(1123039004));
+        gf_SpawnProtossDef(14, PointFromId(1371126610));
+        gf_SpawnProtossDef(14, PointFromId(1231980995));
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Melee Initialization
+//--------------------------------------------------------------------------------------------------
+bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_spawnerId;
+    string lv_waveUnitType;
+    string lv_spawnerUnitType;
+    int lv_waveSpawnAmount;
+    lib5A1C9904_gs_Spawn lv_spawn;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_waveUnitType = lib5A1C9904_gf_GetDefaultWaveType(13);
+    lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(13);
+    lv_waveSpawnAmount = lib5A1C9904_gf_GetDefaultWaveAmount(13);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gv_bases[0] = UnitFromId(56221378);
+    gv_bases[1] = UnitFromId(991837377);
+    gv_bases[2] = UnitFromId(1442615457);
+    gv_bases[3] = UnitFromId(1839812104);
+    gv_bases[4] = UnitFromId(346699927);
+    gf_AddJungleDrop();
+    gf_SpawnTurrets();
+    TechTreeUpgradeAddLevel(15, "Charge", 1);
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(7), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), PointFromId(1080809238));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(5), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), PointFromId(2101575460));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(3), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), PointFromId(93343805));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(6), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), PointFromId(1892330525));
+    lib5A1C9904_gf_AddJungleUnitGroup(UnitGroup(null, 15, RegionFromId(4), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), PointFromId(1350341596));
+    lv_spawn.lv_spawnTime = 0;
+    lv_spawn.lv_point = PointFromId(1083912391);
+    lv_spawn.lv_respawnTime = 60;
+    lv_spawn.lv_unitSpawn[0].lv_unitType = "StoneZealot";
+    lv_spawn.lv_unitSpawn[0].lv_amount = 1;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawn.lv_point = PointFromId(1703719032);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawn.lv_point = PointFromId(2007952816);
+    lv_spawn.lv_unitSpawn[0].lv_unitType = "ZealotPurifier";
+    lv_spawn.lv_unitSpawn[0].lv_amount = 4;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawn.lv_point = PointFromId(1025180362);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawn.lv_point = PointFromId(1971985595);
+    lv_spawn.lv_unitSpawn[0].lv_unitType = "StalkerPurifier";
+    lv_spawn.lv_unitSpawn[0].lv_amount = 5;
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawn.lv_point = PointFromId(1768818439);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawn.lv_unitSpawn[1].lv_unitType = "ColossusPurifier";
+    lv_spawn.lv_unitSpawn[1].lv_amount = 1;
+    lv_spawn.lv_unitSpawn[0].lv_unitType = "PhoenixPurifier";
+    lv_spawn.lv_unitSpawn[0].lv_amount = 2;
+    lv_spawn.lv_point = PointFromId(1152346314);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawn.lv_point = PointFromId(1260085707);
+    lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawnerId = lib5A1C9904_gf_AddSpawner(PointFromId(1569281949), lv_spawnerUnitType, lv_waveUnitType, lv_waveSpawnAmount, 13);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(93343805), lv_spawnerId);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1892330525), lv_spawnerId);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(396456094), lv_spawnerId);
+    lv_spawnerId = lib5A1C9904_gf_AddSpawner(PointFromId(665636309), lv_spawnerUnitType, lv_waveUnitType, lv_waveSpawnAmount, 13);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(2101575460), lv_spawnerId);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1350341596), lv_spawnerId);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(396456094), lv_spawnerId);
+    lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(14);
+    lv_waveSpawnAmount = lib5A1C9904_gf_GetDefaultWaveAmount(14);
+    lv_waveUnitType = lib5A1C9904_gf_GetDefaultWaveType(14);
+    lv_spawnerId = lib5A1C9904_gf_AddSpawner(PointFromId(1481026975), lv_spawnerUnitType, lv_waveUnitType, lv_waveSpawnAmount, 14);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1892330525), lv_spawnerId);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(93343805), lv_spawnerId);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(815697778), lv_spawnerId);
+    lv_spawnerId = lib5A1C9904_gf_AddSpawner(PointFromId(1649023270), lv_spawnerUnitType, lv_waveUnitType, lv_waveSpawnAmount, 14);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(1350341596), lv_spawnerId);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(2101575460), lv_spawnerId);
+    lib5A1C9904_gf_AddNewWavePoint(PointFromId(815697778), lv_spawnerId);
+    lib5A1C9904_gf_StartProximaGame(PointFromId(815697778), PointFromId(396456094), 3.0, 0.0, -3.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MeleeInitialization_Init () {
+    gt_MeleeInitialization = TriggerCreate("gt_MeleeInitialization_Func");
+    TriggerAddEventMapInit(gt_MeleeInitialization);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UnitMovesOutOfRegion
+//--------------------------------------------------------------------------------------------------
+bool gt_UnitMovesOutOfRegion_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitTypeTestFlag(UnitGetType(EventUnit()), c_unitFlagWorker) == true) || (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPosition(EventUnit(), RegionGetCenter(EventUnitRegion()), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_UnitMovesOutOfRegion_Init () {
+    gt_UnitMovesOutOfRegion = TriggerCreate("gt_UnitMovesOutOfRegion_Func");
+    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(7), false);
+    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(5), false);
+    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(3), false);
+    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(6), false);
+    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(4), false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UnitMovesOutOfTeam1Worker
+//--------------------------------------------------------------------------------------------------
+bool gt_UnitMovesOutOfTeam1Worker_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitTypeTestFlag(UnitGetType(EventUnit()), c_unitFlagWorker) == true) || (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPosition(EventUnit(), PointFromId(815697778), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_UnitMovesOutOfTeam1Worker_Init () {
+    gt_UnitMovesOutOfTeam1Worker = TriggerCreate("gt_UnitMovesOutOfTeam1Worker_Func");
+    TriggerAddEventUnitRegion(gt_UnitMovesOutOfTeam1Worker, null, RegionFromId(1), false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UnitMovesOutOfTeam2Worker
+//--------------------------------------------------------------------------------------------------
+bool gt_UnitMovesOutOfTeam2Worker_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitTypeTestFlag(UnitGetType(EventUnit()), c_unitFlagWorker) == true) || (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPosition(EventUnit(), PointFromId(396456094), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_UnitMovesOutOfTeam2Worker_Init () {
+    gt_UnitMovesOutOfTeam2Worker = TriggerCreate("gt_UnitMovesOutOfTeam2Worker_Func");
+    TriggerAddEventUnitRegion(gt_UnitMovesOutOfTeam2Worker, null, RegionFromId(2), false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: BaseDies
+//--------------------------------------------------------------------------------------------------
+bool gt_BaseDies_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_position;
+    int lv_killingPlayer;
+    int lv_killedPlayer;
+    int lv_unitIndex;
+    unit lv_unit;
+    unit lv_deadUnit;
+    int lv_playerDead;
+    unitgroup lv_allStructuresAround;
+    unitgroup lv_allWorkersAround;
+    string lv_baseSpawn;
+    string lv_workerSpawn;
+
+    // Automatic Variable Declarations
+    const int autoFF7A1BDD_ae = 5;
+    const int autoFF7A1BDD_ai = 1;
+    unitgroup auto6DA5227F_g;
+    int auto6DA5227F_u;
+    unitgroup auto9B5F1820_g;
+    int auto9B5F1820_u;
+
+    // Variable Initialization
+    lv_position = UnitGetPosition(EventUnit());
+    lv_killingPlayer = libNtve_gf_KillingPlayer();
+    lv_killedPlayer = UnitGetOwner(EventUnit());
+    lv_deadUnit = EventUnit();
+    lv_playerDead = UnitGetOwner(EventUnit());
+    lv_allStructuresAround = UnitGroupFilter(null, c_playerAny, UnitGroup(null, lv_playerDead, RegionCircle(UnitGetPosition(lv_deadUnit), 13.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_allWorkersAround = UnitGroupFilter(null, c_playerAny, UnitGroup(null, lv_playerDead, RegionCircle(UnitGetPosition(lv_deadUnit), 13.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), UnitFilter((1 << c_targetFilterWorker), 0, (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_baseSpawn = gf_GetDefaultExpansionBase(gf_GetAlly(lv_killedPlayer, lv_killingPlayer));
+    lv_workerSpawn = gf_GetDefaultExpansionWorker(gf_GetAlly(lv_killedPlayer, lv_killingPlayer));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_unitIndex = 0;
+    for ( ; ( (autoFF7A1BDD_ai >= 0 && lv_unitIndex <= autoFF7A1BDD_ae) || (autoFF7A1BDD_ai < 0 && lv_unitIndex >= autoFF7A1BDD_ae) ) ; lv_unitIndex += autoFF7A1BDD_ai ) {
+        if ((gv_bases[lv_unitIndex] == lv_deadUnit)) {
+            break;
+        }
+
+    }
+    auto6DA5227F_g = lv_allStructuresAround;
+    auto6DA5227F_u = UnitGroupCount(auto6DA5227F_g, c_unitCountAll);
+    for (;; auto6DA5227F_u -= 1) {
+        lv_unit = UnitGroupUnitFromEnd(auto6DA5227F_g, auto6DA5227F_u);
+        if (lv_unit == null) { break; }
+        UnitKill(lv_unit);
+    }
+    auto9B5F1820_g = lv_allWorkersAround;
+    auto9B5F1820_u = UnitGroupCount(auto9B5F1820_g, c_unitCountAll);
+    for (;; auto9B5F1820_u -= 1) {
+        lv_unit = UnitGroupUnitFromEnd(auto9B5F1820_g, auto9B5F1820_u);
+        if (lv_unit == null) { break; }
+        UnitKill(lv_unit);
+    }
+    Wait(0.7, c_timeGame);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, lv_baseSpawn, c_unitCreateIgnorePlacement, gf_GetAlly(lv_killedPlayer, lv_killingPlayer), lv_position);
+    gv_bases[lv_unitIndex] = UnitLastCreated();
+    Wait(0.5, c_timeGame);
+    libNtve_gf_CreateUnitsWithDefaultFacing(3, lv_workerSpawn, 0, gf_GetAlly(lv_killedPlayer, lv_killingPlayer), lv_position);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_BaseDies_Init () {
+    gt_BaseDies = TriggerCreate("gt_BaseDies_Func");
+    TriggerAddEventUnitDied(gt_BaseDies, UnitRefFromVariable("gv_bases[0]"));
+    TriggerAddEventUnitDied(gt_BaseDies, UnitRefFromVariable("gv_bases[1]"));
+    TriggerAddEventUnitDied(gt_BaseDies, UnitRefFromVariable("gv_bases[2]"));
+    TriggerAddEventUnitDied(gt_BaseDies, UnitRefFromVariable("gv_bases[3]"));
+    TriggerAddEventUnitDied(gt_BaseDies, UnitRefFromVariable("gv_bases[4]"));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Initialization
+//--------------------------------------------------------------------------------------------------
+void InitTriggers () {
+    gt_MeleeInitialization_Init();
+    gt_UnitMovesOutOfRegion_Init();
+    gt_UnitMovesOutOfTeam1Worker_Init();
+    gt_UnitMovesOutOfTeam2Worker_Init();
+    gt_BaseDies_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Map Initialization
+//--------------------------------------------------------------------------------------------------
+void InitMap () {
+    InitLibs();
+    InitGlobals();
+    InitTriggers();
+}
