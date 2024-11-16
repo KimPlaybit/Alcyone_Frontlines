@@ -40,9 +40,6 @@ void gf_SpawnTurrets ();
 // Trigger Variables
 //--------------------------------------------------------------------------------------------------
 trigger gt_MeleeInitialization;
-trigger gt_UnitMovesOutOfRegion;
-trigger gt_UnitMovesOutOfTeam1Worker;
-trigger gt_UnitMovesOutOfTeam2Worker;
 trigger gt_BaseDies;
 
 //--------------------------------------------------------------------------------------------------
@@ -61,19 +58,19 @@ void gf_AddJungleDrop () {
 void gf_SpawnProtossDef (int lp_player, point lp_point) {
     // Automatic Variable Declarations
     // Implementation
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "SelfPoweredPhotonCannon", 0, lp_player, lp_point);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "SelfPoweredPhotonCannon", c_unitCreateIgnorePlacement, lp_player, lp_point);
 }
 
 void gf_SpawnZergDef (int lp_player, point lp_point) {
     // Automatic Variable Declarations
     // Implementation
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "CreepSpineCrawler", 0, lp_player, lp_point);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "CreepSpineCrawler", c_unitCreateIgnorePlacement, lp_player, lp_point);
 }
 
 void gf_SpawnTerranDef (int lp_player, point lp_point) {
     // Automatic Variable Declarations
     // Implementation
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "BunkerLane", 0, lp_player, lp_point);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "BunkerLane", c_unitCreateIgnorePlacement, lp_player, lp_point);
 }
 
 int gf_GetAlly (int lp_killedPlayer, int lp_killingPlayer) {
@@ -290,91 +287,6 @@ void gt_MeleeInitialization_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: UnitMovesOutOfRegion
-//--------------------------------------------------------------------------------------------------
-bool gt_UnitMovesOutOfRegion_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!(((UnitTypeTestFlag(UnitGetType(EventUnit()), c_unitFlagWorker) == true) || (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitSetPosition(EventUnit(), RegionGetCenter(EventUnitRegion()), false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_UnitMovesOutOfRegion_Init () {
-    gt_UnitMovesOutOfRegion = TriggerCreate("gt_UnitMovesOutOfRegion_Func");
-    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(7), false);
-    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(5), false);
-    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(3), false);
-    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(6), false);
-    TriggerAddEventUnitRegion(gt_UnitMovesOutOfRegion, null, RegionFromId(4), false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: UnitMovesOutOfTeam1Worker
-//--------------------------------------------------------------------------------------------------
-bool gt_UnitMovesOutOfTeam1Worker_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!(((UnitTypeTestFlag(UnitGetType(EventUnit()), c_unitFlagWorker) == true) || (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitSetPosition(EventUnit(), PointFromId(815697778), false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_UnitMovesOutOfTeam1Worker_Init () {
-    gt_UnitMovesOutOfTeam1Worker = TriggerCreate("gt_UnitMovesOutOfTeam1Worker_Func");
-    TriggerAddEventUnitRegion(gt_UnitMovesOutOfTeam1Worker, null, RegionFromId(1), false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: UnitMovesOutOfTeam2Worker
-//--------------------------------------------------------------------------------------------------
-bool gt_UnitMovesOutOfTeam2Worker_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!(((UnitTypeTestFlag(UnitGetType(EventUnit()), c_unitFlagWorker) == true) || (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitSetPosition(EventUnit(), PointFromId(396456094), false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_UnitMovesOutOfTeam2Worker_Init () {
-    gt_UnitMovesOutOfTeam2Worker = TriggerCreate("gt_UnitMovesOutOfTeam2Worker_Func");
-    TriggerAddEventUnitRegion(gt_UnitMovesOutOfTeam2Worker, null, RegionFromId(2), false);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: BaseDies
 //--------------------------------------------------------------------------------------------------
 bool gt_BaseDies_Func (bool testConds, bool runActions) {
@@ -459,9 +371,6 @@ void gt_BaseDies_Init () {
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
     gt_MeleeInitialization_Init();
-    gt_UnitMovesOutOfRegion_Init();
-    gt_UnitMovesOutOfTeam1Worker_Init();
-    gt_UnitMovesOutOfTeam2Worker_Init();
     gt_BaseDies_Init();
 }
 
