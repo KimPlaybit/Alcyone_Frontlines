@@ -38,7 +38,7 @@
     <CUpgrade id="Corsair5to7">
         <EffectArray Operation="Subtract" Reference="Abil,CorsairMPDisruptionWeb,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,MothershipStasis,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,ForceField,Cost[0].Vital[Energy]" Value="6"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ForceField2,Cost[0].Vital[Energy]" Value="6"/>
         <EffectArray Operation="Subtract" Reference="Abil,PsionicShockwave,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
         <EffectArray Reference="Unit,Sentry,EnergyRegenRate" Value="0.199200"/>
         <MaxLevel value="10"/>
@@ -47,7 +47,7 @@
     <CUpgrade id="Corsair8to10">
         <EffectArray Operation="Subtract" Reference="Abil,CorsairMPDisruptionWeb,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,MothershipStasis,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,ForceField,Cost[0].Vital[Energy]" Value="7"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ForceField2,Cost[0].Vital[Energy]" Value="7"/>
         <EffectArray Operation="Subtract" Reference="Abil,PsionicShockwave,Cost[0].Cooldown.TimeUse" Value="3.000000"/>
         <EffectArray Reference="Unit,Sentry,EnergyRegenRate" Value="0.199200"/>
         <MaxLevel value="10"/>
@@ -74,24 +74,20 @@
         <LeaderAlias value="MothershipCore1to4"/>
     </CUpgrade>
     <CUpgrade id="DefenseStructureUpdates1">
-        <EffectArray Reference="Effect,CrucioShockCannonBlast,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,CrucioShockCannonDirected,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,CrucioShockCannonDummy,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,LongboltMissileU,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,RenegadeLongboltMissileU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,LongboltMissileU,AttributeBonus[Heroic]" Value="5"/>
+        <EffectArray Reference="Effect,RenegadeLongboltMissileU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,LongboltMissile,Level" Value="1"/>
         <EffectArray Reference="Weapon,HailstormMissilePods,Level" Value="1"/>
-        <EffectArray Reference="Effect,TwinIbiksCannon,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,TwinIbiksCannon,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,TwinIbiksCannon,Level" Value="1"/>
-        <EffectArray Reference="Effect,ImpalerTentacleU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,ImpalerTentacleU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,ImpalerTentacle,Level" Value="1"/>
-        <EffectArray Reference="Effect,SporeCrawlerU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,SporeCrawlerU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,AcidSpew,Level" Value="1"/>
-        <EffectArray Reference="Effect,PhotonCannonU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,PhotonCannonU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,PhotonCannon,Level" Value="1"/>
         <EffectArray Reference="Behavior,BunkerWeaponRangeBonus,Modification.DamageDealtAttributeUnscaled[Heroic]" Value="5"/>
         <EditorCategories value="Race:Commoner,UpgradeType:AttackBonus"/>
-        <AffectedUnitArray value="SiegeTankSkinPreview"/>
         <AffectedUnitArray value="MissileTurret"/>
         <AffectedUnitArray value="PlanetaryFortress"/>
         <AffectedUnitArray value="SpineCrawler"/>
@@ -99,20 +95,17 @@
         <AffectedUnitArray value="MissileTurret"/>
     </CUpgrade>
     <CUpgrade id="DefenseStructureUpdates12">
-        <EffectArray Reference="Effect,CrucioShockCannonBlast,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,CrucioShockCannonDirected,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,CrucioShockCannonDummy,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,LongboltMissileU,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,RenegadeLongboltMissileU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,LongboltMissileU,AttributeBonus[Heroic]" Value="5"/>
+        <EffectArray Reference="Effect,RenegadeLongboltMissileU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,LongboltMissile,Level" Value="1"/>
         <EffectArray Reference="Weapon,HailstormMissilePods,Level" Value="1"/>
-        <EffectArray Reference="Effect,TwinIbiksCannon,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,TwinIbiksCannon,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,TwinIbiksCannon,Level" Value="1"/>
-        <EffectArray Reference="Effect,ImpalerTentacleU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,ImpalerTentacleU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,ImpalerTentacle,Level" Value="1"/>
-        <EffectArray Reference="Effect,SporeCrawlerU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,SporeCrawlerU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,AcidSpew,Level" Value="1"/>
-        <EffectArray Reference="Effect,PhotonCannonU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,PhotonCannonU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,PhotonCannon,Level" Value="1"/>
         <EffectArray Reference="Behavior,BunkerWeaponRangeBonus,Modification.DamageDealtAttributeUnscaled[Heroic]" Value="5"/>
         <EditorCategories value="Race:Commoner,UpgradeType:AttackBonus"/>
@@ -125,20 +118,17 @@
         <LeaderAlias value="DefenseStructureUpdates1"/>
     </CUpgrade>
     <CUpgrade id="DefenseStructureUpdates13">
-        <EffectArray Reference="Effect,CrucioShockCannonBlast,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,CrucioShockCannonDirected,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,CrucioShockCannonDummy,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,LongboltMissileU,AttributeBonus[Heroic]" Value="20"/>
-        <EffectArray Reference="Effect,RenegadeLongboltMissileU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,LongboltMissileU,AttributeBonus[Heroic]" Value="5"/>
+        <EffectArray Reference="Effect,RenegadeLongboltMissileU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,LongboltMissile,Level" Value="1"/>
         <EffectArray Reference="Weapon,HailstormMissilePods,Level" Value="1"/>
-        <EffectArray Reference="Effect,TwinIbiksCannon,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,TwinIbiksCannon,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,TwinIbiksCannon,Level" Value="1"/>
-        <EffectArray Reference="Effect,ImpalerTentacleU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,ImpalerTentacleU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,ImpalerTentacle,Level" Value="1"/>
-        <EffectArray Reference="Effect,SporeCrawlerU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,SporeCrawlerU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,AcidSpew,Level" Value="1"/>
-        <EffectArray Reference="Effect,PhotonCannonU,AttributeBonus[Heroic]" Value="20"/>
+        <EffectArray Reference="Effect,PhotonCannonU,AttributeBonus[Heroic]" Value="5"/>
         <EffectArray Reference="Weapon,PhotonCannon,Level" Value="1"/>
         <EffectArray Reference="Behavior,BunkerWeaponRangeBonus,Modification.DamageDealtAttributeUnscaled[Heroic]" Value="5"/>
         <EditorCategories value="Race:Commoner,UpgradeType:AttackBonus"/>
@@ -284,7 +274,7 @@
     <CUpgrade id="Corsair1to4">
         <EffectArray Operation="Subtract" Reference="Abil,CorsairMPDisruptionWeb,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,MothershipStasis,Cost[0].Cooldown.TimeUse" Value="2.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,ForceField,Cost[0].Vital[Energy]" Value="5"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ForceField2,Cost[0].Vital[Energy]" Value="5"/>
         <EffectArray Operation="Subtract" Reference="Abil,PsionicShockwave,Cost[0].Cooldown.TimeUse" Value="1.000000"/>
         <EffectArray Reference="Unit,Sentry,EnergyRegenRate" Value="0.148400"/>
         <MaxLevel value="10"/>
@@ -1513,8 +1503,8 @@
     <CUpgrade id="ZergGroundArmorsLevel2">
         <EffectArray index="124" Reference="Unit,Roachling2,LifeArmorLevel"/>
         <EffectArray index="125" Reference="Unit,Roachling2,LifeArmor"/>
-        <EffectArray index="126" Reference="Unit,Roachling2,LifeMax" Value="100"/>
-        <EffectArray index="127" Reference="Unit,Roachling2,LifeStart" Value="100"/>
+        <EffectArray index="126" Reference="Unit,Roachling2,LifeMax" Value="50"/>
+        <EffectArray index="127" Reference="Unit,Roachling2,LifeStart" Value="50"/>
         <EffectArray index="128" removed="1"/>
         <EffectArray index="129" removed="1"/>
         <EffectArray index="130" removed="1"/>
@@ -1608,8 +1598,8 @@
     <CUpgrade id="ZergGroundArmorsLevel3">
         <EffectArray index="126" Reference="Unit,Roachling2,LifeArmorLevel"/>
         <EffectArray index="128" Reference="Unit,Roachling2,LifeArmor"/>
-        <EffectArray index="129" Reference="Unit,Roachling2,LifeMax" Value="130"/>
-        <EffectArray index="130" Reference="Unit,Roachling2,LifeStart" Value="130"/>
+        <EffectArray index="129" Reference="Unit,Roachling2,LifeMax" Value="75"/>
+        <EffectArray index="130" Reference="Unit,Roachling2,LifeStart" Value="75"/>
         <EffectArray index="131" removed="1"/>
         <EffectArray index="132" removed="1"/>
         <EffectArray index="133" removed="1"/>

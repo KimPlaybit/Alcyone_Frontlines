@@ -121,9 +121,6 @@
         <EffectArray value="HealHeroicUnitsAround"/>
         <EffectArray value="ProtectWorkers"/>
     </CEffectSet>
-    <CEffectDamage id="CrucioShockCannonBlast">
-        <AttributeBonus index="Heroic" value="40"/>
-    </CEffectDamage>
     <CEffectDamage id="CrucioShockCannonDirected">
         <AttributeBonus index="Heroic" value="40"/>
     </CEffectDamage>
@@ -140,7 +137,7 @@
         <Behavior value="DamageReduction"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="DarkTemplarShadowFuryDamage">
-        <Amount value="20"/>
+        <Amount value="8"/>
         <SearchFlags index="SameCliff" value="0"/>
     </CEffectDamage>
     <CEffectDamage id="DarkTemplarShadowFuryDamage2">
@@ -528,7 +525,7 @@
         <Death value="Disintegrate"/>
     </CEffectDamage>
     <CEffectDamage id="SporeCrawlerU">
-        <AttributeBonus index="Heroic" value="40"/>
+        <AttributeBonus index="Heroic" value="15"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="TemporalFieldCreatePersistent2">
         <EditorCategories value="Race:Protoss"/>
@@ -970,7 +967,7 @@
         <Movers Link="SpineCrawlerTentacleExtendLong" IfRangeLTE="7"/>
     </CEffectLaunchMissile>
     <CEffectDamage id="ImpalerTentacleU">
-        <AttributeBonus index="Heroic" value="40"/>
+        <AttributeBonus index="Heroic" value="15"/>
     </CEffectDamage>
     <CEffectDamage id="ImpalerTentacleU2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
@@ -1024,7 +1021,7 @@
         <PeriodicPeriodArray index="0" value="0.3"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="LongboltMissileU">
-        <AttributeBonus index="Heroic" value="40"/>
+        <AttributeBonus index="Heroic" value="15"/>
     </CEffectDamage>
     <CEffectEnumArea id="MothershipStasisSearch">
         <AreaArray index="0" Radius="5"/>
@@ -1061,7 +1058,7 @@
         <Amount value="25"/>
     </CEffectDamage>
     <CEffectDamage id="Obliterate">
-        <Amount value="25"/>
+        <Amount value="10"/>
     </CEffectDamage>
     <CEffectEnumArea id="ObserverSquadSightSearch">
         <SearchFilters value="Visible;Enemy,Structure,Missile,Stasis,Dead,Invulnerable"/>
@@ -1101,7 +1098,7 @@
         <Death value="Electrocute"/>
     </CEffectDamage>
     <CEffectDamage id="PhotonCannonU">
-        <AttributeBonus index="Heroic" value="40"/>
+        <AttributeBonus index="Heroic" value="15"/>
     </CEffectDamage>
     <CEffectDamage id="PrimalGasCloudDamage2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Zerg"/>
@@ -1218,7 +1215,7 @@
         <AmmoUnit value="TossGrenadeWeapon2"/>
     </CEffectLaunchMissile>
     <CEffectDamage id="TwinIbiksCannon">
-        <AttributeBonus index="Heroic" value="40"/>
+        <AttributeBonus index="Heroic" value="15"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="UltraliskBurrowChargeHold2">
         <EditorCategories value="Race:Zerg"/>

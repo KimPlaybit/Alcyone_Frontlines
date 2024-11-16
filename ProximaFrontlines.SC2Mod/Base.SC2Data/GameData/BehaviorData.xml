@@ -4,7 +4,7 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Splash" value="5"/>
-            <VitalMaxArray index="Shields" value="55"/>
+            <VitalMaxArray index="Shields" value="70"/>
             <VitalMaxArray index="Energy" value="30"/>
         </Modification>
     </CBehaviorAttribute>
@@ -19,14 +19,14 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Melee" value="8"/>
-            <VitalMaxArray index="Shields" value="40"/>
+            <VitalMaxArray index="Shields" value="55"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="DarkTemplar8to10">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Melee" value="10"/>
-            <VitalMaxArray index="Shields" value="60"/>
+            <VitalMaxArray index="Shields" value="75"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Defiler5to7">
@@ -34,7 +34,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="5"/>
-            <VitalMaxArray index="Life" value="40"/>
+            <VitalMaxArray index="Life" value="55"/>
             <VitalMaxArray index="Energy" value="30"/>
             <VitalRegenMultiplier index="Energy" value="0.02"/>
         </Modification>
@@ -44,7 +44,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="7"/>
-            <VitalMaxArray index="Life" value="60"/>
+            <VitalMaxArray index="Life" value="75"/>
             <VitalMaxArray index="Energy" value="40"/>
             <VitalRegenMultiplier index="Energy" value="0.02"/>
         </Modification>
@@ -53,14 +53,14 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="8"/>
-            <VitalMaxArray index="Shields" value="35"/>
+            <VitalMaxArray index="Shields" value="50"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Dragoon8to10">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="10"/>
-            <VitalMaxArray index="Shields" value="50"/>
+            <VitalMaxArray index="Shields" value="75"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorBuff id="Ensnare">
@@ -79,7 +79,7 @@
         <Modification AttackSpeedMultiplier="1.02">
             <DamageDealtUnscaled index="Ranged" value="7"/>
             <DamageDealtUnscaled index="NoProc" value="3"/>
-            <VitalMaxArray index="Life" value="40"/>
+            <VitalMaxArray index="Life" value="55"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Goliath8to10">
@@ -87,21 +87,21 @@
         <Modification AttackSpeedMultiplier="1.03">
             <DamageDealtUnscaled index="Ranged" value="8"/>
             <DamageDealtUnscaled index="NoProc" value="4"/>
-            <VitalMaxArray index="Life" value="60"/>
+            <VitalMaxArray index="Life" value="75"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Medic5to7">
         <BehaviorFlags index="Permanent" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification SightBonus="1">
-            <VitalMaxArray index="Life" value="40"/>
+            <VitalMaxArray index="Life" value="55"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Medic8to10">
         <BehaviorFlags index="Permanent" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification>
-            <VitalMaxArray index="Life" value="55"/>
+            <VitalMaxArray index="Life" value="70"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="MothershipCore1to4">
@@ -135,13 +135,14 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="6"/>
-            <VitalMaxArray index="Shields" value="60"/>
+            <VitalMaxArray index="Shields" value="75"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="MothershipCore5to7">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="5"/>
+            <VitalMaxArray index="Life" value="60"/>
             <VitalMaxArray index="Shields" value="45"/>
         </Modification>
     </CBehaviorAttribute>
@@ -156,7 +157,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification AttackSpeedMultiplier="1.1">
             <DamageDealtUnscaled index="Ranged" value="7"/>
-            <VitalMaxArray index="Life" value="30"/>
+            <VitalMaxArray index="Life" value="45"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Marine8to10">
@@ -164,7 +165,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Modification AttackSpeedMultiplier="1.1">
             <DamageDealtUnscaled index="Ranged" value="9"/>
-            <VitalMaxArray index="Life" value="45"/>
+            <VitalMaxArray index="Life" value="60"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="ScienceVessel1to4">
@@ -179,7 +180,7 @@
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="6"/>
             <DamageDealtUnscaled index="Splash" value="6"/>
-            <VitalMaxArray index="Life" value="75"/>
+            <VitalMaxArray index="Life" value="90"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Hydralisk5to7">
@@ -188,7 +189,7 @@
         <Modification MoveSpeedMultiplier="1.01">
             <DamageDealtUnscaled index="Melee" value="3"/>
             <DamageDealtUnscaled index="Ranged" value="6"/>
-            <VitalMaxArray index="Life" value="40"/>
+            <VitalMaxArray index="Life" value="55"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Hydralisk5to72">
@@ -197,7 +198,7 @@
         <Modification MoveSpeedMultiplier="1.01">
             <DamageDealtUnscaled index="Melee" value="3"/>
             <DamageDealtUnscaled index="Ranged" value="7"/>
-            <VitalMaxArray index="Life" value="60"/>
+            <VitalMaxArray index="Life" value="75"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Queen1to42">
@@ -212,21 +213,21 @@
         <BehaviorFlags index="Permanent" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Modification SightBonus="1">
-            <VitalMaxArray index="Life" value="60"/>
+            <VitalMaxArray index="Life" value="75"/>
             <VitalMaxArray index="Energy" value="50"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="ScienceVessel5to7">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification>
-            <VitalMaxArray index="Life" value="40"/>
+            <VitalMaxArray index="Life" value="55"/>
             <VitalMaxArray index="Energy" value="20"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="ScienceVessel8to10">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification>
-            <VitalMaxArray index="Life" value="60"/>
+            <VitalMaxArray index="Life" value="65"/>
             <VitalMaxArray index="Energy" value="50"/>
         </Modification>
     </CBehaviorAttribute>
@@ -241,21 +242,21 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="5"/>
-            <VitalMaxArray index="Shields" value="45"/>
+            <VitalMaxArray index="Shields" value="60"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Sentry8to10">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Ranged" value="5"/>
-            <VitalMaxArray index="Shields" value="60"/>
+            <VitalMaxArray index="Shields" value="75"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Spectre5to7">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification XPMultiplier="1.03">
             <DamageDealtUnscaled index="Ranged" value="8"/>
-            <VitalMaxArray index="Life" value="40"/>
+            <VitalMaxArray index="Life" value="55"/>
             <VitalMaxArray index="Energy" value="25"/>
         </Modification>
     </CBehaviorAttribute>
@@ -263,7 +264,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Modification XPMultiplier="1.03">
             <DamageDealtUnscaled index="Ranged" value="10"/>
-            <VitalMaxArray index="Life" value="50"/>
+            <VitalMaxArray index="Life" value="65"/>
             <VitalMaxArray index="Energy" value="30"/>
         </Modification>
     </CBehaviorAttribute>
@@ -649,7 +650,7 @@
         <Modification SightBonus="1">
             <DamageDealtUnscaled index="Melee" value="7"/>
             <DamageDealtUnscaled index="Splash" value="3"/>
-            <VitalMaxArray index="Life" value="60"/>
+            <VitalMaxArray index="Life" value="75"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Ultralisk8to10">
@@ -658,21 +659,21 @@
         <Modification SightBonus="1">
             <DamageDealtUnscaled index="Melee" value="8"/>
             <DamageDealtUnscaled index="Splash" value="3"/>
-            <VitalMaxArray index="Life" value="85"/>
+            <VitalMaxArray index="Life" value="100"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Zealot5to7">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Melee" value="5"/>
-            <VitalMaxArray index="Shields" value="60"/>
+            <VitalMaxArray index="Shields" value="75"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Zealot8to10">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Melee" value="6"/>
-            <VitalMaxArray index="Shields" value="80"/>
+            <VitalMaxArray index="Shields" value="95"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="Zergling1to4">
@@ -772,7 +773,7 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Modification>
             <DamageDealtUnscaled index="Splash" value="4"/>
-            <VitalMaxArray index="Shields" value="35"/>
+            <VitalMaxArray index="Shields" value="50"/>
             <VitalMaxArray index="Energy" value="20"/>
         </Modification>
     </CBehaviorAttribute>
@@ -1501,7 +1502,7 @@
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Modification MoveSpeedMultiplier="1.03">
             <DamageDealtUnscaled index="Melee" value="8"/>
-            <VitalMaxArray index="Life" value="75"/>
+            <VitalMaxArray index="Life" value="90"/>
         </Modification>
     </CBehaviorAttribute>
 </Catalog>

@@ -848,8 +848,8 @@
         <Attributes index="Biological" value="1"/>
         <Attributes index="Massive" value="1"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="125"/>
-        <LifeMax value="125"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
         <LifeArmor value="3"/>
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
@@ -1212,15 +1212,15 @@
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Psionic" value="1"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="130"/>
-        <LifeMax value="130"/>
+        <LifeStart value="60"/>
+        <LifeMax value="60"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossBuildingPlating"/>
         <EnergyStart value="200"/>
         <EnergyMax value="200"/>
         <EnergyRegenRate value="0.5625"/>
-        <ShieldsStart value="60"/>
-        <ShieldsMax value="60"/>
+        <ShieldsStart value="75"/>
+        <ShieldsMax value="75"/>
         <ShieldRegenDelay value="10"/>
         <ShieldRegenRate value="2"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
@@ -1514,8 +1514,8 @@
         <Attributes index="Biological" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
+        <LifeStart value="75"/>
+        <LifeMax value="75"/>
         <LifeArmor value="5"/>
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergBuildingArmor"/>
@@ -1741,8 +1741,8 @@
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="125"/>
-        <LifeMax value="125"/>
+        <LifeStart value="130"/>
+        <LifeMax value="130"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
         <EnergyStart value="50"/>
@@ -1846,6 +1846,8 @@
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
         <HotkeyCategory value="Unit/Category/ProtossStory"/>
         <AlliedPushPriority value="15"/>
+        <ShieldsStart value="60"/>
+        <ShieldsMax value="60"/>
     </CUnit>
     <CUnit id="SmallNydusSpawner">
         <DeathRevealRadius value="3"/>
@@ -2254,8 +2256,6 @@
         <Collide index="Small" value="1"/>
         <Attributes index="Heroic" value="1"/>
         <Attributes index="Summoned" value="1"/>
-        <LifeStart value="45"/>
-        <LifeMax value="45"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
         <Mover value="CliffJumper"/>
         <Speed value="3.836"/>
@@ -5273,8 +5273,8 @@
         <Attributes index="Psionic" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="80"/>
-        <LifeMax value="80"/>
+        <LifeStart value="105"/>
+        <LifeMax value="105"/>
         <LifeArmor value="1"/>
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
@@ -5360,8 +5360,8 @@
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="120"/>
-        <LifeMax value="120"/>
+        <LifeStart value="60"/>
+        <LifeMax value="60"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
         <ShieldsStart value="80"/>
@@ -5470,8 +5470,8 @@
         <Attributes index="Biological" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="125"/>
-        <LifeMax value="125"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
         <Speed value="2.75"/>
@@ -5574,8 +5574,8 @@
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="120"/>
-        <LifeMax value="120"/>
+        <LifeStart value="65"/>
+        <LifeMax value="65"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
         <ShieldsStart value="60"/>
@@ -5603,7 +5603,7 @@
         <AbilArray Link="Warpable"/>
         <AbilArray Link="CorsairMPDisruptionWeb"/>
         <AbilArray Link="ProgressRally"/>
-        <AbilArray Link="ForceField"/>
+        <AbilArray Link="ForceField2"/>
         <AbilArray Link="PsionicShockwave"/>
         <AbilArray Link="MothershipStasis"/>
         <BehaviorArray index="0" Link="SOAHeroicShieldProcBuff"/>
@@ -5621,7 +5621,7 @@
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="CorsairMPDisruptionWeb" Type="AbilCmd" AbilCmd="CorsairMPDisruptionWeb,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
-            <LayoutButtons Face="ForceField" Type="AbilCmd" AbilCmd="ForceField,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ForceField" Type="AbilCmd" AbilCmd="ForceField2,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="PsionicShockwave" Type="AbilCmd" AbilCmd="PsionicShockwave,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="MothershipStasis" Type="AbilCmd" AbilCmd="MothershipStasis,Execute" Row="2" Column="3"/>
         </CardLayouts>
@@ -5962,8 +5962,8 @@
         <Attributes index="Biological" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="80"/>
-        <LifeMax value="80"/>
+        <LifeStart value="105"/>
+        <LifeMax value="105"/>
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
@@ -6472,8 +6472,8 @@
         <Attributes index="Biological" value="1"/>
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="100"/>
-        <LifeMax value="100"/>
+        <LifeStart value="125"/>
+        <LifeMax value="125"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
         <Speed value="3"/>
@@ -6576,8 +6576,8 @@
         <Attributes index="Light" value="1"/>
         <Attributes index="Biological" value="1"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="65"/>
-        <LifeMax value="65"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
         <LifeArmor value="1"/>
         <LifeRegenRate value="0.1992"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
@@ -6666,8 +6666,8 @@
         <Attributes index="Biological" value="1"/>
         <Attributes index="Psionic" value="1"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="80"/>
-        <LifeMax value="80"/>
+        <LifeStart value="105"/>
+        <LifeMax value="105"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
         <EnergyStart value="200"/>
         <EnergyMax value="200"/>
@@ -6755,8 +6755,8 @@
         <Attributes index="Light" value="1"/>
         <Attributes index="Biological" value="1"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="60"/>
-        <LifeMax value="60"/>
+        <LifeStart value="85"/>
+        <LifeMax value="85"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
         <EnergyStart value="50"/>
@@ -6855,8 +6855,8 @@
         <Attributes index="Biological" value="1"/>
         <Attributes index="Structure" value="0"/>
         <Attributes index="Heroic" value="1"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
+        <LifeStart value="125"/>
+        <LifeMax value="125"/>
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergAirArmor"/>
         <EnergyStart value="150"/>

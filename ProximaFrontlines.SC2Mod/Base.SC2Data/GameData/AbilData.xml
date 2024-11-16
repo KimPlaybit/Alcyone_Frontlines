@@ -68,10 +68,23 @@
             <Cooldown TimeUse="40"/>
         </Cost>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="ForceField">
-        <Cost index="0">
+    <CAbilEffectTarget id="ForceField2">
+        <AbilSetId value="ForceField"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ForceField"/>
+        <Cost>
             <Vital index="Energy" value="80"/>
         </Cost>
+        <Range value="9"/>
+        <Marker>
+            <MatchFlags index="Link" value="0"/>
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+        <CursorEffect value="ForceFieldPlacement"/>
+        <AINotifyEffect value="ForceField"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ForceField" State="Restricted"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <PlaceUnit value="ForceField"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="KaraxRepairDrone">
         <Arc value="360"/>
@@ -1128,8 +1141,8 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Obliterate">
         <PrepTime index="0" value="2"/>
-        <Range index="0" value="13"/>
-        <RangeSlop value="13"/>
+        <Range index="0" value="10"/>
+        <RangeSlop value="10"/>
         <TargetFilters index="0" value="Visible;Self,Ally,Neutral,Missile,Stasis,Dead,Invulnerable"/>
         <Cost index="0">
             <Vital index="Energy" value="75"/>
@@ -1549,7 +1562,6 @@
         <Range index="0" value="13"/>
         <Cost index="0">
             <Vital index="Energy" value="0"/>
-            <VitalFraction index="Energy" value="0.75"/>
             <Cooldown TimeUse="20"/>
         </Cost>
     </CAbilEffectTarget>
