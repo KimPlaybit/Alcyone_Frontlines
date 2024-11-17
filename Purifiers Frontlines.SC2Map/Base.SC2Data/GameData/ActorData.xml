@@ -60,6 +60,53 @@
             <Image value="Assets\Textures\Wireframe-Terran-Bunker.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorUnit id="HERC3" parent="GenericUnitStandard" unitName="HERC2">
+        <Aliases value="_UnitMedium"/>
+        <Macros value="UnloadDropAnim"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Marauder_Land"/>
+        <On Terms="Abil.Grapple.SourceCastStart" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Effect.GrappleLaunchCasterImpact.Start" Send="AnimBracketStop Work"/>
+        <On Terms="Effect.GrappleCreatePlaceholderRemove.Start" Send="AnimBracketStop Work"/>
+        <On Terms="Abil.HercGrapple.SourceCastStart" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Effect.HercGrappleLaunchCasterImpact.Start" Send="AnimBracketStop Work"/>
+        <On Terms="Effect.HercGrappleCreatePlaceholderRemove.Start" Send="AnimBracketStop Work"/>
+        <Model value="HERC"/>
+        <Scale value="0.800000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="HERC"/>
+        <DeathArray index="Normal" ModelLink="HERCDeath" SoundLink="Ghost_Explode"/>
+        <DeathActorModel value="UnitDeathModelWithDeathMotionGround"/>
+        <PlacementModel value="HERC"/>
+        <PortraitModel value="HercPortrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.400000"/>
+            <RangeDown value="0.400000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleSmall"/>
+        </TerrainSquibs>
+        <WalkAnimMoveSpeed value="2.5"/>
+        <BarOffset value="55"/>
+        <BarWidth value="55"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-herc.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/HERC3"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="Jumper_Ready"/>
+        <SoundArray index="Help" value="Jumper_Help"/>
+        <SoundArray index="What" value="Jumper_What"/>
+        <SoundArray index="Yes" value="Jumper_Yes"/>
+        <SoundArray index="Attack" value="Jumper_Attack"/>
+        <SoundArray index="Pissed" value="Jumper_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-herc.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-herc.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorUnit id="PhotonCannon3" parent="ProtossBuildingEx" unitName="SelfPoweredPhotonCannon">
         <Aliases value="_UnitLarge"/>
         <Macros value="ProtossBuildingPowerUp"/>

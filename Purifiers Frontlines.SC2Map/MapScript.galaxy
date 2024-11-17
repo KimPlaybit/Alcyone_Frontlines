@@ -27,6 +27,7 @@ void InitGlobals () {
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
+string gf_GetLaneUnitType (int lp_player);
 void gf_AddJungleDrop ();
 void gf_SpawnProtossDef (int lp_player, point lp_point);
 void gf_SpawnZergDef (int lp_player, point lp_point);
@@ -45,6 +46,17 @@ trigger gt_BaseDies;
 //--------------------------------------------------------------------------------------------------
 // Global Functions
 //--------------------------------------------------------------------------------------------------
+string gf_GetLaneUnitType (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerRace(lib5A1C9904_gf_GetAllyRTSPlayer(lp_player)) == "Terr")) {
+        return "HERC2";
+    }
+    else {
+        return lib5A1C9904_gf_GetDefaultWaveType(lp_player);
+    }
+}
+
 void gf_AddJungleDrop () {
     // Automatic Variable Declarations
     // Implementation
@@ -207,7 +219,7 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_waveUnitType = lib5A1C9904_gf_GetDefaultWaveType(13);
+    lv_waveUnitType = gf_GetLaneUnitType(13);
     lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(13);
     lv_waveSpawnAmount = lib5A1C9904_gf_GetDefaultWaveAmount(13);
 
@@ -267,7 +279,7 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(396456094), lv_spawnerId);
     lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(14);
     lv_waveSpawnAmount = lib5A1C9904_gf_GetDefaultWaveAmount(14);
-    lv_waveUnitType = lib5A1C9904_gf_GetDefaultWaveType(14);
+    lv_waveUnitType = gf_GetLaneUnitType(14);
     lv_spawnerId = lib5A1C9904_gf_AddSpawner(PointFromId(1481026975), lv_spawnerUnitType, lv_waveUnitType, lv_waveSpawnAmount, 14);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1892330525), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(93343805), lv_spawnerId);

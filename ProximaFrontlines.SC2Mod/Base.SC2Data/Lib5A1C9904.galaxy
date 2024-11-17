@@ -911,7 +911,9 @@ void lib5A1C9904_gf_SetupTeams1 () {
             if (lv_loopedPlayer2 < 0) { break; }
             libNtve_gf_SetAlliance(lv_loopedPlayer, lv_loopedPlayer2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
         }
-        libNtve_gf_SetAlliance(13, lv_loopedPlayer, libNtve_ge_AllianceSetting_NeutralWithSharedVision);
+        libNtve_gf_SetAlliance(lv_loopedPlayer, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        libNtve_gf_SetAlliance(13, lv_loopedPlayer, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        PlayerSetAlliance(13, c_allianceIdSeekHelp, lv_loopedPlayer, false);
         libNtve_gf_SetAlliance(14, lv_loopedPlayer, libNtve_ge_AllianceSetting_Enemy);
         CameraPan(lv_loopedPlayer, lib5A1C9904_gv_startPosition1, 0.0, -1, 10.0, false);
     }
@@ -946,7 +948,8 @@ void lib5A1C9904_gf_SetupTeams2 () {
             libNtve_gf_SetAlliance(lv_loopedPlayer, lv_loopedPlayer2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
         }
         libNtve_gf_SetAlliance(lv_loopedPlayer, lib5A1C9904_gv_rTSPlayer2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
-        libNtve_gf_SetAlliance(14, lv_loopedPlayer, libNtve_ge_AllianceSetting_NeutralWithSharedVision);
+        libNtve_gf_SetAlliance(14, lv_loopedPlayer, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        PlayerSetAlliance(14, c_allianceIdSeekHelp, lv_loopedPlayer, false);
         libNtve_gf_SetAlliance(13, lv_loopedPlayer, libNtve_ge_AllianceSetting_Enemy);
         CameraPan(lv_loopedPlayer, lib5A1C9904_gv_startPosition2, 0.0, -1, 10.0, false);
     }
@@ -2400,6 +2403,7 @@ bool lib5A1C9904_gt_BanelingUnitCreated_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    Wait(0.01, c_timeGame);
     UnitSelect(EventUnitCreatedUnit(), UnitGetOwner(EventUnitCreatedUnit()), true);
     return true;
 }
@@ -2419,12 +2423,11 @@ bool lib5A1C9904_gt_BanelingCreated_Func (bool testConds, bool runActions) {
     int lv_amountOfTicks;
     int lv_player;
     unit lv_castingUnit;
-    bool lv_unitdead;
 
     // Automatic Variable Declarations
     // Variable Initialization
     lv_spawnPoint = PointFromId(1219627428);
-    lv_player = EventPlayer();
+    lv_player = UnitGetOwner(EventUnit());
     lv_castingUnit = EventUnit();
 
     // Conditions
@@ -2445,16 +2448,17 @@ bool lib5A1C9904_gt_BanelingCreated_Func (bool testConds, bool runActions) {
     UnitSetState(lv_castingUnit, c_unitStateTooltipable, false);
     UnitSetState(lv_castingUnit, c_unitStateStatusBar, false);
     UnitSetScale(lv_castingUnit, 1.0, 1.0, 1.0);
-    UnitSetState(lv_castingUnit, c_unitStateSleeping, true);
     UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, false);
+    Wait(1.0, c_timeGame);
+    UnitSetState(lv_castingUnit, c_unitStateSleeping, true);
     libNtve_gf_MakeUnitInvulnerable(lv_castingUnit, true);
     UnitClearSelection(UnitGetOwner(lv_castingUnit));
     Wait(10.0, c_timeGame);
-    if ((lib5A1C9904_gf_GetEnemyRTSPlayer(lv_player) == lib5A1C9904_gv_rTSPlayer1)) {
-        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam2(lv_castingUnit);
+    if ((lib5A1C9904_gf_GetAllyRTSPlayer(lv_player) == lib5A1C9904_gv_rTSPlayer1)) {
+        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam1(lv_castingUnit);
     }
     else {
-        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam1(lv_castingUnit);
+        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam2(lv_castingUnit);
     }
     UnitSetPosition(lv_castingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
     UnitSetScale(lv_castingUnit, 100.0, 100.0, 100.0);
