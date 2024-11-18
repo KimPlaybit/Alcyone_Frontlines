@@ -6,6 +6,11 @@
     <CAbilTransport id="OverlordTransport">
         <TargetFilters value="Visible;Ally,Neutral,Enemy,Worker,Buried,UnderConstruction,Dead,Hidden"/>
     </CAbilTransport>
+    <CAbilEffectTarget id="PhaseCannon">
+        <Placeholder value="PhotonCannon2"/>
+        <ProducedUnitArray index="0" value="PhotonCannon2"/>
+        <PlaceUnit value="PhotonCannon2"/>
+    </CAbilEffectTarget>
     <CAbilTransport id="WarpPrismTransport">
         <TargetFilters value="Visible;Ally,Neutral,Enemy,Worker,Buried,UnderConstruction,Dead,Hidden"/>
     </CAbilTransport>

@@ -100,6 +100,11 @@
     <CUnit id="CommandCenterFlying">
         <AbilArray index="3" removed="1"/>
     </CUnit>
+    <CUnit id="CreepTumorQueen">
+        <Collide index="Structure" value="0"/>
+        <Footprint value="CreepTumor"/>
+        <PlacementFootprint value="CreepTumor"/>
+    </CUnit>
     <CUnit id="HERC2">
         <DeathRevealRadius value="3"/>
         <Race value="Terr"/>
@@ -180,6 +185,17 @@
         <HotkeyCategory value="Unit/Category/TerranUnits"/>
         <KillDisplay value="Always"/>
         <RankDisplay value="Always"/>
+    </CUnit>
+    <CUnit id="LabTurret">
+        <Collide index="Structure" value="0"/>
+    </CUnit>
+    <CUnit id="LabTurretUp2">
+        <Footprint value="Footprint2x2Contour3"/>
+        <PlacementFootprint value="Footprint2x2Contour3"/>
+    </CUnit>
+    <CUnit id="PhotonCannon2">
+        <Footprint value="Footprint2x2Contour3"/>
+        <PlacementFootprint value="Footprint2x2Contour3"/>
     </CUnit>
     <CUnit id="SelfPoweredPhotonCannon">
         <Facing value="45"/>
@@ -326,6 +342,11 @@
         <HotkeyCategory value="Unit/Category/ZergUnits"/>
         <KillDisplay value="Always"/>
         <RankDisplay value="Always"/>
+    </CUnit>
+    <CUnit id="SmallNydusSpawner">
+        <Collide index="Structure" value="0"/>
+        <Footprint value="CreepTumor"/>
+        <PlacementFootprint value="CreepTumor"/>
     </CUnit>
     <CUnit id="StoneZealot">
         <FogVisibility value="Hidden"/>

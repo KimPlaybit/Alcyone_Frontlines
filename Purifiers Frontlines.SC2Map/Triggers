@@ -15,6 +15,8 @@
         <Variable Type="Variable" Id="FBEC177A"/>
         <Variable Type="Variable" Id="C9FCCE86"/>
         <Event Type="FunctionCall" Id="3FF38F92"/>
+        <Action Type="FunctionCall" Id="FFFA01FB"/>
+        <Action Type="FunctionCall" Id="A35906B7"/>
         <Action Type="Comment" Id="98B5A94E"/>
         <Action Type="FunctionCall" Id="1EBFCF98"/>
         <Action Type="FunctionCall" Id="4542F58C"/>
@@ -159,6 +161,34 @@
     </Element>
     <Element Type="FunctionCall" Id="3FF38F92">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
+    </Element>
+    <Element Type="FunctionCall" Id="FFFA01FB">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000111"/>
+        <Parameter Type="Param" Id="86DDB574"/>
+        <Parameter Type="Param" Id="7B3106AA"/>
+    </Element>
+    <Element Type="Param" Id="86DDB574">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000176"/>
+        <ValueType Type="trigger"/>
+        <ValueElement Type="Trigger" Library="5A1C9904" Id="E9D97851"/>
+    </Element>
+    <Element Type="Param" Id="7B3106AA">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000177"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000545"/>
+    </Element>
+    <Element Type="FunctionCall" Id="A35906B7">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000111"/>
+        <Parameter Type="Param" Id="F6CA91A2"/>
+        <Parameter Type="Param" Id="C199899B"/>
+    </Element>
+    <Element Type="Param" Id="F6CA91A2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000176"/>
+        <ValueType Type="trigger"/>
+        <ValueElement Type="Trigger" Library="5A1C9904" Id="C9D5E099"/>
+    </Element>
+    <Element Type="Param" Id="C199899B">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000177"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000545"/>
     </Element>
     <Element Type="Comment" Id="98B5A94E">
         <Comment>

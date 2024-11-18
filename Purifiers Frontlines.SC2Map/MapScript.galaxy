@@ -228,6 +228,8 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    TriggerEnable(lib5A1C9904_gt_AddRtsPlayer1Buildings, false);
+    TriggerEnable(lib5A1C9904_gt_AddRtsPlayer2Buildings, false);
     gv_bases[0] = UnitFromId(56221378);
     gv_bases[1] = UnitFromId(991837377);
     gv_bases[2] = UnitFromId(1442615457);
