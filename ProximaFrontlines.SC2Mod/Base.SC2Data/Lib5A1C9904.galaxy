@@ -115,6 +115,125 @@ void lib5A1C9904_InitVariables () {
 }
 
 // Functions
+void lib5A1C9904_gf_LoadFromLobby (point lp_startPosition1, point lp_startPosition2) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib5A1C9904_gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
+    lib5A1C9904_gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
+}
+
+bool lib5A1C9904_gf_LoadedFromBank (point lp_startPosition1, point lp_startPosition2) {
+    // Variable Declarations
+    bool lv_waves;
+    string lv_raceName;
+    int lv_index;
+    playergroup lv_playerTeam1;
+    bool lv_read;
+    bank lv_bank;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_waves = lib5A1C9904_gf_GetWaveStatus();
+    lv_raceName = "";
+    lv_playerTeam1 = PlayerGroupEmpty();
+    lv_read = true;
+
+    // Implementation
+    BankLoad("gamevalues", 1);
+    lv_bank = BankLastCreated();
+    if ((BankKeyExists(BankLastCreated(), "gamevalues", "Read") == true)) {
+        lv_read = BankValueGetAsFlag(BankLastCreated(), "gamevalues", "Read");
+    }
+    else {
+        return false;
+    }
+    if ((lv_read == false)) {
+        lib5A1C9904_gv_soldierPlayers1 = lib5A1C9904_gf_LoadPlayersFromBank(lv_bank, "SoldierPlayer1");
+        lib5A1C9904_gv_soldierPlayers2 = lib5A1C9904_gf_LoadPlayersFromBank(lv_bank, "SoldierPlayer2");
+        lib5A1C9904_gv_rTSPlayer1 = lib5A1C9904_gf_LoadRTSPlayer(lv_bank, "RTSPlayer1");
+        lib5A1C9904_gv_rTSPlayer2 = lib5A1C9904_gf_LoadRTSPlayer(lv_bank, "RTSPlayer2");
+        lib5A1C9904_gf_SetRTSPlayerRace(lv_bank, "RTSPlayer1Race", lib5A1C9904_gv_rTSPlayer1);
+        lib5A1C9904_gf_SetRTSPlayerRace(lv_bank, "RTSPlayer2Race", lib5A1C9904_gv_rTSPlayer2);
+        lib5A1C9904_gv_loadedFromBank = true;
+        BankValueSetFromFlag(lv_bank, "gamevalues", "Read", true);
+        BankSave(lv_bank);
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+playergroup lib5A1C9904_gf_LoadPlayersFromBank (bank lp_bank, string lp_key) {
+    // Variable Declarations
+    int lv_index;
+    playergroup lv_players;
+    const string lv_section = "gamevalues";
+
+    // Automatic Variable Declarations
+    const int auto2151CB17_ae = 13;
+    const int auto2151CB17_ai = 1;
+
+    // Variable Initialization
+    lv_players = PlayerGroupEmpty();
+
+    // Implementation
+    lv_index = 0;
+    for ( ; ( (auto2151CB17_ai >= 0 && lv_index <= auto2151CB17_ae) || (auto2151CB17_ai < 0 && lv_index >= auto2151CB17_ae) ) ; lv_index += auto2151CB17_ai ) {
+        if ((BankKeyExists(lp_bank, lv_section, (lp_key + IntToString(lv_index))) == true)) {
+            PlayerGroupAdd(lv_players, BankValueGetAsInt(lp_bank, lv_section, (lp_key + IntToString(lv_index))));
+        }
+
+    }
+    return lv_players;
+}
+
+int lib5A1C9904_gf_LoadRTSPlayer (bank lp_bank, string lp_key) {
+    // Variable Declarations
+    playergroup lv_players;
+    const string lv_section = "gamevalues";
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_players = PlayerGroupEmpty();
+
+    // Implementation
+    if ((BankKeyExists(lp_bank, "gamevalues", lp_key) == true)) {
+        return BankValueGetAsInt(lp_bank, lv_section, lp_key);
+    }
+
+    return 0;
+}
+
+void lib5A1C9904_gf_SetRTSPlayerRace (bank lp_bank, string lp_key, int lp_player) {
+    // Variable Declarations
+    const string lv_section = "gamevalues";
+    int lv_race;
+
+    // Automatic Variable Declarations
+    int auto4221B408_val;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((BankKeyExists(lp_bank, "gamevalues", lp_key) == true)) {
+        lv_race = BankValueGetAsInt(lp_bank, "gamevalues", lp_key);
+        auto4221B408_val = lv_race;
+        if (auto4221B408_val == 1) {
+            PlayerSetRace(lp_player, "Terr");
+        }
+        else if (auto4221B408_val == 2) {
+            PlayerSetRace(lp_player, "Zerg");
+        }
+        else if (auto4221B408_val == 3) {
+            PlayerSetRace(lp_player, "Prot");
+        }
+        else {
+        }
+    }
+
+}
+
 trigger auto_lib5A1C9904_gf_StartProximaGame_Trigger = null;
 point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
 point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2;
@@ -176,8 +295,11 @@ bool auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc (bool testConds, bool runA
         }
     }
     else {
-        lib5A1C9904_gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
-        lib5A1C9904_gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
+        if ((lib5A1C9904_gv_loadedFromBank == false)) {
+            lib5A1C9904_gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
+            lib5A1C9904_gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
+        }
+
         MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1), lv_startpos1);
         lib5A1C9904_gf_SpawnDefenceTower(lib5A1C9904_gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
         MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer2, PlayerRace(lib5A1C9904_gv_rTSPlayer2), lv_startpos2);
@@ -1309,6 +1431,10 @@ point lib5A1C9904_gf_GetSpawnPointTeam1 (unit lp_deadPlayer) {
     // Variable Initialization
 
     // Implementation
+    if ((lib5A1C9904_gv_overrideSpawnPointTeam1 != null)) {
+        return lib5A1C9904_gv_overrideSpawnPointTeam1;
+    }
+
     if ((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_rtsPlayer1TownBuilding) == false)) {
         lv_unit = UnitGroupClosestToPoint(lib5A1C9904_gv_rtsPlayer1TownBuilding, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
         return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
@@ -1330,6 +1456,10 @@ point lib5A1C9904_gf_GetSpawnPointTeam2 (unit lp_deadPlayer) {
     // Variable Initialization
 
     // Implementation
+    if ((lib5A1C9904_gv_overrideSpawnPointTeam2 != null)) {
+        return lib5A1C9904_gv_overrideSpawnPointTeam2;
+    }
+
     if ((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_rtsPlayer2TownBuilding) == false)) {
         lv_unit = UnitGroupClosestToPoint(lib5A1C9904_gv_rtsPlayer2TownBuilding, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
         return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));

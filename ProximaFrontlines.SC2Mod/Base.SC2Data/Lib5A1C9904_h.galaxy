@@ -42,6 +42,7 @@ struct lib5A1C9904_gs_Spawn {
 };
 
 // Variable Declarations
+bool lib5A1C9904_gv_loadedFromBank;
 point lib5A1C9904_gv_startPosition1;
 point lib5A1C9904_gv_startPosition2;
 string lib5A1C9904_gv_terranFactions;
@@ -73,6 +74,8 @@ int lib5A1C9904_gv_lastIndexOfSpawn;
 unitgroup[100] lib5A1C9904_gv_jungleUnitGroups;
 unit[21] lib5A1C9904_gv_spawnPoints;
 int lib5A1C9904_gv_killingPlayerOfJungle;
+point lib5A1C9904_gv_overrideSpawnPointTeam1;
+point lib5A1C9904_gv_overrideSpawnPointTeam2;
 unitgroup lib5A1C9904_gv_revivableUnits;
 int lib5A1C9904_gv_ressTimer;
 unit[11] lib5A1C9904_gv_unitSizeIndex;
@@ -164,6 +167,11 @@ unitgroup lib5A1C9904_gv_marines_2;
 unitgroup lib5A1C9904_gv_boss;
 
 // Function Declarations
+void lib5A1C9904_gf_LoadFromLobby (point lp_startPosition1, point lp_startPosition2);
+bool lib5A1C9904_gf_LoadedFromBank (point lp_startPosition1, point lp_startPosition2);
+playergroup lib5A1C9904_gf_LoadPlayersFromBank (bank lp_bank, string lp_key);
+int lib5A1C9904_gf_LoadRTSPlayer (bank lp_bank, string lp_key);
+void lib5A1C9904_gf_SetRTSPlayerRace (bank lp_bank, string lp_key, int lp_player);
 void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, fixed lp_turretOffset1X, fixed lp_turretOffset1Y, fixed lp_turretOffset2X, fixed lp_turretOffset2Y);
 bool lib5A1C9904_gf_IsKnownRace (int lp_player);
 bool lib5A1C9904_gf_IsProtoss (int lp_rTSPlayer);

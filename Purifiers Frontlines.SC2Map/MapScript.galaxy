@@ -211,6 +211,7 @@ void gf_SpawnTurrets () {
 //--------------------------------------------------------------------------------------------------
 bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
     // Variable Declarations
+    bool lv_loadedFromBank;
     int lv_spawnerId;
     string lv_waveUnitType;
     string lv_spawnerUnitType;
@@ -228,8 +229,9 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TriggerEnable(lib5A1C9904_gt_AddRtsPlayer1Buildings, false);
-    TriggerEnable(lib5A1C9904_gt_AddRtsPlayer2Buildings, false);
+    lv_loadedFromBank = lib5A1C9904_gf_LoadedFromBank(PointFromId(815697778), PointFromId(396456094));
+    lib5A1C9904_gv_overrideSpawnPointTeam1 = PointFromId(815697778);
+    lib5A1C9904_gv_overrideSpawnPointTeam2 = PointFromId(396456094);
     gv_bases[0] = UnitFromId(56221378);
     gv_bases[1] = UnitFromId(991837377);
     gv_bases[2] = UnitFromId(1442615457);
@@ -271,6 +273,9 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
     lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
     lv_spawn.lv_point = PointFromId(1260085707);
     lib5A1C9904_gf_AddJungleSpawn(lv_spawn);
+    lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(13);
+    lv_waveSpawnAmount = lib5A1C9904_gf_GetDefaultWaveAmount(13);
+    lv_waveUnitType = gf_GetLaneUnitType(13);
     lv_spawnerId = lib5A1C9904_gf_AddSpawner(PointFromId(1569281949), lv_spawnerUnitType, lv_waveUnitType, lv_waveSpawnAmount, 13);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(93343805), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1892330525), lv_spawnerId);

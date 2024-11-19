@@ -177,7 +177,6 @@ wave cai_wave_createdWave (int w, int p) {
 
 //--------------------------------------------------------------------------------------------------
 void cai_startall () {
-    AICampaignStart(2);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -595,12 +594,18 @@ void gt_VikingsIncrease_Init () {
 // Trigger: Melee Initialization
 //--------------------------------------------------------------------------------------------------
 bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    bool lv_loadedFromBank;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+
     // Actions
     if (!runActions) {
         return true;
     }
 
+    lv_loadedFromBank = lib5A1C9904_gf_LoadedFromBank(PointFromId(1219627428), PointFromId(1466456382));
     gf_SetupSpawners();
     gf_SetupJungle();
     gf_SpawnPointsMinerals();

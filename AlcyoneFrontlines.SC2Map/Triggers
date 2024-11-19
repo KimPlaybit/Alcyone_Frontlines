@@ -4618,14 +4618,54 @@
         <Variable Type="Variable" Id="9A432632"/>
     </Element>
     <Element Type="Trigger" Id="BFDDE081">
+        <Variable Type="Variable" Id="12DD6370"/>
         <Event Type="FunctionCall" Id="A56D004B"/>
+        <Action Type="FunctionCall" Id="4B28019C"/>
         <Action Type="FunctionCall" Id="2E5C1127"/>
         <Action Type="FunctionCall" Id="CF99F52D"/>
         <Action Type="FunctionCall" Id="0710A48B"/>
         <Action Type="FunctionCall" Id="BD4CB9F4"/>
     </Element>
+    <Element Type="Variable" Id="12DD6370">
+        <VariableType>
+            <Type Value="bool"/>
+        </VariableType>
+        <Value Type="Param" Id="EC6C05AC"/>
+    </Element>
+    <Element Type="Param" Id="EC6C05AC">
+        <Value>false</Value>
+        <ValueType Type="bool"/>
+    </Element>
     <Element Type="FunctionCall" Id="A56D004B">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
+    </Element>
+    <Element Type="FunctionCall" Id="4B28019C">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+        <Parameter Type="Param" Id="48023AAB"/>
+        <Parameter Type="Param" Id="C15137B4"/>
+    </Element>
+    <Element Type="Param" Id="48023AAB">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+        <Variable Type="Variable" Id="12DD6370"/>
+    </Element>
+    <Element Type="Param" Id="C15137B4">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+        <FunctionCall Type="FunctionCall" Id="6A0FA03D"/>
+    </Element>
+    <Element Type="FunctionCall" Id="6A0FA03D">
+        <FunctionDef Type="FunctionDef" Library="5A1C9904" Id="06590A73"/>
+        <Parameter Type="Param" Id="4BEE5D6C"/>
+        <Parameter Type="Param" Id="2844322B"/>
+    </Element>
+    <Element Type="Param" Id="4BEE5D6C">
+        <ParameterDef Type="ParamDef" Library="5A1C9904" Id="EF81B41F"/>
+        <ValueType Type="point"/>
+        <ValueId Id="1219627428"/>
+    </Element>
+    <Element Type="Param" Id="2844322B">
+        <ParameterDef Type="ParamDef" Library="5A1C9904" Id="D28C13F8"/>
+        <ValueType Type="point"/>
+        <ValueId Id="1466456382"/>
     </Element>
     <Element Type="FunctionCall" Id="2E5C1127">
         <FunctionDef Type="FunctionDef" Id="F95E1002"/>
