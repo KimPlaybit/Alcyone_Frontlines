@@ -6356,6 +6356,7 @@
         <FlagArray index="ArmySelect" value="1"/>
         <FogVisibility value="Hidden"/>
         <EditorFlags index="NeutralDefault" value="0"/>
+        <PushPriority value="9999"/>
         <Collide index="Land1" value="0"/>
         <Collide index="Land6" value="0"/>
         <Collide index="Land7" value="0"/>
@@ -6387,6 +6388,7 @@
         <CostResource index="Minerals" value="125"/>
         <CostResource index="Vespene" value="125"/>
         <AttackTargetPriority value="20"/>
+        <AIOverideTargetPriority value="99"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
         <AbilArray Link="stop"/>
@@ -6419,7 +6421,6 @@
             <LayoutButtons Face="WraithCloakOff" Type="AbilCmd" AbilCmd="RogueGhostCloak,Off" Row="2" Column="0"/>
             <LayoutButtons Face="VoidDarkTemplarShadowFury" Type="AbilCmd" AbilCmd="DarkTemplarShadowFury,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="VoidStasis" Type="AbilCmd" AbilCmd="DarkTemplarVoidStasis,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="VoidDarkTemplarShadowFury2" Type="Passive" Row="1" Column="1"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -6451,9 +6452,7 @@
             <Charge Link="DarkTemplar/Revive"/>
             <Cooldown Link="DarkTemplar/Revive"/>
         </ReviveInfoBase>
-        <PushPriority value="9999"/>
         <AlliedPushPriority value="15"/>
-        <AIOverideTargetPriority value="99"/>
     </CUnitHero>
     <CUnit id="GoliathHero">
         <RandomNameArray value="Aaron Beckwith"/>
