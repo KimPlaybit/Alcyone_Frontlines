@@ -3650,7 +3650,7 @@ bool lib5A1C9904_gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
     lv_triggeringPlayerMinerals = lib5A1C9904_gv_playerMineral[EventPlayer()];
     lv_triggeringPlayerGas = lib5A1C9904_gv_playerGas[EventPlayer()];
     lv_triggeringPlayer = EventPlayer();
-    lv_killingPlayer = libNtve_gf_KillingPlayer();
+    lv_killingPlayer = UnitGetOwner(libNtve_gf_KillingUnit());
     lv_killingPlayersKills = lib5A1C9904_gv_playerKills[libNtve_gf_KillingPlayer()];
     lv_killingPlayersDeaths = lib5A1C9904_gv_playerDeaths[libNtve_gf_KillingPlayer()];
     lv_killingPlayerMinerals = (lib5A1C9904_gv_playerMineral[libNtve_gf_KillingPlayer()] + 350);
@@ -3769,7 +3769,7 @@ bool lib5A1C9904_gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
     lv_triggeringPlayerMinerals = lib5A1C9904_gv_playerMineral[EventPlayer()];
     lv_triggeringPlayerGas = lib5A1C9904_gv_playerGas[EventPlayer()];
     lv_triggeringPlayer = EventPlayer();
-    lv_killingPlayersKills = lib5A1C9904_gv_playerKills[libNtve_gf_KillingPlayer()];
+    lv_killingPlayersKills = lib5A1C9904_gv_playerKills[UnitGetOwner(libNtve_gf_KillingUnit())];
     lv_killingPlayersDeaths = lib5A1C9904_gv_playerDeaths[libNtve_gf_KillingPlayer()];
     lv_killingPlayerMinerals = (lib5A1C9904_gv_playerMineral[libNtve_gf_KillingPlayer()] + 350);
     lv_killingPlayerGas = (lib5A1C9904_gv_playerGas[libNtve_gf_KillingPlayer()] + 200);
