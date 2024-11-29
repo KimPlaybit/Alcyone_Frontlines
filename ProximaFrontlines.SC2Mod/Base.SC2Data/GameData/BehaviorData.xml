@@ -938,12 +938,10 @@
     </CBehaviorAttribute>
     <CBehaviorBuff id="HealHeroicUnitsAround">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="ReaperOutOfCombat"/>
-        <DisableValidatorArray value="NotFullLife"/>
         <Duration value="1"/>
-        <RemoveValidatorArray value="ReaperOutOfCombat"/>
-        <RemoveValidatorArray value="NotFullLife"/>
         <FinalEffect value="OutOfCombatRegen"/>
+        <DisableValidatorArray value="ReaperOutOfCombat"/>
+        <RemoveValidatorArray value="ReaperOutOfCombat"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TimeWarpProduction">
         <Cost>

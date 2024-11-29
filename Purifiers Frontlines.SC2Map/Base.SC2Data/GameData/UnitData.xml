@@ -96,6 +96,16 @@
         <AbilArray index="5" Link="UpgradeToPlanetaryFortress"/>
         <AbilArray index="6" Link="UpgradeToOrbital"/>
         <AbilArray index="7" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="Halt" AbilCmd="BuildInProgress,Halt"/>
+            <LayoutButtons index="7" Face="Cancel" AbilCmd="que5CancelToSelection,CancelLast" Column="4"/>
+            <LayoutButtons index="8" Face="CancelUpgradeMorph" AbilCmd="UpgradeToPlanetaryFortress,Cancel"/>
+            <LayoutButtons index="9" AbilCmd="UpgradeToOrbital,Cancel"/>
+            <LayoutButtons index="10" Face="CancelBuilding" AbilCmd="BuildInProgress,Cancel"/>
+            <LayoutButtons index="11" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="CommandCenterTrain,Train1" Row="1" Column="3"/>
+            <LayoutButtons index="12" Face="ProtectWorkers" Type="Passive" AbilCmd="" Column="2"/>
+            <LayoutButtons index="13" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="CommandCenterFlying">
         <AbilArray index="3" removed="1"/>
@@ -184,6 +194,7 @@
         <HotkeyCategory value="Unit/Category/TerranUnits"/>
         <KillDisplay value="Always"/>
         <RankDisplay value="Always"/>
+        <KillXP value="10"/>
     </CUnit>
     <CUnit id="LabTurret">
         <Collide index="Structure" value="0"/>
@@ -191,6 +202,18 @@
     <CUnit id="LabTurretUp2">
         <Footprint value="Footprint2x2Contour3"/>
         <PlacementFootprint value="Footprint2x2Contour3"/>
+    </CUnit>
+    <CUnit id="OrbitalCommand">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="CancelBuilding" AbilCmd="BuildInProgress,Cancel" Column="4"/>
+            <LayoutButtons index="2" Face="Cancel" AbilCmd="que5CancelToSelection,CancelLast"/>
+            <LayoutButtons index="3" Face="Scan" AbilCmd="ScannerSweep,Execute" Column="2"/>
+            <LayoutButtons index="4" Face="Rally" AbilCmd="RallyCommand,Rally1" Row="1" Column="4"/>
+            <LayoutButtons index="5" Face="CalldownMULE" AbilCmd="CalldownMULE,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="6" Face="SupplyDrop" AbilCmd="SupplyDrop,Execute" Column="1"/>
+            <LayoutButtons index="7" Face="ProtectWorkers" Type="Passive" AbilCmd="" Row="1" Column="2"/>
+            <LayoutButtons index="8" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="PhotonCannon2">
         <Footprint value="Footprint2x2Contour3"/>

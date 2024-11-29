@@ -245,6 +245,12 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <SearchFlags index="SameCliff" value="1"/>
     </CEffectEnumArea>
+    <CEffectModifyUnit id="EnergyHeroic">
+        <EditorCategories value="Race:Zerg"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="0.1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectCreatePersistent id="HeroGuardianShieldPresistant">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="SourceUnit"/>
@@ -483,8 +489,6 @@
         <EffectArray value="GiveCredit"/>
     </CEffectSet>
     <CEffectModifyUnit id="HealHeroic">
-        <ValidatorArray value="ReaperOutOfCombat"/>
-        <ValidatorArray value="NotFullLife"/>
         <EditorCategories value="Race:Zerg"/>
         <VitalArray index="Life">
             <ChangeFraction value="0.05"/>
@@ -493,8 +497,9 @@
             <ChangeFraction value="0.05"/>
         </VitalArray>
         <VitalArray index="Energy">
-            <ChangeFraction value="0.05"/>
+            <ChangeFraction value="0.1"/>
         </VitalArray>
+        <ValidatorArray value="ReaperOutOfCombat"/>
     </CEffectModifyUnit>
     <CEffectDamage id="SOAPylonWeaponDamage">
         <Amount value="30"/>
@@ -848,8 +853,7 @@
         <SearchFlags index="SameCliff" value="1"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="HealHeroicUnitsAround2">
-        <ValidatorArray index="0" value="SourceNotHidden"/>
-        <ValidatorArray value="ReaperOutOfCombat"/>
+        <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="HealHeroicUnitsAround"/>
     </CEffectApplyBehavior>
@@ -861,7 +865,7 @@
         <PeriodCount value="99"/>
         <PeriodicValidator value="NotVortexd"/>
         <PeriodicEffectArray value="HealHeroicUnitsAround3"/>
-        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="1.001"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ProtectWorkersSearch">
         <EditorCategories value="Race:Protoss"/>
@@ -878,7 +882,7 @@
         <FinalEffect value="ProtectWorkers"/>
         <PeriodCount value="99"/>
         <PeriodicEffectArray value="ProtectWorkersSearch"/>
-        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="1"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="HotSBanelingExplodeLargeDirect">
         <Amount value="1"/>
@@ -1284,10 +1288,7 @@
         <SpawnUnit index="0" value="MutaliskHero2"/>
     </CEffectCreateUnit>
     <CEffectSet id="OutOfCombatRegen">
-        <ValidatorArray value="ReaperOutOfCombat"/>
-        <ValidatorArray value="NotFullLife"/>
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="HealHeroicUnitsAround2"/>
         <EffectArray value="HealHeroic"/>
     </CEffectSet>
 </Catalog>

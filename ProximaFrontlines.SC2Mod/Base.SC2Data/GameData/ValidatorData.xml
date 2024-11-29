@@ -211,6 +211,11 @@
         <Compare value="NE"/>
         <Behavior value="DefilerMPDarkSwarm"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="UnknownValidator2">
+        <Type value="And"/>
+        <CombineArray value="NotFullLife"/>
+        <CombineArray value="EnergyNotFull"/>
+    </CValidatorCombine>
     <CValidatorCombine id="UseShield">
         <CombineArray value="UseShieldDuetoHerioc"/>
         <CombineArray value="UseShieldDueTooManyEnemies"/>
