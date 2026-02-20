@@ -4,8 +4,29 @@ include "TriggerLibs/natives"
 // Library: Proxima
 //--------------------------------------------------------------------------------------------------
 // Constants
+const int lib5A1C9904_gv_heroDialogWidth = 1200;
+const int lib5A1C9904_gv_heroDialogHeight = 900;
 const int lib5A1C9904_gv_buttonSizePickY = 50;
 const int lib5A1C9904_gv_buttonSizePickX = 340;
+const int lib5A1C9904_gv_buttonMarginLeft = 220;
+const int lib5A1C9904_gv_buttonXPos = -380; // -(heroDialogWidth/2) + buttonMarginLeft = -600 + 220 = -380
+const int lib5A1C9904_gv_infoPanelMargin = 350;
+const int lib5A1C9904_gv_infoLabelWidth = 350;
+const int lib5A1C9904_gv_infoPanelWidth = 350; // infoPanelMargin + infoLabelWidth - infoPanelMargin (350 + 480 - 350)
+const int lib5A1C9904_gv_infoPanelXPos = 400; // heroDialogWidth - infoPanelWidth - infoPanelMargin = 1200 - 480 - 350 = 370 (using c_anchorTopLeft)
+const int lib5A1C9904_gv_infoLabelXPos = 400; // infoPanelXPos -infoPanelMargin (370 - 350)
+// 3-Panel Layout Constants (Heroes | Actor | Abilities)
+const int lib5A1C9904_gv_leftPanelWidth = 350; // Heroes selection panel width
+const int lib5A1C9904_gv_leftPanelXPos = -600; // Left panel X position: -(heroDialogWidth/2)
+const int lib5A1C9904_gv_middlePanelWidth = 280; // Actor display panel width
+const int lib5A1C9904_gv_middlePanelXPos = -250; // Middle panel X position: -600 + 350
+const int lib5A1C9904_gv_rightPanelWidth = 420; // Abilities list panel width
+const int lib5A1C9904_gv_rightPanelXPos = 30; // Right panel X position: -250 + 280
+// Lock In Button Constants (bottom of middle panel)
+const int lib5A1C9904_gv_lockInButtonWidth = 260; // Lock in button width (middle panel - margins)
+const int lib5A1C9904_gv_lockInButtonHeight = 50;
+const int lib5A1C9904_gv_lockInButtonXPos = 470; // Center in dialog: 600 - (buttonWidth / 2) = 600 - 130 = 470
+const int lib5A1C9904_gv_lockInButtonYPos = 800; // Bottom of dialog (900 - 100 margin)
 
 // Structures
 struct lib5A1C9904_gs_Spawner {
@@ -95,6 +116,7 @@ int lib5A1C9904_gv_hiddenDialog;
 int lib5A1C9904_gv_showScore;
 int lib5A1C9904_gv_hideScore;
 int lib5A1C9904_gv_dialogTeam1;
+int lib5A1C9904_gv_infoPanelTeam1;
 int lib5A1C9904_gv_firebatTeam1;
 int lib5A1C9904_gv_medicTeam1;
 int lib5A1C9904_gv_goliathTeam1;
@@ -114,6 +136,7 @@ int lib5A1C9904_gv_scienceVesselTeam1;
 int lib5A1C9904_gv_nydusTeam1;
 int lib5A1C9904_gv_mothershipTeam1;
 int lib5A1C9904_gv_dialogTeam2;
+int lib5A1C9904_gv_infoPanelTeam2;
 int lib5A1C9904_gv_firebatTeam2;
 int lib5A1C9904_gv_medicTeam2;
 int lib5A1C9904_gv_goliathTeam2;
@@ -132,6 +155,28 @@ int lib5A1C9904_gv_ultraliskTeam2;
 int lib5A1C9904_gv_scienceVesselTeam2;
 int lib5A1C9904_gv_nydusTeam2;
 int lib5A1C9904_gv_mothershipTeam2;
+int lib5A1C9904_gv_lockInButtonTeam1;
+int lib5A1C9904_gv_lockInButtonTeam2;
+string lib5A1C9904_gv_selectedHeroTeam1;
+string lib5A1C9904_gv_selectedHeroTeam2;
+// Info Panel Label References (Team 1)
+int lib5A1C9904_gv_infoHeroNameTeam1;
+int lib5A1C9904_gv_infoAbilitiesHeaderTeam1;
+int lib5A1C9904_gv_infoAbility1Team1;
+int lib5A1C9904_gv_infoAbility2Team1;
+int lib5A1C9904_gv_infoAbility3Team1;
+int lib5A1C9904_gv_infoAbility4Team1;
+int lib5A1C9904_gv_infoStrengthsHeaderTeam1;
+int lib5A1C9904_gv_infoStrengthsTeam1;
+// Info Panel Label References (Team 2)
+int lib5A1C9904_gv_infoHeroNameTeam2;
+int lib5A1C9904_gv_infoAbilitiesHeaderTeam2;
+int lib5A1C9904_gv_infoAbility1Team2;
+int lib5A1C9904_gv_infoAbility2Team2;
+int lib5A1C9904_gv_infoAbility3Team2;
+int lib5A1C9904_gv_infoAbility4Team2;
+int lib5A1C9904_gv_infoStrengthsHeaderTeam2;
+int lib5A1C9904_gv_infoStrengthsTeam2;
 playergroup lib5A1C9904_gv_playersWhoPicked;
 unit lib5A1C9904_gv_zerglingExpansionTeam2_point;
 unitgroup lib5A1C9904_gv_zerglingExpansionTeam2;
@@ -197,6 +242,8 @@ void lib5A1C9904_gf_SpawnDefenceTower (int lp_rTSPlayer, int lp_spawnForPlayer, 
 point lib5A1C9904_gf_GetStartLocation (int lp_player);
 void lib5A1C9904_gf_SoldierSelectionTeam1 ();
 void lib5A1C9904_gf_SoldierSelectionTeam2 ();
+void lib5A1C9904_gf_UpdateHeroInfoTeam1 (string lp_heroType);
+void lib5A1C9904_gf_UpdateHeroInfoTeam2 (string lp_heroType);
 void lib5A1C9904_gf_SetupTeams1 ();
 void lib5A1C9904_gf_SetupTeams2 ();
 void lib5A1C9904_gf_DisableaDialogItem (int lp_dialogItem);
@@ -302,6 +349,8 @@ trigger lib5A1C9904_gt_UltraliskPicked;
 trigger lib5A1C9904_gt_MutaliskPicked;
 trigger lib5A1C9904_gt_NydusPicked;
 trigger lib5A1C9904_gt_ScienceVesselPicked;
+trigger lib5A1C9904_gt_LockInButtonTeam1Pressed;
+trigger lib5A1C9904_gt_LockInButtonTeam2Pressed;
 
 // Library Initialization
 void lib5A1C9904_InitVariables ();

@@ -53,6 +53,7 @@ void lib5A1C9904_InitVariables () {
     lib5A1C9904_gv_showScore = c_invalidDialogControlId;
     lib5A1C9904_gv_hideScore = c_invalidDialogControlId;
     lib5A1C9904_gv_dialogTeam1 = c_invalidDialogId;
+    lib5A1C9904_gv_infoPanelTeam1 = c_invalidDialogControlId;
     lib5A1C9904_gv_firebatTeam1 = c_invalidDialogControlId;
     lib5A1C9904_gv_medicTeam1 = c_invalidDialogControlId;
     lib5A1C9904_gv_goliathTeam1 = c_invalidDialogControlId;
@@ -72,6 +73,7 @@ void lib5A1C9904_InitVariables () {
     lib5A1C9904_gv_nydusTeam1 = c_invalidDialogControlId;
     lib5A1C9904_gv_mothershipTeam1 = c_invalidDialogControlId;
     lib5A1C9904_gv_dialogTeam2 = c_invalidDialogId;
+    lib5A1C9904_gv_infoPanelTeam2 = c_invalidDialogControlId;
     lib5A1C9904_gv_firebatTeam2 = c_invalidDialogControlId;
     lib5A1C9904_gv_medicTeam2 = c_invalidDialogControlId;
     lib5A1C9904_gv_goliathTeam2 = c_invalidDialogControlId;
@@ -112,6 +114,8 @@ void lib5A1C9904_InitVariables () {
     lib5A1C9904_gv_marines_1 = UnitGroupEmpty();
     lib5A1C9904_gv_marines_2 = UnitGroupEmpty();
     lib5A1C9904_gv_boss = UnitGroupEmpty();
+    lib5A1C9904_gv_selectedHeroTeam1 = "";
+    lib5A1C9904_gv_selectedHeroTeam2 = "";
 }
 
 // Functions
@@ -751,6 +755,76 @@ point lib5A1C9904_gf_GetStartLocation (int lp_player) {
     }
 }
 
+void lib5A1C9904_gf_UpdateHeroInfoTeam1 (string lp_heroType) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+    // Implementation
+    if ((StringEqual(lp_heroType, "FirebatHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), PlayerGroupAll());
+    }
+    else if ((StringEqual(lp_heroType, "MedicHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_2C347B6C"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility1"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility2"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility3"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility4"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicStrengths"), PlayerGroupAll());
+    }
+    else if ((StringEqual(lp_heroType, "ZerglingHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_E8978F42"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), PlayerGroupAll());
+    }
+    else if ((StringEqual(lp_heroType, "ZealotHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_6F27D176"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), PlayerGroupAll());
+    }
+}
+
+void lib5A1C9904_gf_UpdateHeroInfoTeam2 (string lp_heroType) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+    // Implementation
+    if ((StringEqual(lp_heroType, "FirebatHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), PlayerGroupAll());
+    }
+    else if ((StringEqual(lp_heroType, "ZerglingHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_E8978F42"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), PlayerGroupAll());
+    }
+    else if ((StringEqual(lp_heroType, "ZealotHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_6F27D176"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), PlayerGroupAll());
+    }
+}
+
 trigger auto_lib5A1C9904_gf_SoldierSelectionTeam1_Trigger = null;
 
 void lib5A1C9904_gf_SoldierSelectionTeam1 () {
@@ -769,72 +843,145 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool
     // Variable Initialization
 
     // Implementation
-    DialogCreate(500, 520, c_anchorCenter, 0, -60, true);
+    DialogCreate(lib5A1C9904_gv_heroDialogWidth, lib5A1C9904_gv_heroDialogHeight, c_anchorCenter, 0, -60, true);
     lib5A1C9904_gv_dialogTeam1 = DialogLastCreated();
-    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, 125, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/lib_5A1C9904_E81AAFB7"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    
+    // Create LEFT PANEL for hero selection
+    DialogControlCreate(lib5A1C9904_gv_dialogTeam1, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lib5A1C9904_gv_leftPanelWidth, lib5A1C9904_gv_heroDialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lib5A1C9904_gv_leftPanelXPos, 0);
+    
+    // Create MIDDLE PANEL for actor display
+    DialogControlCreate(lib5A1C9904_gv_dialogTeam1, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lib5A1C9904_gv_middlePanelWidth, lib5A1C9904_gv_heroDialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lib5A1C9904_gv_middlePanelXPos, 0);
+    
+    // Create RIGHT PANEL for abilities
+    DialogControlCreate(lib5A1C9904_gv_dialogTeam1, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lib5A1C9904_gv_rightPanelWidth, lib5A1C9904_gv_heroDialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lib5A1C9904_gv_rightPanelXPos, 0);
+    lib5A1C9904_gv_infoPanelTeam1 = DialogControlLastCreated();
+    
+    // Hero selection header
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_leftPanelWidth - 20, 50, c_anchorTopLeft, lib5A1C9904_gv_leftPanelXPos + 10, 10, StringExternal("Param/Value/lib_5A1C9904_E81AAFB7"), ColorWithAlpha(200,180,100,255), false, 2.0);
     lv_raceCheck = lib5A1C9904_gf_IsTerran(lib5A1C9904_gv_rTSPlayer1);
     if ((lv_raceCheck == true)) {
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/lib_5A1C9904_CDC87703"), StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_CDC87703"), StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), "");
         lib5A1C9904_gv_firebatTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/lib_5A1C9904_2C347B6C"), StringExternal("Param/Value/lib_5A1C9904_63AEB7D7"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_2C347B6C"), StringExternal("Param/Value/lib_5A1C9904_63AEB7D7"), "");
         lib5A1C9904_gv_medicTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/lib_5A1C9904_84C2FEEA"), StringExternal("Param/Value/lib_5A1C9904_978D5B47"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_84C2FEEA"), StringExternal("Param/Value/lib_5A1C9904_978D5B47"), "");
         lib5A1C9904_gv_goliathTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/lib_5A1C9904_4317D246"), StringExternal("Param/Value/lib_5A1C9904_A8E43C3A"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_4317D246"), StringExternal("Param/Value/lib_5A1C9904_A8E43C3A"), "");
         lib5A1C9904_gv_marineTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/lib_5A1C9904_C66F8CE5"), StringExternal("Param/Value/lib_5A1C9904_8C8B006A"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_C66F8CE5"), StringExternal("Param/Value/lib_5A1C9904_8C8B006A"), "");
         lib5A1C9904_gv_spectreTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/lib_5A1C9904_7F5EF35A"), StringExternal("Param/Value/lib_5A1C9904_D46BF1E3"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_7F5EF35A"), StringExternal("Param/Value/lib_5A1C9904_D46BF1E3"), "");
         lib5A1C9904_gv_scienceVesselTeam1 = DialogControlLastCreated();
+        // Terran Right Panel Information
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
+        lib5A1C9904_gv_infoAbilitiesHeaderTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 430, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
+        lib5A1C9904_gv_infoStrengthsHeaderTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 455, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam1 = DialogControlLastCreated();
     }
 
     lv_raceCheck = lib5A1C9904_gf_IsZerg(lib5A1C9904_gv_rTSPlayer1);
     if ((lv_raceCheck == true)) {
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/lib_5A1C9904_18851F8A"), StringExternal("Param/Value/lib_5A1C9904_E8978F42"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_18851F8A"), StringExternal("Param/Value/lib_5A1C9904_E8978F42"), "");
         lib5A1C9904_gv_zerglingTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/lib_5A1C9904_4DEBCE26"), StringExternal("Param/Value/lib_5A1C9904_4008A2BA"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_4DEBCE26"), StringExternal("Param/Value/lib_5A1C9904_4008A2BA"), "");
         lib5A1C9904_gv_queenTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/lib_5A1C9904_6A15202A"), StringExternal("Param/Value/lib_5A1C9904_B6593422"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_6A15202A"), StringExternal("Param/Value/lib_5A1C9904_B6593422"), "");
         lib5A1C9904_gv_hydraliskTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/lib_5A1C9904_C8653C9E"), StringExternal("Param/Value/lib_5A1C9904_3A7E66C9"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_C8653C9E"), StringExternal("Param/Value/lib_5A1C9904_3A7E66C9"), "");
         lib5A1C9904_gv_ultraliskTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/lib_5A1C9904_AA4978C8"), StringExternal("Param/Value/lib_5A1C9904_1028BD8F"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_AA4978C8"), StringExternal("Param/Value/lib_5A1C9904_1028BD8F"), "");
         lib5A1C9904_gv_defilerTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/lib_5A1C9904_DEDFD1E1"), StringExternal("Param/Value/lib_5A1C9904_4C335958"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_DEDFD1E1"), StringExternal("Param/Value/lib_5A1C9904_4C335958"), "");
         lib5A1C9904_gv_nydusTeam1 = DialogControlLastCreated();
+        // Zerg Right Panel Information
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_E8978F42"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
+        lib5A1C9904_gv_infoAbilitiesHeaderTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 430, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
+        lib5A1C9904_gv_infoStrengthsHeaderTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 455, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam1 = DialogControlLastCreated();
     }
 
     lv_raceCheck = lib5A1C9904_gf_IsProtoss(lib5A1C9904_gv_rTSPlayer1);
     if ((lv_raceCheck == true)) {
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/lib_5A1C9904_D1D26092"), StringExternal("Param/Value/lib_5A1C9904_6F27D176"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_D1D26092"), StringExternal("Param/Value/lib_5A1C9904_6F27D176"), "");
         lib5A1C9904_gv_zealotTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/lib_5A1C9904_ACA8AF65"), StringExternal("Param/Value/lib_5A1C9904_82CAEECD"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_ACA8AF65"), StringExternal("Param/Value/lib_5A1C9904_82CAEECD"), "");
         lib5A1C9904_gv_sentryTemplarTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/lib_5A1C9904_CC7022DA"), StringExternal("Param/Value/lib_5A1C9904_CAF32F13"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_CC7022DA"), StringExternal("Param/Value/lib_5A1C9904_CAF32F13"), "");
         lib5A1C9904_gv_dragoonTemplarTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/lib_5A1C9904_C3A7A6BE"), StringExternal("Param/Value/lib_5A1C9904_6BCF858B"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_C3A7A6BE"), StringExternal("Param/Value/lib_5A1C9904_6BCF858B"), "");
         lib5A1C9904_gv_darkTemplarTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/lib_5A1C9904_DDCADA09"), StringExternal("Param/Value/lib_5A1C9904_EB8B73BC"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_DDCADA09"), StringExternal("Param/Value/lib_5A1C9904_EB8B73BC"), "");
         lib5A1C9904_gv_corsairTemplarTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/lib_5A1C9904_3D41B77E"), StringExternal("Param/Value/lib_5A1C9904_D3A2A78A"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_3D41B77E"), StringExternal("Param/Value/lib_5A1C9904_D3A2A78A"), "");
         lib5A1C9904_gv_mothershipTeam1 = DialogControlLastCreated();
+        // Protoss Right Panel Information
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_6F27D176"), ColorWithAlpha(255,200,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,180,100,255), false, 0.9);
+        lib5A1C9904_gv_infoAbilitiesHeaderTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 430, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,180,100,255), false, 0.9);
+        lib5A1C9904_gv_infoStrengthsHeaderTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 455, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam1 = DialogControlLastCreated();
     }
 
     lv_raceCheck = lib5A1C9904_gf_IsKnownRace(lib5A1C9904_gv_rTSPlayer1);
     if ((lv_raceCheck == false)) {
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/lib_5A1C9904_E1E7221A"), StringExternal("Param/Value/lib_5A1C9904_66965059"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_E1E7221A"), StringExternal("Param/Value/lib_5A1C9904_66965059"), "");
         lib5A1C9904_gv_zealotTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/lib_5A1C9904_29B3373E"), StringExternal("Param/Value/lib_5A1C9904_68B51A2F"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_29B3373E"), StringExternal("Param/Value/lib_5A1C9904_68B51A2F"), "");
         lib5A1C9904_gv_sentryTemplarTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/lib_5A1C9904_6CBD470B"), StringExternal("Param/Value/lib_5A1C9904_81EEDE57"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_6CBD470B"), StringExternal("Param/Value/lib_5A1C9904_81EEDE57"), "");
         lib5A1C9904_gv_dragoonTemplarTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/lib_5A1C9904_EF6534BB"), StringExternal("Param/Value/lib_5A1C9904_C37D7F0F"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_EF6534BB"), StringExternal("Param/Value/lib_5A1C9904_C37D7F0F"), "");
         lib5A1C9904_gv_darkTemplarTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/lib_5A1C9904_BCAB7A92"), StringExternal("Param/Value/lib_5A1C9904_5A81ABD2"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_BCAB7A92"), StringExternal("Param/Value/lib_5A1C9904_5A81ABD2"), "");
         lib5A1C9904_gv_corsairTemplarTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/lib_5A1C9904_610D72CF"), StringExternal("Param/Value/lib_5A1C9904_1AF2225B"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_610D72CF"), StringExternal("Param/Value/lib_5A1C9904_1AF2225B"), "");
         lib5A1C9904_gv_mothershipTeam1 = DialogControlLastCreated();
     }
+
+    // Add Lock In button (bottom of middle panel)
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_lockInButtonWidth, lib5A1C9904_gv_lockInButtonHeight, c_anchorTopLeft, lib5A1C9904_gv_lockInButtonXPos, lib5A1C9904_gv_lockInButtonYPos, StringExternal("Param/Value/lib_5A1C9904_LockInButton"), StringExternal("Param/Value/lib_5A1C9904_LockInTooltip"), "");
+    lib5A1C9904_gv_lockInButtonTeam1 = DialogControlLastCreated();
 
     DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_soldierPlayers1, true);
     DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_playersWhoPicked, false);
@@ -856,6 +1003,7 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool
     lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_nydusTeam1);
     lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_scienceVesselTeam1);
     lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_mothershipTeam1);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_lockInButtonTeam1);
     Wait(2.0, c_timeReal);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_sentryTemplarTeam1);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_corsairTemplarTeam1);
@@ -875,6 +1023,7 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_scienceVesselTeam1);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_nydusTeam1);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_mothershipTeam1);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_lockInButtonTeam1);
     return true;
 }
 
@@ -896,72 +1045,132 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool
     // Variable Initialization
 
     // Implementation
-    DialogCreate(500, 520, c_anchorCenter, 0, -60, true);
+    DialogCreate(lib5A1C9904_gv_heroDialogWidth, lib5A1C9904_gv_heroDialogHeight, c_anchorCenter, 0, -60, true);
     lib5A1C9904_gv_dialogTeam2 = DialogLastCreated();
+    // Create right panel for hero info
+    DialogControlCreate(lib5A1C9904_gv_dialogTeam2, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lib5A1C9904_gv_infoPanelWidth, lib5A1C9904_gv_heroDialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lib5A1C9904_gv_infoPanelXPos, 0);
+    lib5A1C9904_gv_infoPanelTeam2 = DialogControlLastCreated();
     libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, 125, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/lib_5A1C9904_8A1774B1"), ColorWithAlpha(0,0,0,0), false, 2.0);
     lv_raceCheck = lib5A1C9904_gf_IsTerran(lib5A1C9904_gv_rTSPlayer2);
     if ((lv_raceCheck == true)) {
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/lib_5A1C9904_825CFEE7"), StringExternal("Param/Value/lib_5A1C9904_24A60DAB"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_825CFEE7"), StringExternal("Param/Value/lib_5A1C9904_24A60DAB"), "");
         lib5A1C9904_gv_firebatTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/lib_5A1C9904_DE655456"), StringExternal("Param/Value/lib_5A1C9904_D47053B6"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_DE655456"), StringExternal("Param/Value/lib_5A1C9904_D47053B6"), "");
         lib5A1C9904_gv_medicTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/lib_5A1C9904_D2795242"), StringExternal("Param/Value/lib_5A1C9904_46CEA381"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_D2795242"), StringExternal("Param/Value/lib_5A1C9904_46CEA381"), "");
         lib5A1C9904_gv_goliathTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/lib_5A1C9904_15BADC69"), StringExternal("Param/Value/lib_5A1C9904_47771A14"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_15BADC69"), StringExternal("Param/Value/lib_5A1C9904_47771A14"), "");
         lib5A1C9904_gv_marineTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/lib_5A1C9904_5BD3340E"), StringExternal("Param/Value/lib_5A1C9904_9879E07D"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_5BD3340E"), StringExternal("Param/Value/lib_5A1C9904_9879E07D"), "");
         lib5A1C9904_gv_spectreTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/lib_5A1C9904_3643AF90"), StringExternal("Param/Value/lib_5A1C9904_AE849DE1"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_3643AF90"), StringExternal("Param/Value/lib_5A1C9904_AE849DE1"), "");
         lib5A1C9904_gv_scienceVesselTeam2 = DialogControlLastCreated();
+        // Terran Right Panel Information (Team2)
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_24A60DAB"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
+        lib5A1C9904_gv_infoAbilitiesHeaderTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 430, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
+        lib5A1C9904_gv_infoStrengthsHeaderTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 455, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
     }
 
     lv_raceCheck = lib5A1C9904_gf_IsZerg(lib5A1C9904_gv_rTSPlayer2);
     if ((lv_raceCheck == true)) {
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/lib_5A1C9904_E21D7F62"), StringExternal("Param/Value/lib_5A1C9904_752ED481"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_E21D7F62"), StringExternal("Param/Value/lib_5A1C9904_752ED481"), "");
         lib5A1C9904_gv_zerglingTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/lib_5A1C9904_1DE3E5FA"), StringExternal("Param/Value/lib_5A1C9904_E655C995"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_1DE3E5FA"), StringExternal("Param/Value/lib_5A1C9904_E655C995"), "");
         lib5A1C9904_gv_queenTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/lib_5A1C9904_AC106C06"), StringExternal("Param/Value/lib_5A1C9904_1ECB2231"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_AC106C06"), StringExternal("Param/Value/lib_5A1C9904_1ECB2231"), "");
         lib5A1C9904_gv_hydraliskTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/lib_5A1C9904_4DC14A06"), StringExternal("Param/Value/lib_5A1C9904_7B5B1561"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_4DC14A06"), StringExternal("Param/Value/lib_5A1C9904_7B5B1561"), "");
         lib5A1C9904_gv_ultraliskTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/lib_5A1C9904_89BF609B"), StringExternal("Param/Value/lib_5A1C9904_3086F79D"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_89BF609B"), StringExternal("Param/Value/lib_5A1C9904_3086F79D"), "");
         lib5A1C9904_gv_defilerTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/lib_5A1C9904_A2FD87C6"), StringExternal("Param/Value/lib_5A1C9904_8CCC236B"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_A2FD87C6"), StringExternal("Param/Value/lib_5A1C9904_8CCC236B"), "");
         lib5A1C9904_gv_nydusTeam2 = DialogControlLastCreated();
+        // Zerg Right Panel Information (Team2)
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_752ED481"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
+        lib5A1C9904_gv_infoAbilitiesHeaderTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 430, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
+        lib5A1C9904_gv_infoStrengthsHeaderTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 455, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
     }
 
     lv_raceCheck = lib5A1C9904_gf_IsProtoss(lib5A1C9904_gv_rTSPlayer2);
     if ((lv_raceCheck == true)) {
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/lib_5A1C9904_18626199"), StringExternal("Param/Value/lib_5A1C9904_34AE88BC"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_18626199"), StringExternal("Param/Value/lib_5A1C9904_34AE88BC"), "");
         lib5A1C9904_gv_zealotTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/lib_5A1C9904_50533C92"), StringExternal("Param/Value/lib_5A1C9904_B3FA3570"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_50533C92"), StringExternal("Param/Value/lib_5A1C9904_B3FA3570"), "");
         lib5A1C9904_gv_sentryTemplarTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/lib_5A1C9904_215DA594"), StringExternal("Param/Value/lib_5A1C9904_B5ED5957"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_215DA594"), StringExternal("Param/Value/lib_5A1C9904_B5ED5957"), "");
         lib5A1C9904_gv_dragoonTemplarTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/lib_5A1C9904_CC9D57B8"), StringExternal("Param/Value/lib_5A1C9904_50B05475"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_CC9D57B8"), StringExternal("Param/Value/lib_5A1C9904_50B05475"), "");
         lib5A1C9904_gv_darkTemplarTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/lib_5A1C9904_03C0B059"), StringExternal("Param/Value/lib_5A1C9904_8C87B31B"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_03C0B059"), StringExternal("Param/Value/lib_5A1C9904_8C87B31B"), "");
         lib5A1C9904_gv_corsairTemplarTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/lib_5A1C9904_7E09F6B4"), StringExternal("Param/Value/lib_5A1C9904_C8FFA6CD"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_7E09F6B4"), StringExternal("Param/Value/lib_5A1C9904_C8FFA6CD"), "");
         lib5A1C9904_gv_mothershipTeam2 = DialogControlLastCreated();
+        // Protoss Right Panel Information (Team2)
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_34AE88BC"), ColorWithAlpha(255,200,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,180,100,255), false, 0.9);
+        lib5A1C9904_gv_infoAbilitiesHeaderTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 430, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,180,100,255), false, 0.9);
+        lib5A1C9904_gv_infoStrengthsHeaderTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 455, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
     }
 
     lv_raceCheck = lib5A1C9904_gf_IsKnownRace(lib5A1C9904_gv_rTSPlayer2);
     if ((lv_raceCheck == false)) {
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 100, StringExternal("Param/Value/lib_5A1C9904_47065936"), StringExternal("Param/Value/lib_5A1C9904_479173BD"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_47065936"), StringExternal("Param/Value/lib_5A1C9904_479173BD"), "");
         lib5A1C9904_gv_zealotTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 160, StringExternal("Param/Value/lib_5A1C9904_F5516FBF"), StringExternal("Param/Value/lib_5A1C9904_EC5A43FE"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_F5516FBF"), StringExternal("Param/Value/lib_5A1C9904_EC5A43FE"), "");
         lib5A1C9904_gv_sentryTemplarTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 220, StringExternal("Param/Value/lib_5A1C9904_0E44D467"), StringExternal("Param/Value/lib_5A1C9904_D44D7EFC"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_0E44D467"), StringExternal("Param/Value/lib_5A1C9904_D44D7EFC"), "");
         lib5A1C9904_gv_dragoonTemplarTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 280, StringExternal("Param/Value/lib_5A1C9904_3C7C04B9"), StringExternal("Param/Value/lib_5A1C9904_C32A4E04"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_3C7C04B9"), StringExternal("Param/Value/lib_5A1C9904_C32A4E04"), "");
         lib5A1C9904_gv_darkTemplarTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 340, StringExternal("Param/Value/lib_5A1C9904_964EEB0B"), StringExternal("Param/Value/lib_5A1C9904_698DE8D6"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_964EEB0B"), StringExternal("Param/Value/lib_5A1C9904_698DE8D6"), "");
         lib5A1C9904_gv_corsairTemplarTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, 0, 400, StringExternal("Param/Value/lib_5A1C9904_12C4A045"), StringExternal("Param/Value/lib_5A1C9904_7C62B8C6"), "");
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_12C4A045"), StringExternal("Param/Value/lib_5A1C9904_7C62B8C6"), "");
         lib5A1C9904_gv_mothershipTeam2 = DialogControlLastCreated();
     }
+
+    // Add Lock In button (bottom of middle panel)
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_lockInButtonWidth, lib5A1C9904_gv_lockInButtonHeight, c_anchorTopLeft, lib5A1C9904_gv_lockInButtonXPos, lib5A1C9904_gv_lockInButtonYPos, StringExternal("Param/Value/lib_5A1C9904_LockInButton"), StringExternal("Param/Value/lib_5A1C9904_LockInTooltip"), "");
+    lib5A1C9904_gv_lockInButtonTeam2 = DialogControlLastCreated();
 
     DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_soldierPlayers2, true);
     DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_playersWhoPicked, false);
@@ -983,6 +1192,7 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool
     lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_nydusTeam2);
     lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_scienceVesselTeam2);
     lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_mothershipTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_lockInButtonTeam2);
     Wait(2.0, c_timeReal);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_sentryTemplarTeam2);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_corsairTemplarTeam2);
@@ -1002,6 +1212,7 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_scienceVesselTeam2);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_nydusTeam2);
     lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_mothershipTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_lockInButtonTeam2);
     return true;
 }
 
@@ -4450,16 +4661,9 @@ void lib5A1C9904_gt_Controller_Init () {
 // Trigger: Firebat Soldier Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_FirebatSoldierPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
     // Variable Declarations
-    playergroup[2] lv_player;
-
     // Automatic Variable Declarations
     // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
 
     // Conditions
     if (testConds) {
@@ -4473,21 +4677,15 @@ bool lib5A1C9904_gt_FirebatSoldierPicked_Func (bool testConds, bool runActions) 
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_07A6199C")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
+    // Save selected hero for this player
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "FirebatHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "FirebatHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4501,16 +4699,9 @@ void lib5A1C9904_gt_FirebatSoldierPicked_Init () {
 // Trigger: Medic Soldier Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_MedicSoldierPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
     // Variable Declarations
-    playergroup[2] lv_player;
-
     // Automatic Variable Declarations
     // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
 
     // Conditions
     if (testConds) {
@@ -4524,21 +4715,15 @@ bool lib5A1C9904_gt_MedicSoldierPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_6A686599")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
+    // Save selected hero for this player
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "MedicHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "MedicHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4559,9 +4744,6 @@ bool lib5A1C9904_gt_GoliathSoldierPicked_Func (bool testConds, bool runActions) 
 
     // Automatic Variable Declarations
     // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
 
     // Conditions
     if (testConds) {
@@ -4575,21 +4757,15 @@ bool lib5A1C9904_gt_GoliathSoldierPicked_Func (bool testConds, bool runActions) 
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_0316399F")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
+    // Save selected hero for this player
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "GoliathHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "GoliathHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4603,16 +4779,9 @@ void lib5A1C9904_gt_GoliathSoldierPicked_Init () {
 // Trigger: Marine Soldier Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_MarineSoldierPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
     // Variable Declarations
-    playergroup[2] lv_player;
-
     // Automatic Variable Declarations
     // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
 
     // Conditions
     if (testConds) {
@@ -4626,21 +4795,15 @@ bool lib5A1C9904_gt_MarineSoldierPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_F2D7419D")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
+    // Save selected hero for this player
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "MarineHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "MarineHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4654,16 +4817,9 @@ void lib5A1C9904_gt_MarineSoldierPicked_Init () {
 // Trigger: Spectre Soldier Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_SpectreSoldierPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
     // Variable Declarations
-    playergroup[2] lv_player;
-
     // Automatic Variable Declarations
     // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
 
     // Conditions
     if (testConds) {
@@ -4677,21 +4833,15 @@ bool lib5A1C9904_gt_SpectreSoldierPicked_Func (bool testConds, bool runActions) 
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_3F97D3D6")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
+    // Save selected hero for this player
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "SpectreHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "SpectreHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4705,16 +4855,9 @@ void lib5A1C9904_gt_SpectreSoldierPicked_Init () {
 // Trigger: Zealot Soldier Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_ZealotSoldierPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
     // Variable Declarations
-    playergroup[2] lv_player;
-
     // Automatic Variable Declarations
     // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
 
     // Conditions
     if (testConds) {
@@ -4728,21 +4871,15 @@ bool lib5A1C9904_gt_ZealotSoldierPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_A13357E0")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
+    // Save selected hero for this player
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "ZealotHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "ZealotHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4756,17 +4893,6 @@ void lib5A1C9904_gt_ZealotSoldierPicked_Init () {
 // Trigger: Dark Templar Soldier Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_DarkTemplarSoldierPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_darkTemplarTeam1 == EventDialogControl()) || (lib5A1C9904_gv_darkTemplarTeam2 == EventDialogControl()))))) {
@@ -4779,21 +4905,14 @@ bool lib5A1C9904_gt_DarkTemplarSoldierPicked_Func (bool testConds, bool runActio
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_1258901B")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "AvengerHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "AvengerHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4807,17 +4926,6 @@ void lib5A1C9904_gt_DarkTemplarSoldierPicked_Init () {
 // Trigger: Dragoon Picked 
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_DragoonPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_dragoonTemplarTeam1 == EventDialogControl()) || (lib5A1C9904_gv_dragoonTemplarTeam2 == EventDialogControl()))))) {
@@ -4830,21 +4938,14 @@ bool lib5A1C9904_gt_DragoonPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_8E2C0B03")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "DragoonHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "DragoonHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4858,17 +4959,6 @@ void lib5A1C9904_gt_DragoonPicked_Init () {
 // Trigger: Sentry Picked 
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_SentryPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_sentryTemplarTeam1 == EventDialogControl()) || (lib5A1C9904_gv_sentryTemplarTeam2 == EventDialogControl()))))) {
@@ -4881,21 +4971,14 @@ bool lib5A1C9904_gt_SentryPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_DCFCFCFA")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "SentryPurifier2", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "SentryPurifier2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "SentryPurifier2", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "SentryPurifier2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -4909,17 +4992,6 @@ void lib5A1C9904_gt_SentryPicked_Init () {
 // Trigger: Adept Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_AdeptPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(lib5A1C9904_gv_rTSPlayer1) == "Prot") && (lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer1)) || ((PlayerRace(lib5A1C9904_gv_rTSPlayer2) == "Prot") && (lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer2)))))) {
@@ -4932,22 +5004,14 @@ bool lib5A1C9904_gt_AdeptPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_9670DC38")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
-    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    if ((lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer1)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "AdeptHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "AdeptHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
-    PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
     return true;
 }
 
@@ -4961,17 +5025,6 @@ void lib5A1C9904_gt_AdeptPicked_Init () {
 // Trigger: Corsair Picked 
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_CorsairPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_corsairTemplarTeam1 == EventDialogControl()) || (lib5A1C9904_gv_corsairTemplarTeam2 == EventDialogControl()))))) {
@@ -4984,21 +5037,14 @@ bool lib5A1C9904_gt_CorsairPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_6C680DE3")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "CorsairHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "CorsairHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -5012,19 +5058,6 @@ void lib5A1C9904_gt_CorsairPicked_Init () {
 // Trigger: MothershipCore Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_MothershipCorePicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    unit lv_createdUnit;
-    unit lv_powerSource;
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_mothershipTeam1 == EventDialogControl()) || (lib5A1C9904_gv_mothershipTeam2 == EventDialogControl()))))) {
@@ -5037,32 +5070,14 @@ bool lib5A1C9904_gt_MothershipCorePicked_Func (bool testConds, bool runActions) 
         return true;
     }
 
-    UIClearMessages(PlayerGroupAll(), c_messageAreaChat);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_C9C10DD3")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "MothershipCoreHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        lv_createdUnit = UnitLastCreated();
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
-        PlayerSetAlliance(EventPlayer(), c_allianceIdPower, lib5A1C9904_gv_rTSPlayer1, true);
-        PlayerSetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdPower, EventPlayer(), true);
-        PlayerSetAlliance(13, c_allianceIdPower, EventPlayer(), true);
-        PlayerSetAlliance(13, c_allianceIdPower, EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "MothershipCoreHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "MothershipCoreHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        lv_createdUnit = UnitLastCreated();
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
-        PlayerSetAlliance(EventPlayer(), c_allianceIdPower, lib5A1C9904_gv_rTSPlayer2, true);
-        PlayerSetAlliance(lib5A1C9904_gv_rTSPlayer2, c_allianceIdPower, EventPlayer(), true);
-        PlayerSetAlliance(14, c_allianceIdPower, EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "MothershipCoreHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, lv_createdUnit);
-    UnitControlGroupAddUnit(EventPlayer(), 1, lv_createdUnit);
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
-    PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
     return true;
 }
 
@@ -5076,17 +5091,6 @@ void lib5A1C9904_gt_MothershipCorePicked_Init () {
 // Trigger: Zergling Picked 
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_ZerglingPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_zerglingTeam1 == EventDialogControl()) || (lib5A1C9904_gv_zerglingTeam2 == EventDialogControl()))))) {
@@ -5099,21 +5103,14 @@ bool lib5A1C9904_gt_ZerglingPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_862C7605")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "ZerglingHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "ZerglingHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -5127,17 +5124,6 @@ void lib5A1C9904_gt_ZerglingPicked_Init () {
 // Trigger: Queen Picked 
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_QueenPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_queenTeam2 == EventDialogControl()) || (lib5A1C9904_gv_queenTeam1 == EventDialogControl()))))) {
@@ -5150,21 +5136,14 @@ bool lib5A1C9904_gt_QueenPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_130BF7CF")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "BroodQueenHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "BroodQueenHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -5178,17 +5157,6 @@ void lib5A1C9904_gt_QueenPicked_Init () {
 // Trigger: Defiler Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_DefilerPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_defilerTeam1 == EventDialogControl()) || (lib5A1C9904_gv_defilerTeam2 == EventDialogControl()))))) {
@@ -5201,21 +5169,14 @@ bool lib5A1C9904_gt_DefilerPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_53FF420E")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "DefilerHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "DefilerHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -5229,17 +5190,6 @@ void lib5A1C9904_gt_DefilerPicked_Init () {
 // Trigger: Hydralisk Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_HydraliskPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_hydraliskTeam1 == EventDialogControl()) || (lib5A1C9904_gv_hydraliskTeam2 == EventDialogControl()))))) {
@@ -5252,21 +5202,14 @@ bool lib5A1C9904_gt_HydraliskPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_1F297095")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "HydraliskHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "HydraliskHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -5280,17 +5223,6 @@ void lib5A1C9904_gt_HydraliskPicked_Init () {
 // Trigger: Ultralisk Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_UltraliskPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_ultraliskTeam2 == EventDialogControl()) || (lib5A1C9904_gv_ultraliskTeam1 == EventDialogControl()))))) {
@@ -5303,21 +5235,14 @@ bool lib5A1C9904_gt_UltraliskPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_96516D3D")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "HotSTorrasque2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "HotSTorrasque2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
     return true;
 }
 
@@ -5331,17 +5256,6 @@ void lib5A1C9904_gt_UltraliskPicked_Init () {
 // Trigger: Mutalisk Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_MutaliskPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(lib5A1C9904_gv_rTSPlayer1) == "Zerg") && (lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer1)) || ((PlayerRace(lib5A1C9904_gv_rTSPlayer2) == "Zerg") && (lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer2)))))) {
@@ -5354,23 +5268,14 @@ bool lib5A1C9904_gt_MutaliskPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIClearMessages(PlayerGroupAll(), c_messageAreaChat);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_E103F095")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
-    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+    if ((lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer1)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "MutaliskHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "MutaliskHero", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "MutaliskHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
-    PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
     return true;
 }
 
@@ -5384,17 +5289,6 @@ void lib5A1C9904_gt_MutaliskPicked_Init () {
 // Trigger: Nydus Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_NydusPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_nydusTeam1 == EventDialogControl()) || (lib5A1C9904_gv_nydusTeam2 == EventDialogControl()))))) {
@@ -5407,23 +5301,14 @@ bool lib5A1C9904_gt_NydusPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIClearMessages(PlayerGroupAll(), c_messageAreaChat);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_774E7360")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "NydusCanal22", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "NydusCanal22";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "NydusCanal22", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "NydusCanal22";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
-    PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
     return true;
 }
 
@@ -5437,17 +5322,6 @@ void lib5A1C9904_gt_NydusPicked_Init () {
 // Trigger: Science Vessel Picked
 //--------------------------------------------------------------------------------------------------
 bool lib5A1C9904_gt_ScienceVesselPicked_Func (bool testConds, bool runActions) {
-    int init_i;
-
-    // Variable Declarations
-    playergroup[2] lv_player;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    for (init_i = 0; init_i <= 1; init_i += 1) {
-        lv_player[init_i] = PlayerGroupEmpty();
-    }
-
     // Conditions
     if (testConds) {
         if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_scienceVesselTeam1 == EventDialogControl()) || (lib5A1C9904_gv_scienceVesselTeam2 == EventDialogControl()))))) {
@@ -5460,23 +5334,14 @@ bool lib5A1C9904_gt_ScienceVesselPicked_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIClearMessages(PlayerGroupAll(), c_messageAreaChat);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringExternal("Param/Value/lib_5A1C9904_E57F333A")));
-    PlayerGroupAdd(lv_player[0], EventPlayer());
     if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        libNtve_gf_UnitCreateFacingPoint(1, "ScienceVessel2", 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam1 = "ScienceVessel2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
     }
     else {
-        libNtve_gf_UnitCreateFacingPoint(1, "ScienceVessel2", 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
-        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lv_player[0], false);
-        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        lib5A1C9904_gv_selectedHeroTeam2 = "ScienceVessel2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
     }
-    UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-    UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
-    lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
-    PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
     return true;
 }
 
@@ -5484,6 +5349,84 @@ bool lib5A1C9904_gt_ScienceVesselPicked_Func (bool testConds, bool runActions) {
 void lib5A1C9904_gt_ScienceVesselPicked_Init () {
     lib5A1C9904_gt_ScienceVesselPicked = TriggerCreate("lib5A1C9904_gt_ScienceVesselPicked_Func");
     TriggerAddEventDialogControl(lib5A1C9904_gt_ScienceVesselPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Lock In Button Team 1
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_LockInButtonTeam1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_lockInButtonTeam1 == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_5A1C9904_LockInMessage"));
+    
+    if ((StringLength(lib5A1C9904_gv_selectedHeroTeam1) > 0)) {
+        libNtve_gf_UnitCreateFacingPoint(1, lib5A1C9904_gv_selectedHeroTeam1, 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, PlayerGroupAll(), false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
+        UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
+        PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
+        lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
+    }
+    return true;
+}
+
+void lib5A1C9904_gt_LockInButtonTeam1_Init () {
+    lib5A1C9904_gt_LockInButtonTeam1Pressed = TriggerCreate("lib5A1C9904_gt_LockInButtonTeam1_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_LockInButtonTeam1Pressed, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Lock In Button Team 2
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_LockInButtonTeam2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_lockInButtonTeam2 == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_5A1C9904_LockInMessage"));
+    
+    if ((StringLength(lib5A1C9904_gv_selectedHeroTeam2) > 0)) {
+        libNtve_gf_UnitCreateFacingPoint(1, lib5A1C9904_gv_selectedHeroTeam2, 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, PlayerGroupAll(), false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
+        UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
+        PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
+        lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
+    }
+    return true;
+}
+
+void lib5A1C9904_gt_LockInButtonTeam2_Init () {
+    lib5A1C9904_gt_LockInButtonTeam2Pressed = TriggerCreate("lib5A1C9904_gt_LockInButtonTeam2_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_LockInButtonTeam2Pressed, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
 void lib5A1C9904_InitTriggers () {
@@ -5560,6 +5503,8 @@ void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_MutaliskPicked_Init();
     lib5A1C9904_gt_NydusPicked_Init();
     lib5A1C9904_gt_ScienceVesselPicked_Init();
+    lib5A1C9904_gt_LockInButtonTeam1_Init();
+    lib5A1C9904_gt_LockInButtonTeam2_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
