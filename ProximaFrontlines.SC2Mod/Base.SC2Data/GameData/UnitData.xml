@@ -1273,8 +1273,6 @@
             <LayoutButtons Face="TemporalField2" Type="AbilCmd" AbilCmd="TemporalField2,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="SOAMothershipBlinkStrike2" Type="AbilCmd" AbilCmd="MothershipCoreTeleport,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="MothershipPassive2" Type="Passive" Row="1" Column="4"/>
-            <LayoutButtons Face="PhotonCannonPassive2" Type="Passive" Row="1" Column="0"/>
-            <LayoutButtons Face="MothershipCoreWeapon2" Type="Passive" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -1788,15 +1786,11 @@
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
             <LayoutButtons Face="Irradiate" Type="AbilCmd" AbilCmd="Irradiate,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="ScienceSpeedBoost22" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="ScienceSpeedBoost2" Type="AbilCmd" AbilCmd="ScienceVesselEmergencyThrusters,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="CommanderTraitNovaDefensiveDrone" Type="AbilCmd" AbilCmd="NovaGadgetDefensiveDroneSummon,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="GasTurret" Type="AbilCmd" AbilCmd="TurretLab,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="Irradiate2" Type="Passive" Row="1" Column="1"/>
             <LayoutButtons Face="Detector" Type="Passive" Row="1" Column="4"/>
             <LayoutButtons Face="RepairDrones" Type="Passive" Row="2" Column="4"/>
-            <LayoutButtons Face="CommanderTraitNovaDefensiveDrone2" Type="Passive" Row="1" Column="2"/>
-            <LayoutButtons Face="GasTurret2" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
         <Radius value="0.625"/>
         <SeparationRadius value="0.625"/>
@@ -1840,8 +1834,6 @@
             <LayoutButtons Face="VoidSentryShieldRepairDouble" Type="AbilCmd" AbilCmd="VoidSentryShieldRepairDouble,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="GuardianShield3" Type="AbilCmd" AbilCmd="PrologueVoidArmor,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="SentryTaldarimForceField" Type="AbilCmd" AbilCmd="ForceFieldMonitor,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="VoidSentryShieldRepairDouble2" Type="Passive" Row="1" Column="0"/>
-            <LayoutButtons Face="VoidArmorPassive" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Melee"/>
         <HotkeyCategory value="Unit/Category/ProtossStory"/>
@@ -5403,8 +5395,6 @@
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="VoidImmortalStasisHeal" Type="AbilCmd" AbilCmd="FlagshipTimeBombTarget,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="VoidStalkerDragoonWeapon" Type="Passive" Row="1" Column="0"/>
-            <LayoutButtons Face="VoidStalkerDragoonArmor" Type="Passive" Row="1" Column="1"/>
             <LayoutButtons Face="FenixChampionPowerShield" Type="AbilCmd" AbilCmd="FenixChampionPowerShield,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="MothershipCoreTeleport" Type="AbilCmd" AbilCmd="ArtanisWormholeTransit,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="AlarakPsiOrb" Type="AbilCmd" AbilCmd="AlarakPsiOrb,Execute" Row="2" Column="2"/>
@@ -6006,7 +5996,6 @@
             <LayoutButtons Face="Impale" Type="AbilCmd" AbilCmd="Impale2,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="HydraliskFrenzy" Type="AbilCmd" AbilCmd="HydraliskFrenzy,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Ensnare" Type="AbilCmd" AbilCmd="Ensnare,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="Impale2" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="StunningBlast" Type="AbilCmd" AbilCmd="StunningBlast,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.625"/>
@@ -6522,15 +6511,6 @@
                 <Row value="1"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="MissilePods2" Type="Passive" Row="1" Column="1"/>
-            <LayoutButtons>
-                <Face value="AresClassWeaponsSystem"/>
-                <Type value="Passive"/>
-                <AbilCmd value="255,255"/>
-                <Requirements value="UseAresClassWeaponsSystem"/>
-                <Row value="1"/>
-                <Column value="2"/>
-            </LayoutButtons>
             <LayoutButtons Face="GravitonBeamUrun" Type="AbilCmd" AbilCmd="PsionicLift,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="MissilePods" Type="AbilCmd" AbilCmd="LokiMissilePods,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="GravitonOvercharge" Type="AbilCmd" AbilCmd="ZHybridPsionicShockwave,Execute" Row="2" Column="3"/>
@@ -6619,7 +6599,6 @@
             <LayoutButtons Face="RaynorRadar" Type="AbilCmd" AbilCmd="Radar,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="VoodooShield" Type="AbilCmd" AbilCmd="VoodooShield,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="MedicHeal2" Type="Passive" Row="1" Column="0"/>
-            <LayoutButtons Face="TossGrenade22" Type="Passive" Row="1" Column="1"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -6710,12 +6689,10 @@
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="SpectreNuke,Cancel" Row="2" Column="4"/>
             <LayoutButtons Face="SpectreHoldFire" Type="AbilCmd" AbilCmd="SpectreHoldFire,Execute" Row="1" Column="2"/>
             <LayoutButtons Face="SpectreWeaponsFree" Type="AbilCmd" AbilCmd="SpectreWeaponsFree,Execute" Row="1" Column="3"/>
-            <LayoutButtons Face="Obliterate2" Type="Passive" Row="1" Column="1"/>
             <LayoutButtons Face="CloakOnSpectre" Type="AbilCmd" AbilCmd="SpectreHeroCloak,On" Row="2" Column="0"/>
             <LayoutButtons Face="WraithCloakOff" Type="AbilCmd" AbilCmd="SpectreHeroCloak,Off" Row="2" Column="0"/>
             <LayoutButtons Face="SpectreNukeCalldown" Type="AbilCmd" AbilCmd="SpectreNuke,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="Obliterate" Type="AbilCmd" AbilCmd="Obliterate,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="SpectreBonus" Type="Passive" Row="1" Column="4"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
