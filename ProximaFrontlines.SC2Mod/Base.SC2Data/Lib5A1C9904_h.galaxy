@@ -5,7 +5,7 @@ include "TriggerLibs/natives"
 //--------------------------------------------------------------------------------------------------
 // Constants
 const int lib5A1C9904_gv_heroDialogWidth = 1200;
-const int lib5A1C9904_gv_heroDialogHeight = 900;
+const int lib5A1C9904_gv_heroDialogHeight = 600;
 const int lib5A1C9904_gv_buttonSizePickY = 50;
 const int lib5A1C9904_gv_buttonSizePickX = 340;
 const int lib5A1C9904_gv_buttonMarginLeft = 220;
@@ -18,15 +18,15 @@ const int lib5A1C9904_gv_infoLabelXPos = 400; // infoPanelXPos -infoPanelMargin 
 // 3-Panel Layout Constants (Heroes | Actor | Abilities)
 const int lib5A1C9904_gv_leftPanelWidth = 350; // Heroes selection panel width
 const int lib5A1C9904_gv_leftPanelXPos = -600; // Left panel X position: -(heroDialogWidth/2)
-const int lib5A1C9904_gv_middlePanelWidth = 280; // Actor display panel width
-const int lib5A1C9904_gv_middlePanelXPos = -250; // Middle panel X position: -600 + 350
+const int lib5A1C9904_gv_middlePanelWidth = 310; // Actor display panel width
+const int lib5A1C9904_gv_middlePanelXPos = 450; // Middle panel X position: 0 + 350
 const int lib5A1C9904_gv_rightPanelWidth = 420; // Abilities list panel width
 const int lib5A1C9904_gv_rightPanelXPos = 30; // Right panel X position: -250 + 280
 // Lock In Button Constants (bottom of middle panel)
 const int lib5A1C9904_gv_lockInButtonWidth = 260; // Lock in button width (middle panel - margins)
 const int lib5A1C9904_gv_lockInButtonHeight = 50;
 const int lib5A1C9904_gv_lockInButtonXPos = 470; // Center in dialog: 600 - (buttonWidth / 2) = 600 - 130 = 470
-const int lib5A1C9904_gv_lockInButtonYPos = 800; // Bottom of dialog (900 - 100 margin)
+const int lib5A1C9904_gv_lockInButtonYPos = 500; // Bottom of dialog (900 - 100 margin)
 
 // Structures
 struct lib5A1C9904_gs_Spawner {
@@ -157,6 +157,8 @@ int lib5A1C9904_gv_nydusTeam2;
 int lib5A1C9904_gv_mothershipTeam2;
 int lib5A1C9904_gv_lockInButtonTeam1;
 int lib5A1C9904_gv_lockInButtonTeam2;
+int lib5A1C9904_gv_heroPortraitTeam1;
+int lib5A1C9904_gv_heroPortraitTeam2;
 string lib5A1C9904_gv_selectedHeroTeam1;
 string lib5A1C9904_gv_selectedHeroTeam2;
 // Info Panel Label References (Team 1)
