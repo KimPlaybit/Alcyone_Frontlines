@@ -761,203 +761,203 @@ void lib5A1C9904_gf_UpdateHeroInfoTeam1 (string lp_heroType) {
     // Variable Initialization
     // Implementation
     if ((StringEqual(lp_heroType, "FirebatHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\FirebatPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "MedicHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\MedicPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "ZerglingHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\ZerglingPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "ZealotHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AiurZealotPortrait_Static.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AiurZealotPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "GoliathHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\GoliathPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "MarineHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineStrengths"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\marinemercenaryportrait_static.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\marinemercenaryportrait_static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "SpectreHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\SpectrePortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "ScienceVessel2", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\ScienceVesselPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "BroodQueenHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenStrengths"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\swarmhostspawnportrait_static.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\swarmhostspawnportrait_static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "DefilerHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\DefilerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "HydraliskHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\HydraliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "HotSTorrasque2", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\UltraliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "MutaliskHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\MutaliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "NydusCanal22", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusStrengths"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\NydusWormPortrait_Static.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\NydusWormPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "AvengerHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AvengerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "DragoonHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonStrengths"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AiurDragoonPortrait_Static.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AiurDragoonPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "SentryPurifier2", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryStrengths"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\EnergizerPortrait_Static.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\EnergizerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "AdeptHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AdeptPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "CorsairHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\CorsairPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "MothershipCoreHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\MothershipPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
 }
@@ -968,193 +968,193 @@ void lib5A1C9904_gf_UpdateHeroInfoTeam2 (string lp_heroType) {
     // Variable Initialization
     // Implementation
     if ((StringEqual(lp_heroType, "FirebatHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\FirebatPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "ZerglingHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_E8978F42"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_E8978F42"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\ZerglingPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "ZealotHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_6F27D176"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_6F27D176"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AiurZealotPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "GoliathHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\GoliathPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "MarineHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\marinemercenaryportrait_static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "SpectreHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\SpectrePortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "ScienceVessel2", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\ScienceVesselPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "BroodQueenHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\swarmhostspawnportrait_static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "DefilerHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\DefilerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "HydraliskHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\HydraliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "HotSTorrasque2", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\UltraliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "MutaliskHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\MutaliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "NydusCanal22", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\NydusWormPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "AvengerHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AvengerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "DragoonHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AiurDragoonPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "SentryPurifier2", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\EnergizerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "AdeptHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AdeptPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "CorsairHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\CorsairPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
     else if ((StringEqual(lp_heroType, "MothershipCoreHero", c_stringNoCase))) {
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipName"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility1"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility2"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility3"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility4"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipDifficulty"), PlayerGroupAll());
-        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipStrengths"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\MothershipPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
 }
@@ -1221,20 +1221,16 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool
         // Terran Right Panel Information
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), ColorWithAlpha(255,255,100,255), false, 1.0);
         lib5A1C9904_gv_infoHeroNameTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
-        lib5A1C9904_gv_infoAbilitiesHeaderTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility1Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility2Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility3Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility4Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 15, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 428, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoDifficultyTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 443, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
-        lib5A1C9904_gv_infoStrengthsHeaderTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoStrengthsTeam1 = DialogControlLastCreated();
     }
@@ -1256,20 +1252,16 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool
         // Zerg Right Panel Information
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_E8978F42"), ColorWithAlpha(255,255,100,255), false, 1.0);
         lib5A1C9904_gv_infoHeroNameTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
-        lib5A1C9904_gv_infoAbilitiesHeaderTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility1Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility2Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility3Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility4Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 15, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 428, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoDifficultyTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 443, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
-        lib5A1C9904_gv_infoStrengthsHeaderTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoStrengthsTeam1 = DialogControlLastCreated();
     }
@@ -1291,20 +1283,16 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool
         // Protoss Right Panel Information
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_6F27D176"), ColorWithAlpha(255,200,100,255), false, 1.0);
         lib5A1C9904_gv_infoHeroNameTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,180,100,255), false, 0.9);
-        lib5A1C9904_gv_infoAbilitiesHeaderTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility1Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility2Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility3Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility4Team1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 15, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 428, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoDifficultyTeam1 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 443, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,180,100,255), false, 0.9);
-        lib5A1C9904_gv_infoStrengthsHeaderTeam1 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam1, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoStrengthsTeam1 = DialogControlLastCreated();
     }
@@ -1444,20 +1432,16 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool
         // Terran Right Panel Information (Team2)
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_24A60DAB"), ColorWithAlpha(255,255,100,255), false, 1.0);
         lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
-        lib5A1C9904_gv_infoAbilitiesHeaderTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 15, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 428, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoDifficultyTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 443, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
-        lib5A1C9904_gv_infoStrengthsHeaderTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
     }
@@ -1479,20 +1463,16 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool
         // Zerg Right Panel Information (Team2)
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_752ED481"), ColorWithAlpha(255,255,100,255), false, 1.0);
         lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
-        lib5A1C9904_gv_infoAbilitiesHeaderTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 15, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 428, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoDifficultyTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 443, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,200,150,255), false, 0.9);
-        lib5A1C9904_gv_infoStrengthsHeaderTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
     }
@@ -1514,20 +1494,16 @@ bool auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool
         // Protoss Right Panel Information (Team2)
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_34AE88BC"), ColorWithAlpha(255,200,100,255), false, 1.0);
         lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 105, StringExternal("Param/Value/lib_5A1C9904_AbilitiesLabel"), ColorWithAlpha(200,180,100,255), false, 0.9);
-        lib5A1C9904_gv_infoAbilitiesHeaderTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 130, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 205, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 280, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 355, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
         lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 15, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 428, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoDifficultyTeam2 = DialogControlLastCreated();
-        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 443, StringExternal("Param/Value/lib_5A1C9904_StrengthsLabel"), ColorWithAlpha(200,180,100,255), false, 0.9);
-        lib5A1C9904_gv_infoStrengthsHeaderTeam2 = DialogControlLastCreated();
         libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
         lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
     }
