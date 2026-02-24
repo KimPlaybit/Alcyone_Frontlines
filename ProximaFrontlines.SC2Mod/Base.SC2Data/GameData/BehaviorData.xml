@@ -484,6 +484,61 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="NonHeroicDamageReduction">
+        <Name value="Damage Reduction"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <DamageResponse TargetFilters="-;Heroic">
+            <ModifyAmount value="-1"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HeroicDamageBonus">
+        <Name value="Slayer"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <DamageDealtUnscaled index="Melee" value="3" TargetFilters="Heroic"/>
+            <DamageDealtUnscaled index="Ranged" value="3" TargetFilters="Heroic"/>
+            <DamageDealtUnscaled index="Splash" value="3" TargetFilters="Heroic"/>
+            <DamageDealtUnscaled index="NoProc" value="3" TargetFilters="Heroic"/>
+            <DamageDealtUnscaled index="Spell" value="3" TargetFilters="Heroic"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VelocityBoots">
+        <Name value="Velocity Boots"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0.3"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MercurialBoots">
+        <Name value="Mercurial Boots"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0.15"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="IronBoots">
+        <Name value="Iron Boots"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0.1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FenixSOACharging">
         <Duration value="0.5"/>
     </CBehaviorBuff>
