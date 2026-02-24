@@ -355,6 +355,17 @@ trigger lib5A1C9904_gt_NydusPicked;
 trigger lib5A1C9904_gt_ScienceVesselPicked;
 trigger lib5A1C9904_gt_LockInButtonTeam1Pressed;
 trigger lib5A1C9904_gt_LockInButtonTeam2Pressed;
+trigger lib5A1C9904_gt_HeroLevel2UpgradeSelection;
+trigger lib5A1C9904_gt_HeroLevel2WorkerProtectionButton;
+trigger lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton;
+trigger lib5A1C9904_gt_HeroLevel2BootsButton;
+
+// Level 2 Upgrade Dialog Variables
+int lib5A1C9904_gv_level2Dialog;
+int lib5A1C9904_gv_level2WorkerProtectionButton;
+int lib5A1C9904_gv_level2HeroicVulnerabilityButton;
+int lib5A1C9904_gv_level2BootsButton;
+unit lib5A1C9904_gv_level2SelectedUnit;
 
 // Library Initialization
 void lib5A1C9904_InitVariables ();

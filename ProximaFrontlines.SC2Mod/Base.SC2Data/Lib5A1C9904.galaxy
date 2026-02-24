@@ -116,6 +116,11 @@ void lib5A1C9904_InitVariables () {
     lib5A1C9904_gv_boss = UnitGroupEmpty();
     lib5A1C9904_gv_selectedHeroTeam1 = "";
     lib5A1C9904_gv_selectedHeroTeam2 = "";
+    lib5A1C9904_gv_level2Dialog = c_invalidDialogId;
+    lib5A1C9904_gv_level2WorkerProtectionButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level2HeroicVulnerabilityButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level2BootsButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level2SelectedUnit = null;
 }
 
 // Functions
@@ -5848,6 +5853,188 @@ void lib5A1C9904_gt_LockInButtonTeam2_Init () {
     TriggerAddEventDialogControl(lib5A1C9904_gt_LockInButtonTeam2Pressed, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel2UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel2UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+    fixed lv_unitMoveSpeed;
+    string lv_bootsType;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+    lv_unitMoveSpeed = UnitTypeGetProperty(UnitGetType(EventUnit()), c_unitPropMovementSpeed);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 2))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Store the unit that leveled up
+    lib5A1C9904_gv_level2SelectedUnit = EventUnit();
+
+    // Determine which boots based on movement speed
+    if ((lv_unitMoveSpeed > 3.0)) {
+        lv_bootsType = "IronBoots";
+    }
+    else if ((lv_unitMoveSpeed > 2.9)) {
+        lv_bootsType = "MercurialBoots";
+    }
+    else {
+        lv_bootsType = "VelocityBoots";
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_level2Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_level2Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level2Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Fortitude Protocol button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_FortitudeTooltip"), StringExternal("Param/Value/lib_5A1C9904_FortitudeProtocol"), "");
+    lib5A1C9904_gv_level2WorkerProtectionButton = DialogControlLastCreated();
+
+    // Slayer button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_SlayerTooltip"), StringExternal("Param/Value/lib_5A1C9904_Slayer"), "");
+    lib5A1C9904_gv_level2HeroicVulnerabilityButton = DialogControlLastCreated();
+
+    // Boots button (dynamic name based on speed)
+    if ((lv_unitMoveSpeed > 3.0)) {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_IronTooltip"), StringExternal("Param/Value/lib_5A1C9904_IronBoots"), "");
+    }
+    else if ((lv_unitMoveSpeed > 2.9)) {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_MercurialTooltip"), StringExternal("Param/Value/lib_5A1C9904_MercurialBoots"), "");
+    }
+    else {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_VelocityTooltip"), StringExternal("Param/Value/lib_5A1C9904_VelocityBoots"), "");
+    }
+    lib5A1C9904_gv_level2BootsButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel2WorkerProtectionButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel2WorkerProtectionButton_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level2WorkerProtectionButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Worker Protection behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level2SelectedUnit, "NonHeroicDamageReduction", lib5A1C9904_gv_level2SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel2HeroicVulnerabilityButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level2HeroicVulnerabilityButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Heroic Vulnerability behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level2SelectedUnit, "HeroicDamageBonus", lib5A1C9904_gv_level2SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel2BootsButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel2BootsButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_unitMoveSpeed;
+    string lv_bootsType;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unitMoveSpeed = UnitTypeGetProperty(UnitGetType(lib5A1C9904_gv_level2SelectedUnit), c_unitPropMovementSpeed);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level2BootsButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Determine which boots based on movement speed
+    if ((lv_unitMoveSpeed > 3.0)) {
+        lv_bootsType = "IronBoots";
+    }
+    else if ((lv_unitMoveSpeed > 2.9)) {
+        lv_bootsType = "MercurialBoots";
+    }
+    else {
+        lv_bootsType = "VelocityBoots";
+    }
+
+    // Apply appropriate boots behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level2SelectedUnit, lv_bootsType, lib5A1C9904_gv_level2SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_HeroLevel2UpgradeSelection_Init () {
+    lib5A1C9904_gt_HeroLevel2UpgradeSelection = TriggerCreate("lib5A1C9904_gt_HeroLevel2UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HeroLevel2UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_HeroLevel2WorkerProtectionButton_Init () {
+    lib5A1C9904_gt_HeroLevel2WorkerProtectionButton = TriggerCreate("lib5A1C9904_gt_HeroLevel2WorkerProtectionButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel2WorkerProtectionButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Init () {
+    lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton = TriggerCreate("lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel2BootsButton_Init () {
+    lib5A1C9904_gt_HeroLevel2BootsButton = TriggerCreate("lib5A1C9904_gt_HeroLevel2BootsButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel2BootsButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
 void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_ExplainRules_Init();
     lib5A1C9904_gt_HideScores_Init();
@@ -5924,6 +6111,10 @@ void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_ScienceVesselPicked_Init();
     lib5A1C9904_gt_LockInButtonTeam1_Init();
     lib5A1C9904_gt_LockInButtonTeam2_Init();
+    lib5A1C9904_gt_HeroLevel2UpgradeSelection_Init();
+    lib5A1C9904_gt_HeroLevel2WorkerProtectionButton_Init();
+    lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Init();
+    lib5A1C9904_gt_HeroLevel2BootsButton_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
