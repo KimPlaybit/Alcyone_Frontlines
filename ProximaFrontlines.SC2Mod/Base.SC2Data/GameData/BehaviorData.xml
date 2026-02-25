@@ -529,6 +529,83 @@
         <BehaviorFlags index="Permanent" value="1"/>
         <Modification MoveSpeedBonus="0.1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="EnergyRegenBoost">
+        <Name value="Energy Regen Boost"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="0.05"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HealingBoost">
+        <Name value="Healing Boost"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification HealDealtMultiplier="1.1" HealTakenMultiplier="1.05"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DamageBoost">
+        <Name value="Damage Boost"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Melee" value="1.04"/>
+            <DamageDealtScaled index="Ranged" value="1.04"/>
+            <DamageDealtScaled index="Splash" value="1.04"/>
+            <DamageDealtScaled index="NoProc" value="1.04"/>
+            <DamageDealtScaled index="Spell" value="1.04"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GlassCannon">
+        <Name value="Glass Cannon"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <DamageDealtScaled index="Melee" value="1.1"/>
+            <DamageDealtScaled index="Ranged" value="1.1"/>
+            <DamageDealtScaled index="Splash" value="1.1"/>
+            <DamageDealtScaled index="NoProc" value="1.1"/>
+            <DamageDealtScaled index="Spell" value="1.1"/>
+            <VitalMaxAdditiveMultiplierArray index="Life" value="-0.2"/>
+            <VitalMaxAdditiveMultiplierArray index="Shields" value="-0.2"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StructureDefense">
+        <Name value="Structure Defense"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <DamageResponse ModifyFraction="0.8" TargetFilters="Structure;-">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AlliedEnergyAura">
+        <Name value="Allied Energy Aura"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="3"/>
+        <PeriodicEffect value="AlliedEnergySearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AlliedEnergy">
+        <Name value="Allied Energy"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+        <Modification>
+            <VitalRegenMultiplier index="Energy" value="0.05"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FenixSOACharging">
         <Duration value="0.5"/>
     </CBehaviorBuff>

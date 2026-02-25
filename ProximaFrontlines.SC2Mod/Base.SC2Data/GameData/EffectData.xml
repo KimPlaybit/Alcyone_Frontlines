@@ -867,6 +867,18 @@
         <PeriodicEffectArray value="HealHeroicUnitsAround3"/>
         <PeriodicPeriodArray value="1.001"/>
     </CEffectCreatePersistent>
+        <CEffectEnumArea id="AlliedEnergySearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Heroic;Neutral,Enemy,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="AlliedEnergyApply"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="AlliedEnergyApply">
+        <EditorCategories value=""/>
+        <Behavior value="AlliedEnergy"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="ProtectWorkersSearch">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetUnit"/>

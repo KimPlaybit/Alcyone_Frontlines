@@ -359,6 +359,14 @@ trigger lib5A1C9904_gt_HeroLevel2UpgradeSelection;
 trigger lib5A1C9904_gt_HeroLevel2WorkerProtectionButton;
 trigger lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton;
 trigger lib5A1C9904_gt_HeroLevel2BootsButton;
+trigger lib5A1C9904_gt_HeroLevel5UpgradeSelection;
+trigger lib5A1C9904_gt_HeroLevel5EnergyRegenButton;
+trigger lib5A1C9904_gt_HeroLevel5HealingBoostButton;
+trigger lib5A1C9904_gt_HeroLevel5DamageBoostButton;
+trigger lib5A1C9904_gt_HeroLevel7UpgradeSelection;
+trigger lib5A1C9904_gt_HeroLevel7GlassCannonButton;
+trigger lib5A1C9904_gt_HeroLevel7StructureDefenseButton;
+trigger lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton;
 
 // Level 2 Upgrade Dialog Variables
 int lib5A1C9904_gv_level2Dialog;
@@ -366,6 +374,20 @@ int lib5A1C9904_gv_level2WorkerProtectionButton;
 int lib5A1C9904_gv_level2HeroicVulnerabilityButton;
 int lib5A1C9904_gv_level2BootsButton;
 unit lib5A1C9904_gv_level2SelectedUnit;
+
+// Level 5 Upgrade Dialog Variables
+int lib5A1C9904_gv_level5Dialog;
+int lib5A1C9904_gv_level5EnergyRegenButton;
+int lib5A1C9904_gv_level5HealingBoostButton;
+int lib5A1C9904_gv_level5DamageBoostButton;
+unit lib5A1C9904_gv_level5SelectedUnit;
+
+// Level 7 Upgrade Dialog Variables
+int lib5A1C9904_gv_level7Dialog;
+int lib5A1C9904_gv_level7GlassCannonButton;
+int lib5A1C9904_gv_level7StructureDefenseButton;
+int lib5A1C9904_gv_level7AlliedEnergyAuraButton;
+unit lib5A1C9904_gv_level7SelectedUnit;
 
 // Library Initialization
 void lib5A1C9904_InitVariables ();

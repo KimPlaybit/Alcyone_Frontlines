@@ -121,6 +121,16 @@ void lib5A1C9904_InitVariables () {
     lib5A1C9904_gv_level2HeroicVulnerabilityButton = c_invalidDialogControlId;
     lib5A1C9904_gv_level2BootsButton = c_invalidDialogControlId;
     lib5A1C9904_gv_level2SelectedUnit = null;
+    lib5A1C9904_gv_level5Dialog = c_invalidDialogId;
+    lib5A1C9904_gv_level5EnergyRegenButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level5HealingBoostButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level5DamageBoostButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level5SelectedUnit = null;
+    lib5A1C9904_gv_level7Dialog = c_invalidDialogId;
+    lib5A1C9904_gv_level7GlassCannonButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level7StructureDefenseButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level7AlliedEnergyAuraButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level7SelectedUnit = null;
 }
 
 // Functions
@@ -6015,6 +6025,246 @@ bool lib5A1C9904_gt_HeroLevel2BootsButton_Func (bool testConds, bool runActions)
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel5UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel5UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 5))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Store the unit that leveled up
+    lib5A1C9904_gv_level5SelectedUnit = EventUnit();
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_level5Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_level5Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level5Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Energy Regen button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level5Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_EnergyRegenTooltip"), StringExternal("Param/Value/lib_5A1C9904_EnergyRegen"), "");
+    lib5A1C9904_gv_level5EnergyRegenButton = DialogControlLastCreated();
+
+    // Healing Boost button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level5Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_HealingBoostTooltip"), StringExternal("Param/Value/lib_5A1C9904_HealingBoost"), "");
+    lib5A1C9904_gv_level5HealingBoostButton = DialogControlLastCreated();
+
+    // Anti-Air Damage button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level5Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_AntiAirTooltip"), StringExternal("Param/Value/lib_5A1C9904_AntiAir"), "");
+    lib5A1C9904_gv_level5DamageBoostButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel5EnergyRegenButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel5EnergyRegenButton_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level5EnergyRegenButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Energy Regen Boost behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level5SelectedUnit, "EnergyRegenBoost", lib5A1C9904_gv_level5SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel5HealingBoostButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel5HealingBoostButton_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level5HealingBoostButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Healing Boost behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level5SelectedUnit, "HealingBoost", lib5A1C9904_gv_level5SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel5DamageBoostButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel5DamageBoostButton_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level5DamageBoostButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Damage Boost behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level5SelectedUnit, "DamageBoost", lib5A1C9904_gv_level5SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel7UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel7UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 7))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Store the unit that leveled up
+    lib5A1C9904_gv_level7SelectedUnit = EventUnit();
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_level7Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_level7Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level7Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Glass Cannon button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level7Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_GlassCannonTooltip"), StringExternal("Param/Value/lib_5A1C9904_GlassCannon"), "");
+    lib5A1C9904_gv_level7GlassCannonButton = DialogControlLastCreated();
+
+    // Structure Defense button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level7Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_StructureDefenseTooltip"), StringExternal("Param/Value/lib_5A1C9904_StructureDefense"), "");
+    lib5A1C9904_gv_level7StructureDefenseButton = DialogControlLastCreated();
+
+    // Allied Energy Aura button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level7Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_AlliedEnergyAuraTooltip"), StringExternal("Param/Value/lib_5A1C9904_AlliedEnergyAura"), "");
+    lib5A1C9904_gv_level7AlliedEnergyAuraButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel7GlassCannonButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel7GlassCannonButton_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level7GlassCannonButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Glass Cannon behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level7SelectedUnit, "AggressiveStrike", lib5A1C9904_gv_level7SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel7StructureDefenseButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel7StructureDefenseButton_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level7StructureDefenseButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Structure Defense behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level7SelectedUnit, "StructureDefense", lib5A1C9904_gv_level7SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel7AlliedEnergyAuraButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level7AlliedEnergyAuraButton == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Allied Energy Aura behavior
+    UnitBehaviorAdd(lib5A1C9904_gv_level7SelectedUnit, "AlliedEnergyAura", lib5A1C9904_gv_level7SelectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
 void lib5A1C9904_gt_HeroLevel2UpgradeSelection_Init () {
     lib5A1C9904_gt_HeroLevel2UpgradeSelection = TriggerCreate("lib5A1C9904_gt_HeroLevel2UpgradeSelection_Func");
     TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HeroLevel2UpgradeSelection, null);
@@ -6033,6 +6283,46 @@ void lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Init () {
 void lib5A1C9904_gt_HeroLevel2BootsButton_Init () {
     lib5A1C9904_gt_HeroLevel2BootsButton = TriggerCreate("lib5A1C9904_gt_HeroLevel2BootsButton_Func");
     TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel2BootsButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel5UpgradeSelection_Init () {
+    lib5A1C9904_gt_HeroLevel5UpgradeSelection = TriggerCreate("lib5A1C9904_gt_HeroLevel5UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HeroLevel5UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_HeroLevel5EnergyRegenButton_Init () {
+    lib5A1C9904_gt_HeroLevel5EnergyRegenButton = TriggerCreate("lib5A1C9904_gt_HeroLevel5EnergyRegenButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel5EnergyRegenButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel5HealingBoostButton_Init () {
+    lib5A1C9904_gt_HeroLevel5HealingBoostButton = TriggerCreate("lib5A1C9904_gt_HeroLevel5HealingBoostButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel5HealingBoostButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel5DamageBoostButton_Init () {
+    lib5A1C9904_gt_HeroLevel5DamageBoostButton = TriggerCreate("lib5A1C9904_gt_HeroLevel5DamageBoostButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel5DamageBoostButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel7UpgradeSelection_Init () {
+    lib5A1C9904_gt_HeroLevel7UpgradeSelection = TriggerCreate("lib5A1C9904_gt_HeroLevel7UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HeroLevel7UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_HeroLevel7GlassCannonButton_Init () {
+    lib5A1C9904_gt_HeroLevel7GlassCannonButton = TriggerCreate("lib5A1C9904_gt_HeroLevel7GlassCannonButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel7GlassCannonButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel7StructureDefenseButton_Init () {
+    lib5A1C9904_gt_HeroLevel7StructureDefenseButton = TriggerCreate("lib5A1C9904_gt_HeroLevel7StructureDefenseButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel7StructureDefenseButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton_Init () {
+    lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton = TriggerCreate("lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
 void lib5A1C9904_InitTriggers () {
@@ -6115,6 +6405,14 @@ void lib5A1C9904_InitTriggers () {
     lib5A1C9904_gt_HeroLevel2WorkerProtectionButton_Init();
     lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Init();
     lib5A1C9904_gt_HeroLevel2BootsButton_Init();
+    lib5A1C9904_gt_HeroLevel5UpgradeSelection_Init();
+    lib5A1C9904_gt_HeroLevel5EnergyRegenButton_Init();
+    lib5A1C9904_gt_HeroLevel5HealingBoostButton_Init();
+    lib5A1C9904_gt_HeroLevel5DamageBoostButton_Init();
+    lib5A1C9904_gt_HeroLevel7UpgradeSelection_Init();
+    lib5A1C9904_gt_HeroLevel7GlassCannonButton_Init();
+    lib5A1C9904_gt_HeroLevel7StructureDefenseButton_Init();
+    lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
