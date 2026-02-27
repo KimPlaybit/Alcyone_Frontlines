@@ -485,9 +485,8 @@
         </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="NonHeroicDamageReduction">
-        <Name value="Fortitude Protocol"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zeratul-sentry-eclipseprotocol.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <DamageResponse TargetFilters="-;Heroic">
@@ -496,9 +495,8 @@
         </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="HeroicDamageBonus">
-        <Name value="Slayer"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\elsecaro_zergdamage_splat_01_diff.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <Modification>
@@ -506,33 +504,29 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="VelocityBoots">
-        <Name value="Velocity Boots"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-tychus-herc-impactboots.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <Modification MoveSpeedBonus="0.3"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MercurialBoots">
-        <Name value="Mercurial Boots"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-tychus-herc-impactboots.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <Modification MoveSpeedBonus="0.15"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="IronBoots">
-        <Name value="Iron Boots"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-tychus-herc-impactboots.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <Modification MoveSpeedBonus="0.1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="EnergyRegenBoost">
-        <Name value="Energy Regen Boost"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\storm_energyring4green.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <Modification>
@@ -540,31 +534,41 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="HealingBoost">
-        <Name value="Healing Boost"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-dehaka-healingaura.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <Modification HealDealtMultiplier="1.1" HealTakenMultiplier="1.05"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DamageBoost">
-        <Name value="Damage Boost"/>
+    <CBehaviorBuff id="GravityPull">
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-protoss-researchgravitysling.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="1"/>
+        <PeriodicEffect value="DamageBoostFlyingUnitSearch"/>
         <Modification>
-            <DamageDealtScaled index="Melee" value="1.04"/>
-            <DamageDealtScaled index="Ranged" value="1.04"/>
-            <DamageDealtScaled index="Splash" value="1.04"/>
-            <DamageDealtScaled index="NoProc" value="1.04"/>
-            <DamageDealtScaled index="Spell" value="1.04"/>
+            <DamageDealtScaled index="Melee" value="1.03"/>
+            <DamageDealtScaled index="Ranged" value="1.03"/>
+            <DamageDealtScaled index="Splash" value="1.03"/>
+            <DamageDealtScaled index="NoProc" value="1.03"/>
+            <DamageDealtScaled index="Spell" value="1.03"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlyingUnitGroundAttackDebuff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-protoss-researchgravitysling.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+        <Modification Height="1">
+            <HeightTime index="Start" value="1"/>
+            <HeightTime index="Stop" value="0.25"/>
+            <PlaneDelta index="Ground" value="1"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GlassCannon">
-        <Name value="Glass Cannon"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-shadowcannon.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <Modification>
@@ -578,9 +582,8 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="StructureDefense">
-        <Name value="Structure Defense"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\amonshards _armor.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <DamageResponse ModifyFraction="0.8" TargetFilters="Structure;-">
@@ -588,23 +591,49 @@
         </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="AlliedEnergyAura">
-        <Name value="Allied Energy Aura"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\storm_energytile_bluegreen.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <Period value="3"/>
         <PeriodicEffect value="AlliedEnergySearch"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AlliedEnergy">
-        <Name value="Allied Energy"/>
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <InfoIcon value="Assets\Textures\storm_energytile_bluegreen.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="3"/>
         <Modification>
             <VitalRegenMultiplier index="Energy" value="0.05"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BaseBreaker">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-nova-neckbreaker.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <DamageDealtAttributeMultiplier index="Structure" value="1.2"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PowerOverwhelming">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-karax-energyregen200.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Modification>
+            <VitalMaxArray index="Energy" value="100"/>
+            <VitalRegenMultiplier index="Energy" value="0.30"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ArmorPlates">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\xelnaga_cavern_groundplates_sm_02.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <DamageResponse ModifyFraction="0.9">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="FenixSOACharging">
         <Duration value="0.5"/>

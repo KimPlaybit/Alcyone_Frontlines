@@ -1303,4 +1303,12 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="HealHeroic"/>
     </CEffectSet>
+    <CEffectEnumArea id="DamageBoostFlyingUnitSearch">
+        <SearchFilters value="Air;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Item"/>
+        <AreaArray index="0" Radius="2" Effect="DamageBoostApplyDebuff"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="DamageBoostApplyDebuff">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="FlyingUnitGroundAttackDebuff"/>
+    </CEffectApplyBehavior>
 </Catalog>
