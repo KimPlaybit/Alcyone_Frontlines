@@ -545,7 +545,7 @@
         <InfoIcon value="Assets\Textures\btn-upgrade-protoss-researchgravitysling.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BehaviorFlags index="Permanent" value="1"/>
-        <Period value="1"/>
+        <Period value="0.5"/>
         <PeriodicEffect value="DamageBoostFlyingUnitSearch"/>
         <Modification>
             <DamageDealtScaled index="Melee" value="1.03"/>
@@ -559,10 +559,10 @@
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-protoss-researchgravitysling.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="3"/>
-        <Modification Height="1">
-            <HeightTime index="Start" value="1"/>
-            <HeightTime index="Stop" value="0.25"/>
+        <Duration value="1"/>
+        <InitialEffect value="FlyingUnitGroundAttackHeightReduce"/>
+        <FinalEffect value="FlyingUnitGroundAttackHeightRestore"/>
+        <Modification>
             <PlaneDelta index="Ground" value="1"/>
         </Modification>
     </CBehaviorBuff>

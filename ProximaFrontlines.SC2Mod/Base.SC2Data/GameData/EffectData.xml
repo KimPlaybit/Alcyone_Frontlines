@@ -1311,4 +1311,14 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Behavior value="FlyingUnitGroundAttackDebuff"/>
     </CEffectApplyBehavior>
+    <CEffectModifyUnit id="FlyingUnitGroundAttackHeightReduce">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Height value="-1"/>
+        <HeightTime value="0.3"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="FlyingUnitGroundAttackHeightRestore">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Height value="1"/>
+        <HeightTime value="0.7"/>
+    </CEffectModifyUnit>
 </Catalog>
