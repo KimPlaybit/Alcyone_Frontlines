@@ -355,45 +355,89 @@ trigger lib5A1C9904_gt_NydusPicked;
 trigger lib5A1C9904_gt_ScienceVesselPicked;
 trigger lib5A1C9904_gt_LockInButtonTeam1Pressed;
 trigger lib5A1C9904_gt_LockInButtonTeam2Pressed;
+trigger lib5A1C9904_gt_NydusLevel2UpgradeSelection;
+trigger lib5A1C9904_gt_NydusLevel2WorkerProtectionButton;
+trigger lib5A1C9904_gt_NydusLevel2HeroicVulnerabilityButton;
+trigger lib5A1C9904_gt_NydusLevel2BootsButton;
 trigger lib5A1C9904_gt_HeroLevel2UpgradeSelection;
 trigger lib5A1C9904_gt_HeroLevel2WorkerProtectionButton;
 trigger lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton;
 trigger lib5A1C9904_gt_HeroLevel2BootsButton;
+trigger lib5A1C9904_gt_NydusLevel5UpgradeSelection;
+trigger lib5A1C9904_gt_NydusLevel5EnergyRegenButton;
+trigger lib5A1C9904_gt_NydusLevel5HealingBoostButton;
+trigger lib5A1C9904_gt_NydusLevel5DamageBoostButton;
 trigger lib5A1C9904_gt_HeroLevel5UpgradeSelection;
 trigger lib5A1C9904_gt_HeroLevel5EnergyRegenButton;
 trigger lib5A1C9904_gt_HeroLevel5HealingBoostButton;
 trigger lib5A1C9904_gt_HeroLevel5DamageBoostButton;
+trigger lib5A1C9904_gt_NydusLevel7UpgradeSelection;
+trigger lib5A1C9904_gt_NydusLevel7GlassCannonButton;
+trigger lib5A1C9904_gt_NydusLevel7StructureDefenseButton;
+trigger lib5A1C9904_gt_NydusLevel7AlliedEnergyAuraButton;
 trigger lib5A1C9904_gt_HeroLevel7UpgradeSelection;
 trigger lib5A1C9904_gt_HeroLevel7GlassCannonButton;
 trigger lib5A1C9904_gt_HeroLevel7StructureDefenseButton;
 trigger lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton;
+trigger lib5A1C9904_gt_NydusLevel10UpgradeSelection;
+trigger lib5A1C9904_gt_NydusLevel10BaseBreakerButton;
+trigger lib5A1C9904_gt_NydusLevel10PowerOverwhelmingButton;
+trigger lib5A1C9904_gt_NydusLevel10ArmorPlatesButton;
 trigger lib5A1C9904_gt_HeroLevel10UpgradeSelection;
 trigger lib5A1C9904_gt_HeroLevel10BaseBreakerButton;
 trigger lib5A1C9904_gt_HeroLevel10PowerOverwhelmingButton;
 trigger lib5A1C9904_gt_HeroLevel10ArmorPlatesButton;
 
-// Level 2 Upgrade Dialog Variables
+// Nydus Level 2 Upgrade Dialog Variables
+int lib5A1C9904_gv_nydusLevel2Dialog;
+int lib5A1C9904_gv_nydusLevel2WorkerProtectionButton;
+int lib5A1C9904_gv_nydusLevel2HeroicVulnerabilityButton;
+int lib5A1C9904_gv_nydusLevel2BootsButton;
+unit lib5A1C9904_gv_nydusLevel2SelectedUnit;
+
+// Hero Level 2 Upgrade Dialog Variables
 int lib5A1C9904_gv_level2Dialog;
 int lib5A1C9904_gv_level2WorkerProtectionButton;
 int lib5A1C9904_gv_level2HeroicVulnerabilityButton;
 int lib5A1C9904_gv_level2BootsButton;
 unit lib5A1C9904_gv_level2SelectedUnit;
 
-// Level 5 Upgrade Dialog Variables
+// Nydus Level 5 Upgrade Dialog Variables
+int lib5A1C9904_gv_nydusLevel5Dialog;
+int lib5A1C9904_gv_nydusLevel5EnergyRegenButton;
+int lib5A1C9904_gv_nydusLevel5HealingBoostButton;
+int lib5A1C9904_gv_nydusLevel5DamageBoostButton;
+unit lib5A1C9904_gv_nydusLevel5SelectedUnit;
+
+// Hero Level 5 Upgrade Dialog Variables
 int lib5A1C9904_gv_level5Dialog;
 int lib5A1C9904_gv_level5EnergyRegenButton;
 int lib5A1C9904_gv_level5HealingBoostButton;
 int lib5A1C9904_gv_level5DamageBoostButton;
 unit lib5A1C9904_gv_level5SelectedUnit;
 
-// Level 7 Upgrade Dialog Variables
+// Nydus Level 7 Upgrade Dialog Variables
+int lib5A1C9904_gv_nydusLevel7Dialog;
+int lib5A1C9904_gv_nydusLevel7GlassCannonButton;
+int lib5A1C9904_gv_nydusLevel7StructureDefenseButton;
+int lib5A1C9904_gv_nydusLevel7AlliedEnergyAuraButton;
+unit lib5A1C9904_gv_nydusLevel7SelectedUnit;
+
+// Hero Level 7 Upgrade Dialog Variables
 int lib5A1C9904_gv_level7Dialog;
 int lib5A1C9904_gv_level7GlassCannonButton;
 int lib5A1C9904_gv_level7StructureDefenseButton;
 int lib5A1C9904_gv_level7AlliedEnergyAuraButton;
 unit lib5A1C9904_gv_level7SelectedUnit;
 
-// Level 10 Upgrade Dialog Variables
+// Nydus Level 10 Upgrade Dialog Variables
+int lib5A1C9904_gv_nydusLevel10Dialog;
+int lib5A1C9904_gv_nydusLevel10BaseBreakerButton;
+int lib5A1C9904_gv_nydusLevel10PowerOverwhelmingButton;
+int lib5A1C9904_gv_nydusLevel10ArmorPlatesButton;
+unit lib5A1C9904_gv_nydusLevel10SelectedUnit;
+
+// Hero Level 10 Upgrade Dialog Variables
 int lib5A1C9904_gv_level10Dialog;
 int lib5A1C9904_gv_level10BaseBreakerButton;
 int lib5A1C9904_gv_level10PowerOverwhelmingButton;

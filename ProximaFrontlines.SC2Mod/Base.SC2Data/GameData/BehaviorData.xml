@@ -635,6 +635,70 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="NonHeroicDamageReductionAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zeratul-sentry-eclipseprotocol.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="NonHeroicDamageReductionSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HeroicDamageBonusAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\elsecaro_zergdamage_splat_01_diff.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="HeroicDamageBonusSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BootsAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-tychus-herc-impactboots.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="BootsSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HealthRegenAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-dehaka-healingaura.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="HealthRegenSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GlassCannonAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-shadowcannon.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="GlassCannonSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StructureDefenseAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\amonshards _armor.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="StructureDefenseSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BaseBreakerAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-nova-neckbreaker.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="BaseBreakerSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ArmorPlatesAura">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\xelnaga_cavern_groundplates_sm_02.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="ArmorPlatesSearch"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FenixSOACharging">
         <Duration value="0.5"/>
     </CBehaviorBuff>
