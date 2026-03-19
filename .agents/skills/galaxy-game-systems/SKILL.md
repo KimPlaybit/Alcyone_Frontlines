@@ -40,20 +40,56 @@ BankSectionRemove(lv_bank, "OldData");
 BankKeyRemove(lv_bank, "Stats", "OldKey");
 ```
 
-### Proxima Frontlines bank init pattern
+### SSF bank pattern (struct-based)
+
+SSF stores the bank handle inside the per-player struct and uses a custom encode/decode layer for compact binary storage in a single bank string value:
 
 ```galaxy
-void lib5A1C9904_gf_InitBank(int lp_player) {
-    BankLoad("ProximaFrontlines", lp_player);
-    lib5A1C9904_gv_playerBank[lp_player] = BankLastCreated();
-    BankWait(lib5A1C9904_gv_playerBank[lp_player]);
+// bank stored in player struct (GlobalVariables.galaxy)
+struct PlayerStruct {
+    bank bankfile;
+    bool saveFlag_Any;
+    bool saveFlag_Heavy;
+    bool saveFlag_Options;
+    // ...
+};
 
-    if (!BankKeyExists(lib5A1C9904_gv_playerBank[lp_player], "Stats", "Kills")) {
-        BankValueSetFromInt(lib5A1C9904_gv_playerBank[lp_player], "Stats", "Kills", 0);
-        BankSave(lib5A1C9904_gv_playerBank[lp_player]);
-    }
+// Bank_Save_RequestSave queues a debounced save per player
+void Bank_Save_RequestSave(int playerID) {
+    gv_PlayerStats[playerID].saveFlag_Any = true;
+    TriggerExecute(Bank_Save_RequestQueueTrigger, false, false);
+}
+
+// Force-save all sections now
+void Bank_Save_ForcedAll(int playerID) {
+    bank b = gv_PlayerStats[playerID].bankfile;
+    // encode all data into a compact string, store in one key
+    BankStorageReset();
+    BankStorageAddInt(gv_PlayerStats[playerID].points);
+    BankStorageAddBool(gv_PlayerStats[playerID].tutorialCompleted);
+    // ...
+    BankValueSetFromString(b, "Data", "Core", BankStorageString);
+    BankSave(b);
 }
 ```
+
+**SSF bank encoding pattern:** Rather than one bank key per variable, SSF concatenates all values into a single string using a custom `BankStorage*` helper set (`BankStorageAddInt`, `BankStorageAddBool`, `BankStorageRetrieveInt`, etc.) stored in `Bank.galaxy`. This avoids hitting the bank key limit and compresses save data.
+
+---
+
+## UserData System (Catalog-Driven Rewards)
+
+SSF uses UserData tables defined in the editor to drive kill rewards and other game values, keeping design data out of code:
+
+```galaxy
+// Read from a UserData table by type identifier and field name
+fixed baseExp     = UserDataGetFixed("KillRewards", unitType, "Exp", 1);
+fixed baseBiomass = UserDataGetFixed("KillRewards", unitType, "Biomass", 1);
+int enemyType     = UserDataGetInt("KillRewards", unitType, "EnemyType", 1);
+int teamSizeMax   = UserDataGetInt("AcvReqSpeedruns", "P0D1", "TeamSizeMaxForSmall", 1);
+```
+
+The 4th parameter is the instance index (1-based). UserData tables are defined in the Galaxy Data editor.
 
 ---
 
@@ -241,60 +277,54 @@ libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "UpgradeName", 1);
 
 ---
 
-## Scoreboard (Custom Dialog Labels)
+## Scoreboard / Per-Player Stat Tracking (SSF pattern)
+
+SSF tracks per-player stats inside the `PlayerStruct` and reflects them through function calls:
 
 ```galaxy
-// Arrays declared in _h.galaxy (indexed by player number)
-dialogcontrol lib5A1C9904_gv_scoreboard_kills[17];
-dialogcontrol lib5A1C9904_gv_scoreboard_deaths[17];
-dialogcontrol lib5A1C9904_gv_scoreboard_minerals[17];
-int           lib5A1C9904_gv_playerKills[17];
-int           lib5A1C9904_gv_playerDeaths[17];
+// In player struct
+struct PlayerStruct {
+    int  kills;
+    int  scientists;
+    fixed acvScore;
+};
 
-// Update function
-void lib5A1C9904_gf_UpdateScoreboard(
-    int lp_player, int lp_kills, int lp_deaths, int lp_minerals
-) {
-    lib5A1C9904_gv_playerKills[lp_player] = lp_kills;
-    libNtve_gf_SetDialogItemText(
-        lib5A1C9904_gv_scoreboard_kills[lp_player],
-        IntToText(lp_kills),
-        PlayerGroupAll()
-    );
-    libNtve_gf_SetDialogItemText(
-        lib5A1C9904_gv_scoreboard_deaths[lp_player],
-        IntToText(lp_deaths),
-        PlayerGroupAll()
-    );
+// Award XP and resources on kill
+void Player_KillReward(string unitType, point unitPosition) {
+    fixed baseExp     = UserDataGetFixed("KillRewards", unitType, "Exp", 1);
+    fixed baseBiomass = UserDataGetFixed("KillRewards", unitType, "Biomass", 1);
+    int tmpInt = -1;
+    while (true) {
+        tmpInt = PlayerGroupNextPlayer(gv_ActivePG, tmpInt);
+        if (tmpInt < 0) { break; }
+        Player_AddExp(tmpInt, (baseExp * gv_PlayerStats[tmpInt].expBonusMult) + gv_PlayerStats[tmpInt].expBonusAdd);
+        fixed biomass = (baseBiomass * gv_PlayerStats[tmpInt].biomassBonusMult) + gv_PlayerStats[tmpInt].biomassBonusAdd;
+        PlayerModifyPropertyFixed(tmpInt, c_playerPropMinerals, c_playerPropOperAdd, biomass);
+        Utility_DelayedTextTagCreate(StringToText("+") + FixedToText(biomass, 2), Color(0.00, 80.78, 0.00), unitPosition, PlayerGroupSingle(tmpInt), 1.0);
+    }
 }
 ```
 
 ---
 
-## Death & Revive System
+## Death & Revive System (SSF pattern)
 
 ```galaxy
-bool lib5A1C9904_gt_HeroDied_Func(bool testConds, bool runActions) {
-    unit  lv_dead   = EventUnit();
-    int   lv_player = UnitGetOwner(lv_dead);
-    int   lv_revive = 10;   // seconds
-
-    // Display death message
-    lib5A1C9904_gf_DisplayDeathMessage(lv_dead, EventKillingUnit(), lv_revive);
-
-    // Wait then revive
-    Wait(lv_revive * 1.0, c_timeGame);
-
-    // Check if all team mates are dead
-    if (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_soldierPlayers1)) {
-        // Team wipe — game over
-        return true;
+// In Player.galaxy
+void Player_HeroDiesSwitch(int player) {
+    gv_PlayerStats[player].lifes -= 1;
+    if (gv_PlayerStats[player].lifes <= 0) {
+        // trigger defeat or spectator mode
+        return;
     }
+    // schedule revive via UI
+    ReviveUI_StartTimer(player);
+}
 
-    // Respawn at base
-    UnitCreate(1, UnitGetType(lv_dead), c_unitCreateIgnorePlacement,
-        lv_player, lib5A1C9904_gf_GetSpawnPointTeam1(), 270.0);
-    return true;
+void Player_Revive_ReleaseHero(int player, point position) {
+    UnitCreate(1, UnitGetType(gv_PlayerStats[player].heroUnit),
+        c_unitCreateIgnorePlacement, player, position, 270.0);
+    gv_PlayerStats[player].heroUnit = UnitLastCreated();
 }
 ```
 
@@ -327,17 +357,8 @@ point lib5A1C9904_gf_FindHealspot(unit lp_unit) {
 ```galaxy
 // Read lobby options (set at game creation)
 string lv_attr = GameAttributeGameValue("attrId");
-
-// Pattern used in lib5A1C9904:
-bool lib5A1C9904_gf_GetWaveStatus() {
-    return (GameAttributeGameValue("1") == "0001");
-}
-bool lib5A1C9904_gf_WithRTSPlayer() {
-    return (GameAttributeGameValue("4") == "0001");
-}
-bool lib5A1C9904_gf_IsSurvival() {
-    return (GameAttributeGameValue("3") == "0001");
-}
+// Example:
+bool isHardMode = (GameAttributeGameValue("Difficulty") == "Hard");
 ```
 
 ---

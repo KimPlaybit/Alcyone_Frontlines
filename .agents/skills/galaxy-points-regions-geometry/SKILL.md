@@ -180,8 +180,21 @@ VisResetFoWAlpha();
 // Revealer (persistent vision source at a point)
 VisRevealerCreate(lv_player, lv_point, 12.0);
 revealer lv_rev = VisRevealerLastCreated();
-VisRevealerEnable(lv_rev, true);
+VisRevealerEnable(lv_rev, true);   // enable/disable without destroying
 VisRevealerDestroy(lv_rev);
+```
+
+---
+
+## Creep
+
+```galaxy
+// Check if Zerg creep is present at a point
+bool lv_hasCreep = CreepIsPresent(lv_point);
+
+// Add or remove creep in a radius
+CreepModify(lv_point, 5.0, true,  false);  // add creep (spread = false)
+CreepModify(lv_point, 5.0, false, false);  // remove creep
 ```
 
 ---

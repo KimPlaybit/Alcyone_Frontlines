@@ -4,14 +4,42 @@ Reference: https://mapster.talv.space/galaxy/reference
 
 ---
 
-## Player Slots in Proxima Frontlines
+## Player Data Pattern (SSF)
+
+Player state is stored in a struct array indexed by player slot (1-based):
 
 ```galaxy
-// Library-specific globals (declare in _h.galaxy)
-int  lib5A1C9904_gv_rTSPlayer1;          // Team 1 RTS player (1-based slot)
-int  lib5A1C9904_gv_rTSPlayer2;          // Team 2 RTS player
-playergroup lib5A1C9904_gv_soldierPlayers1;  // All soldier players on team 1
-playergroup lib5A1C9904_gv_soldierPlayers2;  // All soldier players on team 2
+// In GlobalVariables.galaxy
+const int gv_MaxAmountPlayers = 6;
+
+struct PlayerStruct {
+    bool   activeFlag;
+    bool   spectatingFlag;
+    bank   bankfile;
+    unit   heroUnit;
+    int    points;
+    int[gv_MaxAmountParts] wins;
+    int    heroUnlocked;    // bitflag
+};
+PlayerStruct[gv_MaxAmountPlayers + 1] gv_PlayerStats;
+
+// Common shared playergroups
+playergroup gv_ActivePG;      // currently active players
+playergroup gv_StartingPG;    // players at game start
+playergroup gv_SpectatingPG;  // spectators
+int gv_PlayerAmount;
+int gv_PlayerAmountStart;
+
+// Special player slots
+const int gv_BasePlayer  = 7;    // allied non-hero structures
+const int gv_EnemyPlayer = 14;   // enemy units
+```
+
+Access per-player data:
+```galaxy
+gv_PlayerStats[playerID].activeFlag = true;
+unit hero = gv_PlayerStats[playerID].heroUnit;
+PlayerGroupAdd(gv_ActivePG, playerID);
 ```
 
 ---
@@ -40,15 +68,14 @@ bool lv_has   = PlayerGroupHasPlayer(lv_pg, 2);
 int  lv_count = PlayerGroupCount(lv_pg);
 ```
 
-### Iterating
+### Iterating active players (SSF pattern)
 
 ```galaxy
-playergroup lv_group = lib5A1C9904_gv_soldierPlayers1;
-int lv_player = -1;
+int tmpInt = -1;
 while (true) {
-    lv_player = PlayerGroupNextPlayer(lv_group, lv_player); // start at -1
-    if (lv_player < 0) { break; }
-    // act on lv_player ...
+    tmpInt = PlayerGroupNextPlayer(gv_ActivePG, tmpInt);
+    if (tmpInt < 0) { break; }
+    // act on tmpInt
 }
 ```
 
@@ -72,17 +99,17 @@ PlayerType(lv_player);  // c_playerTypeUser, c_playerTypeComputer, c_playerTypeH
 
 ---
 
-## Race Helpers (project pattern)
+## Race Helpers
 
 ```galaxy
-bool lib5A1C9904_gf_IsTerran(int lp_player) {
-    return StringContains(PlayerRace(lp_player), "Terr", c_stringAnywhere, c_stringNoCase);
+bool IsTerran(int player) {
+    return StringContains(PlayerRace(player), "Terr", c_stringAnywhere, c_stringNoCase);
 }
-bool lib5A1C9904_gf_IsZerg(int lp_player) {
-    return StringContains(PlayerRace(lp_player), "Zerg", c_stringAnywhere, c_stringNoCase);
+bool IsZerg(int player) {
+    return StringContains(PlayerRace(player), "Zerg", c_stringAnywhere, c_stringNoCase);
 }
-bool lib5A1C9904_gf_IsProtoss(int lp_player) {
-    return StringContains(PlayerRace(lp_player), "Prot", c_stringAnywhere, c_stringNoCase);
+bool IsProtoss(int player) {
+    return StringContains(PlayerRace(player), "Prot", c_stringAnywhere, c_stringNoCase);
 }
 ```
 
@@ -104,6 +131,12 @@ PlayerSetRace(lv_player, "Terr");   // "Terr", "Zerg", "Prot"
 // Ally with full shared vision
 libNtve_gf_SetAlliance(1, 2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
 
+// Ally + shared vision + can push allies (used for same-team players)
+libNtve_gf_SetAlliance(1, 2, libNtve_ge_AllianceSetting_AllyWithSharedVisionAndPushable);
+
+// Ally + shared vision + full control over allies' units
+libNtve_gf_SetAlliance(1, 2, libNtve_ge_AllianceSetting_AllyWithSharedVisionAndControl);
+
 // Enemy
 libNtve_gf_SetAlliance(1, 3, libNtve_ge_AllianceSetting_Enemy);
 
@@ -122,11 +155,12 @@ libNtve_ge_AllianceSetting_AllyWithAlliedVictory
 
 ```galaxy
 // Set a specific alliance channel
-PlayerSetAlliance(lv_player, c_allianceIdTrade,     lv_other, true);
-PlayerSetAlliance(lv_player, c_allianceIdControl,   lv_other, true);
-PlayerSetAlliance(lv_player, c_allianceIdSeekHelp,  lv_other, false);
-PlayerSetAlliance(lv_player, c_allianceIdPassive,   lv_other, false);
-PlayerSetAlliance(lv_player, c_allianceIdSharedVision, lv_other, true);
+PlayerSetAlliance(lv_player, c_allianceIdTrade,        lv_other, true);
+PlayerSetAlliance(lv_player, c_allianceIdControl,       lv_other, true);
+PlayerSetAlliance(lv_player, c_allianceIdSeekHelp,      lv_other, false);
+PlayerSetAlliance(lv_player, c_allianceIdPassive,       lv_other, false);
+PlayerSetAlliance(lv_player, c_allianceIdSharedVision,  lv_other, true);
+PlayerSetAlliance(lv_player, c_allianceIdPushable,      lv_other, true);  // units can physically push each other
 
 // Query an alliance channel
 bool lv_allied = PlayerGetAlliance(lv_player, c_allianceIdChat, lv_other);
@@ -139,6 +173,7 @@ c_allianceIdPassive
 c_allianceIdPushToTalk
 c_allianceIdSharedVision
 c_allianceIdChat
+c_allianceIdPushable
 ```
 
 ### Enemy/ally relationship check
@@ -168,6 +203,9 @@ PlayerModifyPropertyInt(lv_player, c_playerPropMinerals, c_playerPropOperSetTo, 
 PlayerModifyPropertyInt(lv_player, c_playerPropMinerals, c_playerPropOperAdd, 100);
 PlayerModifyPropertyInt(lv_player, c_playerPropVespene,  c_playerPropOperSubtract, 25);
 
+// Set handicap (AI difficulty scalar — reduces AI unit HP/damage)
+PlayerModifyPropertyInt(lv_player, c_playerPropHandicap, c_playerPropOperSetTo, 50);
+
 // Common property constants
 c_playerPropMinerals
 c_playerPropVespene
@@ -176,6 +214,7 @@ c_playerPropSuppliesMade
 c_playerPropSuppliesLimit
 c_playerPropKills
 c_playerPropDeaths
+c_playerPropHandicap     // AI handicap level (0-100)
 ```
 
 ---
@@ -199,18 +238,44 @@ Used to read lobby-configured game settings:
 
 ```galaxy
 // Returns the string value of the attribute for this player/game
-string lv_val = GameAttributeGameValue("1");   // attribute id "1"
+string lv_val = GameAttributeGameValue("attrId");
 
-// Project mode detection pattern (from lib5A1C9904):
-bool lib5A1C9904_gf_GetWaveStatus() {
-    return (GameAttributeGameValue("1") == "0001");
+// Example: select difficulty by attribute
+bool isHardMode = (GameAttributeGameValue("Difficulty") == "Hard");
+```
+
+---
+
+## Difficulty
+
+```galaxy
+// Get the current mission difficulty as an integer
+// 1 = Casual, 2 = Normal, 3 = Hard, 4 = Brutal
+int lv_diff = PlayerDifficulty(1);
+
+// Branch on it
+if (PlayerDifficulty(1) >= 3) {
+    // hard or brutal
 }
-bool lib5A1C9904_gf_WithRTSPlayer() {
-    return (GameAttributeGameValue("4") == "0001");
-}
-bool lib5A1C9904_gf_IsSurvival() {
-    return (GameAttributeGameValue("3") == "0001");
-}
+```
+
+---
+
+## Player State Flags
+
+```galaxy
+// Hide this player from the leader panel (used for non-playing computer slots)
+PlayerSetState(lv_player, c_playerStateDisplayInLeaderPanel, false);
+
+// Disable score accumulation for this player
+PlayerSetState(lv_player, c_playerStateShowScore, false);
+PlayerSetState(lv_player, c_playerStateXPGain, false);
+
+// Disable unit fidgeting animations (helps performance / cutscenes)
+PlayerSetState(lv_player, c_playerStateFidgetingEnabled, false);
+
+// Query a state
+bool lv_inPanel = PlayerGetState(lv_player, c_playerStateDisplayInLeaderPanel);
 ```
 
 ---
@@ -249,25 +314,42 @@ text lv_colored = TextWithColor(StringToText(PlayerName(lv_player)), lv_color);
 
 ---
 
-## Setup Pattern (from lib5A1C9904)
+## Alliance Init Pattern (SSF)
+
+SSF initializes all alliances from scratch at map start, starting neutral then setting specifics:
 
 ```galaxy
-// Typical alliance init for 2-team game
-void lib5A1C9904_gf_SetupAlliances() {
-    int lv_p1 = -1;
-    int lv_p2 = -1;
+void MapInit_ActivePlayers() {
+    int tmpInt;
 
-    // All team 1 members ally each other
-    while (true) {
-        lv_p1 = PlayerGroupNextPlayer(lib5A1C9904_gv_soldierPlayers1, lv_p1);
-        if (lv_p1 < 0) { break; }
-        lv_p2 = -1;
-        while (true) {
-            lv_p2 = PlayerGroupNextPlayer(lib5A1C9904_gv_soldierPlayers1, lv_p2);
-            if (lv_p2 < 0) { break; }
-            if (lv_p1 == lv_p2) { continue; }
-            libNtve_gf_SetAlliance(lv_p1, lv_p2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+    gv_ActivePG  = PlayerGroupEmpty();
+    gv_StartingPG = PlayerGroupEmpty();
+
+    // Start everyone neutral
+    libNtve_gf_SetPlayerGroupAlliance(PlayerGroupAll(), libNtve_ge_AllianceSetting_Neutral);
+
+    // Specific overrides
+    libNtve_gf_SetAlliance(gv_BasePlayer, gv_EnemyPlayer, libNtve_ge_AllianceSetting_Enemy);
+    libNtve_gf_SetAlliance(gv_EnemyPlayer, gv_CollectiblePlayerEnemyAllied, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+
+    // Add active players to groups and set their alliances
+    for (tmpInt = 1; tmpInt <= gv_MaxAmountPlayers; tmpInt += 1) {
+        if (PlayerStatus(tmpInt) == c_playerStatusActive) {
+            gv_PlayerStats[tmpInt].activeFlag = true;
+            PlayerGroupAdd(gv_ActivePG, tmpInt);
+            PlayerGroupAdd(gv_StartingPG, tmpInt);
+            libNtve_gf_SetAlliance(tmpInt, gv_EnemyPlayer, libNtve_ge_AllianceSetting_Enemy);
+            libNtve_gf_SetAlliance(tmpInt, gv_BasePlayer, libNtve_ge_AllianceSetting_AllyWithSharedVisionAndControl);
+            PlayerOptionOverride(tmpInt, "simplecommandcard", "0");
         }
     }
+    gv_PlayerAmount = PlayerGroupCount(gv_ActivePG);
+    gv_PlayerAmountStart = gv_PlayerAmount;
+
+    // All players allied with each other
+    libNtve_gf_SetPlayerGroupAlliance(gv_StartingPG, libNtve_ge_AllianceSetting_AllyWithSharedVisionAndPushable);
+
+    // Set enemy player color
+    PlayerSetColorIndex(gv_EnemyPlayer, 13, true);
 }
 ```

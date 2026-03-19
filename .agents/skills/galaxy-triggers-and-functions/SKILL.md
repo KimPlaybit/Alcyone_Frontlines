@@ -111,33 +111,37 @@ void MyTrigger_Init() {
 | `TriggerGetExecCount` | `int (trigger t)` | How many times it has fired |
 | `TriggerActiveCount` | `int ()` | Count of currently active triggers |
 
-### Wrapping functions that need async execution
+### Wrapping functions that need async execution (SSF pattern)
 
-When a function needs `Wait()` or long-running logic, wrap it in a trigger:
+When a function needs `Wait()` or long-running logic, wrap it in a trigger. Use `static` file-scope variables as parameter registers, capturing them into locals immediately:
 
 ```galaxy
-trigger auto_lib5A1C9904_gf_StartProximaGame_Trigger = null;
-point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
-// (one global per parameter)
+// Declare param register at file scope
+static int Utility_DelayedTextTagDestroyer_ParamTextTag;
+static trigger Utility_DelayedTextTagDestroyer_Trigger;
 
-void lib5A1C9904_gf_StartProximaGame(point lp_startPosition1, ...) {
-    // store params in globals
-    auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1 = lp_startPosition1;
-    // lazy-create the trigger
-    if (auto_lib5A1C9904_gf_StartProximaGame_Trigger == null) {
-        auto_lib5A1C9904_gf_StartProximaGame_Trigger =
-            TriggerCreate("auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc");
-    }
-    TriggerExecute(auto_lib5A1C9904_gf_StartProximaGame_Trigger, false, false);
+void Utility_DelayedTextTagCreate(text inText, color inColor, point position, playergroup pg, fixed offset) {
+    // Store param in static, then kick the trigger
+    Utility_DelayedTextTagDestroyer_ParamTextTag = TextTagCreate(TextWithColor(inText, inColor), 24, position, offset, true, false, pg);
+    TextTagSetVelocity(Utility_DelayedTextTagDestroyer_ParamTextTag, 1.0, 90.0);
+    TriggerExecute(Utility_DelayedTextTagDestroyer_Trigger, false, false);
 }
 
-bool auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc(bool testConds, bool runActions) {
-    // recover params from globals
-    point lp_startPosition1 = auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
-    // ... implementation with Wait() calls allowed here ...
+bool Utility_DelayedTextTagDestroyer(bool testCond, bool runActions) {
+    // Capture static into local BEFORE any Wait() — the static may be overwritten
+    int textTag = Utility_DelayedTextTagDestroyer_ParamTextTag;
+    Wait(3.5, c_timeGame);
+    TextTagDestroy(textTag);
     return true;
 }
+
+// Init: register the trigger once
+void Utilities_Init() {
+    Utility_DelayedTextTagDestroyer_Trigger = TriggerCreate("Utility_DelayedTextTagDestroyer");
+}
 ```
+
+**Key rule:** Always copy the static into a local at the very top of the handler body, before any `Wait()`. Otherwise a concurrent call will overwrite the static before your thread reads it.
 
 ---
 
@@ -165,9 +169,26 @@ TriggerAddEventUnitOrder(myTrigger, null, null);
 TriggerAddEventUnitBecomesIdle(myTrigger, null);
 TriggerAddEventUnitProperty(myTrigger, null, c_unitPropLife);
 
+// Range-based proximity events
+TriggerAddEventUnitRange(myTrigger, lv_unit, lv_nearUnit, 5.0, true);   // unit enters/exits radius of another unit
+TriggerAddEventUnitRangePoint(myTrigger, null, lv_point, 8.0, true);    // any unit enters/exits radius of a point
+
+// Unit is issued a specific ability order
+TriggerAddEventUnitOrder(myTrigger, null, AbilityCommand("move", 0));
+
+// Unit is attacked (EventUnitTarget() returns the attacker)
+TriggerAddEventUnitAttacked(myTrigger, null);
+unit lv_attacker = EventUnitTarget();   // inside handler
+
+// Unit loaded/unloaded as cargo
+TriggerAddEventUnitCargo(myTrigger, null, false);  // false = load event, true = unload
+
+// Unit takes fatal damage (use with UnitDied for damage-source filtering)
+TriggerAddEventUnitDamaged(myTrigger, null, c_unitDamageTypeAny, c_unitDamageFatal, null);
+
 // Event accessors inside the trigger func:
-unit lv_unit = EventUnit();
-int lv_player = EventPlayer();
+unit lv_unit   = EventUnit();
+int  lv_player = EventPlayer();
 ```
 
 ### Player / UI events
@@ -220,8 +241,33 @@ timer lv_fired = EventTimer(); // in handler
 
 ---
 
-## All Triggers Init pattern
+## Map Init / Trigger Registration Pattern (SSF)
 
+In SSF-style maps, `main()` registers a single map-init trigger. Each module registers its own triggers in a dedicated `_TriggerCreate()` function:
+
+```galaxy
+// scripts/main.galaxy
+void main() {
+    TriggerAddEventMapInit(TriggerCreate("MapInit_Main"));
+}
+
+// scripts/MapInit.galaxy
+bool MapInit_Main(bool testCond, bool runActions) {
+    MapInit_ActivePlayers();
+    SSFCustomUI_Init();
+    PartTerran_TriggerCreate();   // each module registers its own triggers
+    PartProtoss_TriggerCreate();
+    PartZerg_TriggerCreate();
+    return true;
+}
+
+// scripts/PartTerran.galaxy
+void PartTerran_TriggerCreate() {
+    TriggerAddEventUnitDied(TriggerCreate("PartTerran_SomeHandler"), null, false);
+}
+```
+
+### Library mod pattern (alternate)
 ```galaxy
 void lib5A1C9904_InitTriggers() {
     lib5A1C9904_gt_SpawnUnits_Init();
@@ -232,11 +278,24 @@ void lib5A1C9904_InitTriggers() {
 
 ---
 
-## Action Queue
+## Action Queue / Cinematic Sequencer
+
+The trigger queue serializes long-running cinematic triggers so they don't overlap.
 
 ```galaxy
-TriggerQueuePause(true);    // pause the queue
-TriggerQueueClear();        // discard all queued actions
+// Enter the queue at the START of a cinematic trigger
+TriggerQueueEnter();
+// ... all cinematic steps ...
+TriggerQueueExit();   // release queue at END
+
+// Pause / resume the queue
+TriggerQueuePause(true);   // block next trigger from starting
+TriggerQueuePause(false);  // resume
+
+// Discard pending items
+TriggerQueueClear(c_triggerQueueRemove);
+
+// Check if the queue is empty (useful in victory checks)
 bool lv_empty = TriggerQueueIsEmpty();
 ```
 

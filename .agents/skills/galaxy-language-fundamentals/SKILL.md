@@ -6,29 +6,82 @@ Galaxy is the scripting language used in StarCraft II map/mod development. It is
 
 ## File Structure & Includes
 
-Every library uses a split header / implementation pattern:
+Code is split across multiple `.galaxy` files using `include`. The entry point is `MapScript.galaxy`, which hands off to a `scripts/main.galaxy` coordinator:
 
 ```galaxy
-// In the implementation file (.galaxy):
-include "TriggerLibs/NativeLib"   // built-in engine library
-include "Lib5A1C9904_h"           // own header (structs, variable declarations, function forward-decls)
-include "Lib5A1C9904_SoldierSelectionTeam1.galaxy"  // sub-module include
+// MapScript.galaxy (editor-managed — do not add logic here)
+include "TriggerLibs/NativeLib"
+include "TriggerLibs/LibertyLib"
+void InitLibs() { libNtve_InitLib(); libLbty_InitLib(); }
+include "scripts/main"
+void InitCustomScript() { main(); }
+void InitMap() { InitLibs(); InitCustomScript(); }
 ```
 
 ```galaxy
-// In the header file (_h.galaxy):
-include "TriggerLibs/natives"     // low-level natives
+// scripts/main.galaxy — coordinator, lists all includes and defines main()
+include "scripts/Enums"
+include "scripts/GlobalVariables"
+include "scripts/Header"
+include "scripts/Utilities"
+// ... all other files ...
+include "scripts/MapInit"
+
+void main() {
+    TriggerAddEventMapInit(TriggerCreate("MapInit_Main"));
+}
 ```
 
-- Headers (`_h.galaxy`) contain: `const`, `struct`, global variable declarations, and forward declarations of all functions and triggers.
-- Implementation files (`.galaxy`) contain: function bodies, trigger `_Func` / `_Init` implementations, and library init.
-- Sub-modules can be split into separate `.galaxy` files and included.
+- Paths in `include` are **relative to the map root**, no `.galaxy` extension.
+- Order matters: a file can only use types/functions declared in earlier includes.
+- `Header.galaxy` holds forward declarations so files can call functions defined later in the include chain.
+- See `galaxy-code-organization` skill for the full file-splitting pattern.
+
+### Campaign map pattern (WoL / HotS / LotV story missions)
+Campaign maps include three engine libraries — NativeLib + LibertyLib + CampaignLib:
+```galaxy
+include "TriggerLibs/NativeLib"
+include "TriggerLibs/LibertyLib"
+include "TriggerLibs/CampaignLib"
+
+void InitLibs() {
+    libNtve_InitLib();
+    libLbty_InitLib();
+    libCamp_InitLib();
+}
+```
+This gives access to `libNtve_*` (native helpers), `libLbty_*` (Liberty/WoL helpers), and `libCamp_*` (campaign-specific API: transmissions, objectives, story state, drop pods, etc.).
+
+### Library mod pattern (alternate)
+When working inside an `.SC2Mod` library, files use a split header/impl pattern with a hash prefix:
+```galaxy
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904_h"  // header: structs, globals, forward decls
+```
+
+### Test map / simple map pattern (alternate)
+Some small maps use a no-path include with just the library name:
+```galaxy
+include "LibHASH"   // no path, no extension — editor resolves from linked dependencies
+```
 
 ---
 
 ## Naming Conventions
 
-All identifiers are prefixed with the library hash to avoid conflicts:
+### Standalone map / SC2Map (primary — SSF pattern)
+
+| Kind | Convention | Example |
+|---|---|---|
+| Global variable | `gv_SystemName_Variable` | `gv_PlayerStats`, `gv_ActivePG` |
+| Global const (game-wide config) | `gv_MaxX` | `gv_MaxAmountPlayers`, `gv_GameTimeMax` |
+| Named constant / enum | `c_Category_Name` | `c_Part_Terran`, `c_BossFightState_Alive` |
+| Function | `SystemName_Action` | `Player_AddExp`, `MapInit_ActivePlayers` |
+| Static trigger param | `SystemName_Param_Name` | `Utility_DelayedTextTagDestroyer_ParamTextTag` |
+| Local variable | no prefix (short name) | `tmpInt`, `hero`, `playerID` |
+| Struct field | no prefix | `activeFlag`, `heroUnit`, `bankfile` |
+
+### Library mod / SC2Mod (alternate — editor-generated)
 
 | Kind | Prefix | Example |
 |---|---|---|
@@ -38,8 +91,6 @@ All identifiers are prefixed with the library hash to avoid conflicts:
 | Struct type | `libHASH_gs_` | `lib5A1C9904_gs_Spawn` |
 | Local parameter | `lp_` | `lp_startPosition1` |
 | Local variable | `lv_` | `lv_raceName` |
-| Auto/compiler var | `auto` prefix | `auto4853DB8A_ae` |
-| Const inside function | `c_` prefix (built-in) | `c_timeGame`, `c_playerAny` |
 
 ---
 
@@ -136,17 +187,20 @@ void lib5A1C9904_gf_AddJungleSpawn (structref<lib5A1C9904_gs_Spawn> lp_toSpawn) 
 
 ## Arrays
 
-Fixed-size arrays are declared with `[size]`. 1-based or 0-based depending on context.
+Fixed-size arrays are declared with `[size]`. 0-based indexing is typical.
 
 ```galaxy
-// Declaration (in header):
-lib5A1C9904_gs_Spawner[10]   lib5A1C9904_gv_spawners;
-int[17]                      lib5A1C9904_gv_playerKills;
-unitgroup[100]               lib5A1C9904_gv_jungleUnitGroups;
+// Declaration (in GlobalVariables.galaxy):
+PlayerStruct[gv_MaxAmountPlayers + 1] gv_PlayerStats;   // indexed 1..gv_MaxAmountPlayers
+int[gv_MaxAmountParts] gv_PartWins;                     // sized by const
+
+// Multi-dimensional array (part x difficulty x playerCount):
+int[gv_MaxAmountParts][gv_MaxAmountDifficulties][gv_MaxAmountPlayers] speedrunsTime;
 
 // Initialization loop:
-for (init_i = 0; init_i <= 99; init_i += 1) {
-    lib5A1C9904_gv_jungleUnitGroups[init_i] = UnitGroupEmpty();
+int tmpInt = 0;
+for (; tmpInt < gv_MaxAmountPlayers; tmpInt += 1) {
+    gv_ActivePG = PlayerGroupEmpty();
 }
 ```
 
@@ -224,33 +278,35 @@ color lv_playerColor = libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(
 
 ---
 
-## Library Initialization Pattern
+## Map Initialization Pattern (SSF)
 
-Every library must expose an `InitLib` function that is idempotent:
+The bootstrap chain: `MapScript.galaxy` → `main()` → map-init trigger → init functions:
 
 ```galaxy
-bool lib5A1C9904_InitLib_completed = false;
+// scripts/main.galaxy
+void main() {
+    TriggerAddEventMapInit(TriggerCreate("MapInit_Main"));
+}
 
-void lib5A1C9904_InitLib () {
-    if (lib5A1C9904_InitLib_completed) {
-        return;
-    }
-    lib5A1C9904_InitLib_completed = true;
-
-    lib5A1C9904_InitLibraries();   // initialize dependencies
-    lib5A1C9904_InitVariables();   // set default values for globals
-    lib5A1C9904_InitTriggers();    // register all triggers
+// scripts/MapInit.galaxy
+bool MapInit_Main(bool testCond, bool runActions) {
+    MapInit_ActivePlayers();   // alliances, playergroups
+    SSFCustomUI_Init();        // UI
+    PartTerran_TriggerCreate(); // register part triggers
+    // ... other init calls
+    return true;
 }
 ```
 
-`InitVariables` uses its own completion guard:
+### Library mod init pattern (alternate)
 
+Libraries use an idempotent `InitLib` function:
 ```galaxy
-bool lib5A1C9904_InitVariables_completed = false;
-
-void lib5A1C9904_InitVariables () {
-    if (lib5A1C9904_InitVariables_completed) { return; }
-    lib5A1C9904_InitVariables_completed = true;
-    // set defaults...
+bool lib5A1C9904_InitLib_completed = false;
+void lib5A1C9904_InitLib() {
+    if (lib5A1C9904_InitLib_completed) { return; }
+    lib5A1C9904_InitLib_completed = true;
+    lib5A1C9904_InitVariables();
+    lib5A1C9904_InitTriggers();
 }
 ```

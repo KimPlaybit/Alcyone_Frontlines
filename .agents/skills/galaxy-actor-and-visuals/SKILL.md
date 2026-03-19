@@ -27,13 +27,25 @@ actorscope lv_scope;   // actor scope (groups related actors)
 // Spawn a named actor (defined in data) at a point
 lv_a = ActorCreate("MyEffectActor", lv_point, 0.0, lv_host);
 
-// Attach a model to a unit at a specific attach point
+// Attach model to unit at attach point (returns an actor handle)
 lv_a = libNtve_gf_AttachModelToUnit(
     "Assets\\Units\\Zerg\\Hydralisk\\Hydralisk.m3",
     lv_unit,
     "Chest",    // attach point
     true        // inherit visibility from unit
 );
+
+// Attach an existing named actor (from data) to a unit at an attach point
+libNtve_gf_AttachActorToUnit(lv_unit, "TalkIcon",         "Ref_Origin");
+libNtve_gf_AttachActorToUnit(lv_unit, "BriefingUnitSelectRed", "Ref_Center");
+// (unit, actorName, attachPoint)
+
+// Get the last actor created by any actor operation
+actor lv_last = libNtve_gf_ActorLastCreated();
+
+// Get the last created actor scope
+actorscope lv_scope2 = libNtve_gf_ActorScopeLastCreated();
+ActorScopeKill(lv_scope2);   // destroy all actors in the scope
 
 // Attach model to another actor
 lv_a = libNtve_gf_AttachModelToActor2(
@@ -59,6 +71,7 @@ Messages control everything about an actor — animations, tints, scale, visibil
 ```galaxy
 // Send a constructed message string to an actor
 ActorSend(lv_a, "SetTintColor {1,0,0,1}");
+ActorSend(lv_a, "SetScale 0.800000");   // scale by string
 
 // Using library message constructors:
 ActorSend(lv_a, libNtve_gf_SetTintColor(1.0, 0.0, 0.0, 1.0));
@@ -74,6 +87,10 @@ ActorSend(lv_a, libNtve_gf_SetTeamColor(lv_player));
 
 // Send to a unit's main actor
 ActorSendTo(ActorFrom(lv_unit), libNtve_gf_SetTintColor(1.0, 0.5, 0.5, 1.0));
+
+// Send actor message to a unit (shortcut — targets the unit’s own actor)
+libNtve_gf_SendActorMessageToUnit(lv_unit, "AnimGroupApply Stand,Victory");
+libNtve_gf_SendActorMessageToUnit(lv_unit, "StatusSet MarinePortrait 7");
 ```
 
 ### Common message constructors
@@ -106,8 +123,15 @@ ActorSend(lv_a, MakeMsgAnimBracketStop("Walk", 0.0));
 libNtve_gf_TurnAnimationPropertiesOn(lv_unit, "Charred", 1.0);
 libNtve_gf_TurnAnimationPropertiesOff(lv_unit, "Charred");
 
-// On doodads in region
-libNtve_gf_PlayAnimationOnDoodadsInRegion(lv_region, "Death");
+// On doodads in region — full signature (very common in campaign maps)
+libNtve_gf_PlayAnimationOnDoodadsInRegion(
+    lv_region,
+    "DoodadType",          // doodad type name (empty = all doodads)
+    c_animNameDefault,     // animation track
+    "Stand Work",          // animation name
+    c_animFlagPlayForever, // flag
+    c_animTimeDefault      // duration
+);
 libNtve_gf_KillDoodadsInRegion(lv_region);
 
 // Wait for an animation length

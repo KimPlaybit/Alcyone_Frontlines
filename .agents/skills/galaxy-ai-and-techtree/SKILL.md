@@ -67,6 +67,59 @@ libNtve_gf_CAIWaveEnable(lv_player, lv_wave, false);
 
 ---
 
+## AI Attack Wave – Scripted
+
+Use when you want to manually direct an attack wave rather than using the default AI targeting:
+
+```galaxy
+// Direct the attack wave at a specific player (standard)
+AIAttackWave(lv_player, lv_targetPlayer, c_aiAttackWaveGround, lv_gatherPoint);
+
+// Direct the attack wave at a specific map point (not a player)
+AIAttackWaveSetTargetPoint(lv_player, lv_targetPoint);
+
+// Use an entire pre-built unit group as the attack wave (bypasses wave builder)
+AIAttackWaveUseGroup(lv_player, lv_unitGroup);
+```
+
+---
+
+## Drop Pods (Campaign)
+
+`libCamp_gf_CreateDropPod` handles all the drop action: spawns pod, ejects units, plays effects.
+
+```galaxy
+// Build the group of units that will drop
+unitgroup lv_dropGroup = UnitGroupEmpty();
+libNtve_gf_CreateUnitsAtPoint2(4, "Zergling", lv_enemyPlayer, lv_dropPoint);
+UnitGroupAdd(lv_dropGroup, UnitLastCreated());
+
+// Zerg drop pod
+libCamp_gf_CreateDropPod(libCamp_ge_DropPodRace_Zerg, lv_dropPoint, lv_dropGroup, false);
+
+// Terran drop pod
+libCamp_gf_CreateDropPod(libCamp_ge_DropPodRace_Terran, lv_dropPoint, lv_dropGroup, true);
+```
+
+---
+
+## Campaign Tech & Story State
+
+```galaxy
+// Enable or disable a campaign tech unit for a player
+libCamp_gf_EnableCampaignTechUnit(true, libCamp_ge_StoryTechGroup_Marine, lv_player);
+
+// Read or write a story state variable (mission-to-mission carry-over)
+// Story state values are integers stored in the campaign save
+int lv_val = libCamp_gf_StoryState(libCamp_ge_StoryStateID_SomeFlag);
+libCamp_gf_SetStoryState(libCamp_ge_StoryStateID_SomeFlag, 1);
+
+// Common merc purchase state check
+bool lv_hired = (libCamp_gf_StoryState(libCamp_ge_StoryStateID_SomeMercGroup) == libCamp_ge_StoryMercStatus_Purchased);
+```
+
+---
+
 ## Tech Tree – Upgrades
 
 ```galaxy

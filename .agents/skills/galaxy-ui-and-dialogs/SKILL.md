@@ -6,9 +6,47 @@ Reference: https://mapster.talv.space/galaxy/reference
 
 ## Dialogs
 
-Dialogs are overlay panels. Each contains controls (buttons, labels, images, etc.).
+Dialogs are overlay panels created either programmatically or hooked up to existing UI frames defined in layout XML.
 
-### Creating a dialog
+### Hooking up an existing XML frame (SSF pattern — preferred)
+
+SSF binds to frames already defined in the SC2 UI XML layout:
+
+```galaxy
+// Hook a panel frame by path from the root UI hierarchy
+dialogcontrol gv_UI_MasterFrame = DialogControlHookupStandard(
+    c_triggerControlTypePanel,
+    "UIContainer/FullscreenUpperContainer/SSF_CustomUI"
+);
+
+// Hook a specific child control (button, label, etc.) within a parent frame
+dialogcontrol saveBtn = DialogControlHookup(
+    gv_UI_MasterFrame,
+    c_triggerControlTypeButton,
+    "Menu/SaveButton"
+);
+
+// Register click event on the hooked control
+TriggerAddEventDialogControl(
+    TriggerCreate("Bank_ManualSave"),
+    c_playerAny,
+    saveBtn,
+    c_triggerControlEventTypeClick
+);
+```
+
+The init pattern in `UI-Main.galaxy`:
+```galaxy
+void SSFCustomUI_Init() {
+    gv_UI_MasterFrame = DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/FullscreenUpperContainer/SSF_CustomUI");
+    StatsInterface_Init();   // each UI subsystem hooks its own controls
+    HeroPanel_Init();
+    PlayerBoard_Init();
+    // ...
+}
+```
+
+### Creating a dialog programmatically (alternate)
 
 ```galaxy
 dialog lv_dlg = DialogCreate(
@@ -157,12 +195,12 @@ TriggerAddEventDialogControl(
 ### Reading the event inside the handler
 
 ```galaxy
-bool MyClickHandler_Func(bool testConds, bool runActions) {
-    dialogcontrol lv_clicked = EventDialogControl();
-    int           lv_player  = EventPlayer();
-    
-    if (lv_clicked == lib5A1C9904_gv_lockInButton) {
-        // handle lock-in ...
+bool MyClickHandler(bool testCond, bool runActions) {
+    dialogcontrol clicked = EventDialogControl();
+    int player = EventPlayer();
+
+    if (clicked == gv_LockInButton) {
+        HeroSelection_SelectHero(player, gv_SelectedHero[player]);
     }
     return true;
 }
@@ -170,65 +208,44 @@ bool MyClickHandler_Func(bool testConds, bool runActions) {
 
 ---
 
-## Hero Selection Dialog Pattern
+## Hero Selection Dialog Pattern (SSF)
 
-Pattern from lib5A1C9904 (1200×600 modal dialog, 3-panel layout):
+SSF uses hooked XML frames for hero selection. Each panel is a separate file under `scripts/UI/`. The `HeroSelection.galaxy` file drives the logic while `UI-HeroPanel.galaxy` owns the dialog controls:
 
 ```galaxy
-// Constants from _h.galaxy
-// gv_heroDialogWidth  = 1200
-// gv_heroDialogHeight = 600
-// gv_leftPanelWidth   = 300
-// gv_middlePanelX     = 300
-// gv_rightPanelX      = 700
+// UI-HeroPanel.galaxy
+static dialogcontrol HeroPanel_MainFrame;
+static dialogcontrol[gv_MaxAmountHeroes + 1] HeroPanel_HeroButtons;
 
-void lib5A1C9904_gf_CreateHeroDialog(int lp_team) {
-    dialog lv_dlg;
-    dialogcontrol lv_slots[10];
-    dialogcontrol lv_infoName;
-    dialogcontrol lv_lockIn;
-    int lv_i = 1;
-
-    DialogCreate(1200, 600, c_anchorCenter, 0, 0, true);
-    lv_dlg = DialogLastCreated();
-
-    // Left panel — hero slot buttons
-    for (; lv_i <= lib5A1C9904_gv_heroCount ; lv_i += 1) {
-        libNtve_gf_CreateDialogItemButton(lv_dlg, 280, 50,
-            c_anchorTopLeft, 10, 10 + ((lv_i - 1) * 60),
-            StringToText(""), lib5A1C9904_gv_heroNames[lv_i], "");
-        lv_slots[lv_i] = DialogControlLastCreated();
+void HeroPanel_Init() {
+    HeroPanel_MainFrame = DialogControlHookup(gv_UI_MasterFrame, c_triggerControlTypePanel, "HeroPanel");
+    int i = 1;
+    for (; i <= gv_MaxAmountHeroes; i += 1) {
+        HeroPanel_HeroButtons[i] = DialogControlHookup(HeroPanel_MainFrame, c_triggerControlTypeButton, "Hero" + IntToString(i));
     }
+    TriggerAddEventDialogControl(TriggerCreate("HeroPanel_Click"), c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
 
-    // Right panel — Lock In button
-    libNtve_gf_CreateDialogItemButton(lv_dlg, 200, 60,
-        c_anchorTopRight, -10, -70, StringToText(""), StringToText("Lock In"), "");
-    lv_lockIn = DialogControlLastCreated();
-
-    DialogSetVisible(lv_dlg, PlayerGroupAll(), true);
+void HeroPanel_UpdatePlayer(int playerID) {
+    // Show/hide based on unlock state
+    int i = 1;
+    for (; i <= gv_MaxAmountHeroes; i += 1) {
+        bool unlocked = ((gv_PlayerStats[playerID].heroUnlocked & (1 << i)) != 0);
+        DialogControlSetEnabled(HeroPanel_HeroButtons[i], PlayerGroupSingle(playerID), unlocked);
+    }
 }
 ```
 
----
-
-## Per-Level Upgrade Dialog Pattern
+### Level-up upgrade panel
 
 ```galaxy
-// Nydus and Hero each have level 2/5/7/10 upgrade dialogs
-// Stored in arrays: gv_heroUpgradeDialog[4], gv_nydusUpgradeDialog[4]
-// Level thresholds:  2, 5, 7, 10
-
-bool lib5A1C9904_gt_HeroLevelUp_Func(bool testConds, bool runActions) {
-    unit  lv_unit  = EventUnit();
-    int   lv_level = UnitXPGetCurrentLevel(lv_unit);
-    int   lv_player = UnitGetOwner(lv_unit);
-
-    if (lv_level == 2) {
-        DialogSetVisible(lib5A1C9904_gv_heroUpgradeDialog[1],
-            PlayerGroupSingle(lv_player), true);
-    } else if (lv_level == 5) {
-        DialogSetVisible(lib5A1C9904_gv_heroUpgradeDialog[2],
-            PlayerGroupSingle(lv_player), true);
+bool HeroLevelUp_Handler(bool testCond, bool runActions) {
+    unit hero = EventUnit();
+    int level = UnitXPGetCurrentLevel(hero);
+    int player = UnitGetOwner(hero);
+    // Show appropriate upgrade panel for this level
+    if (level == 2) {
+        DialogControlSetVisible(gv_UpgradeFrame_Level2, PlayerGroupSingle(player), true);
     }
     return true;
 }
@@ -272,14 +289,23 @@ libNtve_gf_UIErrorMessage(
 ## Localized Text
 
 ```galaxy
-// Read from GameStrings.txt (keyed by path)
-text lv_heroName = StringExternal("Param/Value/lib5A1C9904_HeroName_Zealot");
+// Read from GameStrings.txt / Trig/ namespace
+text lv_msg = StringExternal("Trig/Bosskilled");
 
-// Combine text values
-text lv_msg = lv_prefix + StringToText(" ") + IntToText(lv_score) + StringToText(" points!");
+// With variable replacements (SSF pattern)
+text lv_result = Utility_TextExpressionReplacement3(
+    "Trig/Bosskilled",
+    IntToText(gv_Part_AmountObjectivesDefeated),
+    IntToText(gv_Part_AmountObjectivesMax),
+    IntToText(gv_Difficulty_Points)
+);
 
-// Colorize text
-text lv_colored = TextWithColor(lv_heroName, ColorWithAlpha(255, 100, 100, 255));
+// Colorize player name
+color playerColor = libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(playerID, false));
+text colored = TextWithColor(StringToText(PlayerName(playerID)), playerColor);
+
+// Combine text
+text lv_msg2 = StringToText("+") + FixedToText(amount, 2);
 ```
 
 ---
@@ -296,26 +322,91 @@ PingCreate(PlayerGroupAll(), lv_point, 10.0, ColorWithAlpha(255, 0, 0, 255), "")
 
 ---
 
-## Scoreboard / Stats Panel
+## Scoreboard / Stats Panel (SSF pattern)
 
-Pattern from lib5A1C9904 — per-player dialog labels updated on events:
+SSF uses hooked XML frames for the player board, updated by calling `PlayerBoard_UpdatePlayer(playerID)`:
 
 ```galaxy
-// Declare arrays in _h.galaxy
-dialogcontrol lib5A1C9904_gv_scoreKillsLabel[17];   // indexed by player
-dialogcontrol lib5A1C9904_gv_scoreDeathsLabel[17];
-// ... etc.
+// UI-PlayerBoard.galaxy
+static dialogcontrol PlayerBoard_MainFrame;
+static dialogcontrol[gv_MaxAmountPlayers + 1] PlayerBoard_KillsLabel;
+static dialogcontrol[gv_MaxAmountPlayers + 1] PlayerBoard_ScoreLabel;
 
-void lib5A1C9904_gf_UpdateScoreboard(int lp_player, int lp_kills, int lp_deaths) {
+void PlayerBoard_Init() {
+    PlayerBoard_MainFrame = DialogControlHookup(gv_UI_MasterFrame, c_triggerControlTypePanel, "PlayerBoard");
+    int i = 1;
+    for (; i <= gv_MaxAmountPlayers; i += 1) {
+        PlayerBoard_KillsLabel[i] = DialogControlHookup(PlayerBoard_MainFrame, c_triggerControlTypeLabel, "Player" + IntToString(i) + "/Kills");
+    }
+}
+
+void PlayerBoard_UpdatePlayer(int playerID) {
     libNtve_gf_SetDialogItemText(
-        lib5A1C9904_gv_scoreKillsLabel[lp_player],
-        IntToText(lp_kills),
-        PlayerGroupAll()
-    );
-    libNtve_gf_SetDialogItemText(
-        lib5A1C9904_gv_scoreDeathsLabel[lp_player],
-        IntToText(lp_deaths),
+        PlayerBoard_KillsLabel[playerID],
+        IntToText(gv_PlayerStats[playerID].kills),
         PlayerGroupAll()
     );
 }
+```
+
+### UI mode control
+
+```galaxy
+// Switch player(s) to fullscreen UI (hides default game HUD)
+UISetMode(PlayerGroupAll(), c_uiModeFullscreen, c_transitionDurationImmediate);
+
+// Hide specific HUD frames
+UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeSupply,        false);  // hide supply display
+UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeResourcePanel, false);  // hide minerals/gas panel
+
+// Hide alert types
+UISetAlertTypeVisible(PlayerGroupAll(), "AlertWorkerAttacked", false);
+```
+
+---
+
+## Help Panel (Campaign)
+
+```galaxy
+// Hide the tech tree button inside the help panel
+HelpPanelEnableTechTreeButton(PlayerGroupAll(), false);
+
+// Navigate to a specific help panel page
+HelpPanelDisplayPage(PlayerGroupAll(), c_helpPanelPageTutorials);
+
+// Register a unit type on the help panel's unit tab
+libCamp_gf_AddUnitTypeToUnitHelpPanel("Marine", false, lv_player);
+
+// Create a campaign tutorial entry (shows in the help panel)
+libCamp_gf_CreateCampaignTutorial(
+    StringToText("Tutorial Title"),
+    StringToText("Explanation body text here."),
+    "Assets\\Textures\\btn-unit-terr-marine.dds",   // icon path
+    ""   // video path (or empty)
+);
+```
+
+---
+
+## UI Alerts & Objective Pings
+
+```galaxy
+// Beacon / alert for a map point (flashes minimap + compass)
+UIAlertPoint("TriggerName", PlayerGroupSingle(lv_player), StringExternal("Param/Alert/..."), null, lv_point);
+
+// Beacon / alert centered on a specific unit
+UIAlertUnit("TriggerName", lv_player, StringExternal("Param/Alert/..."), null, lv_unit);
+
+// Minimap ping with facing angle (used for objectives)
+libNtve_gf_CreatePingFacingAngle(
+    PlayerGroupAll(),
+    "PingObjective",                   // ping type from data
+    lv_point,
+    ColorWithAlpha(0, 100, 0, 0),      // RGBA color (0-255 or 0-1 depending on version)
+    0.0,                               // duration (0 = permanent until destroyed)
+    270.0                              // facing angle
+);
+ping lv_ping = PingLastCreated();
+PingSetScale(lv_ping, 0.75);
+PingSetTooltip(lv_ping, StringToText("Objective location"));
 ```

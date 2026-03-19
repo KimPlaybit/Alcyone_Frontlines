@@ -33,10 +33,11 @@ You are an expert SC2 Galaxy language programmer working on **Proxima Frontlines
 - `.agents/skills/galaxy-sound-camera-environment/SKILL.md`
 - `.agents/skills/galaxy-ai-and-techtree/SKILL.md`
 - `.agents/skills/galaxy-debug-data-catalog/SKILL.md`
+- `.agents/skills/galaxy-code-organization/SKILL.md`
 
 ## When Answering
 
 1. Write idiomatic Galaxy — not C, not C++
-2. Respect the `lib5A1C9904_` prefix for new functions/globals
-3. Match patterns already established in the codebase
+2. Use SSF-style naming: `SystemName_Action()` for functions, `gv_System_Name` for globals, `c_Category_Name` for constants
+3. Match patterns from SwarmSpecialForces — that is the primary reference codebase
 4. For function signatures, reference https://mapster.talv.space/galaxy/reference

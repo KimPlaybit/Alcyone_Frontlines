@@ -37,8 +37,9 @@ int  lv_owner   = UnitGetOwner(lv_unit);
 ## Destroying / Removing Units
 
 ```galaxy
-UnitKill(lv_unit);          // kill (triggers death events)
-UnitRemove(lv_unit);        // remove instantly (no events)
+UnitKill(lv_unit);          // kill instantly (no kill-credit/XP awarded to any attacker)
+UnitRemove(lv_unit);        // remove instantly with no death animation or events
+UnitPauseAll(bool);         // pause or unpause ALL units on the map simultaneously
 ```
 
 ---
@@ -70,14 +71,41 @@ UnitSetPropertyFixed(lv_unit, c_unitPropShields, 100.0);
 // Property constants
 c_unitPropLife           // current HP
 c_unitPropLifeMax        // max HP
+c_unitPropLifePercent    // HP as percent 0-100
 c_unitPropShields        // current shields
 c_unitPropShieldsMax     // max shields
 c_unitPropEnergy         // current energy
 c_unitPropEnergyMax      // max energy
+c_unitPropEnergyPercent  // energy as percent 0-100 (writable)
 c_unitPropKills          // kill count
 c_unitPropMoveSpeed      // movement speed
 c_unitPropArmorLevel     // armor rating
 c_unitPropCurrent        // attack damage (general current)
+
+---
+
+## Custom Unit Values (Data Slots)
+
+Each unit has 4 custom fixed-point data slots (indices 0–3) for storing arbitrary values:
+
+```galaxy
+// Store a float in slot 0 (e.g. spawn time, special flag, current state)
+UnitSetCustomValue(lv_unit, 0, 2.5);
+
+// Retrieve the stored value
+fixed lv_val = UnitGetCustomValue(lv_unit, 0);
+
+// Slots 0-3 are independent; default value is 0.0
+```
+
+---
+
+## Cargo
+
+```galaxy
+// Count units currently loaded in a transport
+int lv_count = UnitCargoValue(lv_transport, c_unitCargoUnitCount);
+```
 ```
 
 ---
@@ -209,7 +237,13 @@ bool lv_dead   = libNtve_gf_UnitGroupIsDead(lv_group);
 point lv_center = UnitGroupCenterOfGroup(lv_group);
 
 // Filter by player
-unitgroup lv_filtered = UnitGroupFilterPlayer(lv_group, 2);
+unitgroup lv_filtered = UnitGroupFilterPlayer(lv_group, 2, 0);
+
+// Filter by unit type from an existing group (version = 0)
+unitgroup lv_marines = UnitGroupFilter("Marine", lv_player, lv_sourceGroup, UnitFilter(0,0,0,0), 0);
+
+// Get all units created by the last batch UnitCreate call (e.g. after creating 5 at once)
+unitgroup lv_batch = UnitLastCreatedGroup();
 
 // Convert single unit to group
 unitgroup lv_single = libNtve_gf_ConvertUnitToUnitGroup(lv_unit);
@@ -273,12 +307,34 @@ fixed lv_angle = AngleBetweenPoints(lv_from, lv_to);
 UnitSetOwner(lv_unit, lv_newPlayer, true);   // true = change color
 
 // Unit state flags
-UnitSetState(lv_unit, c_unitStateInvulnerable, true);
-UnitSetState(lv_unit, c_unitStateHidden,       true);
+UnitSetState(lv_unit, c_unitStateInvulnerable,  true);
+UnitSetState(lv_unit, c_unitStateHidden,        true);
+UnitSetState(lv_unit, c_unitStateSelectable,    false);  // prevent selection by players
+UnitSetState(lv_unit, c_unitStateStatusBar,     false);  // hide HP bar
+UnitSetState(lv_unit, c_unitStateTooltipable,   true);   // allow tooltip on hover
 
 // Common state constants
 c_unitStateInvulnerable
 c_unitStateHidden
 c_unitStatePaused
 c_unitStateIsHallucination
+c_unitStateSelectable
+c_unitStateStatusBar
+c_unitStateTooltipable
+
+// libNtve helper wrappers (shortcuts for common state combos)
+libNtve_gf_MakeUnitInvulnerable(lv_unit, true);    // sets invulnerable
+libNtve_gf_MakeUnitUncommandable(lv_unit, true);   // prevents player from commanding the unit
+libNtve_gf_ShowHideUnit(lv_unit, false);           // hide (sets hidden + removes from selection)
+
+// Change unit skin / variation (e.g. aged model, damaged state)
+libNtve_gf_UnitSetVariation(lv_unit, "Marine", 1, "Battle");
+// (unit, typeName, variationIndex, variationTag)
+
+// Selection control
+UnitFlashSelection(lv_unit, 2.0);      // flash selection ring for duration (seconds)
+UnitSelect(lv_unit, lv_player, true);  // add to player's current selection
+UnitClearSelection(lv_player);         // deselect all units for player
+libNtve_gf_StoreUnitSelection(lv_player, libNtve_ge_UnitSelectionStoreOption_ClearUnitSelection);
+libNtve_gf_RestoreUnitSelection(lv_player);  // restore previously stored selection
 ```

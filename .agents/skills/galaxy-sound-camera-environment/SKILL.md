@@ -15,7 +15,7 @@ sound lv_snd = SoundPlayForPlayer(
     lv_player
 );
 
-// Play at a 3D world position
+// Play at a 3D world position — single player
 sound lv_snd2 = SoundPlayAtPointForPlayer(
     SoundLink("Zerg_Hydralisk_Death1", -1),
     lv_player,
@@ -25,8 +25,18 @@ sound lv_snd2 = SoundPlayAtPointForPlayer(
     100.0   // volume
 );
 
-// Play attached to a unit (follows it)
-sound lv_snd3 = SoundPlayOnUnit(SoundLink("Unit_Explosion", -1), lv_unit, 0.0, 30.0, 100.0);
+// Play at a 3D world position — playergroup (use this for campaign / multi-player maps)
+sound lv_snd3 = SoundPlayAtPoint(
+    SoundLink("Zerg_Hydralisk_Death1", -1),
+    PlayerGroupAll(),
+    lv_point,
+    0.0,    // min distance
+    100.0,  // volume
+    0.0     // fade-in duration
+);
+
+// Play attached to a unit (follows it) — playergroup form (6 params)
+// See Sound – Advanced section for the correct signature
 
 // Wait for sound to complete (blocks trigger thread)
 SoundWait(lv_snd);
@@ -202,4 +212,214 @@ TransmissionSend(
     3.0,                            // extra duration
     true                            // block until done
 );
+
+// Clear a specific transmission or all active transmissions
+TransmissionClear(TransmissionLastSent());
+TransmissionClearAll();
+```
+
+---
+
+## Campaign Transmission Pattern (libCamp / libLbty)
+
+WoL campaign maps use a specific pipeline for all transmissions. **Always** call `libLbty_PlayTransmissionCueSound` first to set appropriate audio channels, then `libCamp_gf_SendTransmissionCampaign` to play the actual speech.
+
+```galaxy
+// 0. Duck game audio (lower non-speech channels during transmissions)
+libCamp_gf_SetAllSoundChannelVolumesCampaign(libNtve_ge_VolumeChannelMode_Speech);
+
+// 1. Set audio channels to speech mode (required before each campaign transmission)
+libLbty_gf_PlayTransmissionCueSound(PlayerGroupAll());
+
+// 2. Send the transmission (blocks until it finishes when last param is true)
+libCamp_gf_SendTransmissionCampaign(
+    lv_unit,                         // portrait unit (or null for narrator)
+    SoundLink("SoundName", -1),      // audio cue (-1 = any variation)
+    c_transmissionDurationAdd,       // duration mode
+    0.0,                             // extra seconds added
+    true                             // wait (block) until done
+);
+
+// 3. After all transmissions, restore normal game audio
+libCamp_gf_SetAllSoundChannelVolumesCampaign(libNtve_ge_VolumeChannelMode_Game);
+
+// Simple non-portrait transmission (narrator/radio with no unit portrait)
+libNtve_gf_SendTransmissionSimple(
+    TransmissionSourceFromModel(null),
+    c_invalidPortraitId,
+    SoundLink("TransmissionSound", 0),
+    0.0,
+    c_transmissionDurationAdd,
+    true
+);
+
+// Wait for a specific transmission to finish (non-blocking variant)
+TransmissionWait(TransmissionLastSent(), 0.0);
+
+// Tip text that shows in the upper-right of the screen
+libNtve_gf_ShowTip(libNtve_gf_FormatTipTitle(StringExternal("Param/TipTitle/..."), 1), StringExternal("Param/TipBody/..."), PlayerGroupAll());
+```
+
+---
+
+## Sound – Advanced
+
+```galaxy
+// Play sound attached to a unit (follows it; different param order from basic variant)
+sound lv_snd = SoundPlayOnUnit(
+    SoundLink("UnitDeath", -1),
+    PlayerGroupAll(),    // player group (NOT single player like basic variant)
+    lv_unit,
+    0.0,                 // min distance
+    100.0,               // volume
+    0.0                  // fade-in duration
+);
+
+// Get the last played sound (for stopping/waiting)
+sound lv_last = SoundLastPlayed();
+
+// Stop with optional fade
+SoundStop(lv_last, true);   // true = fade out
+
+// Wait for a sound to finish (blocks trigger thread)
+SoundWait(lv_last, 0.0, c_soundOffsetEnd);
+
+// Time a Wait() to an exact sound length
+Wait(SoundLengthSync(SoundLink("MySpeech", -1)), c_timeGame);
+```
+
+### Soundtrack (Background Music)
+
+```galaxy
+// Start, pause, and restore background music tracks
+SoundtrackDefault(PlayerGroupAll(), c_soundtrackCategoryMusic, "TrackName",
+    c_soundtrackCueAny, c_soundtrackIndexAny);
+SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "TrackName",
+    c_soundtrackCueAny, c_soundtrackIndexAny, false);
+
+// Pause / resume music (e.g. during a cinematic)
+SoundtrackPause(PlayerGroupAll(), c_soundtrackCategoryMusic, true,  false);  // pause
+SoundtrackPause(PlayerGroupAll(), c_soundtrackCategoryMusic, false, false);  // resume
+```
+
+---
+
+## Camera – Advanced
+
+```galaxy
+// Apply a named camera object from the editor (by ID)
+CameraApplyInfo(lv_player, CameraInfoFromId(lv_camId), lv_duration, -1, 10, true);
+
+// Pan with smooth approach
+CameraPan(lv_player, lv_point, lv_distance, -1.0, 20.0, false);
+// (player, point, distance, yaw, pitch, synchronize?)
+
+// Lock camera input during scripted pan (prevents player moving camera)
+CameraLockInput(lv_player, true);
+// ... (camera movement) ...
+CameraLockInput(lv_player, false);
+
+// Save and restore camera position
+CameraSave(lv_player);
+CameraRestore(lv_player, 1.5);   // restore over duration (seconds)
+
+// Swoosh camera (cinematic sweep)
+libNtve_gf_SwooshCamera(lv_player, lv_startDist, lv_endDist, lv_targetPoint, lv_duration);
+```
+
+---
+
+## Cinematic Mode & Sequences
+
+Full cinematic pipeline used in campaign maps:
+
+```galaxy
+// 1. Enter cinematic mode (letterbox + disable UI)
+libNtve_gf_CinematicMode(true, PlayerGroupAll(), 0.5);   // (enable, players, transition time)
+// Alternate: use GlobalCinematicSetting if letter-boxing all players at once
+libNtve_gf_GlobalCinematicSetting(true);
+
+// 2. Set fullscreen mode (removes game HUD completely)
+UISetMode(PlayerGroupAll(), c_uiModeFullscreen, 0.0);
+
+// 3. Register a skip key (allows player to jump to end)
+TriggerSkippableBegin(PlayerGroupAll(), 0, null, true, false);
+
+// 4. Cinematic fade in/out
+CinematicFade(true,  1.5, c_fadeStyleNormal, ColorWithAlpha(0, 0, 0, 0), 0.0, true);  // fade in from black
+CinematicFade(false, 1.0, c_fadeStyleNormal, ColorWithAlpha(0, 0, 0, 0), 0.0, true);  // fade to black
+
+// 5. Close the skippable block (must match every TriggerSkippableBegin)
+TriggerSkippableEnd();
+
+// 6. Restore HUD at end of cinematic
+UISetMode(PlayerGroupAll(), c_uiModeGame, 0.0);
+libNtve_gf_CinematicMode(false, PlayerGroupAll(), 0.5);
+libNtve_gf_GlobalCinematicSetting(false);
+```
+
+---
+
+## Mission Trigger Queue
+
+The trigger queue serializes long-running cinematic/narrative sequences so they don't overlap.
+
+```galaxy
+// Enter / exit the queue (wraps around a cinematic trigger body)
+TriggerQueueEnter();
+// ... all the cinematic steps ...
+TriggerQueueExit();
+
+// Pause / resume queue (blocks next trigger from starting)
+TriggerQueuePause(true);
+TriggerQueuePause(false);
+
+// Discard pending queue items
+TriggerQueueClear(c_triggerQueueRemove);
+
+// Check if the queue is empty (no pending triggers)
+bool lv_done = TriggerQueueIsEmpty();
+```
+
+---
+
+## Environment – Skybox / Background
+
+```galaxy
+// Set the skybox (background) for all players
+GameSetBackground(c_backgroundFixed, "ShakurasSkyBox", 100.0);
+// (mode, name, weight)
+
+// Clear the skybox (restore default)
+GameSetBackground(c_backgroundFixed, null, 100.0);
+
+// Time of day (affects lighting/shadows)
+GameTimeOfDaySet("08:00:00");
+GameTimeOfDayPause(true);   // freeze time of day
+GameTimeOfDayPause(false);  // unfreeze
+```
+
+---
+
+## Video Recording (Briefings)
+
+Used for in-engine cutscene recording passed directly to a video player (campaign briefings):
+
+```galaxy
+// Start recording a named video clip
+MovieStartRecording("BriefingVideo");
+
+// ... play the scene ...
+
+// Stop recording
+MovieStopRecording();
+```
+
+---
+
+## Campaign Mission Completion
+
+```galaxy
+// Run the standard mission victory cinematic + score screen
+libCamp_gf_RunMissionVictorySequence(lv_trigger);
 ```
