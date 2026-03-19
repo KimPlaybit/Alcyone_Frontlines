@@ -1,0 +1,223 @@
+//==================================================================================================
+// 
+// Proxima Frontlines - Soldier Selection Team 2
+// 
+// Split from Lib5A1C9904.galaxy
+// 
+//==================================================================================================
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904_h"
+
+//--------------------------------------------------------------------------------------------------
+// Soldier Selection Team 2
+//--------------------------------------------------------------------------------------------------
+trigger auto_lib5A1C9904_gf_SoldierSelectionTeam2_Trigger = null;
+
+void lib5A1C9904_gf_SoldierSelectionTeam2 () {
+    if (auto_lib5A1C9904_gf_SoldierSelectionTeam2_Trigger == null) {
+        auto_lib5A1C9904_gf_SoldierSelectionTeam2_Trigger = TriggerCreate("auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib5A1C9904_gf_SoldierSelectionTeam2_Trigger, false, false);
+}
+
+bool auto_lib5A1C9904_gf_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool runActions) {
+    // Variable Declarations
+    bool lv_raceCheck;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    DialogCreate(lib5A1C9904_gv_heroDialogWidth, lib5A1C9904_gv_heroDialogHeight, c_anchorCenter, 0, -60, true);
+    lib5A1C9904_gv_dialogTeam2 = DialogLastCreated();
+    // Create middle panel for hero portrait display
+    DialogControlCreate(lib5A1C9904_gv_dialogTeam2, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lib5A1C9904_gv_middlePanelWidth, lib5A1C9904_gv_heroDialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lib5A1C9904_gv_middlePanelXPos, 0);
+    // Add hero portrait image to middle panel (Team 2)
+    DialogControlCreate(lib5A1C9904_gv_dialogTeam2, c_triggerControlTypeImage);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lib5A1C9904_gv_middlePanelWidth - 20, 600);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lib5A1C9904_gv_middlePanelXPos + 10, 50);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\btn-unit-firebathero-portrait.dds", PlayerGroupAll());
+    lib5A1C9904_gv_heroPortraitTeam2 = DialogControlLastCreated();
+    // Create right panel for hero info
+    DialogControlCreate(lib5A1C9904_gv_dialogTeam2, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lib5A1C9904_gv_infoPanelWidth, lib5A1C9904_gv_heroDialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lib5A1C9904_gv_infoPanelXPos, 0);
+    lib5A1C9904_gv_infoPanelTeam2 = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, 125, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/lib_5A1C9904_8A1774B1"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    lv_raceCheck = lib5A1C9904_gf_IsTerran(lib5A1C9904_gv_rTSPlayer2);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_825CFEE7"), StringExternal("Param/Value/lib_5A1C9904_24A60DAB"), "");
+        lib5A1C9904_gv_firebatTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_DE655456"), StringExternal("Param/Value/lib_5A1C9904_D47053B6"), "");
+        lib5A1C9904_gv_medicTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_D2795242"), StringExternal("Param/Value/lib_5A1C9904_46CEA381"), "");
+        lib5A1C9904_gv_goliathTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_15BADC69"), StringExternal("Param/Value/lib_5A1C9904_47771A14"), "");
+        lib5A1C9904_gv_marineTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_5BD3340E"), StringExternal("Param/Value/lib_5A1C9904_9879E07D"), "");
+        lib5A1C9904_gv_spectreTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_3643AF90"), StringExternal("Param/Value/lib_5A1C9904_AE849DE1"), "");
+        lib5A1C9904_gv_scienceVesselTeam2 = DialogControlLastCreated();
+        // Terran Right Panel Information (Team2)
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_24A60DAB"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoDifficultyTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = lib5A1C9904_gf_IsZerg(lib5A1C9904_gv_rTSPlayer2);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_E21D7F62"), StringExternal("Param/Value/lib_5A1C9904_752ED481"), "");
+        lib5A1C9904_gv_zerglingTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_1DE3E5FA"), StringExternal("Param/Value/lib_5A1C9904_E655C995"), "");
+        lib5A1C9904_gv_queenTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_AC106C06"), StringExternal("Param/Value/lib_5A1C9904_1ECB2231"), "");
+        lib5A1C9904_gv_hydraliskTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_4DC14A06"), StringExternal("Param/Value/lib_5A1C9904_7B5B1561"), "");
+        lib5A1C9904_gv_ultraliskTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_89BF609B"), StringExternal("Param/Value/lib_5A1C9904_3086F79D"), "");
+        lib5A1C9904_gv_defilerTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_A2FD87C6"), StringExternal("Param/Value/lib_5A1C9904_8CCC236B"), "");
+        lib5A1C9904_gv_nydusTeam2 = DialogControlLastCreated();
+        // Zerg Right Panel Information (Team2)
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_752ED481"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoDifficultyTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = lib5A1C9904_gf_IsProtoss(lib5A1C9904_gv_rTSPlayer2);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_18626199"), StringExternal("Param/Value/lib_5A1C9904_34AE88BC"), "");
+        lib5A1C9904_gv_zealotTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_50533C92"), StringExternal("Param/Value/lib_5A1C9904_B3FA3570"), "");
+        lib5A1C9904_gv_sentryTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_215DA594"), StringExternal("Param/Value/lib_5A1C9904_B5ED5957"), "");
+        lib5A1C9904_gv_dragoonTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_CC9D57B8"), StringExternal("Param/Value/lib_5A1C9904_50B05475"), "");
+        lib5A1C9904_gv_darkTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_03C0B059"), StringExternal("Param/Value/lib_5A1C9904_8C87B31B"), "");
+        lib5A1C9904_gv_corsairTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_7E09F6B4"), StringExternal("Param/Value/lib_5A1C9904_C8FFA6CD"), "");
+        lib5A1C9904_gv_mothershipTeam2 = DialogControlLastCreated();
+        // Protoss Right Panel Information (Team2)
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 20, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_34AE88BC"), ColorWithAlpha(255,200,100,255), false, 1.0);
+        lib5A1C9904_gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        lib5A1C9904_gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 35, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoDifficultyTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_infoLabelWidth, 70, c_anchorTop, lib5A1C9904_gv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        lib5A1C9904_gv_infoStrengthsTeam2 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = lib5A1C9904_gf_IsKnownRace(lib5A1C9904_gv_rTSPlayer2);
+    if ((lv_raceCheck == false)) {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_47065936"), StringExternal("Param/Value/lib_5A1C9904_479173BD"), "");
+        lib5A1C9904_gv_zealotTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_F5516FBF"), StringExternal("Param/Value/lib_5A1C9904_EC5A43FE"), "");
+        lib5A1C9904_gv_sentryTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_0E44D467"), StringExternal("Param/Value/lib_5A1C9904_D44D7EFC"), "");
+        lib5A1C9904_gv_dragoonTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_3C7C04B9"), StringExternal("Param/Value/lib_5A1C9904_C32A4E04"), "");
+        lib5A1C9904_gv_darkTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_964EEB0B"), StringExternal("Param/Value/lib_5A1C9904_698DE8D6"), "");
+        lib5A1C9904_gv_corsairTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_buttonSizePickX, lib5A1C9904_gv_buttonSizePickY, c_anchorTop, lib5A1C9904_gv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_12C4A045"), StringExternal("Param/Value/lib_5A1C9904_7C62B8C6"), "");
+        lib5A1C9904_gv_mothershipTeam2 = DialogControlLastCreated();
+    }
+
+    // Add Lock In button (bottom of middle panel)
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_lockInButtonWidth, lib5A1C9904_gv_lockInButtonHeight, c_anchorTopLeft, lib5A1C9904_gv_lockInButtonXPos, lib5A1C9904_gv_lockInButtonYPos, StringExternal("Param/Value/lib_5A1C9904_LockInButton"), StringExternal("Param/Value/lib_5A1C9904_LockInTooltip"), "");
+    lib5A1C9904_gv_lockInButtonTeam2 = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemText(lib5A1C9904_gv_lockInButtonTeam2, StringExternal("Param/Value/lib_5A1C9904_LockInButton"), PlayerGroupAll());
+
+    DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_soldierPlayers2, true);
+    DialogSetVisible(lib5A1C9904_gv_dialogTeam2, lib5A1C9904_gv_playersWhoPicked, false);
+    
+    // Set default hero based on RTS player race
+    if ((PlayerRace(lib5A1C9904_gv_rTSPlayer2) == "Zerg")) {
+        lib5A1C9904_gv_selectedHeroTeam2 = "ZerglingHero";
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\ZerglingPortrait_Static.dds", lib5A1C9904_gv_soldierPlayers2);
+    }
+    else if ((PlayerRace(lib5A1C9904_gv_rTSPlayer2) == "Terr")) {
+        lib5A1C9904_gv_selectedHeroTeam2 = "FirebatHero";
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\marinemercenaryportrait_static.dds", lib5A1C9904_gv_soldierPlayers2);
+    }
+    else if ((PlayerRace(lib5A1C9904_gv_rTSPlayer2) == "Prot")) {
+        lib5A1C9904_gv_selectedHeroTeam2 = "ZealotHero";
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AiurZealotPortrait_Static.dds", lib5A1C9904_gv_soldierPlayers2);
+    }
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_sentryTemplarTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_corsairTemplarTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_darkTemplarTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_defilerTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_dragoonTemplarTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_firebatTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_goliathTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_hydraliskTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_marineTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_medicTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_queenTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_spectreTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_ultraliskTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_zealotTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_zerglingTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_nydusTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_scienceVesselTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_mothershipTeam2);
+    lib5A1C9904_gf_DisableaDialogItem(lib5A1C9904_gv_lockInButtonTeam2);
+    Wait(2.0, c_timeReal);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_sentryTemplarTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_corsairTemplarTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_darkTemplarTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_defilerTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_dragoonTemplarTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_firebatTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_goliathTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_hydraliskTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_marineTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_medicTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_queenTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_spectreTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_ultraliskTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_zealotTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_zerglingTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_scienceVesselTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_nydusTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_mothershipTeam2);
+    lib5A1C9904_gf_EnableaDialogItem(lib5A1C9904_gv_lockInButtonTeam2);
+    return true;
+}
