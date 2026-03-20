@@ -1,0 +1,1233 @@
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904_h"
+
+//==================================================================================================
+// Proxima Frontlines – Hero Selection System
+// Dialog button triggers for hero picking and lock-in for both teams.
+//==================================================================================================
+
+bool lib5A1C9904_gt_FirebatSoldierPicked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_firebatTeam1 == EventDialogControl()) || (lib5A1C9904_gv_firebatTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Save selected hero for this player
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "FirebatHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "FirebatHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_FirebatSoldierPicked_Init () {
+    lib5A1C9904_gt_FirebatSoldierPicked = TriggerCreate("lib5A1C9904_gt_FirebatSoldierPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_FirebatSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Medic Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MedicSoldierPicked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_medicTeam2 == EventDialogControl()) || (lib5A1C9904_gv_medicTeam1 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Save selected hero for this player
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "MedicHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "MedicHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MedicSoldierPicked_Init () {
+    lib5A1C9904_gt_MedicSoldierPicked = TriggerCreate("lib5A1C9904_gt_MedicSoldierPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_MedicSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Goliath Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_GoliathSoldierPicked_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    playergroup[2] lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_goliathTeam1 == EventDialogControl()) || (lib5A1C9904_gv_goliathTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Save selected hero for this player
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "GoliathHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "GoliathHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_GoliathSoldierPicked_Init () {
+    lib5A1C9904_gt_GoliathSoldierPicked = TriggerCreate("lib5A1C9904_gt_GoliathSoldierPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_GoliathSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Marine Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MarineSoldierPicked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_marineTeam1 == EventDialogControl()) || (lib5A1C9904_gv_marineTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Save selected hero for this player
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "MarineHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "MarineHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MarineSoldierPicked_Init () {
+    lib5A1C9904_gt_MarineSoldierPicked = TriggerCreate("lib5A1C9904_gt_MarineSoldierPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_MarineSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Spectre Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SpectreSoldierPicked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_spectreTeam1 == EventDialogControl()) || (lib5A1C9904_gv_spectreTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Save selected hero for this player
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "SpectreHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "SpectreHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SpectreSoldierPicked_Init () {
+    lib5A1C9904_gt_SpectreSoldierPicked = TriggerCreate("lib5A1C9904_gt_SpectreSoldierPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_SpectreSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Zealot Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ZealotSoldierPicked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_zealotTeam2 == EventDialogControl()) || (lib5A1C9904_gv_zealotTeam1 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Save selected hero for this player
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "ZealotHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "ZealotHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ZealotSoldierPicked_Init () {
+    lib5A1C9904_gt_ZealotSoldierPicked = TriggerCreate("lib5A1C9904_gt_ZealotSoldierPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_ZealotSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Dark Templar Soldier Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_DarkTemplarSoldierPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_darkTemplarTeam1 == EventDialogControl()) || (lib5A1C9904_gv_darkTemplarTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "AvengerHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "AvengerHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DarkTemplarSoldierPicked_Init () {
+    lib5A1C9904_gt_DarkTemplarSoldierPicked = TriggerCreate("lib5A1C9904_gt_DarkTemplarSoldierPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_DarkTemplarSoldierPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Dragoon Picked 
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_DragoonPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_dragoonTemplarTeam1 == EventDialogControl()) || (lib5A1C9904_gv_dragoonTemplarTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "DragoonHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "DragoonHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DragoonPicked_Init () {
+    lib5A1C9904_gt_DragoonPicked = TriggerCreate("lib5A1C9904_gt_DragoonPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_DragoonPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Sentry Picked 
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SentryPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_sentryTemplarTeam1 == EventDialogControl()) || (lib5A1C9904_gv_sentryTemplarTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "SentryPurifier2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "SentryPurifier2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SentryPicked_Init () {
+    lib5A1C9904_gt_SentryPicked = TriggerCreate("lib5A1C9904_gt_SentryPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_SentryPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Adept Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_AdeptPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(lib5A1C9904_gv_rTSPlayer1) == "Prot") && (lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer1)) || ((PlayerRace(lib5A1C9904_gv_rTSPlayer2) == "Prot") && (lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer2)))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer1)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "AdeptHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "AdeptHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_AdeptPicked_Init () {
+    lib5A1C9904_gt_AdeptPicked = TriggerCreate("lib5A1C9904_gt_AdeptPicked_Func");
+    TriggerAddEventChatMessage(lib5A1C9904_gt_AdeptPicked, c_playerAny, "-Adept", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Corsair Picked 
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_CorsairPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_corsairTemplarTeam1 == EventDialogControl()) || (lib5A1C9904_gv_corsairTemplarTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "CorsairHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "CorsairHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_CorsairPicked_Init () {
+    lib5A1C9904_gt_CorsairPicked = TriggerCreate("lib5A1C9904_gt_CorsairPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_CorsairPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MothershipCore Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MothershipCorePicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_mothershipTeam1 == EventDialogControl()) || (lib5A1C9904_gv_mothershipTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "MothershipCoreHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "MothershipCoreHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MothershipCorePicked_Init () {
+    lib5A1C9904_gt_MothershipCorePicked = TriggerCreate("lib5A1C9904_gt_MothershipCorePicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_MothershipCorePicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Zergling Picked 
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ZerglingPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_zerglingTeam1 == EventDialogControl()) || (lib5A1C9904_gv_zerglingTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "ZerglingHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "ZerglingHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ZerglingPicked_Init () {
+    lib5A1C9904_gt_ZerglingPicked = TriggerCreate("lib5A1C9904_gt_ZerglingPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_ZerglingPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Queen Picked 
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_QueenPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_queenTeam2 == EventDialogControl()) || (lib5A1C9904_gv_queenTeam1 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "BroodQueenHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "BroodQueenHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_QueenPicked_Init () {
+    lib5A1C9904_gt_QueenPicked = TriggerCreate("lib5A1C9904_gt_QueenPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_QueenPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Defiler Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_DefilerPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_defilerTeam1 == EventDialogControl()) || (lib5A1C9904_gv_defilerTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "DefilerHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "DefilerHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DefilerPicked_Init () {
+    lib5A1C9904_gt_DefilerPicked = TriggerCreate("lib5A1C9904_gt_DefilerPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_DefilerPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hydralisk Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HydraliskPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_hydraliskTeam1 == EventDialogControl()) || (lib5A1C9904_gv_hydraliskTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "HydraliskHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "HydraliskHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_HydraliskPicked_Init () {
+    lib5A1C9904_gt_HydraliskPicked = TriggerCreate("lib5A1C9904_gt_HydraliskPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HydraliskPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ultralisk Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_UltraliskPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_ultraliskTeam2 == EventDialogControl()) || (lib5A1C9904_gv_ultraliskTeam1 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "HotSTorrasque2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "HotSTorrasque2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_UltraliskPicked_Init () {
+    lib5A1C9904_gt_UltraliskPicked = TriggerCreate("lib5A1C9904_gt_UltraliskPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_UltraliskPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Mutalisk Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MutaliskPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && (((PlayerRace(lib5A1C9904_gv_rTSPlayer1) == "Zerg") && (lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer1)) || ((PlayerRace(lib5A1C9904_gv_rTSPlayer2) == "Zerg") && (lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer2)))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lib5A1C9904_gf_GetAllyRTSPlayer(EventPlayer()) == lib5A1C9904_gv_rTSPlayer1)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "MutaliskHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "MutaliskHero";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MutaliskPicked_Init () {
+    lib5A1C9904_gt_MutaliskPicked = TriggerCreate("lib5A1C9904_gt_MutaliskPicked_Func");
+    TriggerAddEventChatMessage(lib5A1C9904_gt_MutaliskPicked, c_playerAny, "-mutaliskEverywhere", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Nydus Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_nydusTeam1 == EventDialogControl()) || (lib5A1C9904_gv_nydusTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "NydusCanal22";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "NydusCanal22";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_NydusPicked_Init () {
+    lib5A1C9904_gt_NydusPicked = TriggerCreate("lib5A1C9904_gt_NydusPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Science Vessel Picked
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ScienceVesselPicked_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((lib5A1C9904_gv_playerPicked[EventPlayer()] == false) && ((lib5A1C9904_gv_scienceVesselTeam1 == EventDialogControl()) || (lib5A1C9904_gv_scienceVesselTeam2 == EventDialogControl()))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(lib5A1C9904_gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
+        lib5A1C9904_gv_selectedHeroTeam1 = "ScienceVessel2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam1(lib5A1C9904_gv_selectedHeroTeam1);
+    }
+    else {
+        lib5A1C9904_gv_selectedHeroTeam2 = "ScienceVessel2";
+        lib5A1C9904_gf_UpdateHeroInfoTeam2(lib5A1C9904_gv_selectedHeroTeam2);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ScienceVesselPicked_Init () {
+    lib5A1C9904_gt_ScienceVesselPicked = TriggerCreate("lib5A1C9904_gt_ScienceVesselPicked_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_ScienceVesselPicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Lock In Button Team 1
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_LockInButtonTeam1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_heroDisplayName;
+    
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_lockInButtonTeam1 == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((StringLength(lib5A1C9904_gv_selectedHeroTeam1) > 0)) {
+        lv_heroDisplayName = lib5A1C9904_gv_selectedHeroTeam1;
+        if ((lib5A1C9904_gv_selectedHeroTeam1 == "FirebatHero")) { lv_heroDisplayName = "Firebat"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "MedicHero")) { lv_heroDisplayName = "Medic"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "MarineHero")) { lv_heroDisplayName = "Marine"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "GoliathHero")) { lv_heroDisplayName = "Goliath"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "SpectreHero")) { lv_heroDisplayName = "Spectre"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "ZealotHero")) { lv_heroDisplayName = "Zealot"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "AvengerHero")) { lv_heroDisplayName = "Dark Templar"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "DragoonHero")) { lv_heroDisplayName = "Dragoon"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "SentryPurifier2")) { lv_heroDisplayName = "Sentry"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "AdeptHero")) { lv_heroDisplayName = "Adept"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "CorsairHero")) { lv_heroDisplayName = "Corsair"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "MothershipCoreHero")) { lv_heroDisplayName = "Mothership Core"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "ZerglingHero")) { lv_heroDisplayName = "Zergling"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "BroodQueenHero")) { lv_heroDisplayName = "Brood Queen"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "DefilerHero")) { lv_heroDisplayName = "Defiler"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "HydraliskHero")) { lv_heroDisplayName = "Hydralisk"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "HotSTorrasque2")) { lv_heroDisplayName = "Ultralisk"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "MutaliskHero")) { lv_heroDisplayName = "Mutalisk"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "NydusCanal22")) { lv_heroDisplayName = "Nydus Worm"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam1 == "ScienceVessel2")) { lv_heroDisplayName = "Science Vessel"; }
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringToText(" picked " + lv_heroDisplayName)));
+        libNtve_gf_UnitCreateFacingPoint(1, lib5A1C9904_gv_selectedHeroTeam1, 0, EventPlayer(), lib5A1C9904_gv_startPosition1, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+        DialogSetVisible(lib5A1C9904_gv_dialogTeam1, PlayerGroupAll(), false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
+        UnitGroupAdd(lib5A1C9904_gv_soldiers, UnitLastCreated());
+        UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
+        PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
+        lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
+    }
+    return true;
+}
+
+void lib5A1C9904_gt_LockInButtonTeam1_Init () {
+    lib5A1C9904_gt_LockInButtonTeam1Pressed = TriggerCreate("lib5A1C9904_gt_LockInButtonTeam1_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_LockInButtonTeam1Pressed, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Lock In Button Team 2
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_LockInButtonTeam2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_heroDisplayName;
+    
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_lockInButtonTeam2 == EventDialogControl()))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((StringLength(lib5A1C9904_gv_selectedHeroTeam2) > 0)) {
+        lv_heroDisplayName = lib5A1C9904_gv_selectedHeroTeam2;
+        if ((lib5A1C9904_gv_selectedHeroTeam2 == "FirebatHero")) { lv_heroDisplayName = "Firebat"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "MedicHero")) { lv_heroDisplayName = "Medic"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "MarineHero")) { lv_heroDisplayName = "Marine"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "GoliathHero")) { lv_heroDisplayName = "Goliath"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "SpectreHero")) { lv_heroDisplayName = "Spectre"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "ZealotHero")) { lv_heroDisplayName = "Zealot"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "AvengerHero")) { lv_heroDisplayName = "Dark Templar"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "DragoonHero")) { lv_heroDisplayName = "Dragoon"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "SentryPurifier2")) { lv_heroDisplayName = "Sentry"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "AdeptHero")) { lv_heroDisplayName = "Adept"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "CorsairHero")) { lv_heroDisplayName = "Corsair"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "MothershipCoreHero")) { lv_heroDisplayName = "Mothership Core"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "ZerglingHero")) { lv_heroDisplayName = "Zergling"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "BroodQueenHero")) { lv_heroDisplayName = "Brood Queen"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "DefilerHero")) { lv_heroDisplayName = "Defiler"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "HydraliskHero")) { lv_heroDisplayName = "Hydralisk"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "HotSTorrasque2")) { lv_heroDisplayName = "Ultralisk"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "MutaliskHero")) { lv_heroDisplayName = "Mutalisk"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "NydusCanal22")) { lv_heroDisplayName = "Nydus Worm"; }
+        else if ((lib5A1C9904_gv_selectedHeroTeam2 == "ScienceVessel2")) { lv_heroDisplayName = "Science Vessel"; }
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringToText(" picked " + lv_heroDisplayName)));
+
+        libNtve_gf_UnitCreateFacingPoint(1, lib5A1C9904_gv_selectedHeroTeam2, 0, EventPlayer(), lib5A1C9904_gv_startPosition2, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer1));
+        DialogSetVisible(lib5A1C9904_gv_dialogTeam2, PlayerGroupAll(), false);
+        UnitSelect(UnitLastCreated(), EventPlayer(), true);
+        UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
+        UnitGroupAdd(lib5A1C9904_gv_soldiers, UnitLastCreated());
+        UnitControlGroupAddUnit(EventPlayer(), 1, UnitLastCreated());
+        PlayerGroupAdd(lib5A1C9904_gv_playersWhoPicked, EventPlayer());
+        lib5A1C9904_gv_playerPicked[EventPlayer()] = true;
+    }
+    return true;
+}
+
+void lib5A1C9904_gt_LockInButtonTeam2_Init () {
+    lib5A1C9904_gt_LockInButtonTeam2Pressed = TriggerCreate("lib5A1C9904_gt_LockInButtonTeam2_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_LockInButtonTeam2Pressed, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Update Hero Info Team 1
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gf_UpdateHeroInfoTeam1 (string lp_heroType) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+    // Implementation
+    if ((StringEqual(lp_heroType, "FirebatHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\FirebatPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "MedicHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MedicAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MedicStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\MedicPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "ZerglingHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\ZerglingPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "ZealotHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AiurZealotPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "GoliathHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_GoliathStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\GoliathPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "MarineHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MarineAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MarineStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\marinemercenaryportrait_static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "SpectreHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_SpectreStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\SpectrePortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "ScienceVessel2", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\ScienceVesselPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "BroodQueenHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_QueenAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_QueenStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\swarmhostspawnportrait_static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "DefilerHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_DefilerStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\DefilerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "HydraliskHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_HydraliskStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\HydraliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "HotSTorrasque2", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_UltraliskStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\UltraliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "MutaliskHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MutaliskStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\MutaliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "NydusCanal22", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_NydusAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_NydusStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\NydusWormPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "AvengerHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_AvengerStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AvengerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "DragoonHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_DragoonStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AiurDragoonPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "SentryPurifier2", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_SentryAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_SentryStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\EnergizerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "AdeptHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_AdeptStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\AdeptPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "CorsairHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_CorsairStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\CorsairPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "MothershipCoreHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team1, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam1, StringExternal("Param/Value/lib_5A1C9904_MothershipStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam1, "Assets\\Textures\\MothershipPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Update Hero Info Team 2
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gf_UpdateHeroInfoTeam2 (string lp_heroType) {
+    // Variable Declarations
+    // Automatic Variable Declarations
+    // Variable Initialization
+    // Implementation
+    if ((StringEqual(lp_heroType, "FirebatHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\FirebatPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "ZerglingHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_E8978F42"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\ZerglingPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "ZealotHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_6F27D176"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AiurZealotPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "GoliathHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_GoliathAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_GoliathStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\GoliathPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "MarineHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MarineAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MarineStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\marinemercenaryportrait_static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "SpectreHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_SpectreAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_SpectreStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\SpectrePortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "ScienceVessel2", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_ScienceVesselStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\ScienceVesselPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "BroodQueenHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_QueenAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_QueenStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\swarmhostspawnportrait_static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "DefilerHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_DefilerAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_DefilerStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\DefilerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "HydraliskHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_HydraliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_HydraliskStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\HydraliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "HotSTorrasque2", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_UltraliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_UltraliskStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\UltraliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "MutaliskHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MutaliskAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MutaliskStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\MutaliskPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "NydusCanal22", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_NydusAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_NydusStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\NydusWormPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "AvengerHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_AvengerAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_AvengerStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AvengerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "DragoonHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_DragoonAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_DragoonStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AiurDragoonPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "SentryPurifier2", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_SentryAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_SentryStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\EnergizerPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "AdeptHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_AdeptAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_AdeptStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\AdeptPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "CorsairHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_CorsairAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_CorsairStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\CorsairPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+    else if ((StringEqual(lp_heroType, "MothershipCoreHero", c_stringNoCase))) {
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipName"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility1Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility1"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility2Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility2"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility3Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility3"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoAbility4Team2, StringExternal("Param/Value/lib_5A1C9904_MothershipAbility4"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoDifficultyTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipDifficulty"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemText(lib5A1C9904_gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipStrengths"), PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemImage(lib5A1C9904_gv_heroPortraitTeam2, "Assets\\Textures\\MothershipPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
+    }
+}

@@ -1,0 +1,228 @@
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904_h"
+
+//==================================================================================================
+// Proxima Frontlines – Spawner System
+// Manages spawner registration, wave creation, shadow fury reset, and unit wave control.
+//==================================================================================================
+
+void lib5A1C9904_gf_ResetCooldownOfShadowFury (unit lp_killingUnit) {
+    // Implementation
+    if (((UnitGetType(lp_killingUnit) == "AvengerHero") == true)) {
+        UnitAbilityReset(lp_killingUnit, AbilityCommand("DarkTemplarShadowFury", 0), c_spendLocationAll);
+    }
+
+}
+
+void lib5A1C9904_gf_AddNewWavePoint (point lp_point, int lp_spawnerIndex) {
+    // Implementation
+    if ((lib5A1C9904_gv_createdSpawners[lp_spawnerIndex].lv_lastIndexPoint < 10)) {
+        lib5A1C9904_gv_createdSpawners[lp_spawnerIndex].lv_movePoints[lib5A1C9904_gv_createdSpawners[lp_spawnerIndex].lv_lastIndexPoint] = lp_point;
+        lib5A1C9904_gv_createdSpawners[lp_spawnerIndex].lv_lastIndexPoint = (lib5A1C9904_gv_createdSpawners[lp_spawnerIndex].lv_lastIndexPoint + 1);
+    }
+    else {
+        libNtve_gf_UIErrorMessage(PlayerGroupAll(), StringExternal("Param/Value/lib_5A1C9904_1C2AD81E"), SoundLink("UI_GenericError", -1));
+    }
+}
+
+void lib5A1C9904_gf_CreateSpawners () {
+    // Variable Declarations
+    int lv_index;
+
+    // Automatic Variable Declarations
+    int auto4853DB8A_ae;
+    const int auto4853DB8A_ai = 1;
+
+    // Implementation
+    TriggerEnable(lib5A1C9904_gt_SpawnUnits, true);
+    auto4853DB8A_ae = lib5A1C9904_gv_spawnerLastIndex;
+    lv_index = 0;
+    for ( ; ( (auto4853DB8A_ai >= 0 && lv_index <= auto4853DB8A_ae) || (auto4853DB8A_ai < 0 && lv_index >= auto4853DB8A_ae) ) ; lv_index += auto4853DB8A_ai ) {
+        if ((lib5A1C9904_gv_spawners[lv_index].lv_point != null)) {
+            UnitCreate(1, lib5A1C9904_gv_spawners[lv_index].lv_unitType, 0, lib5A1C9904_gv_spawners[lv_index].lv_player, lib5A1C9904_gv_spawners[lv_index].lv_point, 270.0);
+            lib5A1C9904_gv_createdSpawners[lv_index].lv_spawner = UnitLastCreated();
+        }
+
+    }
+}
+
+int lib5A1C9904_gf_AddSpawner (point lp_point, string lp_unitType, string lp_waveUnitType, int lp_waveUnitAmount, int lp_player) {
+    // Variable Declarations
+    int lv_spawner;
+    string lv_unitType;
+
+    // Implementation
+    if ((lp_point == null)) {
+        libNtve_gf_UIErrorMessage(PlayerGroupAll(), StringExternal("Param/Value/lib_5A1C9904_3067D3D9"), SoundLink("UI_GenericError", -1));
+        return 9999;
+    }
+
+    lib5A1C9904_gv_spawners[lib5A1C9904_gv_spawnerLastIndex].lv_unitType = lp_unitType;
+    lib5A1C9904_gv_spawners[lib5A1C9904_gv_spawnerLastIndex].lv_point = lp_point;
+    lib5A1C9904_gv_spawners[lib5A1C9904_gv_spawnerLastIndex].lv_player = lp_player;
+    lib5A1C9904_gv_createdSpawners[lib5A1C9904_gv_spawnerLastIndex].lv_amountOfUnits = lp_waveUnitAmount;
+    lib5A1C9904_gv_createdSpawners[lib5A1C9904_gv_spawnerLastIndex].lv_waveUnitType = lp_waveUnitType;
+    lib5A1C9904_gv_spawnerLastIndex = (lib5A1C9904_gv_spawnerLastIndex + 1);
+    return (lib5A1C9904_gv_spawnerLastIndex - 1);
+}
+
+string lib5A1C9904_gf_GetDefaultSpawnerType (int lp_alliedPlayer) {
+    // Variable Declarations
+    int lv_rTSPlayer;
+    bool lv_foundRace;
+
+    // Variable Initialization
+    lv_rTSPlayer = lib5A1C9904_gf_GetAllyRTSPlayer(lp_alliedPlayer);
+
+    // Implementation
+    lv_foundRace = lib5A1C9904_gf_IsTerran(lv_rTSPlayer);
+    if ((lv_foundRace == true)) {
+        return "Bunker2";
+    }
+
+    lv_foundRace = lib5A1C9904_gf_IsZerg(lv_rTSPlayer);
+    if ((lv_foundRace == true)) {
+        return "NydusCanal2";
+    }
+
+    return "VoidPylon";
+}
+
+string lib5A1C9904_gf_GetDefaultWaveType (int lp_alliedPlayer) {
+    // Variable Declarations
+    int lv_rTSPlayer;
+    bool lv_foundRace;
+
+    // Variable Initialization
+    lv_rTSPlayer = lib5A1C9904_gf_GetAllyRTSPlayer(lp_alliedPlayer);
+
+    // Implementation
+    lv_foundRace = lib5A1C9904_gf_IsTerran(lv_rTSPlayer);
+    if ((lv_foundRace == true)) {
+        return "Marine";
+    }
+
+    lv_foundRace = lib5A1C9904_gf_IsZerg(lv_rTSPlayer);
+    if ((lv_foundRace == true)) {
+        return "Zergling2";
+    }
+
+    return "Zealot2";
+}
+
+int lib5A1C9904_gf_GetDefaultWaveAmount (int lp_alliedPlayer) {
+    // Variable Declarations
+    int lv_rTSPlayer;
+    bool lv_foundRace;
+
+    // Variable Initialization
+    lv_rTSPlayer = lib5A1C9904_gf_GetAllyRTSPlayer(lp_alliedPlayer);
+
+    // Implementation
+    lv_foundRace = lib5A1C9904_gf_IsTerran(lv_rTSPlayer);
+    if ((lv_foundRace == true)) {
+        return 4;
+    }
+
+    lv_foundRace = lib5A1C9904_gf_IsZerg(lv_rTSPlayer);
+    if ((lv_foundRace == true)) {
+        return 6;
+    }
+
+    return 2;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SpawnUnits
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SpawnUnits_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_index;
+    bool lv_wavesStillActive;
+
+    // Automatic Variable Declarations
+    int auto4C6BDA46_ae;
+    const int auto4C6BDA46_ai = 1;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto4C6BDA46_ae = lib5A1C9904_gv_spawnerLastIndex;
+    lv_index = 0;
+    for ( ; ( (auto4C6BDA46_ai >= 0 && lv_index <= auto4C6BDA46_ae) || (auto4C6BDA46_ai < 0 && lv_index >= auto4C6BDA46_ae) ) ; lv_index += auto4C6BDA46_ai ) {
+        if ((UnitIsAlive(lib5A1C9904_gv_createdSpawners[lv_index].lv_spawner) == true)) {
+            lib5A1C9904_gv_sP_SpawnerIndex = lv_index;
+            TriggerExecute(lib5A1C9904_gt_ControlUnits, true, false);
+            lv_wavesStillActive = true;
+        }
+
+    }
+    if ((lv_wavesStillActive == false)) {
+        TriggerEnable(TriggerGetCurrent(), false);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SpawnUnits_Init () {
+    lib5A1C9904_gt_SpawnUnits = TriggerCreate("lib5A1C9904_gt_SpawnUnits_Func");
+    TriggerEnable(lib5A1C9904_gt_SpawnUnits, false);
+    TriggerAddEventTimePeriodic(lib5A1C9904_gt_SpawnUnits, 20.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ControlUnits
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ControlUnits_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_index;
+    unitgroup lv_units;
+    int lv_loopIndex;
+    point lv_startPoint;
+
+    // Automatic Variable Declarations
+    int auto50A4257F_ae;
+    const int auto50A4257F_ai = 1;
+
+    // Variable Initialization
+    lv_index = lib5A1C9904_gv_sP_SpawnerIndex;
+    lv_units = UnitGroupEmpty();
+    lv_startPoint = lib5A1C9904_gv_spawners[lv_index].lv_point;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitIsAlive(lib5A1C9904_gv_createdSpawners[lv_index].lv_spawner) == true)) {
+        libNtve_gf_CreateUnitsAtPoint2(lib5A1C9904_gv_createdSpawners[lv_index].lv_amountOfUnits, lib5A1C9904_gv_createdSpawners[lv_index].lv_waveUnitType, 0, UnitGetOwner(lib5A1C9904_gv_createdSpawners[lv_index].lv_spawner), lv_startPoint);
+        UnitGroupAddUnitGroup(lv_units, UnitLastCreatedGroup());
+        auto50A4257F_ae = lib5A1C9904_gv_createdSpawners[lv_index].lv_lastIndexPoint;
+        lv_loopIndex = 0;
+        for ( ; ( (auto50A4257F_ai >= 0 && lv_loopIndex <= auto50A4257F_ae) || (auto50A4257F_ai < 0 && lv_loopIndex >= auto50A4257F_ae) ) ; lv_loopIndex += auto50A4257F_ai ) {
+            if ((lib5A1C9904_gv_createdSpawners[lv_index].lv_movePoints[lv_loopIndex] != null)) {
+                UnitGroupIssueOrder(lv_units, OrderTargetingPoint(AbilityCommand("attack", 0), lib5A1C9904_gv_createdSpawners[lv_index].lv_movePoints[lv_loopIndex]), c_orderQueueAddToEnd);
+            }
+
+        }
+        while ((libNtve_gf_UnitGroupIsDead(lv_units) == false)) {
+            if ((lib5A1C9904_gf_GetEnemyRTSPlayer(UnitGetOwner(lib5A1C9904_gv_createdSpawners[lv_index].lv_spawner)) == lib5A1C9904_gv_rTSPlayer1)) {
+                UnitGroupIssueOrder(lv_units, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGroupCenterOfGroup(lib5A1C9904_gv_rtsPlayer1Buildings)), c_orderQueueAddToEnd);
+            }
+            else {
+                UnitGroupIssueOrder(lv_units, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGroupCenterOfGroup(lib5A1C9904_gv_rtsPlayer2Buildings)), c_orderQueueAddToEnd);
+            }
+            Wait(20.0, c_timeGame);
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ControlUnits_Init () {
+    lib5A1C9904_gt_ControlUnits = TriggerCreate("lib5A1C9904_gt_ControlUnits_Func");
+}

@@ -1,0 +1,584 @@
+﻿//==================================================================================================
+// Proxima Frontlines – Global Variables
+// Struct definitions, global declarations, trigger variables, function forward declarations,
+// and variable initialization. Follows SSF-style: all declarations at top, InitVariables() last.
+//==================================================================================================
+
+//--------------------------------------------------------------------------------------------------
+// Structs
+//--------------------------------------------------------------------------------------------------
+struct lib5A1C9904_gs_UnitSpawn {
+    string lv_unitType;
+    int    lv_amount;
+};
+
+struct lib5A1C9904_gs_Spawn {
+    point   lv_point;
+    int     lv_respawnTime;
+    int     lv_spawnTime;
+    trigger lv_deathCallbackTrigger;
+    lib5A1C9904_gs_UnitSpawn[5] lv_unitSpawn;
+};
+
+struct lib5A1C9904_gs_SpawnerInfo {
+    string lv_unitType;
+    point  lv_point;
+    int    lv_player;
+};
+
+struct lib5A1C9904_gs_CreatedSpawner {
+    unit      lv_spawner;
+    int       lv_lastIndexPoint;
+    point[11] lv_movePoints;
+    int       lv_amountOfUnits;
+    string    lv_waveUnitType;
+};
+
+struct lib5A1C9904_gs_JunglePrice {
+    string lv_unitType;
+    int    lv_minerals;
+    int    lv_gas;
+};
+
+//--------------------------------------------------------------------------------------------------
+// Function Forward Declarations
+//--------------------------------------------------------------------------------------------------
+// Bank
+void lib5A1C9904_gf_LoadFromLobby (point lp_startPosition1, point lp_startPosition2);
+bool lib5A1C9904_gf_LoadedFromBank (point lp_startPosition1, point lp_startPosition2);
+playergroup lib5A1C9904_gf_LoadPlayersFromBank (bank lp_bank, string lp_key);
+int lib5A1C9904_gf_LoadRTSPlayer (bank lp_bank, string lp_key);
+void lib5A1C9904_gf_SetRTSPlayerRace (bank lp_bank, string lp_key, int lp_player);
+
+// Player
+bool lib5A1C9904_gf_IsKnownRace (int lp_player);
+bool lib5A1C9904_gf_IsProtoss (int lp_rTSPlayer);
+bool lib5A1C9904_gf_IsZerg (int lp_rTSPlayer);
+bool lib5A1C9904_gf_IsTerran (int lp_rTSPlayer);
+bool lib5A1C9904_gf_WithRTSPlayer ();
+bool lib5A1C9904_gf_IsSurvival ();
+string lib5A1C9904_gf_GetPlayerRaceName (int lp_player);
+int lib5A1C9904_gf_GetAllyRTSPlayer (int lp_player);
+int lib5A1C9904_gf_GetWavesPlayer (int lp_player);
+int lib5A1C9904_gf_GetEnemyRTSPlayer (int lp_player);
+bool lib5A1C9904_gf_AddUpdateForWaves (string lp_upgrade, int lp_killingPlayer);
+bool lib5A1C9904_gf_RemoveUpdateForWaves (string lp_upgrade, int lp_killingPlayer);
+void lib5A1C9904_gf_GiveXPForHeroKills (unit lp_killingSoldier, unit lp_killedSoldier);
+void lib5A1C9904_gf_SetSize (unit lp_unitToSizeUp);
+point lib5A1C9904_gf_GetSpawnPointTeam1 (unit lp_deadPlayer);
+point lib5A1C9904_gf_GetSpawnPointTeam2 (unit lp_deadPlayer);
+void lib5A1C9904_gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer);
+void lib5A1C9904_gf_DisplayDeathMessage (unit lp_killed, unit lp_killer, fixed lp_reviveTime);
+void lib5A1C9904_gf_Corsair (int lp_player, unit lp_unit);
+
+// MapInit
+void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, fixed lp_turretOffset1X, fixed lp_turretOffset1Y, fixed lp_turretOffset2X, fixed lp_turretOffset2Y);
+bool lib5A1C9904_gf_GetWaveStatus ();
+bool lib5A1C9904_gf_GetTurretStatus ();
+void lib5A1C9904_gf_SpawnDefenceTower (int lp_rTSPlayer, int lp_spawnForPlayer, point lp_spawn, point lp_facing);
+point lib5A1C9904_gf_GetStartLocation (int lp_player);
+void lib5A1C9904_gf_GameOver (int lp_losingRTSPlayer, playergroup lp_losingTeam, int lp_winningRTSPlayer, playergroup lp_winningTeam);
+void lib5A1C9904_gf_SetupTeams1 ();
+void lib5A1C9904_gf_SetupTeams2 ();
+
+// Spawner
+void lib5A1C9904_gf_ResetCooldownOfShadowFury (unit lp_killingUnit);
+void lib5A1C9904_gf_AddNewWavePoint (point lp_point, int lp_spawnerIndex);
+void lib5A1C9904_gf_CreateSpawners ();
+int lib5A1C9904_gf_AddSpawner (point lp_point, string lp_unitType, string lp_waveUnitType, int lp_waveUnitAmount, int lp_player);
+string lib5A1C9904_gf_GetDefaultSpawnerType (int lp_alliedPlayer);
+string lib5A1C9904_gf_GetDefaultWaveType (int lp_alliedPlayer);
+int lib5A1C9904_gf_GetDefaultWaveAmount (int lp_alliedPlayer);
+
+// Jungle
+void lib5A1C9904_gf_CreateJungleUnits (int lp_index, structref<lib5A1C9904_gs_Spawn> lp_unitsToSpawn);
+void lib5A1C9904_gf_SpawnJungleUnits ();
+void lib5A1C9904_gf_AddJungleSpawn (structref<lib5A1C9904_gs_Spawn> lp_toSpawn);
+void lib5A1C9904_gf_AddJungleUnitGroup (unitgroup lp_addUnitGroup, point lp_minimapPoint);
+void lib5A1C9904_gf_AddUnitJunglePrice (string lp_unitType, int lp_minerals, int lp_gas);
+void lib5A1C9904_gf_GiveResource (unit lp_killedUnit, int lp_player, int lp_killingPlayer);
+void lib5A1C9904_gf_Respawn (unit lp_killedUnit, unit lp_killingUnit);
+
+// UI
+void lib5A1C9904_gf_DisableaDialogItem (int lp_dialogItem);
+void lib5A1C9904_gf_EnableaDialogItem (int lp_dialogItem);
+void lib5A1C9904_gf_Scores ();
+
+// AI
+unit lib5A1C9904_gf_FindHealspot (unit lp_unit);
+unit lib5A1C9904_gf_FindEnemyHero (unit lp_unit);
+unitgroup lib5A1C9904_gf_GetSpawners (int lp_player);
+unit lib5A1C9904_gf_SpawnersBeingAttacked (unit lp_heroUnit, int lp_player);
+point lib5A1C9904_gf_ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitgroup lp_pointToAttack, point lp_startPoint);
+point lib5A1C9904_gf_AttackPointHostiles (point lp_startPos, point lp_currentPosition, int lp_veteranLevel, int lp_offsetVeterancy);
+void lib5A1C9904_gf_StartAi (point lp_startPos, int lp_player);
+void lib5A1C9904_gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave);
+void lib5A1C9904_gf_HeroSpells (int lp_player, unit lp_unit);
+
+// HeroSelection
+void lib5A1C9904_gf_UpdateHeroInfoTeam1 (string lp_heroType);
+void lib5A1C9904_gf_UpdateHeroInfoTeam2 (string lp_heroType);
+
+// SoldierSelection (pre-existing files)
+void lib5A1C9904_gf_SoldierSelectionTeam1 ();
+void lib5A1C9904_gf_SoldierSelectionTeam2 ();
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Variable Declarations
+//--------------------------------------------------------------------------------------------------
+trigger lib5A1C9904_gt_AddRtsPlayer1Buildings;
+trigger lib5A1C9904_gt_AddRtsPlayer2Buildings;
+trigger lib5A1C9904_gt_AdeptPicked;
+trigger lib5A1C9904_gt_AIBuildMedivacs;
+trigger lib5A1C9904_gt_AIBuildQueens;
+trigger lib5A1C9904_gt_AIBuildShieldBattery;
+trigger lib5A1C9904_gt_AITeam1;
+trigger lib5A1C9904_gt_AITeam2;
+trigger lib5A1C9904_gt_BanelingCreated;
+trigger lib5A1C9904_gt_BanelingUnitCreated;
+trigger lib5A1C9904_gt_BuiltHealSpotsTeam1;
+trigger lib5A1C9904_gt_BuiltHealSpotsTeam2;
+trigger lib5A1C9904_gt_Controller;
+trigger lib5A1C9904_gt_ControlUnits;
+trigger lib5A1C9904_gt_CorsairLevelUp;
+trigger lib5A1C9904_gt_CorsairPicked;
+trigger lib5A1C9904_gt_DarkTemplarLevelUp;
+trigger lib5A1C9904_gt_DarkTemplarSoldierPicked;
+trigger lib5A1C9904_gt_DefilerLevelUp;
+trigger lib5A1C9904_gt_DefilerPicked;
+trigger lib5A1C9904_gt_DragoonLevelUp;
+trigger lib5A1C9904_gt_DragoonPicked;
+trigger lib5A1C9904_gt_EvaluatePower;
+trigger lib5A1C9904_gt_ExplainRules;
+trigger lib5A1C9904_gt_FirebatAvatar;
+trigger lib5A1C9904_gt_FirebatLevelUp;
+trigger lib5A1C9904_gt_FirebatSoldierPicked;
+trigger lib5A1C9904_gt_GiveResourcesFromJungleRTSPlayer1;
+trigger lib5A1C9904_gt_GiveResourcesFromJungleRTSPlayer2;
+trigger lib5A1C9904_gt_GoliathLevelUp;
+trigger lib5A1C9904_gt_GoliathSoldierPicked;
+trigger lib5A1C9904_gt_HeroLevel10ArmorPlatesButton;
+trigger lib5A1C9904_gt_HeroLevel10BaseBreakerButton;
+trigger lib5A1C9904_gt_HeroLevel10PowerOverwhelmingButton;
+trigger lib5A1C9904_gt_HeroLevel10UpgradeSelection;
+trigger lib5A1C9904_gt_HeroLevel2BootsButton;
+trigger lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton;
+trigger lib5A1C9904_gt_HeroLevel2UpgradeSelection;
+trigger lib5A1C9904_gt_HeroLevel2WorkerProtectionButton;
+trigger lib5A1C9904_gt_HeroLevel5DamageBoostButton;
+trigger lib5A1C9904_gt_HeroLevel5EnergyRegenButton;
+trigger lib5A1C9904_gt_HeroLevel5HealingBoostButton;
+trigger lib5A1C9904_gt_HeroLevel5UpgradeSelection;
+trigger lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton;
+trigger lib5A1C9904_gt_HeroLevel7GlassCannonButton;
+trigger lib5A1C9904_gt_HeroLevel7StructureDefenseButton;
+trigger lib5A1C9904_gt_HeroLevel7UpgradeSelection;
+trigger lib5A1C9904_gt_HideScores;
+trigger lib5A1C9904_gt_HydraliskLevelUp;
+trigger lib5A1C9904_gt_HydraliskPicked;
+trigger lib5A1C9904_gt_IncreaseRessTimer;
+trigger lib5A1C9904_gt_IncreaseSize;
+trigger lib5A1C9904_gt_LockInButtonTeam1Pressed;
+trigger lib5A1C9904_gt_LockInButtonTeam2Pressed;
+trigger lib5A1C9904_gt_MarineLevelUp;
+trigger lib5A1C9904_gt_MarineSoldierPicked;
+trigger lib5A1C9904_gt_MedicLevelUp;
+trigger lib5A1C9904_gt_MedicSoldierPicked;
+trigger lib5A1C9904_gt_MindControlPrevent;
+trigger lib5A1C9904_gt_MothershipCoreLevelUp;
+trigger lib5A1C9904_gt_MothershipCorePicked;
+trigger lib5A1C9904_gt_MutaliskPicked;
+trigger lib5A1C9904_gt_NydusLevel10ArmorPlatesButton;
+trigger lib5A1C9904_gt_NydusLevel10BaseBreakerButton;
+trigger lib5A1C9904_gt_NydusLevel10PowerOverwhelmingButton;
+trigger lib5A1C9904_gt_NydusLevel10UpgradeSelection;
+trigger lib5A1C9904_gt_NydusLevel2BootsButton;
+trigger lib5A1C9904_gt_NydusLevel2HeroicVulnerabilityButton;
+trigger lib5A1C9904_gt_NydusLevel2UpgradeSelection;
+trigger lib5A1C9904_gt_NydusLevel2WorkerProtectionButton;
+trigger lib5A1C9904_gt_NydusLevel5DamageBoostButton;
+trigger lib5A1C9904_gt_NydusLevel5EnergyRegenButton;
+trigger lib5A1C9904_gt_NydusLevel5HealingBoostButton;
+trigger lib5A1C9904_gt_NydusLevel5UpgradeSelection;
+trigger lib5A1C9904_gt_NydusLevel7AlliedEnergyAuraButton;
+trigger lib5A1C9904_gt_NydusLevel7GlassCannonButton;
+trigger lib5A1C9904_gt_NydusLevel7StructureDefenseButton;
+trigger lib5A1C9904_gt_NydusLevel7UpgradeSelection;
+trigger lib5A1C9904_gt_NydusPicked;
+trigger lib5A1C9904_gt_NydusWormLevelUp;
+trigger lib5A1C9904_gt_QueenLevelUp;
+trigger lib5A1C9904_gt_QueenPicked;
+trigger lib5A1C9904_gt_RemoveRtsPlayer1Buildings;
+trigger lib5A1C9904_gt_RemoveRtsPlayer2Buildings;
+trigger lib5A1C9904_gt_ReviveHeroesTeam1;
+trigger lib5A1C9904_gt_ReviveHeroesTeam2;
+trigger lib5A1C9904_gt_ScienceVesselLevelUp;
+trigger lib5A1C9904_gt_ScienceVesselPicked;
+trigger lib5A1C9904_gt_SendDiscord;
+trigger lib5A1C9904_gt_SentryLevelUp;
+trigger lib5A1C9904_gt_SentryPicked;
+trigger lib5A1C9904_gt_ShowScores;
+trigger lib5A1C9904_gt_SpawnJungle;
+trigger lib5A1C9904_gt_SpawnUnits;
+trigger lib5A1C9904_gt_SpectreLevelUp;
+trigger lib5A1C9904_gt_SpectreSoldierPicked;
+trigger lib5A1C9904_gt_SurrenderedTeam1;
+trigger lib5A1C9904_gt_SurrenderedTeam2;
+trigger lib5A1C9904_gt_SurvivalLoss;
+trigger lib5A1C9904_gt_UltraliskLevelUp;
+trigger lib5A1C9904_gt_UltraliskPicked;
+trigger lib5A1C9904_gt_WinTeam1;
+trigger lib5A1C9904_gt_WinTeam2;
+trigger lib5A1C9904_gt_ZealotLevelUp;
+trigger lib5A1C9904_gt_ZealotSoldierPicked;
+trigger lib5A1C9904_gt_ZerglingLevelUp;
+trigger lib5A1C9904_gt_ZerglingPicked;
+
+//--------------------------------------------------------------------------------------------------
+// Global Variable Declarations
+//--------------------------------------------------------------------------------------------------
+// Faction strings
+string lib5A1C9904_gv_terranFactions;
+string lib5A1C9904_gv_zergFactions;
+string lib5A1C9904_gv_protossFactions;
+
+// RTS Players
+playergroup lib5A1C9904_gv_rTSPlayer1;
+playergroup lib5A1C9904_gv_rTSPlayer2;
+
+// Unit groups
+unitgroup lib5A1C9904_gv_rtsPlayer1Buildings;
+unitgroup lib5A1C9904_gv_rtsPlayer1TownBuilding;
+unitgroup lib5A1C9904_gv_rtsPlayer2Buildings;
+unitgroup lib5A1C9904_gv_rtsPlayer2TownBuilding;
+unitgroup lib5A1C9904_gv_soldiers;
+unitgroup lib5A1C9904_gv_revivableUnits;
+unitgroup lib5A1C9904_gv_healUnitsRTS1;
+unitgroup lib5A1C9904_gv_healUnitsRTS2;
+unitgroup lib5A1C9904_gv_unitGroup;
+
+// Player groups
+playergroup lib5A1C9904_gv_soldierPlayers1;
+playergroup lib5A1C9904_gv_soldierPlayers2;
+playergroup lib5A1C9904_gv_playersWhoPicked;
+
+// Player stat arrays (indexed 0-16)
+int[17]  lib5A1C9904_gv_playerStats;
+int[17]  lib5A1C9904_gv_playerMiGa;
+int[17]  lib5A1C9904_gv_playerKills;
+int[17]  lib5A1C9904_gv_playerDeaths;
+int[17]  lib5A1C9904_gv_playerMineral;
+int[17]  lib5A1C9904_gv_playerGas;
+bool[17] lib5A1C9904_gv_playerPicked;
+
+// Score dialog
+int lib5A1C9904_gv_scoreDialog;
+int lib5A1C9904_gv_hiddenDialog;
+int lib5A1C9904_gv_showScore;
+int lib5A1C9904_gv_hideScore;
+
+// Hero selection dialogs – Team 1
+int lib5A1C9904_gv_dialogTeam1;
+int lib5A1C9904_gv_infoPanelTeam1;
+int lib5A1C9904_gv_firebatTeam1;
+int lib5A1C9904_gv_medicTeam1;
+int lib5A1C9904_gv_goliathTeam1;
+int lib5A1C9904_gv_marineTeam1;
+int lib5A1C9904_gv_spectreTeam1;
+int lib5A1C9904_gv_zealotTeam1;
+int lib5A1C9904_gv_darkTemplarTeam1;
+int lib5A1C9904_gv_dragoonTemplarTeam1;
+int lib5A1C9904_gv_sentryTemplarTeam1;
+int lib5A1C9904_gv_corsairTemplarTeam1;
+int lib5A1C9904_gv_zerglingTeam1;
+int lib5A1C9904_gv_queenTeam1;
+int lib5A1C9904_gv_defilerTeam1;
+int lib5A1C9904_gv_hydraliskTeam1;
+int lib5A1C9904_gv_ultraliskTeam1;
+int lib5A1C9904_gv_scienceVesselTeam1;
+int lib5A1C9904_gv_nydusTeam1;
+int lib5A1C9904_gv_mothershipTeam1;
+int lib5A1C9904_gv_lockInButtonTeam1;
+
+// Hero selection dialogs – Team 2
+int lib5A1C9904_gv_dialogTeam2;
+int lib5A1C9904_gv_infoPanelTeam2;
+int lib5A1C9904_gv_firebatTeam2;
+int lib5A1C9904_gv_medicTeam2;
+int lib5A1C9904_gv_goliathTeam2;
+int lib5A1C9904_gv_marineTeam2;
+int lib5A1C9904_gv_spectreTeam2;
+int lib5A1C9904_gv_zealotTeam2;
+int lib5A1C9904_gv_darkTemplarTeam2;
+int lib5A1C9904_gv_dragoonTemplarTeam2;
+int lib5A1C9904_gv_sentryTemplarTeam2;
+int lib5A1C9904_gv_corsairTemplarTeam2;
+int lib5A1C9904_gv_zerglingTeam2;
+int lib5A1C9904_gv_queenTeam2;
+int lib5A1C9904_gv_defilerTeam2;
+int lib5A1C9904_gv_hydraliskTeam2;
+int lib5A1C9904_gv_ultraliskTeam2;
+int lib5A1C9904_gv_scienceVesselTeam2;
+int lib5A1C9904_gv_nydusTeam2;
+int lib5A1C9904_gv_mothershipTeam2;
+int lib5A1C9904_gv_lockInButtonTeam2;
+
+// Selected hero strings
+string lib5A1C9904_gv_selectedHeroTeam1;
+string lib5A1C9904_gv_selectedHeroTeam2;
+
+// Hero info panel dialog items – Team 1
+int lib5A1C9904_gv_infoHeroNameTeam1;
+int lib5A1C9904_gv_infoAbility1Team1;
+int lib5A1C9904_gv_infoAbility2Team1;
+int lib5A1C9904_gv_infoAbility3Team1;
+int lib5A1C9904_gv_infoAbility4Team1;
+int lib5A1C9904_gv_infoDifficultyTeam1;
+int lib5A1C9904_gv_infoStrengthsTeam1;
+int lib5A1C9904_gv_heroPortraitTeam1;
+
+// Hero info panel dialog items – Team 2
+int lib5A1C9904_gv_infoHeroNameTeam2;
+int lib5A1C9904_gv_infoAbility1Team2;
+int lib5A1C9904_gv_infoAbility2Team2;
+int lib5A1C9904_gv_infoAbility3Team2;
+int lib5A1C9904_gv_infoAbility4Team2;
+int lib5A1C9904_gv_infoDifficultyTeam2;
+int lib5A1C9904_gv_infoStrengthsTeam2;
+int lib5A1C9904_gv_heroPortraitTeam2;
+
+// Level 2 upgrade dialog
+int lib5A1C9904_gv_level2Dialog;
+int lib5A1C9904_gv_level2WorkerProtectionButton;
+int lib5A1C9904_gv_level2HeroicVulnerabilityButton;
+int lib5A1C9904_gv_level2BootsButton;
+unit lib5A1C9904_gv_level2SelectedUnit;
+
+// Level 5 upgrade dialog
+int lib5A1C9904_gv_level5Dialog;
+int lib5A1C9904_gv_level5EnergyRegenButton;
+int lib5A1C9904_gv_level5HealingBoostButton;
+int lib5A1C9904_gv_level5DamageBoostButton;
+unit lib5A1C9904_gv_level5SelectedUnit;
+
+// Level 7 upgrade dialog
+int lib5A1C9904_gv_level7Dialog;
+int lib5A1C9904_gv_level7GlassCannonButton;
+int lib5A1C9904_gv_level7StructureDefenseButton;
+int lib5A1C9904_gv_level7AlliedEnergyAuraButton;
+unit lib5A1C9904_gv_level7SelectedUnit;
+
+// Level 10 upgrade dialog
+int lib5A1C9904_gv_level10Dialog;
+int lib5A1C9904_gv_level10PowerOverwhelmingButton;
+int lib5A1C9904_gv_level10BaseBreakerButton;
+int lib5A1C9904_gv_level10ArmorPlatesButton;
+
+// Nydus level 2 upgrade dialog
+int lib5A1C9904_gv_nydusLevel2Dialog;
+int lib5A1C9904_gv_nydusLevel2WorkerProtectionButton;
+int lib5A1C9904_gv_nydusLevel2HeroicVulnerabilityButton;
+int lib5A1C9904_gv_nydusLevel2BootsButton;
+
+// Nydus level 5 upgrade dialog
+int lib5A1C9904_gv_nydusLevel5Dialog;
+int lib5A1C9904_gv_nydusLevel5EnergyRegenButton;
+int lib5A1C9904_gv_nydusLevel5HealingBoostButton;
+int lib5A1C9904_gv_nydusLevel5DamageBoostButton;
+
+// Nydus level 7 upgrade dialog
+int lib5A1C9904_gv_nydusLevel7Dialog;
+int lib5A1C9904_gv_nydusLevel7GlassCannonButton;
+int lib5A1C9904_gv_nydusLevel7StructureDefenseButton;
+int lib5A1C9904_gv_nydusLevel7AlliedEnergyAuraButton;
+unit lib5A1C9904_gv_nydusLevel7SelectedUnit;
+
+// Nydus level 10 upgrade dialog
+int lib5A1C9904_gv_nydusLevel10Dialog;
+int lib5A1C9904_gv_nydusLevel10PowerOverwhelmingButton;
+int lib5A1C9904_gv_nydusLevel10BaseBreakerButton;
+int lib5A1C9904_gv_nydusLevel10ArmorPlatesButton;
+
+// Unit size tracking
+unit[100] lib5A1C9904_gv_unitSizeIndex;
+int[100]  lib5A1C9904_gv_unitSizes;
+int       lib5A1C9904_gv_sizeIndex;
+unit      lib5A1C9904_gv_changedUnit;
+
+// Jungle
+unitgroup[100]              lib5A1C9904_gv_jungleUnitGroups;
+lib5A1C9904_gs_Spawn[100]   lib5A1C9904_gv_jungleToSpawn;
+unit[100]                   lib5A1C9904_gv_spawnPoints;
+lib5A1C9904_gs_JunglePrice[100] lib5A1C9904_gv_junglePrices;
+int lib5A1C9904_gv_lastIndexOfSpawn;
+int lib5A1C9904_gv_lastIndexOfJunglePrices;
+int lib5A1C9904_gv_indexToSpawn;
+unit lib5A1C9904_gv_jG_KilledUnit;
+unit lib5A1C9904_gv_jG_KillingUnit;
+int  lib5A1C9904_gv_ressTimer;
+
+// Spawners
+lib5A1C9904_gs_SpawnerInfo[100]    lib5A1C9904_gv_spawners;
+lib5A1C9904_gs_CreatedSpawner[100] lib5A1C9904_gv_createdSpawners;
+int lib5A1C9904_gv_spawnerLastIndex;
+int lib5A1C9904_gv_sP_SpawnerIndex;
+
+// Game positions / spawn overrides
+point lib5A1C9904_gv_startPosition1;
+point lib5A1C9904_gv_startPosition2;
+point lib5A1C9904_gv_overrideSpawnPointTeam1;
+point lib5A1C9904_gv_overrideSpawnPointTeam2;
+
+// Bank / lobby
+bool lib5A1C9904_gv_loadedFromBank;
+int  lib5A1C9904_gv_playerToStart;
+
+// Expansion unit groups
+unitgroup lib5A1C9904_gv_zerglingExpansionTeam1;
+unitgroup lib5A1C9904_gv_zerglingExpansionTeam2;
+unitgroup lib5A1C9904_gv_zergExpansionTeam1;
+unitgroup lib5A1C9904_gv_zergExpansionTeam2;
+unitgroup lib5A1C9904_gv_terranExpansionTeam1;
+unitgroup lib5A1C9904_gv_terranExpansionTeam2;
+unitgroup lib5A1C9904_gv_topExpansionTeam1;
+unitgroup lib5A1C9904_gv_topExpansionTeam2;
+unitgroup lib5A1C9904_gv_topExpansion;
+unitgroup lib5A1C9904_gv_botExpansion;
+unitgroup lib5A1C9904_gv_midExpansion;
+
+// Named unit groups
+unitgroup lib5A1C9904_gv_hydralisk_1;
+unitgroup lib5A1C9904_gv_hydralisk_2;
+unitgroup lib5A1C9904_gv_vikings_1;
+unitgroup lib5A1C9904_gv_vikings_2;
+unitgroup lib5A1C9904_gv_vikings_3;
+unitgroup lib5A1C9904_gv_zergling_1;
+unitgroup lib5A1C9904_gv_zergling_2;
+unitgroup lib5A1C9904_gv_marines_1;
+unitgroup lib5A1C9904_gv_marines_2;
+unitgroup lib5A1C9904_gv_boss;
+
+//--------------------------------------------------------------------------------------------------
+// Variable Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_InitVariables_completed = false;
+
+void lib5A1C9904_InitVariables () {
+    int init_i;
+
+    if (lib5A1C9904_InitVariables_completed) {
+        return;
+    }
+
+    lib5A1C9904_InitVariables_completed = true;
+
+    lib5A1C9904_gv_terranFactions = "terran,genetron,forces of augustgrad,jakob revenge,last terran,New Confederacy,outcasts,paramilitary,Second Military Expeditionary Force,specialoperatives,Blue Intel,corps,Antamo,smef";
+    lib5A1C9904_gv_zergFactions = "zerg,xayid,devil mai,Followers Of Nekta'la,last zerg,Nekta'la's Swarm,xill,Packs of Zerus,Cyber Zerg,Combined Broods,Corrupted race,Taken";
+    lib5A1C9904_gv_protossFactions = "protoss,dark ones,foundation,high ones,holo,last toss,legion of mal'tanis,pure born,the chosen,Eternals,Special operatives,The Chosen,Castaway";
+    lib5A1C9904_gv_rtsPlayer2Buildings = UnitGroupEmpty();
+    lib5A1C9904_gv_rtsPlayer2TownBuilding = UnitGroupEmpty();
+    lib5A1C9904_gv_rtsPlayer1Buildings = UnitGroupEmpty();
+    lib5A1C9904_gv_rtsPlayer1TownBuilding = UnitGroupEmpty();
+    lib5A1C9904_gv_soldiers = UnitGroupEmpty();
+    lib5A1C9904_gv_soldierPlayers1 = PlayerGroupEmpty();
+    lib5A1C9904_gv_soldierPlayers2 = PlayerGroupEmpty();
+    lib5A1C9904_gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
+    lib5A1C9904_gv_rTSPlayer2 = PlayerGroupPlayer(GameAttributePlayersForTeam(2), 1);
+    for (init_i = 0; init_i <= 99; init_i += 1) {
+        lib5A1C9904_gv_jungleUnitGroups[init_i] = UnitGroupEmpty();
+    }
+    lib5A1C9904_gv_revivableUnits = UnitGroupEmpty();
+    lib5A1C9904_gv_ressTimer = 10;
+    lib5A1C9904_gv_healUnitsRTS1 = UnitGroupEmpty();
+    lib5A1C9904_gv_healUnitsRTS2 = UnitGroupEmpty();
+    lib5A1C9904_gv_unitGroup = UnitGroupEmpty();
+    for (init_i = 0; init_i <= 16; init_i += 1) {
+        lib5A1C9904_gv_playerStats[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 16; init_i += 1) {
+        lib5A1C9904_gv_playerMiGa[init_i] = c_invalidDialogControlId;
+    }
+    lib5A1C9904_gv_scoreDialog = c_invalidDialogId;
+    lib5A1C9904_gv_hiddenDialog = c_invalidDialogId;
+    lib5A1C9904_gv_showScore = c_invalidDialogControlId;
+    lib5A1C9904_gv_hideScore = c_invalidDialogControlId;
+    lib5A1C9904_gv_dialogTeam1 = c_invalidDialogId;
+    lib5A1C9904_gv_infoPanelTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_firebatTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_medicTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_goliathTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_marineTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_spectreTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_zealotTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_darkTemplarTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_dragoonTemplarTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_sentryTemplarTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_corsairTemplarTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_zerglingTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_queenTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_defilerTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_hydraliskTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_ultraliskTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_scienceVesselTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_nydusTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_mothershipTeam1 = c_invalidDialogControlId;
+    lib5A1C9904_gv_dialogTeam2 = c_invalidDialogId;
+    lib5A1C9904_gv_infoPanelTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_firebatTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_medicTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_goliathTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_marineTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_spectreTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_zealotTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_darkTemplarTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_dragoonTemplarTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_sentryTemplarTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_corsairTemplarTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_zerglingTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_queenTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_defilerTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_hydraliskTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_ultraliskTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_scienceVesselTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_nydusTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_mothershipTeam2 = c_invalidDialogControlId;
+    lib5A1C9904_gv_playersWhoPicked = PlayerGroupEmpty();
+    lib5A1C9904_gv_zerglingExpansionTeam2 = UnitGroupEmpty();
+    lib5A1C9904_gv_zerglingExpansionTeam1 = UnitGroupEmpty();
+    lib5A1C9904_gv_zergExpansionTeam1 = UnitGroupEmpty();
+    lib5A1C9904_gv_zergExpansionTeam2 = UnitGroupEmpty();
+    lib5A1C9904_gv_terranExpansionTeam1 = UnitGroupEmpty();
+    lib5A1C9904_gv_terranExpansionTeam2 = UnitGroupEmpty();
+    lib5A1C9904_gv_topExpansionTeam1 = UnitGroupEmpty();
+    lib5A1C9904_gv_topExpansionTeam2 = UnitGroupEmpty();
+    lib5A1C9904_gv_topExpansion = UnitGroupEmpty();
+    lib5A1C9904_gv_botExpansion = UnitGroupEmpty();
+    lib5A1C9904_gv_midExpansion = UnitGroupEmpty();
+    lib5A1C9904_gv_hydralisk_1 = UnitGroupEmpty();
+    lib5A1C9904_gv_hydralisk_2 = UnitGroupEmpty();
+    lib5A1C9904_gv_vikings_1 = UnitGroupEmpty();
+    lib5A1C9904_gv_vikings_2 = UnitGroupEmpty();
+    lib5A1C9904_gv_vikings_3 = UnitGroupEmpty();
+    lib5A1C9904_gv_zergling_1 = UnitGroupEmpty();
+    lib5A1C9904_gv_zergling_2 = UnitGroupEmpty();
+    lib5A1C9904_gv_marines_1 = UnitGroupEmpty();
+    lib5A1C9904_gv_marines_2 = UnitGroupEmpty();
+    lib5A1C9904_gv_boss = UnitGroupEmpty();
+    lib5A1C9904_gv_selectedHeroTeam1 = "";
+    lib5A1C9904_gv_selectedHeroTeam2 = "";
+    lib5A1C9904_gv_level2Dialog = c_invalidDialogId;
+    lib5A1C9904_gv_level2WorkerProtectionButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level2HeroicVulnerabilityButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level2BootsButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level2SelectedUnit = null;
+    lib5A1C9904_gv_level5Dialog = c_invalidDialogId;
+    lib5A1C9904_gv_level5EnergyRegenButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level5HealingBoostButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level5DamageBoostButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level5SelectedUnit = null;
+    lib5A1C9904_gv_level7Dialog = c_invalidDialogId;
+    lib5A1C9904_gv_level7GlassCannonButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level7StructureDefenseButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level7AlliedEnergyAuraButton = c_invalidDialogControlId;
+    lib5A1C9904_gv_level7SelectedUnit = null;
+}

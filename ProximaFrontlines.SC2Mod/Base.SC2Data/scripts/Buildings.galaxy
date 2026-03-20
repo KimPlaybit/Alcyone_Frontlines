@@ -1,0 +1,125 @@
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904_h"
+
+//==================================================================================================
+// Proxima Frontlines – Buildings System
+// Tracks RTS player structure creation and death for buildings/town groups.
+//==================================================================================================
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AddRtsPlayer1Buildings
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_AddRtsPlayer1Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(EventUnitCreatedUnit()) == lib5A1C9904_gv_rTSPlayer1) && (UnitTypeTestAttribute(UnitGetType(EventUnitCreatedUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupAdd(lib5A1C9904_gv_rtsPlayer1Buildings, EventUnitCreatedUnit());
+    if (((UnitGetType(EventUnitCreatedUnit()) == "Nexus") || (UnitGetType(EventUnitCreatedUnit()) == "Hive") || (UnitGetType(EventUnitCreatedUnit()) == "Lair") || (UnitGetType(EventUnitCreatedUnit()) == "Hatchery") || (UnitGetType(EventUnitCreatedUnit()) == "CommandCenter") || (UnitGetType(EventUnitCreatedUnit()) == "OrbitalCommand") || (UnitGetType(EventUnitCreatedUnit()) == "PlanetaryFortress"))) {
+        UnitGroupAdd(lib5A1C9904_gv_rtsPlayer1TownBuilding, EventUnitCreatedUnit());
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_AddRtsPlayer1Buildings_Init () {
+    lib5A1C9904_gt_AddRtsPlayer1Buildings = TriggerCreate("lib5A1C9904_gt_AddRtsPlayer1Buildings_Func");
+    TriggerAddEventUnitCreated(lib5A1C9904_gt_AddRtsPlayer1Buildings, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: RemoveRtsPlayer1Buildings
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_RemoveRtsPlayer1Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGroupHasUnit(lib5A1C9904_gv_rtsPlayer1Buildings, EventUnit()) == true) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupRemove(lib5A1C9904_gv_rtsPlayer1Buildings, EventUnit());
+    UnitGroupRemove(lib5A1C9904_gv_rtsPlayer1TownBuilding, EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_RemoveRtsPlayer1Buildings_Init () {
+    lib5A1C9904_gt_RemoveRtsPlayer1Buildings = TriggerCreate("lib5A1C9904_gt_RemoveRtsPlayer1Buildings_Func");
+    TriggerAddEventUnitDied(lib5A1C9904_gt_RemoveRtsPlayer1Buildings, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AddRtsPlayer2Buildings
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_AddRtsPlayer2Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(EventUnitCreatedUnit()) == lib5A1C9904_gv_rTSPlayer2) && (UnitTypeTestAttribute(UnitGetType(EventUnitCreatedUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupAdd(lib5A1C9904_gv_rtsPlayer2Buildings, EventUnitCreatedUnit());
+    if (((UnitGetType(EventUnitCreatedUnit()) == "Nexus") || (UnitGetType(EventUnitCreatedUnit()) == "Hive") || (UnitGetType(EventUnitCreatedUnit()) == "Lair") || (UnitGetType(EventUnitCreatedUnit()) == "Hatchery") || (UnitGetType(EventUnitCreatedUnit()) == "CommandCenter") || (UnitGetType(EventUnitCreatedUnit()) == "OrbitalCommand") || (UnitGetType(EventUnitCreatedUnit()) == "PlanetaryFortress"))) {
+        UnitGroupAdd(lib5A1C9904_gv_rtsPlayer2TownBuilding, EventUnitCreatedUnit());
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_AddRtsPlayer2Buildings_Init () {
+    lib5A1C9904_gt_AddRtsPlayer2Buildings = TriggerCreate("lib5A1C9904_gt_AddRtsPlayer2Buildings_Func");
+    TriggerAddEventUnitCreated(lib5A1C9904_gt_AddRtsPlayer2Buildings, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: RemoveRtsPlayer2Buildings
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_RemoveRtsPlayer2Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGroupHasUnit(lib5A1C9904_gv_rtsPlayer2Buildings, EventUnit()) == true) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupRemove(lib5A1C9904_gv_rtsPlayer2Buildings, EventUnit());
+    UnitGroupRemove(lib5A1C9904_gv_rtsPlayer2TownBuilding, EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_RemoveRtsPlayer2Buildings_Init () {
+    lib5A1C9904_gt_RemoveRtsPlayer2Buildings = TriggerCreate("lib5A1C9904_gt_RemoveRtsPlayer2Buildings_Func");
+    TriggerAddEventUnitDied(lib5A1C9904_gt_RemoveRtsPlayer2Buildings, null);
+}

@@ -1,0 +1,656 @@
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904_h"
+
+//==================================================================================================
+// Proxima Frontlines – Player
+// Race detection, player stats, respawn, XP, spawn points, scoreboard, and revive triggers.
+//==================================================================================================
+
+//--------------------------------------------------------------------------------------------------
+// Race utilities
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gf_IsKnownRace (int lp_player) {
+    // Variable Declarations
+    bool lv_raceCheck;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_raceCheck = lib5A1C9904_gf_IsTerran(lp_player);
+    if ((lv_raceCheck == true)) {
+        return true;
+    }
+
+    lv_raceCheck = lib5A1C9904_gf_IsZerg(lp_player);
+    if ((lv_raceCheck == true)) {
+        return true;
+    }
+
+    lv_raceCheck = lib5A1C9904_gf_IsProtoss(lp_player);
+    if ((lv_raceCheck == true)) {
+        return true;
+    }
+
+    return false;
+}
+
+bool lib5A1C9904_gf_IsProtoss (int lp_rTSPlayer) {
+    // Variable Declarations
+    string lv_raceName;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_raceName = "";
+
+    // Implementation
+    lv_raceName = lib5A1C9904_gf_GetPlayerRaceName(lp_rTSPlayer);
+    if (((StringContains(lib5A1C9904_gv_protossFactions, lv_raceName, c_stringAnywhere, c_stringNoCase) == true) || (StringContains(lv_raceName, "protoss", c_stringAnywhere, c_stringNoCase) == true))) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool lib5A1C9904_gf_IsZerg (int lp_rTSPlayer) {
+    // Variable Declarations
+    string lv_raceName;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_raceName = "";
+
+    // Implementation
+    lv_raceName = lib5A1C9904_gf_GetPlayerRaceName(lp_rTSPlayer);
+    if (((StringContains(lib5A1C9904_gv_zergFactions, lv_raceName, c_stringAnywhere, c_stringNoCase) == true) || (StringContains(lv_raceName, "zerg", c_stringAnywhere, c_stringNoCase) == true))) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool lib5A1C9904_gf_IsTerran (int lp_rTSPlayer) {
+    // Variable Declarations
+    string lv_raceName;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_raceName = "";
+
+    // Implementation
+    lv_raceName = lib5A1C9904_gf_GetPlayerRaceName(lp_rTSPlayer);
+    if (((StringContains(lib5A1C9904_gv_terranFactions, lv_raceName, c_stringAnywhere, c_stringNoCase) == true) || (StringContains(lv_raceName, "terran", c_stringAnywhere, c_stringNoCase) == true))) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool lib5A1C9904_gf_WithRTSPlayer () {
+    // Implementation
+    if ((GameAttributeGameValue("4") == "0001")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool lib5A1C9904_gf_IsSurvival () {
+    // Implementation
+    if ((GameAttributeGameValue("3") == "0001")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+string lib5A1C9904_gf_GetPlayerRaceName (int lp_player) {
+    // Variable Declarations
+    text lv_text;
+    string lv_name_of_race;
+
+    // Automatic Variable Declarations
+    string autoA2BF32A1_val;
+
+    // Variable Initialization
+    lv_name_of_race = "";
+
+    // Implementation
+    autoA2BF32A1_val = PlayerRace(lp_player);
+    if (autoA2BF32A1_val == "Prot") {
+        return "Protoss";
+    }
+    else if (autoA2BF32A1_val == "Terr") {
+        return "Terran";
+    }
+    else if (autoA2BF32A1_val == "Zerg") {
+        return "Zerg";
+    }
+    else {
+        lv_name_of_race = CatalogFieldValueGet(c_gameCatalogRace, PlayerRace(lp_player), "Name", c_playerAny);
+        lv_text = StringExternal(lv_name_of_race);
+        return TextToString(lv_text);;
+    }
+}
+
+int lib5A1C9904_gf_GetAllyRTSPlayer (int lp_player) {
+    // Implementation
+    if (((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true) || (lp_player == 13))) {
+        return lib5A1C9904_gv_rTSPlayer1;
+    }
+    else {
+        return lib5A1C9904_gv_rTSPlayer2;
+    }
+}
+
+int lib5A1C9904_gf_GetWavesPlayer (int lp_player) {
+    // Implementation
+    if ((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
+        return 13;
+    }
+    else {
+        return 14;
+    }
+}
+
+int lib5A1C9904_gf_GetEnemyRTSPlayer (int lp_player) {
+    // Implementation
+    if ((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Enemy) == true) && (lp_player == 14)) {
+        return lib5A1C9904_gv_rTSPlayer1;
+    }
+    else {
+        return lib5A1C9904_gv_rTSPlayer2;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Jungle camp respawn helpers
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gf_AddUpdateForWaves (string lp_upgrade, int lp_killingPlayer) {
+    // Implementation
+    if (((lp_killingPlayer == lib5A1C9904_gv_rTSPlayer1) || (lib5A1C9904_gf_GetAllyRTSPlayer(lp_killingPlayer) == lib5A1C9904_gv_rTSPlayer1))) {
+        TechTreeUpgradeAddLevel(13, lp_upgrade, 1);
+    }
+    else {
+        TechTreeUpgradeAddLevel(14, lp_upgrade, 1);
+    }
+    return true;
+}
+
+bool lib5A1C9904_gf_RemoveUpdateForWaves (string lp_upgrade, int lp_killingPlayer) {
+    // Implementation
+    if (((lp_killingPlayer == lib5A1C9904_gv_rTSPlayer1) || (lib5A1C9904_gf_GetAllyRTSPlayer(lp_killingPlayer) == lib5A1C9904_gv_rTSPlayer1))) {
+        TechTreeUpgradeAddLevel(13, lp_upgrade, -1);
+    }
+    else {
+        TechTreeUpgradeAddLevel(14, lp_upgrade, -1);
+    }
+    return true;
+}
+
+void lib5A1C9904_gf_GiveXPForHeroKills (unit lp_killingSoldier, unit lp_killedSoldier) {
+    // Variable Declarations
+    const int lv_baseXP = 40;
+    const int lv_xpPerLevel = 40;
+    int lv_amountOfXp;
+
+    // Variable Initialization
+    lv_amountOfXp = (lv_baseXP + (lv_xpPerLevel * UnitXPGetCurrentLevel(lp_killedSoldier, null)));
+
+    // Implementation
+    if ((PlayerGetAlliance(UnitGetOwner(lp_killedSoldier), c_allianceIdChat, UnitGetOwner(lp_killingSoldier)) == false)) {
+        UnitXPAddXP(lp_killingSoldier, null, lv_amountOfXp);
+    }
+
+}
+
+void lib5A1C9904_gf_SetSize (unit lp_unitToSizeUp) {
+    // Variable Declarations
+    int lv_scale;
+    int lv_indexOfUnit;
+    bool lv_unitIsInArray;
+
+    // Automatic Variable Declarations
+    int autoBC3ACDA2_ae;
+    const int autoBC3ACDA2_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    autoBC3ACDA2_ae = lib5A1C9904_gv_sizeIndex;
+    lv_indexOfUnit = 0;
+    for ( ; ( (autoBC3ACDA2_ai >= 0 && lv_indexOfUnit <= autoBC3ACDA2_ae) || (autoBC3ACDA2_ai < 0 && lv_indexOfUnit >= autoBC3ACDA2_ae) ) ; lv_indexOfUnit += autoBC3ACDA2_ai ) {
+        if ((lib5A1C9904_gv_unitSizeIndex[lv_indexOfUnit] == lp_unitToSizeUp)) {
+            lv_unitIsInArray = true;
+            break;
+        }
+
+    }
+    if ((lv_unitIsInArray == true)) {
+        lv_scale = lib5A1C9904_gv_unitSizes[lv_indexOfUnit];
+    }
+    else {
+        lv_scale = 40;
+    }
+    UnitSetScale(EventUnit(), lv_scale, lv_scale, lv_scale);
+}
+
+point lib5A1C9904_gf_GetSpawnPointTeam1 (unit lp_deadPlayer) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Implementation
+    if ((lib5A1C9904_gv_overrideSpawnPointTeam1 != null)) {
+        return lib5A1C9904_gv_overrideSpawnPointTeam1;
+    }
+
+    if ((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_rtsPlayer1TownBuilding) == false)) {
+        lv_unit = UnitGroupClosestToPoint(lib5A1C9904_gv_rtsPlayer1TownBuilding, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
+        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    }
+
+    if ((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_rtsPlayer1Buildings) == false)) {
+        lv_unit = UnitGroupClosestToPoint(lib5A1C9904_gv_rtsPlayer1Buildings, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
+        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    }
+
+    return lib5A1C9904_gv_startPosition1;
+}
+
+point lib5A1C9904_gf_GetSpawnPointTeam2 (unit lp_deadPlayer) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Implementation
+    if ((lib5A1C9904_gv_overrideSpawnPointTeam2 != null)) {
+        return lib5A1C9904_gv_overrideSpawnPointTeam2;
+    }
+
+    if ((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_rtsPlayer2TownBuilding) == false)) {
+        lv_unit = UnitGroupClosestToPoint(lib5A1C9904_gv_rtsPlayer2TownBuilding, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
+        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    }
+
+    if ((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_rtsPlayer2Buildings) == false)) {
+        lv_unit = UnitGroupClosestToPoint(lib5A1C9904_gv_rtsPlayer2Buildings, UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lp_deadPlayer)));
+        return UnitGroupCenterOfGroup(libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
+    }
+
+    return lib5A1C9904_gv_startPosition2;
+}
+
+void lib5A1C9904_gf_UpdateScoreboard (int lp_kills, int lp_deaths, int lp_minerals, int lp_gas, int lp_triggeringPlayer) {
+    // Variable Declarations
+    int lv_miGa;
+    int lv_stats;
+
+    // Variable Initialization
+    lv_miGa = lib5A1C9904_gv_playerMiGa[lp_triggeringPlayer];
+    lv_stats = lib5A1C9904_gv_playerStats[lp_triggeringPlayer];
+
+    // Implementation
+    if (((PlayerGroupHasPlayer(lib5A1C9904_gv_soldierPlayers1, lp_triggeringPlayer) == true) || (PlayerGroupHasPlayer(lib5A1C9904_gv_soldierPlayers2, lp_triggeringPlayer) == true))) {
+        lib5A1C9904_gv_playerKills[lp_triggeringPlayer] = lp_kills;
+        lib5A1C9904_gv_playerDeaths[lp_triggeringPlayer] = lp_deaths;
+        libNtve_gf_SetDialogItemText(lv_stats, ((IntToText(lp_kills) + StringExternal("Param/Value/lib_5A1C9904_EE633171")) + IntToText(lp_deaths)), PlayerGroupAll());
+        lib5A1C9904_gv_playerMineral[lp_triggeringPlayer] = lp_minerals;
+        lib5A1C9904_gv_playerGas[lp_triggeringPlayer] = lp_gas;
+        libNtve_gf_SetDialogItemText(lv_miGa, ((IntToText(lp_minerals) + StringExternal("Param/Value/lib_5A1C9904_0ABEEA84")) + IntToText(lp_gas)), PlayerGroupAll());
+    }
+
+}
+
+void lib5A1C9904_gf_DisplayDeathMessage (unit lp_killed, unit lp_killer, fixed lp_reviveTime) {
+    // Variable Declarations
+    color lv__AllyColor;
+    color lv__EnemyColor;
+    text lv__KilledTextBuilder;
+    text lv__KillerTextBuilder;
+
+    // Automatic Variable Declarations
+    playergroup autoB887724B_g;
+    int autoB887724B_var;
+
+    // Variable Initialization
+    lv__AllyColor = Color(28*100/255,167*100/255,234*100/255);
+    lv__EnemyColor = Color(100.00, 0.00, 0.00);
+
+    // Implementation
+    if ((lp_killed != null) && (lp_killer != null)) {
+        autoB887724B_g = PlayerGroupActive();
+        autoB887724B_var = -1;
+        while (true) {
+            autoB887724B_var = PlayerGroupNextPlayer(autoB887724B_g, autoB887724B_var);
+            if (autoB887724B_var < 0) { break; }
+            if ((libNtve_gf_PlayerIsEnemy(autoB887724B_var, UnitGetOwner(lp_killed), libNtve_ge_PlayerRelation_Enemy) == true)) {
+                lv__KilledTextBuilder = TextWithColor((PlayerName(UnitGetOwner(lp_killed)) + StringExternal("Param/Value/lib_5A1C9904_BC409EF3") + UnitGetName(lp_killed)), lv__EnemyColor);
+            }
+            else {
+                lv__KilledTextBuilder = TextWithColor((PlayerName(UnitGetOwner(lp_killed)) + StringExternal("Param/Value/lib_5A1C9904_E31F1D0F") + UnitGetName(lp_killed)), lv__AllyColor);
+            }
+            if ((libNtve_gf_PlayerIsEnemy(autoB887724B_var, UnitGetOwner(lp_killer), libNtve_ge_PlayerRelation_Enemy) == true)) {
+                lv__KillerTextBuilder = TextWithColor((PlayerName(UnitGetOwner(lp_killer)) + StringExternal("Param/Value/lib_5A1C9904_E78AA15E") + UnitGetName(lp_killer)), lv__EnemyColor);
+            }
+            else {
+                lv__KillerTextBuilder = TextWithColor((PlayerName(UnitGetOwner(lp_killer)) + StringExternal("Param/Value/lib_5A1C9904_F9D0E981") + UnitGetName(lp_killer)), lv__AllyColor);
+            }
+            UIDisplayMessage(PlayerGroupSingle(autoB887724B_var), c_messageAreaSubtitle, (lv__KilledTextBuilder + StringExternal("Param/Value/lib_5A1C9904_956C1A6F") + lv__KillerTextBuilder + StringExternal("Param/Value/lib_5A1C9904_5B0D051C") + FixedToText(lp_reviveTime, c_fixedPrecisionAny) + StringExternal("Param/Value/lib_5A1C9904_FA5B4E1A")));
+        }
+    }
+
+}
+
+void lib5A1C9904_gf_Corsair (int lp_player, unit lp_unit) {
+    // Variable Declarations
+    unitgroup lv_unitsAround;
+
+    // Variable Initialization
+    lv_unitsAround = UnitGroup(null, lp_player, RegionCircle(UnitGetPosition(lp_unit), 8.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+
+    // Implementation
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Revive Heroes Team 1
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_spawnPoint;
+    int lv_triggeringPlayerKills;
+    int lv_triggeringPlayerDeaths;
+    int lv_triggeringPlayerMinerals;
+    int lv_triggeringPlayerGas;
+    int lv_triggeringPlayer;
+    int lv_killingPlayer;
+    int lv_killingPlayersKills;
+    int lv_killingPlayersDeaths;
+    int lv_killingPlayerMinerals;
+    int lv_killingPlayerGas;
+    unit lv_dyingUnit;
+    timer lv_deathTimer;
+    int lv_timerWindow;
+
+    // Variable Initialization
+    lv_spawnPoint = PointFromId(1219627428);
+    lv_triggeringPlayerKills = lib5A1C9904_gv_playerKills[EventPlayer()];
+    lv_triggeringPlayerDeaths = (lib5A1C9904_gv_playerDeaths[EventPlayer()] + 1);
+    lv_triggeringPlayerMinerals = lib5A1C9904_gv_playerMineral[EventPlayer()];
+    lv_triggeringPlayerGas = lib5A1C9904_gv_playerGas[EventPlayer()];
+    lv_triggeringPlayer = EventPlayer();
+    lv_killingPlayer = UnitGetOwner(libNtve_gf_KillingUnit());
+    lv_killingPlayersKills = lib5A1C9904_gv_playerKills[libNtve_gf_KillingPlayer()];
+    lv_killingPlayersDeaths = lib5A1C9904_gv_playerDeaths[libNtve_gf_KillingPlayer()];
+    lv_killingPlayerMinerals = (lib5A1C9904_gv_playerMineral[libNtve_gf_KillingPlayer()] + 350);
+    lv_killingPlayerGas = (lib5A1C9904_gv_playerGas[libNtve_gf_KillingPlayer()] + 200);
+    lv_dyingUnit = EventUnit();
+    lv_deathTimer = TimerCreate();
+    lv_timerWindow = c_timerWindowNone;
+
+    // Conditions
+    if (testConds) {
+        if (!((((UnitGetOwner(lv_dyingUnit) == lib5A1C9904_gv_rTSPlayer1) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerType(lib5A1C9904_gv_rTSPlayer1) == c_playerTypeComputer) && (UnitGroupHasUnit(lib5A1C9904_gv_revivableUnits, EventUnit()) == true)) || ((UnitGroupHasUnit(lib5A1C9904_gv_revivableUnits, EventUnit()) == true) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, lib5A1C9904_gv_rTSPlayer1), UnitGetOwner(EventUnit())) == true))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5A1C9904_gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
+    if ((lib5A1C9904_gf_WithRTSPlayer() == false)) {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/lib_5A1C9904_54D1A4ED") + (UnitGetName(EventUnit()) + StringExternal("Param/Value/lib_5A1C9904_8E21C751")))));
+        GameOver(lv_triggeringPlayer, c_gameOverDefeat, true, true);
+        return false;
+    }
+    else {
+        lib5A1C9904_gf_DisplayDeathMessage(EventUnit(), libNtve_gf_KillingUnit(), lib5A1C9904_gv_ressTimer);
+    }
+    lib5A1C9904_gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
+    lib5A1C9904_gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
+    if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lib5A1C9904_gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lib5A1C9904_gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
+        lib5A1C9904_gf_UpdateScoreboard((lv_killingPlayersKills + 1), lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
+        PlayerModifyPropertyInt(lib5A1C9904_gv_rTSPlayer2, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(lib5A1C9904_gv_rTSPlayer2, c_playerPropMinerals) + 350));
+        PlayerModifyPropertyInt(lib5A1C9904_gv_rTSPlayer2, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(lib5A1C9904_gv_rTSPlayer2, c_playerPropVespene) + 200));
+    }
+
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lv_triggeringPlayer, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lib5A1C9904_gv_rTSPlayer1, false);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSleeping, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStunned, true);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, true);
+    lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam1(lv_dyingUnit);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    UnitRevive(lv_dyingUnit);
+    lv_deathTimer = TimerCreate();
+    TimerWindowCreate(lv_deathTimer, StringToText(""), false, false);
+    TimerStart(lv_deathTimer, lib5A1C9904_gv_ressTimer, false, c_timeReal);
+    lv_timerWindow = TimerWindowLastCreated();
+    TimerWindowShow(lv_timerWindow, PlayerGroupSingle(lv_triggeringPlayer), true);
+    Wait(lib5A1C9904_gv_ressTimer, c_timeReal);
+    lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam1(lv_dyingUnit);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    libNtve_gf_StopTimer(lv_deathTimer);
+    TimerWindowDestroy(lv_timerWindow);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lv_triggeringPlayer, true);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lib5A1C9904_gv_rTSPlayer1, true);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStunned, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSleeping, false);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropShieldsPercent, 100.0);
+    CameraPan(UnitGetOwner(lv_dyingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
+    UnitClearSelection(UnitGetOwner(lv_dyingUnit));
+    UnitSelect(lv_dyingUnit, UnitGetOwner(lv_dyingUnit), true);
+    if ((UnitGetType(EventUnit()) == "HotSTorrasque2")) {
+        lib5A1C9904_gf_SetSize(lv_dyingUnit);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ReviveHeroesTeam1_Init () {
+    lib5A1C9904_gt_ReviveHeroesTeam1 = TriggerCreate("lib5A1C9904_gt_ReviveHeroesTeam1_Func");
+    TriggerAddEventUnitDied(lib5A1C9904_gt_ReviveHeroesTeam1, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Revive Heroes Team 2
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ReviveHeroesTeam2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_spawnPoint;
+    int lv_triggeringPlayerKills;
+    int lv_triggeringPlayerDeaths;
+    int lv_triggeringPlayerMinerals;
+    int lv_triggeringPlayerGas;
+    int lv_triggeringPlayer;
+    int lv_killingPlayersKills;
+    int lv_killingPlayersDeaths;
+    int lv_killingPlayerMinerals;
+    int lv_killingPlayerGas;
+    int lv_killingPlayer;
+    unit lv_dyingUnit;
+    timer lv_deathTimer;
+    int lv_timerWindow;
+
+    // Variable Initialization
+    lv_spawnPoint = PointFromId(1466456382);
+    lv_triggeringPlayerKills = lib5A1C9904_gv_playerKills[EventPlayer()];
+    lv_triggeringPlayerDeaths = (lib5A1C9904_gv_playerDeaths[EventPlayer()] + 1);
+    lv_triggeringPlayerMinerals = lib5A1C9904_gv_playerMineral[EventPlayer()];
+    lv_triggeringPlayerGas = lib5A1C9904_gv_playerGas[EventPlayer()];
+    lv_triggeringPlayer = EventPlayer();
+    lv_killingPlayersKills = lib5A1C9904_gv_playerKills[UnitGetOwner(libNtve_gf_KillingUnit())];
+    lv_killingPlayersDeaths = lib5A1C9904_gv_playerDeaths[libNtve_gf_KillingPlayer()];
+    lv_killingPlayerMinerals = (lib5A1C9904_gv_playerMineral[libNtve_gf_KillingPlayer()] + 350);
+    lv_killingPlayerGas = (lib5A1C9904_gv_playerGas[libNtve_gf_KillingPlayer()] + 200);
+    lv_killingPlayer = libNtve_gf_KillingPlayer();
+    lv_dyingUnit = EventUnit();
+    lv_deathTimer = TimerCreate();
+    lv_timerWindow = c_timerWindowNone;
+
+    // Conditions
+    if (testConds) {
+        if (!((((UnitGroupHasUnit(lib5A1C9904_gv_revivableUnits, EventUnit()) == true) && (UnitGetOwner(lv_dyingUnit) == lib5A1C9904_gv_rTSPlayer2) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerType(lib5A1C9904_gv_rTSPlayer1) == c_playerTypeComputer)) || ((UnitGroupHasUnit(lib5A1C9904_gv_revivableUnits, EventUnit()) == true) && (UnitTypeTestFlag(UnitGetType(lv_dyingUnit), c_unitFlagHero) == true) && (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, lib5A1C9904_gv_rTSPlayer2), UnitGetOwner(EventUnit())) == true))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5A1C9904_gf_DisplayDeathMessage(EventUnit(), libNtve_gf_KillingUnit(), lib5A1C9904_gv_ressTimer);
+    lib5A1C9904_gf_UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
+    lib5A1C9904_gf_GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
+    lib5A1C9904_gf_ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
+    if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
+        lib5A1C9904_gf_UpdateScoreboard((lv_killingPlayersKills + 1), lv_killingPlayersDeaths, lv_killingPlayerMinerals, lv_killingPlayerGas, lv_killingPlayer);
+        PlayerModifyPropertyInt(lib5A1C9904_gv_rTSPlayer1, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(lib5A1C9904_gv_rTSPlayer1, c_playerPropMinerals) + 350));
+        PlayerModifyPropertyInt(lib5A1C9904_gv_rTSPlayer1, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(lib5A1C9904_gv_rTSPlayer1, c_playerPropVespene) + 200));
+    }
+
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lv_triggeringPlayer, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lib5A1C9904_gv_rTSPlayer2, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, false);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSleeping, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStunned, true);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, true);
+    lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam2(lv_dyingUnit);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    UnitRevive(lv_dyingUnit);
+    lv_deathTimer = TimerCreate();
+    TimerWindowCreate(lv_deathTimer, StringToText(""), false, false);
+    TimerStart(lv_deathTimer, lib5A1C9904_gv_ressTimer, false, c_timeReal);
+    lv_timerWindow = TimerWindowLastCreated();
+    TimerWindowShow(lv_timerWindow, PlayerGroupSingle(lv_triggeringPlayer), true);
+    Wait(lib5A1C9904_gv_ressTimer, c_timeReal);
+    lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam2(lv_dyingUnit);
+    UnitSetPosition(lv_dyingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    libNtve_gf_StopTimer(lv_deathTimer);
+    TimerWindowDestroy(lv_timerWindow);
+    libNtve_gf_MakeUnitInvulnerable(lv_dyingUnit, false);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lv_triggeringPlayer, true);
+    PlayerSetAlliance(lv_triggeringPlayer, c_allianceIdPower, lib5A1C9904_gv_rTSPlayer2, true);
+    UnitSetState(lv_dyingUnit, c_unitStateHighlightable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateCursorable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateSelectable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateTooltipable, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStatusBar, true);
+    UnitSetState(lv_dyingUnit, c_unitStateStunned, false);
+    UnitSetState(lv_dyingUnit, c_unitStateHidden, false);
+    UnitSetState(lv_dyingUnit, c_unitStateSleeping, false);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(lv_dyingUnit, c_unitPropShieldsPercent, 100.0);
+    CameraPan(UnitGetOwner(lv_dyingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
+    UnitClearSelection(UnitGetOwner(lv_dyingUnit));
+    UnitSelect(lv_dyingUnit, UnitGetOwner(lv_dyingUnit), true);
+    if ((UnitGetType(EventUnit()) == "HotSTorrasque2")) {
+        lib5A1C9904_gf_SetSize(lv_dyingUnit);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ReviveHeroesTeam2_Init () {
+    lib5A1C9904_gt_ReviveHeroesTeam2 = TriggerCreate("lib5A1C9904_gt_ReviveHeroesTeam2_Func");
+    TriggerAddEventUnitDied(lib5A1C9904_gt_ReviveHeroesTeam2, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: BuiltHealSpotsTeam1
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_BuiltHealSpotsTeam1_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(EventUnitCreatedUnit()) == lib5A1C9904_gv_rTSPlayer1) && ((UnitGetType(EventUnitCreatedUnit()) == "ShieldBattery") || (UnitGetType(EventUnitCreatedUnit()) == "Queen") || (UnitGetType(EventUnitCreatedUnit()) == "Medivac"))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupAdd(lib5A1C9904_gv_healUnitsRTS1, EventUnitCreatedUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_BuiltHealSpotsTeam1_Init () {
+    lib5A1C9904_gt_BuiltHealSpotsTeam1 = TriggerCreate("lib5A1C9904_gt_BuiltHealSpotsTeam1_Func");
+    TriggerAddEventUnitCreated(lib5A1C9904_gt_BuiltHealSpotsTeam1, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: BuiltHealSpotsTeam2
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_BuiltHealSpotsTeam2_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(EventUnitCreatedUnit()) == lib5A1C9904_gv_rTSPlayer2) && ((UnitGetType(EventUnitCreatedUnit()) == "ShieldBattery") || (UnitGetType(EventUnitCreatedUnit()) == "Queen") || (UnitGetType(EventUnitCreatedUnit()) == "Medivac"))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupAdd(lib5A1C9904_gv_healUnitsRTS2, EventUnitCreatedUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_BuiltHealSpotsTeam2_Init () {
+    lib5A1C9904_gt_BuiltHealSpotsTeam2 = TriggerCreate("lib5A1C9904_gt_BuiltHealSpotsTeam2_Func");
+    TriggerAddEventUnitCreated(lib5A1C9904_gt_BuiltHealSpotsTeam2, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Evaluate Power
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_EvaluatePower_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    AIEvalSetCustomIndex((10 + (UnitXPGetCurrentLevel(EventUnit(), null) * 3)));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_EvaluatePower_Init () {
+    lib5A1C9904_gt_EvaluatePower = TriggerCreate("lib5A1C9904_gt_EvaluatePower_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_EvaluatePower, null);
+}

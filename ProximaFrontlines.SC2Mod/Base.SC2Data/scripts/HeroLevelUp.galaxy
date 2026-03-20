@@ -1,0 +1,2574 @@
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904_h"
+
+//==================================================================================================
+// Proxima Frontlines - Hero Level-Up System
+// Per-hero level-up event triggers plus upgrade selection dialog triggers.
+//==================================================================================================
+bool lib5A1C9904_gt_DarkTemplarLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "AvengerHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "DarkTemplar1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "DarkTemplar5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "DarkTemplar8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DarkTemplarLevelUp_Init () {
+    lib5A1C9904_gt_DarkTemplarLevelUp = TriggerCreate("lib5A1C9904_gt_DarkTemplarLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_DarkTemplarLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CorsairLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_CorsairLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "CorsairHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Corsair1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Corsair5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Corsair8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_CorsairLevelUp_Init () {
+    lib5A1C9904_gt_CorsairLevelUp = TriggerCreate("lib5A1C9904_gt_CorsairLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_CorsairLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DragoonLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_DragoonLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "DragoonHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Dragoon1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Dragoon5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Dragoon8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DragoonLevelUp_Init () {
+    lib5A1C9904_gt_DragoonLevelUp = TriggerCreate("lib5A1C9904_gt_DragoonLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_DragoonLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ZealotLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ZealotLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "ZealotHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zealot1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zealot5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zealot8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ZealotLevelUp_Init () {
+    lib5A1C9904_gt_ZealotLevelUp = TriggerCreate("lib5A1C9904_gt_ZealotLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_ZealotLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MothershipCoreLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MothershipCoreLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MothershipCoreHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "MothershipCore1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "MothershipCore5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "MothershipCore8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MothershipCoreLevelUp_Init () {
+    lib5A1C9904_gt_MothershipCoreLevelUp = TriggerCreate("lib5A1C9904_gt_MothershipCoreLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_MothershipCoreLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SentryLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SentryLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "SentryPurifier2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Sentry1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Sentry5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Sentry8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SentryLevelUp_Init () {
+    lib5A1C9904_gt_SentryLevelUp = TriggerCreate("lib5A1C9904_gt_SentryLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_SentryLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ZerglingLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ZerglingLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "ZerglingHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zergling1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zergling5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Zergling8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ZerglingLevelUp_Init () {
+    lib5A1C9904_gt_ZerglingLevelUp = TriggerCreate("lib5A1C9904_gt_ZerglingLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_ZerglingLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: BanelingUnitCreated
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_BanelingUnitCreated_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) == "BanelingHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.01, c_timeGame);
+    UnitSelect(EventUnitCreatedUnit(), UnitGetOwner(EventUnitCreatedUnit()), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_BanelingUnitCreated_Init () {
+    lib5A1C9904_gt_BanelingUnitCreated = TriggerCreate("lib5A1C9904_gt_BanelingUnitCreated_Func");
+    TriggerAddEventUnitCreated(lib5A1C9904_gt_BanelingUnitCreated, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: BanelingCreated
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_BanelingCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_spawnPoint;
+    int lv_amountOfTicks;
+    int lv_player;
+    unit lv_castingUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_spawnPoint = PointFromId(1219627428);
+    lv_player = UnitGetOwner(EventUnit());
+    lv_castingUnit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(lv_castingUnit) == "ZerglingHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetState(lv_castingUnit, c_unitStateHighlightable, false);
+    UnitSetState(lv_castingUnit, c_unitStateCursorable, false);
+    UnitSetState(lv_castingUnit, c_unitStateSelectable, false);
+    UnitSetState(lv_castingUnit, c_unitStateTooltipable, false);
+    UnitSetState(lv_castingUnit, c_unitStateStatusBar, false);
+    UnitSetScale(lv_castingUnit, 1.0, 1.0, 1.0);
+    UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, false);
+    Wait(1.0, c_timeGame);
+    UnitSetState(lv_castingUnit, c_unitStateSleeping, true);
+    libNtve_gf_MakeUnitInvulnerable(lv_castingUnit, true);
+    UnitClearSelection(UnitGetOwner(lv_castingUnit));
+    Wait(10.0, c_timeGame);
+    if ((lib5A1C9904_gf_GetAllyRTSPlayer(lv_player) == lib5A1C9904_gv_rTSPlayer1)) {
+        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam1(lv_castingUnit);
+    }
+    else {
+        lv_spawnPoint = lib5A1C9904_gf_GetSpawnPointTeam2(lv_castingUnit);
+    }
+    UnitSetPosition(lv_castingUnit, PointWithOffset(lv_spawnPoint, 0.0, 3.0), false);
+    UnitSetScale(lv_castingUnit, 100.0, 100.0, 100.0);
+    libNtve_gf_MakeUnitInvulnerable(lv_castingUnit, false);
+    UnitSetState(lv_castingUnit, c_unitStateMoveSuppressed, true);
+    UnitSetState(lv_castingUnit, c_unitStateHighlightable, true);
+    UnitSetState(lv_castingUnit, c_unitStateCursorable, true);
+    UnitSetState(lv_castingUnit, c_unitStateSelectable, true);
+    UnitSetState(lv_castingUnit, c_unitStateTooltipable, true);
+    UnitSetState(lv_castingUnit, c_unitStateStatusBar, true);
+    UnitSetState(lv_castingUnit, c_unitStateHidden, false);
+    UnitSetState(lv_castingUnit, c_unitStateSleeping, false);
+    UnitSetPropertyFixed(lv_castingUnit, c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(lv_castingUnit, c_unitPropShieldsPercent, 100.0);
+    CameraPan(UnitGetOwner(lv_castingUnit), lv_spawnPoint, 0.0, -1, 10.0, false);
+    UnitClearSelection(UnitGetOwner(lv_castingUnit));
+    UnitSelect(lv_castingUnit, UnitGetOwner(lv_castingUnit), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_BanelingCreated_Init () {
+    lib5A1C9904_gt_BanelingCreated = TriggerCreate("lib5A1C9904_gt_BanelingCreated_Func");
+    TriggerAddEventUnitAbility(lib5A1C9904_gt_BanelingCreated, null, AbilityCommand("Baneling", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UltraliskLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_UltraliskLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "HotSTorrasque2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Ultralisk1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Ultralisk5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Ultralisk8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_UltraliskLevelUp_Init () {
+    lib5A1C9904_gt_UltraliskLevelUp = TriggerCreate("lib5A1C9904_gt_UltraliskLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_UltraliskLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: IncreaseSize
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_IncreaseSize_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_scale;
+    int lv_indexOfUnit;
+    bool lv_unitIsInArray;
+
+    // Automatic Variable Declarations
+    int auto36E69086_ae;
+    const int auto36E69086_ai = 1;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "HotSTorrasque2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto36E69086_ae = lib5A1C9904_gv_sizeIndex;
+    lv_indexOfUnit = 0;
+    for ( ; ( (auto36E69086_ai >= 0 && lv_indexOfUnit <= auto36E69086_ae) || (auto36E69086_ai < 0 && lv_indexOfUnit >= auto36E69086_ae) ) ; lv_indexOfUnit += auto36E69086_ai ) {
+        if ((lib5A1C9904_gv_unitSizeIndex[lv_indexOfUnit] == EventUnit())) {
+            lv_unitIsInArray = true;
+            break;
+        }
+
+    }
+    if ((lv_unitIsInArray == true)) {
+        lv_scale = (lib5A1C9904_gv_unitSizes[lv_indexOfUnit] + 7);
+        lib5A1C9904_gv_unitSizes[lv_indexOfUnit] = (lv_scale + 7);
+    }
+    else {
+        lv_scale = 52;
+        lib5A1C9904_gv_unitSizeIndex[lib5A1C9904_gv_sizeIndex] = EventUnit();
+        lib5A1C9904_gv_unitSizes[lib5A1C9904_gv_sizeIndex] = lv_scale;
+        lib5A1C9904_gv_sizeIndex = (lib5A1C9904_gv_sizeIndex + 1);
+    }
+    UnitSetScale(EventUnit(), lv_scale, lv_scale, lv_scale);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_IncreaseSize_Init () {
+    lib5A1C9904_gt_IncreaseSize = TriggerCreate("lib5A1C9904_gt_IncreaseSize_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_IncreaseSize, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HydraliskLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HydraliskLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "HydraliskHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Hydralisk1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Hydralisk5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Hydralisk8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_HydraliskLevelUp_Init () {
+    lib5A1C9904_gt_HydraliskLevelUp = TriggerCreate("lib5A1C9904_gt_HydraliskLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HydraliskLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: QueenLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_QueenLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "BroodQueenHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Queen1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Queen5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Queen5to72", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_QueenLevelUp_Init () {
+    lib5A1C9904_gt_QueenLevelUp = TriggerCreate("lib5A1C9904_gt_QueenLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_QueenLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusWormLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusWormLevelUp_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "NydusCanal22"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 2) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel1", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeWeaponsLevel12", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 3) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel1", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel1", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 4) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel2", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel2", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 5) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel2", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel2", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 6) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergMeleeWeaponsLevel3", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergMeleeAttacksLevel3", 1);
+    }
+
+    if (((UnitXPGetCurrentLevel(EventUnit(), null) >= 7) && (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", c_techCountQueuedOrBetter) >= 1))))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ZergGroundArmorsLevel3", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "NydusZergGroundArmorsLevel3", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_NydusWormLevelUp_Init () {
+    lib5A1C9904_gt_NydusWormLevelUp = TriggerCreate("lib5A1C9904_gt_NydusWormLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_NydusWormLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DefilerLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_DefilerLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "DefilerHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Defiler1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Defiler5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Defiler7to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_DefilerLevelUp_Init () {
+    lib5A1C9904_gt_DefilerLevelUp = TriggerCreate("lib5A1C9904_gt_DefilerLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_DefilerLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SpectreLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SpectreLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "SpectreHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Spectre1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Spectre5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Spectre8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SpectreLevelUp_Init () {
+    lib5A1C9904_gt_SpectreLevelUp = TriggerCreate("lib5A1C9904_gt_SpectreLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_SpectreLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GoliathLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_GoliathLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "GoliathHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Goliath1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Goliath5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Goliath8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_GoliathLevelUp_Init () {
+    lib5A1C9904_gt_GoliathLevelUp = TriggerCreate("lib5A1C9904_gt_GoliathLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_GoliathLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MedicLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MedicLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MedicHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Medic1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Medic5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Medic8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MedicLevelUp_Init () {
+    lib5A1C9904_gt_MedicLevelUp = TriggerCreate("lib5A1C9904_gt_MedicLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_MedicLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ScienceVesselLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_ScienceVesselLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ScienceVessel1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ScienceVessel1to4", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ScienceVessel8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_ScienceVesselLevelUp_Init () {
+    lib5A1C9904_gt_ScienceVesselLevelUp = TriggerCreate("lib5A1C9904_gt_ScienceVesselLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_ScienceVesselLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FirebatAvatar
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_FirebatAvatar_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_caster;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_caster = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetScale(lv_caster, 110.0, 110.0, 110.0);
+    Wait(15.0, c_timeGame);
+    UnitSetScale(lv_caster, 100.0, 100.0, 100.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_FirebatAvatar_Init () {
+    lib5A1C9904_gt_FirebatAvatar = TriggerCreate("lib5A1C9904_gt_FirebatAvatar_Func");
+    TriggerAddEventUnitAbility(lib5A1C9904_gt_FirebatAvatar, null, AbilityCommand("FirebatAvatar", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FirebatLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_FirebatLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "FirebatHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Firebat1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Firebat5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Firebat8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_FirebatLevelUp_Init () {
+    lib5A1C9904_gt_FirebatLevelUp = TriggerCreate("lib5A1C9904_gt_FirebatLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_FirebatLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MarineLevelUp
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MarineLevelUp_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MarineHero"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_level >= 1) && (lv_level <= 4))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Marine1to4", 1);
+    }
+
+    if (((lv_level >= 5) && (lv_level <= 7))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Marine5to7", 1);
+    }
+
+    if (((lv_level >= 8) && (lv_level <= 10))) {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "Marine8to10", 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MarineLevelUp_Init () {
+    lib5A1C9904_gt_MarineLevelUp = TriggerCreate("lib5A1C9904_gt_MarineLevelUp_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_MarineLevelUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MindControlPrevent
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_MindControlPrevent_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    int lv_caster;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unit = EventUnit();
+    lv_caster = UnitGetOwner(EventUnit());
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGroupHasUnit(lib5A1C9904_gv_revivableUnits, EventUnit()) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnit() != lib5A1C9904_gv_changedUnit)) {
+        lib5A1C9904_gv_changedUnit = EventUnit();
+        UnitSetOwner(EventUnit(), EventUnitOwnerOld(), true);
+    }
+    else {
+        lib5A1C9904_gv_changedUnit = null;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_MindControlPrevent_Init () {
+    lib5A1C9904_gt_MindControlPrevent = TriggerCreate("lib5A1C9904_gt_MindControlPrevent_Func");
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 1)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 2)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 3)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 4)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 5)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 6)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 7)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 8)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 9)));
+    TriggerAddEventUnitChangeOwner(lib5A1C9904_gt_MindControlPrevent, UnitRefFromUnit(UnitGroupUnit(lib5A1C9904_gv_revivableUnits, 10)));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel2UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel2UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+    fixed lv_unitMoveSpeed;
+    string lv_bootsType;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+    lv_unitMoveSpeed = UnitTypeGetProperty(UnitGetType(EventUnit()), c_unitPropMovementSpeed);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 2))) {
+            return false;
+        }
+        if (!((UnitGetType(EventUnit()) == "NydusCanal22" || UnitGetType(EventUnit()) == "MothershipCoreHero" || UnitGetType(EventUnit()) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_nydusLevel2Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_nydusLevel2Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level2Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Fortitude Protocol button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel2Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_FortitudeTooltip"), StringExternal("Param/Value/lib_5A1C9904_FortitudeProtocol"), "");
+    lib5A1C9904_gv_nydusLevel2WorkerProtectionButton = DialogControlLastCreated();
+
+    // Slayer button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel2Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_SlayerTooltip"), StringExternal("Param/Value/lib_5A1C9904_Slayer"), "");
+    lib5A1C9904_gv_nydusLevel2HeroicVulnerabilityButton = DialogControlLastCreated();
+
+    // Boots button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel2Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_BootsAuraTooltip"), StringExternal("Param/Value/lib_5A1C9904_BootsAura"), "");
+    lib5A1C9904_gv_nydusLevel2BootsButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel2Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_NydusLevel2UpgradeSelection_Init () {
+    lib5A1C9904_gt_NydusLevel2UpgradeSelection = TriggerCreate("lib5A1C9904_gt_NydusLevel2UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_NydusLevel2UpgradeSelection, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel2WorkerProtectionButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel2WorkerProtectionButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel2WorkerProtectionButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply aura behavior for Nydus, regular behavior for MothershipCore/ScienceVessel
+    UnitBehaviorAdd(lv_selectedUnit, "NonHeroicDamageReductionAura", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel2HeroicVulnerabilityButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel2HeroicVulnerabilityButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel2HeroicVulnerabilityButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply aura behavior for Nydus, regular behavior for MothershipCore/ScienceVessel
+    UnitBehaviorAdd(lv_selectedUnit, "HeroicDamageBonusAura", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel2BootsButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel2BootsButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel2BootsButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply BootsAura for Nydus, MercurialBoots for MothershipCore and ScienceVessel
+    if ((UnitGetType(lv_selectedUnit) == "NydusCanal22")) {
+        UnitBehaviorAdd(lv_selectedUnit, "BootsAura", lv_selectedUnit, 1);
+    } else {
+        UnitBehaviorAdd(lv_selectedUnit, "MercurialBoots", lv_selectedUnit, 1);
+    }
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel2UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel2UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+    fixed lv_unitMoveSpeed;
+    string lv_bootsType;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+    lv_unitMoveSpeed = UnitTypeGetProperty(UnitGetType(EventUnit()), c_unitPropMovementSpeed);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 2))) {
+            return false;
+        }
+        if (!((UnitGetType(EventUnit()) != "NydusCanal22" && UnitGetType(EventUnit()) != "MothershipCoreHero" && UnitGetType(EventUnit()) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Store the unit that leveled up
+    lib5A1C9904_gv_level2SelectedUnit = EventUnit();
+
+    // Determine which boots based on movement speed
+    if ((lv_unitMoveSpeed > 3.0)) {
+        lv_bootsType = "IronBoots";
+    }
+    else if ((lv_unitMoveSpeed > 2.9)) {
+        lv_bootsType = "MercurialBoots";
+    }
+    else {
+        lv_bootsType = "VelocityBoots";
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_level2Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_level2Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level2Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Fortitude Protocol button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_FortitudeTooltip"), StringExternal("Param/Value/lib_5A1C9904_FortitudeProtocol"), "");
+    lib5A1C9904_gv_level2WorkerProtectionButton = DialogControlLastCreated();
+
+    // Slayer button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_SlayerTooltip"), StringExternal("Param/Value/lib_5A1C9904_Slayer"), "");
+    lib5A1C9904_gv_level2HeroicVulnerabilityButton = DialogControlLastCreated();
+
+    // Boots button (dynamic name based on speed)
+    if ((lv_unitMoveSpeed > 3.0)) {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_IronTooltip"), StringExternal("Param/Value/lib_5A1C9904_IronBoots"), "");
+    }
+    else if ((lv_unitMoveSpeed > 2.9)) {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_MercurialTooltip"), StringExternal("Param/Value/lib_5A1C9904_MercurialBoots"), "");
+    }
+    else {
+        libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level2Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_VelocityTooltip"), StringExternal("Param/Value/lib_5A1C9904_VelocityBoots"), "");
+    }
+    lib5A1C9904_gv_level2BootsButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel2WorkerProtectionButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel2WorkerProtectionButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level2WorkerProtectionButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Worker Protection behavior
+    UnitBehaviorAdd(lv_selectedUnit, "NonHeroicDamageReduction", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel2HeroicVulnerabilityButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level2HeroicVulnerabilityButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Heroic Vulnerability behavior
+    UnitBehaviorAdd(lv_selectedUnit, "HeroicDamageBonus", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel2BootsButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel2BootsButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+    fixed lv_unitMoveSpeed;
+    string lv_bootsType;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+    lv_unitMoveSpeed = UnitTypeGetProperty(UnitGetType(lv_selectedUnit), c_unitPropMovementSpeed);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level2BootsButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Determine which boots based on movement speed
+    if ((lv_unitMoveSpeed > 3.0)) {
+        lv_bootsType = "IronBoots";
+    }
+    else if ((lv_unitMoveSpeed > 2.9)) {
+        lv_bootsType = "MercurialBoots";
+    }
+    else {
+        lv_bootsType = "VelocityBoots";
+    }
+
+    // Apply appropriate boots behavior
+    UnitBehaviorAdd(lv_selectedUnit, lv_bootsType, lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel5UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel5UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 5))) {
+            return false;
+        }
+        if (!((UnitGetType(EventUnit()) == "NydusCanal22" || UnitGetType(EventUnit()) == "MothershipCoreHero" || UnitGetType(EventUnit()) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_nydusLevel5Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_nydusLevel5Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level5Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Energy Regen button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel5Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_EnergyRegenTooltip"), StringExternal("Param/Value/lib_5A1C9904_EnergyRegen"), "");
+    lib5A1C9904_gv_nydusLevel5EnergyRegenButton = DialogControlLastCreated();
+
+    // Healing Boost button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel5Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_HealingBoostTooltip"), StringExternal("Param/Value/lib_5A1C9904_HealingBoost"), "");
+    lib5A1C9904_gv_nydusLevel5HealingBoostButton = DialogControlLastCreated();
+
+    // Anti-Air Damage button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel5Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_AntiAirTooltip"), StringExternal("Param/Value/lib_5A1C9904_AntiAir"), "");
+    lib5A1C9904_gv_nydusLevel5DamageBoostButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel5EnergyRegenButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel5EnergyRegenButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel5EnergyRegenButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Energy Regen Boost behavior (same for all three heroes)
+    UnitBehaviorAdd(lv_selectedUnit, "EnergyRegenBoost", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel5HealingBoostButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel5HealingBoostButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel5HealingBoostButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Healing Boost behavior
+    if ((UnitGetType(lv_selectedUnit) == "NydusCanal22")) {
+        UnitBehaviorAdd(lv_selectedUnit, "HealthRegenAura", lv_selectedUnit, 1);
+    } else {
+        UnitBehaviorAdd(lv_selectedUnit, "HealingBoost", lv_selectedUnit, 1);
+    }
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel5DamageBoostButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel5DamageBoostButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel5DamageBoostButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Anti-Air/Gravity Pull behavior (same for all three heroes)
+    UnitBehaviorAdd(lv_selectedUnit, "GravityPull", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel5UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel5UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+    fixed lv_unitMoveSpeed;
+    string lv_bootsType;
+    int lv_randomChoice;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+    lv_unitMoveSpeed = UnitTypeGetProperty(UnitGetType(EventUnit()), c_unitPropMovementSpeed);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 5))) {
+            return false;
+        }
+        if (!((UnitGetType(EventUnit()) != "NydusCanal22" && UnitGetType(EventUnit()) != "MothershipCoreHero" && UnitGetType(EventUnit()) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Auto-pick Level 2 upgrade if not already chosen
+    if ((!(UnitBehaviorCount(EventUnit(), "NonHeroicDamageReduction") > 0)) && (!(UnitBehaviorCount(EventUnit(), "HeroicDamageBonus") > 0)) && (!(UnitBehaviorCount(EventUnit(), "IronBoots") > 0)) && (!(UnitBehaviorCount(EventUnit(), "MercurialBoots") > 0)) && (!(UnitBehaviorCount(EventUnit(), "VelocityBoots") > 0))) {
+        // Level 2 was not picked, so randomly pick one of the three options
+        lv_randomChoice = RandomInt(1, 3);
+        
+        if ((lv_randomChoice == 1)) {
+            // Worker Protection
+            UnitBehaviorAdd(lib5A1C9904_gv_level5SelectedUnit, "NonHeroicDamageReduction", lib5A1C9904_gv_level5SelectedUnit, 1);
+        }
+        else if ((lv_randomChoice == 2)) {
+            // Slayer
+            UnitBehaviorAdd(lib5A1C9904_gv_level5SelectedUnit, "HeroicDamageBonus", lib5A1C9904_gv_level5SelectedUnit, 1);
+        }
+        else {
+            // Boots (determined by movement speed)
+            if ((lv_unitMoveSpeed > 3.0)) {
+                lv_bootsType = "IronBoots";
+            }
+            else if ((lv_unitMoveSpeed > 2.9)) {
+                lv_bootsType = "MercurialBoots";
+            }
+            else {
+                lv_bootsType = "VelocityBoots";
+            }
+            UnitBehaviorAdd(lib5A1C9904_gv_level5SelectedUnit, lv_bootsType, lib5A1C9904_gv_level5SelectedUnit, 1);
+        }
+    }
+
+    // Hide level 2 dialog if it was shown
+    if ((lib5A1C9904_gv_level2Dialog != c_invalidDialogId)) {
+        DialogSetVisible(lib5A1C9904_gv_level2Dialog, PlayerGroupAll(), false);
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_level5Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_level5Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level5Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Energy Regen button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level5Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_EnergyRegenTooltip"), StringExternal("Param/Value/lib_5A1C9904_EnergyRegen"), "");
+    lib5A1C9904_gv_level5EnergyRegenButton = DialogControlLastCreated();
+
+    // Healing Boost button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level5Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_HealingBoostTooltip"), StringExternal("Param/Value/lib_5A1C9904_HealingBoost"), "");
+    lib5A1C9904_gv_level5HealingBoostButton = DialogControlLastCreated();
+
+    // Anti-Air Damage button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level5Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_AntiAirTooltip"), StringExternal("Param/Value/lib_5A1C9904_AntiAir"), "");
+    lib5A1C9904_gv_level5DamageBoostButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel5EnergyRegenButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel5EnergyRegenButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level5EnergyRegenButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Energy Regen Boost behavior
+    UnitBehaviorAdd(lv_selectedUnit, "EnergyRegenBoost", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel5HealingBoostButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel5HealingBoostButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level5HealingBoostButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Healing Boost behavior
+    UnitBehaviorAdd(lv_selectedUnit, "HealingBoost", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel5DamageBoostButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel5DamageBoostButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level5DamageBoostButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Damage Boost behavior
+    UnitBehaviorAdd(lv_selectedUnit, "GravityPull", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel7UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel7UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 7))) {
+            return false;
+        }
+        if (!((UnitGetType(EventUnit()) == "NydusCanal22" || UnitGetType(EventUnit()) == "MothershipCoreHero" || UnitGetType(EventUnit()) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Store the unit that leveled up
+    lib5A1C9904_gv_nydusLevel7SelectedUnit = EventUnit();
+
+    // Hide level 5 dialog if it was shown
+    if ((lib5A1C9904_gv_nydusLevel5Dialog != c_invalidDialogId)) {
+        DialogSetVisible(lib5A1C9904_gv_nydusLevel5Dialog, PlayerGroupAll(), false);
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_nydusLevel7Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_nydusLevel7Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level7Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Glass Cannon button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel7Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_GlassCannonTooltip"), StringExternal("Param/Value/lib_5A1C9904_GlassCannon"), "");
+    lib5A1C9904_gv_nydusLevel7GlassCannonButton = DialogControlLastCreated();
+
+    // Structure Defense button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel7Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_StructureDefenseTooltip"), StringExternal("Param/Value/lib_5A1C9904_StructureDefense"), "");
+    lib5A1C9904_gv_nydusLevel7StructureDefenseButton = DialogControlLastCreated();
+
+    // Allied Energy Aura button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel7Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_AlliedEnergyAuraTooltip"), StringExternal("Param/Value/lib_5A1C9904_AlliedEnergyAura"), "");
+    lib5A1C9904_gv_nydusLevel7AlliedEnergyAuraButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel7GlassCannonButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel7GlassCannonButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel7GlassCannonButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Glass Cannon behavior (aura for all three heroes)
+    if ((UnitGetType(lv_selectedUnit) == "NydusCanal22")) {
+        UnitBehaviorAdd(lv_selectedUnit, "GlassCannonAura", lv_selectedUnit, 1);
+    } else {
+        UnitBehaviorAdd(lv_selectedUnit, "GlassCannonAura", lv_selectedUnit, 1);
+    }
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel7StructureDefenseButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel7StructureDefenseButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel7StructureDefenseButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Structure Defense behavior (aura for all three heroes)
+    if ((UnitGetType(lv_selectedUnit) == "NydusCanal22")) {
+        UnitBehaviorAdd(lv_selectedUnit, "StructureDefenseAura", lv_selectedUnit, 1);
+    } else {
+        UnitBehaviorAdd(lv_selectedUnit, "StructureDefenseAura", lv_selectedUnit, 1);
+    }
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel7AlliedEnergyAuraButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel7AlliedEnergyAuraButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel7AlliedEnergyAuraButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Allied Energy Aura behavior (same for all three heroes)
+    UnitBehaviorAdd(lv_selectedUnit, "AlliedEnergyAura", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel7UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel7UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+    int lv_randomChoice;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 7))) {
+            return false;
+        }
+        if (!((UnitGetType(EventUnit()) != "NydusCanal22" && UnitGetType(EventUnit()) != "MothershipCoreHero" && UnitGetType(EventUnit()) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Auto-pick Level 5 upgrade if not already chosen
+    if ((!(UnitBehaviorCount(EventUnit(), "EnergyRegenBoost") > 0)) && (!(UnitBehaviorCount(EventUnit(), "HealingBoost") > 0)) && (!(UnitBehaviorCount(EventUnit(), "GravityPull") > 0))) {
+        // Level 5 was not picked, so randomly pick one of the three options
+        lv_randomChoice = RandomInt(1, 3);
+        
+        if ((lv_randomChoice == 1)) {
+            // Energy Regen Boost
+            UnitBehaviorAdd(EventUnit(), "EnergyRegenBoost", EventUnit(), 1);
+        }
+        else if ((lv_randomChoice == 2)) {
+            // Healing Boost
+            UnitBehaviorAdd(EventUnit(), "HealingBoost", EventUnit(), 1);
+        }
+        else {
+            // Gravity Pull
+            UnitBehaviorAdd(EventUnit(), "GravityPull", EventUnit(), 1);
+        }
+    }
+
+    // Hide level 5 dialog if it was shown
+    if ((lib5A1C9904_gv_level5Dialog != c_invalidDialogId)) {
+        DialogSetVisible(lib5A1C9904_gv_level5Dialog, PlayerGroupAll(), false);
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_level7Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_level7Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level7Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Glass Cannon button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level7Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_GlassCannonTooltip"), StringExternal("Param/Value/lib_5A1C9904_GlassCannon"), "");
+    lib5A1C9904_gv_level7GlassCannonButton = DialogControlLastCreated();
+
+    // Structure Defense button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level7Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_StructureDefenseTooltip"), StringExternal("Param/Value/lib_5A1C9904_StructureDefense"), "");
+    lib5A1C9904_gv_level7StructureDefenseButton = DialogControlLastCreated();
+
+    // Allied Energy Aura button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level7Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_AlliedEnergyAuraTooltip"), StringExternal("Param/Value/lib_5A1C9904_AlliedEnergyAura"), "");
+    lib5A1C9904_gv_level7AlliedEnergyAuraButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel7GlassCannonButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel7GlassCannonButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level7GlassCannonButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Glass Cannon behavior (aura version)
+    UnitBehaviorAdd(lv_selectedUnit, "GlassCannonAura", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel7StructureDefenseButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel7StructureDefenseButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level7StructureDefenseButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Structure Defense behavior (aura version)
+    UnitBehaviorAdd(lv_selectedUnit, "StructureDefenseAura", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel7AlliedEnergyAuraButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level7AlliedEnergyAuraButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Allied Energy Aura behavior
+    UnitBehaviorAdd(lv_selectedUnit, "AlliedEnergyAura", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel10UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel10UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 10))) {
+            return false;
+        }
+        if (!((UnitGetType(EventUnit()) == "NydusCanal22" || UnitGetType(EventUnit()) == "MothershipCoreHero" || UnitGetType(EventUnit()) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Hide level 7 dialog if it was shown
+    if ((lib5A1C9904_gv_nydusLevel7Dialog != c_invalidDialogId)) {
+        DialogSetVisible(lib5A1C9904_gv_nydusLevel7Dialog, PlayerGroupAll(), false);
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_nydusLevel10Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_nydusLevel10Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level10Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Base Breaker button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel10Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_BaseBreakerTooltip"), StringExternal("Param/Value/lib_5A1C9904_BaseBreaker"), "");
+    lib5A1C9904_gv_nydusLevel10BaseBreakerButton = DialogControlLastCreated();
+
+    // Power Overwhelming button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel10Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_PowerOverwhelmingTooltip"), StringExternal("Param/Value/lib_5A1C9904_PowerOverwhelming"), "");
+    lib5A1C9904_gv_nydusLevel10PowerOverwhelmingButton = DialogControlLastCreated();
+
+    // Armor Plates button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_nydusLevel10Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_ArmorPlatesTooltip"), StringExternal("Param/Value/lib_5A1C9904_ArmorPlates"), "");
+    lib5A1C9904_gv_nydusLevel10ArmorPlatesButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level10Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel10BaseBreakerButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel10BaseBreakerButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel10BaseBreakerButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Base Breaker behavior (aura for all three heroes)
+    if ((UnitGetType(lv_selectedUnit) == "NydusCanal22")) {
+        UnitBehaviorAdd(lv_selectedUnit, "BaseBreakerAura", lv_selectedUnit, 1);
+    } else {
+        UnitBehaviorAdd(lv_selectedUnit, "BaseBreakerAura", lv_selectedUnit, 1);
+    }
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel10Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel10PowerOverwhelmingButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel10PowerOverwhelmingButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel10PowerOverwhelmingButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Power Overwhelming behavior (same for all three heroes)
+    UnitBehaviorAdd(lv_selectedUnit, "PowerOverwhelming", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel10Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NydusLevel10ArmorPlatesButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_NydusLevel10ArmorPlatesButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_nydusLevel10ArmorPlatesButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) == "NydusCanal22" || UnitGetType(lv_selectedUnit) == "MothershipCoreHero" || UnitGetType(lv_selectedUnit) == "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Armor Plates behavior (aura for all three heroes)
+    if ((UnitGetType(lv_selectedUnit) == "NydusCanal22")) {
+        UnitBehaviorAdd(lv_selectedUnit, "ArmorPlatesAura", lv_selectedUnit, 1);
+    } else {
+        UnitBehaviorAdd(lv_selectedUnit, "ArmorPlatesAura", lv_selectedUnit, 1);
+    }
+    DialogSetVisible(lib5A1C9904_gv_nydusLevel10Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel10UpgradeSelection
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel10UpgradeSelection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+    int lv_randomChoice;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = UnitXPGetCurrentLevel(EventUnit(), null);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_level == 10))) {
+            return false;
+        }
+        if (!((UnitGetType(EventUnit()) != "NydusCanal22" && UnitGetType(EventUnit()) != "MothershipCoreHero" && UnitGetType(EventUnit()) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Auto-pick Level 7 upgrade if not already chosen
+    if ((!(UnitBehaviorCount(EventUnit(), "GlassCannonAura") > 0)) && (!(UnitBehaviorCount(EventUnit(), "StructureDefenseAura") > 0)) && (!(UnitBehaviorCount(EventUnit(), "AlliedEnergyAura") > 0))) {
+        // Level 7 was not picked, so randomly pick one of the three options
+        lv_randomChoice = RandomInt(1, 3);
+        
+        if ((lv_randomChoice == 1)) {
+            // Glass Cannon
+            UnitBehaviorAdd(EventUnit(), "GlassCannonAura", EventUnit(), 1);
+        }
+        else if ((lv_randomChoice == 2)) {
+            // Structure Defense
+            UnitBehaviorAdd(EventUnit(), "StructureDefenseAura", EventUnit(), 1);
+        }
+        else {
+            // Allied Energy Aura
+            UnitBehaviorAdd(EventUnit(), "AlliedEnergyAura", EventUnit(), 1);
+        }
+    }
+
+    // Hide level 7 dialog if it was shown
+    if ((lib5A1C9904_gv_level7Dialog != c_invalidDialogId)) {
+        DialogSetVisible(lib5A1C9904_gv_level7Dialog, PlayerGroupAll(), false);
+    }
+
+    // Create upgrade selection dialog
+    DialogCreate(350, 270, c_anchorLeft, 20, 0, false);
+    lib5A1C9904_gv_level10Dialog = DialogLastCreated();
+
+    // Add title label
+    libNtve_gf_CreateDialogItemLabel(lib5A1C9904_gv_level10Dialog, 260, 30, c_anchorTopLeft, 45, 40, StringExternal("Param/Value/lib_5A1C9904_Level10Title"), ColorWithAlpha(255,255,255,255), false, 1.2);
+
+    // Base Breaker button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level10Dialog, 260, 40, c_anchorTopLeft, 45, 70, StringExternal("Param/Value/lib_5A1C9904_BaseBreakerTooltip"), StringExternal("Param/Value/lib_5A1C9904_BaseBreaker"), "");
+    lib5A1C9904_gv_level10BaseBreakerButton = DialogControlLastCreated();
+
+    // Power Overwhelming button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level10Dialog, 260, 40, c_anchorTopLeft, 45, 120, StringExternal("Param/Value/lib_5A1C9904_PowerOverwhelmingTooltip"), StringExternal("Param/Value/lib_5A1C9904_PowerOverwhelming"), "");
+    lib5A1C9904_gv_level10PowerOverwhelmingButton = DialogControlLastCreated();
+
+    // Armor Plates button
+    libNtve_gf_CreateDialogItemButton(lib5A1C9904_gv_level10Dialog, 260, 40, c_anchorTopLeft, 45, 170, StringExternal("Param/Value/lib_5A1C9904_ArmorPlatesTooltip"), StringExternal("Param/Value/lib_5A1C9904_ArmorPlates"), "");
+    lib5A1C9904_gv_level10ArmorPlatesButton = DialogControlLastCreated();
+
+    // Show dialog only to the player controlling the unit
+    DialogSetVisible(lib5A1C9904_gv_level10Dialog, PlayerGroupSingle(UnitGetOwner(EventUnit())), true);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel10BaseBreakerButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel10BaseBreakerButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level10BaseBreakerButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Base Breaker behavior (aura version)
+    UnitBehaviorAdd(lv_selectedUnit, "BaseBreakerAura", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level10Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel10PowerOverwhelmingButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel10PowerOverwhelmingButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level10PowerOverwhelmingButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Power Overwhelming behavior
+    UnitBehaviorAdd(lv_selectedUnit, "PowerOverwhelming", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level10Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HeroLevel10ArmorPlatesButton
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_HeroLevel10ArmorPlatesButton_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_selectedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedUnit = UnitGroupUnit(UnitGroupFilterPlayer(lib5A1C9904_gv_soldiers, EventPlayer(), 0), 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib5A1C9904_gv_level10ArmorPlatesButton == EventDialogControl()))) {
+            return false;
+        }
+        if (!((UnitGetType(lv_selectedUnit) != "NydusCanal22" && UnitGetType(lv_selectedUnit) != "MothershipCoreHero" && UnitGetType(lv_selectedUnit) != "ScienceVessel2"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    // Apply Armor Plates behavior (aura version)
+    UnitBehaviorAdd(lv_selectedUnit, "ArmorPlatesAura", lv_selectedUnit, 1);
+    DialogSetVisible(lib5A1C9904_gv_level10Dialog, PlayerGroupSingle(EventPlayer()), false);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_HeroLevel2UpgradeSelection_Init () {
+    lib5A1C9904_gt_HeroLevel2UpgradeSelection = TriggerCreate("lib5A1C9904_gt_HeroLevel2UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HeroLevel2UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_NydusLevel2UpgradeSelection_Init () {
+    lib5A1C9904_gt_NydusLevel2UpgradeSelection = TriggerCreate("lib5A1C9904_gt_NydusLevel2UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_NydusLevel2UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_NydusLevel2WorkerProtectionButton_Init () {
+    lib5A1C9904_gt_NydusLevel2WorkerProtectionButton = TriggerCreate("lib5A1C9904_gt_NydusLevel2WorkerProtectionButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel2WorkerProtectionButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel2HeroicVulnerabilityButton_Init () {
+    lib5A1C9904_gt_NydusLevel2HeroicVulnerabilityButton = TriggerCreate("lib5A1C9904_gt_NydusLevel2HeroicVulnerabilityButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel2HeroicVulnerabilityButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel2BootsButton_Init () {
+    lib5A1C9904_gt_NydusLevel2BootsButton = TriggerCreate("lib5A1C9904_gt_NydusLevel2BootsButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel2BootsButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel5UpgradeSelection_Init () {
+    lib5A1C9904_gt_NydusLevel5UpgradeSelection = TriggerCreate("lib5A1C9904_gt_NydusLevel5UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_NydusLevel5UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_NydusLevel5EnergyRegenButton_Init () {
+    lib5A1C9904_gt_NydusLevel5EnergyRegenButton = TriggerCreate("lib5A1C9904_gt_NydusLevel5EnergyRegenButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel5EnergyRegenButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel5HealingBoostButton_Init () {
+    lib5A1C9904_gt_NydusLevel5HealingBoostButton = TriggerCreate("lib5A1C9904_gt_NydusLevel5HealingBoostButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel5HealingBoostButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel5DamageBoostButton_Init () {
+    lib5A1C9904_gt_NydusLevel5DamageBoostButton = TriggerCreate("lib5A1C9904_gt_NydusLevel5DamageBoostButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel5DamageBoostButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel2WorkerProtectionButton_Init () {
+    lib5A1C9904_gt_HeroLevel2WorkerProtectionButton = TriggerCreate("lib5A1C9904_gt_HeroLevel2WorkerProtectionButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel2WorkerProtectionButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Init () {
+    lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton = TriggerCreate("lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel2HeroicVulnerabilityButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel2BootsButton_Init () {
+    lib5A1C9904_gt_HeroLevel2BootsButton = TriggerCreate("lib5A1C9904_gt_HeroLevel2BootsButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel2BootsButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel5UpgradeSelection_Init () {
+    lib5A1C9904_gt_HeroLevel5UpgradeSelection = TriggerCreate("lib5A1C9904_gt_HeroLevel5UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HeroLevel5UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_HeroLevel5EnergyRegenButton_Init () {
+    lib5A1C9904_gt_HeroLevel5EnergyRegenButton = TriggerCreate("lib5A1C9904_gt_HeroLevel5EnergyRegenButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel5EnergyRegenButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel5HealingBoostButton_Init () {
+    lib5A1C9904_gt_HeroLevel5HealingBoostButton = TriggerCreate("lib5A1C9904_gt_HeroLevel5HealingBoostButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel5HealingBoostButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel5DamageBoostButton_Init () {
+    lib5A1C9904_gt_HeroLevel5DamageBoostButton = TriggerCreate("lib5A1C9904_gt_HeroLevel5DamageBoostButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel5DamageBoostButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel7UpgradeSelection_Init () {
+    lib5A1C9904_gt_NydusLevel7UpgradeSelection = TriggerCreate("lib5A1C9904_gt_NydusLevel7UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_NydusLevel7UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_NydusLevel7GlassCannonButton_Init () {
+    lib5A1C9904_gt_NydusLevel7GlassCannonButton = TriggerCreate("lib5A1C9904_gt_NydusLevel7GlassCannonButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel7GlassCannonButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel7StructureDefenseButton_Init () {
+    lib5A1C9904_gt_NydusLevel7StructureDefenseButton = TriggerCreate("lib5A1C9904_gt_NydusLevel7StructureDefenseButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel7StructureDefenseButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel7AlliedEnergyAuraButton_Init () {
+    lib5A1C9904_gt_NydusLevel7AlliedEnergyAuraButton = TriggerCreate("lib5A1C9904_gt_NydusLevel7AlliedEnergyAuraButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel7AlliedEnergyAuraButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel7UpgradeSelection_Init () {
+    lib5A1C9904_gt_HeroLevel7UpgradeSelection = TriggerCreate("lib5A1C9904_gt_HeroLevel7UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HeroLevel7UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_HeroLevel7GlassCannonButton_Init () {
+    lib5A1C9904_gt_HeroLevel7GlassCannonButton = TriggerCreate("lib5A1C9904_gt_HeroLevel7GlassCannonButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel7GlassCannonButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel7StructureDefenseButton_Init () {
+    lib5A1C9904_gt_HeroLevel7StructureDefenseButton = TriggerCreate("lib5A1C9904_gt_HeroLevel7StructureDefenseButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel7StructureDefenseButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton_Init () {
+    lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton = TriggerCreate("lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel7AlliedEnergyAuraButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel10UpgradeSelection_Init () {
+    lib5A1C9904_gt_NydusLevel10UpgradeSelection = TriggerCreate("lib5A1C9904_gt_NydusLevel10UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_NydusLevel10UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_NydusLevel10BaseBreakerButton_Init () {
+    lib5A1C9904_gt_NydusLevel10BaseBreakerButton = TriggerCreate("lib5A1C9904_gt_NydusLevel10BaseBreakerButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel10BaseBreakerButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel10PowerOverwhelmingButton_Init () {
+    lib5A1C9904_gt_NydusLevel10PowerOverwhelmingButton = TriggerCreate("lib5A1C9904_gt_NydusLevel10PowerOverwhelmingButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel10PowerOverwhelmingButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_NydusLevel10ArmorPlatesButton_Init () {
+    lib5A1C9904_gt_NydusLevel10ArmorPlatesButton = TriggerCreate("lib5A1C9904_gt_NydusLevel10ArmorPlatesButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_NydusLevel10ArmorPlatesButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel10UpgradeSelection_Init () {
+    lib5A1C9904_gt_HeroLevel10UpgradeSelection = TriggerCreate("lib5A1C9904_gt_HeroLevel10UpgradeSelection_Func");
+    TriggerAddEventUnitGainLevel(lib5A1C9904_gt_HeroLevel10UpgradeSelection, null);
+}
+
+void lib5A1C9904_gt_HeroLevel10BaseBreakerButton_Init () {
+    lib5A1C9904_gt_HeroLevel10BaseBreakerButton = TriggerCreate("lib5A1C9904_gt_HeroLevel10BaseBreakerButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel10BaseBreakerButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel10PowerOverwhelmingButton_Init () {
+    lib5A1C9904_gt_HeroLevel10PowerOverwhelmingButton = TriggerCreate("lib5A1C9904_gt_HeroLevel10PowerOverwhelmingButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel10PowerOverwhelmingButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib5A1C9904_gt_HeroLevel10ArmorPlatesButton_Init () {
+    lib5A1C9904_gt_HeroLevel10ArmorPlatesButton = TriggerCreate("lib5A1C9904_gt_HeroLevel10ArmorPlatesButton_Func");
+    TriggerAddEventDialogControl(lib5A1C9904_gt_HeroLevel10ArmorPlatesButton, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+

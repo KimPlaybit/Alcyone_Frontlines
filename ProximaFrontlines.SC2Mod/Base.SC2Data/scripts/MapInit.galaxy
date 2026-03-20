@@ -1,0 +1,439 @@
+include "TriggerLibs/NativeLib"
+include "Lib5A1C9904_h"
+
+//==================================================================================================
+// Proxima Frontlines – Map Initialization
+// Handles game startup, team setup, defence towers, wave/turret config, and win/loss conditions.
+//==================================================================================================
+
+//--------------------------------------------------------------------------------------------------
+// StartProximaGame – async wrapper + implementation body
+//--------------------------------------------------------------------------------------------------
+trigger auto_lib5A1C9904_gf_StartProximaGame_Trigger = null;
+point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
+point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2;
+fixed auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X;
+fixed auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y;
+fixed auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X;
+fixed auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y;
+
+void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, fixed lp_turretOffset1X, fixed lp_turretOffset1Y, fixed lp_turretOffset2X, fixed lp_turretOffset2Y) {
+    auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1 = lp_startPosition1;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2 = lp_startPosition2;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X = lp_turretOffset1X;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y = lp_turretOffset1Y;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X = lp_turretOffset2X;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y = lp_turretOffset2Y;
+
+    if (auto_lib5A1C9904_gf_StartProximaGame_Trigger == null) {
+        auto_lib5A1C9904_gf_StartProximaGame_Trigger = TriggerCreate("auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib5A1C9904_gf_StartProximaGame_Trigger, false, false);
+}
+
+bool auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc (bool testConds, bool runActions) {
+    point lp_startPosition1 = auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
+    point lp_startPosition2 = auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2;
+    fixed lp_turretOffset1X = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X;
+    fixed lp_turretOffset1Y = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y;
+    fixed lp_turretOffset2X = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X;
+    fixed lp_turretOffset2Y = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y;
+
+    // Variable Declarations
+    bool lv_waves;
+    string lv_raceName;
+    point lv_startpos1;
+    point lv_startpos2;
+    point lv_offsetplayer1;
+    point lv_offsetplayer2;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_waves = lib5A1C9904_gf_GetWaveStatus();
+    lv_raceName = "";
+    lv_startpos1 = lp_startPosition1;
+    lv_startpos2 = lp_startPosition2;
+    lv_offsetplayer1 = PointWithOffset(lv_startpos1, 3.0, 3.0);
+    lv_offsetplayer2 = PointWithOffset(lv_startpos2, -2.0, -3.0);
+
+    // Implementation
+    if ((lib5A1C9904_gf_IsSurvival() == true)) {
+        if ((lib5A1C9904_gf_WithRTSPlayer() == true)) {
+            lib5A1C9904_gv_soldierPlayers1 = GameAttributePlayersForTeam(2);
+            MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1), lv_startpos1);
+            lib5A1C9904_gf_SpawnDefenceTower(lib5A1C9904_gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
+        }
+        else {
+            lib5A1C9904_gv_soldierPlayers1 = GameAttributePlayersForTeam(2);
+            PlayerGroupAdd(lib5A1C9904_gv_soldierPlayers1, lib5A1C9904_gv_rTSPlayer1);
+        }
+    }
+    else {
+        if ((lib5A1C9904_gv_loadedFromBank == false)) {
+            lib5A1C9904_gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
+            lib5A1C9904_gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
+        }
+
+        MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1), lv_startpos1);
+        lib5A1C9904_gf_SpawnDefenceTower(lib5A1C9904_gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
+        MeleeInitUnitsForPlayer(lib5A1C9904_gv_rTSPlayer2, PlayerRace(lib5A1C9904_gv_rTSPlayer2), lv_startpos2);
+        lib5A1C9904_gf_SpawnDefenceTower(lib5A1C9904_gv_rTSPlayer2, 14, lv_offsetplayer2, lv_startpos1);
+    }
+    lib5A1C9904_gv_startPosition1 = lv_startpos1;
+    lib5A1C9904_gv_startPosition2 = lv_startpos2;
+    lib5A1C9904_gf_SetupTeams1();
+    lib5A1C9904_gf_SetupTeams2();
+    MeleeInitResourcesForPlayer(lib5A1C9904_gv_rTSPlayer1, PlayerRace(lib5A1C9904_gv_rTSPlayer1));
+    MeleeInitResourcesForPlayer(lib5A1C9904_gv_rTSPlayer2, PlayerRace(lib5A1C9904_gv_rTSPlayer2));
+    libNtve_gf_SetUpgradeLevelForPlayer(13, "ShrikeTurret", 1);
+    libNtve_gf_SetUpgradeLevelForPlayer(14, "ShrikeTurret", 1);
+    CameraPan(lib5A1C9904_gv_rTSPlayer1, lv_startpos1, 0.0, -1, 10.0, false);
+    CameraPan(lib5A1C9904_gv_rTSPlayer2, lv_startpos2, 0.0, -1, 10.0, false);
+    lib5A1C9904_gf_StartAi(lv_startpos1, lib5A1C9904_gv_rTSPlayer1);
+    lib5A1C9904_gf_StartAi(lv_startpos2, lib5A1C9904_gv_rTSPlayer2);
+    Wait(0.5, c_timeGame);
+    lib5A1C9904_gf_Scores();
+    lib5A1C9904_gf_SoldierSelectionTeam1();
+    lib5A1C9904_gf_SoldierSelectionTeam2();
+    Wait(0.5, c_timeGame);
+    UISetAlertTypeVisible(PlayerGroupAll(), "AttackUnitAlly_Prot", false);
+    UISetAlertTypeVisible(PlayerGroupAll(), "AttackUnitAlly_Zerg", false);
+    UISetAlertTypeVisible(PlayerGroupAll(), "AttackUnitAlly_Terr", false);
+    lib5A1C9904_gf_CreateSpawners();
+    lib5A1C9904_gf_SpawnJungleUnits();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Game utility: wave status, turret status, defence tower, start location
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gf_GetWaveStatus () {
+    // Variable Declarations
+    string lv_gameAttribute;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_gameAttribute = "";
+
+    // Implementation
+    if ((GameAttributeGameValue("1") == "0001")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool lib5A1C9904_gf_GetTurretStatus () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((GameAttributeGameValue("2") == "0001")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+void lib5A1C9904_gf_SpawnDefenceTower (int lp_rTSPlayer, int lp_spawnForPlayer, point lp_spawn, point lp_facing) {
+    // Variable Declarations
+    bool lv_raceCheck;
+    bool lv_turret;
+    string lv_race;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_turret = lib5A1C9904_gf_GetTurretStatus();
+    lv_race = lib5A1C9904_gf_GetPlayerRaceName(lp_rTSPlayer);
+
+    // Implementation
+    if ((lv_turret == true)) {
+        lv_raceCheck = lib5A1C9904_gf_IsTerran(lp_rTSPlayer);
+        if ((lv_raceCheck == true)) {
+            libNtve_gf_UnitCreateFacingPoint(1, "KorhalPalaceTurret", 0, lp_spawnForPlayer, lp_spawn, lp_facing);
+        }
+
+        lv_raceCheck = lib5A1C9904_gf_IsZerg(lp_rTSPlayer);
+        if ((lv_raceCheck == true)) {
+            libNtve_gf_UnitCreateFacingPoint(1, "HugeSpineCrawler", 0, lp_spawnForPlayer, lp_spawn, lp_facing);
+        }
+
+        lv_raceCheck = lib5A1C9904_gf_IsProtoss(lp_rTSPlayer);
+        if ((lv_raceCheck == true)) {
+            libNtve_gf_UnitCreateFacingPoint(1, "KhaydarinMonolith", 0, lp_spawnForPlayer, lp_spawn, lp_facing);
+        }
+
+        lv_raceCheck = lib5A1C9904_gf_IsKnownRace(lp_rTSPlayer);
+        if ((lv_raceCheck == false)) {
+            libNtve_gf_UnitCreateFacingPoint(1, "KhaydarinMonolith", 0, lp_spawnForPlayer, lp_spawn, lp_facing);
+        }
+
+    }
+
+}
+
+point lib5A1C9904_gf_GetStartLocation (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
+        return lib5A1C9904_gv_startPosition1;
+    }
+    else {
+        return lib5A1C9904_gv_startPosition2;
+    }
+}
+
+void lib5A1C9904_gf_GameOver (int lp_losingRTSPlayer, playergroup lp_losingTeam, int lp_winningRTSPlayer, playergroup lp_winningTeam) {
+    // Variable Declarations
+    int lv_loopedPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoB54298AA_g;
+    playergroup auto6B9A89C6_g;
+
+    // Variable Initialization
+
+    // Implementation
+    GameOver(lp_winningRTSPlayer, c_gameOverVictory, true, true);
+    GameOver(lp_losingRTSPlayer, c_gameOverDefeat, true, true);
+    autoB54298AA_g = lp_winningTeam;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(autoB54298AA_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        GameOver(lv_loopedPlayer, c_gameOverVictory, true, true);
+    }
+    auto6B9A89C6_g = lp_losingTeam;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(auto6B9A89C6_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        GameOver(lv_loopedPlayer, c_gameOverDefeat, true, true);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Team setup
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gf_SetupTeams1 () {
+    // Variable Declarations
+    int lv_loopedPlayer;
+    int lv_loopedPlayer2;
+
+    // Automatic Variable Declarations
+    playergroup auto99AFCEBA_g;
+    playergroup autoFC3B8092_g;
+
+    // Variable Initialization
+    lv_loopedPlayer = 1;
+    lv_loopedPlayer2 = 1;
+
+    // Implementation
+    libNtve_gf_SetAlliance(13, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_AllianceSetting_NeutralWithSharedVision);
+    libNtve_gf_SetAlliance(14, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_AllianceSetting_Enemy);
+    auto99AFCEBA_g = lib5A1C9904_gv_soldierPlayers1;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(auto99AFCEBA_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        libNtve_gf_SetAlliance(lv_loopedPlayer, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        autoFC3B8092_g = lib5A1C9904_gv_soldierPlayers1;
+        lv_loopedPlayer2 = -1;
+        while (true) {
+            lv_loopedPlayer2 = PlayerGroupNextPlayer(autoFC3B8092_g, lv_loopedPlayer2);
+            if (lv_loopedPlayer2 < 0) { break; }
+            libNtve_gf_SetAlliance(lv_loopedPlayer, lv_loopedPlayer2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        }
+        libNtve_gf_SetAlliance(lv_loopedPlayer, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        libNtve_gf_SetAlliance(13, lv_loopedPlayer, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        PlayerSetAlliance(13, c_allianceIdSeekHelp, lv_loopedPlayer, false);
+        libNtve_gf_SetAlliance(14, lv_loopedPlayer, libNtve_ge_AllianceSetting_Enemy);
+        CameraPan(lv_loopedPlayer, lib5A1C9904_gv_startPosition1, 0.0, -1, 10.0, false);
+    }
+}
+
+void lib5A1C9904_gf_SetupTeams2 () {
+    // Variable Declarations
+    int lv_loopedPlayer;
+    int lv_loopedPlayer2;
+
+    // Automatic Variable Declarations
+    playergroup autoAD003BFB_g;
+    playergroup auto8E8C6C08_g;
+
+    // Variable Initialization
+    lv_loopedPlayer = 1;
+    lv_loopedPlayer2 = 1;
+
+    // Implementation
+    libNtve_gf_SetAlliance(14, lib5A1C9904_gv_rTSPlayer2, libNtve_ge_AllianceSetting_NeutralWithSharedVision);
+    libNtve_gf_SetAlliance(13, lib5A1C9904_gv_rTSPlayer2, libNtve_ge_AllianceSetting_Enemy);
+    autoAD003BFB_g = lib5A1C9904_gv_soldierPlayers2;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(autoAD003BFB_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        auto8E8C6C08_g = lib5A1C9904_gv_soldierPlayers2;
+        lv_loopedPlayer2 = -1;
+        while (true) {
+            lv_loopedPlayer2 = PlayerGroupNextPlayer(auto8E8C6C08_g, lv_loopedPlayer2);
+            if (lv_loopedPlayer2 < 0) { break; }
+            libNtve_gf_SetAlliance(lv_loopedPlayer, lv_loopedPlayer2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        }
+        libNtve_gf_SetAlliance(lv_loopedPlayer, lib5A1C9904_gv_rTSPlayer2, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        libNtve_gf_SetAlliance(14, lv_loopedPlayer, libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        PlayerSetAlliance(14, c_allianceIdSeekHelp, lv_loopedPlayer, false);
+        libNtve_gf_SetAlliance(13, lv_loopedPlayer, libNtve_ge_AllianceSetting_Enemy);
+        CameraPan(lv_loopedPlayer, lib5A1C9904_gv_startPosition2, 0.0, -1, 10.0, false);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SurvivalLoss
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SurvivalLoss_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_loopedPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoC520B2B6_g;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitCount(null, lib5A1C9904_gv_rTSPlayer1, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (lib5A1C9904_gf_IsSurvival() == true) && (lib5A1C9904_gf_WithRTSPlayer() == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GameOver(lib5A1C9904_gv_rTSPlayer1, c_gameOverDefeat, true, true);
+    autoC520B2B6_g = lib5A1C9904_gv_soldierPlayers1;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(autoC520B2B6_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        GameOver(lv_loopedPlayer, c_gameOverDefeat, true, true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SurvivalLoss_Init () {
+    lib5A1C9904_gt_SurvivalLoss = TriggerCreate("lib5A1C9904_gt_SurvivalLoss_Func");
+    TriggerAddEventUnitDied(lib5A1C9904_gt_SurvivalLoss, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WinTeam1
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_WinTeam1_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitCount(null, lib5A1C9904_gv_rTSPlayer2, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (lib5A1C9904_gf_IsSurvival() == false)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5A1C9904_gf_GameOver(lib5A1C9904_gv_rTSPlayer2, lib5A1C9904_gv_soldierPlayers2, lib5A1C9904_gv_rTSPlayer1, lib5A1C9904_gv_soldierPlayers1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_WinTeam1_Init () {
+    lib5A1C9904_gt_WinTeam1 = TriggerCreate("lib5A1C9904_gt_WinTeam1_Func");
+    TriggerAddEventUnitDied(lib5A1C9904_gt_WinTeam1, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SurrenderedTeam1
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SurrenderedTeam1_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((PlayerGroupHasPlayer(PlayerGroupActive(), lib5A1C9904_gv_rTSPlayer1) == false) && (PlayerGroupCount(libNtve_gf_IntersectionOfPlayerGroups(lib5A1C9904_gv_soldierPlayers1, PlayerGroupActive())) == 0)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5A1C9904_gf_GameOver(lib5A1C9904_gv_rTSPlayer1, lib5A1C9904_gv_soldierPlayers1, lib5A1C9904_gv_rTSPlayer2, lib5A1C9904_gv_soldierPlayers2);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SurrenderedTeam1_Init () {
+    lib5A1C9904_gt_SurrenderedTeam1 = TriggerCreate("lib5A1C9904_gt_SurrenderedTeam1_Func");
+    TriggerAddEventPlayerLeft(lib5A1C9904_gt_SurrenderedTeam1, c_playerAny, c_gameResultUndecided);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WinTeam2
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_WinTeam2_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitCount(null, lib5A1C9904_gv_rTSPlayer1, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 10) == 0) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true) && (lib5A1C9904_gf_IsSurvival() == false)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5A1C9904_gf_GameOver(lib5A1C9904_gv_rTSPlayer1, lib5A1C9904_gv_soldierPlayers1, lib5A1C9904_gv_rTSPlayer2, lib5A1C9904_gv_soldierPlayers2);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_WinTeam2_Init () {
+    lib5A1C9904_gt_WinTeam2 = TriggerCreate("lib5A1C9904_gt_WinTeam2_Func");
+    TriggerAddEventUnitDied(lib5A1C9904_gt_WinTeam2, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SurrenderedTeam2
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_SurrenderedTeam2_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((PlayerGroupHasPlayer(PlayerGroupActive(), lib5A1C9904_gv_rTSPlayer2) == false) && (PlayerGroupCount(libNtve_gf_IntersectionOfPlayerGroups(lib5A1C9904_gv_soldierPlayers2, PlayerGroupActive())) == 0)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5A1C9904_gf_GameOver(lib5A1C9904_gv_rTSPlayer2, lib5A1C9904_gv_soldierPlayers2, lib5A1C9904_gv_rTSPlayer1, lib5A1C9904_gv_soldierPlayers1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_SurrenderedTeam2_Init () {
+    lib5A1C9904_gt_SurrenderedTeam2 = TriggerCreate("lib5A1C9904_gt_SurrenderedTeam2_Func");
+    TriggerAddEventPlayerLeft(lib5A1C9904_gt_SurrenderedTeam2, c_playerAny, c_gameResultUndecided);
+}
