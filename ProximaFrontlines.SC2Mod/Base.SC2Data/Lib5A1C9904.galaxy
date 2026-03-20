@@ -1,44 +1,62 @@
-include "TriggerLibs/natives"
+include "TriggerLibs/NativeLib"
 
 include "Lib5A1C9904_h"
 
 //--------------------------------------------------------------------------------------------------
 // Library: Proxima
 //--------------------------------------------------------------------------------------------------
-// Custom Script
-//--------------------------------------------------------------------------------------------------
-// Custom Script: Untitled Custom Script 001
-//--------------------------------------------------------------------------------------------------
-include "TriggerLibs/NativeLib"
-include "scripts/main"
-//--------------------------------------------------------------------------------------------------
-// Library: Proxima
-//--------------------------------------------------------------------------------------------------
+// External Library Initialization
 void lib5A1C9904_InitLibraries () {
     libNtve_InitVariables();
 }
-// lib5A1C9904_InitVariables is defined in scripts/GlobalVariables.galaxy
-// lib5A1C9904_InitTriggers   is defined in scripts/main.galaxy
+
+// Custom Script
 //--------------------------------------------------------------------------------------------------
-// Library Initialization
+// Custom Script: Include
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_InitLib_completed = false;
-void lib5A1C9904_InitLib () {
-    if (lib5A1C9904_InitLib_completed) {
-        return;
-    }
-    lib5A1C9904_InitLib_completed = true;
-    lib5A1C9904_InitLibraries();
-    lib5A1C9904_InitVariables();
-    lib5A1C9904_InitTriggers();
-}
+include "scripts/main"
 
 void lib5A1C9904_InitCustomScript () {
 }
 
 // Functions
-bool lib5A1C9904_gf_StartGame () {
+trigger auto_lib5A1C9904_gf_StartProximaGame_Trigger = null;
+point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
+point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2;
+int auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X;
+int auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X;
+int auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y;
+int auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y;
+
+void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, int lp_turretOffset1X, int lp_turretOffset2X, int lp_turretOffset1Y, int lp_turretOffset2Y) {
+    auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1 = lp_startPosition1;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2 = lp_startPosition2;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X = lp_turretOffset1X;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X = lp_turretOffset2X;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y = lp_turretOffset1Y;
+    auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y = lp_turretOffset2Y;
+
+    if (auto_lib5A1C9904_gf_StartProximaGame_Trigger == null) {
+        auto_lib5A1C9904_gf_StartProximaGame_Trigger = TriggerCreate("auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib5A1C9904_gf_StartProximaGame_Trigger, false, false);
+}
+
+bool auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc (bool testConds, bool runActions) {
+    point lp_startPosition1 = auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
+    point lp_startPosition2 = auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2;
+    int lp_turretOffset1X = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1X;
+    int lp_turretOffset2X = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2X;
+    int lp_turretOffset1Y = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset1Y;
+    int lp_turretOffset2Y = auto_lib5A1C9904_gf_StartProximaGame_lp_turretOffset2Y;
+
     // Automatic Variable Declarations
+    // Implementation
+    InitTriggers();
+    InitVariables();
+    StartProximaGame(lp_startPosition1, lp_startPosition2, lp_turretOffset1X, lp_turretOffset2X, lp_turretOffset1Y, lp_turretOffset2Y);
+    return true;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -53,6 +71,7 @@ void lib5A1C9904_InitLib () {
 
     lib5A1C9904_InitLib_completed = true;
 
+    lib5A1C9904_InitLibraries();
     lib5A1C9904_InitCustomScript();
 }
 

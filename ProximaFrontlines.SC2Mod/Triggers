@@ -2,40 +2,89 @@
 <TriggerData>
     <Library Id="5A1C9904">
         <Root>
-            <Item Type="FunctionDef" Library="5A1C9904" Id="B550A421"/>
             <Item Type="CustomScript" Library="5A1C9904" Id="161C80F5"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="B550A421"/>
         </Root>
-        <Element Type="FunctionDef" Id="B550A421">
-            <FlagCall/>
-            <ReturnType>
-                <Type Value="bool"/>
-            </ReturnType>
-        </Element>
         <Element Type="CustomScript" Id="161C80F5">
             <ScriptCode>
-                include &quot;TriggerLibs/NativeLib&quot;
                 include &quot;scripts/main&quot;
-                //--------------------------------------------------------------------------------------------------
-                // Library: Proxima
-                //--------------------------------------------------------------------------------------------------
-                void lib5A1C9904_InitLibraries () {
-                    libNtve_InitVariables();
-                }
-                // lib5A1C9904_InitVariables is defined in scripts/GlobalVariables.galaxy
-                // lib5A1C9904_InitTriggers   is defined in scripts/main.galaxy
-                //--------------------------------------------------------------------------------------------------
-                // Library Initialization
-                //--------------------------------------------------------------------------------------------------
-                bool lib5A1C9904_InitLib_completed = false;
-                void lib5A1C9904_InitLib () {
-                    if (lib5A1C9904_InitLib_completed) {
-                        return;
-                    }
-                    lib5A1C9904_InitLib_completed = true;
-                    lib5A1C9904_InitLibraries();
-                    lib5A1C9904_InitVariables();
-                    lib5A1C9904_InitTriggers();
-                }
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="B550A421">
+            <FlagAction/>
+            <FlagCreateThread/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="E2A2690E"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="A67F6F5A"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="CDAA7723"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="502EE89F"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="5340926A"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="4B359BBF"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="BCF00243"/>
+        </Element>
+        <Element Type="ParamDef" Id="E2A2690E">
+            <ParameterType>
+                <Type Value="point"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="DE561622"/>
+        </Element>
+        <Element Type="Param" Id="DE561622">
+            <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
+        </Element>
+        <Element Type="ParamDef" Id="A67F6F5A">
+            <ParameterType>
+                <Type Value="point"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="5600E34F"/>
+        </Element>
+        <Element Type="Param" Id="5600E34F">
+            <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
+        </Element>
+        <Element Type="ParamDef" Id="CDAA7723">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="B73FC6A0"/>
+        </Element>
+        <Element Type="Param" Id="B73FC6A0">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="ParamDef" Id="502EE89F">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="F85F189E"/>
+        </Element>
+        <Element Type="Param" Id="F85F189E">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="ParamDef" Id="5340926A">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="5847132C"/>
+        </Element>
+        <Element Type="Param" Id="5847132C">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="ParamDef" Id="4B359BBF">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="0309060D"/>
+        </Element>
+        <Element Type="Param" Id="0309060D">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BCF00243">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                InitTriggers();
+                InitVariables();
+                StartProximaGame(lp_startPosition1, lp_startPosition2, lp_turretOffset1X, lp_turretOffset2X, lp_turretOffset1Y, lp_turretOffset2Y);
             </ScriptCode>
         </Element>
     </Library>

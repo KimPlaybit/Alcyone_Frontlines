@@ -4,5 +4,5 @@ include "TriggerLibs/natives"
 // Library: Proxima
 //--------------------------------------------------------------------------------------------------
 // Function Declarations
-bool lib5A1C9904_gf_StartGame ();
+void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, int lp_turretOffset1X, int lp_turretOffset2X, int lp_turretOffset1Y, int lp_turretOffset2Y);
 

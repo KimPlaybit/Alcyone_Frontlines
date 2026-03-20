@@ -1,5 +1,5 @@
-include "TriggerLibs/NativeLib"
-include "Lib5A1C9904_h"
+﻿include "TriggerLibs/NativeLib"
+include "h"
 
 //==================================================================================================
 // Proxima Frontlines – AI System
@@ -9,7 +9,7 @@ include "Lib5A1C9904_h"
 //--------------------------------------------------------------------------------------------------
 // Helper: FindHealspot
 //--------------------------------------------------------------------------------------------------
-unit lib5A1C9904_gf_FindHealspot (unit lp_unit) {
+unit FindHealspot (unit lp_unit) {
     // Variable Declarations
     unitgroup lv_healUnits;
     unit lv_healUnit;
@@ -24,20 +24,20 @@ unit lib5A1C9904_gf_FindHealspot (unit lp_unit) {
     lv_healUnits = UnitGroupEmpty();
 
     // Implementation
-    if ((libNtve_gf_PlayerIsEnemy(UnitGetOwner(lp_unit), lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
-        if ((lib5A1C9904_gf_IsZerg(lib5A1C9904_gv_rTSPlayer1) == true)) {
-            return UnitGroupUnit(lib5A1C9904_gv_rtsPlayer1TownBuilding, 1);
+    if ((libNtve_gf_PlayerIsEnemy(UnitGetOwner(lp_unit), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
+        if ((IsZerg(gv_rTSPlayer1) == true)) {
+            return UnitGroupUnit(gv_rtsPlayer1TownBuilding, 1);
         }
         else {
-            UnitGroupAddUnitGroup(lv_healUnits, lib5A1C9904_gv_healUnitsRTS1);
+            UnitGroupAddUnitGroup(lv_healUnits, gv_healUnitsRTS1);
         }
     }
     else {
-        if ((lib5A1C9904_gf_IsZerg(lib5A1C9904_gv_rTSPlayer2) == true)) {
-            return UnitGroupUnit(lib5A1C9904_gv_rtsPlayer2TownBuilding, 1);
+        if ((IsZerg(gv_rTSPlayer2) == true)) {
+            return UnitGroupUnit(gv_rtsPlayer2TownBuilding, 1);
         }
         else {
-            UnitGroupAddUnitGroup(lv_healUnits, lib5A1C9904_gv_healUnitsRTS2);
+            UnitGroupAddUnitGroup(lv_healUnits, gv_healUnitsRTS2);
         }
     }
     if ((libNtve_gf_UnitGroupIsDead(lv_healUnits) == false)) {
@@ -59,11 +59,11 @@ unit lib5A1C9904_gf_FindHealspot (unit lp_unit) {
         }
     }
 
-    if ((libNtve_gf_PlayerIsEnemy(UnitGetOwner(lp_unit), lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
-        UnitGroupAddUnitGroup(lv_healUnits, lib5A1C9904_gv_rtsPlayer1TownBuilding);
+    if ((libNtve_gf_PlayerIsEnemy(UnitGetOwner(lp_unit), gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
+        UnitGroupAddUnitGroup(lv_healUnits, gv_rtsPlayer1TownBuilding);
     }
     else {
-        UnitGroupAddUnitGroup(lv_healUnits, lib5A1C9904_gv_rtsPlayer2TownBuilding);
+        UnitGroupAddUnitGroup(lv_healUnits, gv_rtsPlayer2TownBuilding);
     }
     if ((libNtve_gf_UnitGroupIsDead(lv_healUnits) == false)) {
         return UnitGroupClosestToPoint(lv_healUnits, UnitGetPosition(lp_unit));
@@ -75,7 +75,7 @@ unit lib5A1C9904_gf_FindHealspot (unit lp_unit) {
 //--------------------------------------------------------------------------------------------------
 // Helper: FindEnemyHero
 //--------------------------------------------------------------------------------------------------
-unit lib5A1C9904_gf_FindEnemyHero (unit lp_unit) {
+unit FindEnemyHero (unit lp_unit) {
     // Variable Declarations
     unitgroup lv_unitsClose;
 
@@ -96,7 +96,7 @@ unit lib5A1C9904_gf_FindEnemyHero (unit lp_unit) {
 //--------------------------------------------------------------------------------------------------
 // Helper: GetSpawners
 //--------------------------------------------------------------------------------------------------
-unitgroup lib5A1C9904_gf_GetSpawners (int lp_player) {
+unitgroup GetSpawners (int lp_player) {
     // Variable Declarations
     unitgroup lv_spawners;
 
@@ -105,7 +105,7 @@ unitgroup lib5A1C9904_gf_GetSpawners (int lp_player) {
     lv_spawners = UnitGroupEmpty();
 
     // Implementation
-    if ((libNtve_gf_PlayerIsEnemy(lp_player, lib5A1C9904_gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
+    if ((libNtve_gf_PlayerIsEnemy(lp_player, gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true)) {
     }
 
     return lv_spawners;
@@ -114,7 +114,7 @@ unitgroup lib5A1C9904_gf_GetSpawners (int lp_player) {
 //--------------------------------------------------------------------------------------------------
 // Helper: SpawnersBeingAttacked
 //--------------------------------------------------------------------------------------------------
-unit lib5A1C9904_gf_SpawnersBeingAttacked (unit lp_heroUnit, int lp_player) {
+unit SpawnersBeingAttacked (unit lp_heroUnit, int lp_player) {
     // Variable Declarations
     unit lv_unit;
     unit lv_spawner;
@@ -125,7 +125,7 @@ unit lib5A1C9904_gf_SpawnersBeingAttacked (unit lp_heroUnit, int lp_player) {
     int auto48514808_u;
 
     // Variable Initialization
-    lv_spawners = lib5A1C9904_gf_GetSpawners(lp_player);
+    lv_spawners = GetSpawners(lp_player);
 
     // Implementation
     auto48514808_g = lv_spawners;
@@ -134,7 +134,7 @@ unit lib5A1C9904_gf_SpawnersBeingAttacked (unit lp_heroUnit, int lp_player) {
         lv_unit = UnitGroupUnitFromEnd(auto48514808_g, auto48514808_u);
         if (lv_unit == null) { break; }
         if ((libNtve_gf_UnitGroupIsDead(libNtve_gf_ConvertUnitToUnitGroup(lv_unit)) == false)) {
-            lv_spawner = lib5A1C9904_gf_FindEnemyHero(lv_unit);
+            lv_spawner = FindEnemyHero(lv_unit);
             if ((((lv_spawner != null) && (DistanceBetweenPoints(UnitGetPosition(lp_heroUnit), UnitGetPosition(lv_spawner)) <= 40.0)) || ((lv_spawner != null) && (UnitAbilityGetCooldown(lp_heroUnit, "ArtanisWormholeTransit", "Abil/ArtanisWormholeTransit") <= 0.0) && (UnitGetType(lp_heroUnit) == "DragoonHero")) || ((lv_spawner != null) && (UnitGetType(lp_heroUnit) == "CorsairHero")))) {
                 return lv_spawner;
             }
@@ -148,7 +148,7 @@ unit lib5A1C9904_gf_SpawnersBeingAttacked (unit lp_heroUnit, int lp_player) {
 //--------------------------------------------------------------------------------------------------
 // Helper: ClosestPoint
 //--------------------------------------------------------------------------------------------------
-point lib5A1C9904_gf_ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitgroup lp_pointToAttack, point lp_startPoint) {
+point ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitgroup lp_pointToAttack, point lp_startPoint) {
     // Automatic Variable Declarations
     // Implementation
     if (((lp_lastPoint == null) && (libNtve_gf_UnitGroupIsDead(lp_pointToAttack) == false) && (DistanceBetweenPoints(lp_startPoint, UnitGroupCenterOfGroup(lp_pointToAttack)) < 100.0))) {
@@ -170,7 +170,7 @@ point lib5A1C9904_gf_ClosestPoint (point lp_lastPoint, point lp_unitPoint, unitg
 //--------------------------------------------------------------------------------------------------
 // Helper: AttackPointHostiles
 //--------------------------------------------------------------------------------------------------
-point lib5A1C9904_gf_AttackPointHostiles (point lp_startPos, point lp_currentPosition, int lp_veteranLevel, int lp_offsetVeterancy) {
+point AttackPointHostiles (point lp_startPos, point lp_currentPosition, int lp_veteranLevel, int lp_offsetVeterancy) {
     // Variable Declarations
     point lv_point;
 
@@ -178,22 +178,22 @@ point lib5A1C9904_gf_AttackPointHostiles (point lp_startPos, point lp_currentPos
     // Variable Initialization
 
     // Implementation
-    if ((((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_zerglingExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_zerglingExpansionTeam2) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 1))) {
+    if ((((libNtve_gf_UnitGroupIsDead(gv_zerglingExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_zerglingExpansionTeam2) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 1))) {
     }
 
-    if ((((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_zergling_1) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_zergling_2) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 2))) {
+    if ((((libNtve_gf_UnitGroupIsDead(gv_zergling_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_zergling_2) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 2))) {
     }
 
-    if ((((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_terranExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_terranExpansionTeam2) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_topExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_topExpansionTeam2) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_vikings_1) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_vikings_2) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_vikings_3) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 3))) {
+    if ((((libNtve_gf_UnitGroupIsDead(gv_terranExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_terranExpansionTeam2) == false) || (libNtve_gf_UnitGroupIsDead(gv_topExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_topExpansionTeam2) == false) || (libNtve_gf_UnitGroupIsDead(gv_vikings_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_vikings_2) == false) || (libNtve_gf_UnitGroupIsDead(gv_vikings_3) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 3))) {
     }
 
-    if ((((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_zergExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_zergExpansionTeam2) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 4))) {
+    if ((((libNtve_gf_UnitGroupIsDead(gv_zergExpansionTeam1) == false) || (libNtve_gf_UnitGroupIsDead(gv_zergExpansionTeam2) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 4))) {
     }
 
-    if ((((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_hydralisk_1) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_hydralisk_2) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_marines_1) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_marines_2) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_topExpansion) == false)) && (lp_veteranLevel >= 4))) {
+    if ((((libNtve_gf_UnitGroupIsDead(gv_hydralisk_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_hydralisk_2) == false) || (libNtve_gf_UnitGroupIsDead(gv_marines_1) == false) || (libNtve_gf_UnitGroupIsDead(gv_marines_2) == false) || (libNtve_gf_UnitGroupIsDead(gv_topExpansion) == false)) && (lp_veteranLevel >= 4))) {
     }
 
-    if ((((libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_botExpansion) == false) || (libNtve_gf_UnitGroupIsDead(lib5A1C9904_gv_midExpansion) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 5))) {
+    if ((((libNtve_gf_UnitGroupIsDead(gv_botExpansion) == false) || (libNtve_gf_UnitGroupIsDead(gv_midExpansion) == false)) && ((lp_veteranLevel + lp_offsetVeterancy) >= 5))) {
     }
 
     return lv_point;
@@ -202,7 +202,7 @@ point lib5A1C9904_gf_AttackPointHostiles (point lp_startPos, point lp_currentPos
 //--------------------------------------------------------------------------------------------------
 // Helper: StartAi (RTS player AI initialisation)
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gf_StartAi (point lp_startPos, int lp_player) {
+void StartAi (point lp_startPos, int lp_player) {
     // Automatic Variable Declarations
     // Implementation
         int diff = AIPlayerDifficulty(lp_player);
@@ -309,7 +309,7 @@ void lib5A1C9904_gf_StartAi (point lp_startPos, int lp_player) {
 //--------------------------------------------------------------------------------------------------
 // Helper: StartSoldierAI
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave) {
+void StartSoldierAI (point lp_startPos, int lp_player, unit lp_wave) {
     // Variable Declarations
     wavetarget lv_targO;
     wavetarget lv_targD;
@@ -339,19 +339,19 @@ void lib5A1C9904_gf_StartSoldierAI (point lp_startPos, int lp_player, unit lp_wa
     AIAttackWaveUseUnit(lp_player, lp_wave);
     AIEvalSetCustomIndex((10 + (UnitXPGetCurrentLevel(lp_wave, null) * 3)));
     AIDeclareTown(lp_player, -1, lp_startPos);
-    lib5A1C9904_gv_playerToStart = lp_player;
-    lib5A1C9904_gv_unitGroup = libNtve_gf_ConvertUnitToUnitGroup(lp_wave);
-    TriggerExecute(lib5A1C9904_gt_Controller, false, false);
+    gv_playerToStart = lp_player;
+    gv_unitGroup = libNtve_gf_ConvertUnitToUnitGroup(lp_wave);
+    TriggerExecute(Controller, false, false);
 }
 
 //--------------------------------------------------------------------------------------------------
 // Helper: HeroSpells
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gf_HeroSpells (int lp_player, unit lp_unit) {
+void HeroSpells (int lp_player, unit lp_unit) {
     // Automatic Variable Declarations
     // Implementation
     if ((UnitGetType(lp_unit) == "CorsairHero")) {
-        lib5A1C9904_gf_Corsair(lp_player, lp_unit);
+        Corsair(lp_player, lp_unit);
     }
 
 }
@@ -360,7 +360,7 @@ void lib5A1C9904_gf_HeroSpells (int lp_player, unit lp_unit) {
 //--------------------------------------------------------------------------------------------------
 // Trigger: AIBuildShieldBattery
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_AIBuildShieldBattery_Func (bool testConds, bool runActions) {
+bool AIBuildShieldBattery_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_player;
 
@@ -388,15 +388,15 @@ bool lib5A1C9904_gt_AIBuildShieldBattery_Func (bool testConds, bool runActions) 
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_AIBuildShieldBattery_Init () {
-    lib5A1C9904_gt_AIBuildShieldBattery = TriggerCreate("lib5A1C9904_gt_AIBuildShieldBattery_Func");
-    TriggerAddEventUnitCreated(lib5A1C9904_gt_AIBuildShieldBattery, null, null, null);
+void AIBuildShieldBattery_Init () {
+    AIBuildShieldBattery = TriggerCreate("AIBuildShieldBattery_Func");
+    TriggerAddEventUnitCreated(AIBuildShieldBattery, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
 // Trigger: AIBuildQueens
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_AIBuildQueens_Func (bool testConds, bool runActions) {
+bool AIBuildQueens_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_queensBuilt;
     int lv_player;
@@ -428,15 +428,15 @@ bool lib5A1C9904_gt_AIBuildQueens_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_AIBuildQueens_Init () {
-    lib5A1C9904_gt_AIBuildQueens = TriggerCreate("lib5A1C9904_gt_AIBuildQueens_Func");
-    TriggerAddEventUnitCreated(lib5A1C9904_gt_AIBuildQueens, null, null, null);
+void AIBuildQueens_Init () {
+    AIBuildQueens = TriggerCreate("AIBuildQueens_Func");
+    TriggerAddEventUnitCreated(AIBuildQueens, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
 // Trigger: AIBuildMedivacs
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_AIBuildMedivacs_Func (bool testConds, bool runActions) {
+bool AIBuildMedivacs_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_queensBuilt;
     int lv_player;
@@ -473,15 +473,15 @@ bool lib5A1C9904_gt_AIBuildMedivacs_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_AIBuildMedivacs_Init () {
-    lib5A1C9904_gt_AIBuildMedivacs = TriggerCreate("lib5A1C9904_gt_AIBuildMedivacs_Func");
-    TriggerAddEventUnitCreated(lib5A1C9904_gt_AIBuildMedivacs, null, null, null);
+void AIBuildMedivacs_Init () {
+    AIBuildMedivacs = TriggerCreate("AIBuildMedivacs_Func");
+    TriggerAddEventUnitCreated(AIBuildMedivacs, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
 // Trigger: AI Team 1
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
+bool AITeam1_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_lastCreatedUnit;
     point lv_startPos;
@@ -498,132 +498,132 @@ bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
     int autoD1FD18C2_val;
 
     // Variable Initialization
-    lv_startPos = lib5A1C9904_gv_startPosition1;
+    lv_startPos = gv_startPosition1;
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    auto77236139_g = lib5A1C9904_gv_soldierPlayers1;
+    auto77236139_g = gv_soldierPlayers1;
     lv_player = -1;
     while (true) {
         lv_player = PlayerGroupNextPlayer(auto77236139_g, lv_player);
         if (lv_player < 0) { break; }
         if (((PlayerType(lv_player) == c_playerTypeComputer) == true)) {
-            if ((PlayerType(lib5A1C9904_gv_rTSPlayer1) == c_playerTypeComputer)) {
+            if ((PlayerType(gv_rTSPlayer1) == c_playerTypeComputer)) {
                 lv_playerToSpawnFor = lv_player;
             }
             else {
                 lv_playerToSpawnFor = lv_player;
             }
             lv_random = RandomInt(0, 3);
-            lv_raceCheck = lib5A1C9904_gf_IsTerran(lib5A1C9904_gv_rTSPlayer1);
+            lv_raceCheck = IsTerran(gv_rTSPlayer1);
             if ((lv_raceCheck == true)) {
                 auto74D8FDF6_val = lv_random;
                 if (auto74D8FDF6_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_D9CB5152")));
                 }
                 else if (auto74D8FDF6_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_5A84CAED")));
                 }
                 else if (auto74D8FDF6_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_710B2B61")));
                 }
                 else if (auto74D8FDF6_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_AA757172")));
                 }
                 else if (auto74D8FDF6_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_708720DB")));
                 }
                 else {
                 }
             }
 
-            lv_raceCheck = lib5A1C9904_gf_IsZerg(lib5A1C9904_gv_rTSPlayer1);
+            lv_raceCheck = IsZerg(gv_rTSPlayer1);
             if ((lv_raceCheck == true)) {
                 autoE03F8687_val = lv_random;
                 if (autoE03F8687_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_9ACD18A4")));
                 }
                 else if (autoE03F8687_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_CAA5DCDD")));
                 }
                 else if (autoE03F8687_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_33BE9386")));
                 }
                 else if (autoE03F8687_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_8A5EDF0C")));
                 }
                 else if (autoE03F8687_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_1275C5B1")));
                 }
                 else if (autoE03F8687_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_9FE8F972")));
                 }
                 else {
                 }
             }
 
-            lv_raceCheck = lib5A1C9904_gf_IsProtoss(lib5A1C9904_gv_rTSPlayer1);
+            lv_raceCheck = IsProtoss(gv_rTSPlayer1);
             if ((lv_raceCheck == true)) {
                 autoC41BA067_val = lv_random;
                 if (autoC41BA067_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_152A66FA")));
                 }
                 else if (autoC41BA067_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_A2B2DA65")));
                 }
                 else if (autoC41BA067_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_A29CFC43")));
                 }
                 else if (autoC41BA067_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_AAF3B2FF")));
                 }
                 else if (autoC41BA067_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_D91C90AE")));
                 }
                 else {
                 }
             }
 
-            lv_raceCheck = lib5A1C9904_gf_IsKnownRace(lib5A1C9904_gv_rTSPlayer1);
+            lv_raceCheck = IsKnownRace(gv_rTSPlayer1);
             if ((lv_raceCheck == false)) {
                 autoD1FD18C2_val = lv_random;
                 if (autoD1FD18C2_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_E24A6336")));
                 }
                 else if (autoD1FD18C2_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_04F8C258")));
                 }
                 else if (autoD1FD18C2_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_A4E9EAB5")));
                 }
                 else if (autoD1FD18C2_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_AFDA49F0")));
                 }
                 else if (autoD1FD18C2_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_820BB715")));
                 }
                 else {
@@ -631,8 +631,8 @@ bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
             }
 
             lv_lastCreatedUnit = UnitLastCreated();
-            UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-            lib5A1C9904_gf_StartSoldierAI(lv_startPos, lv_player, lv_lastCreatedUnit);
+            UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
+            StartSoldierAI(lv_startPos, lv_player, lv_lastCreatedUnit);
         }
 
     }
@@ -640,15 +640,15 @@ bool lib5A1C9904_gt_AITeam1_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_AITeam1_Init () {
-    lib5A1C9904_gt_AITeam1 = TriggerCreate("lib5A1C9904_gt_AITeam1_Func");
-    TriggerAddEventTimeElapsed(lib5A1C9904_gt_AITeam1, 5.0, c_timeGame);
+void AITeam1_Init () {
+    AITeam1 = TriggerCreate("AITeam1_Func");
+    TriggerAddEventTimeElapsed(AITeam1, 5.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
 // Trigger: AI Team 2
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
+bool AITeam2_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_lastCreatedUnit;
     point lv_startPos;
@@ -665,132 +665,132 @@ bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
     int auto181C63E3_val;
 
     // Variable Initialization
-    lv_startPos = lib5A1C9904_gv_startPosition2;
+    lv_startPos = gv_startPosition2;
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    auto1976D179_g = lib5A1C9904_gv_soldierPlayers2;
+    auto1976D179_g = gv_soldierPlayers2;
     lv_player = -1;
     while (true) {
         lv_player = PlayerGroupNextPlayer(auto1976D179_g, lv_player);
         if (lv_player < 0) { break; }
         if (((PlayerType(lv_player) == c_playerTypeComputer) == true)) {
             lv_random = RandomInt(0, 3);
-            if ((PlayerType(lib5A1C9904_gv_rTSPlayer2) == c_playerTypeComputer)) {
+            if ((PlayerType(gv_rTSPlayer2) == c_playerTypeComputer)) {
                 lv_playerToSpawnFor = lv_player;
             }
             else {
                 lv_playerToSpawnFor = lv_player;
             }
-            lv_raceCheck = lib5A1C9904_gf_IsTerran(lib5A1C9904_gv_rTSPlayer2);
+            lv_raceCheck = IsTerran(gv_rTSPlayer2);
             if ((lv_raceCheck == true)) {
                 autoB78648F1_val = lv_random;
                 if (autoB78648F1_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "FirebatHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_CD2AC9D5")));
                 }
                 else if (autoB78648F1_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "SpectreHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_FCA78A59")));
                 }
                 else if (autoB78648F1_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "GoliathHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_6A7465F3")));
                 }
                 else if (autoB78648F1_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "MarineHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_71D8F85C")));
                 }
                 else if (autoB78648F1_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "MedicHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_6AE07A1A")));
                 }
                 else {
                 }
             }
 
-            lv_raceCheck = lib5A1C9904_gf_IsZerg(lib5A1C9904_gv_rTSPlayer2);
+            lv_raceCheck = IsZerg(gv_rTSPlayer2);
             if ((lv_raceCheck == true)) {
                 auto6FE56CB2_val = lv_random;
                 if (auto6FE56CB2_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZerglingHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_D90DCF89")));
                 }
                 else if (auto6FE56CB2_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_ED1596B5")));
                 }
                 else if (auto6FE56CB2_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HotSTorrasque2", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_7FE3D72B")));
                 }
                 else if (auto6FE56CB2_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "HydraliskHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_C98DC2AE")));
                 }
                 else if (auto6FE56CB2_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DefilerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_36BFC19A")));
                 }
                 else if (auto6FE56CB2_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "BroodQueenHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_89937BE5")));
                 }
                 else {
                 }
             }
 
-            lv_raceCheck = lib5A1C9904_gf_IsProtoss(lib5A1C9904_gv_rTSPlayer2);
+            lv_raceCheck = IsProtoss(gv_rTSPlayer2);
             if ((lv_raceCheck == true)) {
                 autoF526F516_val = lv_random;
                 if (autoF526F516_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_DAF1657E")));
                 }
                 else if (autoF526F516_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_92451847")));
                 }
                 else if (autoF526F516_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_DC1E8D16")));
                 }
                 else if (autoF526F516_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_0942BB65")));
                 }
                 else if (autoF526F516_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_8AF502DE")));
                 }
                 else {
                 }
             }
 
-            lv_raceCheck = lib5A1C9904_gf_IsKnownRace(lib5A1C9904_gv_rTSPlayer2);
+            lv_raceCheck = IsKnownRace(gv_rTSPlayer2);
             if ((lv_raceCheck == false)) {
                 auto181C63E3_val = lv_random;
                 if (auto181C63E3_val == 0) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "ZealotHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_D6C323DD")));
                 }
                 else if (auto181C63E3_val == 1) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AvengerHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_9D20C22F")));
                 }
                 else if (auto181C63E3_val == 2) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "DragoonHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_0599BA84")));
                 }
                 else if (auto181C63E3_val == 3) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "AdeptHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_AC4B2CAE")));
                 }
                 else if (auto181C63E3_val == 4) {
-                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(lib5A1C9904_gv_rTSPlayer2));
+                    libNtve_gf_UnitCreateFacingPoint(1, "CorsairHero", 0, lv_playerToSpawnFor, lv_startPos, PlayerStartLocation(gv_rTSPlayer2));
                     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(lv_player) + StringExternal("Param/Value/lib_5A1C9904_DF99A591")));
                 }
                 else {
@@ -798,8 +798,8 @@ bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
             }
 
             lv_lastCreatedUnit = UnitLastCreated();
-            UnitGroupAdd(lib5A1C9904_gv_revivableUnits, UnitLastCreated());
-            lib5A1C9904_gf_StartSoldierAI(lv_startPos, lv_player, lv_lastCreatedUnit);
+            UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
+            StartSoldierAI(lv_startPos, lv_player, lv_lastCreatedUnit);
         }
 
     }
@@ -807,15 +807,15 @@ bool lib5A1C9904_gt_AITeam2_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_AITeam2_Init () {
-    lib5A1C9904_gt_AITeam2 = TriggerCreate("lib5A1C9904_gt_AITeam2_Func");
-    TriggerAddEventTimeElapsed(lib5A1C9904_gt_AITeam2, 5.0, c_timeGame);
+void AITeam2_Init () {
+    AITeam2 = TriggerCreate("AITeam2_Func");
+    TriggerAddEventTimeElapsed(AITeam2, 5.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
 // Trigger: Controller
 //--------------------------------------------------------------------------------------------------
-bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
+bool Controller_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_offsetVeterancy;
     unit lv_defendSpawner;
@@ -836,18 +836,18 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Variable Initialization
     lv_veteranLevel = 1;
-    lv_player = lib5A1C9904_gv_playerToStart;
-    lv_unit = UnitGroupUnit(lib5A1C9904_gv_unitGroup, 1);
-    lv_unitGroup = lib5A1C9904_gv_unitGroup;
+    lv_player = gv_playerToStart;
+    lv_unit = UnitGroupUnit(gv_unitGroup, 1);
+    lv_unitGroup = gv_unitGroup;
     lv_state = 99;
-    lv_allyRTSPlayer = lib5A1C9904_gf_GetAllyRTSPlayer(lv_player);
+    lv_allyRTSPlayer = GetAllyRTSPlayer(lv_player);
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    lv_startPos = lib5A1C9904_gf_GetStartLocation(lv_allyRTSPlayer);
+    lv_startPos = GetStartLocation(lv_allyRTSPlayer);
     AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
     AIAttackWaveSend(lv_player, 0, false);
     if (((UnitGetType(lv_unit) == "SpectreHero"))) {
@@ -855,11 +855,11 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
     }
 
     while (true) {
-        lib5A1C9904_gf_HeroSpells(lv_player, lv_unit);
+        HeroSpells(lv_player, lv_unit);
         lv_currentPosition = UnitGroupCenterOfGroup(lv_unitGroup);
         lv_veteranLevel = UnitXPGetCurrentLevel(lv_unit, null);
-        lv_hostilePoint = lib5A1C9904_gf_AttackPointHostiles(lv_startPos, lv_currentPosition, lv_veteranLevel, lv_offsetVeterancy);
-        if ((((lib5A1C9904_gf_IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) < 5.0)) || ((lib5A1C9904_gf_IsProtoss(lv_allyRTSPlayer) == false) && (UnitGetPropertyFixed(lv_unit, c_unitPropLifePercent, c_unitPropCurrent) < 30.0)) || ((lv_state == 1) && (UnitGetPropertyFixed(lv_unit, c_unitPropLifePercent, c_unitPropCurrent) < 70.0)) || ((lv_state == 1) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsMax, c_unitPropCurrent) < 0.0) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) < 50.0)))) {
+        lv_hostilePoint = AttackPointHostiles(lv_startPos, lv_currentPosition, lv_veteranLevel, lv_offsetVeterancy);
+        if ((((IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) < 5.0)) || ((IsProtoss(lv_allyRTSPlayer) == false) && (UnitGetPropertyFixed(lv_unit, c_unitPropLifePercent, c_unitPropCurrent) < 30.0)) || ((lv_state == 1) && (UnitGetPropertyFixed(lv_unit, c_unitPropLifePercent, c_unitPropCurrent) < 70.0)) || ((lv_state == 1) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsMax, c_unitPropCurrent) < 0.0) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) < 50.0)))) {
             if ((lv_state != 1)) {
                 AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
                 AISetDifficulty(lv_player, c_diffWaveLeashing, true);
@@ -868,7 +868,7 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
                 AIAttackWaveCancel(AIWaveGet(lv_player, 0));
                 AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                 AIAttackWaveSend(lv_player, 0, false);
-                UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(lib5A1C9904_gf_FindHealspot(lv_unit))), c_orderQueueReplace);
+                UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(FindHealspot(lv_unit))), c_orderQueueReplace);
                 lv_state = 1;
                 lv_stuckCounter = 0;
             }
@@ -879,7 +879,7 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
                     lv_stuckCounter = 0;
                 }
                 else {
-                    if ((((lib5A1C9904_gf_IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) >= 70.0)) || ((lib5A1C9904_gf_IsProtoss(lv_allyRTSPlayer) == false)))) {
+                    if ((((IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) >= 70.0)) || ((IsProtoss(lv_allyRTSPlayer) == false)))) {
                         lv_stuckCounter = (lv_stuckCounter + 1);
                     }
 
@@ -887,7 +887,7 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
             }
         }
         else {
-            lv_defendSpawner = lib5A1C9904_gf_SpawnersBeingAttacked(lv_unit, lv_player);
+            lv_defendSpawner = SpawnersBeingAttacked(lv_unit, lv_player);
             if (((lv_defendSpawner != null))) {
                 if ((lv_state != 3)) {
                     AIAttackWaveCancel(AIWaveGet(lv_player, 0));
@@ -921,7 +921,7 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
             else {
                 if ((lv_hostilePoint != null)) {
                     if ((((lv_lastPosition == null) || (DistanceBetweenPoints(lv_lastPosition, lv_hostilePoint) >= 5.0))) && (lv_state != 2)) {
-                        if ((((lib5A1C9904_gf_IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) > 30.0)) || ((lib5A1C9904_gf_IsProtoss(lv_allyRTSPlayer) == false)))) {
+                        if ((((IsProtoss(lv_allyRTSPlayer) == true) && (UnitGetPropertyFixed(lv_unit, c_unitPropShieldsPercent, c_unitPropCurrent) > 30.0)) || ((IsProtoss(lv_allyRTSPlayer) == false)))) {
                             AIAttackWaveCancel(AIWaveGet(lv_player, 0));
                             AISetDifficulty(lv_player, c_diffNormalTargetPrio, true);
                             AISetDifficulty(lv_player, c_diffWaveLeashing, true);
@@ -941,7 +941,7 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
                             AIAttackWaveSetTargetPoint(lv_player, lv_startPos);
                             AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                             AIAttackWaveSend(lv_player, 0, false);
-                            UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(lib5A1C9904_gf_FindHealspot(lv_unit))), c_orderQueueReplace);
+                            UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(FindHealspot(lv_unit))), c_orderQueueReplace);
                             lv_state = 2;
                         }
                     }
@@ -963,10 +963,10 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
                         AISetDifficulty(lv_player, c_diffWaveAvoidDanger, true);
                         AIAttackWaveCancel(AIWaveGet(lv_player, 0));
                         if (((UnitGetType(lv_unit) == "ZerglingHero") || (UnitGetType(lv_unit) == "AvengerHero") || (UnitGetType(lv_unit) == "SpectreHero"))) {
-                            AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroupAlliance(lib5A1C9904_gf_GetEnemyRTSPlayer(lv_player), c_unitAllianceAllyExcludeSelf, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+                            AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroupAlliance(GetEnemyRTSPlayer(lv_player), c_unitAllianceAllyExcludeSelf, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
                         }
                         else {
-                            AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroupAlliance(lib5A1C9904_gf_GetEnemyRTSPlayer(lv_player), c_unitAllianceAlly, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+                            AIAttackWaveSetTargetUnitGroup(lv_player, UnitGroupAlliance(GetEnemyRTSPlayer(lv_player), c_unitAllianceAlly, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
                         }
                         AIAttackWaveUseGroup(lv_player, libNtve_gf_ConvertUnitToUnitGroup(lv_unit));
                         AIAttackWaveSend(lv_player, 0, false);
@@ -993,6 +993,6 @@ bool lib5A1C9904_gt_Controller_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib5A1C9904_gt_Controller_Init () {
-    lib5A1C9904_gt_Controller = TriggerCreate("lib5A1C9904_gt_Controller_Func");
+void Controller_Init () {
+    Controller = TriggerCreate("Controller_Func");
 }
