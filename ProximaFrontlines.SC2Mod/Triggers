@@ -2,6 +2,7 @@
 <TriggerData>
     <Library Id="5A1C9904">
         <Root>
+            <Item Type="Trigger" Library="5A1C9904" Id="298BBDC6"/>
             <Item Type="FunctionDef" Library="5A1C9904" Id="FF1782E7"/>
             <Item Type="FunctionDef" Library="5A1C9904" Id="290B8CC3"/>
             <Item Type="FunctionDef" Library="5A1C9904" Id="90C93D2B"/>
@@ -20,6 +21,19 @@
             <Item Type="FunctionDef" Library="5A1C9904" Id="EF6D6F4E"/>
             <Item Type="FunctionDef" Library="5A1C9904" Id="B550A421"/>
         </Root>
+        <Element Type="Trigger" Id="298BBDC6">
+            <Event Type="FunctionCall" Library="5A1C9904" Id="DBD878CB"/>
+            <Action Type="FunctionCall" Library="5A1C9904" Id="6F0B8233"/>
+        </Element>
+        <Element Type="FunctionCall" Id="DBD878CB">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
+        </Element>
+        <Element Type="FunctionCall" Id="6F0B8233">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                ProximaInitTriggers();
+            </ScriptCode>
+        </Element>
         <Element Type="FunctionDef" Id="FF1782E7">
             <FlagCall/>
             <ReturnType>
@@ -540,7 +554,6 @@
         <Element Type="FunctionCall" Id="BCF00243">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
             <ScriptCode>
-                ProximaInitTriggers();
                 StartProximaGame(lp_startPosition1, lp_startPosition2, lp_turretOffset1X, lp_turretOffset2X, lp_turretOffset1Y, lp_turretOffset2Y);
             </ScriptCode>
         </Element>

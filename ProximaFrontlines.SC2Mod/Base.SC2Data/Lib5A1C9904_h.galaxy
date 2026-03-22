@@ -33,3 +33,6 @@ void lib5A1C9904_gf_AddJungleUnitPrice (string lp_unitType, int lp_minerals, int
 void lib5A1C9904_gf_AddJungleUnitGroup (unitgroup lp_addUnitGroup, point lp_minimapPoint);
 void lib5A1C9904_gf_StartProximaGame (point lp_startPosition1, point lp_startPosition2, int lp_turretOffset1X, int lp_turretOffset2X, int lp_turretOffset1Y, int lp_turretOffset2Y);
 
+// Trigger Declarations
+trigger lib5A1C9904_gt_LoadTriggers;
+

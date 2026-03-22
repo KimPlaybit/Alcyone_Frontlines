@@ -1,4 +1,4 @@
-include "TriggerLibs/NativeLib"
+﻿include "TriggerLibs/NativeLib"
 
 include "Lib5A1C9904_h"
 
@@ -131,9 +131,33 @@ bool auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc (bool testConds, bool runA
 
     // Automatic Variable Declarations
     // Implementation
-    ProximaInitTriggers();
     StartProximaGame(lp_startPosition1, lp_startPosition2, lp_turretOffset1X, lp_turretOffset2X, lp_turretOffset1Y, lp_turretOffset2Y);
     return true;
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: LoadTriggers
+//--------------------------------------------------------------------------------------------------
+bool lib5A1C9904_gt_LoadTriggers_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    ProximaInitTriggers();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5A1C9904_gt_LoadTriggers_Init () {
+    lib5A1C9904_gt_LoadTriggers = TriggerCreate("lib5A1C9904_gt_LoadTriggers_Func");
+    TriggerAddEventMapInit(lib5A1C9904_gt_LoadTriggers);
+}
+
+void lib5A1C9904_InitTriggers () {
+    lib5A1C9904_gt_LoadTriggers_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -150,5 +174,6 @@ void lib5A1C9904_InitLib () {
 
     lib5A1C9904_InitLibraries();
     lib5A1C9904_InitCustomScript();
+    lib5A1C9904_InitTriggers();
 }
 
