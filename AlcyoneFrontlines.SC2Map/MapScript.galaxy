@@ -288,6 +288,8 @@ void gf_SetupSpawners () {
 
     // Automatic Variable Declarations
     // Variable Initialization
+    lv_waveUnitType = "";
+    lv_spawnerUnitType = "";
 
     // Implementation
     lv_waveUnitType = lib5A1C9904_gf_GetDefaultWaveType(13);
@@ -397,7 +399,7 @@ bool gt_ActivateXelNagaTower1_Func (bool testConds, bool runActions) {
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_killingPlayer = UnitGetOwner(lib5A1C9904_gv_jG_KillingUnit);
+    lv_killingPlayer = UnitGetOwner(lib5A1C9904_gf_KillingUnit());
     lv_tower = UnitFromId(1816851713);
 
     // Actions
@@ -406,7 +408,7 @@ bool gt_ActivateXelNagaTower1_Func (bool testConds, bool runActions) {
     }
 
     UnitSetState(lv_tower, c_unitStateSilenced, false);
-    if ((lib5A1C9904_gf_GetEnemyRTSPlayer(lv_killingPlayer) == lib5A1C9904_gv_rTSPlayer1)) {
+    if ((lib5A1C9904_gf_GetEnemyRTSPlayer(lv_killingPlayer) == gv_rTSPlayer1)) {
         UnitSetOwner(lv_tower, 14, true);
     }
     else {
@@ -434,7 +436,7 @@ bool gt_ActivateXelNagaTower2_Func (bool testConds, bool runActions) {
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_killingPlayer = UnitGetOwner(lib5A1C9904_gv_jG_KillingUnit);
+    lv_killingPlayer = UnitGetOwner(lib5A1C9904_gf_KillingUnit());
     lv_tower = UnitFromId(1194941189);
 
     // Actions
@@ -443,7 +445,7 @@ bool gt_ActivateXelNagaTower2_Func (bool testConds, bool runActions) {
     }
 
     UnitSetState(lv_tower, c_unitStateSilenced, false);
-    if ((lib5A1C9904_gf_GetEnemyRTSPlayer(lv_killingPlayer) == lib5A1C9904_gv_rTSPlayer1)) {
+    if ((lib5A1C9904_gf_GetEnemyRTSPlayer(lv_killingPlayer) == gv_rTSPlayer1)) {
         UnitSetOwner(lv_tower, 14, true);
     }
     else {
@@ -471,7 +473,7 @@ bool gt_ActivateXelNagaTower3_Func (bool testConds, bool runActions) {
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_killingPlayer = UnitGetOwner(lib5A1C9904_gv_jG_KillingUnit);
+    lv_killingPlayer = UnitGetOwner(lib5A1C9904_gf_KillingUnit());
     lv_tower = UnitFromId(1917433232);
 
     // Actions
@@ -480,7 +482,7 @@ bool gt_ActivateXelNagaTower3_Func (bool testConds, bool runActions) {
     }
 
     UnitSetState(lv_tower, c_unitStateSilenced, false);
-    if ((lib5A1C9904_gf_GetEnemyRTSPlayer(lv_killingPlayer) == lib5A1C9904_gv_rTSPlayer1)) {
+    if ((lib5A1C9904_gf_GetEnemyRTSPlayer(lv_killingPlayer) == gv_rTSPlayer1)) {
         UnitSetOwner(lv_tower, 14, true);
     }
     else {
@@ -509,14 +511,14 @@ bool gt_StartBossAi_Func (bool testConds, bool runActions) {
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_killingPlayer = UnitGetOwner(lib5A1C9904_gv_jG_KillingUnit);
+    lv_killingPlayer = UnitGetOwner(lib5A1C9904_gf_KillingUnit());
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    if ((lib5A1C9904_gf_GetAllyRTSPlayer(lv_killingPlayer) == lib5A1C9904_gv_rTSPlayer1)) {
+    if ((lib5A1C9904_gf_GetAllyRTSPlayer(lv_killingPlayer) == gv_rTSPlayer1)) {
         libNtve_gf_CreateUnitsAtPoint2(1, "SpawnedOdin", 0, 13, RegionGetCenter(RegionFromId(8)));
         lv_enemyRTSPlayer = lib5A1C9904_gf_GetEnemyRTSPlayer(13);
         lv_spawnUnit = UnitLastCreated();
@@ -529,11 +531,11 @@ bool gt_StartBossAi_Func (bool testConds, bool runActions) {
     UnitIssueOrder(lv_spawnUnit, OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionEntireMap())), c_orderQueueReplace);
     while ((UnitIsAlive(lv_spawnUnit) == true)) {
         if ((UnitOrder(lv_spawnUnit, 0) == null)) {
-            if ((lv_enemyRTSPlayer == lib5A1C9904_gv_rTSPlayer1)) {
-                UnitIssueOrder(lv_spawnUnit, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGroupCenterOfGroup(lib5A1C9904_gv_rtsPlayer1Buildings)), c_orderQueueReplace);
+            if ((lv_enemyRTSPlayer == gv_rTSPlayer1)) {
+                UnitIssueOrder(lv_spawnUnit, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGroupCenterOfGroup(gv_rtsPlayer1Buildings)), c_orderQueueReplace);
             }
             else {
-                UnitIssueOrder(lv_spawnUnit, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGroupCenterOfGroup(lib5A1C9904_gv_rtsPlayer2Buildings)), c_orderQueueReplace);
+                UnitIssueOrder(lv_spawnUnit, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGroupCenterOfGroup(gv_rtsPlayer2Buildings)), c_orderQueueReplace);
             }
         }
 
@@ -605,11 +607,10 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lv_loadedFromBank = lib5A1C9904_gf_LoadedFromBank(PointFromId(1219627428), PointFromId(1466456382));
     gf_SetupSpawners();
     gf_SetupJungle();
     gf_SpawnPointsMinerals();
-    lib5A1C9904_gf_StartProximaGame(PointFromId(1219627428), PointFromId(1466456382), 3.0, 3.0, -2.0, -3.0);
+    lib5A1C9904_gf_StartProximaGame(PointFromId(1219627428), PointFromId(1466456382), 3, 3, -2, -3);
     return true;
 }
 
