@@ -1,4 +1,4 @@
-﻿include "scripts/GlobalVariables"
+include "scripts/GlobalVariables"
 include "scripts/MapInit"
 include "scripts/Bank"
 include "scripts/Player"
@@ -10,7 +10,8 @@ include "scripts/AI"
 include "scripts/HeroSelection"
 include "scripts/HeroLevelUp"
 
-void InitTriggers () {
+void ProximaInitTriggers () {
+    ProximaInitVariables();
     ExplainRules_Init();
     HideScores_Init();
     ShowScores_Init();

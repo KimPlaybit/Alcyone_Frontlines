@@ -65,11 +65,20 @@ Attribute003/Value002/Name=Off
 Attribute004/Name=With RTS Player
 Attribute004/Value001/Name=On
 Attribute004/Value002/Name=Off
+Behavior/Name/BuffEnergyRegen=Buff Energy Regen
 Behavior/Name/AlliedEnergy=Energy Aura
 Behavior/Name/AlliedEnergyAura=Energy Aura
 Behavior/Name/ArmorPlates=Armor Plates
+Behavior/Name/EnergyRegenBoost=Energy Regen Boost
+Behavior/Name/FlyingUnitGroundAttackDebuff=Grounded
+Behavior/Name/GravityPull=Gravity Pull
+Behavior/Name/HealingBoost=Healing Boost
+Behavior/Name/HeroicDamageBonus=Slayer
+Behavior/Name/IronBoots=Iron Boots
+Behavior/Name/MercurialBoots=Mercurial Boots
+Behavior/Name/NonHeroicDamageReduction=Fortitude Protocol
+Behavior/Name/VelocityBoots=Velocity Boots
 Behavior/Name/BaseBreaker=Base Breaker
-Behavior/Name/BuffEnergyRegen=Buff Energy Regen
 Behavior/Name/BuffEnergyRegen2=Buff Energy Regen
 Behavior/Name/Corsair1to4=Corsair 1 to 4
 Behavior/Name/Corsair5to7=Corsair 5 to 7
@@ -86,47 +95,39 @@ Behavior/Name/Dragoon5to7=Dragoon 5 to 7
 Behavior/Name/Dragoon8to10=Dragoon 8to10
 Behavior/Name/DragoonFrenzy=Frenzy
 Behavior/Name/EmpowerZergBuilding=Empower Zerg Building
-Behavior/Name/EnergyRegenBoost=Energy Regen Boost
 Behavior/Name/FenixChampionPowerShield2=Damage Reduction
 Behavior/Name/Firebat1to4=Firebat 1 to 4
 Behavior/Name/Firebat8to10=Firebat 8 to 10
 Behavior/Name/FirebatAttackSpeed=Firebat 5 to 7
 Behavior/Name/FirebatAvatar=Avatar
-Behavior/Name/FlyingUnitGroundAttackDebuff=Grounded
 Behavior/Name/GatheringDummy=Gathering Dummy
 Behavior/Name/GetCredit=GetCredit
 Behavior/Name/GetCredit2=GetCredit
-Behavior/Name/GlassCannon=Glass Cannon
 Behavior/Name/Goliath1to4=Goliath 1 to 4
 Behavior/Name/Goliath5to7=Goliath 5 to 7
 Behavior/Name/Goliath8to10=Goliath 8 to 10
-Behavior/Name/GravityPull=Gravity Pull
+Behavior/Name/GlassCannon=Glass Cannon
 Behavior/Name/GuardianShield2=Guardian Shield
 Behavior/Name/HealHeroicUnitsAround=Heal Heroic Units Around
 Behavior/Name/Healable=Not Healable
-Behavior/Name/HealingBoost=Healing Boost
 Behavior/Name/HeroDarkTemplarDeepShadows=Hero Dark Templar Deep Shadows
-Behavior/Name/HeroicDamageBonus=Slayer
 Behavior/Name/HinderEnergyRegn=Hinder Energy Regenerate
 Behavior/Name/Hydralisk1to4=Hydralisk 1 to 4
 Behavior/Name/Hydralisk5to7=Hydralisk 5 to 7
 Behavior/Name/Hydralisk5to72=Hydralisk 8 to 10
-Behavior/Name/IronBoots=Iron Boots
 Behavior/Name/Marine1to4=Marine 1 to 4
 Behavior/Name/Marine5to7=Marine 5 to 7
 Behavior/Name/Marine8to10=Marine 8 to 10
 Behavior/Name/Medic1to4=Medic 1 to 4
 Behavior/Name/Medic5to7=Medic 5 to 7
 Behavior/Name/Medic8to10=Medic 8 to 10
-Behavior/Name/MercurialBoots=Mercurial Boots
 Behavior/Name/MothershipCore1to4=Mothership Core 1 to 4
 Behavior/Name/MothershipCore5to7=Mothership Core 5 to 7
 Behavior/Name/MothershipCore8to10=Mothership Core 8 to 10
 Behavior/Name/MothershipCoreLevelBonus=Mothership Core Level Bonus
-Behavior/Name/NonHeroicDamageReduction=Fortitude Protocol
 Behavior/Name/NydusWhirlwind=Whirlwind
-Behavior/Name/PowerOverwhelming=Power Overwhelming
 Behavior/Name/PrologueVoidArmor2=Void Armor
+Behavior/Name/PowerOverwhelming=Power Overwhelming
 Behavior/Name/ProtossDamageBonus=Protoss Damage Bonus
 Behavior/Name/ProtossLevels=Protoss Levels
 Behavior/Name/ProtossMovementBonus=Protoss Movement Bonus
@@ -158,7 +159,6 @@ Behavior/Name/TurnBaneling=Turn Baneling
 Behavior/Name/Ultralisk1to4=Ultralisk 1 to 4
 Behavior/Name/Ultralisk5to7=Ultralisk 5 to 7
 Behavior/Name/Ultralisk8to10=Ultralisk 8 to 10
-Behavior/Name/VelocityBoots=Velocity Boots
 Behavior/Name/VileAcidSlowEffectsLevel12=Slow
 Behavior/Name/ViralPlasma2=Viral Plasma
 Behavior/Name/VoidDarkTemplarDeepShadows2=Void Dark Templar Deep Shadows
@@ -174,57 +174,64 @@ Behavior/Name/ZergMovementBonus=Zerg Movement Bonus
 Behavior/Name/Zergling1to4=Zergling 1 to 4
 Behavior/Name/Zergling5to7=Zergling 5 to 7
 Behavior/Name/Zergling8to10=Zergling 8 to 10
+Behavior/Tooltip/DamageReduction=100% Damage Reduction
+Behavior/Tooltip/DefilerMPDarkSwarm=[PH] Units inside of Dark Cloud take 60% less damage from range
+Behavior/Tooltip/DragoonFrenzy=Attack speed increased.
+Behavior/Tooltip/FirebatAvatar=Dealing damage to any nearby units.
+Behavior/Tooltip/GuardianShield2=Incoming attack damage reduced by 2.
+Behavior/Tooltip/NydusWhirlwind=This unit is dealing damage to nearby enemies.
+Behavior/Tooltip/PsionicLashPrepare=Targeted by a Spectre
+Behavior/Tooltip/Stimpack2=This unit moves and attacks more quickly while under the effects of Stimpack.
+Behavior/Tooltip/Stimpack3=This unit moves and attacks more quickly while under the effects of Stimpack.
+Behavior/Tooltip/SuperStimNova=Firebat's attack and movement speeds are greatly increased. Firebat is healing life over time.
+Behavior/Tooltip/TemporalRiftUnit2=Target's movement speed, attack speed increased by 40%
+Behavior/Tooltip/VileAcidSlowEffectsLevel12=Attack and movement speeds are slightly slowed.
 Behavior/Tooltip/AlliedEnergy=Energy regeneration improved.
 Behavior/Tooltip/AlliedEnergyAura=Grants energy regeneration to nearby allies.
 Behavior/Tooltip/ArmorPlates=Incoming damage reduced by 10%.
 Behavior/Tooltip/BaseBreaker=Deals 20% more damage to structures.
+Behavior/Tooltip/EnergyRegenBoost=Energy regeneration increased.
+Behavior/Tooltip/FlyingUnitGroundAttackDebuff=Grounded and unable to attack.
+Behavior/Tooltip/GlassCannon=Deals 10% more damage but has 20% reduced life and shields.
+Behavior/Tooltip/GravityPull=Deals 3% more damage and allows air to be vulnerable to ground.
+Behavior/Tooltip/HealingBoost=Healing dealt and received both improved.
+Behavior/Tooltip/HeroicDamageBonus=Deals 3 additional damage to Heroic targets.
+Behavior/Tooltip/IronBoots=Movement speed increased by 10%.
+Behavior/Tooltip/MercurialBoots=Movement speed increased by 15%.
+Behavior/Tooltip/NonHeroicDamageReduction=Reduces damage from non-Heroic units by 1.
+Behavior/Tooltip/PowerOverwhelming=Maximum energy increased and energy regeneration granted.
+Behavior/Tooltip/StructureDefense=Takes 20% less damage from structures.
+Behavior/Tooltip/VelocityBoots=Movement speed increased by 30%.
 Behavior/Tooltip/Corsair1to4=+3 Splash Damage, +30 Shields, +15 Energy
 Behavior/Tooltip/Corsair5to7=+4 Splash Damage, +100 Shields, +20 Energy
 Behavior/Tooltip/Corsair8to10=+5 Splash Damage, +140 Shields, +30 Energy
-Behavior/Tooltip/DamageReduction=100% Damage Reduction
 Behavior/Tooltip/DarkTemplar1to4=+6 Melee Damage, +40 Shields
 Behavior/Tooltip/DarkTemplar5to7=+8 Melee Damage, +110 Shields
 Behavior/Tooltip/DarkTemplar8to10=+10 Melee Damage, +150 Shields
 Behavior/Tooltip/Defiler1to4=+4 Ranged Damage, +40 Life, +20 Energy, Energy Regen +2%
 Behavior/Tooltip/Defiler5to7=+5 Ranged Damage, +110 Life, +30 Energy, Energy Regen +2%
 Behavior/Tooltip/Defiler8to10=+7 Ranged Damage, +150 Life, +40 Energy, Energy Regen +2%
-Behavior/Tooltip/DefilerMPDarkSwarm=[PH] Units inside of Dark Cloud take 60% less damage from range
 Behavior/Tooltip/Dragoon1to4=+7 Ranged Damage, +40 Shields
 Behavior/Tooltip/Dragoon5to7=+8 Ranged Damage, +100 Shields
 Behavior/Tooltip/Dragoon8to10=+10 Ranged Damage, +75 Shields
-Behavior/Tooltip/DragoonFrenzy=Attack speed increased.
-Behavior/Tooltip/EnergyRegenBoost=Energy regeneration increased.
 Behavior/Tooltip/Firebat1to4=+3 Ranged Damage, +3 Splash Damage, +80 Life
-Behavior/Tooltip/Firebat8to10=+6 Ranged Damage, +6 Splash Damage, +180 Life
 Behavior/Tooltip/FirebatAttackSpeed=+4 Ranged Damage, +4 Splash Damage, +50 Life
-Behavior/Tooltip/FirebatAvatar=Dealing damage to any nearby units.
-Behavior/Tooltip/FlyingUnitGroundAttackDebuff=Grounded and unable to attack.
-Behavior/Tooltip/GlassCannon=Deals 10% more damage but has 20% reduced life and shields.
+Behavior/Tooltip/Firebat8to10=+6 Ranged Damage, +6 Splash Damage, +180 Life
 Behavior/Tooltip/Goliath1to4=+6 Ranged Damage, +2 Proc Damage, +40 Life
 Behavior/Tooltip/Goliath5to7=+7 Ranged Damage, +3 Proc Damage, +110 Life, +2% Attack Speed
 Behavior/Tooltip/Goliath8to10=+8 Ranged Damage, +4 Proc Damage, +150 Life, +3% Attack Speed
-Behavior/Tooltip/GravityPull=Deals 3% more damage and allows air to be vulnerable to ground.
-Behavior/Tooltip/GuardianShield2=Incoming attack damage reduced by 2.
-Behavior/Tooltip/HealingBoost=Healing dealt and received both improved.
-Behavior/Tooltip/HeroicDamageBonus=Deals 3 additional damage to Heroic targets.
 Behavior/Tooltip/Hydralisk1to4=+2 Melee, +5 Ranged, +40 Life, +1% Move Speed
 Behavior/Tooltip/Hydralisk5to7=+3 Melee, +6 Ranged, +110 Life, +1% Move Speed
 Behavior/Tooltip/Hydralisk5to72=+3 Melee, +7 Ranged, +150 Life, +1% Move Speed
-Behavior/Tooltip/IronBoots=Movement speed increased by 10%.
 Behavior/Tooltip/Marine1to4=+7 Ranged Damage, +30 Life, +5% Attack Speed
 Behavior/Tooltip/Marine5to7=+9 Ranged Damage, +90 Life, +10% Attack Speed
 Behavior/Tooltip/Marine8to10=+11 Ranged Damage, +120 Life, +10% Attack Speed
 Behavior/Tooltip/Medic1to4=+40 Life, +1 Sight Bonus
 Behavior/Tooltip/Medic5to7=+110 Life, +1 Sight Bonus
 Behavior/Tooltip/Medic8to10=+140 Life
-Behavior/Tooltip/MercurialBoots=Movement speed increased by 15%.
 Behavior/Tooltip/MothershipCore1to4=+4 Ranged Damage, +60 Shields
 Behavior/Tooltip/MothershipCore5to7=+5 Ranged Damage, +120 Life, +45 Shields
 Behavior/Tooltip/MothershipCore8to10=+6 Ranged Damage, +150 Shields
-Behavior/Tooltip/NonHeroicDamageReduction=Reduces damage from non-Heroic units by 1.
-Behavior/Tooltip/NydusWhirlwind=This unit is dealing damage to nearby enemies.
-Behavior/Tooltip/PowerOverwhelming=Maximum energy increased and energy regeneration granted.
-Behavior/Tooltip/PsionicLashPrepare=Targeted by a Spectre
 Behavior/Tooltip/Queen1to4=+25 Life, +50 Energy, +0.2 Sight Bonus
 Behavior/Tooltip/Queen1to42=+70 Life, +40 Energy, +0.5 Sight Bonus
 Behavior/Tooltip/Queen1to422=+150 Life, +50 Energy, +1 Sight Bonus
@@ -237,16 +244,9 @@ Behavior/Tooltip/Sentry8to10=+5 Ranged Damage, +150 Shields
 Behavior/Tooltip/Spectre1to4=+5 Ranged Damage, +20 Life, +40 Shields, +20 Energy, +3% XP
 Behavior/Tooltip/Spectre5to7=+8 Ranged Damage, +110 Life, +25 Energy, +3% XP
 Behavior/Tooltip/Spectre8to10=+10 Ranged Damage, +130 Life, +30 Energy, +3% XP
-Behavior/Tooltip/Stimpack2=This unit moves and attacks more quickly while under the effects of Stimpack.
-Behavior/Tooltip/Stimpack3=This unit moves and attacks more quickly while under the effects of Stimpack.
-Behavior/Tooltip/StructureDefense=Takes 20% less damage from structures.
-Behavior/Tooltip/SuperStimNova=Firebat's attack and movement speeds are greatly increased. Firebat is healing life over time.
-Behavior/Tooltip/TemporalRiftUnit2=Target's movement speed, attack speed increased by 40%
 Behavior/Tooltip/Ultralisk1to4=+5 Melee, +2 Splash, +80 Life, +1 Sight Bonus
 Behavior/Tooltip/Ultralisk5to7=+7 Melee, +3 Splash, +110 Life, +1 Sight Bonus
 Behavior/Tooltip/Ultralisk8to10=+8 Melee, +3 Splash, +200 Life, +1 Sight Bonus
-Behavior/Tooltip/VelocityBoots=Movement speed increased by 30%.
-Behavior/Tooltip/VileAcidSlowEffectsLevel12=Attack and movement speeds are slightly slowed.
 Behavior/Tooltip/Zealot1to4=+4 Melee Damage, +80 Shields
 Behavior/Tooltip/Zealot5to7=+5 Melee Damage, +150 Shields
 Behavior/Tooltip/Zealot8to10=+6 Melee Damage, +190 Shields
@@ -1059,192 +1059,197 @@ Param/Value/lib_1_F9D0E981= -
 Param/Value/lib_1_FA5B4E1A= seconds
 Param/Value/lib_1_FCA78A59= Picked Spectre
 Param/Value/lib_1_FCD8DA4B=Gained M/G
-Param/Value/lib_5A1C9904_AbilitiesLabel=Abilities
-Param/Value/lib_5A1C9904_AdeptAbility1=<s val="AchievementFrameName_Prot">Phase Shift:</s> Project invulnerable shade
-Param/Value/lib_5A1C9904_AdeptAbility2=<s val="AchievementFrameName_Prot">Teleport:</s> Move to shade location
-Param/Value/lib_5A1C9904_AdeptAbility3=<s val="AchievementFrameName_Prot">Shield:</s> Damage reduction barrier
-Param/Value/lib_5A1C9904_AdeptAbility4=<s val="AchievementFrameName_Prot">Psi Storm:</s> Area energy attack
-Param/Value/lib_5A1C9904_AdeptDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_AdeptName=<s val="AchievementFrameName_Prot">Adept</s>
-Param/Value/lib_5A1C9904_AdeptStrengths=<s val="AchievementFrameName_Prot">Support</s> - Versatile support unit, Shields, Teleport, Team Support
-Param/Value/lib_5A1C9904_AlliedEnergyAura=Energy Aura
-Param/Value/lib_5A1C9904_AlliedEnergyAuraTooltip=Increase team's energy regeneration by 5%
-Param/Value/lib_5A1C9904_AntiAir=Gravity Pull
-Param/Value/lib_5A1C9904_AntiAirTooltip=Increase all damage by 3% and makes air units vulnerable to ground attacks.
-Param/Value/lib_5A1C9904_ArmorPlates=Armor Plates
-Param/Value/lib_5A1C9904_ArmorPlatesTooltip=Decrease damage taken by 10%
-Param/Value/lib_5A1C9904_AvengerAbility1=<s val="AchievementFrameName_Prot">Blink:</s> Short-range dash with invulnerability frames
-Param/Value/lib_5A1C9904_AvengerAbility2=<s val="AchievementFrameName_Prot">Cloak:</s> Become undetectable, drains energy
-Param/Value/lib_5A1C9904_AvengerAbility3=<s val="AchievementFrameName_Prot">Shadow Fury:</s> Melee attack with bonus damage
-Param/Value/lib_5A1C9904_AvengerAbility4=<s val="AchievementFrameName_Prot">Void Stasis:</s> Temporal effect on target enemy
-Param/Value/lib_5A1C9904_AvengerDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> High
-Param/Value/lib_5A1C9904_AvengerName=<s val="AchievementFrameName_Prot">Dark Templar</s>
-Param/Value/lib_5A1C9904_AvengerStrengths=<s val="AchievementFrameName_Prot">Melee Assassin</s> - Mobile burst damage dealer, Invisibility, Burst Damage, Hit-and-Run
-Param/Value/lib_5A1C9904_BaseBreaker=Base Breaker
-Param/Value/lib_5A1C9904_BaseBreakerTooltip=Increase damage to structures by 20%
-Param/Value/lib_5A1C9904_BootsAura=MercurialBoots boots
-Param/Value/lib_5A1C9904_BootsAuraTooltip=Increases Movement Speed
-Param/Value/lib_5A1C9904_CorsairAbility1=<s val="AchievementFrameName_Prot">Disruption Web:</s> Projectile that applies slowing web to enemies
-Param/Value/lib_5A1C9904_CorsairAbility2=<s val="AchievementFrameName_Prot">Force Field:</s> Projectile wall that blocks movement and damage
-Param/Value/lib_5A1C9904_CorsairAbility3=<s val="AchievementFrameName_Prot">Psionic Shockwave:</s> Area burst damage around location
-Param/Value/lib_5A1C9904_CorsairAbility4=<s val="AchievementFrameName_Prot">Mothership Stasis:</s> Area denial effect to prevent enemy bursts
-Param/Value/lib_5A1C9904_CorsairDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_CorsairName=<s val="AchievementFrameName_Prot">Corsair</s>
-Param/Value/lib_5A1C9904_CorsairStrengths=<s val="AchievementFrameName_Prot">Battle Support</s> - Teamfight control specialist, Area Denial, Crowd Control, Strategic Advantage
-Param/Value/lib_5A1C9904_DarkTemplarAbility1=<s val="AchievementFrameName_Prot">Blink:</s> Short-range dash with invulnerability frames
-Param/Value/lib_5A1C9904_DarkTemplarAbility2=<s val="AchievementFrameName_Prot">Cloak:</s> Become undetectable, drains energy while active
-Param/Value/lib_5A1C9904_DarkTemplarAbility3=<s val="AchievementFrameName_Prot">Shadow Fury:</s> Melee burst attack with bonus damage
-Param/Value/lib_5A1C9904_DarkTemplarAbility4=<s val="AchievementFrameName_Prot">Void Stasis:</s> Temporal effect on target enemy
-Param/Value/lib_5A1C9904_DarkTemplarDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> High
-Param/Value/lib_5A1C9904_DarkTemplarName=<s val="AchievementFrameName_Prot">Dark Templar</s>
-Param/Value/lib_5A1C9904_DarkTemplarStrengths=<s val="AchievementFrameName_Prot">Melee Assassin</s> - Mobile burst damage dealer, Invisibility, Burst Damage, Hit-and-Run
-Param/Value/lib_5A1C9904_DefilerAbility1=<s val="AchievementFrameName_Zerg">Consume:</s> Absorb and eliminate enemy units
-Param/Value/lib_5A1C9904_DefilerAbility2=<s val="AchievementFrameName_Zerg">Dark Swarm:</s> Create damaging cloud that damages enemies
-Param/Value/lib_5A1C9904_DefilerAbility3=<s val="AchievementFrameName_Zerg">Plague:</s> Spread disease effect across area
-Param/Value/lib_5A1C9904_DefilerAbility4=<s val="AchievementFrameName_Zerg">Leech:</s> Life drain ability to heal self
-Param/Value/lib_5A1C9904_DefilerDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Hard
-Param/Value/lib_5A1C9904_DefilerName=<s val="AchievementFrameName_Zerg">Defiler</s>
-Param/Value/lib_5A1C9904_DefilerStrengths=<s val="AchievementFrameName_Zerg">Corruptor</s> - Toxin and control specialist, Life Drain, Area Denial, Crowd Control
-Param/Value/lib_5A1C9904_DragoonAbility1=<s val="AchievementFrameName_Prot">Wormhole Transit:</s> Short-range teleport for repositioning
-Param/Value/lib_5A1C9904_DragoonAbility2=<s val="AchievementFrameName_Prot">Time Bomb:</s> Place delayed damage on target enemy
-Param/Value/lib_5A1C9904_DragoonAbility3=<s val="AchievementFrameName_Prot">Power Shield:</s> Temporary damage reduction buff
-Param/Value/lib_5A1C9904_DragoonAbility4=<s val="AchievementFrameName_Prot">Psi Orb:</s> Projectile with area damage effect
-Param/Value/lib_5A1C9904_DragoonDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_DragoonName=<s val="AchievementFrameName_Prot">Dragoon</s>
-Param/Value/lib_5A1C9904_DragoonStrengths=<s val="AchievementFrameName_Prot">Ranged Carry</s> - Consistent sustained DPS dealer, Sustained Damage, Utility, Safe Range
-Param/Value/lib_5A1C9904_EnergyRegen=Energy Regen Boost
-Param/Value/lib_5A1C9904_EnergyRegenTooltip=Increase energy regeneration by 0.05 per second
-Param/Value/lib_5A1C9904_FirebatAbility1=<s val="AchievementFrameName_Terr">Lightning Dash:</s> Swift repositioning skill
-Param/Value/lib_5A1C9904_FirebatAbility2=<s val="AchievementFrameName_Terr">Avatar:</s> Explosive self-damage boost
-Param/Value/lib_5A1C9904_FirebatAbility3=<s val="AchievementFrameName_Terr">Turret Deploy:</s> Static defense structure
-Param/Value/lib_5A1C9904_FirebatAbility4=<s val="AchievementFrameName_Terr">Stimpack:</s> Short attack speed buff
-Param/Value/lib_5A1C9904_FirebatDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Easy
-Param/Value/lib_5A1C9904_FirebatName=<s val="AchievementFrameName_Terr">Firebat</s>
-Param/Value/lib_5A1C9904_FirebatStrengths=<s val="AchievementFrameName_Terr">Bruiser</s> - High durability with burst damage, Tank, Fire AOE, Crowd Control
-Param/Value/lib_5A1C9904_FortitudeProtocol=Fortitude Protocol
-Param/Value/lib_5A1C9904_FortitudeTooltip=Reduce damage from non-heroics sources by 1
-Param/Value/lib_5A1C9904_GlassCannon=Glass Cannon
-Param/Value/lib_5A1C9904_GlassCannonTooltip=Increase all damage by 10%, reduce max health by 20%
-Param/Value/lib_5A1C9904_GoliathAbility1=<s val="AchievementFrameName_Terr">Missile Pods:</s> Launch explosive missiles at enemies
-Param/Value/lib_5A1C9904_GoliathAbility2=<s val="AchievementFrameName_Terr">Psionic Lift:</s> Lift target into air, disabling temporarily
-Param/Value/lib_5A1C9904_GoliathAbility3=<s val="AchievementFrameName_Terr">Psionic Shockwave:</s> Area explosive burst dealing damage
-Param/Value/lib_5A1C9904_GoliathAbility4=<s val="AchievementFrameName_Terr">Stimpack:</s> Temporary attack and movement speed boost
-Param/Value/lib_5A1C9904_GoliathDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_GoliathName=<s val="AchievementFrameName_Terr">Goliath</s>
-Param/Value/lib_5A1C9904_GoliathStrengths=<s val="AchievementFrameName_Terr">Anti-Air Specialist</s> - Exceptional air defense, Lift Mechanic, Air Attacks, Crowd Control
-Param/Value/lib_5A1C9904_HealingBoost=Healing Boost
-Param/Value/lib_5A1C9904_HealingBoostTooltip=Increase healing done by 10% and healing received by 5%
-Param/Value/lib_5A1C9904_HydraliskAbility1=<s val="AchievementFrameName_Zerg">Impale:</s> Long-range piercing attack on targets
-Param/Value/lib_5A1C9904_HydraliskAbility2=<s val="AchievementFrameName_Zerg">Hydralisk Frenzy:</s> Increases attack speed and damage output
-Param/Value/lib_5A1C9904_HydraliskAbility3=<s val="AchievementFrameName_Zerg">Ensnare:</s> Root and immobilize enemies in area
-Param/Value/lib_5A1C9904_HydraliskAbility4=<s val="AchievementFrameName_Zerg">Stunning Blast:</s> Burst damage that stuns on impact
-Param/Value/lib_5A1C9904_HydraliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_HydraliskName=<s val="AchievementFrameName_Zerg">Hydralisk</s>
-Param/Value/lib_5A1C9904_HydraliskStrengths=<s val="AchievementFrameName_Zerg">ADC</s> - Ranged damage dealer, High Attack Speed, Crowd Control, Area Denial
-Param/Value/lib_5A1C9904_IronBoots=Iron Boots
-Param/Value/lib_5A1C9904_IronTooltip=Gain +0.1 movement speed
-Param/Value/lib_5A1C9904_Level10Title=Final Upgrade - Choose Wisely
-Param/Value/lib_5A1C9904_Level2Title=Choose an Upgrade
-Param/Value/lib_5A1C9904_Level5Title=Choose an Upgrade
-Param/Value/lib_5A1C9904_Level7Title=Choose an Upgrade
-Param/Value/lib_5A1C9904_LockInButton=Select
-Param/Value/lib_5A1C9904_MarineAbility1=<s val="AchievementFrameName_Terr">Stimpack:</s> Temporary attack speed and movement speed boost
-Param/Value/lib_5A1C9904_MarineAbility2=<s val="AchievementFrameName_Terr">Toss Grenade:</s> Projectile that applies area damage
-Param/Value/lib_5A1C9904_MarineAbility3=<s val="AchievementFrameName_Terr">Radar:</s> Deploy sensor revealing nearby enemies
-Param/Value/lib_5A1C9904_MarineAbility4=<s val="AchievementFrameName_Terr">Psi Shield:</s> Grant temporary shield buff
-Param/Value/lib_5A1C9904_MarineDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Hard
-Param/Value/lib_5A1C9904_MarineName=<s val="AchievementFrameName_Terr">Marine</s>
-Param/Value/lib_5A1C9904_MarineStrengths=<s val="AchievementFrameName_Terr">Glass Cannon ADC</s> - Extreme damage output with health costs, High DPS, Ability-Cost Playstyle, Positioning Critical
-Param/Value/lib_5A1C9904_MedicAbility1=<s val="AchievementFrameName_Terr">Nano Repair:</s> Restore health to nearby allies over time
-Param/Value/lib_5A1C9904_MedicAbility2=<s val="AchievementFrameName_Terr">Caduceus Reactor:</s> Nearby allies gain passive health regeneration
-Param/Value/lib_5A1C9904_MedicAbility3=<s val="AchievementFrameName_Terr">Flash Bang Grenades:</s> Throw grenades that stun and damage enemies
-Param/Value/lib_5A1C9904_MedicAbility4=<s val="AchievementFrameName_Terr">Observer Squad Sight:</s> Deploy vision unit or gain shared sight
-Param/Value/lib_5A1C9904_MedicDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_MedicName=<s val="AchievementFrameName_Terr">Medic</s>
-Param/Value/lib_5A1C9904_MedicStrengths=<s val="AchievementFrameName_Terr">Support</s> - Primary team healer role, Healing, Utility, Team Protection
-Param/Value/lib_5A1C9904_MercurialBoots=Mercurial Boots
-Param/Value/lib_5A1C9904_MercurialTooltip=Gain +0.15 movement speed
-Param/Value/lib_5A1C9904_MothershipAbility1=<s val="AchievementFrameName_Prot">Photon Cannon:</s> Deploy defensive cannon structure at location
-Param/Value/lib_5A1C9904_MothershipAbility2=<s val="AchievementFrameName_Prot">Structure Defense:</s> Protect and strengthen nearby structures
-Param/Value/lib_5A1C9904_MothershipAbility3=<s val="AchievementFrameName_Prot">Photon Overcharge:</s> Temporarily boost pylon defenses and firepower
-Param/Value/lib_5A1C9904_MothershipAbility4=<s val="AchievementFrameName_Prot">Reversed Time Warp:</s> Rewind time effects on targets
-Param/Value/lib_5A1C9904_MothershipAbility5=Teleport to Power: Mobile repositioning near power sources
-Param/Value/lib_5A1C9904_MothershipDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_MothershipName=<s val="AchievementFrameName_Prot">Mothership Core</s>
-Param/Value/lib_5A1C9904_MothershipStrengths=<s val="AchievementFrameName_Prot">Base Defender</s> - Flying defensive specialist, Defensive Utilities, Team Protection, Structure Defense
-Param/Value/lib_5A1C9904_MutaliskAbility1=<s val="AchievementFrameName_Zerg">Abduction:</s> Pull target unit toward Mutalisk with stun
-Param/Value/lib_5A1C9904_MutaliskAbility2=<s val="AchievementFrameName_Zerg">Charge:</s> Mobile dash toward target for melee engagement
-Param/Value/lib_5A1C9904_MutaliskAbility3=<s val="AchievementFrameName_Zerg">Primal Roar:</s> Burst command that increases attack speed for nearby allies
-Param/Value/lib_5A1C9904_MutaliskAbility4=<s val="AchievementFrameName_Zerg">Psychic Clones:</s> Create temporary clones of Mutalisk for extra damage
-Param/Value/lib_5A1C9904_MutaliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium-High
-Param/Value/lib_5A1C9904_MutaliskName=<s val="AchievementFrameName_Zerg">Mutalisk</s>
-Param/Value/lib_5A1C9904_MutaliskStrengths=<s val="AchievementFrameName_Zerg">Aerial Carry</s> - Flying ranged unit, Burst Damage, Crowd Control, Team Buff
-Param/Value/lib_5A1C9904_NydusAbility1=<s val="AchievementFrameName_Zerg">Spawn Mechanics:</s> Generate allied spawned units to defend base
-Param/Value/lib_5A1C9904_NydusAbility2=<s val="AchievementFrameName_Zerg">Nydus Canal:</s> Create warp points for rapid base positioning
-Param/Value/lib_5A1C9904_NydusAbility3=<s val="AchievementFrameName_Zerg">Dig:</s> Burrow into terrain for concealment and surprise positioning
-Param/Value/lib_5A1C9904_NydusAbility4=<s val="AchievementFrameName_Zerg">Spawn Hydralisk Charge:</s> Summon elite charged Hydralisk unit
-Param/Value/lib_5A1C9904_NydusAbility5=Empower Building: Buff nearby structures with enhanced defense
-Param/Value/lib_5A1C9904_NydusDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium-High
-Param/Value/lib_5A1C9904_NydusName=<s val="AchievementFrameName_Zerg">Nydalist</s>
-Param/Value/lib_5A1C9904_NydusStrengths=<s val="AchievementFrameName_Zerg">Base Defender</s> - Spawn army control, Area Denial, Structure Defense, Base Control
-Param/Value/lib_5A1C9904_PowerOverwhelming=Power Overwhelming
-Param/Value/lib_5A1C9904_PowerOverwhelmingTooltip=Increase energy by 100 and energy regeneration by additional 30%
-Param/Value/lib_5A1C9904_QueenAbility1=<s val="AchievementFrameName_Zerg">Transfusion:</s> Heal allies over time (HoT)
-Param/Value/lib_5A1C9904_QueenAbility2=<s val="AchievementFrameName_Zerg">Primal Gas Cloud:</s> Area denial with slowing damage
-Param/Value/lib_5A1C9904_QueenAbility3=<s val="AchievementFrameName_Zerg">Spawn Broodlings:</s> Convert enemy unit into allies
-Param/Value/lib_5A1C9904_QueenAbility4=<s val="AchievementFrameName_Zerg">Ensnare:</s> Slow and reveal enemies in area
-Param/Value/lib_5A1C9904_QueenDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Easy
-Param/Value/lib_5A1C9904_QueenName=<s val="AchievementFrameName_Zerg">Queen</s>
-Param/Value/lib_5A1C9904_QueenStrengths=<s val="AchievementFrameName_Zerg">Support</s> - Team healing sustain, Healing, Area Denial, Crowd Control
-Param/Value/lib_5A1C9904_ScienceVesselAbility1=<s val="AchievementFrameName_Terr">Repair Beam:</s> Restore health to allies or structures over time
-Param/Value/lib_5A1C9904_ScienceVesselAbility2=<s val="AchievementFrameName_Terr">Repair Drone Hangar:</s> Deploy repair drones for autonomous healing
-Param/Value/lib_5A1C9904_ScienceVesselAbility3=<s val="AchievementFrameName_Terr">EMP Shockwave:</s> Area effect that damages and disrupts enemies
-Param/Value/lib_5A1C9904_ScienceVesselAbility4=<s val="AchievementFrameName_Terr">Emergency Thrusters:</s> Temporary movement speed boost for repositioning
-Param/Value/lib_5A1C9904_ScienceVesselDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_ScienceVesselName=<s val="AchievementFrameName_Terr">Science Vessel</s>
-Param/Value/lib_5A1C9904_ScienceVesselStrengths=<s val="AchievementFrameName_Terr">Base Defender</s> - Specialized support vessel, Structure Repair, Ranged Disruption, Detection
-Param/Value/lib_5A1C9904_SentryAbility1=<s val="AchievementFrameName_Prot">Double Shield Recharge:</s> Repair ally shields rapidly
-Param/Value/lib_5A1C9904_SentryAbility2=<s val="AchievementFrameName_Prot">Chrono Beam:</s> Slow enemies or speed up allies
-Param/Value/lib_5A1C9904_SentryAbility3=<s val="AchievementFrameName_Prot">Force Field:</s> Wall that blocks movement and damage
-Param/Value/lib_5A1C9904_SentryAbility4=<s val="AchievementFrameName_Prot">Guardian Shield:</s> Passive aura with shield regeneration
-Param/Value/lib_5A1C9904_SentryDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium-High
-Param/Value/lib_5A1C9904_SentryName=<s val="AchievementFrameName_Prot">Sentry</s>
-Param/Value/lib_5A1C9904_SentryStrengths=<s val="AchievementFrameName_Prot">Support</s> - Utility and team protection, Shield Repair, Temporal Control, Force Field
-Param/Value/lib_5A1C9904_Slayer=Slayer
-Param/Value/lib_5A1C9904_SlayerTooltip=Increased damage to heroics by 3
-Param/Value/lib_5A1C9904_SpectreAbility1=<s val="AchievementFrameName_Terr">Cloaking Field:</s> Become invisible, drain energy while active
-Param/Value/lib_5A1C9904_SpectreAbility2=<s val="AchievementFrameName_Terr">Nuke Calldown:</s> Call down devastating orbital strike for burst damage
-Param/Value/lib_5A1C9904_SpectreAbility3=<s val="AchievementFrameName_Terr">Ultrasonic Pulse:</s> Apply area stun/disruption to enemies
-Param/Value/lib_5A1C9904_SpectreAbility4=<s val="AchievementFrameName_Terr">Obliterate:</s> Single-target execution ability on isolated targets
-Param/Value/lib_5A1C9904_SpectreDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Hard
-Param/Value/lib_5A1C9904_SpectreName=<s val="AchievementFrameName_Terr">Spectre</s>
-Param/Value/lib_5A1C9904_SpectreStrengths=<s val="AchievementFrameName_Terr">Assassin</s> - High burst damage specialist, Stealth, Precision, Hit-and-Run
-Param/Value/lib_5A1C9904_StrengthsLabel=Strengths
-Param/Value/lib_5A1C9904_StructureDefense=Reinforced Armor
-Param/Value/lib_5A1C9904_StructureDefenseTooltip=Reduce damage dealt to structures by 20%
-Param/Value/lib_5A1C9904_UltraliskAbility1=<s val="AchievementFrameName_Zerg">Burrow Charge:</s> Burrow and charge toward enemies with area damage, knockback and stun on impact
-Param/Value/lib_5A1C9904_UltraliskAbility2=<s val="AchievementFrameName_Zerg">Consume:</s> Consume enemy units for health regeneration and healing increase buff
-Param/Value/lib_5A1C9904_UltraliskAbility3=<s val="AchievementFrameName_Zerg">Frenzied Form:</s> Self-buff increasing damage output and air attack at level 7+
-Param/Value/lib_5A1C9904_UltraliskAbility4=<s val="AchievementFrameName_Zerg">Monarch Blades:</s> Temporary movement speed and area damage buff
-Param/Value/lib_5A1C9904_UltraliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_UltraliskName=<s val="AchievementFrameName_Zerg">Ultralisk</s>
-Param/Value/lib_5A1C9904_UltraliskStrengths=<s val="AchievementFrameName_Zerg">Bruiser</s> - Durable frontline with area damage, High Health Pool, Splash Damage, Scaling Power
-Param/Value/lib_5A1C9904_VelocityBoots=Velocity Boots
-Param/Value/lib_5A1C9904_VelocityTooltip=Gain +0.3 movement speed
-Param/Value/lib_5A1C9904_ZealotAbility1=<s val="AchievementFrameName_Prot">Charge:</s> Dashes forward, interrupting enemies
-Param/Value/lib_5A1C9904_ZealotAbility2=<s val="AchievementFrameName_Prot">Whirlwind:</s> Spins attacking nearby, refreshes on kill
-Param/Value/lib_5A1C9904_ZealotAbility3=<s val="AchievementFrameName_Prot">Overcharge:</s> Increases damage and shield regeneration
-Param/Value/lib_5A1C9904_ZealotAbility4=<s val="AchievementFrameName_Prot">Shield Capacitor:</s> Passive shield pool with nearby foes
-Param/Value/lib_5A1C9904_ZealotDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
-Param/Value/lib_5A1C9904_ZealotName=<s val="AchievementFrameName_Prot">Zealot</s>
-Param/Value/lib_5A1C9904_ZealotStrengths=<s val="AchievementFrameName_Prot">Bruiser</s> - Durable frontline damage dealer, Shield Regeneration, Extended Engagement, High Damage
-Param/Value/lib_5A1C9904_ZerglingAbility1=<s val="AchievementFrameName_Zerg">Raptor Charge:</s> Mobile dash toward target with damage
-Param/Value/lib_5A1C9904_ZerglingAbility2=<s val="AchievementFrameName_Zerg">Morph to Baneling:</s> Transform into area damage form
-Param/Value/lib_5A1C9904_ZerglingAbility3=<s val="AchievementFrameName_Zerg">Poison Nova:</s> Apply slowing cloud to enemies nearby
-Param/Value/lib_5A1C9904_ZerglingAbility4=<s val="AchievementFrameName_Zerg">Zergling Mine:</s> Place explosive trap on contact
-Param/Value/lib_5A1C9904_ZerglingDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Hard
-Param/Value/lib_5A1C9904_ZerglingName=<s val="AchievementFrameName_Zerg">Zergling</s>
-Param/Value/lib_5A1C9904_ZerglingStrengths=<s val="AchievementFrameName_Zerg">Melee Assassin</s> - Mobile hit-and-run specialist, Mine Placement, Rapid Mobility, Tactical Positioning
+Param/Value/lib_5A1C9904_01C0EB28=Info:<n/>1. Killing an Enemy Soldier player will give your RTS player 500 Minerals and 300 Vespene Gas.<n/>2. Killing Hostile Units will bring Resources to your RTS player.<n/>3. Boss will Spawn after 10 Minutes.Killing the boss gives 2000 Minerals and 1000 Vespene Gas to the RTS player.
+Param/Value/lib_5A1C9904_0316399F= Picked Goliath
+Param/Value/lib_5A1C9904_03C0B059=Air Unit, Neutralize Zone.
+Param/Value/lib_5A1C9904_04F8C258= Picked Dark Templar
+Param/Value/lib_5A1C9904_0599BA84= Picked Dragoon
+Param/Value/lib_5A1C9904_07A6199C= Picked Firebat
+Param/Value/lib_5A1C9904_0942BB65= Picked Corsair
+Param/Value/lib_5A1C9904_0ABEEA84=/
+Param/Value/lib_5A1C9904_0E44D467=Range Unit
+Param/Value/lib_5A1C9904_1028BD8F=Defiler
+Param/Value/lib_5A1C9904_1258901B= Picked Dark Templar
+Param/Value/lib_5A1C9904_1275C5B1= Picked Hydralisk
+Param/Value/lib_5A1C9904_12C4A045=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_5A1C9904_130BF7CF= Picked Queen
+Param/Value/lib_5A1C9904_152A66FA= Picked Zealot
+Param/Value/lib_5A1C9904_15BADC69=Range Unit
+Param/Value/lib_5A1C9904_18626199=Splash damage, Only Ground Units.
+Param/Value/lib_5A1C9904_18851F8A=Fast Unit, Can fly up over cliffs. Only Ground<n/>
+Param/Value/lib_5A1C9904_1AF2225B=Mothership Core
+Param/Value/lib_5A1C9904_1C2AD81E=To Many Move points added
+Param/Value/lib_5A1C9904_1DE3E5FA=Support, Flying Unit, Heals. 
+Param/Value/lib_5A1C9904_1ECB2231=Hydralisk
+Param/Value/lib_5A1C9904_1F297095= Picked Hydralisk
+Param/Value/lib_5A1C9904_215DA594=Range Unit
+Param/Value/lib_5A1C9904_24A60DAB=Firebat
+Param/Value/lib_5A1C9904_29B3373E=Support, Refunnels Shield for others
+Param/Value/lib_5A1C9904_2C347B6C=Support, Heals Bio units and Can Repair.
+Param/Value/lib_5A1C9904_3067D3D9=Spawner Point can't be null or No Point!
+Param/Value/lib_5A1C9904_3086F79D=Defiler
+Param/Value/lib_5A1C9904_33BE9386= Picked Ultralisk
+Param/Value/lib_5A1C9904_34AE88BC=Zealot
+Param/Value/lib_5A1C9904_3643AF90=Heavily Focused on Defending, Repair and mitigate damage.
+Param/Value/lib_5A1C9904_36BFC19A= Picked Defiler
+Param/Value/lib_5A1C9904_3A7E66C9=Ultralisk
+Param/Value/lib_5A1C9904_3B143AE7=-
+Param/Value/lib_5A1C9904_3C7C04B9=Melee Unit, Stealth
+Param/Value/lib_5A1C9904_3D41B77E=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_5A1C9904_3F97D3D6= Picked Spectre
+Param/Value/lib_5A1C9904_4008A2BA=Queen
+Param/Value/lib_5A1C9904_4317D246=Range Unit.
+Param/Value/lib_5A1C9904_46CEA381=Goliath
+Param/Value/lib_5A1C9904_47065936=Splash damage, Only Ground Units.
+Param/Value/lib_5A1C9904_47771A14=Marine
+Param/Value/lib_5A1C9904_479173BD=Zealot
+Param/Value/lib_5A1C9904_4C335958=Nydus
+Param/Value/lib_5A1C9904_4DC14A06=Bruiser, Splash damage, Melee
+Param/Value/lib_5A1C9904_4DEBCE26=Support, Flying Unit, Heals. 
+Param/Value/lib_5A1C9904_50533C92=Support, Refunnels Shield for others
+Param/Value/lib_5A1C9904_50B05475=Dark Templar
+Param/Value/lib_5A1C9904_53FF420E= Picked Defiler
+Param/Value/lib_5A1C9904_54D1A4ED= - 
+Param/Value/lib_5A1C9904_5A81ABD2=Corsair
+Param/Value/lib_5A1C9904_5A84CAED= Picked Spectre
+Param/Value/lib_5A1C9904_5B0D051C=, will revive in 
+Param/Value/lib_5A1C9904_5BD3340E=Specialist Unit, Uses Stun and nukes
+Param/Value/lib_5A1C9904_5F1EFDD8=+
+Param/Value/lib_5A1C9904_610D72CF=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_5A1C9904_63AEB7D7=Medic
+Param/Value/lib_5A1C9904_66965059=Zealot
+Param/Value/lib_5A1C9904_66E51568=[Allies] RTS Protoss AI: Building Batteries!
+Param/Value/lib_5A1C9904_68B51A2F=Sentry
+Param/Value/lib_5A1C9904_698DE8D6=Corsair
+Param/Value/lib_5A1C9904_6A15202A=Ranged Unit, has increased attack Speed
+Param/Value/lib_5A1C9904_6A686599= Picked Medic
+Param/Value/lib_5A1C9904_6A7465F3= Picked Goliath
+Param/Value/lib_5A1C9904_6AE07A1A= Picked Medic
+Param/Value/lib_5A1C9904_6BCF858B=Dark Templar
+Param/Value/lib_5A1C9904_6C680DE3= Picked Corsair
+Param/Value/lib_5A1C9904_6CBD470B=Range Unit
+Param/Value/lib_5A1C9904_6F27D176=Zealot
+Param/Value/lib_5A1C9904_708720DB= Picked Medic
+Param/Value/lib_5A1C9904_710B2B61= Picked Goliath
+Param/Value/lib_5A1C9904_71D8F85C= Picked Marine
+Param/Value/lib_5A1C9904_752ED481=Zergling
+Param/Value/lib_5A1C9904_774E7360= Picked Nydus Worm
+Param/Value/lib_5A1C9904_7B5B1561=Ultralisk
+Param/Value/lib_5A1C9904_7C62B8C6=Mothership Core
+Param/Value/lib_5A1C9904_7E009E82= LEFT AI LOOP!!!
+Param/Value/lib_5A1C9904_7E09F6B4=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_5A1C9904_7F5EF35A=Heavily Focused on Defending, Repair and mitigate damage.
+Param/Value/lib_5A1C9904_7FE3D72B= Picked Ultralisk
+Param/Value/lib_5A1C9904_81EEDE57=Dragoon
+Param/Value/lib_5A1C9904_820BB715= Picked Corsair
+Param/Value/lib_5A1C9904_825CFEE7=Splash damage, Only Ground Units.
+Param/Value/lib_5A1C9904_82CAEECD=Sentry
+Param/Value/lib_5A1C9904_84C2FEEA=Anti Air Unit
+Param/Value/lib_5A1C9904_862C7605= Picked Zergling
+Param/Value/lib_5A1C9904_8752F893=<c val="D50005">Please consider joining the discord, send me feedback, bugs and get noticed of lobbies started:</c> <c val="0005D5">https://discord.gg/abBfe66wey</c>
+Param/Value/lib_5A1C9904_89937BE5= Picked Queen
+Param/Value/lib_5A1C9904_89BF609B=Specialist Unit, Damage Mitigation Cloud and AoE Damage
+Param/Value/lib_5A1C9904_8A1774B1=Pick Soldier
+Param/Value/lib_5A1C9904_8A5EDF0C= Picked Hydralisk
+Param/Value/lib_5A1C9904_8AF502DE= Picked Adept
+Param/Value/lib_5A1C9904_8C87B31B=Corsair
+Param/Value/lib_5A1C9904_8C8B006A=Spectre
+Param/Value/lib_5A1C9904_8CCC236B=Nydus
+Param/Value/lib_5A1C9904_8E21C751=Has Died
+Param/Value/lib_5A1C9904_8E2C0B03= Picked Dragoon
+Param/Value/lib_5A1C9904_90792FDD=[Allies] RTS Terran AI: Building Medivacs!
+Param/Value/lib_5A1C9904_92451847= Picked Dark Templar
+Param/Value/lib_5A1C9904_956C1A6F= was killed by 
+Param/Value/lib_5A1C9904_95EAF36B=0/0
+Param/Value/lib_5A1C9904_964EEB0B=Air Unit, Neutralize Zone.
+Param/Value/lib_5A1C9904_96516D3D= Picked Ultralisk
+Param/Value/lib_5A1C9904_9670DC38= Picked Adept
+Param/Value/lib_5A1C9904_978D5B47=Goliath
+Param/Value/lib_5A1C9904_984B5D54=K/D
+Param/Value/lib_5A1C9904_9879E07D=Spectre
+Param/Value/lib_5A1C9904_9A658092=[Allies] RTS Zerg AI: Building Queens!
+Param/Value/lib_5A1C9904_9ACD18A4= Picked Zergling
+Param/Value/lib_5A1C9904_9B0126FE=0/0
+Param/Value/lib_5A1C9904_9B4C32A0=0/0
+Param/Value/lib_5A1C9904_9D20C22F= Picked Dark Templar
+Param/Value/lib_5A1C9904_9FE8F972= Picked Queen
+Param/Value/lib_5A1C9904_A13357E0= Picked Zealot
+Param/Value/lib_5A1C9904_A29CFC43= Picked Dragoon
+Param/Value/lib_5A1C9904_A2B2DA65= Picked Dark Templar
+Param/Value/lib_5A1C9904_A2FD87C6=Heavily Focused on Defending and pushing lanes. Summons units constantly
+Param/Value/lib_5A1C9904_A4E9EAB5= Picked Dragoon
+Param/Value/lib_5A1C9904_A8E43C3A=Marine
+Param/Value/lib_5A1C9904_AA4978C8=Specialist Unit, Damage Mitigation Cloud and AoE Damage
+Param/Value/lib_5A1C9904_AA757172= Picked Marine
+Param/Value/lib_5A1C9904_AAF3B2FF= Picked Corsair
+Param/Value/lib_5A1C9904_AC106C06=Ranged Unit, has increased attack Speed
+Param/Value/lib_5A1C9904_AC4B2CAE= Picked Adept
+Param/Value/lib_5A1C9904_ACA8AF65=Support, Refunnels Shield for others
+Param/Value/lib_5A1C9904_AE1E5D4A=Hide Scores
+Param/Value/lib_5A1C9904_AE7DD35C=Show Scores
+Param/Value/lib_5A1C9904_AE849DE1=Science Vessel
+Param/Value/lib_5A1C9904_AFDA49F0= Picked Adept
+Param/Value/lib_5A1C9904_B3FA3570=Sentry
+Param/Value/lib_5A1C9904_B4CBDC5F=Soldiers 1
+Param/Value/lib_5A1C9904_B5ED5957=Dragoon
+Param/Value/lib_5A1C9904_B6593422=Hydralisk
+Param/Value/lib_5A1C9904_BC409EF3= - 
+Param/Value/lib_5A1C9904_BCAB7A92=Air Unit, Neutralize Zone.
+Param/Value/lib_5A1C9904_C32A4E04=Dark Templar
+Param/Value/lib_5A1C9904_C37D7F0F=Dark Templar
+Param/Value/lib_5A1C9904_C3A7A6BE=Melee Unit, Stealth
+Param/Value/lib_5A1C9904_C66F8CE5=Specialist Unit, Uses Stun and nukes
+Param/Value/lib_5A1C9904_C8653C9E=Bruiser, Splash damage, Melee.  Good pick for a first time player
+Param/Value/lib_5A1C9904_C8FFA6CD=Mothership Core
+Param/Value/lib_5A1C9904_C98DC2AE= Picked Hydralisk
+Param/Value/lib_5A1C9904_C9C10DD3= Picked Mothership Core
+Param/Value/lib_5A1C9904_CAA5DCDD= Picked Ultralisk
+Param/Value/lib_5A1C9904_CAF32F13=Dragoon
+Param/Value/lib_5A1C9904_CC7022DA=Range Unit
+Param/Value/lib_5A1C9904_CC9D57B8=Melee Unit, Stealth
+Param/Value/lib_5A1C9904_CD2AC9D5= Picked Firebat
+Param/Value/lib_5A1C9904_CDC87703=Splash damage, Only Ground Units.
+Param/Value/lib_5A1C9904_D1D26092=Splash damage, Only Ground Units. Good pick for a first time player
+Param/Value/lib_5A1C9904_D2795242=Anti Air Unit
+Param/Value/lib_5A1C9904_D3A2A78A=Mothership Core
+Param/Value/lib_5A1C9904_D44D7EFC=Dragoon
+Param/Value/lib_5A1C9904_D46BF1E3=Science Vessel
+Param/Value/lib_5A1C9904_D47053B6=Medic
+Param/Value/lib_5A1C9904_D6C323DD= Picked Zealot
+Param/Value/lib_5A1C9904_D90DCF89= Picked Zergling
+Param/Value/lib_5A1C9904_D91C90AE= Picked Adept
+Param/Value/lib_5A1C9904_D987D789=0/0
+Param/Value/lib_5A1C9904_D9CB5152= Picked Firebat
+Param/Value/lib_5A1C9904_DAF1657E= Picked Zealot
+Param/Value/lib_5A1C9904_DC1E8D16= Picked Dragoon
+Param/Value/lib_5A1C9904_DCFCFCFA= Picked Sentry
+Param/Value/lib_5A1C9904_DDCADA09=Air Unit, Neutralize Zone.
+Param/Value/lib_5A1C9904_DE655456=Support, Heals Bio units.
+Param/Value/lib_5A1C9904_DEDFD1E1=Heavily Focused on Defending and pushing lanes. Summons units constantly
+Param/Value/lib_5A1C9904_DF99A591= Picked Corsair
+Param/Value/lib_5A1C9904_E103F095= Picked Mutalisk
+Param/Value/lib_5A1C9904_E1E7221A=Splash damage, Only Ground Units. Good pick for a first time player
+Param/Value/lib_5A1C9904_E1FADDDA=Firebat
+Param/Value/lib_5A1C9904_E21D7F62=Fast Unit, Can jump up over cliffs. Only Ground<n/>
+Param/Value/lib_5A1C9904_E24A6336= Picked Zealot
+Param/Value/lib_5A1C9904_E31F1D0F= - 
+Param/Value/lib_5A1C9904_E57F333A= Picked Science Vessel
+Param/Value/lib_5A1C9904_E655C995=Queen
+Param/Value/lib_5A1C9904_E70FFFA3=Soldiers 2
+Param/Value/lib_5A1C9904_E78AA15E= - 
+Param/Value/lib_5A1C9904_E81AAFB7=Pick Soldier
+Param/Value/lib_5A1C9904_E8978F42=Zergling
+Param/Value/lib_5A1C9904_EB8B73BC=Corsair
+Param/Value/lib_5A1C9904_EC5A43FE=Sentry
+Param/Value/lib_5A1C9904_ED1596B5= Picked Ultralisk
+Param/Value/lib_5A1C9904_EE633171=/
+Param/Value/lib_5A1C9904_EF6534BB=Melee Unit, Stealth
+Param/Value/lib_5A1C9904_F2D7419D= Picked Marine
+Param/Value/lib_5A1C9904_F5516FBF=Support, Refunnels Shield for others
+Param/Value/lib_5A1C9904_F9D0E981= - 
+Param/Value/lib_5A1C9904_FA5B4E1A= seconds
+Param/Value/lib_5A1C9904_FCA78A59= Picked Spectre
+Param/Value/lib_5A1C9904_FCD8DA4B=Gained M/G
 Queen=Queen
 RequirementNode/Tooltip/CountUnitRoboticsFacilityCompleteOnly790878647TechTreeCheat=Robotics Facility
 RequirementNode/Tooltip/CountUnitStargateCompleteOnly2435624496TechTreeCheat=Stargate
@@ -1428,3 +1433,215 @@ Zealot=Zealot
 Zergling=Zergling
 Zuvus=Zuvus
 xedex=xedex
+
+// Hero UI Panel Strings
+Param/Value/lib_5A1C9904_AbilitiesLabel=Abilities
+Param/Value/lib_5A1C9904_StrengthsLabel=Strengths
+
+// Terran Hero Abilities & Strengths
+Param/Value/lib_5A1C9904_FirebatName=<s val="AchievementFrameName_Terr">Firebat</s>
+Param/Value/lib_5A1C9904_FirebatAbility1=<s val="AchievementFrameName_Terr">Lightning Dash:</s> Swift repositioning skill
+Param/Value/lib_5A1C9904_FirebatAbility2=<s val="AchievementFrameName_Terr">Avatar:</s> Explosive self-damage boost
+Param/Value/lib_5A1C9904_FirebatAbility3=<s val="AchievementFrameName_Terr">Turret Deploy:</s> Static defense structure
+Param/Value/lib_5A1C9904_FirebatAbility4=<s val="AchievementFrameName_Terr">Stimpack:</s> Short attack speed buff
+Param/Value/lib_5A1C9904_FirebatDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Easy
+Param/Value/lib_5A1C9904_FirebatStrengths=<s val="AchievementFrameName_Terr">Bruiser</s> - High durability with burst damage, Tank, Fire AOE, Crowd Control
+
+Param/Value/lib_5A1C9904_MarineName=<s val="AchievementFrameName_Terr">Marine</s>
+Param/Value/lib_5A1C9904_MarineAbility1=<s val="AchievementFrameName_Terr">Stimpack:</s> Temporary attack speed and movement speed boost
+Param/Value/lib_5A1C9904_MarineAbility2=<s val="AchievementFrameName_Terr">Toss Grenade:</s> Projectile that applies area damage
+Param/Value/lib_5A1C9904_MarineAbility3=<s val="AchievementFrameName_Terr">Radar:</s> Deploy sensor revealing nearby enemies
+Param/Value/lib_5A1C9904_MarineAbility4=<s val="AchievementFrameName_Terr">Psi Shield:</s> Grant temporary shield buff
+Param/Value/lib_5A1C9904_MarineDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Hard
+Param/Value/lib_5A1C9904_MarineStrengths=<s val="AchievementFrameName_Terr">Glass Cannon ADC</s> - Extreme damage output with health costs, High DPS, Ability-Cost Playstyle, Positioning Critical
+
+Param/Value/lib_5A1C9904_GoliathName=<s val="AchievementFrameName_Terr">Goliath</s>
+Param/Value/lib_5A1C9904_GoliathAbility1=<s val="AchievementFrameName_Terr">Missile Pods:</s> Launch explosive missiles at enemies
+Param/Value/lib_5A1C9904_GoliathAbility2=<s val="AchievementFrameName_Terr">Psionic Lift:</s> Lift target into air, disabling temporarily
+Param/Value/lib_5A1C9904_GoliathAbility3=<s val="AchievementFrameName_Terr">Psionic Shockwave:</s> Area explosive burst dealing damage
+Param/Value/lib_5A1C9904_GoliathAbility4=<s val="AchievementFrameName_Terr">Stimpack:</s> Temporary attack and movement speed boost
+Param/Value/lib_5A1C9904_GoliathDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_GoliathStrengths=<s val="AchievementFrameName_Terr">Anti-Air Specialist</s> - Exceptional air defense, Lift Mechanic, Air Attacks, Crowd Control
+
+Param/Value/lib_5A1C9904_MedicName=<s val="AchievementFrameName_Terr">Medic</s>
+Param/Value/lib_5A1C9904_MedicAbility1=<s val="AchievementFrameName_Terr">Nano Repair:</s> Restore health to nearby allies over time
+Param/Value/lib_5A1C9904_MedicAbility2=<s val="AchievementFrameName_Terr">Caduceus Reactor:</s> Nearby allies gain passive health regeneration
+Param/Value/lib_5A1C9904_MedicAbility3=<s val="AchievementFrameName_Terr">Flash Bang Grenades:</s> Throw grenades that stun and damage enemies
+Param/Value/lib_5A1C9904_MedicAbility4=<s val="AchievementFrameName_Terr">Observer Squad Sight:</s> Deploy vision unit or gain shared sight
+Param/Value/lib_5A1C9904_MedicDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_MedicStrengths=<s val="AchievementFrameName_Terr">Support</s> - Primary team healer role, Healing, Utility, Team Protection
+
+Param/Value/lib_5A1C9904_SpectreName=<s val="AchievementFrameName_Terr">Spectre</s>
+Param/Value/lib_5A1C9904_SpectreAbility1=<s val="AchievementFrameName_Terr">Cloaking Field:</s> Become invisible, drain energy while active
+Param/Value/lib_5A1C9904_SpectreAbility2=<s val="AchievementFrameName_Terr">Nuke Calldown:</s> Call down devastating orbital strike for burst damage
+Param/Value/lib_5A1C9904_SpectreAbility3=<s val="AchievementFrameName_Terr">Ultrasonic Pulse:</s> Apply area stun/disruption to enemies
+Param/Value/lib_5A1C9904_SpectreAbility4=<s val="AchievementFrameName_Terr">Obliterate:</s> Single-target execution ability on isolated targets
+Param/Value/lib_5A1C9904_SpectreDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Hard
+Param/Value/lib_5A1C9904_SpectreStrengths=<s val="AchievementFrameName_Terr">Assassin</s> - High burst damage specialist, Stealth, Precision, Hit-and-Run
+
+Param/Value/lib_5A1C9904_ScienceVesselName=<s val="AchievementFrameName_Terr">Science Vessel</s>
+Param/Value/lib_5A1C9904_ScienceVesselAbility1=<s val="AchievementFrameName_Terr">Repair Beam:</s> Restore health to allies or structures over time
+Param/Value/lib_5A1C9904_ScienceVesselAbility2=<s val="AchievementFrameName_Terr">Repair Drone Hangar:</s> Deploy repair drones for autonomous healing
+Param/Value/lib_5A1C9904_ScienceVesselAbility3=<s val="AchievementFrameName_Terr">EMP Shockwave:</s> Area effect that damages and disrupts enemies
+Param/Value/lib_5A1C9904_ScienceVesselAbility4=<s val="AchievementFrameName_Terr">Emergency Thrusters:</s> Temporary movement speed boost for repositioning
+Param/Value/lib_5A1C9904_ScienceVesselDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_ScienceVesselStrengths=<s val="AchievementFrameName_Terr">Base Defender</s> - Specialized support vessel, Structure Repair, Ranged Disruption, Detection
+
+// Zerg Hero Abilities & Strengths
+Param/Value/lib_5A1C9904_ZerglingName=<s val="AchievementFrameName_Zerg">Zergling</s>
+Param/Value/lib_5A1C9904_ZerglingAbility1=<s val="AchievementFrameName_Zerg">Raptor Charge:</s> Mobile dash toward target with damage
+Param/Value/lib_5A1C9904_ZerglingAbility2=<s val="AchievementFrameName_Zerg">Morph to Baneling:</s> Transform into area damage form
+Param/Value/lib_5A1C9904_ZerglingAbility3=<s val="AchievementFrameName_Zerg">Poison Nova:</s> Apply slowing cloud to enemies nearby
+Param/Value/lib_5A1C9904_ZerglingAbility4=<s val="AchievementFrameName_Zerg">Zergling Mine:</s> Place explosive trap on contact
+Param/Value/lib_5A1C9904_ZerglingDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Hard
+Param/Value/lib_5A1C9904_ZerglingStrengths=<s val="AchievementFrameName_Zerg">Melee Assassin</s> - Mobile hit-and-run specialist, Mine Placement, Rapid Mobility, Tactical Positioning
+
+Param/Value/lib_5A1C9904_QueenName=<s val="AchievementFrameName_Zerg">Queen</s>
+Param/Value/lib_5A1C9904_QueenAbility1=<s val="AchievementFrameName_Zerg">Transfusion:</s> Heal allies over time (HoT)
+Param/Value/lib_5A1C9904_QueenAbility2=<s val="AchievementFrameName_Zerg">Primal Gas Cloud:</s> Area denial with slowing damage
+Param/Value/lib_5A1C9904_QueenAbility3=<s val="AchievementFrameName_Zerg">Spawn Broodlings:</s> Convert enemy unit into allies
+Param/Value/lib_5A1C9904_QueenAbility4=<s val="AchievementFrameName_Zerg">Ensnare:</s> Slow and reveal enemies in area
+Param/Value/lib_5A1C9904_QueenDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Easy
+Param/Value/lib_5A1C9904_QueenStrengths=<s val="AchievementFrameName_Zerg">Support</s> - Team healing sustain, Healing, Area Denial, Crowd Control
+
+Param/Value/lib_5A1C9904_HydraliskName=<s val="AchievementFrameName_Zerg">Hydralisk</s>
+Param/Value/lib_5A1C9904_HydraliskAbility1=<s val="AchievementFrameName_Zerg">Impale:</s> Long-range piercing attack on targets
+Param/Value/lib_5A1C9904_HydraliskAbility2=<s val="AchievementFrameName_Zerg">Hydralisk Frenzy:</s> Increases attack speed and damage output
+Param/Value/lib_5A1C9904_HydraliskAbility3=<s val="AchievementFrameName_Zerg">Ensnare:</s> Root and immobilize enemies in area
+Param/Value/lib_5A1C9904_HydraliskAbility4=<s val="AchievementFrameName_Zerg">Stunning Blast:</s> Burst damage that stuns on impact
+Param/Value/lib_5A1C9904_HydraliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_HydraliskStrengths=<s val="AchievementFrameName_Zerg">ADC</s> - Ranged damage dealer, High Attack Speed, Crowd Control, Area Denial
+
+Param/Value/lib_5A1C9904_UltraliskName=<s val="AchievementFrameName_Zerg">Ultralisk</s>
+Param/Value/lib_5A1C9904_UltraliskAbility1=<s val="AchievementFrameName_Zerg">Burrow Charge:</s> Burrow and charge toward enemies with area damage, knockback and stun on impact
+Param/Value/lib_5A1C9904_UltraliskAbility2=<s val="AchievementFrameName_Zerg">Consume:</s> Consume enemy units for health regeneration and healing increase buff
+Param/Value/lib_5A1C9904_UltraliskAbility3=<s val="AchievementFrameName_Zerg">Frenzied Form:</s> Self-buff increasing damage output and air attack at level 7+
+Param/Value/lib_5A1C9904_UltraliskAbility4=<s val="AchievementFrameName_Zerg">Monarch Blades:</s> Temporary movement speed and area damage buff
+Param/Value/lib_5A1C9904_UltraliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_UltraliskStrengths=<s val="AchievementFrameName_Zerg">Bruiser</s> - Durable frontline with area damage, High Health Pool, Splash Damage, Scaling Power
+
+Param/Value/lib_5A1C9904_DefilerName=<s val="AchievementFrameName_Zerg">Defiler</s>
+Param/Value/lib_5A1C9904_DefilerAbility1=<s val="AchievementFrameName_Zerg">Consume:</s> Absorb and eliminate enemy units
+Param/Value/lib_5A1C9904_DefilerAbility2=<s val="AchievementFrameName_Zerg">Dark Swarm:</s> Create damaging cloud that damages enemies
+Param/Value/lib_5A1C9904_DefilerAbility3=<s val="AchievementFrameName_Zerg">Plague:</s> Spread disease effect across area
+Param/Value/lib_5A1C9904_DefilerAbility4=<s val="AchievementFrameName_Zerg">Leech:</s> Life drain ability to heal self
+Param/Value/lib_5A1C9904_DefilerDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Hard
+Param/Value/lib_5A1C9904_DefilerStrengths=<s val="AchievementFrameName_Zerg">Corruptor</s> - Toxin and control specialist, Life Drain, Area Denial, Crowd Control
+
+Param/Value/lib_5A1C9904_NydusName=<s val="AchievementFrameName_Zerg">Nydalist</s>
+Param/Value/lib_5A1C9904_NydusAbility1=<s val="AchievementFrameName_Zerg">Spawn Mechanics:</s> Generate allied spawned units to defend base
+Param/Value/lib_5A1C9904_NydusAbility2=<s val="AchievementFrameName_Zerg">Nydus Canal:</s> Create warp points for rapid base positioning
+Param/Value/lib_5A1C9904_NydusAbility3=<s val="AchievementFrameName_Zerg">Dig:</s> Burrow into terrain for concealment and surprise positioning
+Param/Value/lib_5A1C9904_NydusAbility4=<s val="AchievementFrameName_Zerg">Spawn Hydralisk Charge:</s> Summon elite charged Hydralisk unit
+Param/Value/lib_5A1C9904_NydusAbility5=Empower Building: Buff nearby structures with enhanced defense
+Param/Value/lib_5A1C9904_NydusDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium-High
+Param/Value/lib_5A1C9904_NydusStrengths=<s val="AchievementFrameName_Zerg">Base Defender</s> - Spawn army control, Area Denial, Structure Defense, Base Control
+
+Param/Value/lib_5A1C9904_MutaliskName=<s val="AchievementFrameName_Zerg">Mutalisk</s>
+Param/Value/lib_5A1C9904_MutaliskAbility1=<s val="AchievementFrameName_Zerg">Abduction:</s> Pull target unit toward Mutalisk with stun
+Param/Value/lib_5A1C9904_MutaliskAbility2=<s val="AchievementFrameName_Zerg">Charge:</s> Mobile dash toward target for melee engagement
+Param/Value/lib_5A1C9904_MutaliskAbility3=<s val="AchievementFrameName_Zerg">Primal Roar:</s> Burst command that increases attack speed for nearby allies
+Param/Value/lib_5A1C9904_MutaliskAbility4=<s val="AchievementFrameName_Zerg">Psychic Clones:</s> Create temporary clones of Mutalisk for extra damage
+Param/Value/lib_5A1C9904_MutaliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium-High
+Param/Value/lib_5A1C9904_MutaliskStrengths=<s val="AchievementFrameName_Zerg">Aerial Carry</s> - Flying ranged unit, Burst Damage, Crowd Control, Team Buff
+
+// Protoss Hero Abilities & Strengths
+Param/Value/lib_5A1C9904_ZealotName=<s val="AchievementFrameName_Prot">Zealot</s>
+Param/Value/lib_5A1C9904_ZealotAbility1=<s val="AchievementFrameName_Prot">Charge:</s> Dashes forward, interrupting enemies
+Param/Value/lib_5A1C9904_ZealotAbility2=<s val="AchievementFrameName_Prot">Whirlwind:</s> Spins attacking nearby, refreshes on kill
+Param/Value/lib_5A1C9904_ZealotAbility3=<s val="AchievementFrameName_Prot">Overcharge:</s> Increases damage and shield regeneration
+Param/Value/lib_5A1C9904_ZealotAbility4=<s val="AchievementFrameName_Prot">Shield Capacitor:</s> Passive shield pool with nearby foes
+Param/Value/lib_5A1C9904_ZealotDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_ZealotStrengths=<s val="AchievementFrameName_Prot">Bruiser</s> - Durable frontline damage dealer, Shield Regeneration, Extended Engagement, High Damage
+
+Param/Value/lib_5A1C9904_SentryName=<s val="AchievementFrameName_Prot">Sentry</s>
+Param/Value/lib_5A1C9904_SentryAbility1=<s val="AchievementFrameName_Prot">Double Shield Recharge:</s> Repair ally shields rapidly
+Param/Value/lib_5A1C9904_SentryAbility2=<s val="AchievementFrameName_Prot">Chrono Beam:</s> Slow enemies or speed up allies
+Param/Value/lib_5A1C9904_SentryAbility3=<s val="AchievementFrameName_Prot">Force Field:</s> Wall that blocks movement and damage
+Param/Value/lib_5A1C9904_SentryAbility4=<s val="AchievementFrameName_Prot">Guardian Shield:</s> Passive aura with shield regeneration
+Param/Value/lib_5A1C9904_SentryDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium-High
+Param/Value/lib_5A1C9904_SentryStrengths=<s val="AchievementFrameName_Prot">Support</s> - Utility and team protection, Shield Repair, Temporal Control, Force Field
+
+Param/Value/lib_5A1C9904_DragoonName=<s val="AchievementFrameName_Prot">Dragoon</s>
+Param/Value/lib_5A1C9904_DragoonAbility1=<s val="AchievementFrameName_Prot">Wormhole Transit:</s> Short-range teleport for repositioning
+Param/Value/lib_5A1C9904_DragoonAbility2=<s val="AchievementFrameName_Prot">Time Bomb:</s> Place delayed damage on target enemy
+Param/Value/lib_5A1C9904_DragoonAbility3=<s val="AchievementFrameName_Prot">Power Shield:</s> Temporary damage reduction buff
+Param/Value/lib_5A1C9904_DragoonAbility4=<s val="AchievementFrameName_Prot">Psi Orb:</s> Projectile with area damage effect
+Param/Value/lib_5A1C9904_DragoonDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_DragoonStrengths=<s val="AchievementFrameName_Prot">Ranged Carry</s> - Consistent sustained DPS dealer, Sustained Damage, Utility, Safe Range
+
+Param/Value/lib_5A1C9904_DarkTemplarName=<s val="AchievementFrameName_Prot">Dark Templar</s>
+Param/Value/lib_5A1C9904_DarkTemplarAbility1=<s val="AchievementFrameName_Prot">Blink:</s> Short-range dash with invulnerability frames
+Param/Value/lib_5A1C9904_DarkTemplarAbility2=<s val="AchievementFrameName_Prot">Cloak:</s> Become undetectable, drains energy while active
+Param/Value/lib_5A1C9904_DarkTemplarAbility3=<s val="AchievementFrameName_Prot">Shadow Fury:</s> Melee burst attack with bonus damage
+Param/Value/lib_5A1C9904_DarkTemplarAbility4=<s val="AchievementFrameName_Prot">Void Stasis:</s> Temporal effect on target enemy
+Param/Value/lib_5A1C9904_DarkTemplarDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> High
+Param/Value/lib_5A1C9904_DarkTemplarStrengths=<s val="AchievementFrameName_Prot">Melee Assassin</s> - Mobile burst damage dealer, Invisibility, Burst Damage, Hit-and-Run
+
+Param/Value/lib_5A1C9904_CorsairName=<s val="AchievementFrameName_Prot">Corsair</s>
+Param/Value/lib_5A1C9904_CorsairAbility1=<s val="AchievementFrameName_Prot">Disruption Web:</s> Projectile that applies slowing web to enemies
+Param/Value/lib_5A1C9904_CorsairAbility2=<s val="AchievementFrameName_Prot">Force Field:</s> Projectile wall that blocks movement and damage
+Param/Value/lib_5A1C9904_CorsairAbility3=<s val="AchievementFrameName_Prot">Psionic Shockwave:</s> Area burst damage around location
+Param/Value/lib_5A1C9904_CorsairAbility4=<s val="AchievementFrameName_Prot">Mothership Stasis:</s> Area denial effect to prevent enemy bursts
+Param/Value/lib_5A1C9904_CorsairDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_CorsairStrengths=<s val="AchievementFrameName_Prot">Battle Support</s> - Teamfight control specialist, Area Denial, Crowd Control, Strategic Advantage
+
+Param/Value/lib_5A1C9904_MothershipName=<s val="AchievementFrameName_Prot">Mothership Core</s>
+Param/Value/lib_5A1C9904_MothershipAbility1=<s val="AchievementFrameName_Prot">Photon Cannon:</s> Deploy defensive cannon structure at location
+Param/Value/lib_5A1C9904_MothershipAbility2=<s val="AchievementFrameName_Prot">Structure Defense:</s> Protect and strengthen nearby structures
+Param/Value/lib_5A1C9904_MothershipAbility3=<s val="AchievementFrameName_Prot">Photon Overcharge:</s> Temporarily boost pylon defenses and firepower
+Param/Value/lib_5A1C9904_MothershipAbility4=<s val="AchievementFrameName_Prot">Reversed Time Warp:</s> Rewind time effects on targets
+Param/Value/lib_5A1C9904_MothershipAbility5=Teleport to Power: Mobile repositioning near power sources
+Param/Value/lib_5A1C9904_MothershipDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_MothershipStrengths=<s val="AchievementFrameName_Prot">Base Defender</s> - Flying defensive specialist, Defensive Utilities, Team Protection, Structure Defense
+
+Param/Value/lib_5A1C9904_AvengerName=<s val="AchievementFrameName_Prot">Dark Templar</s>
+Param/Value/lib_5A1C9904_AvengerAbility1=<s val="AchievementFrameName_Prot">Blink:</s> Short-range dash with invulnerability frames
+Param/Value/lib_5A1C9904_AvengerAbility2=<s val="AchievementFrameName_Prot">Cloak:</s> Become undetectable, drains energy
+Param/Value/lib_5A1C9904_AvengerAbility3=<s val="AchievementFrameName_Prot">Shadow Fury:</s> Melee attack with bonus damage
+Param/Value/lib_5A1C9904_AvengerAbility4=<s val="AchievementFrameName_Prot">Void Stasis:</s> Temporal effect on target enemy
+Param/Value/lib_5A1C9904_AvengerDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> High
+Param/Value/lib_5A1C9904_AvengerStrengths=<s val="AchievementFrameName_Prot">Melee Assassin</s> - Mobile burst damage dealer, Invisibility, Burst Damage, Hit-and-Run
+
+Param/Value/lib_5A1C9904_AdeptName=<s val="AchievementFrameName_Prot">Adept</s>
+Param/Value/lib_5A1C9904_AdeptAbility1=<s val="AchievementFrameName_Prot">Phase Shift:</s> Project invulnerable shade
+Param/Value/lib_5A1C9904_AdeptAbility2=<s val="AchievementFrameName_Prot">Teleport:</s> Move to shade location
+Param/Value/lib_5A1C9904_AdeptAbility3=<s val="AchievementFrameName_Prot">Shield:</s> Damage reduction barrier
+Param/Value/lib_5A1C9904_AdeptAbility4=<s val="AchievementFrameName_Prot">Psi Storm:</s> Area energy attack
+Param/Value/lib_5A1C9904_AdeptDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_AdeptStrengths=<s val="AchievementFrameName_Prot">Support</s> - Versatile support unit, Shields, Teleport, Team Support
+Param/Value/lib_5A1C9904_LockInButton=Select
+Param/Value/lib_5A1C9904_Level2Title=Choose an Upgrade
+Param/Value/lib_5A1C9904_FortitudeProtocol=Fortitude Protocol
+Param/Value/lib_5A1C9904_FortitudeTooltip=Reduce damage from non-heroics sources by 1
+Param/Value/lib_5A1C9904_Slayer=Slayer
+Param/Value/lib_5A1C9904_SlayerTooltip=Increased damage to heroics by 3
+Param/Value/lib_5A1C9904_VelocityBoots=Velocity Boots
+Param/Value/lib_5A1C9904_VelocityTooltip=Gain +0.3 movement speed
+Param/Value/lib_5A1C9904_MercurialBoots=Mercurial Boots
+Param/Value/lib_5A1C9904_MercurialTooltip=Gain +0.15 movement speed
+Param/Value/lib_5A1C9904_IronBoots=Iron Boots
+Param/Value/lib_5A1C9904_IronTooltip=Gain +0.1 movement speed
+Param/Value/lib_5A1C9904_BootsAura=MercurialBoots boots
+Param/Value/lib_5A1C9904_BootsAuraTooltip=Increases Movement Speed
+Param/Value/lib_5A1C9904_Level5Title=Choose an Upgrade
+Param/Value/lib_5A1C9904_EnergyRegen=Energy Regen Boost
+Param/Value/lib_5A1C9904_EnergyRegenTooltip=Increase energy regeneration by 0.05 per second
+Param/Value/lib_5A1C9904_HealingBoost=Healing Boost
+Param/Value/lib_5A1C9904_HealingBoostTooltip=Increase healing done by 10% and healing received by 5%
+Param/Value/lib_5A1C9904_AntiAir=Gravity Pull
+Param/Value/lib_5A1C9904_AntiAirTooltip=Increase all damage by 3% and makes air units vulnerable to ground attacks.
+Param/Value/lib_5A1C9904_Level7Title=Choose an Upgrade
+Param/Value/lib_5A1C9904_GlassCannon=Glass Cannon
+Param/Value/lib_5A1C9904_GlassCannonTooltip=Increase all damage by 10%, reduce max health by 20%
+Param/Value/lib_5A1C9904_StructureDefense=Reinforced Armor
+Param/Value/lib_5A1C9904_StructureDefenseTooltip=Reduce damage dealt to structures by 20%
+Param/Value/lib_5A1C9904_AlliedEnergyAura=Energy Aura
+Param/Value/lib_5A1C9904_AlliedEnergyAuraTooltip=Increase team's energy regeneration by 5%
+Param/Value/lib_5A1C9904_Level10Title=Final Upgrade - Choose Wisely
+Param/Value/lib_5A1C9904_BaseBreaker=Base Breaker
+Param/Value/lib_5A1C9904_BaseBreakerTooltip=Increase damage to structures by 20%
+Param/Value/lib_5A1C9904_PowerOverwhelming=Power Overwhelming
+Param/Value/lib_5A1C9904_PowerOverwhelmingTooltip=Increase energy by 100 and energy regeneration by additional 30%
+Param/Value/lib_5A1C9904_ArmorPlates=Armor Plates
+Param/Value/lib_5A1C9904_ArmorPlatesTooltip=Decrease damage taken by 10%

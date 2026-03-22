@@ -343,3 +343,24 @@ bool Utility_DelayedTextTagDestroyer(bool testCond, bool runActions) {
 ```
 
 Capture the static into a local variable at the top of the handler before any `Wait()` calls.
+
+---
+
+## Common Error: "Scri: Script load failed: Function not found"
+
+If the SC2 editor or test map throws:
+
+```
+Scri: Script load failed: Function not found
+```
+
+and the function clearly exists in your `.galaxy` files, the most common cause is **file encoding**.
+
+**Fix:** Save the offending `.galaxy` file as **UTF-8 without BOM** (not "UTF-8 with BOM").
+
+In VS Code:
+1. Open the file.
+2. Click the encoding indicator in the bottom-right status bar (e.g. `UTF-8 with BOM`).
+3. Select **"Save with Encoding"** -> choose **"UTF-8"** (no BOM).
+
+The SC2 engine cannot parse files saved with a BOM (`EF BB BF`) prefix, which causes it to fail to locate any functions defined in that file, even if the code itself is correct.

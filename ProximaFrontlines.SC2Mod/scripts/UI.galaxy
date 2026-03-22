@@ -1,4 +1,4 @@
-﻿include "TriggerLibs/NativeLib"
+include "TriggerLibs/NativeLib"
 
 //==================================================================================================
 // Proxima Frontlines – UI
@@ -99,11 +99,7 @@ bool ExplainRules_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_5A1C9904_ExplainRules1"));
-    Wait(8.0, c_timeGame);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_5A1C9904_ExplainRules2"));
-    Wait(8.0, c_timeGame);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_5A1C9904_ExplainRules3"));
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_5A1C9904_01C0EB28"));
     return true;
 }
 

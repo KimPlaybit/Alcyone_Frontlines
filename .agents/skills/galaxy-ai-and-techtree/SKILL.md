@@ -239,3 +239,38 @@ int lv_wRatio = AIWaveEvalRatio(lv_wave, lv_targetPlayer);
 // Get best attack target
 point lv_target = AIGetBestTarget(lv_player, lv_town, c_aiAttackWaveGround);
 ```
+
+---
+
+## Tactical AI Helpers (NativeLib)
+
+These `libNtve_gf_*` functions are confirmed in NativeLib.galaxy:
+
+```galaxy
+// Set tactical range for a unit type for a player
+libNtve_gf_SetTacticalAIRange(lv_player, "Marine", 8);
+// (player, unitType, distance)
+
+// Set tactical think target for a unit type
+libNtve_gf_SetTacticalAIThink(lv_player, "Marine", "Zerg_Zergling", false);
+// (player, unitType, targetUnitType, isNative)
+
+// Force an AI unit to cast an ability (via scripted order)
+libNtve_gf_AICast(lv_unit, OrderTargetingPoint(AbilityCommand("PsiStorm", 0), lv_point));
+// (unit, order)
+
+// Declare the next town center location for AI expansion
+libNtve_gf_DeclareNextTown(lv_player, lv_expansionPoint);
+// (player, centerPoint)
+```
+
+---
+
+## Difficulty-Based Value Helpers (NativeLib)
+
+```galaxy
+// Returns a value based on current game difficulty
+int   lv_hp   = libNtve_gf_DifficultyValueInt  (100, 150, 200, 250);  // easy/normal/advanced/expert
+fixed lv_spd  = libNtve_gf_DifficultyValueFixed(1.0, 1.25, 1.5, 2.0);
+string lv_type = libNtve_gf_DifficultyValueUnitType("Zergling", "Hydralisk", "Ultralisk", "Ultralisk");
+```

@@ -53,8 +53,7 @@ bool auto_lib5A1C9904_gf_StartProximaGame_TriggerFunc (bool testConds, bool runA
 
     // Automatic Variable Declarations
     // Implementation
-    InitTriggers();
-    InitVariables();
+    ProximaInitTriggers();
     StartProximaGame(lp_startPosition1, lp_startPosition2, lp_turretOffset1X, lp_turretOffset2X, lp_turretOffset1Y, lp_turretOffset2Y);
     return true;
 }

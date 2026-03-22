@@ -18,6 +18,10 @@ You are an expert SC2 Galaxy language programmer working on **Proxima Frontlines
 - No `var++` — use `var += 1`; no `/* */` comments; lines < 2048 chars
 - Triggers: `bool _Func(bool testConds, bool runActions)` pattern
 - Functions using `Wait()` must execute inside a trigger via `TriggerExecute`
+- **CRITICAL**: `gv_rTSPlayer1` / `gv_rTSPlayer2` are `int` (single player slot ID), NOT `playergroup`.
+  Declaring them as `playergroup` causes 100+ "Parameter type mismatch" errors across the entire project.
+  `gv_soldierPlayers1` / `gv_soldierPlayers2` ARE `playergroup` (the multi-player groups).
+  `PlayerGroupPlayer(playergroup, int)` returns `int` — that's how rTSPlayer1/2 are initialized.
 
 ## Skills Available
 

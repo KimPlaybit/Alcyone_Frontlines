@@ -1,5 +1,4 @@
-﻿include "TriggerLibs/NativeLib"
-include "h"
+include "TriggerLibs/NativeLib"
 
 //==================================================================================================
 // Proxima Frontlines – Map Initialization
@@ -7,39 +6,9 @@ include "h"
 //==================================================================================================
 
 //--------------------------------------------------------------------------------------------------
-// StartProximaGame – async wrapper + implementation body
+// StartProximaGame – implementation
 //--------------------------------------------------------------------------------------------------
-trigger auto_StartProximaGame_Trigger = null;
-point auto_StartProximaGame_lp_startPosition1;
-point auto_StartProximaGame_lp_startPosition2;
-fixed auto_StartProximaGame_lp_turretOffset1X;
-fixed auto_StartProximaGame_lp_turretOffset1Y;
-fixed auto_StartProximaGame_lp_turretOffset2X;
-fixed auto_StartProximaGame_lp_turretOffset2Y;
-
 void StartProximaGame (point lp_startPosition1, point lp_startPosition2, fixed lp_turretOffset1X, fixed lp_turretOffset1Y, fixed lp_turretOffset2X, fixed lp_turretOffset2Y) {
-    auto_StartProximaGame_lp_startPosition1 = lp_startPosition1;
-    auto_StartProximaGame_lp_startPosition2 = lp_startPosition2;
-    auto_StartProximaGame_lp_turretOffset1X = lp_turretOffset1X;
-    auto_StartProximaGame_lp_turretOffset1Y = lp_turretOffset1Y;
-    auto_StartProximaGame_lp_turretOffset2X = lp_turretOffset2X;
-    auto_StartProximaGame_lp_turretOffset2Y = lp_turretOffset2Y;
-
-    if (auto_StartProximaGame_Trigger == null) {
-        auto_StartProximaGame_Trigger = TriggerCreate("auto_StartProximaGame_TriggerFunc");
-    }
-
-    TriggerExecute(auto_StartProximaGame_Trigger, false, false);
-}
-
-bool auto_StartProximaGame_TriggerFunc (bool testConds, bool runActions) {
-    point lp_startPosition1 = auto_StartProximaGame_lp_startPosition1;
-    point lp_startPosition2 = auto_StartProximaGame_lp_startPosition2;
-    fixed lp_turretOffset1X = auto_StartProximaGame_lp_turretOffset1X;
-    fixed lp_turretOffset1Y = auto_StartProximaGame_lp_turretOffset1Y;
-    fixed lp_turretOffset2X = auto_StartProximaGame_lp_turretOffset2X;
-    fixed lp_turretOffset2Y = auto_StartProximaGame_lp_turretOffset2Y;
-
     // Variable Declarations
     bool lv_waves;
     string lv_raceName;
@@ -48,7 +17,6 @@ bool auto_StartProximaGame_TriggerFunc (bool testConds, bool runActions) {
     point lv_offsetplayer1;
     point lv_offsetplayer2;
 
-    // Automatic Variable Declarations
     // Variable Initialization
     lv_waves = GetWaveStatus();
     lv_raceName = "";
@@ -102,7 +70,6 @@ bool auto_StartProximaGame_TriggerFunc (bool testConds, bool runActions) {
     UISetAlertTypeVisible(PlayerGroupAll(), "AttackUnitAlly_Terr", false);
     CreateSpawners();
     SpawnJungleUnits();
-    return true;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -184,7 +151,7 @@ point GetStartLocation (int lp_player) {
     }
 }
 
-void GameOver (int lp_losingRTSPlayer, playergroup lp_losingTeam, int lp_winningRTSPlayer, playergroup lp_winningTeam) {
+void ProximaGameOver (int lp_losingRTSPlayer, playergroup lp_losingTeam, int lp_winningRTSPlayer, playergroup lp_winningTeam) {
     // Variable Declarations
     int lv_loopedPlayer;
 
@@ -347,7 +314,7 @@ bool WinTeam1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    GameOver(gv_rTSPlayer2, gv_soldierPlayers2, gv_rTSPlayer1, gv_soldierPlayers1);
+    ProximaGameOver(gv_rTSPlayer2, gv_soldierPlayers2, gv_rTSPlayer1, gv_soldierPlayers1);
     return true;
 }
 
@@ -374,7 +341,7 @@ bool SurrenderedTeam1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    GameOver(gv_rTSPlayer1, gv_soldierPlayers1, gv_rTSPlayer2, gv_soldierPlayers2);
+    ProximaGameOver(gv_rTSPlayer1, gv_soldierPlayers1, gv_rTSPlayer2, gv_soldierPlayers2);
     return true;
 }
 
@@ -401,7 +368,7 @@ bool WinTeam2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    GameOver(gv_rTSPlayer1, gv_soldierPlayers1, gv_rTSPlayer2, gv_soldierPlayers2);
+    ProximaGameOver(gv_rTSPlayer1, gv_soldierPlayers1, gv_rTSPlayer2, gv_soldierPlayers2);
     return true;
 }
 
@@ -428,7 +395,7 @@ bool SurrenderedTeam2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    GameOver(gv_rTSPlayer2, gv_soldierPlayers2, gv_rTSPlayer1, gv_soldierPlayers1);
+    ProximaGameOver(gv_rTSPlayer2, gv_soldierPlayers2, gv_rTSPlayer1, gv_soldierPlayers1);
     return true;
 }
 

@@ -103,11 +103,19 @@ CameraSave(lv_player);
 CameraRestore(lv_player, 0.0, false);
 ```
 
-### Camera shake / bounce
+### Camera sweep / swoosh
 
 ```galaxy
-libNtve_gf_CameraShakeForPlayer(lv_player, 0.5, 2.0, 0.1);
-// (player, intensity, duration, frequency)
+// Swoosh camera — confirmed NativeLib function
+// (player, startDistance, endDistance, targetPoint, duration)
+libNtve_gf_SwooshCamera(lv_player, 10.0, 5.0, lv_point, 1.5);
+
+// Copy of camera info object (useful for saving/restoring cinematic cameras)
+camerainfo lv_camCopy = libNtve_gf_CopyOfCameraObject(lv_camInfo);
+
+// NOTE: CameraShake is not exposed via NativeLib helpers.
+// Use CameraShake() native directly if available in your build:
+// CameraShake(lv_player, lv_intensity, lv_duration, lv_frequency);
 ```
 
 ---

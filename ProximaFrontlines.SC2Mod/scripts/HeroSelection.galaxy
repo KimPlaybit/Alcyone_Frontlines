@@ -1,5 +1,4 @@
-﻿include "TriggerLibs/NativeLib"
-include "h"
+include "TriggerLibs/NativeLib"
 
 //==================================================================================================
 // Proxima Frontlines – Hero Selection System
@@ -1230,4 +1229,465 @@ void UpdateHeroInfoTeam2 (string lp_heroType) {
         libNtve_gf_SetDialogItemText(gv_infoStrengthsTeam2, StringExternal("Param/Value/lib_5A1C9904_MothershipStrengths"), PlayerGroupSingle(EventPlayer()));
         libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam2, "Assets\\Textures\\MothershipPortrait_Static.dds", PlayerGroupSingle(EventPlayer()));
     }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Soldier Selection Team 1
+//--------------------------------------------------------------------------------------------------
+trigger auto_SoldierSelectionTeam1_Trigger = null;
+
+void SoldierSelectionTeam1 () {
+    if (auto_SoldierSelectionTeam1_Trigger == null) {
+        auto_SoldierSelectionTeam1_Trigger = TriggerCreate("auto_SoldierSelectionTeam1_TriggerFunc");
+    }
+    TriggerExecute(auto_SoldierSelectionTeam1_Trigger, false, false);
+}
+
+bool auto_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool runActions) {
+    // Variable Declarations
+    bool lv_raceCheck;
+    int lv_dialogWidth        = 1200;
+    int lv_dialogHeight       = 600;
+    int lv_leftPanelWidth     = 350;
+    int lv_leftPanelXPos      = -600;
+    int lv_middlePanelWidth   = 310;
+    int lv_middlePanelXPos    = 450;
+    int lv_rightPanelWidth    = 420;
+    int lv_rightPanelXPos     = 30;
+    int lv_buttonSizePickX    = 340;
+    int lv_buttonSizePickY    = 50;
+    int lv_buttonXPos         = -380;
+    int lv_lockInButtonWidth  = 260;
+    int lv_lockInButtonHeight = 50;
+    int lv_lockInButtonXPos   = 470;
+    int lv_lockInButtonYPos   = 500;
+    int lv_infoLabelWidth     = 350;
+    int lv_infoLabelXPos      = 400;
+
+    // Implementation
+    DialogCreate(lv_dialogWidth, lv_dialogHeight, c_anchorCenter, 0, -60, true);
+    gv_dialogTeam1 = DialogLastCreated();
+
+    // Create LEFT PANEL for hero selection
+    DialogControlCreate(gv_dialogTeam1, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_leftPanelWidth, lv_dialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_leftPanelXPos, 0);
+
+    // Create MIDDLE PANEL for portrait display
+    DialogControlCreate(gv_dialogTeam1, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_middlePanelWidth, lv_dialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_middlePanelXPos, 0);
+    // Add hero portrait image to middle panel
+    DialogControlCreate(gv_dialogTeam1, c_triggerControlTypeImage);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_middlePanelWidth - 20, 400);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_middlePanelXPos + 10, 70);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\firebatportrait_static.dds", PlayerGroupAll());
+    gv_heroPortraitTeam1 = DialogControlLastCreated();
+
+    // Create RIGHT PANEL for abilities
+    DialogControlCreate(gv_dialogTeam1, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_rightPanelWidth, lv_dialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_rightPanelXPos, 0);
+    gv_infoPanelTeam1 = DialogControlLastCreated();
+
+    // Hero selection header
+    libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_leftPanelWidth - 20, 50, c_anchorTopLeft, lv_leftPanelXPos + 10, 10, StringExternal("Param/Value/lib_5A1C9904_E81AAFB7"), ColorWithAlpha(200,180,100,255), false, 2.0);
+
+    lv_raceCheck = IsTerran(gv_rTSPlayer1);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_CDC87703"), StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), "");
+        gv_firebatTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_2C347B6C"), StringExternal("Param/Value/lib_5A1C9904_63AEB7D7"), "");
+        gv_medicTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_84C2FEEA"), StringExternal("Param/Value/lib_5A1C9904_978D5B47"), "");
+        gv_goliathTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_4317D246"), StringExternal("Param/Value/lib_5A1C9904_A8E43C3A"), "");
+        gv_marineTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_C66F8CE5"), StringExternal("Param/Value/lib_5A1C9904_8C8B006A"), "");
+        gv_spectreTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_7F5EF35A"), StringExternal("Param/Value/lib_5A1C9904_D46BF1E3"), "");
+        gv_scienceVesselTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 20, c_anchorTop, lv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_E1FADDDA"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        gv_infoHeroNameTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility1Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility2Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility3Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility4Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 35, c_anchorTop, lv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoDifficultyTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoStrengthsTeam1 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = IsZerg(gv_rTSPlayer1);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_18851F8A"), StringExternal("Param/Value/lib_5A1C9904_E8978F42"), "");
+        gv_zerglingTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_4DEBCE26"), StringExternal("Param/Value/lib_5A1C9904_4008A2BA"), "");
+        gv_queenTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_6A15202A"), StringExternal("Param/Value/lib_5A1C9904_B6593422"), "");
+        gv_hydraliskTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_C8653C9E"), StringExternal("Param/Value/lib_5A1C9904_3A7E66C9"), "");
+        gv_ultraliskTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_AA4978C8"), StringExternal("Param/Value/lib_5A1C9904_1028BD8F"), "");
+        gv_defilerTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_DEDFD1E1"), StringExternal("Param/Value/lib_5A1C9904_4C335958"), "");
+        gv_nydusTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 20, c_anchorTop, lv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_E8978F42"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        gv_infoHeroNameTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility1Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility2Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility3Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility4Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 35, c_anchorTop, lv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoDifficultyTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoStrengthsTeam1 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = IsProtoss(gv_rTSPlayer1);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_D1D26092"), StringExternal("Param/Value/lib_5A1C9904_6F27D176"), "");
+        gv_zealotTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_ACA8AF65"), StringExternal("Param/Value/lib_5A1C9904_82CAEECD"), "");
+        gv_sentryTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_CC7022DA"), StringExternal("Param/Value/lib_5A1C9904_CAF32F13"), "");
+        gv_dragoonTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_C3A7A6BE"), StringExternal("Param/Value/lib_5A1C9904_6BCF858B"), "");
+        gv_darkTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_DDCADA09"), StringExternal("Param/Value/lib_5A1C9904_EB8B73BC"), "");
+        gv_corsairTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_3D41B77E"), StringExternal("Param/Value/lib_5A1C9904_D3A2A78A"), "");
+        gv_mothershipTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 20, c_anchorTop, lv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_6F27D176"), ColorWithAlpha(255,200,100,255), false, 1.0);
+        gv_infoHeroNameTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility1Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility2Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility3Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility4Team1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 35, c_anchorTop, lv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoDifficultyTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam1, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoStrengthsTeam1 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = IsKnownRace(gv_rTSPlayer1);
+    if ((lv_raceCheck == false)) {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_E1E7221A"), StringExternal("Param/Value/lib_5A1C9904_66965059"), "");
+        gv_zealotTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_29B3373E"), StringExternal("Param/Value/lib_5A1C9904_68B51A2F"), "");
+        gv_sentryTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_6CBD470B"), StringExternal("Param/Value/lib_5A1C9904_81EEDE57"), "");
+        gv_dragoonTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_EF6534BB"), StringExternal("Param/Value/lib_5A1C9904_C37D7F0F"), "");
+        gv_darkTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_BCAB7A92"), StringExternal("Param/Value/lib_5A1C9904_5A81ABD2"), "");
+        gv_corsairTemplarTeam1 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_610D72CF"), StringExternal("Param/Value/lib_5A1C9904_1AF2225B"), "");
+        gv_mothershipTeam1 = DialogControlLastCreated();
+    }
+
+    // Lock In button
+    libNtve_gf_CreateDialogItemButton(gv_dialogTeam1, lv_lockInButtonWidth, lv_lockInButtonHeight, c_anchorTopLeft, lv_lockInButtonXPos, lv_lockInButtonYPos, StringExternal("Param/Value/lib_5A1C9904_LockInButton"), StringExternal("Param/Value/lib_5A1C9904_LockInTooltip"), "");
+    gv_lockInButtonTeam1 = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemText(gv_lockInButtonTeam1, StringExternal("Param/Value/lib_5A1C9904_LockInButton"), PlayerGroupAll());
+
+    DialogSetVisible(gv_dialogTeam1, gv_soldierPlayers1, true);
+    DialogSetVisible(gv_dialogTeam1, gv_playersWhoPicked, false);
+
+    // Set default hero based on RTS player race
+    if ((PlayerRace(gv_rTSPlayer1) == "Zerg")) {
+        gv_selectedHeroTeam1 = "ZerglingHero";
+        libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam1, "Assets\\Textures\\ZerglingPortrait_Static.dds", gv_soldierPlayers1);
+    }
+    else if ((PlayerRace(gv_rTSPlayer1) == "Terr")) {
+        gv_selectedHeroTeam1 = "FirebatHero";
+        libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam1, "Assets\\Textures\\FirebatPortrait_Static.dds", gv_soldierPlayers1);
+    }
+    else if ((PlayerRace(gv_rTSPlayer1) == "Prot")) {
+        gv_selectedHeroTeam1 = "ZealotHero";
+        libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam1, "Assets\\Textures\\AiurZealotPortrait_Static.dds", gv_soldierPlayers1);
+    }
+
+    DisableaDialogItem(gv_sentryTemplarTeam1);
+    DisableaDialogItem(gv_corsairTemplarTeam1);
+    DisableaDialogItem(gv_darkTemplarTeam1);
+    DisableaDialogItem(gv_defilerTeam1);
+    DisableaDialogItem(gv_dragoonTemplarTeam1);
+    DisableaDialogItem(gv_firebatTeam1);
+    DisableaDialogItem(gv_goliathTeam1);
+    DisableaDialogItem(gv_hydraliskTeam1);
+    DisableaDialogItem(gv_marineTeam1);
+    DisableaDialogItem(gv_medicTeam1);
+    DisableaDialogItem(gv_queenTeam1);
+    DisableaDialogItem(gv_spectreTeam1);
+    DisableaDialogItem(gv_ultraliskTeam1);
+    DisableaDialogItem(gv_zealotTeam1);
+    DisableaDialogItem(gv_zerglingTeam1);
+    DisableaDialogItem(gv_nydusTeam1);
+    DisableaDialogItem(gv_scienceVesselTeam1);
+    DisableaDialogItem(gv_mothershipTeam1);
+    DisableaDialogItem(gv_lockInButtonTeam1);
+    Wait(2.0, c_timeReal);
+    EnableaDialogItem(gv_sentryTemplarTeam1);
+    EnableaDialogItem(gv_corsairTemplarTeam1);
+    EnableaDialogItem(gv_darkTemplarTeam1);
+    EnableaDialogItem(gv_defilerTeam1);
+    EnableaDialogItem(gv_dragoonTemplarTeam1);
+    EnableaDialogItem(gv_firebatTeam1);
+    EnableaDialogItem(gv_goliathTeam1);
+    EnableaDialogItem(gv_hydraliskTeam1);
+    EnableaDialogItem(gv_marineTeam1);
+    EnableaDialogItem(gv_medicTeam1);
+    EnableaDialogItem(gv_queenTeam1);
+    EnableaDialogItem(gv_spectreTeam1);
+    EnableaDialogItem(gv_ultraliskTeam1);
+    EnableaDialogItem(gv_zealotTeam1);
+    EnableaDialogItem(gv_zerglingTeam1);
+    EnableaDialogItem(gv_scienceVesselTeam1);
+    EnableaDialogItem(gv_nydusTeam1);
+    EnableaDialogItem(gv_mothershipTeam1);
+    EnableaDialogItem(gv_lockInButtonTeam1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Soldier Selection Team 2
+//--------------------------------------------------------------------------------------------------
+trigger auto_SoldierSelectionTeam2_Trigger = null;
+
+void SoldierSelectionTeam2 () {
+    if (auto_SoldierSelectionTeam2_Trigger == null) {
+        auto_SoldierSelectionTeam2_Trigger = TriggerCreate("auto_SoldierSelectionTeam2_TriggerFunc");
+    }
+    TriggerExecute(auto_SoldierSelectionTeam2_Trigger, false, false);
+}
+
+bool auto_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool runActions) {
+    // Variable Declarations
+    bool lv_raceCheck;
+    int lv_dialogWidth        = 1200;
+    int lv_dialogHeight       = 600;
+    int lv_middlePanelWidth   = 310;
+    int lv_middlePanelXPos    = 450;
+    int lv_infoPanelWidth     = 350;
+    int lv_infoPanelXPos      = 400;
+    int lv_buttonSizePickX    = 340;
+    int lv_buttonSizePickY    = 50;
+    int lv_buttonXPos         = -380;
+    int lv_lockInButtonWidth  = 260;
+    int lv_lockInButtonHeight = 50;
+    int lv_lockInButtonXPos   = 470;
+    int lv_lockInButtonYPos   = 500;
+    int lv_infoLabelWidth     = 350;
+    int lv_infoLabelXPos      = 400;
+
+    // Implementation
+    DialogCreate(lv_dialogWidth, lv_dialogHeight, c_anchorCenter, 0, -60, true);
+    gv_dialogTeam2 = DialogLastCreated();
+
+    // Create middle panel for hero portrait display
+    DialogControlCreate(gv_dialogTeam2, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_middlePanelWidth, lv_dialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_middlePanelXPos, 0);
+    // Add hero portrait image to middle panel
+    DialogControlCreate(gv_dialogTeam2, c_triggerControlTypeImage);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_middlePanelWidth - 20, 600);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_middlePanelXPos + 10, 50);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\btn-unit-firebathero-portrait.dds", PlayerGroupAll());
+    gv_heroPortraitTeam2 = DialogControlLastCreated();
+
+    // Create right panel for hero info
+    DialogControlCreate(gv_dialogTeam2, c_triggerControlTypePanel);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_infoPanelWidth, lv_dialogHeight);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_infoPanelXPos, 0);
+    gv_infoPanelTeam2 = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, 125, 50, c_anchorTop, 0, 50, StringExternal("Param/Value/lib_5A1C9904_8A1774B1"), ColorWithAlpha(0,0,0,0), false, 2.0);
+
+    lv_raceCheck = IsTerran(gv_rTSPlayer2);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_825CFEE7"), StringExternal("Param/Value/lib_5A1C9904_24A60DAB"), "");
+        gv_firebatTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_DE655456"), StringExternal("Param/Value/lib_5A1C9904_D47053B6"), "");
+        gv_medicTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_D2795242"), StringExternal("Param/Value/lib_5A1C9904_46CEA381"), "");
+        gv_goliathTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_15BADC69"), StringExternal("Param/Value/lib_5A1C9904_47771A14"), "");
+        gv_marineTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_5BD3340E"), StringExternal("Param/Value/lib_5A1C9904_9879E07D"), "");
+        gv_spectreTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_3643AF90"), StringExternal("Param/Value/lib_5A1C9904_AE849DE1"), "");
+        gv_scienceVesselTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 20, c_anchorTop, lv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_24A60DAB"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_FirebatAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 35, c_anchorTop, lv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_FirebatDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoDifficultyTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_FirebatStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoStrengthsTeam2 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = IsZerg(gv_rTSPlayer2);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_E21D7F62"), StringExternal("Param/Value/lib_5A1C9904_752ED481"), "");
+        gv_zerglingTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_1DE3E5FA"), StringExternal("Param/Value/lib_5A1C9904_E655C995"), "");
+        gv_queenTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_AC106C06"), StringExternal("Param/Value/lib_5A1C9904_1ECB2231"), "");
+        gv_hydraliskTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_4DC14A06"), StringExternal("Param/Value/lib_5A1C9904_7B5B1561"), "");
+        gv_ultraliskTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_89BF609B"), StringExternal("Param/Value/lib_5A1C9904_3086F79D"), "");
+        gv_defilerTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_A2FD87C6"), StringExternal("Param/Value/lib_5A1C9904_8CCC236B"), "");
+        gv_nydusTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 20, c_anchorTop, lv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_752ED481"), ColorWithAlpha(255,255,100,255), false, 1.0);
+        gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZerglingAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 35, c_anchorTop, lv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZerglingDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoDifficultyTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZerglingStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoStrengthsTeam2 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = IsProtoss(gv_rTSPlayer2);
+    if ((lv_raceCheck == true)) {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_18626199"), StringExternal("Param/Value/lib_5A1C9904_34AE88BC"), "");
+        gv_zealotTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_50533C92"), StringExternal("Param/Value/lib_5A1C9904_B3FA3570"), "");
+        gv_sentryTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_215DA594"), StringExternal("Param/Value/lib_5A1C9904_B5ED5957"), "");
+        gv_dragoonTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_CC9D57B8"), StringExternal("Param/Value/lib_5A1C9904_50B05475"), "");
+        gv_darkTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_03C0B059"), StringExternal("Param/Value/lib_5A1C9904_8C87B31B"), "");
+        gv_corsairTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_7E09F6B4"), StringExternal("Param/Value/lib_5A1C9904_C8FFA6CD"), "");
+        gv_mothershipTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 20, c_anchorTop, lv_infoLabelXPos, 80, StringExternal("Param/Value/lib_5A1C9904_34AE88BC"), ColorWithAlpha(255,200,100,255), false, 1.0);
+        gv_infoHeroNameTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 125, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility1"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility1Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 200, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility2"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility2Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 275, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility3"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility3Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 350, StringExternal("Param/Value/lib_5A1C9904_ZealotAbility4"), ColorWithAlpha(255,255,255,255), false, 0.85);
+        gv_infoAbility4Team2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 35, c_anchorTop, lv_infoLabelXPos, 433, StringExternal("Param/Value/lib_5A1C9904_ZealotDifficulty"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoDifficultyTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_dialogTeam2, lv_infoLabelWidth, 70, c_anchorTop, lv_infoLabelXPos, 468, StringExternal("Param/Value/lib_5A1C9904_ZealotStrengths"), ColorWithAlpha(255,200,100,255), false, 0.85);
+        gv_infoStrengthsTeam2 = DialogControlLastCreated();
+    }
+
+    lv_raceCheck = IsKnownRace(gv_rTSPlayer2);
+    if ((lv_raceCheck == false)) {
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 100, StringExternal("Param/Value/lib_5A1C9904_47065936"), StringExternal("Param/Value/lib_5A1C9904_479173BD"), "");
+        gv_zealotTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 160, StringExternal("Param/Value/lib_5A1C9904_F5516FBF"), StringExternal("Param/Value/lib_5A1C9904_EC5A43FE"), "");
+        gv_sentryTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 220, StringExternal("Param/Value/lib_5A1C9904_0E44D467"), StringExternal("Param/Value/lib_5A1C9904_D44D7EFC"), "");
+        gv_dragoonTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 280, StringExternal("Param/Value/lib_5A1C9904_3C7C04B9"), StringExternal("Param/Value/lib_5A1C9904_C32A4E04"), "");
+        gv_darkTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 340, StringExternal("Param/Value/lib_5A1C9904_964EEB0B"), StringExternal("Param/Value/lib_5A1C9904_698DE8D6"), "");
+        gv_corsairTemplarTeam2 = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_buttonSizePickX, lv_buttonSizePickY, c_anchorTop, lv_buttonXPos, 400, StringExternal("Param/Value/lib_5A1C9904_12C4A045"), StringExternal("Param/Value/lib_5A1C9904_7C62B8C6"), "");
+        gv_mothershipTeam2 = DialogControlLastCreated();
+    }
+
+    // Lock In button
+    libNtve_gf_CreateDialogItemButton(gv_dialogTeam2, lv_lockInButtonWidth, lv_lockInButtonHeight, c_anchorTopLeft, lv_lockInButtonXPos, lv_lockInButtonYPos, StringExternal("Param/Value/lib_5A1C9904_LockInButton"), StringExternal("Param/Value/lib_5A1C9904_LockInTooltip"), "");
+    gv_lockInButtonTeam2 = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemText(gv_lockInButtonTeam2, StringExternal("Param/Value/lib_5A1C9904_LockInButton"), PlayerGroupAll());
+
+    DialogSetVisible(gv_dialogTeam2, gv_soldierPlayers2, true);
+    DialogSetVisible(gv_dialogTeam2, gv_playersWhoPicked, false);
+
+    // Set default hero based on RTS player race
+    if ((PlayerRace(gv_rTSPlayer2) == "Zerg")) {
+        gv_selectedHeroTeam2 = "ZerglingHero";
+        libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam2, "Assets\\Textures\\ZerglingPortrait_Static.dds", gv_soldierPlayers2);
+    }
+    else if ((PlayerRace(gv_rTSPlayer2) == "Terr")) {
+        gv_selectedHeroTeam2 = "FirebatHero";
+        libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam2, "Assets\\Textures\\marinemercenaryportrait_static.dds", gv_soldierPlayers2);
+    }
+    else if ((PlayerRace(gv_rTSPlayer2) == "Prot")) {
+        gv_selectedHeroTeam2 = "ZealotHero";
+        libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotName"), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam2, "Assets\\Textures\\AiurZealotPortrait_Static.dds", gv_soldierPlayers2);
+    }
+
+    DisableaDialogItem(gv_sentryTemplarTeam2);
+    DisableaDialogItem(gv_corsairTemplarTeam2);
+    DisableaDialogItem(gv_darkTemplarTeam2);
+    DisableaDialogItem(gv_defilerTeam2);
+    DisableaDialogItem(gv_dragoonTemplarTeam2);
+    DisableaDialogItem(gv_firebatTeam2);
+    DisableaDialogItem(gv_goliathTeam2);
+    DisableaDialogItem(gv_hydraliskTeam2);
+    DisableaDialogItem(gv_marineTeam2);
+    DisableaDialogItem(gv_medicTeam2);
+    DisableaDialogItem(gv_queenTeam2);
+    DisableaDialogItem(gv_spectreTeam2);
+    DisableaDialogItem(gv_ultraliskTeam2);
+    DisableaDialogItem(gv_zealotTeam2);
+    DisableaDialogItem(gv_zerglingTeam2);
+    DisableaDialogItem(gv_nydusTeam2);
+    DisableaDialogItem(gv_scienceVesselTeam2);
+    DisableaDialogItem(gv_mothershipTeam2);
+    DisableaDialogItem(gv_lockInButtonTeam2);
+    Wait(2.0, c_timeReal);
+    EnableaDialogItem(gv_sentryTemplarTeam2);
+    EnableaDialogItem(gv_corsairTemplarTeam2);
+    EnableaDialogItem(gv_darkTemplarTeam2);
+    EnableaDialogItem(gv_defilerTeam2);
+    EnableaDialogItem(gv_dragoonTemplarTeam2);
+    EnableaDialogItem(gv_firebatTeam2);
+    EnableaDialogItem(gv_goliathTeam2);
+    EnableaDialogItem(gv_hydraliskTeam2);
+    EnableaDialogItem(gv_marineTeam2);
+    EnableaDialogItem(gv_medicTeam2);
+    EnableaDialogItem(gv_queenTeam2);
+    EnableaDialogItem(gv_spectreTeam2);
+    EnableaDialogItem(gv_ultraliskTeam2);
+    EnableaDialogItem(gv_zealotTeam2);
+    EnableaDialogItem(gv_zerglingTeam2);
+    EnableaDialogItem(gv_scienceVesselTeam2);
+    EnableaDialogItem(gv_nydusTeam2);
+    EnableaDialogItem(gv_mothershipTeam2);
+    EnableaDialogItem(gv_lockInButtonTeam2);
+    return true;
 }

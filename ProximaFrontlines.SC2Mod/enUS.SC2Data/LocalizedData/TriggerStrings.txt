@@ -1,646 +1,1647 @@
-﻿Category/Name/748BC772=MapSpecific
-Category/Name/lib_1_1469A172=RtsAI
-Category/Name/lib_1_16C94B1A=Variables
-Category/Name/lib_1_28206795=MobaSpecific
-Category/Name/lib_1_31389A02=DialogTeam2
-Category/Name/lib_1_49509109=ScoreDialog
-Category/Name/lib_1_4DC03AA9=Deprecated_Jungle
-Category/Name/lib_1_4F281D97=Abilities
-Category/Name/lib_1_529EDC5D=JungleSpawnFlow
-Category/Name/lib_1_657BE280=Other
-Category/Name/lib_1_65F44D30=DeathFlows
-Category/Name/lib_1_6AD63BFF=Jungle
-Category/Name/lib_1_71B5B0E9=TeamSetup
-Category/Name/lib_1_7F14AC86=SoldierPick
-Category/Name/lib_1_A62A1FBF=GameOver
-Category/Name/lib_1_E2CE1C5F=SoldierAI
-Category/Name/lib_1_E778503C=SpawnerFlow
-Category/Name/lib_1_EDE75B10=SoldierSpecific
-Category/Name/lib_1_EEAAAC5F=DialogTeam1
-Category/Name/lib_1_F41FC53D=Init
-CustomScript/Name/lib_1_1078760B=ForceField
-CustomScript/Name/lib_5A1C9904_161C80F5=Include
-FunctionDef/Name/A02AD131=SetupJungle
-FunctionDef/Name/D8CAE157=SpawnPointsMinerals
-FunctionDef/Name/F95E1002=SetupSpawners
-FunctionDef/Name/lib_1_03AB8428=ResetCooldownOfShadowFury
-FunctionDef/Name/lib_1_03EFEBF5=StartSoldierAI
-FunctionDef/Name/lib_1_07FFD1B1=FindEnemyHero
-FunctionDef/Name/lib_1_15F1EDC5=Corsair
-FunctionDef/Name/lib_1_1647BB86=IsSurvival
-FunctionDef/Name/lib_1_173D4F70=AddUpdateForWaves
-FunctionDef/Name/lib_1_1A1A7381=GetWaveStatus
-FunctionDef/Name/lib_1_1A6EF867=IsZerg
-FunctionDef/Name/lib_1_1B60EAD5=HeroSpells
-FunctionDef/Name/lib_1_2047F388=Scores
-FunctionDef/Name/lib_1_209FBE8F=AttackPointHostiles
-FunctionDef/Name/lib_1_2C8B3035=SetupTeams2
-FunctionDef/Name/lib_1_2E3F1CAD=Display Death Message
-FunctionDef/Name/lib_1_2EB8DD9B=CreateJungleUnits
-FunctionDef/Name/lib_1_32C3CC84=SetupTeams1
-FunctionDef/Name/lib_1_36E41224=StartAi
-FunctionDef/Name/lib_1_3F7D7FE2=AddUnitJunglePrice
-FunctionDef/Name/lib_1_41793605=IsKnownRace
-FunctionDef/Name/lib_1_46194D55=IsTerran
-FunctionDef/Name/lib_1_48864033=AddJungleSpawn
-FunctionDef/Name/lib_1_543D2138=WithRTSPlayer
-FunctionDef/Name/lib_1_57A7FC94=SoldierSelectionTeam2
-FunctionDef/Name/lib_1_5CD5ED68=FindHealspot
-FunctionDef/Name/lib_1_6CD2A6D5=GetWavesPlayer
-FunctionDef/Name/lib_1_6FFB898E=SpawnDefenceTower
-FunctionDef/Name/lib_1_732AB162=GiveXPForHeroKills
-FunctionDef/Name/lib_1_7509CE28=GetSpawnPointTeam2
-FunctionDef/Name/lib_1_7ACE1CD0=ClosestPoint
-FunctionDef/Name/lib_1_7E115BC3=SpawnersBeingAttacked
-FunctionDef/Name/lib_1_8159ADA2=Disable a DialogItem
-FunctionDef/Name/lib_1_84004F5D=GetTurretStatus
-FunctionDef/Name/lib_1_8FB70EC3=Respawn
-FunctionDef/Name/lib_1_9013F76B=Enable a DialogItem
-FunctionDef/Name/lib_1_9894405C=SetSize
-FunctionDef/Name/lib_1_99E01F90=GetDefaultWaveType
-FunctionDef/Name/lib_1_9C4C81E4=GameOver
-FunctionDef/Name/lib_1_9CAEBCAE=GetSpawners
-FunctionDef/Name/lib_1_9DB397E8=GetPlayerRaceName
-FunctionDef/Name/lib_1_A1AF389E=GetDefaultSpawnerType
-FunctionDef/Name/lib_1_A4E10CCE=GetSpawnPointTeam1
-FunctionDef/Name/lib_1_B42D11D7=RemoveUpdateForWaves
-FunctionDef/Name/lib_1_BAC76B32=GetDefaultWaveAmount
-FunctionDef/Name/lib_1_C2BD9E44=AddJungleUnitGroup
-FunctionDef/Name/lib_1_C4373136=GiveResource
-FunctionDef/Name/lib_1_D24EE59A=GetEnemyRTSPlayer
-FunctionDef/Name/lib_1_DA0DB7F0=GetAllyRTSPlayer
-FunctionDef/Name/lib_1_E503C8FF=AddNewWavePoint
-FunctionDef/Name/lib_1_EBF05B76=IsProtoss
-FunctionDef/Name/lib_1_EFDF3189=StartProximaGame
-FunctionDef/Name/lib_1_F0954CCC=UpdateScoreboard
-FunctionDef/Name/lib_1_F1CB0E08=AddSpawner
-FunctionDef/Name/lib_1_F5903774=SpawnJungleUnits
-FunctionDef/Name/lib_1_FA94AAC1=SoldierSelectionTeam1
-FunctionDef/Name/lib_1_FC88B266=CreateSpawners
-FunctionDef/Name/lib_1_FE0295C2=GetStartLocation
-FunctionDef/Name/lib_5A1C9904_B550A421=StartProximaGame
-Library/Name/1=Proxima
-Library/Name/5A1C9904=Proxima
-ParamDef/Name/lib_1_00686760=RTSPlayer
-ParamDef/Name/lib_1_0FB01F75=Gas
-ParamDef/Name/lib_1_11F274E4=LastPoint
-ParamDef/Name/lib_1_130DCC6D=AddUnitGroup
-ParamDef/Name/lib_1_14494E74=WaveUnitAmount
-ParamDef/Name/lib_1_14FB811D=Killed
-ParamDef/Name/lib_1_14FE86FE=UnitType
-ParamDef/Name/lib_1_161414DF=KillingPlayer
-ParamDef/Name/lib_1_1717FE54=Killer
-ParamDef/Name/lib_1_1E1E99EB=Upgrade
-ParamDef/Name/lib_1_1EB1021D=LosingTeam
-ParamDef/Name/lib_1_1F34B263=KilledUnit
-ParamDef/Name/lib_1_26D6270F=RTSPlayer
-ParamDef/Name/lib_1_2B1C736A=player
-ParamDef/Name/lib_1_2BE11306=WinningTeam
-ParamDef/Name/lib_1_2C8B9379=StartPoint
-ParamDef/Name/lib_1_2FC9639C=Minerals
-ParamDef/Name/lib_1_35B50E1B=KillingSoldier
-ParamDef/Name/lib_1_363080FB=UnitPoint
-ParamDef/Name/lib_1_38D46654=player
-ParamDef/Name/lib_1_399C1CA5=PointToAttack
-ParamDef/Name/lib_1_434B0F8D=player
-ParamDef/Name/lib_1_434EE0C9=UnitToSizeUp
-ParamDef/Name/lib_1_45F1E876=heroUnit
-ParamDef/Name/lib_1_465F57E9=Gas
-ParamDef/Name/lib_1_46E7C47E=KillingUnit
-ParamDef/Name/lib_1_4A4B5CEA=UnitType
-ParamDef/Name/lib_1_500EDE30=unit
-ParamDef/Name/lib_1_5365320A=unit
-ParamDef/Name/lib_1_54FBAC59=startPos
-ParamDef/Name/lib_1_555044DF=ToSpawn
-ParamDef/Name/lib_1_5735A343=KillingPlayer
-ParamDef/Name/lib_1_5CE09F7F=Spawn
-ParamDef/Name/lib_1_64C38F32=player
-ParamDef/Name/lib_1_66356B1B=Deaths
-ParamDef/Name/lib_1_6A79BE73=startPos
-ParamDef/Name/lib_1_6CFE987E=Player
-ParamDef/Name/lib_1_71A3E36F=player
-ParamDef/Name/lib_1_7626762C=KilledSoldier
-ParamDef/Name/lib_1_7796C74C=SpawnerIndex
-ParamDef/Name/lib_1_7902850E=KilledUnit
-ParamDef/Name/lib_1_7987BC85=WinningRTSPlayer
-ParamDef/Name/lib_1_7D6A88B6=Player
-ParamDef/Name/lib_1_7F3E9406=Index
-ParamDef/Name/lib_1_815C24B5=Unit
-ParamDef/Name/lib_1_931D7C33=deadPlayer
-ParamDef/Name/lib_1_932C0F74=Kills
-ParamDef/Name/lib_1_93C5E5AE=Player
-ParamDef/Name/lib_1_9866A88E=DialogItem
-ParamDef/Name/lib_1_9B0B598F=Minerals
-ParamDef/Name/lib_1_9B5702C7=MinimapPoint
-ParamDef/Name/lib_1_A06242CC=KillingUnit
-ParamDef/Name/lib_1_A5C8C3BD=player
-ParamDef/Name/lib_1_A5D15F0C=KillingPlayer
-ParamDef/Name/lib_1_A65502B6=TriggeringPlayer
-ParamDef/Name/lib_1_A6AA1BCD=AlliedPlayer
-ParamDef/Name/lib_1_A8D69521=SpawnForPlayer
-ParamDef/Name/lib_1_A95EF6F1=LosingRTSPlayer
-ParamDef/Name/lib_1_B2F0F401=offsetVeterancy
-ParamDef/Name/lib_1_B631AA35=startPos
-ParamDef/Name/lib_1_B9590F71=player
-ParamDef/Name/lib_1_BB7CB9B7=player
-ParamDef/Name/lib_1_BD24D949=WaveUnitType
-ParamDef/Name/lib_1_C69A717A=DialogItem
-ParamDef/Name/lib_1_C93A63C7=player
-ParamDef/Name/lib_1_CE243D94=Facing
-ParamDef/Name/lib_1_D48A9853=deadPlayer
-ParamDef/Name/lib_1_D7F68796=RTSPlayer
-ParamDef/Name/lib_1_D90607D0=Player
-ParamDef/Name/lib_1_DB0ED4C7=AlliedPlayer
-ParamDef/Name/lib_1_DD93E254=Point
-ParamDef/Name/lib_1_DEA8A96F=UnitsToSpawn
-ParamDef/Name/lib_1_E2DA730A=veteranLevel
-ParamDef/Name/lib_1_E385F3F4=Unit
-ParamDef/Name/lib_1_E713C1B7=Point
-ParamDef/Name/lib_1_E980399C=wave
-ParamDef/Name/lib_1_EA48DBD7=currentPosition
-ParamDef/Name/lib_1_ECCCE318=Revive Time
-ParamDef/Name/lib_1_F1747010=AlliedPlayer
-ParamDef/Name/lib_1_FDDBA0FC=player
-ParamDef/Name/lib_1_FEFEFD14=RTSPlayer
-ParamDef/Name/lib_1_FF21C9BF=Upgrade
-ParamDef/Name/lib_5A1C9904_4B359BBF=TurretOffset2Y
-ParamDef/Name/lib_5A1C9904_502EE89F=TurretOffset2X
-ParamDef/Name/lib_5A1C9904_5340926A=TurretOffset1Y
-ParamDef/Name/lib_5A1C9904_A67F6F5A=StartPosition2
-ParamDef/Name/lib_5A1C9904_CDAA7723=TurretOffset1X
-ParamDef/Name/lib_5A1C9904_E2A2690E=StartPosition1
-Structure/Name/lib_1_29CEFEDB=Spawner
-Structure/Name/lib_1_2F6F4D78=CreatedSpawner
-Structure/Name/lib_1_39630C26=JG_PricePerUnit
-Structure/Name/lib_1_C311E138=Spawn
-Structure/Name/lib_1_FAAE4AC0=UnitsToSpawn
-Trigger/Name/9E311221=ActivateXelNagaTower3
-Trigger/Name/A86D1EDD=ActivateXelNagaTower2
-Trigger/Name/A9A2F6D1=StartBossAi
-Trigger/Name/BFDDE081=Melee Initialization
-Trigger/Name/C76C06DE=VikingsIncrease
-Trigger/Name/D762A6DF=NydusWormLevelUp
-Trigger/Name/EAB7D27C=ActivateXelNagaTower1
-Trigger/Name/EF70A145=SilenceXelNagaTower
-Trigger/Name/lib_1_04E5B508=Hydralisk Picked
-Trigger/Name/lib_1_054EBC68=BuiltHealSpotsTeam2
-Trigger/Name/lib_1_0C31B823=BanelingCreated
-Trigger/Name/lib_1_0C465650=ControlUnits
-Trigger/Name/lib_1_0C86A7F1=GiveResourcesFromJungleRTSPlayer1
-Trigger/Name/lib_1_0D6B0313=ExplainRules
-Trigger/Name/lib_1_0E843FB5=Mutalisk Picked
-Trigger/Name/lib_1_11DEC410=AI Team 1
-Trigger/Name/lib_1_13509679=Nydus Picked
-Trigger/Name/lib_1_162660F3=SendDiscord
-Trigger/Name/lib_1_199A2279=ZerglingMineExplodes
-Trigger/Name/lib_1_26C05C05=WinTeam2
-Trigger/Name/lib_1_2A935A25=ScienceVesselLevelUp
-Trigger/Name/lib_1_2BFF5C1D=Goliath Soldier Picked
-Trigger/Name/lib_1_2C79BC0A=RemoveRtsPlayer2Buildings
-Trigger/Name/lib_1_2D5B504F=Marine Soldier Picked
-Trigger/Name/lib_1_2E3EA3CC=GiveResourcesFromJungleRTSPlayer2
-Trigger/Name/lib_1_30DA153C=RemoveRtsPlayer1Buildings
-Trigger/Name/lib_1_3657D46E=FirebatAvatar
-Trigger/Name/lib_1_3E2CB7FE=BanelingCasted
-Trigger/Name/lib_1_3E647A0B=NydusWormLevelUp
-Trigger/Name/lib_1_3F42D66C=Adept Picked
-Trigger/Name/lib_1_3FD1247A=Dragoon Picked 
-Trigger/Name/lib_1_581FDB3C=MindControlPrevent
-Trigger/Name/lib_1_59A757B7=AI Team 2
-Trigger/Name/lib_1_5B467C3D=HideScores
-Trigger/Name/lib_1_6482D7F4=Dark Templar Soldier Picked
-Trigger/Name/lib_1_654CBB87=AIBuildQueens
-Trigger/Name/lib_1_6C48B901=Grenade
-Trigger/Name/lib_1_73FC5EF0=Firebat Soldier Picked
-Trigger/Name/lib_1_755C4F8D=Zergling Picked 
-Trigger/Name/lib_1_769F4F5B=ZerglingToxicBlast
-Trigger/Name/lib_1_77414BB0=SurvivalLoss
-Trigger/Name/lib_1_7A42F075=BuiltHealSpotsTeam1
-Trigger/Name/lib_1_7AE538AB=MothershipCoreLevelUp
-Trigger/Name/lib_1_826B503F=Revive Heroes Team 1
-Trigger/Name/lib_1_8D7ABA51=Queen Picked 
-Trigger/Name/lib_1_8EA90133=Zealot Soldier Picked
-Trigger/Name/lib_1_8F90C9DB=Defiler Picked
-Trigger/Name/lib_1_908F5715=Sentry Picked 
-Trigger/Name/lib_1_9610014C=DarkTemplarAoE
-Trigger/Name/lib_1_9784A8E9=Science Vessel Picked
-Trigger/Name/lib_1_9B9C92F1=SpawnUnits
-Trigger/Name/lib_1_9F2D303D=Increase RessTimer
-Trigger/Name/lib_1_9F2DA337=SentryLevelUp
-Trigger/Name/lib_1_A5499C9F=Spectre Soldier Picked
-Trigger/Name/lib_1_A6CAAD26=Ultralisk Picked
-Trigger/Name/lib_1_AC7AB080=ShowScores
-Trigger/Name/lib_1_AD7BC6D6=SpawnJungle
-Trigger/Name/lib_1_B0080BE2=AIBuildMedivacs
-Trigger/Name/lib_1_B015612B=SurrenderedTeam1
-Trigger/Name/lib_1_BEC1AC08=SurrenderedTeam2
-Trigger/Name/lib_1_BF02A3C1=Obliterate
-Trigger/Name/lib_1_C462FFF5=MothershipCore Picked
-Trigger/Name/lib_1_C5082295=Medic Soldier Picked
-Trigger/Name/lib_1_C9D5E099=AddRtsPlayer2Buildings
-Trigger/Name/lib_1_CDD2D630=Corsair Picked 
-Trigger/Name/lib_1_CFB4B073=WinTeam1
-Trigger/Name/lib_1_D2A0D0AA=IncreaseSize
-Trigger/Name/lib_1_D3804FA1=Evaluate Power
-Trigger/Name/lib_1_D557B4A2=HydraliskImpale
-Trigger/Name/lib_1_E082D5CC=ZealotOvercharge
-Trigger/Name/lib_1_E4D15224=AIBuildShieldBattery
-Trigger/Name/lib_1_E66014C2=Controller
-Trigger/Name/lib_1_E6E9F831=Healburst
-Trigger/Name/lib_1_E874799C=SensorTowerCreated
-Trigger/Name/lib_1_E9D97851=AddRtsPlayer1Buildings
-Trigger/Name/lib_1_F653B519=BanelingExplodes
-Trigger/Name/lib_1_FB3EDA7D=Revive Heroes Team 2
-Variable/Name/1F7E1E1F=Amount
-Variable/Name/26C3C88D=Tower
-Variable/Name/4287DD59=player
-Variable/Name/4490FF15=unitIsInArray
-Variable/Name/45F9AE4E=KillingPlayer
-Variable/Name/4F96E40E=LocalUnitGroup
-Variable/Name/607EC399=SpawnUnit
-Variable/Name/6FCCF15A=SpawnerId
-Variable/Name/7E434878=EnemyRTSPlayer
-Variable/Name/7E6D655D=Scale
-Variable/Name/89253690=WaveUnitType
-Variable/Name/892C283E=indexOfUnit
-Variable/Name/8955B862=loopedPlayer
-Variable/Name/8E2F43B0=Tower
-Variable/Name/93063F08=KillingPlayer
-Variable/Name/9A432632=Spawn
-Variable/Name/9C016C63=KillingPlayer
-Variable/Name/C5EE6837=Tower
-Variable/Name/D5735684=SpawnerUnitType
-Variable/Name/FD01F641=KillingPlayer
-Variable/Name/lib_1_00BC7EE0=TopExpansionTeam1
-Variable/Name/lib_1_01A3A4CD=Offsetplayer1
-Variable/Name/lib_1_029E261A=playerToSpawnFor
-Variable/Name/lib_1_02A5292A=UnitsShield
-Variable/Name/lib_1_02ECCAFC=DialogTeam1
-Variable/Name/lib_1_035B4DC3=loopedPlayer
-Variable/Name/lib_1_039558F5=indexOfUnit
-Variable/Name/lib_1_03D58371=TriggeringPlayerDeaths
-Variable/Name/lib_1_04B138DA=DyingUnit
-Variable/Name/lib_1_04B2BC85=startpos2
-Variable/Name/lib_1_04C84EFA=SpectreTeam2
-Variable/Name/lib_1_05FEEFA1=playersWhoPicked
-Variable/Name/lib_1_064DA049=_KilledTextBuilder
-Variable/Name/lib_1_068285FE=WaveUnitType
-Variable/Name/lib_1_069F6AF9=LastPosition
-Variable/Name/lib_1_06AE5095=startpos1
-Variable/Name/lib_1_06C01DD1=FirebatTeam1
-Variable/Name/lib_1_093EFCCC=Waves
-Variable/Name/lib_1_0A51FF0C=DefilerTeam2
-Variable/Name/lib_1_0A688F0B=name_of_race
-Variable/Name/lib_1_0BE8EA25=Caster
-Variable/Name/lib_1_0C0D1FEF=Team2SpawnUnit
-Variable/Name/lib_1_0C2757B1=_EnemyColor
-Variable/Name/lib_1_0D1372FE=caster
-Variable/Name/lib_1_10792D4C=Increase
-Variable/Name/lib_1_10963592=BotExpansion
-Variable/Name/lib_1_11944194=PlayerMineral
-Variable/Name/lib_1_124EB01C=Scale
-Variable/Name/lib_1_131460D6=Team1SpawnUnit
-Variable/Name/lib_1_1482D5DF=TriggeringPlayerMinerals
-Variable/Name/lib_1_14B491F4=MarineTeam1
-Variable/Name/lib_1_14B81177=unitIsInArray
-Variable/Name/lib_1_14C78693=targD
-Variable/Name/lib_1_14E7F3D9=TriggeringPlayer
-Variable/Name/lib_1_1621DDCC=TriggeringPlayerMinerals
-Variable/Name/lib_1_16EB2E57=loopedPlayer
-Variable/Name/lib_1_17009C20=caster
-Variable/Name/lib_1_177082CC=player
-Variable/Name/lib_1_18FDD07F=HydraliskTeam1
-Variable/Name/lib_1_1A81680F=HydraliskTeam2
-Variable/Name/lib_1_1CEDCB19=DefilerTeam1
-Variable/Name/lib_1_1D099222=TerranExpansionTeam1_point
-Variable/Name/lib_1_1D31F356=GoliathTeam2
-Variable/Name/lib_1_1D5CAE8F=caster
-Variable/Name/lib_1_1D685302=UltraliskTeam2
-Variable/Name/lib_1_1DF8EE3D=Increase
-Variable/Name/lib_1_1E5DDD98=Vikings_1
-Variable/Name/lib_1_1F68F059=MidExpansion_point
-Variable/Name/lib_1_1FCC0147=KillingPlayer
-Variable/Name/lib_1_1FEFA827=QuadShield
-Variable/Name/lib_1_203557CE=TriggeringPlayerMinerals
-Variable/Name/lib_1_2116D3A6=spawnPoint
-Variable/Name/lib_1_21AD684D=UnitType
-Variable/Name/lib_1_21F758E9=targDPoint
-Variable/Name/lib_1_22835DA9=loopedPlayer
-Variable/Name/lib_1_228ADD93=ZealotTeam2
-Variable/Name/lib_1_230EDCC8=stuckCounter
-Variable/Name/lib_1_23B850B3=IndexToSpawn
-Variable/Name/lib_1_24379087=raceName
-Variable/Name/lib_1_244600A9=QueenTeam1
-Variable/Name/lib_1_24EC86C5=gameAttribute
-Variable/Name/lib_1_2555C47B=AmountTeam1
-Variable/Name/lib_1_25C6DCAC=TotalDmg
-Variable/Name/lib_1_26C24465=ZerglingExpansionTeam2_point
-Variable/Name/lib_1_2758786D=RTSPlayer
-Variable/Name/lib_1_280BF6CE=spawnPoint
-Variable/Name/lib_1_2811DC2C=CreatedUnit
-Variable/Name/lib_1_28588FDB=PowerSource
-Variable/Name/lib_1_2C35814B=RTSPlayer
-Variable/Name/lib_1_2DE1BB81=Spawner
-Variable/Name/lib_1_3114B1AE=PlayerGas
-Variable/Name/lib_1_31B0FC2A=JungleToSpawn
-Variable/Name/lib_1_31F83CFA=ShowScore
-Variable/Name/lib_1_33691ED7=heroWave
-Variable/Name/lib_1_34632E14=spawners
-Variable/Name/lib_1_350E17B9=OffsetVeterancy
-Variable/Name/lib_1_363B6350=Index
-Variable/Name/lib_1_3656E0C4=loopedPlayer 2
-Variable/Name/lib_1_37917CB3=Zergling_1
-Variable/Name/lib_1_37AE8317=RessTimer
-Variable/Name/lib_1_37DCE690=SpawnLoop
-Variable/Name/lib_1_380A9232=Gas
-Variable/Name/lib_1_381566A9=targO
-Variable/Name/lib_1_387A099A=TerranExpansionTeam1
-Variable/Name/lib_1_38A8C2FE=Player
-Variable/Name/lib_1_395F93BD=ScoreDialog
-Variable/Name/lib_1_396E972F=RTSPlayer
-Variable/Name/lib_1_39F46777=LastCreatedUnit
-Variable/Name/lib_1_3A1C18CD=ZergFactions
-Variable/Name/lib_1_3BB2F5CF=LastIndexOfJunglePrices
-Variable/Name/lib_1_3C016470=HostilePoint
-Variable/Name/lib_1_3CD629FA=Player
-Variable/Name/lib_1_3D5DC1AC=MedicTeam1
-Variable/Name/lib_1_3D82DA00=loopedPlayer
-Variable/Name/lib_1_3F2EC68E=player
-Variable/Name/lib_1_40832851=TotalDmg
-Variable/Name/lib_1_430CCB66=maxCounter
-Variable/Name/lib_1_433BC64F=TopExpansion
-Variable/Name/lib_1_433D8E2C=Stats
-Variable/Name/lib_1_437C666B=JG_KilledUnit
-Variable/Name/lib_1_444AAD9A=TotalDmg
-Variable/Name/lib_1_44ADC7E9=SpawnerLastIndex
-Variable/Name/lib_1_4515A9F8=SoldierPlayers2
-Variable/Name/lib_1_4582FF15=SpawnTime
-Variable/Name/lib_1_4801D509=KilledUnit
-Variable/Name/lib_1_4AA1A32D=UnitsDmg
-Variable/Name/lib_1_4ADFD109=Point
-Variable/Name/lib_1_4B080387=Unit
-Variable/Name/lib_1_4CD2B665=Unit
-Variable/Name/lib_1_4E86E3CC=UnitType
-Variable/Name/lib_1_5000DC55=WavesStillActive
-Variable/Name/lib_1_50810593=FoundRace
-Variable/Name/lib_1_516DFA06=unitsClose
-Variable/Name/lib_1_516F32CD=UnitsAround
-Variable/Name/lib_1_545A2122=SP_SpawnerIndex
-Variable/Name/lib_1_54643B1B=spawnLoop
-Variable/Name/lib_1_550AD933=random
-Variable/Name/lib_1_55CC2D1B=player
-Variable/Name/lib_1_56883A3B=Unit
-Variable/Name/lib_1_569A15E0=KillingPlayerGas
-Variable/Name/lib_1_56B40BCA=Player
-Variable/Name/lib_1_56C53C91=KillingPlayer
-Variable/Name/lib_1_576574D7=player
-Variable/Name/lib_1_5A7FE378=PlayerStats
-Variable/Name/lib_1_5AF38CB7=ZerglingExpansionTeam2
-Variable/Name/lib_1_5C0A5645=Player
-Variable/Name/lib_1_5C9331D8=MarineTeam2
-Variable/Name/lib_1_5E7E8F60=UnitSpawn
-Variable/Name/lib_1_5EAFE04A=ButtonSizePickY
-Variable/Name/lib_1_5F16F85D=Player
-Variable/Name/lib_1_5F5F435C=Offsetplayer2
-Variable/Name/lib_1_5FDA135F=Hydralisk_2
-Variable/Name/lib_1_61D15C80=Scale
-Variable/Name/lib_1_639502A4=UnitsShield
-Variable/Name/lib_1_642D3D99=pickedUnit
-Variable/Name/lib_1_65882864=PlayerPicked
-Variable/Name/lib_1_66125444=raceCheck
-Variable/Name/lib_1_6706E9DF=startPos
-Variable/Name/lib_1_69256748=index
-Variable/Name/lib_1_6A10E13D=UnitsHealth
-Variable/Name/lib_1_6A14E113=indexOfUnit
-Variable/Name/lib_1_6A433B16=UnitSizes
-Variable/Name/lib_1_6D12A9DC=state
-Variable/Name/lib_1_6D986A59=RtsPlayer1TownBuilding
-Variable/Name/lib_1_6EE67790=HealUnitsRTS1
-Variable/Name/lib_1_6F80343F=RevivableUnits
-Variable/Name/lib_1_6F8C4DA1=Increase
-Variable/Name/lib_1_70128204=CorsairTemplarTeam1
-Variable/Name/lib_1_70E1C7CF=ZergExpansionTeam2
-Variable/Name/lib_1_715B8864=spawnPoint
-Variable/Name/lib_1_71E68183=ScienceVesselTeam1
-Variable/Name/lib_1_722FF3D8=Player
-Variable/Name/lib_1_72A74755=ZealotTeam1
-Variable/Name/lib_1_72C7F9FA=KillingPlayerMinerals
-Variable/Name/lib_1_73554082=raceCheck
-Variable/Name/lib_1_75AAFED0=TopExpansionTeam2
-Variable/Name/lib_1_75FF44D2=defendSpawner
-Variable/Name/lib_1_7609795E=SoldierPlayers1
-Variable/Name/lib_1_760DB367=SpawnLoop
-Variable/Name/lib_1_764F1AB6=UnitsShield
-Variable/Name/lib_1_767C0E27=Vikings_2
-Variable/Name/lib_1_76FFC2DF=SentryTemplarTeam2
-Variable/Name/lib_1_77733A4E=TopExpansionTeam2_point
-Variable/Name/lib_1_779E3599=Vikings_3
-Variable/Name/lib_1_782CEBAD=RTSPlayer1
-Variable/Name/lib_1_7876ED00=caster
-Variable/Name/lib_1_7AC2B31C=Units
-Variable/Name/lib_1_7C819DD2=UnitType
-Variable/Name/lib_1_7C81FB4C=healUnits
-Variable/Name/lib_1_7CA2AB2C=NydusTeam1
-Variable/Name/lib_1_7D8904B0=Player
-Variable/Name/lib_1_7E7A8B69=TriggeringPlayerKills
-Variable/Name/lib_1_8057EB9A=Spawners
-Variable/Name/lib_1_83CC14CD=JungleUnitGroups
-Variable/Name/lib_1_8598B3C1=AmountOfUnits
-Variable/Name/lib_1_8752431D=targOPoint
-Variable/Name/lib_1_8A726901=unit
-Variable/Name/lib_1_8C89DE8D=raceCheck
-Variable/Name/lib_1_8CA62593=player
-Variable/Name/lib_1_8D20CF86=JG_KillingUnit
-Variable/Name/lib_1_8E3C0476=Player
-Variable/Name/lib_1_8E4E6BB9=player
-Variable/Name/lib_1_8EE8E289=IndexToSpawn
-Variable/Name/lib_1_8FEF0A48=Player
-Variable/Name/lib_1_8FFAA904=UnitsDmg
-Variable/Name/lib_1_9097433B=raceName
-Variable/Name/lib_1_90E75B3E=FoundRace
-Variable/Name/lib_1_93B843EB=FoundRace
-Variable/Name/lib_1_943330CB=Marines_1
-Variable/Name/lib_1_95317A45=GoliathTeam1
-Variable/Name/lib_1_954C0D2A=TerranExpansionTeam2_point
-Variable/Name/lib_1_95FA05B7=extraIndex
-Variable/Name/lib_1_96120429=startPos
-Variable/Name/lib_1_97482F1E=LastIndexPoint
-Variable/Name/lib_1_97B1FC75=index
-Variable/Name/lib_1_98731A82=QuadHealth
-Variable/Name/lib_1_98C14C3A=UnitType
-Variable/Name/lib_1_99FA19B0=SpectreTeam1
-Variable/Name/lib_1_9A5609A4=loopUnit
-Variable/Name/lib_1_9C0E5A46=UnitType
-Variable/Name/lib_1_A03049FB=PlayerMiGa
-Variable/Name/lib_1_A07A53A6=deathTimer
-Variable/Name/lib_1_A1165775=RtsPlayer1Buildings
-Variable/Name/lib_1_A1915348=xpPerLevel
-Variable/Name/lib_1_A286168E=Boss
-Variable/Name/lib_1_A4220917=MothershipTeam1
-Variable/Name/lib_1_A4C8D2FF=JunglePrices
-Variable/Name/lib_1_A598B41E=RtsPlayer2Buildings
-Variable/Name/lib_1_A5B855FC=victim
-Variable/Name/lib_1_A7A16BDC=playerToStart
-Variable/Name/lib_1_A7B09DBF=PlayerKills
-Variable/Name/lib_1_A7D6B172=timerWindow
-Variable/Name/lib_1_A8A76A68=Player
-Variable/Name/lib_1_A8E79091=LastCreatedUnit
-Variable/Name/lib_1_A8F06977=FirebatTeam2
-Variable/Name/lib_1_A904EAB1=TriggeringPlayerGas
-Variable/Name/lib_1_A997124A=gameAttribute
-Variable/Name/lib_1_A9BD66FD=gameAttribute
-Variable/Name/lib_1_AA2C14F8=NydusTeam2
-Variable/Name/lib_1_AA5D7933=veteranLevel
-Variable/Name/lib_1_AAB8C1B4=UnitType
-Variable/Name/lib_1_AAF79A97=RtsPlayer2TownBuilding
-Variable/Name/lib_1_AB2617E7=Player
-Variable/Name/lib_1_AB86FE71=DeathCallbackTrigger
-Variable/Name/lib_1_AC2E1615=TriggeringPlayerDeaths
-Variable/Name/lib_1_AC8DC003=spawner
-Variable/Name/lib_1_ACD86E47=KillingPlayersDeaths
-Variable/Name/lib_1_AD717CCE=UnitSizeIndex
-Variable/Name/lib_1_ADEA1E6B=castingUnit
-Variable/Name/lib_1_ADEE0EF7=amountOfTicks
-Variable/Name/lib_1_AE067398=MiGa
-Variable/Name/lib_1_AE5B9B7E=Point
-Variable/Name/lib_1_AE7CB239=Player
-Variable/Name/lib_1_AEBD0AF8=indexOfUnit
-Variable/Name/lib_1_AECA56BD=Amount
-Variable/Name/lib_1_AEFB94DF=diff
-Variable/Name/lib_1_AF3503C2=queensBuilt
-Variable/Name/lib_1_B035D32D=RespawnTime
-Variable/Name/lib_1_B07DB7E9=Player
-Variable/Name/lib_1_B08D0374=MidExpansion
-Variable/Name/lib_1_B16E43BB=unitdead
-Variable/Name/lib_1_B1CD1F5D=TopExpansionTeam1_point
-Variable/Name/lib_1_B32365C4=Units
-Variable/Name/lib_1_B5AD6218=playerToSpawnFor
-Variable/Name/lib_1_B739BB56=ProtossFactions
-Variable/Name/lib_1_B78BDB91=loopedPlayer 2
-Variable/Name/lib_1_B84470F9=caster
-Variable/Name/lib_1_B9FA5496=random
-Variable/Name/lib_1_BA1BC1DD=KillingPlayerOfJungle
-Variable/Name/lib_1_BA95AEE3=TerranExpansionTeam2
-Variable/Name/lib_1_BBF2F14B=DarkTemplarTeam2
-Variable/Name/lib_1_BBFFCDB7=player
-Variable/Name/lib_1_BCB6D172=DragoonTemplarTeam1
-Variable/Name/lib_1_BDCF99A5=TopExpansion_point
-Variable/Name/lib_1_BE774D7E=Index
-Variable/Name/lib_1_BF233056=KillingPlayerMinerals
-Variable/Name/lib_1_BF965C44=Spawner
-Variable/Name/lib_1_C0EF35E1=SpawnPoints
-Variable/Name/lib_1_C1563989=Increase
-Variable/Name/lib_1_C1C46474=UnitsHealth
-Variable/Name/lib_1_C1E323D6=spawnLoop
-Variable/Name/lib_1_C227D1A5=unitIsInArray
-Variable/Name/lib_1_C27D821D=ButtonSizePickX
-Variable/Name/lib_1_C2ECE0DD=KilledUnit
-Variable/Name/lib_1_C4A28667=ZerglingTeam2
-Variable/Name/lib_1_C55B971F=castingUnit
-Variable/Name/lib_1_C56F4C3C=Player
-Variable/Name/lib_1_C6CAD148=AmountTeam2
-Variable/Name/lib_1_C6EB1C9D=raceCheck
-Variable/Name/lib_1_C7CC7250=UnitsHealth
-Variable/Name/lib_1_C834DB68=amountOfXp
-Variable/Name/lib_1_C8CAA544=HideScore
-Variable/Name/lib_1_C90CF754=ZerglingExpansionTeam1
-Variable/Name/lib_1_C94E7B5B=ZergExpansionTeam1_point
-Variable/Name/lib_1_C99D21E2=CorsairTemplarTeam2
-Variable/Name/lib_1_C9C88B17=ZergExpansionTeam2_point
-Variable/Name/lib_1_C9E3B3D9=DarkTemplarTeam1
-Variable/Name/lib_1_C9E898AC=UnitsDmg
-Variable/Name/lib_1_CA84F799=Player
-Variable/Name/lib_1_CABA33F6=Units
-Variable/Name/lib_1_CAFA58D0=race
-Variable/Name/lib_1_CB0A1283=KillingPlayer
-Variable/Name/lib_1_CB0AD30E=SentryTemplarTeam1
-Variable/Name/lib_1_CBED20DA=baneling
-Variable/Name/lib_1_CC1A0820=HalfHealth
-Variable/Name/lib_1_CC221D40=deathTimer
-Variable/Name/lib_1_CC9D42BE=Marines_2
-Variable/Name/lib_1_CCA105FE=player
-Variable/Name/lib_1_CD9DFE45=CreatedSpawners
-Variable/Name/lib_1_CE380FB0=damagingUnit
-Variable/Name/lib_1_CF5B6A86=Player
-Variable/Name/lib_1_CF904DE2=Player
-Variable/Name/lib_1_D0F947F6=raceName
-Variable/Name/lib_1_D12A573A=KillingPlayersKills
-Variable/Name/lib_1_D12DA401=loopedPlayer
-Variable/Name/lib_1_D279ED04=sensorTower
-Variable/Name/lib_1_D29FAF05=BotExpansion_point
-Variable/Name/lib_1_D4C45209=MovePoints
-Variable/Name/lib_1_D4F36BF1=index
-Variable/Name/lib_1_D5497E26=MothershipTeam2
-Variable/Name/lib_1_D571332F=DyingUnit
-Variable/Name/lib_1_D5F2A000=text
-Variable/Name/lib_1_D62F73EF=DialogTeam2
-Variable/Name/lib_1_D6D3C8AD=ZergExpansionTeam1
-Variable/Name/lib_1_D700E6AD=UnitGroup
-Variable/Name/lib_1_D733E586=TriggeringPlayerGas
-Variable/Name/lib_1_D855A4A2=unit
-Variable/Name/lib_1_D94EBC61=RTSPlayer2
-Variable/Name/lib_1_D9683BA8=healUnit
-Variable/Name/lib_1_D997CD8F=raceCheck
-Variable/Name/lib_1_DA785B59=unitGroup
-Variable/Name/lib_1_DB692509=Player
-Variable/Name/lib_1_DB8D4F38=UnitType
-Variable/Name/lib_1_DC3FA836=Hydralisk_1
-Variable/Name/lib_1_DCB25D7C=baseXP
-Variable/Name/lib_1_DCC160BE=Scale
-Variable/Name/lib_1_DCC4C3DC=ChangedUnit
-Variable/Name/lib_1_DD297D9C=ZerglingTeam1
-Variable/Name/lib_1_DD6CA36E=turret
-Variable/Name/lib_1_DEA0CBC5=queensBuilt
-Variable/Name/lib_1_DECEA405=unitIsInArray
-Variable/Name/lib_1_DEEBEB27=TerranFactions
-Variable/Name/lib_1_DF9FB716=KillingPlayerGas
-Variable/Name/lib_1_DFB88BE0=timerWindow
-Variable/Name/lib_1_E028DFE7=Increase
-Variable/Name/lib_1_E1129EAD=startPos
-Variable/Name/lib_1_E2ABA0DF=raceName
-Variable/Name/lib_1_E422ECA8=Player
-Variable/Name/lib_1_E7A14DD6=AllyRTSPlayer
-Variable/Name/lib_1_E7C28025=TriggeringPlayerKills
-Variable/Name/lib_1_E9341CB2=LastIndexOfSpawn
-Variable/Name/lib_1_EB330A6C=HalfShield
-Variable/Name/lib_1_ED7D5C69=startPoint
-Variable/Name/lib_1_EE341CFA=UnitGroup
-Variable/Name/lib_1_EE5AB2E3=HiddenDialog
-Variable/Name/lib_1_EF36E9B6=DragoonTemplarTeam2
-Variable/Name/lib_1_EF4798B0=HealUnitsRTS2
-Variable/Name/lib_1_EFDC1C29=caster
-Variable/Name/lib_1_EFDEC474=PlayerDeaths
-Variable/Name/lib_1_F0285742=CurrentPosition
-Variable/Name/lib_1_F0439DDB=caster
-Variable/Name/lib_1_F103B4A0=spawners
-Variable/Name/lib_1_F1A2DDD3=Player
-Variable/Name/lib_1_F21AC1F9=Point
-Variable/Name/lib_1_F28D536A=TriggeringPlayerKills
-Variable/Name/lib_1_F2C79EC8=LoopIndex
-Variable/Name/lib_1_F3726BAE=Increase
-Variable/Name/lib_1_F478B411=KillingPlayersDeaths
-Variable/Name/lib_1_F5658307=Minerals
-Variable/Name/lib_1_F5D9F1FE=amountOftimes
-Variable/Name/lib_1_F614D602=QuadShield
-Variable/Name/lib_1_F78CC0DF=ZerglingExpansionTeam1_point
-Variable/Name/lib_1_F7D2FFF7=TriggeringPlayer
-Variable/Name/lib_1_F81BC0E2=index
-Variable/Name/lib_1_F9FFA2C1=TriggeringPlayerDeaths
-Variable/Name/lib_1_FA2260F1=commit
-Variable/Name/lib_1_FA7F44D9=Player
-Variable/Name/lib_1_FABB5B24=Zergling_2
-Variable/Name/lib_1_FB635691=QuadHealth
-Variable/Name/lib_1_FBABCF5A=baneling
-Variable/Name/lib_1_FBDC5377=UltraliskTeam1
-Variable/Name/lib_1_FC91F3E8=Soldiers
-Variable/Name/lib_1_FCB7E8C8=_AllyColor
-Variable/Name/lib_1_FD10FA7A=TriggeringPlayerGas
-Variable/Name/lib_1_FD1FAE51=KillingPlayersKills
-Variable/Name/lib_1_FE57AA21=ScienceVesselTeam2
-Variable/Name/lib_1_FE5FA934=Index
-Variable/Name/lib_1_FEB24E1C=sizeIndex
-Variable/Name/lib_1_FEDD8524=MedicTeam2
-Variable/Name/lib_1_FF2A7A15=_KillerTextBuilder
-Variable/Name/lib_1_FF54173F=QueenTeam2
-Variable/Name/lib_1_FFB2E03B=raceCheck
-Variable/Name/lib_1_FFF40466=KillingPlayer
+﻿Aaron Beckwith=Aaron Beckwith
+Abil/Name/Baneling=Baneling
+Abil/Name/Charge2=Charge
+Abil/Name/ChronoBoostEnergyCost=Chrono Boost
+Abil/Name/DarkShrineResearch=Research
+Abil/Name/Dig=Dig
+Abil/Name/DragoonFrenzy=DragoonFrenzy
+Abil/Name/EmpowerZergBuilding=Empower Zerg Building
+Abil/Name/Explode2=Explode
+Abil/Name/ExplodeHeal2=Explode Heal
+Abil/Name/FenixChampionPowerShield2=Power Shield
+Abil/Name/FirebatAvatar=Avatar
+Abil/Name/FlagshipTimeBombTarget=Flagship Time Bomb
+Abil/Name/ForceField2=Force Field
+Abil/Name/GravitonBeamUrun2=Graviton Beam - Urun
+Abil/Name/HeroDarkTemplarDeepShadowBlink=Hero Dark Templar Deep Shadow Blink
+Abil/Name/HotSRaptorCharge2=Leap No Auto
+Abil/Name/Impale2=Impale
+Abil/Name/MarineGrenade=Grenade
+Abil/Name/MorphZerglingBanelingHero=Morph (Zergling -> Baneling) Hero
+Abil/Name/MorphZerglingBanelingHero2=Spawn Burrowed Zergling
+Abil/Name/MutateVentralSacs=Mutate Ventral Sacs
+Abil/Name/NovaWeaponCanisterRifleSnipe2=Snipe
+Abil/Name/NydusSpawnCanal=Nydus Spawn Canal
+Abil/Name/NydusSpawnZergUnits=Spawn Zerg Units
+Abil/Name/Radar=Radar
+Abil/Name/RepairDrones=Repair Drones
+Abil/Name/ResearchLurkerDen=Research (Lurker Den)
+Abil/Name/ScienceVesselEmergencyThrusters=Emergency Thrusters
+Abil/Name/ScienceVesselRepairDroneHanger=Science Vessel Repair Drone Hanger
+Abil/Name/ShadowStride=Shadow Stride
+Abil/Name/SmallSpawnZergUnits=Spawn Zerg Units
+Abil/Name/SpawnSensorTower=Spawn Sensor Tower
+Abil/Name/SpawnZergUnits=Use Charge Spawn 
+Abil/Name/SpectreHeroCloak=Spectre Hero Cloak
+Abil/Name/StimpackHero=Stimpack
+Abil/Name/StimpackHero2=Stimpack
+Abil/Name/StrategicRecall=Strategic Recall
+Abil/Name/TemporalField2=Reversed Time Warp
+Abil/Name/TemporalField3=Time Warp
+Abil/Name/TurretLab=Turret Lab
+Abil/Name/UseChargeSpawnHydralisk=Use Charge Spawn Hydralisk
+Abil/Name/VolatileBurstBuilding2=Volatile Burst Building
+Abil/Name/WidowMineAttack2=Goliath Rocket
+Abil/Name/ZealotWhirlWindHero=Whirlwind
+Abil/Name/ZerglingMine=ZerglingMine
+Abil/Name/que5=Queue (10)
+Actor/HighlightTooltip/PhotonOvercharge=Hostile towards all players
+Actor/HighlightTooltip/Spawn=Hostile towards all players
+Adept=Adept
+Allison Merton=Allison Merton
+Attribute001/Name=Waves
+Attribute001/Value001/Desc=Turns waves on
+Attribute001/Value001/Name=On
+Attribute001/Value002/Desc=Turns waves off
+Attribute001/Value002/Name=Off
+Attribute002/Name=Starting Turret
+Attribute002/Value001/Desc=Turn on starting defence turret
+Attribute002/Value001/Name=On
+Attribute002/Value002/Desc=Turn off starting defence turret
+Attribute002/Value003/Name=Off
+Attribute003/Name=IsSurvival
+Attribute003/Value001/Name=On
+Attribute003/Value002/Name=Off
+Attribute004/Name=With RTS Player
+Attribute004/Value001/Name=On
+Attribute004/Value002/Name=Off
+Behavior/Name/BuffEnergyRegen=Buff Energy Regen
+Behavior/Name/AlliedEnergy=Energy Aura
+Behavior/Name/AlliedEnergyAura=Energy Aura
+Behavior/Name/ArmorPlates=Armor Plates
+Behavior/Name/EnergyRegenBoost=Energy Regen Boost
+Behavior/Name/FlyingUnitGroundAttackDebuff=Grounded
+Behavior/Name/GravityPull=Gravity Pull
+Behavior/Name/HealingBoost=Healing Boost
+Behavior/Name/HeroicDamageBonus=Slayer
+Behavior/Name/IronBoots=Iron Boots
+Behavior/Name/MercurialBoots=Mercurial Boots
+Behavior/Name/NonHeroicDamageReduction=Fortitude Protocol
+Behavior/Name/VelocityBoots=Velocity Boots
+Behavior/Name/BaseBreaker=Base Breaker
+Behavior/Name/BuffEnergyRegen2=Buff Energy Regen
+Behavior/Name/Corsair1to4=Corsair 1 to 4
+Behavior/Name/Corsair5to7=Corsair 5 to 7
+Behavior/Name/Corsair8to10=Corsair 8 to 10
+Behavior/Name/DamageReduction=Damage Reduction
+Behavior/Name/DarkTemplar1to4=Templar 1 to 4
+Behavior/Name/DarkTemplar5to7=Templar 5 to 7
+Behavior/Name/DarkTemplar8to10=Templar 8 to 10
+Behavior/Name/Defiler1to4=Defiler 1 to 4
+Behavior/Name/Defiler5to7=Defiler 5 to 7
+Behavior/Name/Defiler8to10=Defiler 8 to 10
+Behavior/Name/Dragoon1to4=Dragoon 1 to 4
+Behavior/Name/Dragoon5to7=Dragoon 5 to 7
+Behavior/Name/Dragoon8to10=Dragoon 8to10
+Behavior/Name/DragoonFrenzy=Frenzy
+Behavior/Name/EmpowerZergBuilding=Empower Zerg Building
+Behavior/Name/FenixChampionPowerShield2=Damage Reduction
+Behavior/Name/Firebat1to4=Firebat 1 to 4
+Behavior/Name/Firebat8to10=Firebat 8 to 10
+Behavior/Name/FirebatAttackSpeed=Firebat 5 to 7
+Behavior/Name/FirebatAvatar=Avatar
+Behavior/Name/GatheringDummy=Gathering Dummy
+Behavior/Name/GetCredit=GetCredit
+Behavior/Name/GetCredit2=GetCredit
+Behavior/Name/Goliath1to4=Goliath 1 to 4
+Behavior/Name/Goliath5to7=Goliath 5 to 7
+Behavior/Name/Goliath8to10=Goliath 8 to 10
+Behavior/Name/GlassCannon=Glass Cannon
+Behavior/Name/GuardianShield2=Guardian Shield
+Behavior/Name/HealHeroicUnitsAround=Heal Heroic Units Around
+Behavior/Name/Healable=Not Healable
+Behavior/Name/HeroDarkTemplarDeepShadows=Hero Dark Templar Deep Shadows
+Behavior/Name/HinderEnergyRegn=Hinder Energy Regenerate
+Behavior/Name/Hydralisk1to4=Hydralisk 1 to 4
+Behavior/Name/Hydralisk5to7=Hydralisk 5 to 7
+Behavior/Name/Hydralisk5to72=Hydralisk 8 to 10
+Behavior/Name/Marine1to4=Marine 1 to 4
+Behavior/Name/Marine5to7=Marine 5 to 7
+Behavior/Name/Marine8to10=Marine 8 to 10
+Behavior/Name/Medic1to4=Medic 1 to 4
+Behavior/Name/Medic5to7=Medic 5 to 7
+Behavior/Name/Medic8to10=Medic 8 to 10
+Behavior/Name/MothershipCore1to4=Mothership Core 1 to 4
+Behavior/Name/MothershipCore5to7=Mothership Core 5 to 7
+Behavior/Name/MothershipCore8to10=Mothership Core 8 to 10
+Behavior/Name/MothershipCoreLevelBonus=Mothership Core Level Bonus
+Behavior/Name/NydusWhirlwind=Whirlwind
+Behavior/Name/PrologueVoidArmor2=Void Armor
+Behavior/Name/PowerOverwhelming=Power Overwhelming
+Behavior/Name/ProtossDamageBonus=Protoss Damage Bonus
+Behavior/Name/ProtossLevels=Protoss Levels
+Behavior/Name/ProtossMovementBonus=Protoss Movement Bonus
+Behavior/Name/ProtossShieldBonus=Protoss Shield Bonus
+Behavior/Name/PsionicLashPrepare=Psionic Lash
+Behavior/Name/Queen1to4=Queen 1 to 4
+Behavior/Name/Queen1to42=Queen 5 to 7
+Behavior/Name/Queen1to422=Queen 8 to 10
+Behavior/Name/ScienceVessel1to4=Science Vessel 1 to 4
+Behavior/Name/ScienceVessel5to7=Science Vessel 5 to 7
+Behavior/Name/ScienceVessel8to10=Science Vessel 8 to 10
+Behavior/Name/ScienceVesselBuffDamage=Buff Damage
+Behavior/Name/ScienceVesselBuffDamage2=Buff Energy
+Behavior/Name/Sentry1to4=Sentry 1 to 4
+Behavior/Name/Sentry5to7=Sentry 5 to 7
+Behavior/Name/Sentry8to10=Sentry 8 to 10
+Behavior/Name/ShieldRegeneration=Shield Regeneration
+Behavior/Name/Spectre1to4=Spectre 1 to 4
+Behavior/Name/Spectre5to7=Spectre 5 to 7
+Behavior/Name/Spectre8to10=Spectre 8 to 10
+Behavior/Name/Stimpack2=Stimpack
+Behavior/Name/Stimpack3=Stimpack
+Behavior/Name/StructureDefense=Reinforced Armor
+Behavior/Name/TemporalRiftUnit2=Reversal Rift
+Behavior/Name/TerranAttackBonus=Terran Attack Bonus
+Behavior/Name/TerranAttackSpeed=Terran Attack Speed
+Behavior/Name/TerranLevels=Terran Levels
+Behavior/Name/TurnBaneling=Turn Baneling
+Behavior/Name/Ultralisk1to4=Ultralisk 1 to 4
+Behavior/Name/Ultralisk5to7=Ultralisk 5 to 7
+Behavior/Name/Ultralisk8to10=Ultralisk 8 to 10
+Behavior/Name/VileAcidSlowEffectsLevel12=Slow
+Behavior/Name/ViralPlasma2=Viral Plasma
+Behavior/Name/VoidDarkTemplarDeepShadows2=Void Dark Templar Deep Shadows
+Behavior/Name/WorkersResistanceToHeroic=Workers Resistance To Heroic
+Behavior/Name/Zealot1to4=Zealot 1 to 4
+Behavior/Name/Zealot5to7=Zealot 5 to 7
+Behavior/Name/Zealot8to10=Zealot 8 to 10
+Behavior/Name/ZealotShieldBonus=Zealot Shield Bonus
+Behavior/Name/ZergEnergyBonus=Zerg Energy Bonus
+Behavior/Name/ZergHealthBonus=Zerg Health Bonus
+Behavior/Name/ZergLevels=Zerg Levels
+Behavior/Name/ZergMovementBonus=Zerg Movement Bonus
+Behavior/Name/Zergling1to4=Zergling 1 to 4
+Behavior/Name/Zergling5to7=Zergling 5 to 7
+Behavior/Name/Zergling8to10=Zergling 8 to 10
+Behavior/Tooltip/DamageReduction=100% Damage Reduction
+Behavior/Tooltip/DefilerMPDarkSwarm=[PH] Units inside of Dark Cloud take 60% less damage from range
+Behavior/Tooltip/DragoonFrenzy=Attack speed increased.
+Behavior/Tooltip/FirebatAvatar=Dealing damage to any nearby units.
+Behavior/Tooltip/GuardianShield2=Incoming attack damage reduced by 2.
+Behavior/Tooltip/NydusWhirlwind=This unit is dealing damage to nearby enemies.
+Behavior/Tooltip/PsionicLashPrepare=Targeted by a Spectre
+Behavior/Tooltip/Stimpack2=This unit moves and attacks more quickly while under the effects of Stimpack.
+Behavior/Tooltip/Stimpack3=This unit moves and attacks more quickly while under the effects of Stimpack.
+Behavior/Tooltip/SuperStimNova=Firebat's attack and movement speeds are greatly increased. Firebat is healing life over time.
+Behavior/Tooltip/TemporalRiftUnit2=Target's movement speed, attack speed increased by 40%
+Behavior/Tooltip/VileAcidSlowEffectsLevel12=Attack and movement speeds are slightly slowed.
+Behavior/Tooltip/AlliedEnergy=Energy regeneration improved.
+Behavior/Tooltip/AlliedEnergyAura=Grants energy regeneration to nearby allies.
+Behavior/Tooltip/ArmorPlates=Incoming damage reduced by 10%.
+Behavior/Tooltip/BaseBreaker=Deals 20% more damage to structures.
+Behavior/Tooltip/EnergyRegenBoost=Energy regeneration increased.
+Behavior/Tooltip/FlyingUnitGroundAttackDebuff=Grounded and unable to attack.
+Behavior/Tooltip/GlassCannon=Deals 10% more damage but has 20% reduced life and shields.
+Behavior/Tooltip/GravityPull=Deals 3% more damage and allows air to be vulnerable to ground.
+Behavior/Tooltip/HealingBoost=Healing dealt and received both improved.
+Behavior/Tooltip/HeroicDamageBonus=Deals 3 additional damage to Heroic targets.
+Behavior/Tooltip/IronBoots=Movement speed increased by 10%.
+Behavior/Tooltip/MercurialBoots=Movement speed increased by 15%.
+Behavior/Tooltip/NonHeroicDamageReduction=Reduces damage from non-Heroic units by 1.
+Behavior/Tooltip/PowerOverwhelming=Maximum energy increased and energy regeneration granted.
+Behavior/Tooltip/StructureDefense=Takes 20% less damage from structures.
+Behavior/Tooltip/VelocityBoots=Movement speed increased by 30%.
+Behavior/Tooltip/Corsair1to4=+3 Splash Damage, +30 Shields, +15 Energy
+Behavior/Tooltip/Corsair5to7=+4 Splash Damage, +100 Shields, +20 Energy
+Behavior/Tooltip/Corsair8to10=+5 Splash Damage, +140 Shields, +30 Energy
+Behavior/Tooltip/DarkTemplar1to4=+6 Melee Damage, +40 Shields
+Behavior/Tooltip/DarkTemplar5to7=+8 Melee Damage, +110 Shields
+Behavior/Tooltip/DarkTemplar8to10=+10 Melee Damage, +150 Shields
+Behavior/Tooltip/Defiler1to4=+4 Ranged Damage, +40 Life, +20 Energy, Energy Regen +2%
+Behavior/Tooltip/Defiler5to7=+5 Ranged Damage, +110 Life, +30 Energy, Energy Regen +2%
+Behavior/Tooltip/Defiler8to10=+7 Ranged Damage, +150 Life, +40 Energy, Energy Regen +2%
+Behavior/Tooltip/Dragoon1to4=+7 Ranged Damage, +40 Shields
+Behavior/Tooltip/Dragoon5to7=+8 Ranged Damage, +100 Shields
+Behavior/Tooltip/Dragoon8to10=+10 Ranged Damage, +75 Shields
+Behavior/Tooltip/Firebat1to4=+3 Ranged Damage, +3 Splash Damage, +80 Life
+Behavior/Tooltip/FirebatAttackSpeed=+4 Ranged Damage, +4 Splash Damage, +50 Life
+Behavior/Tooltip/Firebat8to10=+6 Ranged Damage, +6 Splash Damage, +180 Life
+Behavior/Tooltip/Goliath1to4=+6 Ranged Damage, +2 Proc Damage, +40 Life
+Behavior/Tooltip/Goliath5to7=+7 Ranged Damage, +3 Proc Damage, +110 Life, +2% Attack Speed
+Behavior/Tooltip/Goliath8to10=+8 Ranged Damage, +4 Proc Damage, +150 Life, +3% Attack Speed
+Behavior/Tooltip/Hydralisk1to4=+2 Melee, +5 Ranged, +40 Life, +1% Move Speed
+Behavior/Tooltip/Hydralisk5to7=+3 Melee, +6 Ranged, +110 Life, +1% Move Speed
+Behavior/Tooltip/Hydralisk5to72=+3 Melee, +7 Ranged, +150 Life, +1% Move Speed
+Behavior/Tooltip/Marine1to4=+7 Ranged Damage, +30 Life, +5% Attack Speed
+Behavior/Tooltip/Marine5to7=+9 Ranged Damage, +90 Life, +10% Attack Speed
+Behavior/Tooltip/Marine8to10=+11 Ranged Damage, +120 Life, +10% Attack Speed
+Behavior/Tooltip/Medic1to4=+40 Life, +1 Sight Bonus
+Behavior/Tooltip/Medic5to7=+110 Life, +1 Sight Bonus
+Behavior/Tooltip/Medic8to10=+140 Life
+Behavior/Tooltip/MothershipCore1to4=+4 Ranged Damage, +60 Shields
+Behavior/Tooltip/MothershipCore5to7=+5 Ranged Damage, +120 Life, +45 Shields
+Behavior/Tooltip/MothershipCore8to10=+6 Ranged Damage, +150 Shields
+Behavior/Tooltip/Queen1to4=+25 Life, +50 Energy, +0.2 Sight Bonus
+Behavior/Tooltip/Queen1to42=+70 Life, +40 Energy, +0.5 Sight Bonus
+Behavior/Tooltip/Queen1to422=+150 Life, +50 Energy, +1 Sight Bonus
+Behavior/Tooltip/ScienceVessel1to4=+50 Life, +10 Energy
+Behavior/Tooltip/ScienceVessel5to7=+110 Life, +20 Energy
+Behavior/Tooltip/ScienceVessel8to10=+130 Life, +50 Energy
+Behavior/Tooltip/Sentry1to4=+4 Ranged Damage, +40 Shields
+Behavior/Tooltip/Sentry5to7=+5 Ranged Damage, +120 Shields
+Behavior/Tooltip/Sentry8to10=+5 Ranged Damage, +150 Shields
+Behavior/Tooltip/Spectre1to4=+5 Ranged Damage, +20 Life, +40 Shields, +20 Energy, +3% XP
+Behavior/Tooltip/Spectre5to7=+8 Ranged Damage, +110 Life, +25 Energy, +3% XP
+Behavior/Tooltip/Spectre8to10=+10 Ranged Damage, +130 Life, +30 Energy, +3% XP
+Behavior/Tooltip/Ultralisk1to4=+5 Melee, +2 Splash, +80 Life, +1 Sight Bonus
+Behavior/Tooltip/Ultralisk5to7=+7 Melee, +3 Splash, +110 Life, +1 Sight Bonus
+Behavior/Tooltip/Ultralisk8to10=+8 Melee, +3 Splash, +200 Life, +1 Sight Bonus
+Behavior/Tooltip/Zealot1to4=+4 Melee Damage, +80 Shields
+Behavior/Tooltip/Zealot5to7=+5 Melee Damage, +150 Shields
+Behavior/Tooltip/Zealot8to10=+6 Melee Damage, +190 Shields
+Behavior/Tooltip/Zergling1to4=+5 Melee, +50 Life, +1% Move Speed
+Behavior/Tooltip/Zergling5to7=+7 Melee, +100 Life, +2% Move Speed
+Behavior/Tooltip/Zergling8to10=+8 Melee, +180 Life, +3% Move Speed
+Bhodaith=Bhodaith
+Button/Name/AdeptPhaseShift2=Psionic Transfer
+Button/Name/ArtanisLightningDash=Fire Dash
+Button/Name/Avatar=Avatar
+Button/Name/BurrowMove2=Burrow Move
+Button/Name/Charge2=Charge
+Button/Name/ChronoBeamPassive=Chrono Beam Passive
+Button/Name/CloakOff2=Decloak
+Button/Name/CloakOnSpectre2=Cloak
+Button/Name/CommanderTraitNovaDefensiveDrone=Defensive Drone
+Button/Name/CommanderTraitNovaDefensiveDrone2=Defensive Drone
+Button/Name/DragoonFrenzy=DragoonFrenzy
+Button/Name/EmpowerZergBuilding=Empower Zerg Building
+Button/Name/Explode2=Explode
+Button/Name/FaceEmbrace2=Abduct
+Button/Name/FenixChampionPowerShield2=Structure Defensive Shield
+Button/Name/Frenzied2=Frenzied
+Button/Name/GasTurret=Gas Turret
+Button/Name/GasTurret2=Gas Turret
+Button/Name/GravitonBeamUrun=Graviton Beam
+Button/Name/GravitonOvercharge=Graviton Overcharge
+Button/Name/GuardianShield2=Guardian Shield
+Button/Name/GuardianShield3=Guardian Shield
+Button/Name/Healable=Healable
+Button/Name/HurricaneEngines=Research Hurricane Engines
+Button/Name/HydraliskDenImpalerPassive2=Pygalisk
+Button/Name/HydraliskDenImpalerPassive22=Hydralisk
+Button/Name/Impale2=Impale
+Button/Name/IncineratorNozzles3=Incinerator Gauntlets
+Button/Name/Irradiate2=Irradiate
+Button/Name/JuggernautPlating3=Juggernaut Plating
+Button/Name/KaraxRepairDroneRepair=Repair
+Button/Name/LightningBomb2=Research Tectonic Destabilizers
+Button/Name/MedicHeal2=Regenerate
+Button/Name/MissilePods2=Missile Pods passive
+Button/Name/MonarchBlades2=Stampede
+Button/Name/MorphToOverseer2=Mutate Ventral Sacs
+Button/Name/MorphtoBanelingHero=Morph to Baneling
+Button/Name/MorphtoBanelingHero2=Zergling ward
+Button/Name/MothershipCoreWeapon2=Photon Overcharge
+Button/Name/MothershipPassive2=Mothership Passive
+Button/Name/NovaHelmetGhostVisor2=Plasma Shot Passive
+Button/Name/NovaWeaponCanisterRifleSnipe2=Duck hunt
+Button/Name/NovaWeaponPlasmaBlastNew2=Avatar Passive
+Button/Name/Obliterate2=Psionic Lash
+Button/Name/Overcharge2=Overcharge
+Button/Name/PhotonCannonPassive2=Photon Cannon Passive
+Button/Name/ProtectWorkers=Protect Workers
+Button/Name/ProtossDefenseStructureUpgrade1=Protoss Defense Structure Level 1
+Button/Name/ProtossDefenseStructureUpgrade12=Protoss Defense Structure Level 2
+Button/Name/ProtossDefenseStructureUpgrade13=Protoss Defense Structure Level 3
+Button/Name/QueenBurstHeal2=Rapid Transfusion
+Button/Name/RadarField2=Radar
+Button/Name/RapidQueen=Rapid Queen
+Button/Name/Repair2=Repair
+Button/Name/RepairDrone=Repair Drone
+Button/Name/ResearchLurkerRange2=Evolve Adaptive Talons
+Button/Name/ResearchSmartServos=Research Smart Servos
+Button/Name/ReversalTimeWarp=Reversal Time Warp
+Button/Name/SOAMothershipBlinkStrike2=Teleport To Power
+Button/Name/ScienceSpeedBoost2=Ignite Afterburners
+Button/Name/ScienceSpeedBoost22=Ignite Afterburners
+Button/Name/ShieldBatteryRecharge2=Restore
+Button/Name/SlivanPuke=Puke
+Button/Name/SmallSpawningRoachlings=Spawning Roachlings
+Button/Name/SpawnSensorTower=Spawn Sensor Tower
+Button/Name/SpawnaSmallNydusWorm=Small Nydus Worm
+Button/Name/SpawningRoachlings=Spawning Roachlings
+Button/Name/SpectreBonus=Spectre Bonus
+Button/Name/Stim2=Stimpack
+Button/Name/StrategicRecall=Strategic Recall
+Button/Name/TectonicDestabilizers=Tectonic Destabilizers
+Button/Name/TemporalField2=Reversed Time Warp
+Button/Name/TemporalField3=Time Warp
+Button/Name/TerranDefenseStructureLevel1=Terran Defense Structure Level 1
+Button/Name/TerranDefenseStructureLevel12=Terran Defense Structure Level 2
+Button/Name/TerranDefenseStructureLevel13=Terran Defense Structure Level 3
+Button/Name/TossGrenade2=Grenade
+Button/Name/TossGrenade22=Grenade
+Button/Name/VoidArmorPassive=Guardian Shield Passive
+Button/Name/VoidDarkTemplarDeepShadowBlink2=Shadow Stride
+Button/Name/VoidDarkTemplarShadowFury2=Shadow Fury
+Button/Name/VoidImmortalStasisHeal=Dragoon Time bomb
+Button/Name/VoidSentryShieldRepairDouble2=Double Shield Recharge Passive
+Button/Name/WidowMineBioSplash2=Firepower
+Button/Name/WraithCloakOff=Decloak Hero
+Button/Name/ZergDefenseStructureLevel1=Zerg Defense Structure Level 1
+Button/Name/ZergDefenseStructureLevel12=Zerg Defense Structure Level 2
+Button/Name/ZergDefenseStructureLevel13=Zerg Defense Structure Level 3
+Button/Tooltip/AdeptPhaseShift2=Projects an invulnerable Shade that can move but cannot attack. Enemies that touch the shade take <d ref="Effect,AdeptPsionicTransferDamage,Amount"/> extra damage from all sources for <d ref="Behavior,AdeptPsionicTransferDamageDebuff,Duration"/> seconds.<n/><n/>The Adept teleports to the Shade's location <d ref="Behavior,AdeptPhaseShiftTimer,Duration"/> seconds after activation.<n/><n/>Can be canceled after activation.
+Button/Tooltip/AlarakPsiOrb=- Projectile: Ball of psionic energy<n/>- Area Damage: <c val="ff0000"><d ref="Effect,AlarakPsiOrbDamage,Amount"/> DPS</c> to enemies around orb<n/>- Explosion: <c val="ff0000"><d ref="Effect,AlarakPsiOrbFinalDamage,Amount"/></c> on detonation<n/>- Special: Reduces cooldown by <d ref="Effect,AlarakSoulStealModifyCooldowns,Amount"/> on kill, returns <c val="00ffff"><d ref="Effect,AlarakSoulStealModifyCooldowns,VitalArray[Shields].Change"/> shields</c><n/><n/>Launches a destructive psionic orb that damages enemies while orbiting and grants rewards for each kill.
+Button/Tooltip/ArtanisAstralWind=Heals Medic and all nearby friendly units for <d ref="Effect,ArtanisAstralWindSelf,VitalArray[0].Change"/> life and <d ref="Effect,ArtanisAstralWindSelf,VitalArray[1].Change"/> shields.
+Button/Tooltip/ArtanisLightningDash=- Charges forward in direction<n/>- Fire Blast: <c val="ff0000"><d ref="Effect,ArtanisLightningDashDamage,Amount"/></c> damage to nearby enemies<n/>- Stun: <c val="ff0000"><d ref="Behavior,StunningBlast,Duration"/> seconds</c><n/>- Tactical Mobility: Fast gap-closer with crowd control<n/><n/>The Firebat charges forward, unleashing a blast of fire that stuns and damages all nearby enemies.
+Button/Tooltip/Avatar=For <c val="#ColorAttackInfo"><d ref="Behavior,FirebatAvatar,Duration"/> Seconds</c><n/>- Gains <c val="00ff00"><d ref="Behavior,FirebatAvatar,Modification.VitalMaxArray[Life]"/></c> extra health<n/>- Damage reduction: <c val="#ColorAttackInfo"><d ref="(1 - Behavior,FirebatAvatar,DamageResponse.ModifyFraction) * 100"/>%</c><n/>- Deals periodic fire damage to nearby enemies<n/><n/>Enhances the Firebat's suit with powerful enhancements, granting bonus health, damage reduction, and area damage output.
+Button/Tooltip/AvengerHero=Aiur Faction<n/>Deadly warrior-assassin. cloaked. Can use Blink.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/BanelingCocoonHero=This cocoon contains a Zergling that is morphing into a Baneling.
+Button/Tooltip/BanelingHero=Suicide unit. Does damage over a small area on death. <n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/BroodQueenHero=Support flyer. Can use Ensnare, Spawn Broodlings, and Infest Command Center.
+Button/Tooltip/Bunker2=Defensive structure. <n/>Infantry fights from inside. <n/><n/><c val="#ColorAttackInfo">Bonus: +1 range to units inside.</c>
+Button/Tooltip/BurrowChargeCampaign=- Burrows underground<n/>- Charges toward target units<n/>- Damage: <c val="ff0000">Area damage on impact</c><n/>- Unburrow Effect: <c val="ff0000">Knockback & stun nearby enemies for <d ref="Behavior,UltraliskBurrowChargeStun,Duration"/> seconds</c><n/>- Tactical Mobility: Gap closer with area control<n/><n/>The Ultralisk burrows and charges toward enemies, erupting with devastating force that damages, stuns and displaces nearby units.
+Button/Tooltip/BurrowMove2=- Buries the unit underground<n/>- Moves to target allied building location<n/>- Remains burrowed until commanded otherwise<n/><n/>Allows the unit to tunnel underground and quickly relocate to an allied structure for tactical positioning.
+Button/Tooltip/ChangelingHero=Changelings cannot attack. When a Changeling first encounters an enemy unit, it will match that unit's color and change into a Zealot, Marine, or Zergling, depending on the enemy race. Dies after <d time="150"/>.
+Button/Tooltip/Charge2=- Intercepts ground units in front of the caster<n/>- Movement Speed: <c val="#ColorAttackInfo">Increased for short duration</c><n/><n/>The unit charges forward at high speed, intercepting enemy units and gaining a temporary movement boost.
+Button/Tooltip/ChronoBeamPassive=Passive Enhancement<n/>- Attack Speed: <c val="#ColorAttackInfo">+50%</c><n/>- Movement Speed: <c val="#ColorAttackInfo">+50%</c><n/><n/>Friendly target unit gains significant boosts to both attack and movement speed.
+Button/Tooltip/CloakOff2=Decloaks the selected unit, making it visible to enemies.
+Button/Tooltip/CloakOnSpectre=- Turns unit invisible to enemies<n/>- Detection: Only revealed by detectors or special effects<n/>- Energy Cost: <c val="f078ff"><d ref="-1 * (Behavior,SpectreCloaking,Modification.VitalRegenArray[2] + Unit,Spectre,EnergyRegenRate)" precision="1"/> energy per second</c><n/><n/>Cloaks the Spectre, rendering it invisible while it drains energy from reserves.
+Button/Tooltip/CloakOnSpectre2=- Turns unit invisible to enemies<n/>- Detection: Only revealed by detectors or special effects<n/>- Energy Cost: <c val="f078ff"><d ref="-1 * (Behavior,SpectreCloaking,Modification.VitalRegenArray[2] + Unit,Spectre,EnergyRegenRate)" precision="1"/> energy per second</c><n/><n/>Cloaks the Spectre, rendering it invisible while it drains energy.
+Button/Tooltip/CommanderTraitNovaDefensiveDrone=Duration: <c val="#ColorAttackInfo">Limited time</c><n/>- Shield Generation: Damage absorption to nearby allies<n/>- Counter-Fire: <c val="ff0000"><d ref="Effect,NovaDefensiveDronePlaceholderShot,Amount"/> damage per deflection</c> at enemies<n/>- Trigger: Fires after deflecting projectiles<n/><n/>Deploys a defensive drone that shields allies and retaliates against incoming fire.
+Button/Tooltip/CommanderTraitNovaDefensiveDrone2=Passive Enhancement<n/>- Damage Increase: <c val="ff0000">+4 per deflection</c><n/><n/>Defensive drones become more lethal as they intercept more incoming fire.
+Button/Tooltip/CorsairHero=Nerazim Faction<n/>Air superiority starfighter. Can use Disruption Web.<n/><n/><c val="ffff8a">Can attack air units.</c>
+Button/Tooltip/CorsairMPDisruptionWeb=Duration: <c val="#ColorAttackInfo"><d time="10"/></c><n/>- Area Effect: Web of energy on ground<n/>- Target Limitation: <c val="ff0000">Prevents enemy structures and ground units from attacking</c><n/>- Strategic Value: Area denial and defense<n/><n/>Creates a web of disruption energy that disables enemy ground forces from attacking.
+Button/Tooltip/DamageReduction=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,DamageReduction,Duration"/> Seconds</c><n/>- Damage Immunity: <c val="#ColorAttackInfo"><d ref="(1 - Behavior,DamageReduction,DamageResponse.ModifyFraction) * 100"/>%</c><n/><n/>Grants temporary invulnerability to the caster, making them immune to all damage sources.
+Button/Tooltip/DefilerHero=Defiler
+Button/Tooltip/DefilerMPConsume=- Target: Enemy unit (cannot target hero units)<n/>- Effect: Converts unit into energy<n/><n/><c val="f078ff">Grants energy to the Defiler based on the consumed unit's remaining health.</c><n/><n/>Consumes an enemy unit and converts it into usable energy, removing the threat while powering the Defiler.
+Button/Tooltip/DefilerMPDarkSwarm=Duration: <c val="#ColorAttackInfo"><d ref="Effect,DefilerMPDarkSwarmCreatePersistent,PeriodCount*Effect,DefilerMPDarkSwarmCreatePersistent,PeriodicPeriodArray[0]"/> Seconds</c><n/>- Damage Reduction: <c val="00ff00"><d ref="(1 - Behavior,DefilerMPDarkSwarm,DamageResponse.ModifyFraction) * 100"/>%</c> from ranged attacks<n/>- Health Regen: <c val="00ff00">+100%</c> for affected units<n/><n/>Creates a dark swarm that provides cover for friendly units, reducing ranged damage and boosting healing received.
+Button/Tooltip/DefilerMPPlague=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,DefilerMPPlague,Duration"/> Seconds</c><n/>- Total Damage: <c val="ff0000"><d ref="Effect,DefilerMPPlagueDamage,Amount*Behavior,DefilerMPPlague,Duration/Behavior,DefilerMPPlague,Period"/></c><n/>- Scaling: <c val="ff0000">+4 DPS per level</c><n/>- HP Floor: Units cannot be reduced below <c val="#ColorAttackInfo">15% health</c><n/>- Ignores shields and reveals cloaked units<n/>- Blocks energy regeneration<n/><n/>Infects enemy units and structures in the target area with plague that deals damage over time and prevents energy recovery.
+Button/Tooltip/DigesterCreepSpray=Duration: <c val="#ColorAttackInfo">3 Seconds</c><n/>- Effect: Immobilizes enemies in area<n/>- Additional: Takes increased damage while on Noxious Creep<n/><n/>The Ultralisk sprays enemies with digestive acid, immobilizing them and leaving them vulnerable to additional damage.
+Button/Tooltip/DragoonFrenzy=For <c val="#ColorAttackInfo"><d ref="Behavior,DragoonFrenzy,Duration"/> Seconds</c><n/>- Attack Speed: <c val="#ColorAttackInfo"><d ref="(Behavior,DragoonFrenzy,Modification.AttackSpeedMultiplier - 1) * 100"/>%</c><n/>- Splash Damage: <c val="ff0000"><d ref="Behavior,DragoonFrenzy,Modification.DamageDealtUnscaled[Splash]"/></c><n/>- Critical Strike Chance: <c val="#ColorAttackInfo"><d ref="Behavior,DragoonFrenzy,Modification.CriticalChance * 100"/>%</c><n/><n/>Fills the Dragoon with combat fury, dramatically increasing attack speed, adding splash damage, and improving critical strike chance.
+Button/Tooltip/DragoonHero=Aiur Faction<n/>Ranged assault strider. Has enhanced life and attack damage.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/DutchPlaceTurret=- Deploys a defensive turret at target location<n/>- Attacks enemy units automatically<n/>- Lasts until destroyed<n/><n/>Places a stationary defensive turret that provides area protection against enemy units.
+Button/Tooltip/EmpowerZergBuilding=- Shields: <c val="00ffff">+150</c><n/>- Armor: <c val="#ColorAttackInfo">+15</c><n/>- Area Damage: <c val="ff0000">5 per 0.5 seconds</c> to nearby enemies<n/>- Health Regen: <c val="00ff00">+10 per second</c><n/><n/>Empowers a Zerg structure with enhanced defenses, shields, armor, and regeneration while dealing damage to nearby threats.
+Button/Tooltip/Ensnare=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,Ensnare,Duration"/> Seconds</c><n/>- Reduces movement speed of target enemy unit<n/><n/>Ensnares the target with biological threads, severely hindering its mobility.
+Button/Tooltip/Explode2=- Detonation: Explodes at Baneling's location<n/>- Damage: Area damage to nearby enemies<n/>- Targets: Enemy units and structures<n/><n/>The Baneling detonates explosively, dealing significant damage to all nearby threats.
+Button/Tooltip/FaceEmbrace2=- Pulls target unit to Mutalisk<n/>- Stun Duration: <c val="#ColorAttackInfo">1 second</c><n/>- Works on invulnerable targets<n/><n/>The Mutalisk uses abduction to pull enemies toward it, stunning them during the pull.
+Button/Tooltip/FenixChampionPowerShield=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,FenixChampionPowerShield,Duration"/> Seconds</c><n/>- Defense: <c val="00ff00">Complete invulnerability (0% damage taken)</c><n/>- Self-Cast: Protects the caster<n/>- Tactical Use: Emergency defense mechanism<n/><n/>Activates a power shield that makes the Fenix completely immune to all damage for the duration.
+Button/Tooltip/FenixChampionPowerShield2=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,FenixChampionPowerShield,Duration"/> Seconds</c><n/>- Damage Reduction: <c val="#ColorAttackInfo"><d ref="(1 - Behavior,FenixChampionPowerShield2,DamageResponse.ModifyFraction) * 100"/>%</c><n/><n/>Envelops an allied structure in a protective power shield that reduces all incoming damage for the duration.
+Button/Tooltip/FenixSOACharge=Firebat charges at target enemy unit.
+Button/Tooltip/FirebatHero=Specialized anti-infantry attacker.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/FlagshipTimeBomb=Creates a Bubble around the Dragoon, slows all enemies within
+Button/Tooltip/ForceField=Duration: <c val="#ColorAttackInfo"><d time="15"/></c><n/>- Barrier Type: Defensive force field<n/>- Movement Block: <c val="ff0000">Blocks ground unit movement</c><n/>- Weakness: <c val="ff0000">Shattered by massive units on contact</c><n/>- Strategic Use: Area denial and choke control<n/><n/>Creates a force field barrier that impedes enemy movement except for massive units which can shatter it.
+Button/Tooltip/Frenzied2=Passive Ability - Increases with each level<n/>- Size Bonus: Growth increases at levels 1-4 and 5-10<n/>- Vision: <c val="#ColorAttackInfo">+1</c><n/>- Splash Damage: <c val="ff0000">+2 (levels 1-4), +3 (levels 5-10)</c><n/>- At level 7+: Can attack air units<n/><n/>The Ultralisk grows stronger with each level, gaining size, vision, damage, and eventually the ability to strike at flying targets.
+Button/Tooltip/GasTurret=- Deploys defensive turret<n/>- Enemy Effect: <c val="ff0000">Slows by 20%</c><n/>- Area Damage: <c val="ff0000">Irradiate damage every 0.5 seconds</c><n/>- Fortified Bonus: <c val="00ff00">+50% defense & +100 health near allied structures</c><n/><n/>Places a gas turret that slows enemies and deals ongoing irradiate damage.
+Button/Tooltip/GasTurret2=Passive Enhancement<n/>- Health Scaling: <c val="00ff00">+10 per level</c> near allied structures<n/>- Effect: Increases durability when positioned near allied bases<n/><n/>Gas Turrets become more durable when positioned defensively near allied bases.
+Button/Tooltip/GoliathHero=Heavy-fire support unit.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/GravitonBeamUrun=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,GravitonBeamUrun,Duration"/> Seconds</c><n/>- Lifts all enemy units in the area into the air<n/>- Disables abilities while suspended<n/><n/><c val="#ColorAttackInfo">Massive units are immune.</c><n/><n/>Graviton beams lift enemies off the ground, rendering them helpless and unable to act.
+Button/Tooltip/GravitonOvercharge=- Explosion Damage: <c val="ff0000"><d ref="Effect,ZHybridPsionicShockwaveSpellDamage,Amount"/> damage</c><n/>- Lift Duration: <c val="#ColorAttackInfo"><d ref="Behavior,GravitonBeamUrun,Duration"/> seconds</c><n/>- Cooldown: <c val="#ColorAttackInfo"><d ref="Abil,ZHybridPsionicShockwave,Cost[0].Cooldown.TimeUse"/> seconds</c><n/>- Effect: <c val="ff0000">Lifts all enemy units around the Goliath</c><n/><n/>Overcharges the Goliath's graviton, causing an explosion that damages and lifts all enemy units in the area.<n/><n/><c val="#ColorAttackInfo">Note: Does not affect buried targets.</c>
+Button/Tooltip/GuardianShield2=Creates a range 4 aura that reduces all incoming attack damage to friendly units by 2. Lasts <d time="15"/>.
+Button/Tooltip/GuardianShield3=Duration: <c val="#ColorAttackInfo"><d time="15"/></c><n/>- Instant Shield: <c val="00ffff">+<d ref="Behavior,GuardianShield2,Modification.VitalMaxArray[Shields]"/> shields</c> to nearby units<n/>- Aura Damage Reduction: <c val="#ColorAttackInfo"><d ref="Behavior,GuardianShield2,DamageResponse.ModifyAmount"/> incoming attack damage</c> (range 4)<n/>- Regeneration: <c val="00ff00">+<d ref="Effect,VoidSentryShieldRepairDouble2,RechargeVitalRate"/> shields per second</c><n/><n/>Creates a protective aura that grants shields and reduces damage to all nearby friendly units.
+Button/Tooltip/Healable=After being out of combat for 15 seconds. Marine will start to regenerate 2 life/second.
+Button/Tooltip/HotSRaptorCharge=- Charges toward target enemy unit<n/>- Deals bonus damage on impact<n/>- Provides tactical mobility and burst damage<n/><n/>The Raptor charges at high speed, ramming the target with great force and dealing increased impact damage.
+Button/Tooltip/HotSTorrasque2=Heavy assault beast. Has an area-damage cleave attack. When killed, can be revived.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/HugeSpineCrawler=Anti-ground defensive structure. <n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/HurricaneEngines=Increases the move speed of Cyclone's to 4.73.
+Button/Tooltip/Hydralisk2=Ranged attacker. Can morph into a Lurker.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/Hydralisk22=Ranged attacker. Can morph into a Lurker.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/HydraliskDenImpalerPassive2=- Shared Charges: Charges with Hydralisk<n/>- Spawn: <c val="ff0000">1 Pygalisk per charge used</c><n/>- Duration: <c val="#ColorAttackInfo">60 seconds</c><n/><n/>Generates charges that spawn temporary Pygalisk units to fight alongside you.
+Button/Tooltip/HydraliskDenImpalerPassive22=- Shared Charges: Charges with Pygalisk<n/>- Spawn: <c val="ff0000">1 Hydralisk per charge used</c><n/>- Duration: <c val="#ColorAttackInfo">60 seconds</c><n/><n/>Generates charges that spawn temporary Hydralisk units to fight alongside you.
+Button/Tooltip/HydraliskFrenzy=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,HydraliskFrenzy,Duration"/> Seconds</c><n/>- Attack Speed: <c val="#ColorAttackInfo">+100%</c><n/>- Damage: <c val="ff0000">+10%</c><n/>- Movement Speed: <c val="#ColorAttackInfo">+5%</c><n/><n/>Fills the Hydralisk with combat fury, dramatically increasing attack and movement speed while boosting damage output.
+Button/Tooltip/HydraliskHero=High-damage ranged unit. Can morph into an Impaler.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/Impale=- Damage: <c val="ff0000"><d ref="Effect,HydraliskImpaleDamage,Amount"/></c> per hit<n/>- Area: Circular radius around Hydralisk<n/>- Targets: Up to 5 units in area<n/><n/>The Hydralisk impales all enemies in an area around it, dealing significant damage to nearby threats.
+Button/Tooltip/Impale2=Passive Enhancement<n/>- Damage Increase: <c val="ff0000">+10 damage per level</c><n/><n/>The Hydralisk's impale attacks grow increasingly devastating with each experience level gained.
+Button/Tooltip/IncineratorNozzles3=Increases the Firebat's damage radius by 40%.
+Button/Tooltip/InfestedTerrans2=- Spawns infested terran units<n/>- Duration: <c val="#ColorAttackInfo"><d ref="Behavior,InfestedTerranTimedLife,Duration"/> Seconds</c><n/>- Automatically attack nearby enemies<n/><n/>Infests enemies and spawns powerful biological units that fight for the caster.
+Button/Tooltip/Irradiate=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,Irradiate,Duration"/> Seconds</c><n/>- Target: Allied structure<n/>- Area Effect: <c val="ff0000">DoT damage to nearby enemies</c><n/>- Radiation: Persistent damaging aura<n/><n/>Makes an allied structure irradiated, causing continuous damage to all nearby enemy units.
+Button/Tooltip/Irradiate2=Passive Enhancement<n/>- Damage Scaling: <c val="ff0000">+4 DPS per level</c><n/><n/>Irradiate effects grow progressively more damaging with each experience level gained.
+Button/Tooltip/JuggernautPlating3=Increases the Firebat's armor by 2.
+Button/Tooltip/KaraxRepairDroneRepair=Restores 3 health per second to units in range.
+Button/Tooltip/LabTurretUp2=Automated Gas Defense system.
+Button/Tooltip/Leech=Duration: <c val="#ColorAttackInfo">4 Seconds</c><n/>- Energy Drain: <c val="f078ff">50 per second</c><n/>- Health Drain: <c val="ff0000">10 per second</c><n/>- Ability Disable: Target cannot use abilities<n/>- Scaling: <c val="ff0000">+40 damage per level</c><n/><n/>Drains both energy and health from target enemy while disabling their abilities.
+Button/Tooltip/LightningBomb2=Improves the Tempest's Resonance Coil to deal +40 damage vs structures.
+Button/Tooltip/MarineHero=General-purpose infantry. Part of Mengsk's elite guard.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/MedicHeal=Heals a friendly biological or mechanical target.<n/><n/><c val="f078ff">Heals <d ref="Effect,NanoRepair,RechargeVitalRate"/> life per <d ref="Effect,NanoRepair,RechargeVitalRate * Effect,NanoRepair,DrainVitalCostFactor"/> energy.</c>
+Button/Tooltip/MedicHeal2=Passive Regeneration<n/>- Trigger: Out of combat for <c val="#ColorAttackInfo">15 seconds</c><n/>- Healing: <c val="00ff00">+2 life per second</c><n/>- Effect: Automatic health recovery in safe positions<n/><n/>The Medic automatically regenerates health while in a safe position away from combat.
+Button/Tooltip/MedicHero=Support trooper. Heals nearby biological units.
+Button/Tooltip/MissilePods=Missile Pods deal <d ref="Effect,HurricaneMissileDamage,Amount * Effect,HurricaneMissileDamagePersistent,PeriodCount"/> (+<d ref="Effect,HurricaneMissileDamage,AttributeBonus[0] * Effect,HurricaneMissileDamagePersistent,PeriodCount"/> vs. light) damage to air units in target area.
+Button/Tooltip/MissilePods2=Missile Pods increases by 10 damage per level. 
+Button/Tooltip/MonarchBlades2=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,NydusWhirlwind,Duration"/> Seconds</c><n/>- Movement Speed: <c val="#ColorAttackInfo"><d ref="(Behavior,NydusWhirlwind,Modification.MoveSpeedMultiplier - 1) * 100"/>%</c><n/>- Area Damage: <c val="ff0000">10 damage per second</c><n/><n/>Equips the Ultralisk with spinning monarch blades that increase movement speed and damage nearby enemies.
+Button/Tooltip/MorphToOverseer2=Enables the Overlord to transport units. Requires a Lair
+Button/Tooltip/MorphtoBanelingHero=Explosion Duration: <c val="#ColorAttackInfo"><d ref="Behavior,TimedLifeBaneling,Duration"/> Seconds</c><n/>- Damage: <c val="ff0000">50% of unit's max health + 75</c><n/>- Type: Suicide unit (dies on detonation)<n/><n/>Morphs the Zergling into a powerful baneling that explodes on death or after the timer expires, dealing massive damage in a small area.
+Button/Tooltip/MorphtoBanelingHero2=- Buries a Zergling underground<n/>- Detonates when enemy units walk over it<n/>- Damage: <c val="ff0000">30% of unit's max health</c><n/><n/>Plants a burrowed Zergling that acts as a living mine, exploding when enemies approach.
+Button/Tooltip/MothershipCoreHero=Mobile flying caster. Can use Photon Overcharge, Mass Recall, and Time Warp abilities. Can upgrade into the Mothership.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/MothershipCoreTeleport=- Teleportation: Instant relocation ability<n/>- Target: Allied building (Nexus or Pylon)<n/>- Tactical Use: Emergency escape or repositioning<n/><n/>Teleports the Mothership Core instantly to a target allied structure.
+Button/Tooltip/MothershipCoreWeapon=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,Purify,Duration[0]"/> Seconds</c><n/>- Weapon Type: Long-range energy cannon<n/>- Damage: <c val="ff0000"><d ref="Effect,MothershipCoreWeaponDamage,Amount[0]"/></c><n/>- Target: Nexus becomes temporary weapon platform<n/>- Strategic Value: Fortified ranged offense<n/><n/>Energizes the target Nexus's power crystal, turning it into a powerful long-range weapon.
+Button/Tooltip/MothershipCoreWeapon2=Increases Photon Overcharges damage by 5 per level
+Button/Tooltip/MothershipPassive2=Being around an Allied Nexus increases energy Regeneration to 1 Energy/Second.<n/>Mothership core has a small power source under it and shares Power with RTS Player. Additionally, has a small detection under Mothership core.
+Button/Tooltip/MothershipStasis=- Time Freeze Field: <c val="#ColorAttackInfo">Suspends all movement and action</c><n/>- Primary Target: <c val="#ColorAttackInfo">Corsair unit</c><n/>- Secondary Effect: <c val="ff0000">Affects all nearby air units</c><n/>- Area Radius: <c val="#ColorAttackInfo"><d ref="Effect,MothershipStasisSearch,AreaArray[0].Radius"/> radius</c><n/>- Duration: <c val="#ColorAttackInfo">Temporary stasis field</c><n/>- Cooldown: <c val="#ColorAttackInfo"><d ref="Abil,MothershipStasis,Cost[0].Cooldown.TimeUse"/> seconds</c><n/><n/>Creates a powerful stasis field that temporarily removes the Corsair and all nearby air units from combat, making them unable to act or be targeted. 
+Button/Tooltip/MuscularAugments=Hydralisk Movement speed increased by 25%.
+Button/Tooltip/MutaliskHero=Air unit. Bounces its shot to strike multiple targets. Can morph into a Viper.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/MutaliskHero2=Air unit. Bounces its shot to strike multiple targets. Can morph into a Viper.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/NanoRepair=Heals a friendly mechanical unit.<n/><n/><c val="f078ff">Heals 9 life per 1 energy.</c>
+Button/Tooltip/NovaGadgetFlashBangGrenades=- Area Effect: <c val="ff0000">Stuns all enemy units in target area</c><n/>- Detection: <c val="FFE303">Disables enemy detection abilities</c><n/>- Duration: <c val="#ColorAttackInfo"><d ref="Behavior,FlashBangGrenade,Duration"/> seconds</c><n/>- Immunity: <c val="#ColorAttackInfo">Massive units and friendly units are immune</c><n/><n/>Deploys specialized flashbang grenades that temporarily stun enemies and disable their detection capabilities, creating tactical opportunities for cloaked operations.
+Button/Tooltip/NovaHelmetGhostVisor2=Plasma Rifle does 10 more damage on impact and 5 more damage per tick for each level achived.
+Button/Tooltip/NovaWeaponCanisterRifleSnipe2=- Damage: <c val="ff0000"><d ref="Effect,NovaWeaponCanisterRifleSnipe,Amount"/> + 50% of target health</c><n/>- Range: Long-range attack<n/>- Target: Enemy air units only<n/><n/><c val="ff0000">Cannot target structures.</c><n/><n/>Nova's sniper rifle delivers devastating precision strikes against aerial targets from great distance.
+Button/Tooltip/NovaWeaponPlasmaBlastNew2=Passive Enhancement<n/>- Damage Increase: <c val="ff0000">+5 per second duration</c><n/><n/>Nova's avatar ability grows more powerful the longer it remains active.
+Button/Tooltip/NydusCanal22=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
+Button/Tooltip/Obliterate=- Damage: <c val="ff0000">30</c> to single target<n/>- Type: Psionic strike<n/><n/>Releases a concentrated burst of psionic energy at the target, dealing heavy damage.
+Button/Tooltip/Obliterate2=Passive Enhancement<n/>- Damage Increase: <c val="ff0000">+20 per level</c><n/><n/>Psionic Lash grows more devastating with each experience level the Dark Templar gains.
+Button/Tooltip/Overcharge=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,OverchargeSpeedBoost,Duration"/> Seconds</c><n/>- Movement Speed: Dramatically increased<n/>- Mobility: <c val="#ColorAttackInfo">Invulnerable & untargetable</c>, pass through units<n/>- Area Effect: <c val="ff0000"><d ref="Effect,OverchargeDamage,Amount/Behavior,Overcharge,Period"/> DPS</c> to nearby enemies<n/>- Damage Field Duration: <c val="ff0000"><d time="6"/></c><n/><n/>Overcharges internal systems for a devastating mobility and area damage effect.
+Button/Tooltip/Overcharge2=Overcharge increases in damage per second by 8 per level.
+Button/Tooltip/PhotonCannon2=Primary defensive structure.<n/><n/><c val="ffff8a">Can attack ground and air units.</c><n/><c val="FFE303">Detector</c>
+Button/Tooltip/PhotonCannonPassive=- Summons: Photon Cannon unit<n/>- Duration: <c val="#ColorAttackInfo">60 seconds</c><n/>- Placement Bonus: Increased damage near allied structures<n/>- Strategic Turret: Area defense and support<n/><n/>Summons a Photon Cannon that gains increased damage when stationed near allied structures.
+Button/Tooltip/PhotonCannonPassive2=Photon Cannon damage increases by 5 per level when summoned around allied structures, 
+Button/Tooltip/PhotonOverCharge=
+Button/Tooltip/PoisonNova=- Instant Damage: <c val="ff0000">10% of target's max health (minimum 25)</c><n/>- Slow Effect: <c val="#ColorAttackInfo"><d ref="(1 - Behavior,VileAcidSlowEffectsLevel12,Modification.MoveSpeedMultiplier) * 100"/>% for <d ref="Behavior,VileAcidSlowEffectsLevel12,Duration"/> Seconds</c><n/><n/>Instantly detonates a toxic nova on the target, dealing a percentage of its health and severely slowing nearby enemies.
+Button/Tooltip/PrimalConsume=- Target: Enemy unit (instantly killed)<n/>- Health Buff: <c val="00ff00">+10 per second for 10 seconds</c><n/>- Healing Increase: <c val="00ff00">+10%</c><n/><n/>Consumes an enemy unit, converting it into sustained health regeneration and increased healing effectiveness.
+Button/Tooltip/PrimalGasCloud=Damage: <c val="ff0000"><d ref="Effect,PrimalGasCloudDamage2,Amount"/> per <d ref="Effect,PrimalGasCloudCP,PeriodicPeriodArray[0]"/> seconds</c><n/>- Slow: <c val="#ColorAttackInfo"><d ref="(1 - Behavior,PoisonGas,Modification.MoveSpeedMultiplier) * 100"/>%</c><n/><n/>Channeled ability. Unleashes a cloud of toxic gas that damages and slows all enemy units in the target area.
+Button/Tooltip/PrimalRoar=20%  attack speed and increases movement speed by 25% for the Mutalisk and nearby air units. Lasts 5 seconds.
+Button/Tooltip/ProtectWorkers=Reduces damage from heroic units to nearby workers by 99% Only applied while harvesting
+Button/Tooltip/ProtossDefenseStructureUpgrade1=Increases Photon Cannons Damage against Heroics by 20.
+Button/Tooltip/ProtossDefenseStructureUpgrade12=Increases Photon Cannons Damage against Heroics by 20.
+Button/Tooltip/ProtossDefenseStructureUpgrade13=Increases Photon Cannons Damage against Heroics by 20.
+Button/Tooltip/PsionicShockwave=- Energy Release: <c val="00ff00">Burst of psionic energy</c><n/>- Area Effect: <c val="ff0000">Radiates outward from Corsair</c><n/>- Damage: <c val="ff0000">Damages all surrounding units</c><n/>- Knockback: <c val="ff0000">Pushes away all units</c><n/>- Stun Effect: <c val="#ColorAttackInfo">Brief stun on impact</c><n/><n/>The Corsair releases a powerful burst of psionic energy that damages, knocks away, and briefly stuns all surrounding units.<n/><n/><c val="#ColorAttackInfo">Strategic Use: Area denial and crowd control</c>
+Button/Tooltip/Pygalisk2=New xenotype created by Dominion scientists.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/QueenBurstHeal2=Heals over <c val="#ColorAttackInfo"><d ref="Behavior,QueenBurstHeal,Duration"/> Seconds</c><n/>- Restores <c val="00ff00"><d ref="Effect,QueenBurstHeal,VitalArray[0].Change"/></c> life per tick<n/>- Total healing: <c val="00ff00"><d ref="Effect,QueenBurstHeal,VitalArray[0].Change * Behavior,QueenBurstHeal,Duration / 0.5"/></c><n/><n/>Rapidly injects biological healing agents into target unit or structure, restoring health over time.
+Button/Tooltip/QueenMPEnsnare=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,Ensnare,Duration"/> Seconds</c><n/>- Slow Effect: <c val="ff0000"><d ref="100 - (Behavior,QueenMPEnsnare,Modification.MoveSpeedMultiplier * 100)"/>% reduced</c> movement<n/>- Detection: <c val="FFE303">Reveals cloaked and burrowed units</c><n/>- Area: Targets all units in area<n/><n/>Reduces movement of all units in the target area while revealing hidden enemies.
+Button/Tooltip/QueenMPSpawnBroodlings=- Target: Biological enemy unit (killed on cast)<n/>- Spawned Units: <c val="ff0000"><d ref="Effect,QueenMPSpawnBroodlingsCreate,SpawnCount"/> Broodlings</c><n/>- Duration: Broodlings last until killed<n/>- Summon: Converts enemy into allies<n/><n/>Kills the target biological unit and spawns Broodlings from its corpse to fight for the Queen.
+Button/Tooltip/RadarField2=Able to expose enemy movements within its radar capability. Does not reveal the area.
+Button/Tooltip/RapidQueen=Queens healing done is increased by 20% per level.
+Button/Tooltip/RaynorRadar=- Detection Range: <c val="00ff00"><d ref="Behavior,SensorTowerRadar2,Modification.Radar"/> radius</c><n/>- Duration: <c val="#ColorAttackInfo"><d ref="Behavior,SensorTowerRadar2,Duration"/> seconds</c><n/>- Health Cost: <c val="ff0000"><d ref="Abil,Radar,Cost.VitalFraction[Life] * 100"/>% current life</c><n/>- Cooldown: <c val="#ColorAttackInfo"><d ref="Abil,Radar,Cost.Cooldown.TimeUse"/> seconds</c><n/><n/>The Marine activates advanced sensor equipment to detect enemy unit movements in a large area.<n/><n/><c val="#ColorAttackInfo">Note: Does not reveal the terrain or provide vision.</c>
+Button/Tooltip/Repair2=- Target: Mechanical units<n/>- Healing: Restores life over time<n/>- Range: Nearby units<n/><n/>Repairs mechanical units, restoring their structural integrity and health.
+Button/Tooltip/RepairDrone=- Deployment: Two automatic repair drones<n/>- Healing: Auto-heal nearby mechanical units<n/>- Platform: Follows Carrier<n/><n/>Two repair drones automatically heal friendly mechanical units near the Carrier.
+Button/Tooltip/RepairDrones=- Deployment: Two automatic repair drones<n/>- Healing: Auto-heal nearby mechanical units<n/>- Platform: Follows Science Vessel<n/>- Detection: <c val="FFE303">Provides detection capability</c><n/><n/>Two repair drones automatically heal friendly mechanical units near the Science Vessel while providing sensor coverage. 
+Button/Tooltip/ResearchBallisticRange=Increases the range of <c val="ffff8a">Liberators</c> in Defender Mode by 2<n/>.
+Button/Tooltip/ResearchLurkerRange=Increases the attack range of <c val="ffff8a">Lurkers</c> by +2.
+Button/Tooltip/ResearchLurkerRange2=Reduces the time Lurkers take to burrow from 2 seconds to 1.07 seconds.
+Button/Tooltip/ResearchSmartServos=Allows Hellions, Hellbats, Vikings, and Thors to transform quickly between combat modes.
+Button/Tooltip/ReversalTimeWarp=Creates a bubble around the dragoon, reduces movement speed by 40% and attack speed by 10% for all affected enemy units.
+Button/Tooltip/Roach2=Assault unit. Regenerates life quickly when burrowed. Can morph into a Ravager.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/SOAMothershipBlinkStrike2=- Target: <c val="#ColorAttackInfo">Nexus or Pylon structures</c><n/>- Range: <c val="00ff00">Global teleportation</c><n/>- Energy Cost: <c val="00ff00"><d ref="Abil,MothershipCoreTeleport,Cost.VitalFraction[Energy] * 100"/>% current energy</c><n/>- Effect: <c val="#ColorAttackInfo">Instant transportation</c><n/><n/>Teleports the Mothership Core instantly to any friendly Nexus or Pylon on the battlefield, allowing for rapid strategic repositioning and battlefield response.<n/><n/><c val="#ColorAttackInfo">Strategic Use: Emergency relocation and tactical support</c>
+Button/Tooltip/ScienceRepairDrone=Flying spy. Cloak renders the unit invisible to enemies without detection.<n/><n/><c val="FFE303">Detector</c>
+Button/Tooltip/ScienceSpeedBoost2=- Movement Speed: <c val="00ff00">+70% movement speed</c><n/>- Duration: <c val="#ColorAttackInfo">8 seconds</c><n/>- Effect: <c val="#ColorAttackInfo">Emergency boost system</c><n/><n/>Activates emergency thrusters that dramatically increase the Science Vessel's movement speed for rapid repositioning or escape.
+Button/Tooltip/ScienceSpeedBoost22=Increases Afterburners Speed by 5% per level and duration by 0.5s per level
+Button/Tooltip/ScienceVessel2=Aerial support unit. Can use Irradiate and Nano-Repair abilities.<n/><n/><c val="FFE303">Detector</c>
+Button/Tooltip/SentryPurifier2=Purifier Faction<n/>Robotic support unit. Can use Chrono Beam and Phasing Mode.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/SentryTaldarimForceField=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,ForceFieldFate,Duration"/></c><n/>- Barrier Type: Defensive force field<n/>- Movement Block: <c val="ff0000">Blocks ground unit movement</c><n/>- Weakness: <c val="ff0000">Shattered by massive units on contact</c><n/>- Strategic Use: Area denial and choke control<n/><n/>Creates a force field barrier that impedes enemy movement except for massive units which can shatter it.
+Button/Tooltip/ShieldBatteryRecharge2=Restores target unit or structure's shields.<n/><n/><c val="f078ff">Restores 3 shields per 1 energy.</c><n/><n/><c val="#ColorAttackInfo">Autocasting targets units and defensive structures only.</c>
+Button/Tooltip/SlivanPuke=Vomits acid onto the ground that damages and slows units in the area.
+Button/Tooltip/SmallNydusSpawner=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
+Button/Tooltip/SmallSpawningRoachlings=Spawn Rate: <c val="#ColorAttackInfo">2 roachlings every 15 seconds</c><n/>- Roachlings: Uncommandable, auto-attack enemies<n/>- AI: Move toward rally point<n/>- Scaling: Enhanced at levels 2, 3, 4, 5, 6, 7<n/><n/>Continuously spawns waves of roachlings that automatically engage enemies while marching toward the rally point.
+Button/Tooltip/SpawnSensorTower=Spawns a Sensor Tower for 60 seconds. Reveals the locations of enemy units at long range. The Sensor Tower's detection area is visible to the enemy.
+Button/Tooltip/SpawnaSmallNydusWorm=- Spawns mobile Nydus worm on map<n/>- Spawn Rate: <c val="#ColorAttackInfo">2 roachlings every 15 seconds</c><n/>- Duration: <c val="#ColorAttackInfo">60 seconds</c><n/>- Roachlings auto-attack enemies<n/>- Movement: Worm walks toward rally point<n/><n/>Deploys a small Nydus worm that generates roachling reinforcements and advances toward the target location.
+Button/Tooltip/SpawnedOdin=The Odin is a massive siege walker capable of leveling entire cities.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/SpawningRoachlings=Spawn Rate: <c val="#ColorAttackInfo">4 roachlings every 10 seconds</c><n/>- Roachlings: Uncommandable, auto-attack enemies<n/>- AI: Move toward rally point<n/>- Scaling: Enhanced at levels 2, 3, 4, 5, 6, 7<n/><n/>Continuously spawns larger waves of roachlings that automatically engage enemies while marching toward the rally point.
+Button/Tooltip/SpectreBonus=Spectre gains 3% extra XP per level.
+Button/Tooltip/SpectreHero=Infiltration unit. Can use Ultrasonic Pulse and Cloak. Can also call down Tactical Nukes built at the Ghost Academy.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/SpectreNukeCalldown=- Launch Time: <c val="#ColorAttackInfo">20 seconds</c><n/>- Base Damage: <c val="ff0000">300 damage</c><n/>- vs. Structures: <c val="ff0000">+200 damage</c><n/>- Energy Cost: <c val="00ff00"><d ref="Abil,SpectreNuke,Cost.Vital[Energy]"/> energy</c><n/>- Area Effect: <c val="#ColorAttackInfo">Large radius explosion</c><n/><n/>Calls down a tactical nuclear strike at the target location. The nuke takes time to arrive but deals massive damage to all units and structures in the blast zone.<n/><n/><c val="#ColorAttackInfo">Warning: Long casting time and high energy cost.</c>
+Button/Tooltip/SquadSight=- Range Bonus: <c val="00ff00">+<d ref="Behavior,ObserverSquadSight,Modification.RangedWeaponRange"/> attack range</c><n/>- Affects: <c val="#ColorAttackInfo">All nearby friendly units</c><n/>- Weapon Type: <c val="#ColorAttackInfo">Non-melee attacks only</c><n/>- Effect: <c val="#ColorAttackInfo">Area enhancement buff</c><n/><n/>Provides advanced targeting data to nearby allies, extending their ranged weapon capabilities and improving battlefield coordination for long-range engagements.
+Button/Tooltip/Stim2=For <c val="#ColorAttackInfo"><d ref="Behavior,Stimpack3,Duration"/> Seconds</c><n/>- Movement Speed: <c val="#ColorAttackInfo"><d ref="(Behavior,Stimpack3,Modification.MoveSpeedMultiplier - 1) * 100"/>%</c><n/>- Attack Speed: <c val="#ColorAttackInfo"><d ref="(Behavior,Stimpack3,Modification.AttackSpeedMultiplier - 1) * 100"/>%</c><n/>- Healing Received: <c val="ff0000"><d ref="(1 - Behavior,Stimpack3,Modification.HealTakenMultiplier) * 100"/>% reduced</c><n/><n/>Injects the Marine with powerful stimulants that greatly increase combat capability at the cost of reduced healing intake.
+Button/Tooltip/StrategicRecall=Recalls all units owned by the player in the target area to the Caster.
+Button/Tooltip/StunningBlast=Stun Duration: <c val="#ColorAttackInfo"><d ref="Behavior,StunningBlast,Duration"/> Seconds</c><n/>- Stuns all enemies in target area<n/>- Energy Cost: <c val="f078ff">5 seconds of energy regeneration blocked</c><n/><n/>Releases a stunning blast that immobilizes enemies in an area of effect.
+Button/Tooltip/SuperStimpackNova=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,SuperStimNova,Duration"/> Seconds</c><n/>- Attack Speed: <c val="#ColorAttackInfo">+<d ref="Behavior,SuperStimNova,Modification.AttackSpeedMultiplier *100-100"/>%</c><n/>- Movement Speed: <c val="#ColorAttackInfo">+<d ref="Behavior,SuperStimNova,Modification.AttackSpeedMultiplier *100-100"/>%</c><n/>- Healing: <c val="00ff00"><d ref="Behavior,SuperStimNova,Modification.VitalRegenArray[Life]*Behavior,SuperStimNova,Duration"/> life</c> over duration<n/><n/>Injects the Firebat with enhanced stimulants that dramatically boost combat performance while providing regenerative healing.
+Button/Tooltip/TectonicDestabilizers=Tempest's Resonance Coil deal +40 damage vs structures.
+Button/Tooltip/TemporalField2=Duration: <c val="#ColorAttackInfo"><d ref="Effect,TemporalFieldCreatePersistent,PeriodCount*Effect,TemporalFieldCreatePersistent2,PeriodicPeriodArray[0]"/> Seconds</c><n/>- Effect: Area-wide temporal warp<n/>- Movement Speed: <c val="#ColorAttackInfo"><d ref="((Behavior,TemporalRiftUnit2,Modification.MoveSpeedMultiplier)*100) - 100"/>% increased</c><n/>- Attack Speed: <c val="#ColorAttackInfo">Increased</c><n/>- Affects: Allied units and structures<n/><n/>Warps spacetime to grant nearby allies enhanced movement and attack capabilities.
+Button/Tooltip/TemporalField3=Duration: <c val="#ColorAttackInfo"><d ref="Effect,TemporalFieldCreatePersistent,PeriodCount*Effect,TemporalFieldCreatePersistent,PeriodicPeriodArray[0]"/> Seconds</c><n/>- Effect: Area-wide temporal field<n/>- Movement Speed: <c val="ff0000"><d ref="(1-Behavior,TemporalField,Modification.MoveSpeedMultiplier)*100"/>% reduced</c><n/>- Affects: Enemy ground units<n/><n/>Reverses spacetime to hinder enemy movement while allowing allies to move freely.
+Button/Tooltip/TerranDefenseStructureLevel1=Increases Missile Turret, Planetary and Siege Tanks Damage against Heroics by 20.<n/>Units in bunkers have an additional 5 extra Damage against heroics. 
+Button/Tooltip/TerranDefenseStructureLevel12=Increases Missile Turret, Planetary and Siege Tanks Damage against Heroics by 20.<n/>Units in bunkers have an additional 5 extra Damage against heroics. 
+Button/Tooltip/TerranDefenseStructureLevel13=Increases Missile Turret, Planetary and Siege Tanks Damage against Heroics by 20.<n/>Units in bunkers have an additional 5 extra Damage against heroics. 
+Button/Tooltip/TimeWarp=Places target structure in a Chrono Boost, causing it to operate 50% faster for 20 seconds.
+Button/Tooltip/TossGrenade2=- Damage: <c val="ff0000"><d ref="Effect,TossGrenadeDamage,Amount"/></c> in small radius<n/>- Area Effect: Explosive radius damage<n/>- Friendly Fire: <c val="ffff8a">Does not harm friendly units</c><n/><n/>Tosses a grenade that detonates on impact, dealing area damage only to enemies.
+Button/Tooltip/TossGrenade22=Passive Enhancement<n/>- Damage Increase: <c val="ff0000">+15 per level</c><n/>- Effect: Progressive damage scaling with hero level<n/><n/>Grenades grow progressively more destructive with each experience level gained.
+Button/Tooltip/UltrasonicPulse=- Area Effect: <c val="#ColorAttackInfo">Stuns enemy units in target area</c><n/>- Duration: <c val="#ColorAttackInfo"><d ref="Behavior,UltrasonicPulseStun,Duration"/> seconds stun</c><n/>- Range: <c val="00ff00"><d ref="Abil,UltrasonicPulse,Range[0]"/> range</c><n/>- Cooldown: <c val="#ColorAttackInfo"><d ref="Abil,UltrasonicPulse,Cost[0].Cooldown.TimeUse"/> seconds</c><n/>- Energy Cost: <c val="00ff00">Free ability</c><n/><n/>Emits an ultrasonic pulse that temporarily stuns enemy units in the target area, disabling their attacks and movement.<n/><n/><c val="#ColorAttackInfo">Note: Heroic units are immune to the stun effect.</c>
+Button/Tooltip/VoidArmorPassive=Increase Shield Gained per level by 30. <n/>Additionally increases shield gained by 3 per level.
+Button/Tooltip/VoidDarkTemplarDeepShadowBlink2=- Teleports to nearby location<n/>- Range: Medium distance<n/>- Tactical mobility ability<n/><n/>The Dark Templar blinks to a nearby target location for rapid repositioning and evasion.
+Button/Tooltip/VoidDarkTemplarShadowFury=- Bounces target to target<n/>- Damage: <c val="ff0000"><d ref="Effect,DarkTemplarShadowFuryDamage,Amount"/> per hit</c><n/>- Hits: <c val="ff0000"><d ref="Behavior,DarkTemplarShadowFuryController,PeriodCount+1"/> times</c><n/>- Defense: <c val="00ff00">99% damage reduction</c> while active<n/><n/>The Dark Templar unleashes shadow fury, jumping between enemies while remaining nearly invulnerable.
+Button/Tooltip/VoidDarkTemplarShadowFury2=Passive Enhancement<n/>- Damage Scaling: <c val="ff0000">+6 per level</c><n/>- Special: Resets on kill (resets cooldown when Dark Templar defeats another hero)<n/><n/>Shadow Fury becomes increasingly deadly with experience, and can be cast again immediately after defeating enemy heroes.
+Button/Tooltip/VoidImmortalStasisHeal=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,FlagshipTimeBomb,Duration"/> Seconds</c><n/>- Movement Speed: <c val="ff0000"><d ref="(1 - Behavior,FlagshipTimeBomb,Modification.MoveSpeedMultiplier) * 100"/>% reduced</c><n/>- Attack Speed: <c val="ff0000"><d ref="(1 - Behavior,FlagshipTimeBomb,Modification.AttackSpeedMultiplier) * 100"/>% reduced</c><n/>- Range: Area effect around target<n/><n/>Creates a temporal bubble around the Dragoon that slows nearby enemies, reducing their movement and attack speeds significantly.
+Button/Tooltip/VoidSentryChronoBeam=- Attack Speed: <c val="00ff00">+<d ref="Behavior,VoidSentryChronoBeam,Modification.AdditiveAttackSpeedFactor * 100"/>%</c><n/>- Movement Speed: <c val="00ff00">+<d ref="Behavior,VoidSentryChronoBeam,Modification.AdditiveMoveSpeedFactor * 100"/>%</c><n/>- Energy Cost: <c val="00ff00">Free ability</c><n/>- Cooldown: <c val="#ColorAttackInfo"><d ref="Abil,VoidSentryChronoBeam,Cost[0].Cooldown.TimeUse"/> seconds</c><n/>- Duration: <c val="#ColorAttackInfo">Permanent until cancelled</c><n/><n/>Channels energy to boost a friendly unit's attack speed and movement speed until the effect is manually cancelled or the Sentry is destroyed.
+Button/Tooltip/VoidSentryShieldRepairDouble=Recharge Rate: <c val="#ColorAttackInfo"><d ref="Effect,VoidSentryShieldRepair,RechargeVitalRate"/> shields/sec</c><n/>- Target Limit: <c val="#ColorAttackInfo">Two friendly Protoss units</c><n/>- Energy Cost: <c val="#ColorAttackInfo"><d ref="Effect,VoidSentryShieldRepair,DrainVitalCostFactor"/> energy/shield</c><n/>- Level Scaling: <c val="#ColorAttackInfo">+3 shields/sec per level</c><n/><n/>Rapidly recharges shields on two friendly Protoss units simultaneously, draining energy to fuel the recharge. Scales with hero level.
+Button/Tooltip/VoidSentryShieldRepairDouble2=Shield Recharge Increases by 3 shield per second per level gained.
+Button/Tooltip/VoidShieldCapacitor=- Shield Restoration: <c val="00ff00">Instantly restores <d ref="Effect,VoidShieldCapacitor,VitalArray[Shields].ChangeFraction * 100"/>% shields</c><n/>- Cooldown: <c val="#ColorAttackInfo"><d ref="Abil,VoidShieldCapacitor,Cost[0].Cooldown.TimeUse"/> seconds</c><n/>- Target: Self-cast ability<n/><n/>Instantly restores the Zealot's shields to maximum capacity. 
+Button/Tooltip/VoidStasis=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,DarkTemplarVoidStasis,Duration"/> Seconds</c><n/>- Effect: Disables all unit functions and structures<n/>- Target Types: <c val="#ColorAttackInfo">Ground units and structures</c><n/>- Disabled Functions: Attacks, abilities, movement, detection, production, tech<n/>- Protection: <c val="ff0000">Stasis units cannot be attacked or affected by abilities</c><n/><n/>Disables the target's attacks, abilities, movement, detection, production and tech. Units and structures in stasis cannot be attacked or affected by abilities.
+Button/Tooltip/VoidZealotWhirlwind=- Duration: <c val="#ColorAttackInfo"><d ref="Behavior,FenixWhirlwind,Duration"/> seconds</c><n/>- Movement Speed: <c val="00ff00">+<d ref="(Behavior,FenixWhirlwind,Modification.MoveSpeedMultiplier - 1) * 100"/>%</c><n/>- Area Damage: <c val="ff0000"><d ref="Effect,VoidZealotWhirlwindDamage,Amount"/> damage per second</c><n/>- Effect: <c val="#ColorAttackInfo">Damages nearby enemies while active</c><n/><n/>Grants the Zealot a whirlwind effect that dramatically increases movement speed and damages surrounding enemies.
+Button/Tooltip/VoodooShield=Duration: <c val="#ColorAttackInfo"><d ref="Behavior,VoodooShield,Duration"/> seconds</c><n/>- Shield Absorption: <c val="00ffff"><d ref="Behavior,VoodooShield,Modification.VitalMaxArray[Shields]"/> damage</c><n/>- Effect: Protective energy barrier<n/>- Depletion: Expires when shield depleted or duration ends<n/><n/>Surrounds the Marine in a shield of protective energy, providing damage absorption until the shield is depleted or duration expires.
+Button/Tooltip/WidowMineBioSplash2=- Duration: <c val="#ColorAttackInfo"><d ref="Behavior,Stimpack2,Duration"/> seconds</c><n/>- Attack Speed: <c val="00ff00">+<d ref="(Behavior,Stimpack2,Modification.AttackSpeedMultiplier - 1) * 100"/>%</c><n/>- Damage Increase: <c val="00ff00">+<d ref="Behavior,Stimpack2,Modification.DamageTotalMultiplier[Ranged] * 100"/>%</c><n/>- Movement Speed: <c val="ff0000"><d ref="(1 - Behavior,Stimpack2,Modification.MoveSpeedMultiplier) * 100"/>% reduced</c><n/><n/>Increases the Goliath's attack speed and damage for a short duration, but reduces movement speed.
+Button/Tooltip/ZHybridPsychicClones=Creates two identical clones for 40 seconds.
+Button/Tooltip/Zealot2=Powerful melee warrior. Can use Charge.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/ZealotHero=Aiur Faction<n/>Powerful melee warrior. Has Charge and Whirlwind abilities.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/ZeratulBlink=- Range: <c val="00ff00">Short-range teleportation</c><n/>- Effect: <c val="#ColorAttackInfo">Instant repositioning</c><n/>- Usage: <c val="#ColorAttackInfo">Point-and-click targeting</c><n/><n/>Teleports the Dark Templar to a nearby location using psionic energy, allowing for quick tactical repositioning or escape from danger.
+Button/Tooltip/ZergDefenseStructureLevel1=Increases Spores and Spines Damage against Heroics by 20.
+Button/Tooltip/ZergDefenseStructureLevel12=Increases Spores and Spines Damage against Heroics by 20.
+Button/Tooltip/ZergDefenseStructureLevel13=Increases Spores and Spines Damage against Heroics by 20.
+Button/Tooltip/Zergling2=Fast melee creature. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
+Button/Tooltip/ZerglingHero=Fast melee unit. Leaps over obstacles and onto targets from range. Deals increased damage. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
+Dark Templar=Dark Templar
+Defiler=Defiler
+DocInfo/DescLong=Sc2+Moba Mod.<n/><n/>Hostile mobs gives the RTS Player Resources<n/><n/>Created by Touchthis & Gertimoshka, Originally Alcyone Map.
+DocInfo/DescShort=2 RTS Players, 10 Hero Players
+DocInfo/HowToPlayAdvanced00=Photon cannons, Siege tank(siege mode), Missile turret, Bunkers. Planetary, Spine Crawler, Spore crawlers deal extra damage to Soldiers.
+DocInfo/HowToPlayAdvanced01=RTS players can research to make defense structures deal more damage to Soldiers.
+DocInfo/HowToPlayAdvanced02=Soldier players deal 99% less damage to workers harvesting around a Nexus, hatchery or CC.
+DocInfo/HowToPlayAdvanced03=Dying as Soldier players gives resources to enemy RTS player, avoid feeding
+DocInfo/HowToPlayAdvanced04=Killing Odin will make him spawn for the killing team
+DocInfo/HowToPlayBasic00=Soldier players play the game as Moba, RTS players play the game as normal melee SC2 game.
+DocInfo/HowToPlayBasic01=Soldier team 1 will team up with RTS player 2, Soldier team 2 will team up with RTS player 2
+DocInfo/HowToPlayBasic02=Killing enemy Soldier players or jungle brings resources to RTS players
+DocInfo/HowToPlayWinning00=Destroy all Enemy RTS players Structures
+DocInfo/Name=Proxima Frontlines
+DocInfo/PatchNote001=Initial Version
+DocInfo/PatchNote002=killing reward reduced to 350 mineral, was 500 minerals.
+DocInfo/PatchNote003=
+DocInfo/PatchNote004=Soldier changes:
+DocInfo/PatchNote005=
+DocInfo/PatchNote006=Dragoon:
+DocInfo/PatchNote007=Time Bomb is now placed in one area instead of following the Dragoon.
+DocInfo/PatchNote008=
+DocInfo/PatchNote009=New Protoss Unit:
+DocInfo/PatchNote010=Abilities:
+DocInfo/PatchNote011=Summon Photon cannons,
+DocInfo/PatchNote012=Photon Overcharges,
+DocInfo/PatchNote013=Structure Defensive Shield,
+DocInfo/PatchNote014=Reversed Time Warp.
+DocInfo/PatchNote015=
+DocInfo/PatchNote016=Hints:
+DocInfo/PatchNote017=(previous) "Justice has come."
+DocInfo/PatchNote018=(previous) "As all are one"
+DocInfo/PatchNote019=(new hints) "Reinforcing Psi-web"
+DocInfo/PatchNote020=What do these have in common? 
+DocInfo/PatchNote021=3x new soldiers have been added in selectionScreen. 
+DocInfo/PatchNote022=
+DocInfo/PatchNote023=Soldiers:
+DocInfo/PatchNote024=
+DocInfo/PatchNote025=Science Vessel:
+DocInfo/PatchNote026=Repair Drones- Science Vessel has 2 Repair drones following, these will repair any mechanical buildings around.
+DocInfo/PatchNote027=Irradiate - Makes an allied structure Irradiate, causing damage over time to any nearby enemy unit for 10 seconds. 
+DocInfo/PatchNote028= Irradiate increases by 4 damage/second per level
+DocInfo/PatchNote029=Gas Turret - Puts down a Gas Turret on the ground. Slowing all enemy units by 20% and deals irradiate damage every 0.5 second. 
+DocInfo/PatchNote030=Takes 50% less damage and 100 more health when put around Allied Bases.
+DocInfo/PatchNote031=Ignite Afterburners - Increases movement  speed by 70%. Increases Afterburners Speed by 5% per level and duration by 0.5s per level
+DocInfo/PatchNote032=Defensive Drone - Deploys a drone that provides nearby friendly units with a damage absorption shield for a limited time.
+DocInfo/PatchNote033= Fires at surrounding enemies after deflecting a projectile. Deals 10 damage per deflection.
+DocInfo/PatchNote034=
+DocInfo/PatchNote035=Nydus:
+DocInfo/PatchNote036=Spawning Roachlings - Spawns 4 uncommandable roachlings every 10 seconds. These roachlings will attack-move towards the rally point.
+DocInfo/PatchNote037=Burrow Move - Buries and moves to the target Allied Building.
+DocInfo/PatchNote038=Empower Zerg Building - Gives a non-enemy structure 150 Shield, 15 armor and deals 5 damage every 0.5 second. 
+DocInfo/PatchNote039=Additionally adds 10 life Regeneration per second
+DocInfo/PatchNote040=Small Nydus - Spawns a small Nydus worm on the map. This unit spawns then 2 uncommandable roachlings every 15 second for 60 seconds. 
+DocInfo/PatchNote041=Walks towards Rally point of the small Nydus worm
+DocInfo/PatchNote042=Spawn Hydralisk - 1 Charge received per minute. Shares Charges with Pygalisk. Spawns 1 Hydralisk per charge used, lasts 60 seconds.
+DocInfo/PatchNote043=Spawn Pygalisk- 1 Charge received per minute. Shares Charges with Hydralisk . Spawns 1 Hydralisk per charge used, lasts 60 seconds
+DocInfo/PatchNote044=
+DocInfo/PatchNote045=Mothership Core:
+DocInfo/PatchNote046=Mothership Passive - Being around an Allied Nexus increases energy Regeneration to 1 Energy/Second.
+DocInfo/PatchNote047=Additionally, shares Power with RTS Player.
+DocInfo/PatchNote048=Photon cannon - Summons a Photon Cannon for 60 seconds. Has an increased damage of when summoned around allied structures.
+DocInfo/PatchNote049=Photon Overcharge - Energizes the target Nexus's khaydarin crystal, turning it into a powerful long-range 
+DocInfo/PatchNote050=weapon for 20 seconds that deals 20 damage.
+DocInfo/PatchNote051=Reverested Time-warp - Warps spacetime within the target area for 10seconds. 
+DocInfo/PatchNote052=Allied Units and structures that enter the field have their movement speed and attack speed increased  by 40%.
+DocInfo/PatchNote053=Teleport to Power - Teleports the Mothership Core to target Nexus or Pylon.
+DocInfo/PatchNote054=Patch 1.117:
+DocInfo/PatchNote055=@Terran_Soldiers 
+DocInfo/PatchNote056=
+DocInfo/PatchNote057=Science Vessel:
+DocInfo/PatchNote058=Defense Drone - now has 50 energy, was 200. however around allied structures it has 150. 1 deflected shot costs 5 energy.
+DocInfo/PatchNote059=Defense Drone - now last 10 seconds, was 15 seconds.
+DocInfo/PatchNote060=Energy Regernation - now increase by 15% per level, was 130%(old bug for terran)
+DocInfo/PatchNote061=
+DocInfo/PatchNote062=Medic:
+DocInfo/PatchNote063=Energy Regernation - now increase by 55% per level, was 130%(old bug for terran)
+DocInfo/PatchNote064=
+DocInfo/PatchNote065=Spectre:
+DocInfo/PatchNote066=Energy Regernation - now increase by 75% per level, was 145%(old bug for terran) 
+DocInfo/PatchNote067=Science Vessel:
+DocInfo/PatchNote068=Repair Drones - Will now reappear after the player dies.
+DocInfo/PatchNote069=Patch 1.119:
+DocInfo/PatchNote070=@Protoss_Soldiers 
+DocInfo/PatchNote071=
+DocInfo/PatchNote072=Mothership core:
+DocInfo/PatchNote073=Power source (Photon Cannon powered) - Will no longer provide power while dead
+DocInfo/PatchNote074=Patch 1.121:
+DocInfo/PatchNote075=@Terran_Soldiers
+DocInfo/PatchNote076=
+DocInfo/PatchNote077=Science Vessel:
+DocInfo/PatchNote078=Gas Turret - Placement is now following a 2x2 grid.
+DocInfo/PatchNote079=Gas Turret now applies the irradiate damage correctly.
+DocInfo/PatchNote080=Energy Regn - now happens when around Command Center, Orbital and Planetary.
+DocInfo/PatchNote081=Patch 1.122:
+DocInfo/PatchNote082=@Terran_Soldiers @Protoss_Soldiers @Zerg_Soldiers 
+DocInfo/PatchNote083=
+DocInfo/PatchNote084=Science vessel:
+DocInfo/PatchNote085=Starting health is now 125, was 200.
+DocInfo/PatchNote086=Gas turret health outside of base is now 150. in base 250. Was 250, 350 in base.
+DocInfo/PatchNote087=Gas turret now hits air.
+DocInfo/PatchNote088=Gas turret can no longer be target of irradiate.
+DocInfo/PatchNote089=Gas turret is no longer a structure
+DocInfo/PatchNote090=
+DocInfo/PatchNote091=Nydus:
+DocInfo/PatchNote092=Small Nydus now follows the grid system when being placed.
+DocInfo/PatchNote093=Small Nydus is no longer a Structure
+DocInfo/PatchNote094=
+DocInfo/PatchNote095=Mothership core:
+DocInfo/PatchNote096=Power source underneath mothership is now a detection area.
+DocInfo/PatchNote097=
+DocInfo/PatchNote098=Adept (changes to adept will not be permanent,  due to Adept is about to be replaced):
+DocInfo/PatchNote099=Void Armor - Now provides a Guardian Shield, additionally, gives 10 shield regeneration to anyone within the guardian shield.
+DocInfo/PatchNote100=Patch 1.123:
+DocInfo/PatchNote101=@Terran_Soldiers 
+DocInfo/PatchNote102=
+DocInfo/PatchNote103=Science Vessel:
+DocInfo/PatchNote104=Repair Drones - can no longer heal the Science Vessel when attacked or up to 7 seconds after being attacked.
+DocInfo/PatchNote105=
+DocInfo/PatchNote106=Medic:
+DocInfo/PatchNote107=Flashbang grenade - can now stun massive units
+DocInfo/PatchNote108=Patch 1.125:
+DocInfo/PatchNote109=@General _Changes 
+DocInfo/PatchNote110=Names of enemy players in death message will be displayed in red, while allied in blue.
+DocInfo/PatchNote111=Patch 1.126:
+DocInfo/PatchNote112=@Terran_Soldiers @General _Changes 
+DocInfo/PatchNote113=Jungle Hostile Vikings now increase by 100 hp every 10 min.
+DocInfo/PatchNote114=
+DocInfo/PatchNote115=Soldier Medic:
+DocInfo/PatchNote116=Heal - Healing a non-heroic unit will provide the medic the kill credit for 5 seconds after the medic stops healing.
+DocInfo/PatchNote117=Squad sight - any non-heroic unit affected by the squad sight will provide  the kill credit to the medic.
+DocInfo/PatchNote118=Astral wind - Any non-heroic unit affected by the Astral wind will provide the kill credit to the medic for 5 seconds.
+DocInfo/PatchNote119=Patch 1.129:
+DocInfo/PatchNote120=@Protoss_Soldiers 
+DocInfo/PatchNote121=
+DocInfo/PatchNote122=Soldiers: 
+DocInfo/PatchNote123=Sentry:
+DocInfo/PatchNote124=Double Shield Recharge - Is now castable on structures.
+DocInfo/PatchNote125=Chrono Beam -now has a 20 seconds cooldown.
+DocInfo/PatchNote126=Chrono Beam - No longer costs energy.
+DocInfo/PatchNote127=Chrono Beam - is now castable on heroics and structures.
+DocInfo/PatchNote128=Chrono beam - now takes 0.2 seconds to cast on ally, was 1 second.
+DocInfo/PatchNote129=
+DocInfo/PatchNote130=Sentry Now displays its passives improvements.
+DocInfo/PatchNote131=Patch 1.130:
+DocInfo/PatchNote132=@Protoss_Soldiers @General _Changes 
+DocInfo/PatchNote133=Spawners will now have an attack towards non-heroic units.
+DocInfo/PatchNote134=
+DocInfo/PatchNote135=Dragoon:
+DocInfo/PatchNote136=Psi Orb now moves at 10 speed, was 4.
+DocInfo/PatchNote137=Psi orb will no longer deal and dmg while floating to its target.
+DocInfo/PatchNote138=Patch 1.131:
+DocInfo/PatchNote139=@RTS_Changes 
+DocInfo/PatchNote140=
+DocInfo/PatchNote141=Protoss:
+DocInfo/PatchNote142=Phoenix - Graviton Beam can no longer lift Heroic units.
+DocInfo/PatchNote143=Patch 1.136:
+DocInfo/PatchNote144=@General _Changes @Terran_Soldiers @Alycone_Frontlines
+DocInfo/PatchNote145=
+DocInfo/PatchNote146=Alcyone_Frontlines:
+DocInfo/PatchNote147=Boss will now spawn again for the team that kills Odin.
+DocInfo/PatchNote148=
+DocInfo/PatchNote149=Science Vessel:
+DocInfo/PatchNote150=Gas Turret - Cooldown is now 20s, was 10s.
+DocInfo/PatchNote151=Gas Turret - is No longer invulnerable for 1.5seconds when summoned.
+DocInfo/PatchNote152=Gas Turret - now has a higher attack priority.
+DocInfo/PatchNote153=Ignite Afterburners - Cooldown is now 45s, was 20s.
+DocInfo/Website=https://discord.gg/abBfe66wey
+Dragoon=Dragoon
+Effect/Name/AdeptPhaseShiftSelect2= Select
+Effect/Name/AvatarApply=Avatar (Apply)
+Effect/Name/AvatarApplyDamage=Avatar (Apply Damage)
+Effect/Name/AvatarDamage=Avatar (Damage)
+Effect/Name/AvatarSearch=Avatar (Search)
+Effect/Name/AvatarSet=Avatar (Set)
+Effect/Name/BanelingExplodeLargeSearchAll=Baneling Explode Large Search All
+Effect/Name/BanelingExplodeLargeSearchDamage=Baneling Explode Large Search Damage
+Effect/Name/BurrowChargeStructureTargetSearch2=Burrow Charge Structure Target Search
+Effect/Name/BurrowChargeTargetDamage2=Burrow Charge Target Damage
+Effect/Name/BurrowChargeTargetSearch2=Burrow Charge Target Search
+Effect/Name/CreateBanelingSet=Create Baneling Set
+Effect/Name/CreatePhotonOverchargeDummy=Create Photon Overcharge Dummy
+Effect/Name/CreatePhotonOverchargeDummyUnit=Create Photon Overcharge Dummy Unit
+Effect/Name/DarkTemplarShadowFuryApplyDamageReduction=DarkTemplarShadowFuryApplyDamageReduction
+Effect/Name/DarkTemplarShadowFuryDamage2=Dark Templar Shadow Fury Damage
+Effect/Name/DefilerMPPlagueDamage2=Plague Damage
+Effect/Name/DigTeleportMove=DigTeleport Move
+Effect/Name/DragoonFlagshipTimeBombCP2=Flagship Time Bomb CP
+Effect/Name/EmpowerZergBuilding=Empower Zerg Building
+Effect/Name/EmpowerZergBuildingSet=Empower Zerg Building Set
+Effect/Name/EnergyHeroic=Energy Heroic
+Effect/Name/EnergyRegenerationApplyBehavior=Energy Regeneration (Apply Behavior)
+Effect/Name/EnergyRegenerationApplyBehavior2=Energy Regeneration (Apply Behavior)
+Effect/Name/FenixChampionPowerShieldApply2=Power Shield (Apply)
+Effect/Name/FenixWhirlwind2=Fenix Whirlwind
+Effect/Name/FenixWhirlwindDamage2=Fenix Whirlwind Damage
+Effect/Name/Firebat2=Flame Thrower (Persistent)
+Effect/Name/FirebatE2=Flame Thrower (Enum Area)
+Effect/Name/FirebatSet2=Flame Thrower (Set)
+Effect/Name/FirebatUFull2=Flame Thrower (Damage)
+Effect/Name/FlameThrowerApplyDoTBehavior2=Flame Thrower (Apply DoT Behavior)
+Effect/Name/FlameThrowerApplyDoTBehavior22=Obliterate AB
+Effect/Name/FlameThrowerDamageSet2=Flame Thrower (Damage Set)
+Effect/Name/FlameThrowerViralPlasmaDoTDamage2=Flame Thrower (Viral Plasma DoT Damage)
+Effect/Name/GasTurretApplyEffects=GasTurretApplyEffects
+Effect/Name/GiveCredit=Give Credit
+Effect/Name/GiveCredit2=Give Credit
+Effect/Name/GuardianShieldApplyBehavior2=Guardian Shield
+Effect/Name/GuardianShieldSearch2=Guardian Shield
+Effect/Name/HealHeroic=Heal Heroic
+Effect/Name/HealHeroicUnitsAround=Heal Heroic Units Around
+Effect/Name/HealHeroicUnitsAround2=Heal Heroic Units Around
+Effect/Name/HealHeroicUnitsAround3=Heal Heroic Units Around
+Effect/Name/HeroGuardianShieldPresistant=Guardian Shield
+Effect/Name/HotSBanelingDeathExplodeLargeSet2=Baneling Death Explode Large Set
+Effect/Name/HotSBanelingExplodeLargeSearchDamage2=Hot SBaneling Explode Large Search Damage
+Effect/Name/HotSUltraliskKaiserBlades2=Hot SUltralisk Kaiser Blades
+Effect/Name/HotSUltraliskKaiserBlades3=Hot SUltralisk Kaiser Blades
+Effect/Name/HotSUltraliskKaiserBladesDamage2=Hot SUltralisk Kaiser Blades Damage
+Effect/Name/HotSUltraliskKaiserBladesDamage3=Hot SUltralisk Kaiser Blades Damage
+Effect/Name/HotSUltraliskKaiserBladesSearch2=Hot SUltralisk Kaiser Blades Search
+Effect/Name/HotSUltraliskKaiserBladesSearch3=Hot SUltralisk Kaiser Blades Search
+Effect/Name/HotSUltraliskKaiserBladesSecondaryDamage2=Hot SUltralisk Kaiser Blades Secondary Damage
+Effect/Name/HotSUltraliskKaiserBladesSecondaryDamageSet2=Hot SUltralisk Kaiser Blades Secondary Damage Set
+Effect/Name/HotSUltraliskKaiserBladesSecondaryUpgradeDamage2=Hot SUltralisk Kaiser Blades Secondary Upgrade Damage
+Effect/Name/HydraliskImpaleDamage2=Hydralisk Impale Damage
+Effect/Name/ImpalerTentacleLM2=Spine Crawler (Launch Missile)
+Effect/Name/ImpalerTentacleU2=Spine Crawler (Damage)
+Effect/Name/LabTurret=Lab Turret
+Effect/Name/LeechDamage2=Leech
+Effect/Name/LocustMPCreateLMA2=MP Create LM A
+Effect/Name/LocustMPCreateLMImpactSetA2=MP Create LM Impact Set A
+Effect/Name/MPCreateBanelingCocoon=MP Create Baneling Cocoon
+Effect/Name/MPCreateBanelingCocoon2=MP Create Baneling
+Effect/Name/MPCreateHydralisk=MP Create Hydralisk
+Effect/Name/MPCreateNydusWormCanal=MP Create Nydus Worm Canal
+Effect/Name/MPCreateNydusWormCanal2=MP Create Nydus Worm Canal
+Effect/Name/MPCreatePygalisk=MP Create Pygalisk
+Effect/Name/MPCreatePygalisk2=MP Create Zergling
+Effect/Name/MPCreatePygaliskSet=MP Create PygaliskSet
+Effect/Name/MPCreatePygaliskSet2=Create Zergling Mine
+Effect/Name/MPCreateRoachling=MP Create Roachling
+Effect/Name/MPCreateRoachlingA=MP Create Roachling A
+Effect/Name/MPCreateSetA=MP Create Set A
+Effect/Name/MPReady=MPReady
+Effect/Name/MakePrecursorNydus=Make Precursor Nydus
+Effect/Name/NeedleSpinesDamage2=Needle Spines
+Effect/Name/NeedleSpinesLaunchMissile2=Needle Spines
+Effect/Name/Observersight=Observer sight
+Effect/Name/OutOfCombatRegen=Out Of Combat Regen
+Effect/Name/PhotonCannonLM2=Photon Cannon (Launch Missile)
+Effect/Name/PhotonCannonU2=Photon Cannon (Damage)
+Effect/Name/PrimalGasCloudDamage2=Primal Gas Cloud Damage
+Effect/Name/PrologueVoidArmorSet2=Prologue Void Armor Set
+Effect/Name/ProtectWorkers=ProtectWorkers
+Effect/Name/ProtectWorkersBehaviour=Protect Workers
+Effect/Name/ProtectWorkersSearch=Protect Workers
+Effect/Name/QueenBurstHeal2=Queen Burst Heal
+Effect/Name/QueenHeal2=Queen Heal
+Effect/Name/RadarApplybuff=Radar (Apply buff)
+Effect/Name/ReversalFieldApplyBehavior=Reversal Field (Apply Behavior)
+Effect/Name/ReversalFieldSearchArea=Reversal Field (Search Area)
+Effect/Name/SlowApplyBehaviorCopy=Slow Apply Behavior Copy
+Effect/Name/SmallMPCreateRoachling=MP Create Roachling
+Effect/Name/SporeCrawler2=Spore Crawler (Missile)
+Effect/Name/SporeCrawlerSpawner=Spore Crawler (Damage)
+Effect/Name/SporeCrawlerU2=Spore Crawler (Damage)
+Effect/Name/Stimpack2=Stim Pack (Apply Buff)
+Effect/Name/Stimpack3=Stim Pack (Apply Buff)
+Effect/Name/TemporalFieldCreatePersistent2=Reversal Field (Create Persistent)
+Effect/Name/TimedLife=Timed Life
+Effect/Name/TissueAssimilation2=Tissue Assimilation
+Effect/Name/TissueAssimilationSecondary2=Tissue Assimilation Secondary
+Effect/Name/TossGrenadeDamage2=Toss Grenade (Damage)
+Effect/Name/TossGrenadeLaunchMissile2=Toss Grenade (Launch Missile)
+Effect/Name/TurnBanelingCocoon=Turn Baneling Cocoon
+Effect/Name/UltraliskBurrowChargeHold2=Ultralisk Burrow Charge Hold
+Effect/Name/UltraliskOutOfCombat2RB2=Ultralisk Out Of Combat2 RB
+Effect/Name/UltraliskOutOfCombat3RB2=Ultralisk Out Of Combat3 RB
+Effect/Name/UltraliskOutOfCombatRBSet2=Ultralisk Out Of Combat RB Set
+Effect/Name/VoidDarkTemplarDeepShadowBlinkApply2=Void Dark Templar Deep Shadow Blink (Apply)
+Effect/Name/VoidDarkTemplarDeepShadowBlinkSet2=Void Dark Templar Deep Shadow Blink (Set)
+Effect/Name/VoidDarkTemplarDeepShadowBlinkTeleport2=Void Dark Templar Deep Shadow Blink (Teleport)
+Effect/Name/VoidSentryChronoBeamAB=Void Sentry Chrono Beam AB
+Effect/Name/VoidSentryShieldRepairDouble2=Regain Shield
+Effect/Name/WhirlwindDamage=Whirlwind Damage
+Effect/Name/WhirlwindSearch=Whirlwind Search
+Firebat=Firebat
+Gix=Gix
+Glubb=Glubb
+Goliath=Goliath
+Hydralisk=Hydralisk
+Irega=Irega
+Joseph Newbery=Joseph Newbery
+Josh Clayton=Josh Clayton
+Khax=Khax
+Khudirn=Khudirn
+Krerek=Krerek
+LoadingScreen/TextBody=Info:<n/>1. Killing an Enemy Soldier Player will give your RTS player 500 Minerals and 300 Vespene Gas.<n/>2. Killing Hostile Units will bring Resources to your RTS player.<n/>3. Boss will Spawn after 10 Minutes. Killing the boss gives 2000 Minerals and 1000 Vespene Gas to the RTS player.<n/>4.Destroying an enemy spawner stops the waves.<n/>5. When you play as a RTS player, provide your Soldier players with healers in order for them to heal. T = medivacs. Z = Queens. P = shield Batteries<n/> 6. Wave spawners are not rebuildable. Neither is the turret. Defend them! <n/>---<n/>Tips for new players:<n/>Be careful when picking a Hard or Medium difficult Soldier as a first time player. <n/>Killing vikings around will Xel'naga towers will provide upgrades for your waves for 3 minutes. These upgrades are stackable<n/>
+LoadingScreen/Title=Alcyone Frontlines
+MapInfo/Player00/Name=Neutral
+MapInfo/Player01/Name=Player 1
+MapInfo/Player02/Name=Player 2
+MapInfo/Player03/Name=Player 3
+MapInfo/Player04/Name=Player 4
+MapInfo/Player05/Name=Player 5
+MapInfo/Player06/Name=Player 6
+MapInfo/Player07/Name=Player 7
+MapInfo/Player08/Name=Player 8
+MapInfo/Player09/Name=Player 9
+MapInfo/Player10/Name=Player 10
+MapInfo/Player11/Name=Player 11
+MapInfo/Player12/Name=Player 12
+MapInfo/Player13/Name=Hostile
+MapInfo/Player14/Name=Player 14
+MapInfo/Player15/Name=Hostile
+MapInfo/Team00/Name=RTS Player Team 1
+MapInfo/Team01/Name=RTS Player Team 2
+MapInfo/Team02/Name=Team 1 Heroes
+MapInfo/Team03/Name=Team 2 Heroes
+Marine=Marine
+Medic=Medic
+Naxi=Naxi
+Nessus=Nessus
+Nick=Nick Burning
+Norton Sampson=Norton Sampson
+Param/Value/2C05CBDE=attack 2
+Param/Value/2C61702C=Adept (Medium, Support)
+Param/Value/31112E3F=Soldiers 1
+Param/Value/3240AA98=defence 1
+Param/Value/5E433F25=attack 1
+Param/Value/90F5B0E1=attack 3
+Param/Value/B5489ED2=Support, Refunnels Shield for others
+Param/Value/B5552E61=defence 2
+Param/Value/C139289A=Corsair (Medium)
+Param/Value/C1E64AB2=Anti Air Unit
+Param/Value/C228B161=-
+Param/Value/C354F840=Spectre (Hard)
+Param/Value/C4483774=defence 3
+Param/Value/C5717EC1=Adept (Medium, Support)
+Param/Value/C61C79E4=0/0
+Param/Value/E5CAA240=Vikings have spawned around Xel'Naga Towers. Killing Vikings will keep Xel'naga towers active for 3 minutes.
+Param/Value/lib_1_01C0EB28=Info:<n/>1. Killing an Enemy Soldier player will give your RTS player 500 Minerals and 300 Vespene Gas.<n/>2. Killing Hostile Units will bring Resources to your RTS player.<n/>3. Boss will Spawn after 10 Minutes.Killing the boss gives 2000 Minerals and 1000 Vespene Gas to the RTS player.
+Param/Value/lib_1_0316399F= Picked Goliath
+Param/Value/lib_1_03C0B059=Air Unit, Neutralize Zone.
+Param/Value/lib_1_04F8C258= Picked Dark Templar
+Param/Value/lib_1_0599BA84= Picked Dragoon
+Param/Value/lib_1_07A6199C= Picked Firebat
+Param/Value/lib_1_0942BB65= Picked Corsair
+Param/Value/lib_1_0ABEEA84=/
+Param/Value/lib_1_0E44D467=Range Unit
+Param/Value/lib_1_1028BD8F=Defiler (Hard)
+Param/Value/lib_1_1258901B= Picked Dark Templar
+Param/Value/lib_1_1275C5B1= Picked Hydralisk
+Param/Value/lib_1_12C4A045=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_1_130BF7CF= Picked Queen
+Param/Value/lib_1_152A66FA= Picked Zealot
+Param/Value/lib_1_15BADC69=Range Unit
+Param/Value/lib_1_18626199=Splash damage, Only Ground Units.
+Param/Value/lib_1_18851F8A=Fast Unit, Can fly up over cliffs. Only Ground<n/>
+Param/Value/lib_1_1AF2225B=Mothership Core (Hard, Defender, RTSSupport)
+Param/Value/lib_1_1C2AD81E=To Many Move points added
+Param/Value/lib_1_1DE3E5FA=Support, Flying Unit, Heals. 
+Param/Value/lib_1_1ECB2231=Hydralisk (Medium)
+Param/Value/lib_1_1F297095= Picked Hydralisk
+Param/Value/lib_1_215DA594=Range Unit
+Param/Value/lib_1_24A60DAB=Firebat (Easy)
+Param/Value/lib_1_29B3373E=Support, Refunnels Shield for others
+Param/Value/lib_1_2C347B6C=Support, Heals Bio units and Can Repair.
+Param/Value/lib_1_3067D3D9=Spawner Point can't be null or No Point!
+Param/Value/lib_1_3086F79D=Defiler (Hard)
+Param/Value/lib_1_33BE9386= Picked Ultralisk
+Param/Value/lib_1_34AE88BC=Zealot (Easy)
+Param/Value/lib_1_3643AF90=Heavily Focused on Defending, Repair and mitigate damage.
+Param/Value/lib_1_36BFC19A= Picked Defiler
+Param/Value/lib_1_3A7E66C9=Ultralisk (Easy)
+Param/Value/lib_1_3B143AE7=-
+Param/Value/lib_1_3C7C04B9=Melee Unit, Stealth
+Param/Value/lib_1_3D41B77E=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_1_3F97D3D6= Picked Spectre
+Param/Value/lib_1_4008A2BA=Queen (Easy, Support)
+Param/Value/lib_1_4317D246=Range Unit.
+Param/Value/lib_1_46CEA381=Goliath (Medium)
+Param/Value/lib_1_47065936=Splash damage, Only Ground Units.
+Param/Value/lib_1_47771A14=Marine (Hard)
+Param/Value/lib_1_479173BD=Zealot (Easy)
+Param/Value/lib_1_4C335958=Nydus (Medium, Defender)
+Param/Value/lib_1_4DC14A06=Bruiser, Splash damage, Melee
+Param/Value/lib_1_4DEBCE26=Support, Flying Unit, Heals. 
+Param/Value/lib_1_50533C92=Support, Refunnels Shield for others
+Param/Value/lib_1_50B05475=Dark Templar (Hard)
+Param/Value/lib_1_53FF420E= Picked Defiler
+Param/Value/lib_1_54D1A4ED= - 
+Param/Value/lib_1_5A81ABD2=Corsair (Medium)
+Param/Value/lib_1_5A84CAED= Picked Spectre
+Param/Value/lib_1_5B0D051C=, will revive in 
+Param/Value/lib_1_5BD3340E=Specialist Unit, Uses Stun and nukes
+Param/Value/lib_1_5F1EFDD8=+
+Param/Value/lib_1_610D72CF=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_1_63AEB7D7=Medic (Medium, Support)
+Param/Value/lib_1_66965059=Zealot (Easy)
+Param/Value/lib_1_66E51568=[Allies] RTS Protoss AI: Building Batteries!
+Param/Value/lib_1_68B51A2F=Sentry (Medium, Support)
+Param/Value/lib_1_698DE8D6=Corsair (Medium)
+Param/Value/lib_1_6A15202A=Ranged Unit, has increased attack Speed
+Param/Value/lib_1_6A686599= Picked Medic
+Param/Value/lib_1_6A7465F3= Picked Goliath
+Param/Value/lib_1_6AE07A1A= Picked Medic
+Param/Value/lib_1_6BCF858B=Dark Templar (Hard)
+Param/Value/lib_1_6C680DE3= Picked Corsair
+Param/Value/lib_1_6CBD470B=Range Unit
+Param/Value/lib_1_6F27D176=Zealot (Easy)
+Param/Value/lib_1_708720DB= Picked Medic
+Param/Value/lib_1_710B2B61= Picked Goliath
+Param/Value/lib_1_71D8F85C= Picked Marine
+Param/Value/lib_1_752ED481=Zergling (Hard)
+Param/Value/lib_1_774E7360= Picked Nydus Worm
+Param/Value/lib_1_7B5B1561=Ultralisk (Easy)
+Param/Value/lib_1_7C62B8C6=Mothership Core (Hard, Defender, RTSSupport)
+Param/Value/lib_1_7E009E82= LEFT AI LOOP!!!
+Param/Value/lib_1_7E09F6B4=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_1_7F5EF35A=Heavily Focused on Defending, Repair and mitigate damage.
+Param/Value/lib_1_7FE3D72B= Picked Ultralisk
+Param/Value/lib_1_81EEDE57=Dragoon (Easy)
+Param/Value/lib_1_820BB715= Picked Corsair
+Param/Value/lib_1_825CFEE7=Splash damage, Only Ground Units.
+Param/Value/lib_1_82CAEECD=Sentry (Medium, Support)
+Param/Value/lib_1_84C2FEEA=Anti Air Unit
+Param/Value/lib_1_862C7605= Picked Zergling
+Param/Value/lib_1_8752F893=<c val="D50005">Please consider joining the discord, send me feedback, bugs and get noticed of lobbies started:</c> <c val="0005D5">https://discord.gg/abBfe66wey</c>
+Param/Value/lib_1_89937BE5= Picked Queen
+Param/Value/lib_1_89BF609B=Specialist Unit, Damage Mitigation Cloud and AoE Damage
+Param/Value/lib_1_8A1774B1=Pick Soldier
+Param/Value/lib_1_8A5EDF0C= Picked Hydralisk
+Param/Value/lib_1_8AF502DE= Picked Adept
+Param/Value/lib_1_8C87B31B=Corsair (Medium)
+Param/Value/lib_1_8C8B006A=Spectre (Hard)
+Param/Value/lib_1_8CCC236B=Nydus (Medium, Defender)
+Param/Value/lib_1_8E21C751=Has Died
+Param/Value/lib_1_8E2C0B03= Picked Dragoon
+Param/Value/lib_1_90792FDD=[Allies] RTS Terran AI: Building Medivacs!
+Param/Value/lib_1_92451847= Picked Dark Templar
+Param/Value/lib_1_956C1A6F= was killed by 
+Param/Value/lib_1_95EAF36B=0/0
+Param/Value/lib_1_964EEB0B=Air Unit, Neutralize Zone.
+Param/Value/lib_1_96516D3D= Picked Ultralisk
+Param/Value/lib_1_9670DC38= Picked Adept
+Param/Value/lib_1_978D5B47=Goliath (Medium)
+Param/Value/lib_1_984B5D54=K/D
+Param/Value/lib_1_9879E07D=Spectre (Hard)
+Param/Value/lib_1_9A658092=[Allies] RTS Zerg AI: Building Queens!
+Param/Value/lib_1_9ACD18A4= Picked Zergling
+Param/Value/lib_1_9B0126FE=0/0
+Param/Value/lib_1_9B4C32A0=0/0
+Param/Value/lib_1_9D20C22F= Picked Dark Templar
+Param/Value/lib_1_9FE8F972= Picked Queen
+Param/Value/lib_1_A13357E0= Picked Zealot
+Param/Value/lib_1_A29CFC43= Picked Dragoon
+Param/Value/lib_1_A2B2DA65= Picked Dark Templar
+Param/Value/lib_1_A2FD87C6=Heavily Focused on Defending and pushing lanes. Summons units constantly
+Param/Value/lib_1_A4E9EAB5= Picked Dragoon
+Param/Value/lib_1_A8E43C3A=Marine (Hard)
+Param/Value/lib_1_AA4978C8=Specialist Unit, Damage Mitigation Cloud and AoE Damage
+Param/Value/lib_1_AA757172= Picked Marine
+Param/Value/lib_1_AAF3B2FF= Picked Corsair
+Param/Value/lib_1_AC106C06=Ranged Unit, has increased attack Speed
+Param/Value/lib_1_AC4B2CAE= Picked Adept
+Param/Value/lib_1_ACA8AF65=Support, Refunnels Shield for others
+Param/Value/lib_1_AE1E5D4A=Hide Scores
+Param/Value/lib_1_AE7DD35C=Show Scores
+Param/Value/lib_1_AE849DE1=Science Vessel (Medium, Defender, Support)
+Param/Value/lib_1_AFDA49F0= Picked Adept
+Param/Value/lib_1_B3FA3570=Sentry (Medium, Support)
+Param/Value/lib_1_B4CBDC5F=Soldiers 1
+Param/Value/lib_1_B5ED5957=Dragoon (Easy)
+Param/Value/lib_1_B6593422=Hydralisk (Medium)
+Param/Value/lib_1_BC409EF3= - 
+Param/Value/lib_1_BCAB7A92=Air Unit, Neutralize Zone.
+Param/Value/lib_1_C32A4E04=Dark Templar (Hard)
+Param/Value/lib_1_C37D7F0F=Dark Templar (Hard)
+Param/Value/lib_1_C3A7A6BE=Melee Unit, Stealth
+Param/Value/lib_1_C66F8CE5=Specialist Unit, Uses Stun and nukes
+Param/Value/lib_1_C8653C9E=Bruiser, Splash damage, Melee.  Good pick for a first time player
+Param/Value/lib_1_C8FFA6CD=Mothership Core (Hard, Defender, RTSSupport)
+Param/Value/lib_1_C98DC2AE= Picked Hydralisk
+Param/Value/lib_1_C9C10DD3= Picked Mothership Core
+Param/Value/lib_1_CAA5DCDD= Picked Ultralisk
+Param/Value/lib_1_CAF32F13=Dragoon (Easy)
+Param/Value/lib_1_CC7022DA=Range Unit
+Param/Value/lib_1_CC9D57B8=Melee Unit, Stealth
+Param/Value/lib_1_CD2AC9D5= Picked Firebat
+Param/Value/lib_1_CDC87703=Splash damage, Only Ground Units.
+Param/Value/lib_1_D1D26092=Splash damage, Only Ground Units. Good pick for a first time player
+Param/Value/lib_1_D2795242=Anti Air Unit
+Param/Value/lib_1_D3A2A78A=Mothership Core (Hard, Defender, RTSSupport)
+Param/Value/lib_1_D44D7EFC=Dragoon (Easy)
+Param/Value/lib_1_D46BF1E3=Science Vessel (Medium, Defender, Support)
+Param/Value/lib_1_D47053B6=Medic (Medium, Support)
+Param/Value/lib_1_D6C323DD= Picked Zealot
+Param/Value/lib_1_D90DCF89= Picked Zergling
+Param/Value/lib_1_D91C90AE= Picked Adept
+Param/Value/lib_1_D987D789=0/0
+Param/Value/lib_1_D9CB5152= Picked Firebat
+Param/Value/lib_1_DAF1657E= Picked Zealot
+Param/Value/lib_1_DC1E8D16= Picked Dragoon
+Param/Value/lib_1_DCFCFCFA= Picked Sentry
+Param/Value/lib_1_DDCADA09=Air Unit, Neutralize Zone.
+Param/Value/lib_1_DE655456=Support, Heals Bio units.
+Param/Value/lib_1_DEDFD1E1=Heavily Focused on Defending and pushing lanes. Summons units constantly
+Param/Value/lib_1_DF99A591= Picked Corsair
+Param/Value/lib_1_E103F095= Picked Mutalisk
+Param/Value/lib_1_E1E7221A=Splash damage, Only Ground Units. Good pick for a first time player
+Param/Value/lib_1_E1FADDDA=Firebat (Easy)
+Param/Value/lib_1_E21D7F62=Fast Unit, Can jump up over cliffs. Only Ground<n/>
+Param/Value/lib_1_E24A6336= Picked Zealot
+Param/Value/lib_1_E31F1D0F= - 
+Param/Value/lib_1_E57F333A= Picked Science Vessel
+Param/Value/lib_1_E655C995=Queen (Easy, Support)
+Param/Value/lib_1_E70FFFA3=Soldiers 2
+Param/Value/lib_1_E78AA15E= - 
+Param/Value/lib_1_E81AAFB7=Pick Soldier
+Param/Value/lib_1_E8978F42=Zergling (Hard)
+Param/Value/lib_1_EB8B73BC=Corsair (Medium)
+Param/Value/lib_1_EC5A43FE=Sentry (Medium, Support)
+Param/Value/lib_1_ED1596B5= Picked Ultralisk
+Param/Value/lib_1_EE633171=/
+Param/Value/lib_1_EF6534BB=Melee Unit, Stealth
+Param/Value/lib_1_F2D7419D= Picked Marine
+Param/Value/lib_1_F5516FBF=Support, Refunnels Shield for others
+Param/Value/lib_1_F9D0E981= - 
+Param/Value/lib_1_FA5B4E1A= seconds
+Param/Value/lib_1_FCA78A59= Picked Spectre
+Param/Value/lib_1_FCD8DA4B=Gained M/G
+Param/Value/lib_5A1C9904_01C0EB28=Info:<n/>1. Killing an Enemy Soldier player will give your RTS player 500 Minerals and 300 Vespene Gas.<n/>2. Killing Hostile Units will bring Resources to your RTS player.<n/>3. Boss will Spawn after 10 Minutes.Killing the boss gives 2000 Minerals and 1000 Vespene Gas to the RTS player.
+Param/Value/lib_5A1C9904_0316399F= Picked Goliath
+Param/Value/lib_5A1C9904_03C0B059=Air Unit, Neutralize Zone.
+Param/Value/lib_5A1C9904_04F8C258= Picked Dark Templar
+Param/Value/lib_5A1C9904_0599BA84= Picked Dragoon
+Param/Value/lib_5A1C9904_07A6199C= Picked Firebat
+Param/Value/lib_5A1C9904_0942BB65= Picked Corsair
+Param/Value/lib_5A1C9904_0ABEEA84=/
+Param/Value/lib_5A1C9904_0E44D467=Range Unit
+Param/Value/lib_5A1C9904_1028BD8F=Defiler
+Param/Value/lib_5A1C9904_1258901B= Picked Dark Templar
+Param/Value/lib_5A1C9904_1275C5B1= Picked Hydralisk
+Param/Value/lib_5A1C9904_12C4A045=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_5A1C9904_130BF7CF= Picked Queen
+Param/Value/lib_5A1C9904_152A66FA= Picked Zealot
+Param/Value/lib_5A1C9904_15BADC69=Range Unit
+Param/Value/lib_5A1C9904_18626199=Splash damage, Only Ground Units.
+Param/Value/lib_5A1C9904_18851F8A=Fast Unit, Can fly up over cliffs. Only Ground<n/>
+Param/Value/lib_5A1C9904_1AF2225B=Mothership Core
+Param/Value/lib_5A1C9904_1C2AD81E=To Many Move points added
+Param/Value/lib_5A1C9904_1DE3E5FA=Support, Flying Unit, Heals. 
+Param/Value/lib_5A1C9904_1ECB2231=Hydralisk
+Param/Value/lib_5A1C9904_1F297095= Picked Hydralisk
+Param/Value/lib_5A1C9904_215DA594=Range Unit
+Param/Value/lib_5A1C9904_24A60DAB=Firebat
+Param/Value/lib_5A1C9904_29B3373E=Support, Refunnels Shield for others
+Param/Value/lib_5A1C9904_2C347B6C=Support, Heals Bio units and Can Repair.
+Param/Value/lib_5A1C9904_3067D3D9=Spawner Point can't be null or No Point!
+Param/Value/lib_5A1C9904_3086F79D=Defiler
+Param/Value/lib_5A1C9904_33BE9386= Picked Ultralisk
+Param/Value/lib_5A1C9904_34AE88BC=Zealot
+Param/Value/lib_5A1C9904_3643AF90=Heavily Focused on Defending, Repair and mitigate damage.
+Param/Value/lib_5A1C9904_36BFC19A= Picked Defiler
+Param/Value/lib_5A1C9904_3A7E66C9=Ultralisk
+Param/Value/lib_5A1C9904_3B143AE7=-
+Param/Value/lib_5A1C9904_3C7C04B9=Melee Unit, Stealth
+Param/Value/lib_5A1C9904_3D41B77E=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_5A1C9904_3F97D3D6= Picked Spectre
+Param/Value/lib_5A1C9904_4008A2BA=Queen
+Param/Value/lib_5A1C9904_4317D246=Range Unit.
+Param/Value/lib_5A1C9904_46CEA381=Goliath
+Param/Value/lib_5A1C9904_47065936=Splash damage, Only Ground Units.
+Param/Value/lib_5A1C9904_47771A14=Marine
+Param/Value/lib_5A1C9904_479173BD=Zealot
+Param/Value/lib_5A1C9904_4C335958=Nydus
+Param/Value/lib_5A1C9904_4DC14A06=Bruiser, Splash damage, Melee
+Param/Value/lib_5A1C9904_4DEBCE26=Support, Flying Unit, Heals. 
+Param/Value/lib_5A1C9904_50533C92=Support, Refunnels Shield for others
+Param/Value/lib_5A1C9904_50B05475=Dark Templar
+Param/Value/lib_5A1C9904_53FF420E= Picked Defiler
+Param/Value/lib_5A1C9904_54D1A4ED= - 
+Param/Value/lib_5A1C9904_5A81ABD2=Corsair
+Param/Value/lib_5A1C9904_5A84CAED= Picked Spectre
+Param/Value/lib_5A1C9904_5B0D051C=, will revive in 
+Param/Value/lib_5A1C9904_5BD3340E=Specialist Unit, Uses Stun and nukes
+Param/Value/lib_5A1C9904_5F1EFDD8=+
+Param/Value/lib_5A1C9904_610D72CF=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_5A1C9904_63AEB7D7=Medic
+Param/Value/lib_5A1C9904_66965059=Zealot
+Param/Value/lib_5A1C9904_66E51568=[Allies] RTS Protoss AI: Building Batteries!
+Param/Value/lib_5A1C9904_68B51A2F=Sentry
+Param/Value/lib_5A1C9904_698DE8D6=Corsair
+Param/Value/lib_5A1C9904_6A15202A=Ranged Unit, has increased attack Speed
+Param/Value/lib_5A1C9904_6A686599= Picked Medic
+Param/Value/lib_5A1C9904_6A7465F3= Picked Goliath
+Param/Value/lib_5A1C9904_6AE07A1A= Picked Medic
+Param/Value/lib_5A1C9904_6BCF858B=Dark Templar
+Param/Value/lib_5A1C9904_6C680DE3= Picked Corsair
+Param/Value/lib_5A1C9904_6CBD470B=Range Unit
+Param/Value/lib_5A1C9904_6F27D176=Zealot
+Param/Value/lib_5A1C9904_708720DB= Picked Medic
+Param/Value/lib_5A1C9904_710B2B61= Picked Goliath
+Param/Value/lib_5A1C9904_71D8F85C= Picked Marine
+Param/Value/lib_5A1C9904_752ED481=Zergling
+Param/Value/lib_5A1C9904_774E7360= Picked Nydus Worm
+Param/Value/lib_5A1C9904_7B5B1561=Ultralisk
+Param/Value/lib_5A1C9904_7C62B8C6=Mothership Core
+Param/Value/lib_5A1C9904_7E009E82= LEFT AI LOOP!!!
+Param/Value/lib_5A1C9904_7E09F6B4=Heavily Focused on Defending, Summons cannons and provides Power source for RTS player
+Param/Value/lib_5A1C9904_7F5EF35A=Heavily Focused on Defending, Repair and mitigate damage.
+Param/Value/lib_5A1C9904_7FE3D72B= Picked Ultralisk
+Param/Value/lib_5A1C9904_81EEDE57=Dragoon
+Param/Value/lib_5A1C9904_820BB715= Picked Corsair
+Param/Value/lib_5A1C9904_825CFEE7=Splash damage, Only Ground Units.
+Param/Value/lib_5A1C9904_82CAEECD=Sentry
+Param/Value/lib_5A1C9904_84C2FEEA=Anti Air Unit
+Param/Value/lib_5A1C9904_862C7605= Picked Zergling
+Param/Value/lib_5A1C9904_8752F893=<c val="D50005">Please consider joining the discord, send me feedback, bugs and get noticed of lobbies started:</c> <c val="0005D5">https://discord.gg/abBfe66wey</c>
+Param/Value/lib_5A1C9904_89937BE5= Picked Queen
+Param/Value/lib_5A1C9904_89BF609B=Specialist Unit, Damage Mitigation Cloud and AoE Damage
+Param/Value/lib_5A1C9904_8A1774B1=Pick Soldier
+Param/Value/lib_5A1C9904_8A5EDF0C= Picked Hydralisk
+Param/Value/lib_5A1C9904_8AF502DE= Picked Adept
+Param/Value/lib_5A1C9904_8C87B31B=Corsair
+Param/Value/lib_5A1C9904_8C8B006A=Spectre
+Param/Value/lib_5A1C9904_8CCC236B=Nydus
+Param/Value/lib_5A1C9904_8E21C751=Has Died
+Param/Value/lib_5A1C9904_8E2C0B03= Picked Dragoon
+Param/Value/lib_5A1C9904_90792FDD=[Allies] RTS Terran AI: Building Medivacs!
+Param/Value/lib_5A1C9904_92451847= Picked Dark Templar
+Param/Value/lib_5A1C9904_956C1A6F= was killed by 
+Param/Value/lib_5A1C9904_95EAF36B=0/0
+Param/Value/lib_5A1C9904_964EEB0B=Air Unit, Neutralize Zone.
+Param/Value/lib_5A1C9904_96516D3D= Picked Ultralisk
+Param/Value/lib_5A1C9904_9670DC38= Picked Adept
+Param/Value/lib_5A1C9904_978D5B47=Goliath
+Param/Value/lib_5A1C9904_984B5D54=K/D
+Param/Value/lib_5A1C9904_9879E07D=Spectre
+Param/Value/lib_5A1C9904_9A658092=[Allies] RTS Zerg AI: Building Queens!
+Param/Value/lib_5A1C9904_9ACD18A4= Picked Zergling
+Param/Value/lib_5A1C9904_9B0126FE=0/0
+Param/Value/lib_5A1C9904_9B4C32A0=0/0
+Param/Value/lib_5A1C9904_9D20C22F= Picked Dark Templar
+Param/Value/lib_5A1C9904_9FE8F972= Picked Queen
+Param/Value/lib_5A1C9904_A13357E0= Picked Zealot
+Param/Value/lib_5A1C9904_A29CFC43= Picked Dragoon
+Param/Value/lib_5A1C9904_A2B2DA65= Picked Dark Templar
+Param/Value/lib_5A1C9904_A2FD87C6=Heavily Focused on Defending and pushing lanes. Summons units constantly
+Param/Value/lib_5A1C9904_A4E9EAB5= Picked Dragoon
+Param/Value/lib_5A1C9904_A8E43C3A=Marine
+Param/Value/lib_5A1C9904_AA4978C8=Specialist Unit, Damage Mitigation Cloud and AoE Damage
+Param/Value/lib_5A1C9904_AA757172= Picked Marine
+Param/Value/lib_5A1C9904_AAF3B2FF= Picked Corsair
+Param/Value/lib_5A1C9904_AC106C06=Ranged Unit, has increased attack Speed
+Param/Value/lib_5A1C9904_AC4B2CAE= Picked Adept
+Param/Value/lib_5A1C9904_ACA8AF65=Support, Refunnels Shield for others
+Param/Value/lib_5A1C9904_AE1E5D4A=Hide Scores
+Param/Value/lib_5A1C9904_AE7DD35C=Show Scores
+Param/Value/lib_5A1C9904_AE849DE1=Science Vessel
+Param/Value/lib_5A1C9904_AFDA49F0= Picked Adept
+Param/Value/lib_5A1C9904_B3FA3570=Sentry
+Param/Value/lib_5A1C9904_B4CBDC5F=Soldiers 1
+Param/Value/lib_5A1C9904_B5ED5957=Dragoon
+Param/Value/lib_5A1C9904_B6593422=Hydralisk
+Param/Value/lib_5A1C9904_BC409EF3= - 
+Param/Value/lib_5A1C9904_BCAB7A92=Air Unit, Neutralize Zone.
+Param/Value/lib_5A1C9904_C32A4E04=Dark Templar
+Param/Value/lib_5A1C9904_C37D7F0F=Dark Templar
+Param/Value/lib_5A1C9904_C3A7A6BE=Melee Unit, Stealth
+Param/Value/lib_5A1C9904_C66F8CE5=Specialist Unit, Uses Stun and nukes
+Param/Value/lib_5A1C9904_C8653C9E=Bruiser, Splash damage, Melee.  Good pick for a first time player
+Param/Value/lib_5A1C9904_C8FFA6CD=Mothership Core
+Param/Value/lib_5A1C9904_C98DC2AE= Picked Hydralisk
+Param/Value/lib_5A1C9904_C9C10DD3= Picked Mothership Core
+Param/Value/lib_5A1C9904_CAA5DCDD= Picked Ultralisk
+Param/Value/lib_5A1C9904_CAF32F13=Dragoon
+Param/Value/lib_5A1C9904_CC7022DA=Range Unit
+Param/Value/lib_5A1C9904_CC9D57B8=Melee Unit, Stealth
+Param/Value/lib_5A1C9904_CD2AC9D5= Picked Firebat
+Param/Value/lib_5A1C9904_CDC87703=Splash damage, Only Ground Units.
+Param/Value/lib_5A1C9904_D1D26092=Splash damage, Only Ground Units. Good pick for a first time player
+Param/Value/lib_5A1C9904_D2795242=Anti Air Unit
+Param/Value/lib_5A1C9904_D3A2A78A=Mothership Core
+Param/Value/lib_5A1C9904_D44D7EFC=Dragoon
+Param/Value/lib_5A1C9904_D46BF1E3=Science Vessel
+Param/Value/lib_5A1C9904_D47053B6=Medic
+Param/Value/lib_5A1C9904_D6C323DD= Picked Zealot
+Param/Value/lib_5A1C9904_D90DCF89= Picked Zergling
+Param/Value/lib_5A1C9904_D91C90AE= Picked Adept
+Param/Value/lib_5A1C9904_D987D789=0/0
+Param/Value/lib_5A1C9904_D9CB5152= Picked Firebat
+Param/Value/lib_5A1C9904_DAF1657E= Picked Zealot
+Param/Value/lib_5A1C9904_DC1E8D16= Picked Dragoon
+Param/Value/lib_5A1C9904_DCFCFCFA= Picked Sentry
+Param/Value/lib_5A1C9904_DDCADA09=Air Unit, Neutralize Zone.
+Param/Value/lib_5A1C9904_DE655456=Support, Heals Bio units.
+Param/Value/lib_5A1C9904_DEDFD1E1=Heavily Focused on Defending and pushing lanes. Summons units constantly
+Param/Value/lib_5A1C9904_DF99A591= Picked Corsair
+Param/Value/lib_5A1C9904_E103F095= Picked Mutalisk
+Param/Value/lib_5A1C9904_E1E7221A=Splash damage, Only Ground Units. Good pick for a first time player
+Param/Value/lib_5A1C9904_E1FADDDA=Firebat
+Param/Value/lib_5A1C9904_E21D7F62=Fast Unit, Can jump up over cliffs. Only Ground<n/>
+Param/Value/lib_5A1C9904_E24A6336= Picked Zealot
+Param/Value/lib_5A1C9904_E31F1D0F= - 
+Param/Value/lib_5A1C9904_E57F333A= Picked Science Vessel
+Param/Value/lib_5A1C9904_E655C995=Queen
+Param/Value/lib_5A1C9904_E70FFFA3=Soldiers 2
+Param/Value/lib_5A1C9904_E78AA15E= - 
+Param/Value/lib_5A1C9904_E81AAFB7=Pick Soldier
+Param/Value/lib_5A1C9904_E8978F42=Zergling
+Param/Value/lib_5A1C9904_EB8B73BC=Corsair
+Param/Value/lib_5A1C9904_EC5A43FE=Sentry
+Param/Value/lib_5A1C9904_ED1596B5= Picked Ultralisk
+Param/Value/lib_5A1C9904_EE633171=/
+Param/Value/lib_5A1C9904_EF6534BB=Melee Unit, Stealth
+Param/Value/lib_5A1C9904_F2D7419D= Picked Marine
+Param/Value/lib_5A1C9904_F5516FBF=Support, Refunnels Shield for others
+Param/Value/lib_5A1C9904_F9D0E981= - 
+Param/Value/lib_5A1C9904_FA5B4E1A= seconds
+Param/Value/lib_5A1C9904_FCA78A59= Picked Spectre
+Param/Value/lib_5A1C9904_FCD8DA4B=Gained M/G
+Queen=Queen
+RequirementNode/Tooltip/CountUnitRoboticsFacilityCompleteOnly790878647TechTreeCheat=Robotics Facility
+RequirementNode/Tooltip/CountUnitStargateCompleteOnly2435624496TechTreeCheat=Stargate
+RequirementNode/Tooltip/Eq1740904084CountUpgradeDefenseStructureUpdates12CompleteOnly1=Defense Structures Level 2
+RequirementNode/Tooltip/Eq1740904084CountUpgradeDefenseStructureUpdates1CompleteOnly1=Defense Structures Level 1
+RequirementNode/Tooltip/LT2210218377CountUnitScienceRepairDroneQueuedOnly2=Science vessel must have fewer than 2 Repair
+Spectre=Spectre
+Sudyn=Sudyn
+Thane Spaulding=Thane Spaulding
+Thokk=Thokk
+Threth=Threth
+Ultralisk=Ultralisk
+Unit/Name/AdeptHero=Adept Hero
+Unit/Name/AvengerHero=AvengerHero
+Unit/Name/BanelingCocoonHero=Baneling Cocoon Hero
+Unit/Name/BanelingHero=Baneling Hero
+Unit/Name/BroodQueenHero=Brood Queen Hero
+Unit/Name/Bunker2=Bunker
+Unit/Name/ChangelingHero=Changeling Hero
+Unit/Name/CorsairHero=Corsair Hero
+Unit/Name/DefilerHero=DefilerHero
+Unit/Name/DragoonHero=DragoonHero
+Unit/Name/FirebatHero=Firebat Hero
+Unit/Name/GoliathHero=Goliath
+Unit/Name/HotSTorrasque2=Ultralisk
+Unit/Name/HugeSpineCrawler=Huge Spine Crawler
+Unit/Name/Hydralisk2=Hydralisk
+Unit/Name/Hydralisk22=Hydralisk
+Unit/Name/HydraliskHero=Hydralisk Hero
+Unit/Name/LabTurret2=Gas Turret
+Unit/Name/LabTurretUp2=Gas Turret
+Unit/Name/MarineHero=Marine
+Unit/Name/MedicHero=Medic
+Unit/Name/MothershipCoreHero=Mothership Core
+Unit/Name/MutaliskHero=Mutalisk Hero
+Unit/Name/MutaliskHero2=Mutalisk Hero
+Unit/Name/NydusCanal2=Nydus Worm
+Unit/Name/NydusCanal22=Nydus
+Unit/Name/PhotonCannon2=Photon Cannon
+Unit/Name/PhotonOverCharge=Photon OverCharge
+Unit/Name/Pygalisk2=Pygalisk
+Unit/Name/Roach2=Roach
+Unit/Name/Roachling2=Roachling
+Unit/Name/RoguePurifierSupportDroneA2=Warden Support Alpha
+Unit/Name/ScienceRepairDrone=Repair Drone
+Unit/Name/ScienceVessel2=Science Vessel
+Unit/Name/SensorTower2=Sensor Tower
+Unit/Name/SentryPurifier2=Energizer
+Unit/Name/SmallNydusSpawner=Small NydusSpawner
+Unit/Name/SpawnPoints=SpawnPoints
+Unit/Name/SpawnedOdin=Boss Odin
+Unit/Name/SpectreHero=Spectre Hero
+Unit/Name/SpineCrawlerWeapon2=Spine Crawler
+Unit/Name/TossGrenadeWeapon2=Toss Grenade
+Unit/Name/Zealot2=Zealot
+Unit/Name/ZealotHero=Zealot
+Unit/Name/Zergling2=Zergling
+Unit/Name/ZerglingHero=Zergling Hero
+UnitKillRank/Odin2=Prototype
+UnitSubtitle/HotSTorrasque2=Torrasque Strain
+UnitSubtitle/HydraliskHero=Impaler Strain
+UnitSubtitle/MutaliskHero=Viper Strain
+UnitSubtitle/MutaliskHero2=Viper Strain
+UnitSubtitle/ZerglingHero=Raptor Strain
+Upgrade/Name/AbdominalFortitude2=Abdominal Fortitude
+Upgrade/Name/AdaptiveTalons=Adaptive Talons
+Upgrade/Name/AdvancedBallistics=Advanced Ballistics
+Upgrade/Name/CentrificalHooks2=Centrifugal Hooks
+Upgrade/Name/Corsair1to4=Corsair 1 to 4
+Upgrade/Name/Corsair5to7=Corsair 5 to 7
+Upgrade/Name/Corsair8to10=Corsair 8 to 10
+Upgrade/Name/DarkTemplar1to4=Dark Templar 1 to 4
+Upgrade/Name/DarkTemplar5to7=Dark Templar 5 to 7
+Upgrade/Name/DarkTemplar8to10=Dark Templar 8 to 10
+Upgrade/Name/DefenseStructureUpdates1=Defense Structure Updates 1
+Upgrade/Name/DefenseStructureUpdates12=Defense Structure Updates 2
+Upgrade/Name/DefenseStructureUpdates13=Defense Structure Updates 3
+Upgrade/Name/Defiler1to4=Defiler1to4
+Upgrade/Name/Defiler5to7=Defiler5to7
+Upgrade/Name/Defiler7to10=Defiler7to10
+Upgrade/Name/Dragoon1to4=Dragoon 1 to 4
+Upgrade/Name/Dragoon5to7=Dragoon 5 to 7
+Upgrade/Name/Dragoon8to10=Dragoon 8 to 10
+Upgrade/Name/Firebat1to4=Firebat1to4
+Upgrade/Name/Firebat5to7=Firebat5to7
+Upgrade/Name/Firebat8to10=Firebat8to10
+Upgrade/Name/Goliath1to4=Goliath 1to4
+Upgrade/Name/Goliath5to7=Goliath 5to7
+Upgrade/Name/Goliath8to10=Goliath 8to10
+Upgrade/Name/HurricaneEngines=Hurricane Engines
+Upgrade/Name/Hydralisk1to4=Hydralisk1to4
+Upgrade/Name/Hydralisk5to7=Hydralisk5to7
+Upgrade/Name/Hydralisk8to10=Hydralisk8to10
+Upgrade/Name/HyperflightRotors=Hyperflight Rotors
+Upgrade/Name/Marine1to4=Marine 1to4
+Upgrade/Name/Marine5to7=Marine 5to7
+Upgrade/Name/Marine8to10=Marine 8to10
+Upgrade/Name/Medic1to4=Medic 1to4
+Upgrade/Name/Medic5to7=Medic 5to7
+Upgrade/Name/Medic8to10=Medic 8to10
+Upgrade/Name/MothershipCore1to4=Mothership Core 1 to 4
+Upgrade/Name/MothershipCore5to7=Mothership Core 5 to 7
+Upgrade/Name/MothershipCore8to10=Mothership Core 8 to 10
+Upgrade/Name/NydusZergGroundArmorsLevel1=Zerg Ground Carapace Level 1
+Upgrade/Name/NydusZergGroundArmorsLevel2=Zerg Ground Carapace Level 2
+Upgrade/Name/NydusZergGroundArmorsLevel3=Zerg Ground Carapace Level 3
+Upgrade/Name/NydusZergMeleeAttacksLevel2=Zerg Melee Attacks Level 2
+Upgrade/Name/NydusZergMeleeAttacksLevel3=Zerg Melee Attacks Level 3
+Upgrade/Name/NydusZergMeleeWeaponsLevel12=Zerg Melee Attacks Level 1
+Upgrade/Name/PermanentCloakSpectre2=Nyx-Class Cloaking Module
+Upgrade/Name/Queen1to4=Queen1to4
+Upgrade/Name/Queen5to7=Queen5to7
+Upgrade/Name/Queen5to72=Queen8to10
+Upgrade/Name/ResearchSmartServos=Research Smart Servos
+Upgrade/Name/ScienceVessel1to4=Science Vessel 1to4
+Upgrade/Name/ScienceVessel5to7=Science Vessel 5to7
+Upgrade/Name/ScienceVessel8to10=Science Vessel 8to10
+Upgrade/Name/SeismicSpines=Seismic Spines
+Upgrade/Name/Sentry1to4=Sentry 1 to 4
+Upgrade/Name/Sentry5to7=Sentry 5 to 7
+Upgrade/Name/Sentry8to10=Sentry 8 to 10
+Upgrade/Name/Spectre1to4=Spectre 1to4
+Upgrade/Name/Spectre5to7=Spectre 5to7
+Upgrade/Name/Spectre8to10=Spectre 8to10
+Upgrade/Name/TectonicDestabilizers=Tectonic Destabilizers
+Upgrade/Name/Ultralisk1to4=Ultralisk1to4
+Upgrade/Name/Ultralisk5to7=Ultralisk5to7
+Upgrade/Name/Ultralisk8to10=Ultralisk8to10
+Upgrade/Name/UpgradeFromXelnaga1=UpgradeFromXelnaga1
+Upgrade/Name/UpgradeFromXelnaga12=UpgradeFromXelnaga2
+Upgrade/Name/UpgradeFromXelnaga122=UpgradeFromXelnaga3
+Upgrade/Name/VikingsUpgrade=VikingsUpgrade
+Upgrade/Name/VoidDarkTemplarDeepShadows=Shadow Stride
+Upgrade/Name/Zealot1to4=Zealot 1 to 4
+Upgrade/Name/Zealot5to7=Zealot 5 to 7
+Upgrade/Name/Zealot8to10=Zealot 8 to 10
+Upgrade/Name/Zerg Flyer Armors=Zerg Flyers Armors
+Upgrade/Name/Zergling1to4=Zergling1to4
+Upgrade/Name/Zergling5to7=Zergling5to7
+Upgrade/Name/Zergling8to10=Zergling8to10
+Variant001/ModeDesc=Heroes on Teams
+Variant001/ModeName=6v6
+Variant001/Team/00=RTS Player 1
+Variant001/Team/01=RTS Player 2
+Variant001/Team/02=Soldier Team 1
+Variant001/Team/03=Soldier Team 2
+Variant001/Team/04=
+Variant001/Team/05=
+Variant001/Team/09=
+Variant001/Team/11=
+Variant002/ModeDesc=Unclassified game mode.
+Variant002/ModeName=4v4
+Variant002/Team/00=RTS Player 1
+Variant002/Team/01=RTS Player 2
+Variant002/Team/02=Soldier Team 1
+Variant002/Team/03=Soldier Team 2
+Variant002/Team/11=
+Variant003/ModeDesc=Unclassified game mode.
+Variant003/ModeName=3v3
+Variant003/Team/00=RTS Player 1
+Variant003/Team/01=RTS Player 2
+Variant003/Team/02=Soldier Team 1
+Variant003/Team/03=Soldier Team 2
+Variant004/ModeDesc=Only works with a survival Mod!
+Variant004/ModeName=Other
+Variant004/Team/00=RTS Player
+Variant004/Team/01=SoldierPlayers
+Variant004/Team/11=
+Weapon/Name/AcidSpewSpawner=Acid Spew
+Weapon/Name/Firebat2=Perdition Flamethrower
+Weapon/Name/HydraliskMelee2=Melee
+Weapon/Name/ImpalerTentacle2=Impaler Tentacle
+Weapon/Name/KaiserBlades2=Kaiser Blades
+Weapon/Name/KaiserBlades3=Kaiser Blades
+Weapon/Name/NeedleSpines2=Needle Spines
+Weapon/Name/NydusWormSpit=Acid Spit
+Weapon/Name/PhotonCannon2=Photon Cannon
+Weston Charlton=Weston Charlton
+Xedex=Xedex
+Zealot=Zealot
+Zergling=Zergling
+Zuvus=Zuvus
+xedex=xedex
+
+// Hero UI Panel Strings
+Param/Value/lib_5A1C9904_AbilitiesLabel=Abilities
+Param/Value/lib_5A1C9904_StrengthsLabel=Strengths
+
+// Terran Hero Abilities & Strengths
+Param/Value/lib_5A1C9904_FirebatName=<s val="AchievementFrameName_Terr">Firebat</s>
+Param/Value/lib_5A1C9904_FirebatAbility1=<s val="AchievementFrameName_Terr">Lightning Dash:</s> Swift repositioning skill
+Param/Value/lib_5A1C9904_FirebatAbility2=<s val="AchievementFrameName_Terr">Avatar:</s> Explosive self-damage boost
+Param/Value/lib_5A1C9904_FirebatAbility3=<s val="AchievementFrameName_Terr">Turret Deploy:</s> Static defense structure
+Param/Value/lib_5A1C9904_FirebatAbility4=<s val="AchievementFrameName_Terr">Stimpack:</s> Short attack speed buff
+Param/Value/lib_5A1C9904_FirebatDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Easy
+Param/Value/lib_5A1C9904_FirebatStrengths=<s val="AchievementFrameName_Terr">Bruiser</s> - High durability with burst damage, Tank, Fire AOE, Crowd Control
+
+Param/Value/lib_5A1C9904_MarineName=<s val="AchievementFrameName_Terr">Marine</s>
+Param/Value/lib_5A1C9904_MarineAbility1=<s val="AchievementFrameName_Terr">Stimpack:</s> Temporary attack speed and movement speed boost
+Param/Value/lib_5A1C9904_MarineAbility2=<s val="AchievementFrameName_Terr">Toss Grenade:</s> Projectile that applies area damage
+Param/Value/lib_5A1C9904_MarineAbility3=<s val="AchievementFrameName_Terr">Radar:</s> Deploy sensor revealing nearby enemies
+Param/Value/lib_5A1C9904_MarineAbility4=<s val="AchievementFrameName_Terr">Psi Shield:</s> Grant temporary shield buff
+Param/Value/lib_5A1C9904_MarineDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Hard
+Param/Value/lib_5A1C9904_MarineStrengths=<s val="AchievementFrameName_Terr">Glass Cannon ADC</s> - Extreme damage output with health costs, High DPS, Ability-Cost Playstyle, Positioning Critical
+
+Param/Value/lib_5A1C9904_GoliathName=<s val="AchievementFrameName_Terr">Goliath</s>
+Param/Value/lib_5A1C9904_GoliathAbility1=<s val="AchievementFrameName_Terr">Missile Pods:</s> Launch explosive missiles at enemies
+Param/Value/lib_5A1C9904_GoliathAbility2=<s val="AchievementFrameName_Terr">Psionic Lift:</s> Lift target into air, disabling temporarily
+Param/Value/lib_5A1C9904_GoliathAbility3=<s val="AchievementFrameName_Terr">Psionic Shockwave:</s> Area explosive burst dealing damage
+Param/Value/lib_5A1C9904_GoliathAbility4=<s val="AchievementFrameName_Terr">Stimpack:</s> Temporary attack and movement speed boost
+Param/Value/lib_5A1C9904_GoliathDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_GoliathStrengths=<s val="AchievementFrameName_Terr">Anti-Air Specialist</s> - Exceptional air defense, Lift Mechanic, Air Attacks, Crowd Control
+
+Param/Value/lib_5A1C9904_MedicName=<s val="AchievementFrameName_Terr">Medic</s>
+Param/Value/lib_5A1C9904_MedicAbility1=<s val="AchievementFrameName_Terr">Nano Repair:</s> Restore health to nearby allies over time
+Param/Value/lib_5A1C9904_MedicAbility2=<s val="AchievementFrameName_Terr">Caduceus Reactor:</s> Nearby allies gain passive health regeneration
+Param/Value/lib_5A1C9904_MedicAbility3=<s val="AchievementFrameName_Terr">Flash Bang Grenades:</s> Throw grenades that stun and damage enemies
+Param/Value/lib_5A1C9904_MedicAbility4=<s val="AchievementFrameName_Terr">Observer Squad Sight:</s> Deploy vision unit or gain shared sight
+Param/Value/lib_5A1C9904_MedicDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_MedicStrengths=<s val="AchievementFrameName_Terr">Support</s> - Primary team healer role, Healing, Utility, Team Protection
+
+Param/Value/lib_5A1C9904_SpectreName=<s val="AchievementFrameName_Terr">Spectre</s>
+Param/Value/lib_5A1C9904_SpectreAbility1=<s val="AchievementFrameName_Terr">Cloaking Field:</s> Become invisible, drain energy while active
+Param/Value/lib_5A1C9904_SpectreAbility2=<s val="AchievementFrameName_Terr">Nuke Calldown:</s> Call down devastating orbital strike for burst damage
+Param/Value/lib_5A1C9904_SpectreAbility3=<s val="AchievementFrameName_Terr">Ultrasonic Pulse:</s> Apply area stun/disruption to enemies
+Param/Value/lib_5A1C9904_SpectreAbility4=<s val="AchievementFrameName_Terr">Obliterate:</s> Single-target execution ability on isolated targets
+Param/Value/lib_5A1C9904_SpectreDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Hard
+Param/Value/lib_5A1C9904_SpectreStrengths=<s val="AchievementFrameName_Terr">Assassin</s> - High burst damage specialist, Stealth, Precision, Hit-and-Run
+
+Param/Value/lib_5A1C9904_ScienceVesselName=<s val="AchievementFrameName_Terr">Science Vessel</s>
+Param/Value/lib_5A1C9904_ScienceVesselAbility1=<s val="AchievementFrameName_Terr">Repair Beam:</s> Restore health to allies or structures over time
+Param/Value/lib_5A1C9904_ScienceVesselAbility2=<s val="AchievementFrameName_Terr">Repair Drone Hangar:</s> Deploy repair drones for autonomous healing
+Param/Value/lib_5A1C9904_ScienceVesselAbility3=<s val="AchievementFrameName_Terr">EMP Shockwave:</s> Area effect that damages and disrupts enemies
+Param/Value/lib_5A1C9904_ScienceVesselAbility4=<s val="AchievementFrameName_Terr">Emergency Thrusters:</s> Temporary movement speed boost for repositioning
+Param/Value/lib_5A1C9904_ScienceVesselDifficulty=<s val="AchievementFrameName_Terr">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_ScienceVesselStrengths=<s val="AchievementFrameName_Terr">Base Defender</s> - Specialized support vessel, Structure Repair, Ranged Disruption, Detection
+
+// Zerg Hero Abilities & Strengths
+Param/Value/lib_5A1C9904_ZerglingName=<s val="AchievementFrameName_Zerg">Zergling</s>
+Param/Value/lib_5A1C9904_ZerglingAbility1=<s val="AchievementFrameName_Zerg">Raptor Charge:</s> Mobile dash toward target with damage
+Param/Value/lib_5A1C9904_ZerglingAbility2=<s val="AchievementFrameName_Zerg">Morph to Baneling:</s> Transform into area damage form
+Param/Value/lib_5A1C9904_ZerglingAbility3=<s val="AchievementFrameName_Zerg">Poison Nova:</s> Apply slowing cloud to enemies nearby
+Param/Value/lib_5A1C9904_ZerglingAbility4=<s val="AchievementFrameName_Zerg">Zergling Mine:</s> Place explosive trap on contact
+Param/Value/lib_5A1C9904_ZerglingDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Hard
+Param/Value/lib_5A1C9904_ZerglingStrengths=<s val="AchievementFrameName_Zerg">Melee Assassin</s> - Mobile hit-and-run specialist, Mine Placement, Rapid Mobility, Tactical Positioning
+
+Param/Value/lib_5A1C9904_QueenName=<s val="AchievementFrameName_Zerg">Queen</s>
+Param/Value/lib_5A1C9904_QueenAbility1=<s val="AchievementFrameName_Zerg">Transfusion:</s> Heal allies over time (HoT)
+Param/Value/lib_5A1C9904_QueenAbility2=<s val="AchievementFrameName_Zerg">Primal Gas Cloud:</s> Area denial with slowing damage
+Param/Value/lib_5A1C9904_QueenAbility3=<s val="AchievementFrameName_Zerg">Spawn Broodlings:</s> Convert enemy unit into allies
+Param/Value/lib_5A1C9904_QueenAbility4=<s val="AchievementFrameName_Zerg">Ensnare:</s> Slow and reveal enemies in area
+Param/Value/lib_5A1C9904_QueenDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Easy
+Param/Value/lib_5A1C9904_QueenStrengths=<s val="AchievementFrameName_Zerg">Support</s> - Team healing sustain, Healing, Area Denial, Crowd Control
+
+Param/Value/lib_5A1C9904_HydraliskName=<s val="AchievementFrameName_Zerg">Hydralisk</s>
+Param/Value/lib_5A1C9904_HydraliskAbility1=<s val="AchievementFrameName_Zerg">Impale:</s> Long-range piercing attack on targets
+Param/Value/lib_5A1C9904_HydraliskAbility2=<s val="AchievementFrameName_Zerg">Hydralisk Frenzy:</s> Increases attack speed and damage output
+Param/Value/lib_5A1C9904_HydraliskAbility3=<s val="AchievementFrameName_Zerg">Ensnare:</s> Root and immobilize enemies in area
+Param/Value/lib_5A1C9904_HydraliskAbility4=<s val="AchievementFrameName_Zerg">Stunning Blast:</s> Burst damage that stuns on impact
+Param/Value/lib_5A1C9904_HydraliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_HydraliskStrengths=<s val="AchievementFrameName_Zerg">ADC</s> - Ranged damage dealer, High Attack Speed, Crowd Control, Area Denial
+
+Param/Value/lib_5A1C9904_UltraliskName=<s val="AchievementFrameName_Zerg">Ultralisk</s>
+Param/Value/lib_5A1C9904_UltraliskAbility1=<s val="AchievementFrameName_Zerg">Burrow Charge:</s> Burrow and charge toward enemies with area damage, knockback and stun on impact
+Param/Value/lib_5A1C9904_UltraliskAbility2=<s val="AchievementFrameName_Zerg">Consume:</s> Consume enemy units for health regeneration and healing increase buff
+Param/Value/lib_5A1C9904_UltraliskAbility3=<s val="AchievementFrameName_Zerg">Frenzied Form:</s> Self-buff increasing damage output and air attack at level 7+
+Param/Value/lib_5A1C9904_UltraliskAbility4=<s val="AchievementFrameName_Zerg">Monarch Blades:</s> Temporary movement speed and area damage buff
+Param/Value/lib_5A1C9904_UltraliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_UltraliskStrengths=<s val="AchievementFrameName_Zerg">Bruiser</s> - Durable frontline with area damage, High Health Pool, Splash Damage, Scaling Power
+
+Param/Value/lib_5A1C9904_DefilerName=<s val="AchievementFrameName_Zerg">Defiler</s>
+Param/Value/lib_5A1C9904_DefilerAbility1=<s val="AchievementFrameName_Zerg">Consume:</s> Absorb and eliminate enemy units
+Param/Value/lib_5A1C9904_DefilerAbility2=<s val="AchievementFrameName_Zerg">Dark Swarm:</s> Create damaging cloud that damages enemies
+Param/Value/lib_5A1C9904_DefilerAbility3=<s val="AchievementFrameName_Zerg">Plague:</s> Spread disease effect across area
+Param/Value/lib_5A1C9904_DefilerAbility4=<s val="AchievementFrameName_Zerg">Leech:</s> Life drain ability to heal self
+Param/Value/lib_5A1C9904_DefilerDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Hard
+Param/Value/lib_5A1C9904_DefilerStrengths=<s val="AchievementFrameName_Zerg">Corruptor</s> - Toxin and control specialist, Life Drain, Area Denial, Crowd Control
+
+Param/Value/lib_5A1C9904_NydusName=<s val="AchievementFrameName_Zerg">Nydalist</s>
+Param/Value/lib_5A1C9904_NydusAbility1=<s val="AchievementFrameName_Zerg">Spawn Mechanics:</s> Generate allied spawned units to defend base
+Param/Value/lib_5A1C9904_NydusAbility2=<s val="AchievementFrameName_Zerg">Nydus Canal:</s> Create warp points for rapid base positioning
+Param/Value/lib_5A1C9904_NydusAbility3=<s val="AchievementFrameName_Zerg">Dig:</s> Burrow into terrain for concealment and surprise positioning
+Param/Value/lib_5A1C9904_NydusAbility4=<s val="AchievementFrameName_Zerg">Spawn Hydralisk Charge:</s> Summon elite charged Hydralisk unit
+Param/Value/lib_5A1C9904_NydusAbility5=Empower Building: Buff nearby structures with enhanced defense
+Param/Value/lib_5A1C9904_NydusDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium-High
+Param/Value/lib_5A1C9904_NydusStrengths=<s val="AchievementFrameName_Zerg">Base Defender</s> - Spawn army control, Area Denial, Structure Defense, Base Control
+
+Param/Value/lib_5A1C9904_MutaliskName=<s val="AchievementFrameName_Zerg">Mutalisk</s>
+Param/Value/lib_5A1C9904_MutaliskAbility1=<s val="AchievementFrameName_Zerg">Abduction:</s> Pull target unit toward Mutalisk with stun
+Param/Value/lib_5A1C9904_MutaliskAbility2=<s val="AchievementFrameName_Zerg">Charge:</s> Mobile dash toward target for melee engagement
+Param/Value/lib_5A1C9904_MutaliskAbility3=<s val="AchievementFrameName_Zerg">Primal Roar:</s> Burst command that increases attack speed for nearby allies
+Param/Value/lib_5A1C9904_MutaliskAbility4=<s val="AchievementFrameName_Zerg">Psychic Clones:</s> Create temporary clones of Mutalisk for extra damage
+Param/Value/lib_5A1C9904_MutaliskDifficulty=<s val="AchievementFrameName_Zerg">Difficulty:</s> Medium-High
+Param/Value/lib_5A1C9904_MutaliskStrengths=<s val="AchievementFrameName_Zerg">Aerial Carry</s> - Flying ranged unit, Burst Damage, Crowd Control, Team Buff
+
+// Protoss Hero Abilities & Strengths
+Param/Value/lib_5A1C9904_ZealotName=<s val="AchievementFrameName_Prot">Zealot</s>
+Param/Value/lib_5A1C9904_ZealotAbility1=<s val="AchievementFrameName_Prot">Charge:</s> Dashes forward, interrupting enemies
+Param/Value/lib_5A1C9904_ZealotAbility2=<s val="AchievementFrameName_Prot">Whirlwind:</s> Spins attacking nearby, refreshes on kill
+Param/Value/lib_5A1C9904_ZealotAbility3=<s val="AchievementFrameName_Prot">Overcharge:</s> Increases damage and shield regeneration
+Param/Value/lib_5A1C9904_ZealotAbility4=<s val="AchievementFrameName_Prot">Shield Capacitor:</s> Passive shield pool with nearby foes
+Param/Value/lib_5A1C9904_ZealotDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_ZealotStrengths=<s val="AchievementFrameName_Prot">Bruiser</s> - Durable frontline damage dealer, Shield Regeneration, Extended Engagement, High Damage
+
+Param/Value/lib_5A1C9904_SentryName=<s val="AchievementFrameName_Prot">Sentry</s>
+Param/Value/lib_5A1C9904_SentryAbility1=<s val="AchievementFrameName_Prot">Double Shield Recharge:</s> Repair ally shields rapidly
+Param/Value/lib_5A1C9904_SentryAbility2=<s val="AchievementFrameName_Prot">Chrono Beam:</s> Slow enemies or speed up allies
+Param/Value/lib_5A1C9904_SentryAbility3=<s val="AchievementFrameName_Prot">Force Field:</s> Wall that blocks movement and damage
+Param/Value/lib_5A1C9904_SentryAbility4=<s val="AchievementFrameName_Prot">Guardian Shield:</s> Passive aura with shield regeneration
+Param/Value/lib_5A1C9904_SentryDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium-High
+Param/Value/lib_5A1C9904_SentryStrengths=<s val="AchievementFrameName_Prot">Support</s> - Utility and team protection, Shield Repair, Temporal Control, Force Field
+
+Param/Value/lib_5A1C9904_DragoonName=<s val="AchievementFrameName_Prot">Dragoon</s>
+Param/Value/lib_5A1C9904_DragoonAbility1=<s val="AchievementFrameName_Prot">Wormhole Transit:</s> Short-range teleport for repositioning
+Param/Value/lib_5A1C9904_DragoonAbility2=<s val="AchievementFrameName_Prot">Time Bomb:</s> Place delayed damage on target enemy
+Param/Value/lib_5A1C9904_DragoonAbility3=<s val="AchievementFrameName_Prot">Power Shield:</s> Temporary damage reduction buff
+Param/Value/lib_5A1C9904_DragoonAbility4=<s val="AchievementFrameName_Prot">Psi Orb:</s> Projectile with area damage effect
+Param/Value/lib_5A1C9904_DragoonDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_DragoonStrengths=<s val="AchievementFrameName_Prot">Ranged Carry</s> - Consistent sustained DPS dealer, Sustained Damage, Utility, Safe Range
+
+Param/Value/lib_5A1C9904_DarkTemplarName=<s val="AchievementFrameName_Prot">Dark Templar</s>
+Param/Value/lib_5A1C9904_DarkTemplarAbility1=<s val="AchievementFrameName_Prot">Blink:</s> Short-range dash with invulnerability frames
+Param/Value/lib_5A1C9904_DarkTemplarAbility2=<s val="AchievementFrameName_Prot">Cloak:</s> Become undetectable, drains energy while active
+Param/Value/lib_5A1C9904_DarkTemplarAbility3=<s val="AchievementFrameName_Prot">Shadow Fury:</s> Melee burst attack with bonus damage
+Param/Value/lib_5A1C9904_DarkTemplarAbility4=<s val="AchievementFrameName_Prot">Void Stasis:</s> Temporal effect on target enemy
+Param/Value/lib_5A1C9904_DarkTemplarDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> High
+Param/Value/lib_5A1C9904_DarkTemplarStrengths=<s val="AchievementFrameName_Prot">Melee Assassin</s> - Mobile burst damage dealer, Invisibility, Burst Damage, Hit-and-Run
+
+Param/Value/lib_5A1C9904_CorsairName=<s val="AchievementFrameName_Prot">Corsair</s>
+Param/Value/lib_5A1C9904_CorsairAbility1=<s val="AchievementFrameName_Prot">Disruption Web:</s> Projectile that applies slowing web to enemies
+Param/Value/lib_5A1C9904_CorsairAbility2=<s val="AchievementFrameName_Prot">Force Field:</s> Projectile wall that blocks movement and damage
+Param/Value/lib_5A1C9904_CorsairAbility3=<s val="AchievementFrameName_Prot">Psionic Shockwave:</s> Area burst damage around location
+Param/Value/lib_5A1C9904_CorsairAbility4=<s val="AchievementFrameName_Prot">Mothership Stasis:</s> Area denial effect to prevent enemy bursts
+Param/Value/lib_5A1C9904_CorsairDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_CorsairStrengths=<s val="AchievementFrameName_Prot">Battle Support</s> - Teamfight control specialist, Area Denial, Crowd Control, Strategic Advantage
+
+Param/Value/lib_5A1C9904_MothershipName=<s val="AchievementFrameName_Prot">Mothership Core</s>
+Param/Value/lib_5A1C9904_MothershipAbility1=<s val="AchievementFrameName_Prot">Photon Cannon:</s> Deploy defensive cannon structure at location
+Param/Value/lib_5A1C9904_MothershipAbility2=<s val="AchievementFrameName_Prot">Structure Defense:</s> Protect and strengthen nearby structures
+Param/Value/lib_5A1C9904_MothershipAbility3=<s val="AchievementFrameName_Prot">Photon Overcharge:</s> Temporarily boost pylon defenses and firepower
+Param/Value/lib_5A1C9904_MothershipAbility4=<s val="AchievementFrameName_Prot">Reversed Time Warp:</s> Rewind time effects on targets
+Param/Value/lib_5A1C9904_MothershipAbility5=Teleport to Power: Mobile repositioning near power sources
+Param/Value/lib_5A1C9904_MothershipDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_MothershipStrengths=<s val="AchievementFrameName_Prot">Base Defender</s> - Flying defensive specialist, Defensive Utilities, Team Protection, Structure Defense
+
+Param/Value/lib_5A1C9904_AvengerName=<s val="AchievementFrameName_Prot">Dark Templar</s>
+Param/Value/lib_5A1C9904_AvengerAbility1=<s val="AchievementFrameName_Prot">Blink:</s> Short-range dash with invulnerability frames
+Param/Value/lib_5A1C9904_AvengerAbility2=<s val="AchievementFrameName_Prot">Cloak:</s> Become undetectable, drains energy
+Param/Value/lib_5A1C9904_AvengerAbility3=<s val="AchievementFrameName_Prot">Shadow Fury:</s> Melee attack with bonus damage
+Param/Value/lib_5A1C9904_AvengerAbility4=<s val="AchievementFrameName_Prot">Void Stasis:</s> Temporal effect on target enemy
+Param/Value/lib_5A1C9904_AvengerDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> High
+Param/Value/lib_5A1C9904_AvengerStrengths=<s val="AchievementFrameName_Prot">Melee Assassin</s> - Mobile burst damage dealer, Invisibility, Burst Damage, Hit-and-Run
+
+Param/Value/lib_5A1C9904_AdeptName=<s val="AchievementFrameName_Prot">Adept</s>
+Param/Value/lib_5A1C9904_AdeptAbility1=<s val="AchievementFrameName_Prot">Phase Shift:</s> Project invulnerable shade
+Param/Value/lib_5A1C9904_AdeptAbility2=<s val="AchievementFrameName_Prot">Teleport:</s> Move to shade location
+Param/Value/lib_5A1C9904_AdeptAbility3=<s val="AchievementFrameName_Prot">Shield:</s> Damage reduction barrier
+Param/Value/lib_5A1C9904_AdeptAbility4=<s val="AchievementFrameName_Prot">Psi Storm:</s> Area energy attack
+Param/Value/lib_5A1C9904_AdeptDifficulty=<s val="AchievementFrameName_Prot">Difficulty:</s> Medium
+Param/Value/lib_5A1C9904_AdeptStrengths=<s val="AchievementFrameName_Prot">Support</s> - Versatile support unit, Shields, Teleport, Team Support
+Param/Value/lib_5A1C9904_LockInButton=Select
+Param/Value/lib_5A1C9904_Level2Title=Choose an Upgrade
+Param/Value/lib_5A1C9904_FortitudeProtocol=Fortitude Protocol
+Param/Value/lib_5A1C9904_FortitudeTooltip=Reduce damage from non-heroics sources by 1
+Param/Value/lib_5A1C9904_Slayer=Slayer
+Param/Value/lib_5A1C9904_SlayerTooltip=Increased damage to heroics by 3
+Param/Value/lib_5A1C9904_VelocityBoots=Velocity Boots
+Param/Value/lib_5A1C9904_VelocityTooltip=Gain +0.3 movement speed
+Param/Value/lib_5A1C9904_MercurialBoots=Mercurial Boots
+Param/Value/lib_5A1C9904_MercurialTooltip=Gain +0.15 movement speed
+Param/Value/lib_5A1C9904_IronBoots=Iron Boots
+Param/Value/lib_5A1C9904_IronTooltip=Gain +0.1 movement speed
+Param/Value/lib_5A1C9904_BootsAura=MercurialBoots boots
+Param/Value/lib_5A1C9904_BootsAuraTooltip=Increases Movement Speed
+Param/Value/lib_5A1C9904_Level5Title=Choose an Upgrade
+Param/Value/lib_5A1C9904_EnergyRegen=Energy Regen Boost
+Param/Value/lib_5A1C9904_EnergyRegenTooltip=Increase energy regeneration by 0.05 per second
+Param/Value/lib_5A1C9904_HealingBoost=Healing Boost
+Param/Value/lib_5A1C9904_HealingBoostTooltip=Increase healing done by 10% and healing received by 5%
+Param/Value/lib_5A1C9904_AntiAir=Gravity Pull
+Param/Value/lib_5A1C9904_AntiAirTooltip=Increase all damage by 3% and makes air units vulnerable to ground attacks.
+Param/Value/lib_5A1C9904_Level7Title=Choose an Upgrade
+Param/Value/lib_5A1C9904_GlassCannon=Glass Cannon
+Param/Value/lib_5A1C9904_GlassCannonTooltip=Increase all damage by 10%, reduce max health by 20%
+Param/Value/lib_5A1C9904_StructureDefense=Reinforced Armor
+Param/Value/lib_5A1C9904_StructureDefenseTooltip=Reduce damage dealt to structures by 20%
+Param/Value/lib_5A1C9904_AlliedEnergyAura=Energy Aura
+Param/Value/lib_5A1C9904_AlliedEnergyAuraTooltip=Increase team's energy regeneration by 5%
+Param/Value/lib_5A1C9904_Level10Title=Final Upgrade - Choose Wisely
+Param/Value/lib_5A1C9904_BaseBreaker=Base Breaker
+Param/Value/lib_5A1C9904_BaseBreakerTooltip=Increase damage to structures by 20%
+Param/Value/lib_5A1C9904_PowerOverwhelming=Power Overwhelming
+Param/Value/lib_5A1C9904_PowerOverwhelmingTooltip=Increase energy by 100 and energy regeneration by additional 30%
+Param/Value/lib_5A1C9904_ArmorPlates=Armor Plates
+Param/Value/lib_5A1C9904_ArmorPlatesTooltip=Decrease damage taken by 10%

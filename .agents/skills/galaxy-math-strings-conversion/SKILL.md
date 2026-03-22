@@ -40,6 +40,8 @@ fixed lv_ln   = libNtve_gf_Log(lv_x);   // natural log
 fixed lv_fl   = Floor(lv_x);
 fixed lv_ceil = Ceiling(lv_x);
 fixed lv_pi   = 3.14159;                 // no built-in Pi constant
+// NOTE: libNtve_gf_Log (natural log) does NOT exist in NativeLib.
+// Use Log2(x) / Log2(e) to compute ln, or Log2 directly for base-2.
 ```
 
 ## Trigonometry
@@ -59,10 +61,12 @@ fixed lv_atan2 = ATan2(lv_dy, lv_dx);   // angle from delta components
 ## Random Numbers
 
 ```galaxy
-int   lv_ri = RandomInt(1, 10);          // [min, max] inclusive
-fixed lv_rf = RandomFixed(0.0, 1.0);     // [min, max]
-fixed lv_pct = libNtve_gf_RandomPercent(); // [0.0, 100.0]
-fixed lv_angle = libNtve_gf_RandomAngle(); // [0.0, 360.0)
+int   lv_ri    = RandomInt(1, 10);             // [min, max] inclusive
+fixed lv_rf    = RandomFixed(0.0, 1.0);        // [min, max]
+fixed lv_pct   = RandomFixed(0.0, 100.0);      // percent equivalent
+fixed lv_angle = RandomFixed(0.0, 360.0);      // random angle
+// NOTE: libNtve_gf_RandomPercent / libNtve_gf_RandomAngle do NOT exist in NativeLib.
+// Use RandomFixed with explicit range instead.
 ```
 
 ---
@@ -87,6 +91,15 @@ string lv_st  = TextToString(lv_t);       // loses formatting
 // bool conversions
 int  lv_bi = BoolToInt(true);            // 1 or 0
 bool lv_ib = (lv_bi != 0);
+
+// NativeLib bool/string/point conversion helpers:
+text   lv_bt  = libNtve_gf_ConvertBooleanToText(true);    // returns text "True"/"False"
+string lv_bs  = libNtve_gf_ConvertBooleanToString(true);  // returns string "true"/"false"
+bool   lv_sb  = libNtve_gf_ConvertStringToBoolean("true"); // string → bool
+
+// Point ↔ string (useful for bank storage of positions)
+string lv_ps  = libNtve_gf_ConvertPointToString(lv_point);   // "(x,y)"
+point  lv_sp  = libNtve_gf_ConvertStringToPoint("(16.0,32.0)");
 ```
 
 ## Color
@@ -99,14 +112,19 @@ color lv_white = ColorWithAlpha(1.0, 1.0, 1.0, 1.0);  // r, g, b, a
 // Get a component
 fixed lv_r = ColorGetComponent(lv_red, c_colorComponentRed);
 
-// Player team color
+// Player team color — convert player slot to color
 color lv_pc = libNtve_gf_ConvertPlayerColorToColor(lv_player);
+// (int playerSlot) — returns the player's team color as a color value
 
 // From index
 color lv_ci = ColorFromIndex(3, c_teamColorType);
 
 // Convert 0-255 integer to 0.0-1.0
 fixed lv_norm = Color255FromFixed(128) / 255.0;
+
+// NativeLib color/string helpers:
+string lv_colorStr = libNtve_gf_ConvertColorToString(lv_red);
+// Returns the color as a string (e.g. for debug or bank storage)
 ```
 
 ---

@@ -23,6 +23,20 @@ struct PlayerStruct {
 };
 PlayerStruct[gv_MaxAmountPlayers + 1] gv_PlayerStats;
 
+// CRITICAL TYPE DISTINCTION — Proxima Frontlines uses this split:
+//   gv_rTSPlayer1, gv_rTSPlayer2  →  int   (single player SLOT ID, e.g. 7 or 14)
+//   gv_soldierPlayers1/2          →  playergroup  (group of all soldier players on a team)
+//
+// gv_rTSPlayer1/2 are assigned via PlayerGroupPlayer() which returns int:
+//   gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
+// These are used everywhere as int: IsZerg(gv_rTSPlayer1), PlayerStartLocation(gv_rTSPlayer2), etc.
+// NEVER declare them as playergroup — that causes 100+ "Parameter type mismatch" errors.
+
+int gv_rTSPlayer1;        // int — single RTS player slot for team 1
+int gv_rTSPlayer2;        // int — single RTS player slot for team 2
+playergroup gv_soldierPlayers1;   // playergroup — all soldier/hero players on team 1
+playergroup gv_soldierPlayers2;   // playergroup — all soldier/hero players on team 2
+
 // Common shared playergroups
 playergroup gv_ActivePG;      // currently active players
 playergroup gv_StartingPG;    // players at game start
@@ -146,9 +160,25 @@ libNtve_gf_SetAlliance(1, 2, libNtve_ge_AllianceSetting_NeutralWithSharedVision)
 // Neutral (no vision)
 libNtve_gf_SetAlliance(1, 2, libNtve_ge_AllianceSetting_Neutral);
 
-// Other presets
-libNtve_ge_AllianceSetting_Passive
-libNtve_ge_AllianceSetting_AllyWithAlliedVictory
+// Precise alliance level presets (all confirmed in NativeLib_h.galaxy)
+// libNtve_ge_AllianceSetting_Ally                                  = 0
+// libNtve_ge_AllianceSetting_AllyWithSharedVision                  = 1
+// libNtve_ge_AllianceSetting_AllyWithSharedVisionAndPushable        = 2
+// libNtve_ge_AllianceSetting_AllyWithSharedVisionAndControl         = 3
+// libNtve_ge_AllianceSetting_AllyWithSharedVisionControlAndSpending = 4
+// libNtve_ge_AllianceSetting_Enemy                                  = 5
+// libNtve_ge_AllianceSetting_EnemyWithSharedVision                  = 6
+// libNtve_ge_AllianceSetting_Neutral                                = 7
+// libNtve_ge_AllianceSetting_NeutralWithSharedVision                = 8
+// libNtve_ge_AllianceSetting_NeutralWithSharedVisionAndPushable     = 9
+
+// Player relation constants (for checking relationships, not setting them)
+// libNtve_ge_PlayerRelation_Ally         = 0
+// libNtve_ge_PlayerRelation_AllyMutual   = 1
+// libNtve_ge_PlayerRelation_Neutral      = 2
+// libNtve_ge_PlayerRelation_NeutralMutual = 3
+// libNtve_ge_PlayerRelation_Enemy        = 4
+// libNtve_ge_PlayerRelation_EnemyMutual  = 5
 ```
 
 ### Low-level alliance control
