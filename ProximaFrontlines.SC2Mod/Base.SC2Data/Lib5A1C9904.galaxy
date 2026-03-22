@@ -20,6 +20,84 @@ void lib5A1C9904_InitCustomScript () {
 }
 
 // Functions
+bool lib5A1C9904_gf_LoadedFromBank (point lp_startPosition1, point lp_startPosition2) {
+    // Automatic Variable Declarations
+    // Implementation
+    return LoadedFromBank(lp_startPosition1, lp_startPosition2);
+}
+
+int lib5A1C9904_gf_GetAllyRTSPlayer (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetAllyRTSPlayer(lp_player);
+}
+
+int lib5A1C9904_gf_GetEnemyRTSPlayer (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetEnemyRTSPlayer(lp_player);
+}
+
+string lib5A1C9904_gf_GetDefaultSpawnerType (int lp_alliedPlayer) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetDefaultSpawnerType(lp_alliedPlayer);
+}
+
+string lib5A1C9904_gf_GetDefaultWaveType (int lp_alliedPlayer) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetDefaultWaveType(lp_alliedPlayer);
+}
+
+int lib5A1C9904_gf_GetDefaultWaveAmount (int lp_alliedPlayer) {
+    // Automatic Variable Declarations
+    // Implementation
+    return GetDefaultWaveAmount(lp_alliedPlayer);
+}
+
+int lib5A1C9904_gf_AddSpawner (point lp_point, string lp_unitType, string lp_waveUnitType, int lp_waveUnitAmount, int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    return AddSpawner(lp_point, lp_unitType, lp_waveUnitType, lp_waveUnitAmount, lp_player);
+}
+
+void lib5A1C9904_gf_AddNewWavePoint (point lp_point, int lp_spawnerIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    AddNewWavePoint(lp_point, lp_spawnerIndex);
+}
+
+unit lib5A1C9904_gf_KilledUnit () {
+    // Automatic Variable Declarations
+    // Implementation
+    return gv_jG_KilledUnit;
+}
+
+unit lib5A1C9904_gf_KillingUnit () {
+    // Automatic Variable Declarations
+    // Implementation
+    return gv_jG_KillingUnit;
+}
+
+void lib5A1C9904_gf_AddJungleSpawn (structref<lib5A1C9904_gs_Spawn> lp_toSpawn) {
+    // Automatic Variable Declarations
+    // Implementation
+    AddJungleSpawn(lp_toSpawn);
+}
+
+void lib5A1C9904_gf_AddJungleUnitPrice (string lp_unitType, int lp_minerals, int lp_gas) {
+    // Automatic Variable Declarations
+    // Implementation
+    AddUnitJunglePrice(lp_unitType, lp_minerals, lp_gas);
+}
+
+void lib5A1C9904_gf_AddJungleUnitGroup (unitgroup lp_addUnitGroup, point lp_minimapPoint) {
+    // Automatic Variable Declarations
+    // Implementation
+    AddJungleUnitGroup(lp_addUnitGroup, lp_minimapPoint);
+}
+
 trigger auto_lib5A1C9904_gf_StartProximaGame_Trigger = null;
 point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition1;
 point auto_lib5A1C9904_gf_StartProximaGame_lp_startPosition2;

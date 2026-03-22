@@ -5,7 +5,7 @@ include "TriggerLibs/NativeLib"
 // Jungle camp creation, respawn management, resource rewards, and revival trigger.
 //==================================================================================================
 
-void CreateJungleUnits (int lp_index, structref<gs_Spawn> lp_unitsToSpawn) {
+void CreateJungleUnits (int lp_index, structref<lib5A1C9904_gs_Spawn> lp_unitsToSpawn) {
     // Variable Declarations
     int lv_spawnLoop;
     unitgroup lv_units;
@@ -56,7 +56,7 @@ void SpawnJungleUnits () {
     }
 }
 
-void AddJungleSpawn (structref<gs_Spawn> lp_toSpawn) {
+void AddJungleSpawn (structref<lib5A1C9904_gs_Spawn> lp_toSpawn) {
     // Variable Declarations
     int lv_spawnLoop;
 

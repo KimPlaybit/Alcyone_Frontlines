@@ -7,18 +7,6 @@
 //--------------------------------------------------------------------------------------------------
 // Structs
 //--------------------------------------------------------------------------------------------------
-struct gs_UnitSpawn {
-    string lv_unitType;
-    int    lv_amount;
-};
-
-struct gs_Spawn {
-    point   lv_point;
-    int     lv_respawnTime;
-    int     lv_spawnTime;
-    trigger lv_deathCallbackTrigger;
-    gs_UnitSpawn[5] lv_unitSpawn;
-};
 
 struct gs_SpawnerInfo {
     string lv_unitType;
@@ -91,9 +79,9 @@ string GetDefaultWaveType (int lp_alliedPlayer);
 int GetDefaultWaveAmount (int lp_alliedPlayer);
 
 // Jungle
-void CreateJungleUnits (int lp_index, structref<gs_Spawn> lp_unitsToSpawn);
+void CreateJungleUnits (int lp_index, structref<lib5A1C9904_gs_Spawn> lp_unitsToSpawn);
 void SpawnJungleUnits ();
-void AddJungleSpawn (structref<gs_Spawn> lp_toSpawn);
+void AddJungleSpawn (structref<lib5A1C9904_gs_Spawn> lp_toSpawn);
 void AddJungleUnitGroup (unitgroup lp_addUnitGroup, point lp_minimapPoint);
 void AddUnitJunglePrice (string lp_unitType, int lp_minerals, int lp_gas);
 void GiveResource (unit lp_killedUnit, int lp_player, int lp_killingPlayer);
@@ -407,7 +395,7 @@ unit      gv_changedUnit;
 
 // Jungle
 unitgroup[100]              gv_jungleUnitGroups;
-gs_Spawn[100]   gv_jungleToSpawn;
+lib5A1C9904_gs_Spawn[100]   gv_jungleToSpawn;
 unit[100]                   gv_spawnPoints;
 gs_JunglePrice[100] gv_junglePrices;
 int gv_lastIndexOfSpawn;

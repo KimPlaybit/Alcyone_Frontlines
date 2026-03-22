@@ -2,12 +2,470 @@
 <TriggerData>
     <Library Id="5A1C9904">
         <Root>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="FF1782E7"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="290B8CC3"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="90C93D2B"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="22F25DB6"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="5C746784"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="FF05C187"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="CDBDDD4E"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="1DE2E449"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="7DF03835"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="F3E6B39C"/>
             <Item Type="CustomScript" Library="5A1C9904" Id="161C80F5"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="B1EA9F22"/>
+            <Item Type="Structure" Library="5A1C9904" Id="D2935054"/>
+            <Item Type="Structure" Library="5A1C9904" Id="13FD301F"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="3F03F5FA"/>
+            <Item Type="FunctionDef" Library="5A1C9904" Id="EF6D6F4E"/>
             <Item Type="FunctionDef" Library="5A1C9904" Id="B550A421"/>
         </Root>
+        <Element Type="FunctionDef" Id="FF1782E7">
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="bool"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="06990CBC"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="236E1D80"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="9C2548E4"/>
+        </Element>
+        <Element Type="ParamDef" Id="06990CBC">
+            <ParameterType>
+                <Type Value="point"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="4D9741D0"/>
+        </Element>
+        <Element Type="Param" Id="4D9741D0">
+            <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
+        </Element>
+        <Element Type="ParamDef" Id="236E1D80">
+            <ParameterType>
+                <Type Value="point"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="323B8A90"/>
+        </Element>
+        <Element Type="Param" Id="323B8A90">
+            <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9C2548E4">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return LoadedFromBank(lp_startPosition1, lp_startPosition2);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="290B8CC3">
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="int"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="E1D88815"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="128BACDB"/>
+        </Element>
+        <Element Type="ParamDef" Id="E1D88815">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="C517B729"/>
+        </Element>
+        <Element Type="Param" Id="C517B729">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="128BACDB">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return GetAllyRTSPlayer(lp_player);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="90C93D2B">
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="int"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="14933106"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="14998121"/>
+        </Element>
+        <Element Type="ParamDef" Id="14933106">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="8AA70D9D"/>
+        </Element>
+        <Element Type="Param" Id="8AA70D9D">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="14998121">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return GetEnemyRTSPlayer(lp_player);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="22F25DB6">
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="string"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="995F599B"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="FB8E3D5C"/>
+        </Element>
+        <Element Type="ParamDef" Id="995F599B">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="D2E41940"/>
+        </Element>
+        <Element Type="Param" Id="D2E41940">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="FB8E3D5C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return GetDefaultSpawnerType(lp_alliedPlayer);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="5C746784">
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="string"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="DFBBA61F"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="25AC02FD"/>
+        </Element>
+        <Element Type="ParamDef" Id="DFBBA61F">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="8AA05127"/>
+        </Element>
+        <Element Type="Param" Id="8AA05127">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="25AC02FD">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return GetDefaultWaveType(lp_alliedPlayer);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="FF05C187">
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="int"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="52EE5E6F"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="A8703647"/>
+        </Element>
+        <Element Type="ParamDef" Id="52EE5E6F">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="57510BCA"/>
+        </Element>
+        <Element Type="Param" Id="57510BCA">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="A8703647">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return GetDefaultWaveAmount(lp_alliedPlayer);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="CDBDDD4E">
+            <FlagAction/>
+            <ReturnType>
+                <Type Value="int"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="5F98A681"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="91ABE6D5"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="9E0BD631"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="F4CBC97D"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="75335BEE"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="F5B8C3DE"/>
+        </Element>
+        <Element Type="ParamDef" Id="5F98A681">
+            <ParameterType>
+                <Type Value="point"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="8F8A990E"/>
+        </Element>
+        <Element Type="Param" Id="8F8A990E">
+            <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
+        </Element>
+        <Element Type="ParamDef" Id="91ABE6D5">
+            <ParameterType>
+                <Type Value="string"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="9313117C"/>
+        </Element>
+        <Element Type="Param" Id="9313117C">
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="ParamDef" Id="9E0BD631">
+            <ParameterType>
+                <Type Value="string"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="538AAF6C"/>
+        </Element>
+        <Element Type="Param" Id="538AAF6C">
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="ParamDef" Id="F4CBC97D">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="65CFE790"/>
+        </Element>
+        <Element Type="Param" Id="65CFE790">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="ParamDef" Id="75335BEE">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="2591E9E4"/>
+        </Element>
+        <Element Type="Param" Id="2591E9E4">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="F5B8C3DE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return AddSpawner(lp_point, lp_unitType, lp_waveUnitType, lp_waveUnitAmount, lp_player);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="1DE2E449">
+            <FlagAction/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="4A30F401"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="F3E30E15"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="86E40CEC"/>
+        </Element>
+        <Element Type="ParamDef" Id="4A30F401">
+            <ParameterType>
+                <Type Value="point"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="80EABA93"/>
+        </Element>
+        <Element Type="Param" Id="80EABA93">
+            <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
+        </Element>
+        <Element Type="ParamDef" Id="F3E30E15">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="6284300D"/>
+        </Element>
+        <Element Type="Param" Id="6284300D">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="86E40CEC">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                AddNewWavePoint(lp_point, lp_spawnerIndex);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="7DF03835">
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="unit"/>
+            </ReturnType>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="01F9DE01"/>
+        </Element>
+        <Element Type="FunctionCall" Id="01F9DE01">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return gv_jG_KilledUnit;
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="F3E6B39C">
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="unit"/>
+            </ReturnType>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="84322690"/>
+        </Element>
+        <Element Type="FunctionCall" Id="84322690">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                return gv_jG_KillingUnit;
+            </ScriptCode>
+        </Element>
         <Element Type="CustomScript" Id="161C80F5">
             <ScriptCode>
                 include &quot;scripts/main&quot;
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="B1EA9F22">
+            <FlagAction/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="C3D1FF83"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="32308F39"/>
+        </Element>
+        <Element Type="ParamDef" Id="C3D1FF83">
+            <ParameterType>
+                <Type Value="struct"/>
+                <TypeElement Type="Structure" Library="5A1C9904" Id="13FD301F"/>
+            </ParameterType>
+        </Element>
+        <Element Type="FunctionCall" Id="32308F39">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                AddJungleSpawn(lp_toSpawn);
+            </ScriptCode>
+        </Element>
+        <Element Type="Structure" Id="D2935054">
+            <Variable Type="Variable" Library="5A1C9904" Id="F199AC69"/>
+            <Variable Type="Variable" Library="5A1C9904" Id="B413C1C6"/>
+        </Element>
+        <Element Type="Variable" Id="F199AC69">
+            <VariableType>
+                <Type Value="gamelink"/>
+                <GameType Value="Unit"/>
+            </VariableType>
+            <Value Type="Param" Library="5A1C9904" Id="96874175"/>
+        </Element>
+        <Element Type="Param" Id="96874175">
+            <Preset Type="PresetValue" Library="Ntve" Id="C9DCA6C0"/>
+        </Element>
+        <Element Type="Variable" Id="B413C1C6">
+            <VariableType>
+                <Type Value="int"/>
+            </VariableType>
+            <Value Type="Param" Library="5A1C9904" Id="BA0072F3"/>
+        </Element>
+        <Element Type="Param" Id="BA0072F3">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Structure" Id="13FD301F">
+            <Variable Type="Variable" Library="5A1C9904" Id="643601B8"/>
+            <Variable Type="Variable" Library="5A1C9904" Id="96E76765"/>
+            <Variable Type="Variable" Library="5A1C9904" Id="4F3F1C4F"/>
+            <Variable Type="Variable" Library="5A1C9904" Id="E43C75EC"/>
+            <Variable Type="Variable" Library="5A1C9904" Id="49605548"/>
+        </Element>
+        <Element Type="Variable" Id="643601B8">
+            <VariableType>
+                <Type Value="point"/>
+            </VariableType>
+            <Value Type="Param" Library="5A1C9904" Id="EFD92C00"/>
+        </Element>
+        <Element Type="Param" Id="EFD92C00">
+            <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
+        </Element>
+        <Element Type="Variable" Id="96E76765">
+            <VariableType>
+                <Type Value="int"/>
+            </VariableType>
+            <Value Type="Param" Library="5A1C9904" Id="360A5249"/>
+        </Element>
+        <Element Type="Param" Id="360A5249">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Variable" Id="4F3F1C4F">
+            <VariableType>
+                <Type Value="int"/>
+            </VariableType>
+            <Value Type="Param" Library="5A1C9904" Id="92D54923"/>
+        </Element>
+        <Element Type="Param" Id="92D54923">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Variable" Id="E43C75EC">
+            <VariableType>
+                <Type Value="trigger"/>
+            </VariableType>
+            <Value Type="Param" Library="5A1C9904" Id="8349DE4C"/>
+        </Element>
+        <Element Type="Param" Id="8349DE4C">
+            <Preset Type="PresetValue" Library="Ntve" Id="00000542"/>
+        </Element>
+        <Element Type="Variable" Id="49605548">
+            <VariableType>
+                <Type Value="struct"/>
+                <TypeElement Type="Structure" Library="5A1C9904" Id="D2935054"/>
+                <ArraySize Dim="0" Value="5"/>
+            </VariableType>
+        </Element>
+        <Element Type="FunctionDef" Id="3F03F5FA">
+            <FlagAction/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="77A2F908"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="B406A016"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="1CFBADAA"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="1EBD5CDF"/>
+        </Element>
+        <Element Type="ParamDef" Id="77A2F908">
+            <ParameterType>
+                <Type Value="string"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="9115E4FA"/>
+        </Element>
+        <Element Type="Param" Id="9115E4FA">
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="ParamDef" Id="B406A016">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="94EB94AF"/>
+        </Element>
+        <Element Type="Param" Id="94EB94AF">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="ParamDef" Id="1CFBADAA">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="CA5A7D15"/>
+        </Element>
+        <Element Type="Param" Id="CA5A7D15">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1EBD5CDF">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                AddUnitJunglePrice(lp_unitType, lp_minerals, lp_gas);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="EF6D6F4E">
+            <FlagAction/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="36665CFD"/>
+            <Parameter Type="ParamDef" Library="5A1C9904" Id="C80FFCC6"/>
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="04D782EA"/>
+        </Element>
+        <Element Type="ParamDef" Id="36665CFD">
+            <ParameterType>
+                <Type Value="unitgroup"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="DEF8B127"/>
+        </Element>
+        <Element Type="Param" Id="DEF8B127">
+            <FunctionCall Type="FunctionCall" Library="5A1C9904" Id="67171F0E"/>
+        </Element>
+        <Element Type="FunctionCall" Id="67171F0E">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000104"/>
+        </Element>
+        <Element Type="ParamDef" Id="C80FFCC6">
+            <ParameterType>
+                <Type Value="point"/>
+            </ParameterType>
+            <Default Type="Param" Library="5A1C9904" Id="41191F30"/>
+        </Element>
+        <Element Type="Param" Id="41191F30">
+            <Preset Type="PresetValue" Library="Ntve" Id="568CBBF1"/>
+        </Element>
+        <Element Type="FunctionCall" Id="04D782EA">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <ScriptCode>
+                AddJungleUnitGroup(lp_addUnitGroup, lp_minimapPoint);
             </ScriptCode>
         </Element>
         <Element Type="FunctionDef" Id="B550A421">
