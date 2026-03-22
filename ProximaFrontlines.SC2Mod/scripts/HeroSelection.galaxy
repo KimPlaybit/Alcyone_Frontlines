@@ -1507,8 +1507,8 @@ bool auto_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool runActions) {
     DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_middlePanelXPos, 0);
     // Add hero portrait image to middle panel
     DialogControlCreate(gv_dialogTeam2, c_triggerControlTypeImage);
-    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_middlePanelWidth - 20, 600);
-    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_middlePanelXPos + 10, 50);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), lv_middlePanelWidth - 20, 400);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, lv_middlePanelXPos + 10, 70);
     libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\btn-unit-firebathero-portrait.dds", PlayerGroupAll());
     gv_heroPortraitTeam2 = DialogControlLastCreated();
 

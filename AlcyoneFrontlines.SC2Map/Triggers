@@ -2817,14 +2817,14 @@
     <Element Type="FunctionCall" Id="4E823724">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <ScriptCode>
-            lib5A1C9904_gf_AddUnitJunglePrice(&quot;Hydralisk2&quot;, 30, 5);
-            lib5A1C9904_gf_AddUnitJunglePrice(&quot;Zergling2&quot;, 10, 0);
-            lib5A1C9904_gf_AddUnitJunglePrice(&quot;Marine&quot;, 20, 0);
-            lib5A1C9904_gf_AddUnitJunglePrice(&quot;Odin&quot;, 2000, 1000);
-            lib5A1C9904_gf_AddUnitJunglePrice(&quot;VikingAssault&quot;, 25, 25);
-            lib5A1C9904_gf_AddUnitJunglePrice(&quot;VikingFighter&quot;, 25, 25);
-            lib5A1C9904_gf_AddUnitJunglePrice(&quot;Roach2&quot;, 25, 0);
-            lib5A1C9904_gf_AddUnitJunglePrice(&quot;Marauder&quot;, 25, 0);
+            lib5A1C9904_gf_AddJungleUnitPrice(&quot;Hydralisk2&quot;, 30, 5);
+            lib5A1C9904_gf_AddJungleUnitPrice(&quot;Zergling2&quot;, 10, 0);
+            lib5A1C9904_gf_AddJungleUnitPrice(&quot;Marine&quot;, 20, 0);
+            lib5A1C9904_gf_AddJungleUnitPrice(&quot;Odin&quot;, 2000, 1000);
+            lib5A1C9904_gf_AddJungleUnitPrice(&quot;VikingAssault&quot;, 25, 25);
+            lib5A1C9904_gf_AddJungleUnitPrice(&quot;VikingFighter&quot;, 25, 25);
+            lib5A1C9904_gf_AddJungleUnitPrice(&quot;Roach2&quot;, 25, 0);
+            lib5A1C9904_gf_AddJungleUnitPrice(&quot;Marauder&quot;, 25, 0);
             lv_spawn.lv_point = RegionGetCenter(RegionFromId(9));
             lv_spawn.lv_respawnTime = 180;
             lv_spawn.lv_unitSpawn[0].lv_unitType = &quot;Hydralisk2&quot;;

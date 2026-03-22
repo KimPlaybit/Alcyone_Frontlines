@@ -403,14 +403,7 @@ bool ReviveHeroesTeam1_Func (bool testConds, bool runActions) {
     }
 
     UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, lv_triggeringPlayerMinerals, lv_triggeringPlayerGas, lv_triggeringPlayer);
-    if ((WithRTSPlayer() == false)) {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + (StringExternal("Param/Value/lib_5A1C9904_54D1A4ED") + (UnitGetName(EventUnit()) + StringExternal("Param/Value/lib_5A1C9904_8E21C751")))));
-        GameOver(lv_triggeringPlayer, c_gameOverDefeat, true, true);
-        return false;
-    }
-    else {
-        DisplayDeathMessage(EventUnit(), libNtve_gf_KillingUnit(), gv_ressTimer);
-    }
+    DisplayDeathMessage(EventUnit(), libNtve_gf_KillingUnit(), gv_ressTimer);
     GiveXPForHeroKills(libNtve_gf_KillingUnit(), lv_dyingUnit);
     ResetCooldownOfShadowFury(libNtve_gf_KillingUnit());
     if ((((libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true)) && (libNtve_gf_PlayerIsEnemy(UnitGetOwner(libNtve_gf_KillingUnit()), lv_triggeringPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
