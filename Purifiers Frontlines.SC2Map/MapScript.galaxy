@@ -60,11 +60,11 @@ string gf_GetLaneUnitType (int lp_player) {
 void gf_AddJungleDrop () {
     // Automatic Variable Declarations
     // Implementation
-    lib5A1C9904_gf_AddUnitJunglePrice("ColossusPurifier", 100, 100);
-    lib5A1C9904_gf_AddUnitJunglePrice("StoneZealot", 250, 250);
-    lib5A1C9904_gf_AddUnitJunglePrice("StalkerPurifier", 25, 25);
-    lib5A1C9904_gf_AddUnitJunglePrice("PhoenixPurifier", 50, 25);
-    lib5A1C9904_gf_AddUnitJunglePrice("ZealotPurifier", 25, 25);
+    lib5A1C9904_gf_AddJungleUnitPrice("ColossusPurifier", 100, 100);
+    lib5A1C9904_gf_AddJungleUnitPrice("StoneZealot", 250, 250);
+    lib5A1C9904_gf_AddJungleUnitPrice("StalkerPurifier", 25, 25);
+    lib5A1C9904_gf_AddJungleUnitPrice("PhoenixPurifier", 50, 25);
+    lib5A1C9904_gf_AddJungleUnitPrice("ZealotPurifier", 25, 25);
 }
 
 void gf_SpawnProtossDef (int lp_player, point lp_point) {
@@ -91,15 +91,15 @@ int gf_GetAlly (int lp_killedPlayer, int lp_killingPlayer) {
     if ((libNtve_gf_PlayerIsEnemy(lp_killedPlayer, lp_killingPlayer, libNtve_ge_PlayerRelation_Ally) == true)) {
         return lib5A1C9904_gf_GetEnemyRTSPlayer(lp_killingPlayer);
     }
-
+    
     if ((lp_killingPlayer == 13)) {
-        return lib5A1C9904_gv_rTSPlayer1;
+        return gv_rTSPlayer1;
     }
-
+    
     if ((lp_killingPlayer == 14)) {
-        return lib5A1C9904_gv_rTSPlayer2;
+        return gv_rTSPlayer2;
     }
-
+    
     return lib5A1C9904_gf_GetAllyRTSPlayer(lp_killingPlayer);
 }
 
@@ -154,7 +154,7 @@ void gf_SpawnTurrets () {
     // Variable Initialization
 
     // Implementation
-    auto025A1A3E_val = PlayerRace(lib5A1C9904_gv_rTSPlayer1);
+    auto025A1A3E_val = PlayerRace(gv_rTSPlayer1);
     if (auto025A1A3E_val == "Zerg") {
         gf_SpawnZergDef(13, PointFromId(1243366727));
         gf_SpawnZergDef(13, PointFromId(1633046537));
@@ -179,7 +179,7 @@ void gf_SpawnTurrets () {
         gf_SpawnProtossDef(13, PointFromId(1868860973));
         gf_SpawnProtossDef(13, PointFromId(1069747271));
     }
-    autoC3F02E41_val = PlayerRace(lib5A1C9904_gv_rTSPlayer2);
+    autoC3F02E41_val = PlayerRace(gv_rTSPlayer2);
     if (autoC3F02E41_val == "Prot") {
         gf_SpawnProtossDef(14, PointFromId(1837618182));
         gf_SpawnProtossDef(14, PointFromId(1123039004));
@@ -229,9 +229,12 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lv_loadedFromBank = lib5A1C9904_gf_LoadedFromBank(PointFromId(815697778), PointFromId(396456094));
-    lib5A1C9904_gv_overrideSpawnPointTeam1 = PointFromId(815697778);
-    lib5A1C9904_gv_overrideSpawnPointTeam2 = PointFromId(396456094);
+    lv_spawnerUnitType = lib5A1C9904_gf_GetDefaultSpawnerType(13);
+    lv_waveSpawnAmount = lib5A1C9904_gf_GetDefaultWaveAmount(13);
+    // Actions
+    if (!runActions) {
+        return true;
+    }
     gv_bases[0] = UnitFromId(56221378);
     gv_bases[1] = UnitFromId(991837377);
     gv_bases[2] = UnitFromId(1442615457);
@@ -295,7 +298,7 @@ bool gt_MeleeInitialization_Func (bool testConds, bool runActions) {
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(1350341596), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(2101575460), lv_spawnerId);
     lib5A1C9904_gf_AddNewWavePoint(PointFromId(815697778), lv_spawnerId);
-    lib5A1C9904_gf_StartProximaGame(PointFromId(815697778), PointFromId(396456094), 3.0, 0.0, -3.0, 0.0);
+    lib5A1C9904_gf_StartProximaGame(PointFromId(815697778), PointFromId(396456094), 3, 0, -3, 0);
     return true;
 }
 
