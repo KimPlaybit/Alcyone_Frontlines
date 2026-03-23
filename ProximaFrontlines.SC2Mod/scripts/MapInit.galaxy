@@ -26,28 +26,15 @@ void StartProximaGame (point lp_startPosition1, point lp_startPosition2, fixed l
     lv_offsetplayer2 = PointWithOffset(lv_startpos2, -2.0, -3.0);
 
     // Implementation
-    if ((IsSurvival() == true)) {
-        if ((WithRTSPlayer() == true)) {
-            gv_soldierPlayers1 = GameAttributePlayersForTeam(2);
-            MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), lv_startpos1);
-            SpawnDefenceTower(gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
-        }
-        else {
-            gv_soldierPlayers1 = GameAttributePlayersForTeam(2);
-            PlayerGroupAdd(gv_soldierPlayers1, gv_rTSPlayer1);
-        }
+    if ((gv_loadedFromBank == false)) {
+        gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
+        gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
     }
-    else {
-        if ((gv_loadedFromBank == false)) {
-            gv_soldierPlayers1 = GameAttributePlayersForTeam(3);
-            gv_soldierPlayers2 = GameAttributePlayersForTeam(4);
-        }
-
-        MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), lv_startpos1);
-        SpawnDefenceTower(gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
-        MeleeInitUnitsForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2), lv_startpos2);
-        SpawnDefenceTower(gv_rTSPlayer2, 14, lv_offsetplayer2, lv_startpos1);
-    }
+    MeleeInitUnitsForPlayer(gv_rTSPlayer1, PlayerRace(gv_rTSPlayer1), lv_startpos1);
+    SpawnDefenceTower(gv_rTSPlayer1, 13, lv_offsetplayer1, lv_startpos2);
+    MeleeInitUnitsForPlayer(gv_rTSPlayer2, PlayerRace(gv_rTSPlayer2), lv_startpos2);
+    SpawnDefenceTower(gv_rTSPlayer2, 14, lv_offsetplayer2, lv_startpos1);
+    
     gv_startPosition1 = lv_startpos1;
     gv_startPosition2 = lv_startpos2;
     SetupTeams1();
@@ -84,7 +71,7 @@ bool GetWaveStatus () {
     lv_gameAttribute = "";
 
     // Implementation
-    if ((GameAttributeGameValue("1") == "0001")) {
+    if ((GameAttributeGameValue("[bnet:Proxima Frontlines/0.0/328879,file:Mods\\ProximaFrontlines.SC2Mod]1") == "0001") || (GameAttributeGameValue("1") == "0001")) {
         return true;
     }
     else {
@@ -95,7 +82,7 @@ bool GetWaveStatus () {
 bool GetTurretStatus () {
     // Automatic Variable Declarations
     // Implementation
-    if ((GameAttributeGameValue("2") == "0001")) {
+    if ((GameAttributeGameValue("[bnet:Proxima Frontlines/0.0/328879,file:Mods\\ProximaFrontlines.SC2Mod]2") == "0001") || (GameAttributeGameValue("2") == "0001")) {
         return true;
     }
     else {

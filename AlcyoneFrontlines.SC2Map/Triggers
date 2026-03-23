@@ -2871,22 +2871,11 @@
         </ScriptCode>
     </Element>
     <Element Type="Trigger" Id="BFDDE081">
-        <Variable Type="Variable" Id="12DD6370"/>
         <Event Type="FunctionCall" Id="A56D004B"/>
         <Action Type="FunctionCall" Id="2E5C1127"/>
         <Action Type="FunctionCall" Id="CF99F52D"/>
         <Action Type="FunctionCall" Id="0710A48B"/>
         <Action Type="FunctionCall" Id="BD4CB9F4"/>
-    </Element>
-    <Element Type="Variable" Id="12DD6370">
-        <VariableType>
-            <Type Value="bool"/>
-        </VariableType>
-        <Value Type="Param" Id="EC6C05AC"/>
-    </Element>
-    <Element Type="Param" Id="EC6C05AC">
-        <Value>false</Value>
-        <ValueType Type="bool"/>
     </Element>
     <Element Type="FunctionCall" Id="A56D004B">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
@@ -2926,7 +2915,7 @@
     </Element>
     <Element Type="Param" Id="3A0252E1">
         <ParameterDef Type="ParamDef" Library="5A1C9904" Id="502EE89F"/>
-        <Value>3</Value>
+        <Value>2</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="Param" Id="7A230729">

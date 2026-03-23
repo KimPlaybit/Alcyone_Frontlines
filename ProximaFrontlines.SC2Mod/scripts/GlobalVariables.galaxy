@@ -311,9 +311,9 @@ int gv_nydusTeam2;
 int gv_mothershipTeam2;
 int gv_lockInButtonTeam2;
 
-// Selected hero strings
-string gv_selectedHeroTeam1;
-string gv_selectedHeroTeam2;
+// Selected hero strings (indexed by player ID)
+string[16] gv_selectedHeroTeam1;
+string[16] gv_selectedHeroTeam2;
 
 // Hero info panel dialog items � Team 1
 int gv_infoHeroNameTeam1;
@@ -552,8 +552,10 @@ void ProximaInitVariables () {
     gv_marines_1 = UnitGroupEmpty();
     gv_marines_2 = UnitGroupEmpty();
     gv_boss = UnitGroupEmpty();
-    gv_selectedHeroTeam1 = "";
-    gv_selectedHeroTeam2 = "";
+    for (init_i = 1; init_i <= 15; init_i += 1) {
+        gv_selectedHeroTeam1[init_i] = "";
+        gv_selectedHeroTeam2[init_i] = "";
+    }
     gv_level2Dialog = c_invalidDialogId;
     gv_level2WorkerProtectionButton = c_invalidDialogControlId;
     gv_level2HeroicVulnerabilityButton = c_invalidDialogControlId;

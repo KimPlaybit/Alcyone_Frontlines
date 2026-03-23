@@ -24,12 +24,12 @@ bool FirebatSoldierPicked_Func (bool testConds, bool runActions) {
 
     // Save selected hero for this player
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "FirebatHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "FirebatHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "FirebatHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "FirebatHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -62,12 +62,12 @@ bool MedicSoldierPicked_Func (bool testConds, bool runActions) {
 
     // Save selected hero for this player
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "MedicHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "MedicHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "MedicHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "MedicHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -104,12 +104,12 @@ bool GoliathSoldierPicked_Func (bool testConds, bool runActions) {
 
     // Save selected hero for this player
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "GoliathHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "GoliathHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "GoliathHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "GoliathHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -142,12 +142,12 @@ bool MarineSoldierPicked_Func (bool testConds, bool runActions) {
 
     // Save selected hero for this player
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "MarineHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "MarineHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "MarineHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "MarineHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -180,12 +180,12 @@ bool SpectreSoldierPicked_Func (bool testConds, bool runActions) {
 
     // Save selected hero for this player
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "SpectreHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "SpectreHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "SpectreHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "SpectreHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -218,12 +218,12 @@ bool ZealotSoldierPicked_Func (bool testConds, bool runActions) {
 
     // Save selected hero for this player
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "ZealotHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "ZealotHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "ZealotHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "ZealotHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -251,12 +251,12 @@ bool DarkTemplarSoldierPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "AvengerHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "AvengerHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "AvengerHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "AvengerHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -284,12 +284,12 @@ bool DragoonPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "DragoonHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "DragoonHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "DragoonHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "DragoonHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -317,12 +317,12 @@ bool SentryPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "SentryPurifier2";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "SentryPurifier2";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "SentryPurifier2";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "SentryPurifier2";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -350,12 +350,12 @@ bool AdeptPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer1)) {
-        gv_selectedHeroTeam1 = "AdeptHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "AdeptHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "AdeptHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "AdeptHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -383,12 +383,12 @@ bool CorsairPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "CorsairHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "CorsairHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "CorsairHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "CorsairHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -416,12 +416,12 @@ bool MothershipCorePicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "MothershipCoreHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "MothershipCoreHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "MothershipCoreHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "MothershipCoreHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -449,12 +449,12 @@ bool ZerglingPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "ZerglingHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "ZerglingHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "ZerglingHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "ZerglingHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -482,12 +482,12 @@ bool QueenPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "BroodQueenHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "BroodQueenHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "BroodQueenHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "BroodQueenHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -515,12 +515,12 @@ bool DefilerPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "DefilerHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "DefilerHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "DefilerHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "DefilerHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -548,12 +548,12 @@ bool HydraliskPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "HydraliskHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "HydraliskHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "HydraliskHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "HydraliskHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -581,12 +581,12 @@ bool UltraliskPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "HotSTorrasque2";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "HotSTorrasque2";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "HotSTorrasque2";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "HotSTorrasque2";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -614,12 +614,12 @@ bool MutaliskPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((GetAllyRTSPlayer(EventPlayer()) == gv_rTSPlayer1)) {
-        gv_selectedHeroTeam1 = "MutaliskHero";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "MutaliskHero";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "MutaliskHero";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "MutaliskHero";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -647,12 +647,12 @@ bool NydusPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "NydusCanal22";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "NydusCanal22";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "NydusCanal22";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "NydusCanal22";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -680,12 +680,12 @@ bool ScienceVesselPicked_Func (bool testConds, bool runActions) {
     }
 
     if ((PlayerGetAlliance(gv_rTSPlayer1, c_allianceIdVision, EventPlayer()) == true)) {
-        gv_selectedHeroTeam1 = "ScienceVessel2";
-        UpdateHeroInfoTeam1(gv_selectedHeroTeam1);
+        gv_selectedHeroTeam1[EventPlayer()] = "ScienceVessel2";
+        UpdateHeroInfoTeam1(gv_selectedHeroTeam1[EventPlayer()]);
     }
     else {
-        gv_selectedHeroTeam2 = "ScienceVessel2";
-        UpdateHeroInfoTeam2(gv_selectedHeroTeam2);
+        gv_selectedHeroTeam2[EventPlayer()] = "ScienceVessel2";
+        UpdateHeroInfoTeam2(gv_selectedHeroTeam2[EventPlayer()]);
     }
     return true;
 }
@@ -718,31 +718,31 @@ bool LockInButtonTeam1_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((StringLength(gv_selectedHeroTeam1) > 0)) {
-        lv_heroDisplayName = gv_selectedHeroTeam1;
-        if ((gv_selectedHeroTeam1 == "FirebatHero")) { lv_heroDisplayName = "Firebat"; }
-        else if ((gv_selectedHeroTeam1 == "MedicHero")) { lv_heroDisplayName = "Medic"; }
-        else if ((gv_selectedHeroTeam1 == "MarineHero")) { lv_heroDisplayName = "Marine"; }
-        else if ((gv_selectedHeroTeam1 == "GoliathHero")) { lv_heroDisplayName = "Goliath"; }
-        else if ((gv_selectedHeroTeam1 == "SpectreHero")) { lv_heroDisplayName = "Spectre"; }
-        else if ((gv_selectedHeroTeam1 == "ZealotHero")) { lv_heroDisplayName = "Zealot"; }
-        else if ((gv_selectedHeroTeam1 == "AvengerHero")) { lv_heroDisplayName = "Dark Templar"; }
-        else if ((gv_selectedHeroTeam1 == "DragoonHero")) { lv_heroDisplayName = "Dragoon"; }
-        else if ((gv_selectedHeroTeam1 == "SentryPurifier2")) { lv_heroDisplayName = "Sentry"; }
-        else if ((gv_selectedHeroTeam1 == "AdeptHero")) { lv_heroDisplayName = "Adept"; }
-        else if ((gv_selectedHeroTeam1 == "CorsairHero")) { lv_heroDisplayName = "Corsair"; }
-        else if ((gv_selectedHeroTeam1 == "MothershipCoreHero")) { lv_heroDisplayName = "Mothership Core"; }
-        else if ((gv_selectedHeroTeam1 == "ZerglingHero")) { lv_heroDisplayName = "Zergling"; }
-        else if ((gv_selectedHeroTeam1 == "BroodQueenHero")) { lv_heroDisplayName = "Brood Queen"; }
-        else if ((gv_selectedHeroTeam1 == "DefilerHero")) { lv_heroDisplayName = "Defiler"; }
-        else if ((gv_selectedHeroTeam1 == "HydraliskHero")) { lv_heroDisplayName = "Hydralisk"; }
-        else if ((gv_selectedHeroTeam1 == "HotSTorrasque2")) { lv_heroDisplayName = "Ultralisk"; }
-        else if ((gv_selectedHeroTeam1 == "MutaliskHero")) { lv_heroDisplayName = "Mutalisk"; }
-        else if ((gv_selectedHeroTeam1 == "NydusCanal22")) { lv_heroDisplayName = "Nydus Worm"; }
-        else if ((gv_selectedHeroTeam1 == "ScienceVessel2")) { lv_heroDisplayName = "Science Vessel"; }
+    if ((StringLength(gv_selectedHeroTeam1[EventPlayer()]) > 0)) {
+        lv_heroDisplayName = gv_selectedHeroTeam1[EventPlayer()];
+        if ((gv_selectedHeroTeam1[EventPlayer()] == "FirebatHero")) { lv_heroDisplayName = "Firebat"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "MedicHero")) { lv_heroDisplayName = "Medic"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "MarineHero")) { lv_heroDisplayName = "Marine"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "GoliathHero")) { lv_heroDisplayName = "Goliath"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "SpectreHero")) { lv_heroDisplayName = "Spectre"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "ZealotHero")) { lv_heroDisplayName = "Zealot"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "AvengerHero")) { lv_heroDisplayName = "Dark Templar"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "DragoonHero")) { lv_heroDisplayName = "Dragoon"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "SentryPurifier2")) { lv_heroDisplayName = "Sentry"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "AdeptHero")) { lv_heroDisplayName = "Adept"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "CorsairHero")) { lv_heroDisplayName = "Corsair"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "MothershipCoreHero")) { lv_heroDisplayName = "Mothership Core"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "ZerglingHero")) { lv_heroDisplayName = "Zergling"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "BroodQueenHero")) { lv_heroDisplayName = "Brood Queen"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "DefilerHero")) { lv_heroDisplayName = "Defiler"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "HydraliskHero")) { lv_heroDisplayName = "Hydralisk"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "HotSTorrasque2")) { lv_heroDisplayName = "Ultralisk"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "MutaliskHero")) { lv_heroDisplayName = "Mutalisk"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "NydusCanal22")) { lv_heroDisplayName = "Nydus Worm"; }
+        else if ((gv_selectedHeroTeam1[EventPlayer()] == "ScienceVessel2")) { lv_heroDisplayName = "Science Vessel"; }
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringToText(" picked " + lv_heroDisplayName)));
-        libNtve_gf_UnitCreateFacingPoint(1, gv_selectedHeroTeam1, 0, EventPlayer(), gv_startPosition1, PlayerStartLocation(gv_rTSPlayer2));
-        DialogSetVisible(gv_dialogTeam1, PlayerGroupAll(), false);
+        libNtve_gf_UnitCreateFacingPoint(1, gv_selectedHeroTeam1[EventPlayer()], 0, EventPlayer(), gv_startPosition1, PlayerStartLocation(gv_rTSPlayer2));
+        DialogSetVisible(gv_dialogTeam1, PlayerGroupSingle(EventPlayer()), false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
         UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
         UnitGroupAdd(gv_soldiers, UnitLastCreated());
@@ -780,32 +780,32 @@ bool LockInButtonTeam2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((StringLength(gv_selectedHeroTeam2) > 0)) {
-        lv_heroDisplayName = gv_selectedHeroTeam2;
-        if ((gv_selectedHeroTeam2 == "FirebatHero")) { lv_heroDisplayName = "Firebat"; }
-        else if ((gv_selectedHeroTeam2 == "MedicHero")) { lv_heroDisplayName = "Medic"; }
-        else if ((gv_selectedHeroTeam2 == "MarineHero")) { lv_heroDisplayName = "Marine"; }
-        else if ((gv_selectedHeroTeam2 == "GoliathHero")) { lv_heroDisplayName = "Goliath"; }
-        else if ((gv_selectedHeroTeam2 == "SpectreHero")) { lv_heroDisplayName = "Spectre"; }
-        else if ((gv_selectedHeroTeam2 == "ZealotHero")) { lv_heroDisplayName = "Zealot"; }
-        else if ((gv_selectedHeroTeam2 == "AvengerHero")) { lv_heroDisplayName = "Dark Templar"; }
-        else if ((gv_selectedHeroTeam2 == "DragoonHero")) { lv_heroDisplayName = "Dragoon"; }
-        else if ((gv_selectedHeroTeam2 == "SentryPurifier2")) { lv_heroDisplayName = "Sentry"; }
-        else if ((gv_selectedHeroTeam2 == "AdeptHero")) { lv_heroDisplayName = "Adept"; }
-        else if ((gv_selectedHeroTeam2 == "CorsairHero")) { lv_heroDisplayName = "Corsair"; }
-        else if ((gv_selectedHeroTeam2 == "MothershipCoreHero")) { lv_heroDisplayName = "Mothership Core"; }
-        else if ((gv_selectedHeroTeam2 == "ZerglingHero")) { lv_heroDisplayName = "Zergling"; }
-        else if ((gv_selectedHeroTeam2 == "BroodQueenHero")) { lv_heroDisplayName = "Brood Queen"; }
-        else if ((gv_selectedHeroTeam2 == "DefilerHero")) { lv_heroDisplayName = "Defiler"; }
-        else if ((gv_selectedHeroTeam2 == "HydraliskHero")) { lv_heroDisplayName = "Hydralisk"; }
-        else if ((gv_selectedHeroTeam2 == "HotSTorrasque2")) { lv_heroDisplayName = "Ultralisk"; }
-        else if ((gv_selectedHeroTeam2 == "MutaliskHero")) { lv_heroDisplayName = "Mutalisk"; }
-        else if ((gv_selectedHeroTeam2 == "NydusCanal22")) { lv_heroDisplayName = "Nydus Worm"; }
-        else if ((gv_selectedHeroTeam2 == "ScienceVessel2")) { lv_heroDisplayName = "Science Vessel"; }
+    if ((StringLength(gv_selectedHeroTeam2[EventPlayer()]) > 0)) {
+        lv_heroDisplayName = gv_selectedHeroTeam2[EventPlayer()];
+        if ((gv_selectedHeroTeam2[EventPlayer()] == "FirebatHero")) { lv_heroDisplayName = "Firebat"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "MedicHero")) { lv_heroDisplayName = "Medic"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "MarineHero")) { lv_heroDisplayName = "Marine"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "GoliathHero")) { lv_heroDisplayName = "Goliath"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "SpectreHero")) { lv_heroDisplayName = "Spectre"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "ZealotHero")) { lv_heroDisplayName = "Zealot"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "AvengerHero")) { lv_heroDisplayName = "Dark Templar"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "DragoonHero")) { lv_heroDisplayName = "Dragoon"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "SentryPurifier2")) { lv_heroDisplayName = "Sentry"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "AdeptHero")) { lv_heroDisplayName = "Adept"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "CorsairHero")) { lv_heroDisplayName = "Corsair"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "MothershipCoreHero")) { lv_heroDisplayName = "Mothership Core"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "ZerglingHero")) { lv_heroDisplayName = "Zergling"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "BroodQueenHero")) { lv_heroDisplayName = "Brood Queen"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "DefilerHero")) { lv_heroDisplayName = "Defiler"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "HydraliskHero")) { lv_heroDisplayName = "Hydralisk"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "HotSTorrasque2")) { lv_heroDisplayName = "Ultralisk"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "MutaliskHero")) { lv_heroDisplayName = "Mutalisk"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "NydusCanal22")) { lv_heroDisplayName = "Nydus Worm"; }
+        else if ((gv_selectedHeroTeam2[EventPlayer()] == "ScienceVessel2")) { lv_heroDisplayName = "Science Vessel"; }
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (PlayerName(EventPlayer()) + StringToText(" picked " + lv_heroDisplayName)));
 
-        libNtve_gf_UnitCreateFacingPoint(1, gv_selectedHeroTeam2, 0, EventPlayer(), gv_startPosition2, PlayerStartLocation(gv_rTSPlayer1));
-        DialogSetVisible(gv_dialogTeam2, PlayerGroupAll(), false);
+        libNtve_gf_UnitCreateFacingPoint(1, gv_selectedHeroTeam2[EventPlayer()], 0, EventPlayer(), gv_startPosition2, PlayerStartLocation(gv_rTSPlayer1));
+        DialogSetVisible(gv_dialogTeam2, PlayerGroupSingle(EventPlayer()), false);
         UnitSelect(UnitLastCreated(), EventPlayer(), true);
         UnitGroupAdd(gv_revivableUnits, UnitLastCreated());
         UnitGroupAdd(gv_soldiers, UnitLastCreated());
@@ -1263,6 +1263,7 @@ bool auto_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool runActions) {
     int lv_lockInButtonYPos   = 500;
     int lv_infoLabelWidth     = 350;
     int lv_infoLabelXPos      = 400;
+    int lv_pIdx;
 
     // Implementation
     DialogCreate(lv_dialogWidth, lv_dialogHeight, c_anchorCenter, 0, -60, true);
@@ -1409,17 +1410,17 @@ bool auto_SoldierSelectionTeam1_TriggerFunc (bool testConds, bool runActions) {
 
     // Set default hero based on RTS player race
     if ((PlayerRace(gv_rTSPlayer1) == "Zerg")) {
-        gv_selectedHeroTeam1 = "ZerglingHero";
+        for (lv_pIdx = 1; lv_pIdx <= 15; lv_pIdx += 1) { gv_selectedHeroTeam1[lv_pIdx] = "ZerglingHero"; }
         libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZerglingName"), PlayerGroupAll());
         libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam1, "Assets\\Textures\\ZerglingPortrait_Static.dds", gv_soldierPlayers1);
     }
     else if ((PlayerRace(gv_rTSPlayer1) == "Terr")) {
-        gv_selectedHeroTeam1 = "FirebatHero";
+        for (lv_pIdx = 1; lv_pIdx <= 15; lv_pIdx += 1) { gv_selectedHeroTeam1[lv_pIdx] = "FirebatHero"; }
         libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_FirebatName"), PlayerGroupAll());
         libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam1, "Assets\\Textures\\FirebatPortrait_Static.dds", gv_soldierPlayers1);
     }
     else if ((PlayerRace(gv_rTSPlayer1) == "Prot")) {
-        gv_selectedHeroTeam1 = "ZealotHero";
+        for (lv_pIdx = 1; lv_pIdx <= 15; lv_pIdx += 1) { gv_selectedHeroTeam1[lv_pIdx] = "ZealotHero"; }
         libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam1, StringExternal("Param/Value/lib_5A1C9904_ZealotName"), PlayerGroupAll());
         libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam1, "Assets\\Textures\\AiurZealotPortrait_Static.dds", gv_soldierPlayers1);
     }
@@ -1496,6 +1497,7 @@ bool auto_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool runActions) {
     int lv_lockInButtonYPos   = 500;
     int lv_infoLabelWidth     = 350;
     int lv_infoLabelXPos      = 400;
+    int lv_pIdx;
 
     // Implementation
     DialogCreate(lv_dialogWidth, lv_dialogHeight, c_anchorCenter, 0, -60, true);
@@ -1635,17 +1637,17 @@ bool auto_SoldierSelectionTeam2_TriggerFunc (bool testConds, bool runActions) {
 
     // Set default hero based on RTS player race
     if ((PlayerRace(gv_rTSPlayer2) == "Zerg")) {
-        gv_selectedHeroTeam2 = "ZerglingHero";
+        for (lv_pIdx = 1; lv_pIdx <= 15; lv_pIdx += 1) { gv_selectedHeroTeam2[lv_pIdx] = "ZerglingHero"; }
         libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ZerglingName"), PlayerGroupAll());
         libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam2, "Assets\\Textures\\ZerglingPortrait_Static.dds", gv_soldierPlayers2);
     }
     else if ((PlayerRace(gv_rTSPlayer2) == "Terr")) {
-        gv_selectedHeroTeam2 = "FirebatHero";
+        for (lv_pIdx = 1; lv_pIdx <= 15; lv_pIdx += 1) { gv_selectedHeroTeam2[lv_pIdx] = "FirebatHero"; }
         libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_FirebatName"), PlayerGroupAll());
         libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam2, "Assets\\Textures\\marinemercenaryportrait_static.dds", gv_soldierPlayers2);
     }
     else if ((PlayerRace(gv_rTSPlayer2) == "Prot")) {
-        gv_selectedHeroTeam2 = "ZealotHero";
+        for (lv_pIdx = 1; lv_pIdx <= 15; lv_pIdx += 1) { gv_selectedHeroTeam2[lv_pIdx] = "ZealotHero"; }
         libNtve_gf_SetDialogItemText(gv_infoHeroNameTeam2, StringExternal("Param/Value/lib_5A1C9904_ZealotName"), PlayerGroupAll());
         libNtve_gf_SetDialogItemImage(gv_heroPortraitTeam2, "Assets\\Textures\\AiurZealotPortrait_Static.dds", gv_soldierPlayers2);
     }
