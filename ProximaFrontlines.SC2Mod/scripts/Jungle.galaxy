@@ -1,0 +1,309 @@
+include "TriggerLibs/NativeLib"
+
+//==================================================================================================
+// Proxima Frontlines – Jungle System
+// Jungle camp creation, respawn management, resource rewards, and revival trigger.
+//==================================================================================================
+
+void CreateJungleUnits (int lp_index, structref<lib5A1C9904_gs_Spawn> lp_unitsToSpawn) {
+    // Variable Declarations
+    int lv_spawnLoop;
+    unitgroup lv_units;
+
+    // Automatic Variable Declarations
+    playergroup auto9CADB851_g;
+    const int autoD5456E40_ae = 4;
+    const int autoD5456E40_ai = 1;
+
+    // Variable Initialization
+    lv_units = UnitGroupEmpty();
+
+    // Implementation
+    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, lp_unitsToSpawn.lv_point);
+    gv_spawnPoints[lp_index] = UnitLastCreated();
+    auto9CADB851_g = PlayerGroupAll();
+    lv_spawnLoop = -1;
+    while (true) {
+        lv_spawnLoop = PlayerGroupNextPlayer(auto9CADB851_g, lv_spawnLoop);
+        if (lv_spawnLoop < 0) { break; }
+        VisRevealArea(lv_spawnLoop, RegionCircle(lp_unitsToSpawn.lv_point, 1.0), 0.1, false);
+    }
+    lv_spawnLoop = 0;
+    for ( ; ( (autoD5456E40_ai >= 0 && lv_spawnLoop <= autoD5456E40_ae) || (autoD5456E40_ai < 0 && lv_spawnLoop >= autoD5456E40_ae) ) ; lv_spawnLoop += autoD5456E40_ai ) {
+        if ((lp_unitsToSpawn.lv_unitSpawn[lv_spawnLoop].lv_unitType != "")) {
+            libNtve_gf_CreateUnitsAtPoint2(lp_unitsToSpawn.lv_unitSpawn[lv_spawnLoop].lv_amount, lp_unitsToSpawn.lv_unitSpawn[lv_spawnLoop].lv_unitType, 0, 15, gv_jungleToSpawn[lp_index].lv_point);
+            UnitGroupAddUnitGroup(lv_units, UnitLastCreatedGroup());
+        }
+
+    }
+    gv_jungleUnitGroups[lp_index] = lv_units;
+}
+
+void SpawnJungleUnits () {
+    // Variable Declarations
+    int lv_index;
+
+    // Automatic Variable Declarations
+    int auto7931081A_ae;
+    const int auto7931081A_ai = 1;
+
+    // Implementation
+    auto7931081A_ae = (gv_lastIndexOfSpawn - 1);
+    lv_index = 0;
+    for ( ; ( (auto7931081A_ai >= 0 && lv_index <= auto7931081A_ae) || (auto7931081A_ai < 0 && lv_index >= auto7931081A_ae) ) ; lv_index += auto7931081A_ai ) {
+        gv_indexToSpawn = lv_index;
+        TriggerExecute(SpawnJungle, true, false);
+    }
+}
+
+void AddJungleSpawn (structref<lib5A1C9904_gs_Spawn> lp_toSpawn) {
+    // Variable Declarations
+    int lv_spawnLoop;
+
+    // Automatic Variable Declarations
+    const int auto93DBA21B_ae = 4;
+    const int auto93DBA21B_ai = 1;
+
+    // Implementation
+    gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_point = lp_toSpawn.lv_point;
+    gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_respawnTime = lp_toSpawn.lv_respawnTime;
+    gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_spawnTime = lp_toSpawn.lv_spawnTime;
+    gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_deathCallbackTrigger = lp_toSpawn.lv_deathCallbackTrigger;
+    lv_spawnLoop = 0;
+    for ( ; ( (auto93DBA21B_ai >= 0 && lv_spawnLoop <= auto93DBA21B_ae) || (auto93DBA21B_ai < 0 && lv_spawnLoop >= auto93DBA21B_ae) ) ; lv_spawnLoop += auto93DBA21B_ai ) {
+        if ((lp_toSpawn.lv_unitSpawn[lv_spawnLoop].lv_unitType != "")) {
+            gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_unitSpawn[lv_spawnLoop].lv_amount = lp_toSpawn.lv_unitSpawn[lv_spawnLoop].lv_amount;
+            gv_jungleToSpawn[gv_lastIndexOfSpawn].lv_unitSpawn[lv_spawnLoop].lv_unitType = lp_toSpawn.lv_unitSpawn[lv_spawnLoop].lv_unitType;
+        }
+
+    }
+    gv_lastIndexOfSpawn = (gv_lastIndexOfSpawn + 1);
+}
+
+void AddJungleUnitGroup (unitgroup lp_addUnitGroup, point lp_minimapPoint) {
+    // Variable Declarations
+    int lv_spawnLoop;
+
+    // Automatic Variable Declarations
+    playergroup auto808F9347_g;
+
+    // Implementation
+    gv_jungleUnitGroups[gv_lastIndexOfSpawn] = lp_addUnitGroup;
+    libNtve_gf_CreateUnitsAtPoint2(1, "SpawnPoints", 0, 0, lp_minimapPoint);
+    gv_spawnPoints[gv_lastIndexOfSpawn] = UnitLastCreated();
+    gv_lastIndexOfSpawn = (gv_lastIndexOfSpawn + 1);
+    auto808F9347_g = PlayerGroupAll();
+    lv_spawnLoop = -1;
+    while (true) {
+        lv_spawnLoop = PlayerGroupNextPlayer(auto808F9347_g, lv_spawnLoop);
+        if (lv_spawnLoop < 0) { break; }
+        VisRevealArea(lv_spawnLoop, RegionCircle(lp_minimapPoint, 1.0), 0.1, false);
+    }
+}
+
+void AddUnitJunglePrice (string lp_unitType, int lp_minerals, int lp_gas) {
+    // Implementation
+    gv_junglePrices[gv_lastIndexOfJunglePrices].lv_unitType = lp_unitType;
+    gv_junglePrices[gv_lastIndexOfJunglePrices].lv_minerals = lp_minerals;
+    gv_junglePrices[gv_lastIndexOfJunglePrices].lv_gas = lp_gas;
+    gv_lastIndexOfJunglePrices = (gv_lastIndexOfJunglePrices + 1);
+}
+
+void GiveResource (unit lp_killedUnit, int lp_player, int lp_killingPlayer) {
+    // Variable Declarations
+    int lv_triggeringPlayerKills;
+    int lv_triggeringPlayerDeaths;
+    int lv_triggeringPlayerMinerals;
+    int lv_triggeringPlayerGas;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    int auto5AEBC90F_ae;
+    const int auto5AEBC90F_ai = 1;
+
+    // Variable Initialization
+    lv_triggeringPlayerKills = gv_playerKills[lp_killingPlayer];
+    lv_triggeringPlayerDeaths = gv_playerDeaths[lp_killingPlayer];
+    lv_triggeringPlayerMinerals = gv_playerMineral[lp_killingPlayer];
+    lv_triggeringPlayerGas = gv_playerGas[lp_killingPlayer];
+
+    // Implementation
+    auto5AEBC90F_ae = gv_lastIndexOfJunglePrices;
+    lv_index = 0;
+    for ( ; ( (auto5AEBC90F_ai >= 0 && lv_index <= auto5AEBC90F_ae) || (auto5AEBC90F_ai < 0 && lv_index >= auto5AEBC90F_ae) ) ; lv_index += auto5AEBC90F_ai ) {
+        if ((UnitGetType(lp_killedUnit) == gv_junglePrices[lv_index].lv_unitType)) {
+            PlayerModifyPropertyInt(lp_player, c_playerPropMinerals, c_playerPropOperSetTo, (PlayerGetPropertyInt(lp_player, c_playerPropMinerals) + gv_junglePrices[lv_index].lv_minerals));
+            PlayerModifyPropertyInt(lp_player, c_playerPropVespene, c_playerPropOperSetTo, (PlayerGetPropertyInt(lp_player, c_playerPropVespene) + gv_junglePrices[lv_index].lv_gas));
+            UpdateScoreboard(lv_triggeringPlayerKills, lv_triggeringPlayerDeaths, (lv_triggeringPlayerMinerals + gv_junglePrices[lv_index].lv_minerals), (lv_triggeringPlayerGas + gv_junglePrices[lv_index].lv_gas), lp_killingPlayer);
+            break;
+        }
+
+    }
+}
+
+void Respawn (unit lp_killedUnit, unit lp_killingUnit) {
+    // Variable Declarations
+    int lv_index;
+    unitgroup lv_unitGroup;
+
+    // Automatic Variable Declarations
+    int auto75DC13CD_ae;
+    const int auto75DC13CD_ai = 1;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Implementation
+    auto75DC13CD_ae = (gv_lastIndexOfSpawn - 1);
+    lv_index = 0;
+    for ( ; ( (auto75DC13CD_ai >= 0 && lv_index <= auto75DC13CD_ae) || (auto75DC13CD_ai < 0 && lv_index >= auto75DC13CD_ae) ) ; lv_index += auto75DC13CD_ai ) {
+        if ((UnitGroupHasUnit(gv_jungleUnitGroups[lv_index], lp_killedUnit) == true)) {
+            lv_unitGroup = gv_jungleUnitGroups[lv_index];
+            break;
+        }
+
+    }
+    if (((libNtve_gf_UnitGroupIsDead(lv_unitGroup) == true))) {
+        UnitKill(gv_spawnPoints[lv_index]);
+        if ((gv_jungleToSpawn[lv_index].lv_deathCallbackTrigger != null)) {
+            gv_jG_KillingUnit = lp_killingUnit;
+            gv_jG_KilledUnit = lp_killedUnit;
+            TriggerExecute(gv_jungleToSpawn[lv_index].lv_deathCallbackTrigger, true, false);
+        }
+
+        if ((gv_jungleToSpawn[lv_index].lv_respawnTime > 0)) {
+            Wait(gv_jungleToSpawn[lv_index].lv_respawnTime, c_timeGame);
+            if ((libNtve_gf_UnitGroupIsDead(gv_jungleUnitGroups[lv_index]) == true)) {
+                CreateJungleUnits(lv_index, gv_jungleToSpawn[lv_index]);
+            }
+
+        }
+
+    }
+
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SpawnJungle
+//--------------------------------------------------------------------------------------------------
+bool SpawnJungle_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexToSpawn;
+    unitgroup lv_units;
+
+    // Variable Initialization
+    lv_indexToSpawn = gv_indexToSpawn;
+    lv_units = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(gv_jungleToSpawn[lv_indexToSpawn].lv_spawnTime, c_timeGame);
+    if ((gv_jungleToSpawn[lv_indexToSpawn].lv_point != null)) {
+        CreateJungleUnits(lv_indexToSpawn, gv_jungleToSpawn[lv_indexToSpawn]);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void SpawnJungle_Init () {
+    SpawnJungle = TriggerCreate("SpawnJungle_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GiveResourcesFromJungleRTSPlayer1
+//--------------------------------------------------------------------------------------------------
+bool GiveResourcesFromJungleRTSPlayer1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_killingPlayer;
+    unit lv_killedUnit;
+
+    // Variable Initialization
+    lv_killingPlayer = UnitGetOwner(libNtve_gf_KillingUnit());
+    lv_killedUnit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(lv_killedUnit) == 15) && ((libNtve_gf_PlayerIsEnemy(lv_killingPlayer, gv_rTSPlayer1, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(lv_killingPlayer, gv_rTSPlayer1, libNtve_ge_PlayerRelation_Neutral) == true))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GiveResource(lv_killedUnit, gv_rTSPlayer1, lv_killingPlayer);
+    Respawn(lv_killedUnit, libNtve_gf_KillingUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void GiveResourcesFromJungleRTSPlayer1_Init () {
+    GiveResourcesFromJungleRTSPlayer1 = TriggerCreate("GiveResourcesFromJungleRTSPlayer1_Func");
+    TriggerAddEventUnitDied(GiveResourcesFromJungleRTSPlayer1, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GiveResourcesFromJungleRTSPlayer2
+//--------------------------------------------------------------------------------------------------
+bool GiveResourcesFromJungleRTSPlayer2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_killingPlayer;
+    unit lv_killedUnit;
+
+    // Variable Initialization
+    lv_killingPlayer = UnitGetOwner(libNtve_gf_KillingUnit());
+    lv_killedUnit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(lv_killedUnit) == 15) && ((libNtve_gf_PlayerIsEnemy(lv_killingPlayer, gv_rTSPlayer2, libNtve_ge_PlayerRelation_Ally) == true) || (libNtve_gf_PlayerIsEnemy(lv_killingPlayer, gv_rTSPlayer2, libNtve_ge_PlayerRelation_Neutral) == true))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GiveResource(lv_killedUnit, gv_rTSPlayer2, lv_killingPlayer);
+    Respawn(lv_killedUnit, libNtve_gf_KillingUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void GiveResourcesFromJungleRTSPlayer2_Init () {
+    GiveResourcesFromJungleRTSPlayer2 = TriggerCreate("GiveResourcesFromJungleRTSPlayer2_Func");
+    TriggerAddEventUnitDied(GiveResourcesFromJungleRTSPlayer2, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Increase RessTimer
+//--------------------------------------------------------------------------------------------------
+bool IncreaseRessTimer_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gv_ressTimer = 20;
+    Wait(120.0, c_timeReal);
+    gv_ressTimer = 30;
+    Wait(360.0, c_timeReal);
+    gv_ressTimer = 40;
+    Wait(600.0, c_timeReal);
+    gv_ressTimer = 50;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void IncreaseRessTimer_Init () {
+    IncreaseRessTimer = TriggerCreate("IncreaseRessTimer_Func");
+    TriggerAddEventTimeElapsed(IncreaseRessTimer, 120.0, c_timeGame);
+}

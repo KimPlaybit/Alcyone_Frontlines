@@ -1,0 +1,124 @@
+include "TriggerLibs/NativeLib"
+
+//==================================================================================================
+// Proxima Frontlines – Buildings System
+// Tracks RTS player structure creation and death for buildings/town groups.
+//==================================================================================================
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AddRtsPlayer1Buildings
+//--------------------------------------------------------------------------------------------------
+bool AddRtsPlayer1Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(EventUnitCreatedUnit()) == gv_rTSPlayer1) && (UnitTypeTestAttribute(UnitGetType(EventUnitCreatedUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupAdd(gv_rtsPlayer1Buildings, EventUnitCreatedUnit());
+    if (((UnitGetType(EventUnitCreatedUnit()) == "Nexus") || (UnitGetType(EventUnitCreatedUnit()) == "Hive") || (UnitGetType(EventUnitCreatedUnit()) == "Lair") || (UnitGetType(EventUnitCreatedUnit()) == "Hatchery") || (UnitGetType(EventUnitCreatedUnit()) == "CommandCenter") || (UnitGetType(EventUnitCreatedUnit()) == "OrbitalCommand") || (UnitGetType(EventUnitCreatedUnit()) == "PlanetaryFortress"))) {
+        UnitGroupAdd(gv_rtsPlayer1TownBuilding, EventUnitCreatedUnit());
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AddRtsPlayer1Buildings_Init () {
+    AddRtsPlayer1Buildings = TriggerCreate("AddRtsPlayer1Buildings_Func");
+    TriggerAddEventUnitCreated(AddRtsPlayer1Buildings, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: RemoveRtsPlayer1Buildings
+//--------------------------------------------------------------------------------------------------
+bool RemoveRtsPlayer1Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGroupHasUnit(gv_rtsPlayer1Buildings, EventUnit()) == true) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupRemove(gv_rtsPlayer1Buildings, EventUnit());
+    UnitGroupRemove(gv_rtsPlayer1TownBuilding, EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void RemoveRtsPlayer1Buildings_Init () {
+    RemoveRtsPlayer1Buildings = TriggerCreate("RemoveRtsPlayer1Buildings_Func");
+    TriggerAddEventUnitDied(RemoveRtsPlayer1Buildings, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AddRtsPlayer2Buildings
+//--------------------------------------------------------------------------------------------------
+bool AddRtsPlayer2Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetOwner(EventUnitCreatedUnit()) == gv_rTSPlayer2) && (UnitTypeTestAttribute(UnitGetType(EventUnitCreatedUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupAdd(gv_rtsPlayer2Buildings, EventUnitCreatedUnit());
+    if (((UnitGetType(EventUnitCreatedUnit()) == "Nexus") || (UnitGetType(EventUnitCreatedUnit()) == "Hive") || (UnitGetType(EventUnitCreatedUnit()) == "Lair") || (UnitGetType(EventUnitCreatedUnit()) == "Hatchery") || (UnitGetType(EventUnitCreatedUnit()) == "CommandCenter") || (UnitGetType(EventUnitCreatedUnit()) == "OrbitalCommand") || (UnitGetType(EventUnitCreatedUnit()) == "PlanetaryFortress"))) {
+        UnitGroupAdd(gv_rtsPlayer2TownBuilding, EventUnitCreatedUnit());
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AddRtsPlayer2Buildings_Init () {
+    AddRtsPlayer2Buildings = TriggerCreate("AddRtsPlayer2Buildings_Func");
+    TriggerAddEventUnitCreated(AddRtsPlayer2Buildings, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: RemoveRtsPlayer2Buildings
+//--------------------------------------------------------------------------------------------------
+bool RemoveRtsPlayer2Buildings_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGroupHasUnit(gv_rtsPlayer2Buildings, EventUnit()) == true) && (UnitTypeTestAttribute(UnitGetType(EventUnit()), c_unitAttributeStructure) == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupRemove(gv_rtsPlayer2Buildings, EventUnit());
+    UnitGroupRemove(gv_rtsPlayer2TownBuilding, EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void RemoveRtsPlayer2Buildings_Init () {
+    RemoveRtsPlayer2Buildings = TriggerCreate("RemoveRtsPlayer2Buildings_Func");
+    TriggerAddEventUnitDied(RemoveRtsPlayer2Buildings, null);
+}

@@ -867,6 +867,18 @@
         <PeriodicEffectArray value="HealHeroicUnitsAround3"/>
         <PeriodicPeriodArray value="1.001"/>
     </CEffectCreatePersistent>
+    <CEffectEnumArea id="AlliedEnergySearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Heroic;Neutral,Enemy,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="AlliedEnergyApply"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="AlliedEnergyApply">
+        <EditorCategories value=""/>
+        <Behavior value="AlliedEnergy"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="ProtectWorkersSearch">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetUnit"/>
@@ -1291,4 +1303,101 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="HealHeroic"/>
     </CEffectSet>
+    <CEffectEnumArea id="DamageBoostFlyingUnitSearch">
+        <SearchFilters value="Air;Self,Player,Ally,Neutral,Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="DamageBoostApplyDebuff"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="DamageBoostApplyDebuff">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="FlyingUnitGroundAttackDebuff"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="FlyingUnitGroundAttackHeightReduce">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Height value="-1"/>
+        <HeightTime value="0.3"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="FlyingUnitGroundAttackHeightRestore">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Height value="1"/>
+        <HeightTime value="0.7"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="NonHeroicDamageReductionSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="7" Effect="NonHeroicDamageReductionApply"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="NonHeroicDamageReductionApply">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="NonHeroicDamageReduction"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="HeroicDamageBonusSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Self,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="7" Effect="HeroicDamageBonusApply"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HeroicDamageBonusApply">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="HeroicDamageBonus"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="BootsSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Self,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="7" Effect="BootsApply"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="BootsApply">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="IronBoots"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="HealthRegenSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Self,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="7" Effect="HealthRegenApply"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HealthRegenApply">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="HealingBoost"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="GlassCannonSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="7" Effect="GlassCannonApply"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="GlassCannonApply">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="GlassCannon"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="StructureDefenseSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Self,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="7" Effect="StructureDefenseApply"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="StructureDefenseApply">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="StructureDefense"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="BaseBreakerSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Self,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="7" Effect="BaseBreakerApply"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="BaseBreakerApply">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="BaseBreakerAura"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="ArmorPlatesSearch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Self,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="7" Effect="ArmorPlatesApply"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="ArmorPlatesApply">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Behavior value="ArmorPlates"/>
+    </CEffectApplyBehavior>
 </Catalog>

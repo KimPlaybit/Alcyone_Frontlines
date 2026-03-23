@@ -1,0 +1,183 @@
+include "TriggerLibs/NativeLib"
+
+//==================================================================================================
+// Proxima Frontlines – UI
+// Scoreboard dialog, dialog enable/disable helpers, scores display, and chat/rule triggers.
+//==================================================================================================
+
+void DisableaDialogItem (int lp_dialogItem) {
+    // Implementation
+    if ((lp_dialogItem != c_invalidDialogControlId)) {
+        DialogControlSetEnabled(lp_dialogItem, PlayerGroupAll(), false);
+    }
+
+}
+
+void EnableaDialogItem (int lp_dialogItem) {
+    // Implementation
+    if ((lp_dialogItem != c_invalidDialogControlId)) {
+        DialogControlSetEnabled(lp_dialogItem, PlayerGroupAll(), true);
+    }
+
+}
+
+void Scores () {
+    // Variable Declarations
+    int lv_index;
+    int lv_loopedPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto64143CE0_g;
+    playergroup auto74E97106_g;
+
+    // Implementation
+    DialogCreate(400, ((PlayerGroupCount(PlayerGroupActive()) * 33) + 50), c_anchorTopLeft, 0, 0, true);
+    gv_scoreDialog = DialogLastCreated();
+    libNtve_gf_CreateDialogItemButton(gv_scoreDialog, 45, 45, c_anchorTopLeft, 30, 30, StringExternal("Param/Value/lib_5A1C9904_AE1E5D4A"), StringExternal("Param/Value/lib_5A1C9904_3B143AE7"), "");
+    gv_hideScore = DialogControlLastCreated();
+    DialogSetVisible(gv_scoreDialog, PlayerGroupSingle(gv_rTSPlayer1), true);
+    DialogSetVisible(gv_scoreDialog, PlayerGroupSingle(gv_rTSPlayer2), true);
+    DialogSetVisible(gv_scoreDialog, gv_soldierPlayers1, true);
+    DialogSetVisible(gv_scoreDialog, gv_soldierPlayers2, true);
+    libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 120, 50, c_anchorTopLeft, 32, 72, StringExternal("Param/Value/lib_5A1C9904_B4CBDC5F"), ColorWithAlpha(0,0,0,0), false, 0.0);
+    libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 50, 50, c_anchorTopLeft, 155, 72, StringExternal("Param/Value/lib_5A1C9904_984B5D54"), ColorWithAlpha(0,0,0,0), false, 0.0);
+    libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 150, 25, c_anchorTopLeft, 240, 72, StringExternal("Param/Value/lib_5A1C9904_FCD8DA4B"), ColorWithAlpha(0,0,0,0), false, 0.0);
+    gv_playerKills[gv_rTSPlayer1] = 0;
+    gv_playerDeaths[gv_rTSPlayer1] = 0;
+    gv_playerMineral[gv_rTSPlayer1] = 0;
+    gv_playerGas[gv_rTSPlayer1] = 0;
+    gv_playerKills[gv_rTSPlayer2] = 0;
+    gv_playerDeaths[gv_rTSPlayer2] = 0;
+    gv_playerMineral[gv_rTSPlayer2] = 0;
+    gv_playerGas[gv_rTSPlayer2] = 0;
+    auto64143CE0_g = gv_soldierPlayers1;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(auto64143CE0_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        gv_playerKills[lv_loopedPlayer] = 0;
+        gv_playerDeaths[lv_loopedPlayer] = 0;
+        gv_playerMineral[lv_loopedPlayer] = 0;
+        gv_playerGas[lv_loopedPlayer] = 0;
+        libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 120, 25, c_anchorTopLeft, 32, ((28 * lv_index) + 90), PlayerName(lv_loopedPlayer), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_loopedPlayer, false)), false, 0.0);
+        libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 110, 25, c_anchorTopLeft, 155, ((28 * lv_index) + 90), StringExternal("Param/Value/lib_5A1C9904_D987D789"), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_loopedPlayer, false)), false, 0.0);
+        gv_playerStats[lv_loopedPlayer] = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 150, 25, c_anchorTopLeft, 240, ((28 * lv_index) + 90), StringExternal("Param/Value/lib_5A1C9904_95EAF36B"), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_loopedPlayer, false)), false, 0.0);
+        gv_playerMiGa[lv_loopedPlayer] = DialogControlLastCreated();
+        lv_index = (lv_index + 1);
+    }
+    libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 120, 50, c_anchorTopLeft, 32, ((lv_index * 28) + 90), StringExternal("Param/Value/lib_5A1C9904_E70FFFA3"), ColorWithAlpha(0,0,0,0), false, 0.0);
+    lv_index = (lv_index + 1);
+    auto74E97106_g = gv_soldierPlayers2;
+    lv_loopedPlayer = -1;
+    while (true) {
+        lv_loopedPlayer = PlayerGroupNextPlayer(auto74E97106_g, lv_loopedPlayer);
+        if (lv_loopedPlayer < 0) { break; }
+        gv_playerKills[lv_loopedPlayer] = 0;
+        gv_playerDeaths[lv_loopedPlayer] = 0;
+        gv_playerMineral[lv_loopedPlayer] = 0;
+        gv_playerGas[lv_loopedPlayer] = 0;
+        libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 120, 25, c_anchorTopLeft, 32, ((28 * lv_index) + 80), PlayerName(lv_loopedPlayer), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_loopedPlayer, false)), false, 0.0);
+        libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 110, 25, c_anchorTopLeft, 155, ((28 * lv_index) + 80), StringExternal("Param/Value/lib_5A1C9904_9B0126FE"), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_loopedPlayer, false)), false, 0.0);
+        gv_playerStats[lv_loopedPlayer] = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemLabel(gv_scoreDialog, 150, 25, c_anchorTopLeft, 240, ((28 * lv_index) + 80), StringExternal("Param/Value/lib_5A1C9904_9B4C32A0"), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_loopedPlayer, false)), false, 0.0);
+        gv_playerMiGa[lv_loopedPlayer] = DialogControlLastCreated();
+        lv_index = (lv_index + 1);
+    }
+    DialogCreate(45, 45, c_anchorTopLeft, 0, 0, true);
+    gv_hiddenDialog = DialogLastCreated();
+    libNtve_gf_CreateDialogItemButton(gv_hiddenDialog, 45, 45, c_anchorTopLeft, 0, 0, StringExternal("Param/Value/lib_5A1C9904_AE7DD35C"), StringExternal("Param/Value/lib_5A1C9904_5F1EFDD8"), "");
+    gv_showScore = DialogControlLastCreated();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ExplainRules
+//--------------------------------------------------------------------------------------------------
+bool ExplainRules_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_5A1C9904_01C0EB28"));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void ExplainRules_Init () {
+    ExplainRules = TriggerCreate("ExplainRules_Func");
+    TriggerAddEventTimeElapsed(ExplainRules, 3.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HideScores
+//--------------------------------------------------------------------------------------------------
+bool HideScores_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((gv_hideScore == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogSetVisible(gv_scoreDialog, PlayerGroupSingle(EventPlayer()), false);
+    DialogSetVisible(gv_hiddenDialog, PlayerGroupSingle(EventPlayer()), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void HideScores_Init () {
+    HideScores = TriggerCreate("HideScores_Func");
+    TriggerAddEventDialogControl(HideScores, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ShowScores
+//--------------------------------------------------------------------------------------------------
+bool ShowScores_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!(((gv_showScore == EventDialogControl())))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogSetVisible(gv_hiddenDialog, PlayerGroupSingle(EventPlayer()), false);
+    DialogSetVisible(gv_scoreDialog, PlayerGroupSingle(EventPlayer()), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void ShowScores_Init () {
+    ShowScores = TriggerCreate("ShowScores_Func");
+    TriggerAddEventDialogControl(ShowScores, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SendDiscord
+//--------------------------------------------------------------------------------------------------
+bool SendDiscord_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_5A1C9904_8752F893"));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void SendDiscord_Init () {
+    SendDiscord = TriggerCreate("SendDiscord_Func");
+    TriggerAddEventTimeElapsed(SendDiscord, 15.0, c_timeGame);
+}

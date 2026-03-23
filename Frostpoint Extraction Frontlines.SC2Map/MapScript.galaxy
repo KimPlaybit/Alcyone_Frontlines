@@ -100,14 +100,14 @@ void gf_EECreateCaptureUI () {
     DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, 10, 10);
     gv_eETeamBars[0] = DialogControlLastCreated();
     libNtve_gf_SetDialogItemDesaturated(DialogControlLastCreated(), true, PlayerGroupAll());
-    libNtve_gf_SetDialogItemDesaturationColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lib5A1C9904_gv_rTSPlayer1, false)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemDesaturationColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_rTSPlayer1, false)), PlayerGroupAll());
     DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
     libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_ingame_hotscampaign_unitstatus_healthbar.dds", PlayerGroupAll());
     DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 1, 20);
     DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopRight, 10, 10);
     gv_eETeamBars[1] = DialogControlLastCreated();
     libNtve_gf_SetDialogItemDesaturated(DialogControlLastCreated(), true, PlayerGroupAll());
-    libNtve_gf_SetDialogItemDesaturationColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lib5A1C9904_gv_rTSPlayer2, false)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemDesaturationColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_rTSPlayer2, false)), PlayerGroupAll());
     DialogControlCreateInPanel(gv_eEMasterPanel, c_triggerControlTypeImage);
     libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\sc2_ui_glues_icons_doublearrow.dds", PlayerGroupAll());
     DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 32, 32);
@@ -218,7 +218,7 @@ bool gt_Init_Func (bool testConds, bool runActions) {
     TechTreeUpgradeAddLevel(15, "ShieldWall", 1);
     TechTreeUpgradeAddLevel(15, "ResearchSmartServos", 1);
     TechTreeUpgradeAddLevel(15, "ReinforcedSuperstructure", 1);
-    lib5A1C9904_gf_StartProximaGame(PointFromId(1534686828), PointFromId(184001369), (PointGetX(PointFromId(1534686828)) - PointGetX(PointFromId(1754254981))), (PointGetY(PointFromId(1534686828)) - PointGetY(PointFromId(1754254981))), (PointGetX(PointFromId(184001369)) - PointGetX(PointFromId(346679881))), (PointGetY(PointFromId(184001369)) - PointGetY(PointFromId(346679881))));
+    lib5A1C9904_gf_StartProximaGame(PointFromId(1534686828), PointFromId(184001369), FixedToInt((PointGetX(PointFromId(1534686828)) - PointGetX(PointFromId(1754254981)))), FixedToInt((PointGetX(PointFromId(184001369)) - PointGetX(PointFromId(346679881)))), FixedToInt((PointGetY(PointFromId(1534686828)) - PointGetY(PointFromId(1754254981)))), FixedToInt((PointGetY(PointFromId(184001369)) - PointGetY(PointFromId(346679881)))));
     Wait(600.0, c_timeGame);
     TriggerExecute(gt_EEStartEvent, true, false);
     return true;
@@ -287,15 +287,15 @@ bool gt__1SetupJungle_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lib5A1C9904_gf_AddUnitJunglePrice("WarPig", 35, 0);
-    lib5A1C9904_gf_AddUnitJunglePrice("HammerSecurity", 50, 10);
-    lib5A1C9904_gf_AddUnitJunglePrice("MercMedic", 20, 30);
-    lib5A1C9904_gf_AddUnitJunglePrice("HelsAngelAssault", 40, 20);
-    lib5A1C9904_gf_AddUnitJunglePrice("HelsAngelFighter", 40, 20);
-    lib5A1C9904_gf_AddUnitJunglePrice("Vulture", 20, 10);
-    lib5A1C9904_gf_AddUnitJunglePrice("SpiderMineBurrowed", 10, 10);
-    lib5A1C9904_gf_AddUnitJunglePrice("SpiderMine", 10, 10);
-    lib5A1C9904_gf_AddUnitJunglePrice("SpartanCompany", 10, 40);
+    lib5A1C9904_gf_AddJungleUnitPrice("WarPig", 35, 0);
+    lib5A1C9904_gf_AddJungleUnitPrice("HammerSecurity", 50, 10);
+    lib5A1C9904_gf_AddJungleUnitPrice("MercMedic", 20, 30);
+    lib5A1C9904_gf_AddJungleUnitPrice("HelsAngelAssault", 40, 20);
+    lib5A1C9904_gf_AddJungleUnitPrice("HelsAngelFighter", 40, 20);
+    lib5A1C9904_gf_AddJungleUnitPrice("Vulture", 20, 10);
+    lib5A1C9904_gf_AddJungleUnitPrice("SpiderMineBurrowed", 10, 10);
+    lib5A1C9904_gf_AddJungleUnitPrice("SpiderMine", 10, 10);
+    lib5A1C9904_gf_AddJungleUnitPrice("SpartanCompany", 10, 40);
     lv_spawnBuilder.lv_respawnTime = 180;
     lv_spawnBuilder.lv_deathCallbackTrigger = null;
     lv_spawnBuilder.lv_point = PointFromId(840944426);
@@ -501,11 +501,11 @@ bool gt_EEOnEnterExit_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libNtve_gf_AddPlayerGroupToPlayerGroup(lib5A1C9904_gv_soldierPlayers1, lv_team1Group);
-    PlayerGroupAdd(lv_team1Group, lib5A1C9904_gv_rTSPlayer1);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(gv_soldierPlayers1, lv_team1Group);
+    PlayerGroupAdd(lv_team1Group, gv_rTSPlayer1);
     PlayerGroupAdd(lv_team1Group, 13);
-    libNtve_gf_AddPlayerGroupToPlayerGroup(lib5A1C9904_gv_soldierPlayers2, lv_team2Group);
-    PlayerGroupAdd(lv_team2Group, lib5A1C9904_gv_rTSPlayer2);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(gv_soldierPlayers2, lv_team2Group);
+    PlayerGroupAdd(lv_team2Group, gv_rTSPlayer2);
     PlayerGroupAdd(lv_team2Group, 14);
     autoA719D5CF_g = UnitGroup(null, c_playerAny, RegionFromId(1), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     autoA719D5CF_u = UnitGroupCount(autoA719D5CF_g, c_unitCountAll);
@@ -579,8 +579,8 @@ bool gt_EETick_Func (bool testConds, bool runActions) {
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_rTSPlayer1 = lib5A1C9904_gv_rTSPlayer1;
-    lv_rTSPlayer2 = lib5A1C9904_gv_rTSPlayer2;
+    lv_rTSPlayer1 = gv_rTSPlayer1;
+    lv_rTSPlayer2 = gv_rTSPlayer2;
 
     // Conditions
     if (testConds) {
