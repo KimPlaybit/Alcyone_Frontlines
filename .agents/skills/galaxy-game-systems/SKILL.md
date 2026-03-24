@@ -1,6 +1,23 @@
+---
+name: galaxy-game-systems
+description: Bank save/load, spawner and wave systems, jungle/camp respawn, resource rewards, hero revive/death, tech tree upgrades, and game attribute lobby options in Galaxy script. Use when implementing persistent data storage, enemy wave spawners, neutral camp respawn timers, kill resource rewards, or player revive logic. Do not use for AI wave behavior (use galaxy-ai-and-techtree) or UI (use galaxy-ui-and-dialogs).
+---
+
 # Galaxy Scripting – Game Systems
 
-Reference: https://mapster.talv.space/galaxy/reference
+## Key References
+
+| Resource | URL |
+|---|---|
+| Native function reference | https://mapster.talv.space/galaxy/reference |
+| Galaxy syntax definition | https://github.com/Talv/vscode-sc2-galaxy/blob/master/syntaxes/galaxy.json |
+| Banks guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/051_Banks/ |
+| Custom Values guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/050_Custom_Values/ |
+| **SC2-IngameDevTools (PRIMARY — #1 codebase)** | https://github.com/abrahamYG/SC2-IngameDevTools/tree/main/DevToolsIngame.SC2Mod/Script |
+| SSF codebase (secondary style) | https://github.com/Cristall/SC2-SwarmSpecialForces/tree/main/SwarmSpecialForces.SC2Map/scripts |
+| Alcyone Frontlines codebase | https://github.com/KimPlaybit/Alcyone_Frontlines/tree/master/ProximaFrontlines.SC2Mod/scripts |
+| NativeLib | `TriggerLibs/NativeLib.galaxy` (sc2galaxy VS Code extension) |
+| SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
 
 ---
 
@@ -9,8 +26,8 @@ Reference: https://mapster.talv.space/galaxy/reference
 Banks persist data between sessions per player. One bank = one named file tied to one player slot.
 
 ```galaxy
-// Open (create if missing)
-BankLoad("ProximaFrontlines", lv_player);
+// Open (create if missing) — use your map/mod name as the bank name
+BankLoad("MyMapName", lv_player);
 bank lv_bank = BankLastCreated();
 
 // Wait for async load to complete (needed if called at game start)
@@ -38,6 +55,26 @@ BankSectionRemove(lv_bank, "OldData");
 
 // Remove a key
 BankKeyRemove(lv_bank, "Stats", "OldKey");
+
+// Enable signature/encryption (prevents tampering by the player)
+// Call this immediately after BankLoad, before BankWait
+BankSetOptionSignature(lv_bank, true);
+```
+
+> **Bank file location on disk (Windows):**
+> `Documents\StarCraft II\StarCraftPlayer.ID@#\Banks\[MapAuthorID]\[BankName].SC2Bank`
+>
+> Signature-enabled banks are checksummed by the engine. Manually editing a signed bank file will invalidate it on next load, causing the engine to treat it as empty/corrupt.
+>
+> **Full reference:** [Banks guide](https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/051_Banks/)
+
+### Bank structure (hierarchy)
+
+```
+Bank file
+ └─ Section  (e.g. "Stats", "Flags", "Profile")
+     └─ Key  (e.g. "TotalKills", "BestScore")
+         └─ Value  (typed: Int, Fixed, Bool, String, Text, Point, Unit)
 ```
 
 ### SSF bank pattern (struct-based)
@@ -95,7 +132,7 @@ The 4th parameter is the instance index (1-based). UserData tables are defined i
 
 ## Spawner / Wave System
 
-Proxima Frontlines uses a custom spawner system built on top of `UnitCreate` and a trigger loop.
+A common pattern for custom wave spawners in SC2 maps. Uses `UnitCreate` and a periodic trigger loop.
 
 ### Spawner structs (from _h.galaxy)
 
@@ -118,7 +155,7 @@ struct gs_CreatedSpawner {
 ### Adding a spawner
 
 ```galaxy
-int lib5A1C9904_gf_AddSpawner(
+int gf_AddSpawner(
     point lp_spawnPoint,
     string lp_unitType,
     string lp_waveType,
@@ -128,7 +165,7 @@ int lib5A1C9904_gf_AddSpawner(
     // stores in gv_spawners array, increments counter, returns index
 }
 
-void lib5A1C9904_gf_AddNewWavePoint(point lp_wavePoint, int lp_spawnerIndex) {
+void gf_AddNewWavePoint(point lp_wavePoint, int lp_spawnerIndex) {
     // appends to gv_createdSpawners[lp_spawnerIndex].movePoints
 }
 ```
@@ -136,18 +173,18 @@ void lib5A1C9904_gf_AddNewWavePoint(point lp_wavePoint, int lp_spawnerIndex) {
 ### Creating all spawners
 
 ```galaxy
-void lib5A1C9904_gf_CreateSpawners() {
+void gf_CreateSpawners() {
     int lv_i = 1;
-    for (; lv_i <= lib5A1C9904_gv_spawnerCount ; lv_i += 1) {
+    for (; lv_i <= gv_spawnerCount ; lv_i += 1) {
         UnitCreate(1,
-            lib5A1C9904_gv_spawners[lv_i].unitType,
+            gv_spawners[lv_i].unitType,
             c_unitCreateIgnorePlacement,
-            lib5A1C9904_gv_spawners[lv_i].player,
-            lib5A1C9904_gv_spawners[lv_i].spawnPoint,
+            gv_spawners[lv_i].player,
+            gv_spawners[lv_i].spawnPoint,
             270.0
         );
-        lib5A1C9904_gv_createdSpawners[lv_i].spawner = UnitLastCreated();
-        UnitSetState(lib5A1C9904_gv_createdSpawners[lv_i].spawner,
+        gv_createdSpawners[lv_i].spawner = UnitLastCreated();
+        UnitSetState(gv_createdSpawners[lv_i].spawner,
             c_unitStateInvulnerable, true);
     }
 }
@@ -156,8 +193,8 @@ void lib5A1C9904_gf_CreateSpawners() {
 ### Enabling/disabling spawns
 
 ```galaxy
-TriggerEnable(lib5A1C9904_gt_SpawnUnits, true);   // start spawning
-TriggerEnable(lib5A1C9904_gt_SpawnUnits, false);  // pause spawning
+TriggerEnable(gt_SpawnUnits, true);   // start spawning
+TriggerEnable(gt_SpawnUnits, false);  // pause spawning
 ```
 
 ---
@@ -179,7 +216,7 @@ struct gs_Spawn {
 }
 
 // Register a jungle camp
-void lib5A1C9904_gf_AddJungleSpawn(
+void gf_AddJungleSpawn(
     point lp_spawnPoint,
     string lp_unitType1, int lp_count1,
     int lp_respawnSeconds
@@ -188,11 +225,11 @@ void lib5A1C9904_gf_AddJungleSpawn(
 }
 
 // Respawn callback — attached as TriggerAddEventUnitDied
-bool lib5A1C9904_gf_JungleDeath_Func(bool testConds, bool runActions) {
+bool gf_JungleDeath_Func(bool testConds, bool runActions) {
     // record death time, start respawn timer
-    Wait(lib5A1C9904_gv_jungleSpawns[lv_idx].respawnTime * 1.0, c_timeGame);
+    Wait(gv_jungleSpawns[lv_idx].respawnTime * 1.0, c_timeGame);
     // recreate units at spawn point
-    lib5A1C9904_gf_Respawn(lv_idx);
+    gf_Respawn(lv_idx);
     return true;
 }
 ```
@@ -209,7 +246,7 @@ struct gs_JG_PricePerUnit {
 }
 
 // Register a reward
-void lib5A1C9904_gf_AddUnitJunglePrice(
+void gf_AddUnitJunglePrice(
     string lp_unitType,
     int lp_minerals,
     int lp_gas
@@ -218,14 +255,14 @@ void lib5A1C9904_gf_AddUnitJunglePrice(
 }
 
 // Distribute reward on kill
-void lib5A1C9904_gf_GiveResource(unit lp_killedUnit, int lp_killerPlayer) {
+void gf_GiveResource(unit lp_killedUnit, int lp_killerPlayer) {
     int lv_i = 1;
-    for (; lv_i <= lib5A1C9904_gv_junglePricesCount ; lv_i += 1) {
-        if (UnitGetType(lp_killedUnit) == lib5A1C9904_gv_junglePrices[lv_i].unitType) {
+    for (; lv_i <= gv_junglePricesCount ; lv_i += 1) {
+        if (UnitGetType(lp_killedUnit) == gv_junglePrices[lv_i].unitType) {
             PlayerModifyPropertyInt(lp_killerPlayer, c_playerPropMinerals,
-                c_playerPropOperAdd, lib5A1C9904_gv_junglePrices[lv_i].minerals);
+                c_playerPropOperAdd, gv_junglePrices[lv_i].minerals);
             PlayerModifyPropertyInt(lp_killerPlayer, c_playerPropVespene,
-                c_playerPropOperAdd, lib5A1C9904_gv_junglePrices[lv_i].gas);
+                c_playerPropOperAdd, gv_junglePrices[lv_i].gas);
             return;
         }
     }
@@ -334,17 +371,17 @@ void Player_Revive_ReleaseHero(int player, point position) {
 
 ```galaxy
 // Find the closest healing structure for a unit (Zerg vs non-Zerg)
-point lib5A1C9904_gf_FindHealspot(unit lp_unit) {
+point gf_FindHealspot(unit lp_unit) {
     int   lv_player = UnitGetOwner(lp_unit);
     point lv_pos    = UnitGetPosition(lp_unit);
 
-    if (lib5A1C9904_gf_IsZerg(lv_player)) {
+    if (IsZerg(lv_player)) {
         // Return position of allied town hall (hatchery)
-        return UnitGetPosition(lib5A1C9904_gv_healStructureZerg[lv_player]);
+        return UnitGetPosition(gv_healStructureZerg[lv_player]);
     } else {
         // Return position of nearest heal unit from the heal units group
         return UnitGetPosition(
-            UnitGroupClosestToPoint(lib5A1C9904_gv_healUnitsRTS1, lv_pos)
+            UnitGroupClosestToPoint(gv_healUnitsGroup, lv_pos)
         );
     }
 }

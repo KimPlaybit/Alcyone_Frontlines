@@ -1,6 +1,23 @@
+---
+name: galaxy-units-and-groups
+description: Unit creation, properties, behaviors, abilities, XP/leveling, unit groups, orders, death/kill events, custom values, and cargo in Galaxy script. Use when creating units, modifying HP/shields/energy, adding behaviors, issuing orders, querying or iterating unit groups, handling level-up events, or listening for unit death. Do not use for the AI that controls units (use galaxy-ai-and-techtree).
+---
+
 # Galaxy Scripting – Units & Unit Groups
 
-Reference: https://mapster.talv.space/galaxy/reference
+## Key References
+
+| Resource | URL |
+|---|---|
+| Native function reference | https://mapster.talv.space/galaxy/reference |
+| Galaxy syntax definition | https://github.com/Talv/vscode-sc2-galaxy/blob/master/syntaxes/galaxy.json |
+| **SC2-IngameDevTools (PRIMARY — #1 codebase)** | https://github.com/abrahamYG/SC2-IngameDevTools/tree/main/DevToolsIngame.SC2Mod/Script |
+| SSF codebase (secondary style) | https://github.com/Cristall/SC2-SwarmSpecialForces/tree/main/SwarmSpecialForces.SC2Map/scripts |
+| Alcyone Frontlines codebase | https://github.com/KimPlaybit/Alcyone_Frontlines/tree/master/ProximaFrontlines.SC2Mod/scripts |
+| NativeLib | `TriggerLibs/NativeLib.galaxy` (sc2galaxy VS Code extension) |
+| Custom Values guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/050_Custom_Values/ |
+| Unit Selection Events guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/048_Unit_Selection_Events/ |
+| SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
 
 ---
 

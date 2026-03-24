@@ -1,6 +1,23 @@
+---
+name: galaxy-players-and-alliances
+description: Player data patterns, playergroups, alliance setup, race helpers, player resources, camera control, game attributes, difficulty, player state flags, player color, and game-over calls in Galaxy script. Use when initializing alliances at map start, iterating active players, reading or modifying minerals/gas, checking player race, or ending the game for a player or group. Do not use for unit ownership queries (use galaxy-units-and-groups).
+---
+
 # Galaxy Scripting – Players & Alliances
 
-Reference: https://mapster.talv.space/galaxy/reference
+## Key References
+
+| Resource | URL |
+|---|---|
+| Native function reference | https://mapster.talv.space/galaxy/reference |
+| Galaxy syntax definition | https://github.com/Talv/vscode-sc2-galaxy/blob/master/syntaxes/galaxy.json |
+| **SC2-IngameDevTools (PRIMARY — #1 codebase)** | https://github.com/abrahamYG/SC2-IngameDevTools/tree/main/DevToolsIngame.SC2Mod/Script |
+| SSF codebase (secondary style) | https://github.com/Cristall/SC2-SwarmSpecialForces/tree/main/SwarmSpecialForces.SC2Map/scripts |
+| Alcyone Frontlines codebase | https://github.com/KimPlaybit/Alcyone_Frontlines/tree/master/ProximaFrontlines.SC2Mod/scripts |
+| NativeLib alliance helpers | `TriggerLibs/NativeLib.galaxy` — `libNtve_gf_SetAlliance`, `libNtve_gf_SetPlayerGroupAlliance`, `libNtve_gf_SetAllianceBetweenTwoPlayerGroups`, `libNtve_gf_PlayerIsEnemy` |
+| Variables guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/037_Variables/ |
+| Records guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/040_Records/ |
+| SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
 
 ---
 
@@ -23,19 +40,19 @@ struct PlayerStruct {
 };
 PlayerStruct[gv_MaxAmountPlayers + 1] gv_PlayerStats;
 
-// CRITICAL TYPE DISTINCTION — Proxima Frontlines uses this split:
+// CRITICAL TYPE DISTINCTION — single-slot player IDs vs player groups:
 //   gv_rTSPlayer1, gv_rTSPlayer2  →  int   (single player SLOT ID, e.g. 7 or 14)
-//   gv_soldierPlayers1/2          →  playergroup  (group of all soldier players on a team)
+//   gv_soldierPlayers1/2          →  playergroup  (group of multiple players on a team)
 //
-// gv_rTSPlayer1/2 are assigned via PlayerGroupPlayer() which returns int:
+// Single-slot IDs are assigned via PlayerGroupPlayer() which returns int:
 //   gv_rTSPlayer1 = PlayerGroupPlayer(GameAttributePlayersForTeam(1), 1);
 // These are used everywhere as int: IsZerg(gv_rTSPlayer1), PlayerStartLocation(gv_rTSPlayer2), etc.
-// NEVER declare them as playergroup — that causes 100+ "Parameter type mismatch" errors.
+// NEVER declare a single-slot id as playergroup — that causes 100+ "Parameter type mismatch" errors.
 
-int gv_rTSPlayer1;        // int — single RTS player slot for team 1
-int gv_rTSPlayer2;        // int — single RTS player slot for team 2
-playergroup gv_soldierPlayers1;   // playergroup — all soldier/hero players on team 1
-playergroup gv_soldierPlayers2;   // playergroup — all soldier/hero players on team 2
+int gv_rTSPlayer1;        // int — single player slot for team 1
+int gv_rTSPlayer2;        // int — single player slot for team 2
+playergroup gv_soldierPlayers1;   // playergroup — all players on team 1
+playergroup gv_soldierPlayers2;   // playergroup — all players on team 2
 
 // Common shared playergroups
 playergroup gv_ActivePG;      // currently active players

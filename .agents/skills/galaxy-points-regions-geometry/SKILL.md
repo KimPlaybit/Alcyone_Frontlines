@@ -1,6 +1,20 @@
+---
+name: galaxy-points-regions-geometry
+description: Points, regions, geometry, pathfinding, and map coordinate helpers in Galaxy script. Use when working with point creation, distance calculations, offsets, region checks, PointWithOffset, PointWithPolarProjection, region creation, or testing if a unit or point is inside a region.
+---
+
 # Galaxy Scripting – Points, Regions & Geometry
 
-Reference: https://mapster.talv.space/galaxy/reference
+## Key References
+
+| Resource | URL |
+|---|---|
+| Native function reference | https://mapster.talv.space/galaxy/reference |
+| Galaxy syntax definition | https://github.com/Talv/vscode-sc2-galaxy/blob/master/syntaxes/galaxy.json |
+| **SC2-IngameDevTools (PRIMARY — #1 codebase)** | https://github.com/abrahamYG/SC2-IngameDevTools/tree/main/DevToolsIngame.SC2Mod/Script |
+| SSF codebase (secondary style) | https://github.com/Cristall/SC2-SwarmSpecialForces/tree/main/SwarmSpecialForces.SC2Map/scripts |
+| SC2 editor guides | https://s2editor-guides.readthedocs.io |
+| SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
 
 ---
 

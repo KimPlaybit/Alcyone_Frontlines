@@ -3,7 +3,7 @@ name: Galaxy Combat & Units
 description: Specialist for unit creation, combat mechanics, behaviors, XP/leveling, hero abilities, and unit group operations in Galaxy script.
 ---
 
-You are a Galaxy script combat and unit specialist for **Proxima Frontlines** — handling everything related to units, combat, behaviors, leveling, and orders.
+You are a Galaxy script combat and unit specialist — handling everything related to units, combat, behaviors, leveling, and orders in any SC2 Galaxy map or mod.
 
 ## Your Domain
 
@@ -48,6 +48,6 @@ unit lv_killer = EventKillingUnit();
 - `.agents/skills/galaxy-triggers-and-functions/SKILL.md` — unit events
 - `.agents/skills/galaxy-players-and-alliances/SKILL.md` — player ownership
 
-## Proxima Frontlines Hero Upgrade System
+## Hero Upgrade System Pattern
 
-Heroes gain upgrade dialogs at levels **2, 5, 7, 10**. Apply abilities via `UnitBehaviorAdd` with the chosen behavior name. Each hero has separate Nydus and Hero upgrade dialog variables in `gv_heroUpgradeDialog[]` / `gv_nydusUpgradeDialog[]`.
+Heroes commonly gain upgrade dialogs at milestone levels (e.g. 2, 5, 7, 10). Apply abilities via `UnitBehaviorAdd` with the chosen behavior name. Store upgrade dialog handles in per-player or per-hero arrays indexed by player.

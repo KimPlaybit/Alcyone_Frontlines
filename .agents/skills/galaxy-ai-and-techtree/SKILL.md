@@ -1,6 +1,22 @@
+---
+name: galaxy-ai-and-techtree
+description: AI behavior, melee AI initialization, tech tree upgrades, wave difficulty scaling, AI waves, unit restrictions, and tactical AI helpers in Galaxy script. Use when setting up computer-controlled players, scaling enemy difficulty per wave, managing tech tree restrictions, or scripting AI attack waves. Do not use for player-controlled unit behavior (use galaxy-units-and-groups).
+---
+
 # Galaxy Scripting – AI & Tech Tree
 
-Reference: https://mapster.talv.space/galaxy/reference
+## Key References
+
+| Resource | URL |
+|---|---|
+| Native function reference | https://mapster.talv.space/galaxy/reference |
+| Galaxy syntax definition | https://github.com/Talv/vscode-sc2-galaxy/blob/master/syntaxes/galaxy.json |
+| **SC2-IngameDevTools (PRIMARY — #1 codebase)** | https://github.com/abrahamYG/SC2-IngameDevTools/tree/main/DevToolsIngame.SC2Mod/Script |
+| SSF codebase (secondary style) | https://github.com/Cristall/SC2-SwarmSpecialForces/tree/main/SwarmSpecialForces.SC2Map/scripts |
+| Alcyone Frontlines codebase | https://github.com/KimPlaybit/Alcyone_Frontlines/tree/master/ProximaFrontlines.SC2Mod/scripts |
+| NativeLib | `TriggerLibs/NativeLib.galaxy` (sc2galaxy VS Code extension) |
+| SC2 editor guides | https://s2editor-guides.readthedocs.io |
+| SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
 
 ---
 
@@ -186,25 +202,26 @@ TechTreeProductionCapSet(lv_player, "Marine", c_techTreeProductionCapUnlimited);
 
 ---
 
-## Proxima Frontlines: Wave Upgrade Pattern
+## Wave Upgrade Pattern
 
-The map applies upgrades per wave to scale enemy difficulty:
+Apply upgrades per wave to scale enemy difficulty. Track waves with a counter and apply upgrade levels on each wave transition:
 
 ```galaxy
-void lib5A1C9904_gf_AddUpdateForWaves(int lp_player, string lp_upgrade) {
-    // tracks which upgrades to add each wave
+void AddUpgradeForWave(int lp_player, string lp_upgrade) {
     TechTreeUpgradeAddLevel(lp_player, lp_upgrade, 1);
 }
 
-void lib5A1C9904_gf_RemoveUpdateForWaves(int lp_player, string lp_upgrade) {
+void RemoveUpgradeForWave(int lp_player, string lp_upgrade) {
     TechTreeUpgradeAddLevel(lp_player, lp_upgrade, -1);
 }
 
 // Called at start of each new wave:
-void lib5A1C9904_gf_ApplyWaveUpgrades(int lp_waveNumber) {
+void ApplyWaveUpgrades(int lp_waveNumber, int lp_enemyPlayer) {
     if (lp_waveNumber == 3) {
-        lib5A1C9904_gf_AddUpdateForWaves(
-            lib5A1C9904_gv_rTSPlayer1, "InflictedDamageIncrease");
+        AddUpgradeForWave(lp_enemyPlayer, "InflictedDamageIncrease");
+    }
+    if (lp_waveNumber == 5) {
+        AddUpgradeForWave(lp_enemyPlayer, "ArmorIncrease");
     }
 }
 ```

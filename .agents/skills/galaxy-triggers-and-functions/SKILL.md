@@ -1,7 +1,28 @@
+---
+name: galaxy-triggers-and-functions
+description: Trigger declaration, event registration, async execution via TriggerExecute, the static parameter pattern for functions that use Wait, trigger management, cinematic sequencer queue, and common event types in Galaxy script. Use when creating triggers, attaching events, executing async functions, or building the trigger init chain. Do not use for unit-specific events (use galaxy-units-and-groups) or dialog events (use galaxy-ui-and-dialogs).
+---
+
 # Galaxy Scripting – Triggers & Functions
 
-Reference: https://mapster.talv.space/galaxy/reference  
-Reference: https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/058_GalaxyScript/
+## Key References
+
+| Resource | URL |
+|---|---|
+| Native function reference | https://mapster.talv.space/galaxy/reference |
+| Galaxy script tutorial | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/058_GalaxyScript/ |
+| Multithreading guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/057_Multithreading_with_Action_Definitions/ |
+| Trigger Debugger guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/053_Trigger_Debugger/ |
+| Optimizing Code guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/056_Optimizing_Code/ |
+| Galaxy syntax definition | https://github.com/Talv/vscode-sc2-galaxy/blob/master/syntaxes/galaxy.json |
+| **SC2-IngameDevTools (PRIMARY — #1 codebase)** | https://github.com/abrahamYG/SC2-IngameDevTools/tree/main/DevToolsIngame.SC2Mod/Script |
+| SSF codebase (secondary style) | https://github.com/Cristall/SC2-SwarmSpecialForces/tree/main/SwarmSpecialForces.SC2Map/scripts |
+| Alcyone Frontlines codebase | https://github.com/KimPlaybit/Alcyone_Frontlines/tree/master/ProximaFrontlines.SC2Mod/scripts |
+| NativeLib | `TriggerLibs/NativeLib.galaxy` (sc2galaxy VS Code extension) |
+| SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
+| Triggers overview (wiki) | https://sc2mapster.wiki.gg/wiki/Triggers |
+
+---
 
 ---
 
@@ -45,19 +66,86 @@ typedef funcref<MyCallback_t> MyCallbackRef;
 
 A trigger is a named callback function registered to fire on certain game events.
 
+### ⭐ SC2-IngameDevTools trigger registration pattern (PRIMARY — use this)
+
+The SC2-IngameDevTools codebase uses a clean, consistent pattern for registering triggers by string name inside each module's `_Init()` function. This is the pattern to follow:
+
+```galaxy
+// Handler functions always have the bool(bool,bool) signature
+bool BehaviorContainerSendHandler(bool a, bool b) {
+    // ... handler logic
+    return true;
+}
+
+bool BehaviorListBoxFilterQuery(bool a, bool b) {
+    int player = EventPlayer();
+    playergroup pg = PlayerGroupSingle(player);
+    string val = DialogControlGetPropertyAsString(
+        ListBoxFilter.editbox, c_triggerControlPropertyEditText, player);
+    ItemList_FilterListRebuild(ItemList, ListBoxFilter, val, pg);
+    return true;
+}
+
+void BehaviorHandler_Init() {
+    trigger t;
+    // Register trigger by STRING name — the string must exactly match the function name
+    t = TriggerCreate("BehaviorContainerSendHandler");
+    TriggerAddEventDialogControl(t, c_playerAny, BehaviorContainer.addButton,
+        c_triggerControlEventTypeClick);
+    TriggerAddEventDialogControl(t, c_playerAny, BehaviorContainer.removeButton,
+        c_triggerControlEventTypeClick);
+
+    // Filter query trigger
+    t = TriggerCreate("BehaviorListBoxFilterQuery");
+    TriggerAddEventDialogControl(t, c_playerAny, ListBoxFilter.editbox,
+        c_triggerControlEventTypeTextChanged);
+}
+```
+
+Key rules from this pattern:
+- Trigger functions always have signature `bool FunctionName(bool a, bool b)`.
+- `TriggerCreate("FunctionName")` — the string is the **exact function name** as written in code.
+- Each module's `_Init()` creates all its own triggers and hooks its own events.
+- `trigger t;` is declared as a local and reused for multiple registrations in the same `_Init()`.
+- Chat message triggers use `TriggerAddEventChatMessage(t, c_playerAny, "commandString", false)`.
+- Generic event triggers use `TriggerAddEventGeneric(handler, "EventName")` + `TriggerSendEvent("EventName")`.
+
+```galaxy
+// Chat command registration (from DevTools/ChatCommand.galaxy)
+trigger DevTools_ChatCommand;
+
+void DevTools_ChatCommand_Init() {
+    DevTools_ChatCommand = TriggerCreate("DevTools_ChatCommand_Func");
+    // Commands registered later via DevTools_ChatCommandCreate():
+    //   TriggerAddEventChatMessage(DevTools_ChatCommand, c_playerAny, cmd, false);
+    //   TriggerAddEventGeneric(handler, "DevTools_ChatCommand.Exec."+cmd);
+}
+
+void DevTools_ChatCommandCreate(string cmd, trigger handler, text description) {
+    ItemListAdd(ItemList, cmd);
+    TriggerAddEventChatMessage(DevTools_ChatCommand, c_playerAny, cmd, false);
+    TriggerAddEventGeneric(handler, "DevTools_ChatCommand.Exec."+cmd);
+    DevTools_ChatCommandSetDescription(cmd, description);
+}
+
+void DevTools_ChatCommandSend(string cmd) {
+    TriggerSendEvent("DevTools_ChatCommand.Exec."+cmd);
+}
+```
+
 ### Declaring a trigger global
 
 ```galaxy
-// In the header (_h.galaxy):
-trigger lib5A1C9904_gt_SpawnUnits;
-trigger lib5A1C9904_gt_WinTeam1;
+// In the header (_h.galaxy) — replace libXXXXXXXX_ with your mod's auto-generated library prefix:
+trigger libXXXXXXXX_gt_SpawnUnits;
+trigger libXXXXXXXX_gt_WinTeam1;
 ```
 
 ### Full trigger pattern (as generated by the editor)
 
 ```galaxy
 // 1. The logic function — bool (bool testConds, bool runActions)
-bool lib5A1C9904_gt_SpawnUnits_Func(bool testConds, bool runActions) {
+bool gt_SpawnUnits_Func(bool testConds, bool runActions) {
     // Conditions block
     if (testConds) {
         if (!(someCondition)) { return false; }
@@ -71,11 +159,11 @@ bool lib5A1C9904_gt_SpawnUnits_Func(bool testConds, bool runActions) {
 }
 
 // 2. The init function — registers event(s) onto the trigger
-void lib5A1C9904_gt_SpawnUnits_Init() {
-    lib5A1C9904_gt_SpawnUnits = TriggerCreate("lib5A1C9904_gt_SpawnUnits_Func");
-    TriggerEnable(lib5A1C9904_gt_SpawnUnits, true);
+void gt_SpawnUnits_Init() {
+    gt_SpawnUnits = TriggerCreate("gt_SpawnUnits_Func");
+    TriggerEnable(gt_SpawnUnits, true);
     // attach one or more events:
-    TriggerAddEventTimePeriodic(lib5A1C9904_gt_SpawnUnits, 10.0, c_timeGame);
+    TriggerAddEventTimePeriodic(gt_SpawnUnits, 10.0, c_timeGame);
 }
 ```
 
@@ -269,9 +357,10 @@ void PartTerran_TriggerCreate() {
 
 ### Library mod pattern (alternate)
 ```galaxy
-void lib5A1C9904_InitTriggers() {
-    lib5A1C9904_gt_SpawnUnits_Init();
-    lib5A1C9904_gt_WinTeam1_Init();
+// Replace libXXXXXXXX_ with your mod's auto-generated library prefix.
+void libXXXXXXXX_InitTriggers() {
+    libXXXXXXXX_gt_SpawnUnits_Init();
+    libXXXXXXXX_gt_WinTeam1_Init();
     // ... all _Init calls ...
 }
 ```
@@ -313,3 +402,68 @@ bool PublicFunc() { return HelperFunc(); }
 
 > Functions can be declared before they are defined (forward declarations).  
 > As long as files are all included into `MapScript.galaxy`, you can call any function from any file without a local `include`.
+
+---
+
+## Multithreading / Async Execution
+
+### How Galaxy "multithreading" works (time-slicing)
+
+Galaxy does **not** have true parallel execution. The editor implements **cooperative multithreading** via time-slicing:
+
+1. A threaded trigger/action-def runs normally until it hits a `Wait()`.
+2. At `Wait()`, control returns to the parent thread (or the next pending event).
+3. When the wait resolves, control returns to the suspended thread.
+
+This "fakes" parallelism by rapidly switching linear control around `Wait()` boundaries. It is **not** faster than sequential code — in fact, threaded code runs slower due to the overhead of managing thread state.
+
+> **Source:** [Multithreading With Action Definitions](https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/057_Multithreading_with_Action_Definitions/)
+
+### TriggerExecute — fire a trigger in its own thread
+
+```galaxy
+// Run trigger NOW in the SAME thread (blocks until done)
+TriggerExecute(myTrigger, false, false);
+
+// Run trigger in its OWN thread (returns immediately; trigger runs concurrently)
+TriggerExecute(myTrigger, false, true);   // third arg = separate thread
+```
+
+The static-param pattern (see the Async section above) is the correct way to pass parameters into a trigger-based async function.
+
+### Auto-generated implementation of threaded action definitions
+
+When the GUI editor creates a threaded action definition, it generates:
+
+```galaxy
+// 1. Global parameter registers (one per action-def parameter)
+int auto_gf_MyActionDef_lp_param;
+
+// 2. Global trigger variable (created once, reused)
+trigger auto_gf_MyActionDef_Trigger = null;
+
+// 3. The trigger function body — captures params into locals BEFORE any Wait
+bool auto_gf_MyActionDef_TriggerFunc(bool testConds, bool runActions) {
+    int lp_param = auto_gf_MyActionDef_lp_param; // capture to local immediately
+    Wait(5.0, c_timeGame);
+    // use lp_param here safely
+    return true;
+}
+
+// 4. Wrapper called at each invocation — copies args into global registers, fires trigger
+void gf_MyActionDef(int lp_param) {
+    auto_gf_MyActionDef_lp_param = lp_param;       // write to global register
+    if (auto_gf_MyActionDef_Trigger == null) {
+        auto_gf_MyActionDef_Trigger = TriggerCreate("auto_gf_MyActionDef_TriggerFunc");
+    }
+    TriggerExecute(auto_gf_MyActionDef_Trigger, false, true); // run in new thread
+}
+```
+
+**Key rule:** Capture the global parameter register into a local variable **at the very first line** of the thread function, before any `Wait()`. Otherwise a new call can overwrite the global before the thread reads it.
+
+### Performance notes
+
+- Multithreaded action definitions run noticeably slower than non-threaded equivalents.
+- Use threading only when you genuinely need concurrent `Wait()`-based timelines (e.g., five marines each on a 5-second lifecycle running in parallel).
+- For one-off delays, a `Timer`-based trigger is usually simpler and cheaper.

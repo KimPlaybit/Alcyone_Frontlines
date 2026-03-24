@@ -1,6 +1,24 @@
+---
+name: galaxy-ui-and-dialogs
+description: Dialog and dialog control creation, XML frame hookup, hero/upgrade selection panels, scoreboard panels, dialog events, HUD messages, localized text, minimap pings, and the SSF hooked-frame UI pattern in Galaxy script. Use when building or updating any in-game UI: dialogs, buttons, labels, images, portraits, click handlers, or player-visible messages. Do not use for actor-based visuals (use galaxy-actor-and-visuals).
+---
+
 # Galaxy Scripting – UI & Dialogs
 
-Reference: https://mapster.talv.space/galaxy/reference
+## Key References
+
+| Resource | URL |
+|---|---|
+| Native function reference | https://mapster.talv.space/galaxy/reference |
+| Galaxy syntax definition | https://github.com/Talv/vscode-sc2-galaxy/blob/master/syntaxes/galaxy.json |
+| **SC2-IngameDevTools (PRIMARY — #1 codebase)** | https://github.com/abrahamYG/SC2-IngameDevTools/tree/main/DevToolsIngame.SC2Mod/Script |
+| SSF codebase (secondary style) | https://github.com/Cristall/SC2-SwarmSpecialForces/tree/main/SwarmSpecialForces.SC2Map/scripts |
+| Alcyone Frontlines codebase | https://github.com/KimPlaybit/Alcyone_Frontlines/tree/master/ProximaFrontlines.SC2Mod/scripts |
+| NativeLib dialog helpers | `TriggerLibs/NativeLib.galaxy` — all `libNtve_gf_CreateDialogItem*`, `libNtve_gf_SetDialogItem*` functions |
+| Dialogs guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/043_Dialogs/ |
+| Dialog Panels guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/044_Dialog_Panels/ |
+| UI Events guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/049_UI_Events/ |
+| SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
 
 ---
 
@@ -58,7 +76,7 @@ dialog lv_dlg = DialogCreate(
     false              // modal (blocks input to game underneath)
 );
 // Or capture:
-lib5A1C9904_gv_heroDialog = DialogLastCreated();
+gv_heroDialog = DialogLastCreated();
 ```
 
 ### Showing / hiding
@@ -85,6 +103,63 @@ c_anchorBottomRight
 ---
 
 ## Dialog Controls
+
+### ⭐ SC2-IngameDevTools `DialogControlHookup` pattern (PRIMARY — use for existing XML frames)
+
+The SC2-IngameDevTools codebase hooks into **pre-existing XML UI frames** rather than creating dialog controls in code. This is the preferred pattern when UI frames are defined in `Base.SC2Data/UI/Layout/`:
+
+```galaxy
+// Hookup an existing XML panel by its frame path (no creation needed)
+// The path is relative to the UI layout root
+static const string CONTAINERDLG_PATH =
+    "UIContainer/ConsoleUIContainer/CatalogManager/BehaviorManager";
+static const string EDITBOX_PATH    = "Item";
+static const string ADDBTN_PATH     = "AddButton";
+static const string REMOVEBTN_PATH  = "RemoveButton";
+
+struct BehaviorContainerStruct {
+    int panel;       // the hooked panel (int = dialog control handle)
+    int messageBox;
+    int addButton;
+    int removeButton;
+};
+BehaviorContainerStruct BehaviorContainer;
+
+void BehaviorHandler_Init() {
+    trigger t;
+    // Hook the root panel by absolute path
+    BehaviorContainer.panel =
+        DialogControlHookupStandard(c_triggerControlTypePanel, CONTAINERDLG_PATH);
+
+    // Hook child controls relative to the panel
+    BehaviorContainer.messageBox =
+        DialogControlHookup(BehaviorContainer.panel, c_triggerControlTypeEditBox, EDITBOX_PATH);
+    BehaviorContainer.addButton =
+        DialogControlHookup(BehaviorContainer.panel, c_triggerControlTypeButton, ADDBTN_PATH);
+    BehaviorContainer.removeButton =
+        DialogControlHookup(BehaviorContainer.panel, c_triggerControlTypeButton, REMOVEBTN_PATH);
+
+    // Register click handler — trigger registered by STRING function name
+    t = TriggerCreate("BehaviorContainerSendHandler");
+    TriggerAddEventDialogControl(t, c_playerAny, BehaviorContainer.addButton,
+        c_triggerControlEventTypeClick);
+    TriggerAddEventDialogControl(t, c_playerAny, BehaviorContainer.removeButton,
+        c_triggerControlEventTypeClick);
+}
+```
+
+Key functions used:
+| Function | Purpose |
+|---|---|
+| `DialogControlHookupStandard(type, path)` | Hook a root-level frame by absolute XML path |
+| `DialogControlHookup(parent, type, childPath)` | Hook a child control relative to a parent panel |
+| `DialogControlGetPropertyAsString(ctrl, prop, player)` | Read text/string property |
+| `DialogControlSetPropertyAsString(ctrl, prop, pg, val)` | Set text/string property |
+| `DialogControlGetPropertyAsInt(ctrl, prop, player)` | Read int property (e.g. selection index) |
+| `DialogControlGetSelectedItem(list, player)` | Get selected listbox item index |
+| `DialogControlAddItem(list, pg, text)` | Add item to a listbox/pulldown |
+| `DialogControlRemoveAllItems(list, pg)` | Clear all listbox items |
+| `DialogControlGetItemCount(list, player)` | Count items in a listbox |
 
 ### Button
 
@@ -409,4 +484,50 @@ libNtve_gf_CreatePingFacingAngle(
 ping lv_ping = PingLastCreated();
 PingSetScale(lv_ping, 0.75);
 PingSetTooltip(lv_ping, StringToText("Objective location"));
+```
+
+---
+
+## Dialog Layout & Resolution
+
+> **Source:** [Dialogs guide — Dialog Formatting](https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/043_Dialogs/)
+
+### Internal resolution system
+
+Dialogs are sized in an **internal pixel space** — they look the same regardless of the player's monitor resolution. The SC2 client maps this internal space to the player's screen:
+
+| Screen ratio | Internal resolution (width × height) |
+|---|---|
+| 4:3 | 1600 × 1200 |
+| 16:9 | 2133 × 1200 |
+| 16:10 | 1920 × 1200 |
+
+Height is always **1200 internal pixels**. Width scales by ratio.
+
+**Practical rule:** Keep dialogs no wider than **1600 px** (the narrowest 4:3 width) to ensure they never clip or overflow on any screen ratio. Design at 1600 px wide and you're safe for all players.
+
+```galaxy
+// Safe full-screen-width dialog (works on all ratios)
+dialog gv_mainDialog = DialogCreate(
+    1600,           // safe max width
+    1200,           // full height
+    c_anchorCenter,
+    0, 0,
+    false
+);
+
+// For UI elements, anchor to edges rather than absolute coords
+// so they stay on-screen across all ratios:
+// c_anchorTopLeft, c_anchorTopRight, c_anchorBottomLeft, c_anchorBottomRight, c_anchorCenter
+```
+
+### DialogControlCreateFromTemplate
+
+Wrapper pattern that avoids the GUI editor crash when creating items from a template string:
+
+```galaxy
+// Use this helper instead of the GUI "Create Dialog Item From Template" action
+int CreateDialogItemFromTemplate(int dialog, int type, string template) {
+    return DialogControlCreateFromTemplate(dialog, type, template);
+}
 ```

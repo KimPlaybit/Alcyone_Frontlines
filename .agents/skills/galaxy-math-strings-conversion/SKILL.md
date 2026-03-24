@@ -1,6 +1,22 @@
+---
+name: galaxy-math-strings-conversion
+description: Integer and fixed-point math, trigonometry, random numbers, type conversions, string and text operations, color construction, bitwise operations, and number formatting for display in Galaxy script. Use when performing arithmetic, converting between int/fixed/string/text, building display strings, working with colors, or using NativeLib math helpers (ArithmeticIntClamp, Log, RandomPercent). Do not use for point/geometry math (use galaxy-points-regions-geometry).
+---
+
 # Galaxy Scripting – Math, Strings & Conversion
 
-Reference: https://mapster.talv.space/galaxy/reference
+## Key References
+
+| Resource | URL |
+|---|---|
+| Native function reference | https://mapster.talv.space/galaxy/reference |
+| Per-function reference pages | https://mapster.talv.space/galaxy/reference/`function-name` (e.g. `/text-case`, `/string-case`, `/string-external`) |
+| Galaxy syntax definition | https://github.com/Talv/vscode-sc2-galaxy/blob/master/syntaxes/galaxy.json |
+| **SC2-IngameDevTools (PRIMARY — #1 codebase)** | https://github.com/abrahamYG/SC2-IngameDevTools/tree/main/DevToolsIngame.SC2Mod/Script |
+| SSF codebase (secondary style) | https://github.com/Cristall/SC2-SwarmSpecialForces/tree/main/SwarmSpecialForces.SC2Map/scripts |
+| NativeLib | `TriggerLibs/NativeLib.galaxy` — `libNtve_gf_Log`, `libNtve_gf_RandomPercent`, `libNtve_gf_ArithmeticIntClamp`, `libNtve_gf_ConvertBooleanToText`, conversion helpers |
+| Math Functions guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/045_Math_Functions/ |
+| SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
 
 ---
 
@@ -36,12 +52,18 @@ fixed lv_abs  = Abs(lv_x);
 fixed lv_sqrt = Sqrt(lv_x);
 fixed lv_pow  = Pow(lv_x, 2.0);
 fixed lv_log2 = Log2(lv_x);
-fixed lv_ln   = libNtve_gf_Log(lv_x);   // natural log
 fixed lv_fl   = Floor(lv_x);
 fixed lv_ceil = Ceiling(lv_x);
 fixed lv_pi   = 3.14159;                 // no built-in Pi constant
-// NOTE: libNtve_gf_Log (natural log) does NOT exist in NativeLib.
-// Use Log2(x) / Log2(e) to compute ln, or Log2 directly for base-2.
+
+// NativeLib math helpers (from TriggerLibs/NativeLib.galaxy):
+// libNtve_gf_Log(x, base) — computes log base `base` of `x`
+fixed lv_log10 = libNtve_gf_Log(lv_x, 10.0);   // log base 10
+fixed lv_ln    = libNtve_gf_Log(lv_x, 2.71828); // natural log (approx)
+
+// Clamp helpers:
+int   lv_ci = libNtve_gf_ArithmeticIntClamp(lv_value, 0, 100);   // clamps int to [0,100]
+fixed lv_cf = libNtve_gf_ArithmeticRealClamp(lv_value, 0.0, 1.0); // clamps fixed to [0,1]
 ```
 
 ## Trigonometry
@@ -63,10 +85,10 @@ fixed lv_atan2 = ATan2(lv_dy, lv_dx);   // angle from delta components
 ```galaxy
 int   lv_ri    = RandomInt(1, 10);             // [min, max] inclusive
 fixed lv_rf    = RandomFixed(0.0, 1.0);        // [min, max]
-fixed lv_pct   = RandomFixed(0.0, 100.0);      // percent equivalent
-fixed lv_angle = RandomFixed(0.0, 360.0);      // random angle
-// NOTE: libNtve_gf_RandomPercent / libNtve_gf_RandomAngle do NOT exist in NativeLib.
-// Use RandomFixed with explicit range instead.
+
+// NativeLib random helpers:
+fixed lv_pct   = libNtve_gf_RandomPercent();  // random fixed 0.0–100.0
+fixed lv_angle = libNtve_gf_RandomAngle();    // random fixed 0.0–360.0
 ```
 
 ---
@@ -180,10 +202,26 @@ text lv_combined = lv_t1 + StringToText(" ") + lv_t2;
 text lv_colored = TextWithColor(lv_t, ColorWithAlpha(1.0, 0.4, 0.4, 1.0));
 
 // Localized string from GameStrings.txt
-text lv_loc = StringExternal("Param/Value/lib5A1C9904_MyKey");
+text lv_loc = StringExternal("Param/Value/libXXXXXXXX_MyKey"); // replace prefix with your mod's prefix
 
 // Text replace
 text lv_tr = TextReplaceWord(lv_t, "old", StringToText("new"));
+
+// Case conversion — text type
+text lv_upper = TextCase(lv_t, true);   // UPPERCASE
+text lv_lower = TextCase(lv_t, false);  // lowercase
+
+// Case conversion — string type
+string lv_up = StringCase(lv_s, true);  // UPPERCASE
+string lv_lo = StringCase(lv_s, false); // lowercase
+
+// Localized hotkey or asset path (companion to StringExternal)
+text lv_hk  = StringExternalHotkey("Param/Hotkey/MyAbility"); // e.g. "Q"
+string lv_asset = StringExternalAsset("Param/Asset/MyIcon");  // asset path string
+
+// Text expression tokens (build parameterized display strings)
+TextExpressionSetToken("Param/Expression/MyExpr", "UNIT", TextCase(UnitTypeGetName(UnitGetType(lv_unit)), true));
+text lv_result = TextExpressionAssemble("Param/Expression/MyExpr");
 ```
 
 ---

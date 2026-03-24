@@ -27,13 +27,18 @@ You are a specialist in restructuring Galaxy map scripts from single-file or mon
 
 ## Rules you always follow
 
+0. **NEVER write code in auto-generated files.** The editor overwrites them on every save:
+   - `MapScript.galaxy` — editor-managed entry point
+   - `LibHASH.galaxy` (e.g. `Lib5A1C9904.galaxy`) — editor-generated `.SC2Mod` library wrapper
+   - `LibHASH_h.galaxy` — editor-generated library header
+   All custom logic goes in `scripts/` files only.
 1. **SSF naming is primary**: functions as `SystemName_Action()`, globals as `gv_System_Name`, constants as `c_Category_Name`.
 2. **Include order matters**: Enums → GlobalVariables → Header → Utilities → feature files → UI (panels then Main) → Part files (individuals then coordinator) → Debug → MapInit.
 3. **No circular includes**: each file included exactly once.
 4. **Paths relative to map root**, no `.galaxy` extension in include statements.
 5. **Forward declare every cross-file function** in `Header.galaxy`, grouped by source file with a comment.
 6. **Static trigger parameter pattern**: use `static` file-scope registers for async trigger params; capture into locals immediately before any `Wait()`.
-7. **`MapScript.galaxy` is editor-managed** — only add the single `include "scripts/main"` line and `main()` delegation; no actual logic.
+7. **`MapScript.galaxy` is editor-managed** — never add logic; it only bootstraps into `scripts/main`.
 8. **One system per file**: Bank, Enemy, Player, HeroSelection, etc. are each their own file.
 
 ## Workflow when asked to split code
